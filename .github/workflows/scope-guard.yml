@@ -1,0 +1,43 @@
+# PR で変更されたファイルの「一覧」だけを見て、AI・bot・外部の PR が決められた範囲の外を変えていないかを調べる。
+# validate.yml は PR 側のワークフロー定義で動くため、PR の中でワークフローを書き換えられると検査をすり抜けられる。
+# この検査は pull_request_target で「main 側の定義とスクリプト」だけを使って動くので、PR からは書き換えられない。
+#
+# 安全のための約束（scripts/check-repo.mjs でも確認する）：
+#   - PR のコードは取り出さない・実行しない（checkout は main 側だけ。ref: を書かない）
+#   - 権限は読み取りだけ（contents: read / pull-requests: read）。秘密情報は使わない
+#   - PR から来る値（ブランチ名など）は env: でだけ渡し、run: の中に埋め込まない
+name: Scope guard
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+
+permissions: {}
+
+jobs:
+  scope-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout main (trusted scripts only)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          check-latest: true
+      - name: Check changed paths
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          MAINTAINER_LOGIN: ${{ vars.MAINTAINER_LOGIN }}
+        run: node scripts/scope-guard.mjs

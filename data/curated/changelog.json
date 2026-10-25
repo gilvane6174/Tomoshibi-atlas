@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "date": "2026-10-25",
+      "by": "operator",
+      "summary": {
+        "ja": "手動掲載データのファイルを作成（掲載項目なし）",
+        "en": "Created the curated data file (no entries yet)"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-10-25",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "研究と対策・こころ・福祉の初回掲載（16件）。原典を確認して作成し、ファクトチェックを経て掲載",
+        "en": "First entries for Research & Response, Mental health and Welfare (16 items), drafted from the original sources and fact-checked"
+      },
+      "ids": [
+        "research-2025-ai-who-tb-cad",
+        "research-2025-ai-who-eios-v2",
+        "research-2026-ai-who-pandemic-hub-strategy",
+        "research-2025-who-lenacapavir-prep",
+        "research-2025-who-world-malaria-report",
+        "research-2025-who-global-tb-report",
+        "research-2026-who-ethiopia-lead-exposure",
+        "mental-2025-who-world-mental-health-today",
+        "mental-2025-un-ncd-mental-health-declaration",
+        "mental-2026-who-deinstitutionalization-guide",
+        "mental-2026-jpn-suicide-prevention-week",
+        "mental-2026-jpn-karoshi-white-paper",
+        "welfare-2026-jpn-comprehensive-survey-living",
+        "welfare-2026-jpn-public-assistance-fy2024",
+        "welfare-2025-who-wb-uhc-monitoring",
+        "welfare-2025-who-health-financing-cuts"
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "2件の記述を修正（時点の明記、比較年の誤りの訂正）",
+        "en": "Corrected 2 items (stated the time of the information; fixed a wrong comparison year)"
+      },
+      "ids": [
+        "research-2025-who-lenacapavir-prep",
+        "welfare-2026-jpn-comprehensive-survey-living"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "operator",
+      "summary": {
+        "ja": "結核の検出支援ソフトの項目を、原典の表現（コンピュータ支援検出：CAD）に合わせて修正",
+        "en": "Revised the TB detection software item to match the source wording (computer-aided detection, CAD)"
+      },
+      "ids": [
+        "research-2025-ai-who-tb-cad"
+      ]
+    }
+  ]
+}

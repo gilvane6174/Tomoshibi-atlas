@@ -1,0 +1,22 @@
+{
+  "name": "tomoshibi-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tomoshibi Atlas（灯の地図）— 公的機関の公表情報を地球儀で眺める非営利のリンク集",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node scripts/test.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs --offline && node scripts/serve.mjs",
+    "build:offline": "node scripts/build.mjs --offline",
+    "format": "node scripts/format-data.mjs",
+    "check:pr": "node scripts/check-my-pr.mjs",
+    "check:history": "node scripts/check-history.mjs --strict",
+    "prepublish-check": "node scripts/prepublish-check.mjs"
+  }
+}

@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 2,
+  "reviewedAt": "2026-10-25",
+  "items": [
+    {
+      "id": "research-2025-ai-who-tb-cad",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、胸部X線の結核検出を支援するCADソフト6製品を承認",
+        "en": "WHO approves six CAD software products for TB on chest X-ray"
+      },
+      "summary": {
+        "ja": "WHOによれば、胸部X線から結核の疑いを検出するコンピュータ支援検出（CAD）ソフト6製品が、15歳以上の検診に関する性能基準を満たした。15歳未満への使用は推奨しておらず、陽性者は治療前に確定検査が必要としている。",
+        "en": "WHO says six computer-aided detection (CAD) products met its TB screening standards on chest X-ray for ages 15+. Not yet recommended under 15; positives need confirmatory tests."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2025年6月）によれば",
+        "en": "According to WHO (June 2025)"
+      },
+      "tags": [
+        "ai",
+        "approved"
+      ],
+      "topic": "tb-cad-chest-xray",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-06-11",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/11-06-2025-who-approves-six-software-products-for-computer-aided-detection-of-tb-on-chest-x-ray"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2025-ai-who-eios-v2",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、AIを活用した公衆衛生情報監視システムEIOS 2.0を公開",
+        "en": "WHO launches EIOS 2.0, an AI-supported public health intelligence system"
+      },
+      "summary": {
+        "ja": "WHOによれば、公開情報から健康危機の兆候を探すEIOSの2.0版で、AIによる分析の自動化と兆候検出が加わった。110以上の加盟国が利用し、結果は担当者が確認する。",
+        "en": "WHO says version 2.0 of EIOS, which scans open sources for health threats, adds AI tools for automated analysis and signal detection. Over 110 Member States use it; officials verify findings."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2025年10月）によれば",
+        "en": "According to WHO (October 2025)"
+      },
+      "tags": [
+        "ai"
+      ],
+      "topic": "who-eios",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-10-13",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/13-10-2025-who-upgrades-its-public-health-intelligence-system-to-boost-global-health-security"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-ai-who-pandemic-hub-strategy",
+      "layer": "research",
+      "title": {
+        "ja": "WHOパンデミック・ハブ、2030年までの24時間以内検知を目標とする戦略",
+        "en": "WHO Pandemic Hub strategy aims for 24-hour threat detection by 2030"
+      },
+      "summary": {
+        "ja": "WHOによれば、同機関の情報ハブが5か年戦略を公表し、2030年までに全ての国が新たな脅威を24時間以内に検知することを目標とした。AIの責任ある導入支援も含む。達成には継続的投資が必要としている。",
+        "en": "WHO says its intelligence hub's new five-year strategy aims for every country to detect new threats within 24 hours by 2030, incl. support for responsible AI use. It needs sustained investment."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年10月）によれば",
+        "en": "According to WHO (October 2026)"
+      },
+      "tags": [
+        "ai",
+        "policy"
+      ],
+      "topic": "who-pandemic-hub-strategy",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-12",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/12-10-2026-who-pandemic-hub-sets-ambitious-goal-to-detect-new-outbreaks-within-24-hours"
+      },
+      "sourceType": "intl_org",
+      "links": [
+        {
+          "label": "WHO：EIOS 2.0の公開（2025年10月） / WHO: EIOS 2.0 launch (Oct 2025)",
+          "url": "https://www.who.int/news/item/13-10-2025-who-upgrades-its-public-health-intelligence-system-to-boost-global-health-security"
+        }
+      ]
+    },
+    {
+      "id": "research-2025-who-lenacapavir-prep",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、HIV予防の選択肢として年2回注射のレナカパビルを推奨",
+        "en": "WHO recommends twice-yearly injectable lenacapavir as an HIV prevention option"
+      },
+      "summary": {
+        "ja": "WHOは2025年7月に公表した新ガイドラインで、年2回注射のレナカパビルをHIVの曝露前予防（PrEP）の追加の選択肢として推奨した。発表時点では、臨床試験以外での入手は限られているとしていた。",
+        "en": "In new guidelines published in July 2025, WHO recommended twice-yearly injectable lenacapavir as an additional HIV PrEP option. At that time, WHO noted that access outside clinical trials was limited."
+      },
+      "attribution": {
+        "ja": "WHOのガイドライン（2025年7月）によれば",
+        "en": "According to WHO guidelines (July 2025)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "hiv-prep-lenacapavir",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-07-14",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/14-07-2025-who-recommends-injectable-lenacapavir-for-hiv-prevention"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2025-who-world-malaria-report",
+      "layer": "research",
+      "title": {
+        "ja": "WHO「世界マラリア報告書2025」：新たな対策と薬剤耐性の広がり",
+        "en": "WHO World Malaria Report 2025: new tools and growing drug resistance"
+      },
+      "summary": {
+        "ja": "WHOによれば、2024年は新たな対策の普及で推計約100万人の死亡が回避された一方、患者は推計2億8,200万人、死亡は61万人だった。少なくともアフリカ8か国で薬剤耐性が確認または疑われている。",
+        "en": "WHO estimates new tools averted about 1 million malaria deaths in 2024, with 282 million cases and 610,000 deaths. Drug resistance is confirmed or suspected in at least 8 African countries."
+      },
+      "attribution": {
+        "ja": "WHO『世界マラリア報告書2025』によれば",
+        "en": "According to WHO, World Malaria Report 2025"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "world-malaria-report",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-12-04",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/04-12-2025-new-tools-saved-a-million-lives-from-malaria-last-year-but-progress-under-threat-as-drug-resistance-rises"
+      },
+      "sourceType": "intl_org",
+      "links": [
+        {
+          "label": "WHO：世界マラリア報告書2025 / WHO: World malaria report 2025",
+          "url": "https://www.who.int/teams/global-malaria-programme/reports/world-malaria-report-2025"
+        }
+      ]
+    },
+    {
+      "id": "research-2025-who-global-tb-report",
+      "layer": "research",
+      "title": {
+        "ja": "WHO「世界結核報告書2025」：発生率・死亡は減少、資金不足に懸念",
+        "en": "WHO Global TB Report 2025: incidence and deaths decline amid funding concerns"
+      },
+      "summary": {
+        "ja": "WHOによれば、2023年から2024年に結核の新規発生率は約2%、死亡は3%減り、2024年に830万人が診断・治療を開始した。2024年の資金は59億ドルで、2027年目標の4分の1強だった。",
+        "en": "WHO says TB incidence fell nearly 2% and deaths 3% from 2023 to 2024; 8.3 million started treatment in 2024. Funding was US$5.9 billion, just over a quarter of the 2027 target."
+      },
+      "attribution": {
+        "ja": "WHO『世界結核報告書2025』によれば",
+        "en": "According to WHO, Global Tuberculosis Report 2025"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "global-tb-report",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-11-12",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/12-11-2025-global-gains-in-tuberculosis-response-endangered-by-funding-challenges"
+      },
+      "sourceType": "intl_org",
+      "links": [
+        {
+          "label": "WHO：世界結核報告書2025 / WHO: Global Tuberculosis Report 2025",
+          "url": "https://www.who.int/teams/global-programme-on-tuberculosis-and-lung-health/tb-reports/global-tuberculosis-report-2025"
+        },
+        {
+          "label": "WHO南東アジア地域事務局の発表（2025年11月） / WHO South-East Asia release (Nov 2025)",
+          "url": "https://www.who.int/southeastasia/news/detail/18-11-2025-south-east-asia-leads-global-tb-cases-who-urges-swift-action-to-address-gaps-and-boost-progress"
+        }
+      ]
+    },
+    {
+      "id": "research-2026-who-ethiopia-lead-exposure",
+      "layer": "research",
+      "title": {
+        "ja": "エチオピア、鉛ばく露への対策を強化（WHO特集記事）",
+        "en": "Ethiopia steps up action on lead exposure (WHO feature)"
+      },
+      "summary": {
+        "ja": "WHOの特集記事によれば、エチオピアは鉛ばく露の診療指針を策定中で、公衆衛生研究所が有害金属の検査体制を拡充している。ばく露源をたどり、次のばく露を防ぐことを目指す。",
+        "en": "A WHO feature says Ethiopia is drafting clinical guidance on lead exposure and its public health institute is expanding toxic-metal testing, aiming to trace sources and prevent further exposure."
+      },
+      "attribution": {
+        "ja": "WHOの特集記事（2026年10月）によれば",
+        "en": "According to a WHO feature story (October 2026)"
+      },
+      "tags": [
+        "policy",
+        "early-stage"
+      ],
+      "topic": "ethiopia-lead-exposure",
+      "countries": [
+        "ETH"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-22",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news-room/feature-stories/detail/making-the-invisible-visible--ethiopia-steps-up-action-to-prevent-lead-exposure"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2025-who-world-mental-health-today",
+      "layer": "mental",
+      "title": {
+        "ja": "WHO「World mental health today」：精神疾患のある人は10億人超",
+        "en": "WHO 'World mental health today': over a billion live with mental disorders"
+      },
+      "summary": {
+        "ja": "WHOによれば、世界で10億人を超える人が精神疾患とともに暮らし、その多くが十分な支援を受けていない。精神疾患は障がいの主要な原因の一つで、対応は不十分だとしている。",
+        "en": "WHO says over one billion people live with a mental disorder, and most remain underserved. Mental disorders are a leading cause of disability, and responses are insufficient."
+      },
+      "attribution": {
+        "ja": "WHO『World mental health today: latest data』（2025年）によれば",
+        "en": "According to WHO, World mental health today: latest data (2025)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "world-mental-health-today",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-09-02",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240113817"
+      },
+      "sourceType": "intl_org",
+      "links": [
+        {
+          "label": "WHO：メンタルヘルス（ファクトシート） / WHO: Mental health fact sheet",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response"
+        }
+      ]
+    },
+    {
+      "id": "mental-2025-un-ncd-mental-health-declaration",
+      "layer": "mental",
+      "title": {
+        "ja": "国連総会、非感染性疾患とメンタルヘルスに関する政治宣言を採択",
+        "en": "UN General Assembly adopts political declaration on NCDs and mental health"
+      },
+      "summary": {
+        "ja": "WHOによれば、国連総会は非感染性疾患とメンタルヘルスを併せて扱う初の政治宣言を採択した。2030年までにメンタルヘルスケアを利用できる人を1億5千万人増やす目標などを含む。",
+        "en": "WHO says the UN General Assembly adopted the first declaration covering NCDs and mental health together. Its 2030 targets include 150 million more people with access to mental health care."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2025年12月）によれば",
+        "en": "According to WHO (December 2025)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "un-ncd-mental-health-declaration",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-12-16",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/16-12-2025-world-leaders-adopt-a-historic-global-declaration-on-noncommunicable-diseases-and-mental-health"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2026-who-deinstitutionalization-guide",
+      "layer": "mental",
+      "title": {
+        "ja": "WHO、精神科病院から地域でのケアへの移行を支える実践ガイドを公表",
+        "en": "WHO guide supports the shift from psychiatric hospitals to community-based care"
+      },
+      "summary": {
+        "ja": "WHOによれば、精神科病院の長期入院者の地域生活への移行を支える実践ガイドが公表された。WHOのメンタルヘルス・アトラスでは、地域中心のケアへ完全に移行した報告国は9%、改革の初期段階は53%だった。",
+        "en": "WHO published a guide on moving long-stay psychiatric patients into community life. Its Mental Health Atlas: 9% of reporting countries fully shifted to community care; 53% at an early stage of reform."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年10月）によれば",
+        "en": "According to WHO (October 2026)"
+      },
+      "tags": [
+        "policy",
+        "support"
+      ],
+      "topic": "mental-health-deinstitutionalization",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-09",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/09-10-2026-who-urges-shift-from-institutional-to-community-based-mental-health-care"
+      },
+      "sourceType": "intl_org",
+      "links": [
+        {
+          "label": "WHO：実践ガイド（英語） / WHO: Practical guide",
+          "url": "https://www.who.int/publications/i/item/9789240124134"
+        }
+      ]
+    },
+    {
+      "id": "mental-2026-jpn-suicide-prevention-week",
+      "layer": "mental",
+      "title": {
+        "ja": "厚生労働省、9月10日〜16日の「自殺予防週間」の取組を公表",
+        "en": "MHLW announces initiatives for Suicide Prevention Week, 10–16 September"
+      },
+      "summary": {
+        "ja": "厚生労働省によれば、自殺予防週間（9月10日〜16日）に電話・SNS相談の体制を拡充し、主にこども・若者に向けて相談を呼びかける啓発を行うとした。相談窓口は「まもろうよ こころ」で紹介している。",
+        "en": "MHLW said it would expand phone and SNS counselling in Suicide Prevention Week (10–16 Sept) and run campaigns urging mainly children and youth to seek help. Contacts are on its Mamorouyo Kokoro site."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年9月）によれば",
+        "en": "According to MHLW (September 2026)"
+      },
+      "tags": [
+        "support"
+      ],
+      "topic": "jpn-suicide-prevention-week",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-01",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare (MHLW)",
+        "url": "https://www.mhlw.go.jp/stf/r8_jisatsuyoboushukan.html"
+      },
+      "sourceType": "public_agency",
+      "links": [
+        {
+          "label": "厚生労働省「まもろうよ こころ」 / MHLW: Mamorouyo Kokoro",
+          "url": "https://www.mhlw.go.jp/mamorouyokokoro/"
+        }
+      ]
+    },
+    {
+      "id": "mental-2026-jpn-karoshi-white-paper",
+      "layer": "mental",
+      "title": {
+        "ja": "厚生労働省「令和8年版 過労死等防止対策白書」を公表",
+        "en": "MHLW publishes its 2026 White Paper on Measures to Prevent Karoshi"
+      },
+      "summary": {
+        "ja": "厚生労働省によれば、白書は過労死等の労災請求件数が増えた要因の分析や、長時間労働の削減、メンタルヘルス・ハラスメント対策など令和7年度の施策を報告している。",
+        "en": "MHLW says the white paper analyses the rise in karoshi-related compensation claims and reports FY2025 measures, such as cutting long hours and mental health and harassment measures."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年10月）によれば",
+        "en": "According to MHLW (October 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "jpn-karoshi-white-paper",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-09",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare (MHLW)",
+        "url": "https://www.mhlw.go.jp/stf/newpage_76612.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-jpn-comprehensive-survey-living",
+      "layer": "welfare",
+      "title": {
+        "ja": "2025年国民生活基礎調査：相対的貧困率は15.0%",
+        "en": "2025 Comprehensive Survey of Living Conditions: relative poverty rate 15.0%"
+      },
+      "summary": {
+        "ja": "厚生労働省の調査によれば、2024年の所得に基づく相対的貧困率は15.0%（2021年は15.4%）、子どもの貧困率は11.0%（同11.5%）だった。2025年の調査で生活が「苦しい」と答えた世帯は55.4%だった。",
+        "en": "According to MHLW, the relative poverty rate based on 2024 income was 15.0% (15.4% for 2021) and the child poverty rate 11.0% (11.5%). In the 2025 survey, 55.4% of households said living was 'hard'."
+      },
+      "attribution": {
+        "ja": "厚生労働省「2025年国民生活基礎調査の概況」によれば",
+        "en": "According to MHLW, 2025 Comprehensive Survey of Living Conditions"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "jpn-comprehensive-survey-living",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-15",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare (MHLW)",
+        "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa25/index.html"
+      },
+      "sourceType": "public_agency",
+      "links": [
+        {
+          "label": "報道発表資料（PDF） / Press release (PDF, Japanese)",
+          "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa25/dl/13.pdf"
+        }
+      ]
+    },
+    {
+      "id": "welfare-2026-jpn-public-assistance-fy2024",
+      "layer": "welfare",
+      "title": {
+        "ja": "被保護者調査（令和6年度確定値）：生活保護の受給者は約200万人",
+        "en": "Public Assistance Recipients Survey FY2024 final: about 2.0 million recipients"
+      },
+      "summary": {
+        "ja": "厚生労働省の調査によれば、令和6年度の1か月平均の被保護実人員は2,008,061人（前年度比0.6%減）、保護率は1.62%だった。被保護世帯のうち高齢者世帯が55.2%を占めた。",
+        "en": "According to MHLW, FY2024 monthly average public assistance recipients were 2,008,061 (down 0.6% year on year), a rate of 1.62%. Older-person households were 55.2% of recipient households."
+      },
+      "attribution": {
+        "ja": "厚生労働省「被保護者調査（令和6年度確定値）」によれば",
+        "en": "According to MHLW, Public Assistance Recipients Survey (FY2024 final)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "jpn-public-assistance-survey",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-03-04",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare (MHLW)",
+        "url": "https://www.mhlw.go.jp/toukei/saikin/hw/hihogosya/m2025/kakutei.html"
+      },
+      "sourceType": "public_agency",
+      "links": [
+        {
+          "label": "報道発表資料（PDF） / Press release (PDF, Japanese)",
+          "url": "https://www.mhlw.go.jp/toukei/saikin/hw/hihogosya/m2025/dl/r06houdou.pdf"
+        }
+      ]
+    },
+    {
+      "id": "welfare-2025-who-wb-uhc-monitoring",
+      "layer": "welfare",
+      "title": {
+        "ja": "WHO・世界銀行「UHCグローバルモニタリング報告書2025」",
+        "en": "WHO–World Bank UHC Global Monitoring Report 2025"
+      },
+      "summary": {
+        "ja": "WHOと世界銀行によれば、医療費の自己負担による経済的困難に直面する人の割合は2000年の34%から2022年に26%へ下がったが、21億人が経済的困難を経験している。",
+        "en": "WHO and the World Bank say the share facing financial hardship from out-of-pocket health costs fell from 34% in 2000 to 26% in 2022, yet 2.1 billion people experience hardship."
+      },
+      "attribution": {
+        "ja": "WHO・世界銀行の報告書（2025年）によれば",
+        "en": "According to the WHO–World Bank report (2025)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "uhc-global-monitoring",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-12-06",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/06-12-2025-most-countries-make-progress-towards-universal-health-coverage-but-major-challenges-remain-who-world-bank-report-finds"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "welfare-2025-who-health-financing-cuts",
+      "layer": "welfare",
+      "title": {
+        "ja": "WHO、国際的な保健援助の急減に対応する指針を公表",
+        "en": "WHO issues guidance on responding to sharp cuts in health financing"
+      },
+      "summary": {
+        "ja": "WHOによれば、対外保健援助は2025年に2023年比30〜40%減る見込みで、一部の国では妊産婦ケアや予防接種などのサービスが最大70%減った。指針は最も貧しい人々が使う保健サービスの優先などを求める。",
+        "en": "WHO says external health aid may fall 30–40% in 2025 vs 2023; services such as maternal care and vaccination fell by up to 70% in some countries. It urges prioritising services used by the poorest."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2025年11月）によれば",
+        "en": "According to WHO (November 2025)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "health-financing-cuts",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-11-03",
+      "checkedAt": "2026-10-25",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/03-11-2025-who-issues-guidance-to-address-drastic-global-health-financing-cuts"
+      },
+      "sourceType": "intl_org"
+    }
+  ]
+}

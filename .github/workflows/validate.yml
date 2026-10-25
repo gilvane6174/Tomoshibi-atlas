@@ -1,0 +1,75 @@
+# プルリクエストごとに検査を行う。失敗したPRはマージできない設定にする（docs/GITHUB-SETTINGS.md）。
+# 注意：pull_request_target は使わないこと（外部からのPRに書き込み権限付きでコードを実行させてしまうため）。
+# このワークフローは秘密情報を一切使わない。生成AIも呼び出さない。
+#
+# 重要：PR 側のスクリプトは書き換えられている可能性があるため、検査は「main 側（PR の分岐元）のスクリプト」で
+# 「PR 側のファイル」に対して行う（trusted/ と pr/ の2つを取り出す）。
+name: Validate
+
+on:
+  pull_request:
+    branches: [main] # main 宛ての PR だけを受け付ける（宛先を変えて検査をすり抜けるのを防ぐ）
+    types: [opened, synchronize, reopened, edited, ready_for_review] # 宛先の変更（edited）でも検査し直す
+
+permissions: {}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout trusted scripts (latest main)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main # 検査プログラムは常に最新の main のものを使う（PR 側・別ブランチ側のものは使わない）
+          path: trusted
+          persist-credentials: false
+      - name: Checkout pull request (data to check)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          check-latest: true # 毎回、24系の最新（セキュリティ修正済み）を使う
+
+      # 値は環境変数で渡し、シェルに埋め込まない
+      - name: PR scope and metadata check (trusted)
+        working-directory: pr
+        env:
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          MAINTAINER_LOGIN: ${{ vars.MAINTAINER_LOGIN }}
+          AI_ACCOUNT_LOGINS: ${{ vars.AI_ACCOUNT_LOGINS }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          TRUSTED_ROOT: ../trusted
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: node ../trusted/scripts/check-pr-scope.mjs
+      - name: Privacy check (trusted)
+        env:
+          TA_TARGET_ROOT: pr
+        run: node trusted/scripts/check-privacy.mjs
+      - name: Data validation (trusted)
+        env:
+          TA_TARGET_ROOT: pr
+        run: node trusted/scripts/validate-data.mjs
+      - name: Repository settings check (trusted)
+        env:
+          TA_TARGET_ROOT: pr
+        run: node trusted/scripts/check-repo.mjs
+
+      # 運用者がスクリプト自体を変更した場合のために、PR 側の自己テストと組み立ても行う（秘密情報が無いので安全）
+      - name: Self test (pull request)
+        working-directory: pr
+        run: node scripts/test.mjs
+      - name: Build offline (pull request, no network)
+        working-directory: pr
+        run: node scripts/build.mjs --offline

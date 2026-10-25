@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a0f16">
+  <title>個人でできるセキュリティ対策｜Tomoshibi Atlas（ともしびアトラス）— Yutaka Yoshioka（吉岡有隆）</title>
+  <meta name="description" content="公的機関がすすめる、個人でできる基本的なセキュリティ対策のまとめ。Tomoshibi Atlas（ともしびアトラス）運営：Yutaka Yoshioka（吉岡有隆）。">
+  <meta name="author" content="Yutaka Yoshioka（吉岡有隆）">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tomoshibi Atlas（ともしびアトラス）">
+  <meta property="og:title" content="個人でできるセキュリティ対策｜Tomoshibi Atlas（ともしびアトラス）— Yutaka Yoshioka">
+  <meta property="og:description" content="公的機関がすすめる、個人でできる基本的なセキュリティ対策のまとめ。Tomoshibi Atlas（ともしびアトラス）運営：Yutaka Yoshioka（吉岡有隆）。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- seo:abs（公開URLが分かるときだけ、組み立て時に canonical などを入れる） -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Tomoshibi Atlas", "alternateName": ["ともしびアトラス", "灯の地図", "灯アトラス", "Tomoshibi Atlas（ともしびアトラス）", "Atlas of Lights"], "description": "Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころ・福祉・医療研究の公的な情報と、AIやITのセキュリティ上の脅威を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。", "inLanguage": ["ja", "en"], "author": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "creator": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "publisher": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "isAccessibleForFree": true, "keywords": "Tomoshibi Atlas, ともしびアトラス, 灯の地図, Yutaka Yoshioka, 吉岡有隆, 感染症, こころ, 福祉, 相談窓口, ITセキュリティ, 地球儀"}</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="security-basics.en.html">
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+<body class="doc">
+  <div class="doc-top">
+    <a class="brand" href="./"><svg class="brand-logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><radialGradient id="logo-flame" cx="50%" cy="62%" r="60%"><stop offset="0" stop-color="#fff6e2"/><stop offset=".45" stop-color="#f6cf8e"/><stop offset="1" stop-color="#e9a75a"/></radialGradient><radialGradient id="logo-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#f2c27a" stop-opacity=".6"/><stop offset="1" stop-color="#f2c27a" stop-opacity="0"/></radialGradient></defs><circle cx="16" cy="14" r="12" fill="url(#logo-glow)"/><path d="M5.5 19.5a10.5 10.5 0 0 0 21 0" fill="none" stroke="#6f8db3" stroke-width="1.6" stroke-linecap="round"/><path d="M9.5 24.2a10.5 4 0 0 0 13 0" fill="none" stroke="#3f5778" stroke-width="1.1" stroke-linecap="round"/><path d="M16 5.2c3.2 3.9 4.7 6.6 4.7 9.1a4.7 4.7 0 0 1-9.4 0c0-2.5 1.5-5.2 4.7-9.1z" fill="url(#logo-flame)"/><circle cx="16" cy="14.6" r="1.6" fill="#fffaf0"/></svg><span class="brand-name">Tomoshibi Atlas</span><span class="brand-sub">地球儀へ戻る</span></a>
+    <a class="icon-btn lang" href="security-basics.en.html" hreflang="en" lang="en">English</a>
+  </div>
+
+  <main class="doc-wrap">
+    <h1>個人でできるセキュリティ対策</h1>
+    <p class="lead">公的機関がすすめている基本的な対策をまとめました。全部を一度にやる必要はありません。できるところから始めてください。</p>
+    <ol class="steps">
+      <li><h3>OSやアプリを最新の状態にする</h3>
+        <p>更新（アップデート）のお知らせが来たら早めに入れましょう。自動更新をオンにしておくと、入れ忘れを防げます。</p>
+        <p class="note">根拠：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/basic.html" target="_blank" rel="noopener noreferrer">警察庁「基本的なセキュリティ対策」</a>／<a href="https://www.cisa.gov/sites/default/files/2024-09/Secure-Our-World-4-Easy-Ways-Stay-Safe-Online-Tip-Sheet.pdf" target="_blank" rel="noopener noreferrer">米国CISA「Secure Our World」（英語）</a></p>
+      </li>
+      <li><h3>パスワードは長く、サービスごとに別のものに</h3>
+        <p>初期のパスワードのまま使わず、推測されにくい長いパスワードを、サービスごとに分けて使います。覚えきれないときは、パスワードを安全に保管する機能（パスワードマネージャー）を使う方法もあります（CISA）。</p>
+        <p class="note">根拠：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/basic.html" target="_blank" rel="noopener noreferrer">警察庁「基本的なセキュリティ対策」</a>／<a href="https://www.cisa.gov/sites/default/files/2024-09/Secure-Our-World-4-Easy-Ways-Stay-Safe-Online-Tip-Sheet.pdf" target="_blank" rel="noopener noreferrer">米国CISA「Secure Our World」（英語）</a></p>
+      </li>
+      <li><h3>二要素認証（多要素認証）をオンにする</h3>
+        <p>パスワードに加えて、スマートフォンに届く確認コードなどで本人かどうかを確かめる機能です。使えるサービスでは有効にしておきましょう。</p>
+        <p class="note">根拠：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/basic.html" target="_blank" rel="noopener noreferrer">警察庁「基本的なセキュリティ対策」</a>／<a href="https://www.cisa.gov/sites/default/files/2024-09/Secure-Our-World-4-Easy-Ways-Stay-Safe-Online-Tip-Sheet.pdf" target="_blank" rel="noopener noreferrer">米国CISA「Secure Our World」（英語）</a></p>
+      </li>
+      <li><h3>あやしいメール・SMS・リンクに気をつける</h3>
+        <p>あわてさせる文面や、うますぎる話には反応せず、あやしいものは報告して削除しましょう。</p>
+        <p class="note">根拠：<a href="https://www.cisa.gov/sites/default/files/2024-09/Secure-Our-World-4-Easy-Ways-Stay-Safe-Online-Tip-Sheet.pdf" target="_blank" rel="noopener noreferrer">米国CISA「Secure Our World」（英語）</a></p>
+      </li>
+      <li><h3>ウイルス対策ソフトを使い、最新の状態にする</h3>
+        <p>ウイルス対策ソフトを入れ、定義ファイル（パターンファイル）を最新に保ちます。</p>
+        <p class="note">根拠：<a href="https://www.npa.go.jp/bureau/cyber/countermeasures/basic.html" target="_blank" rel="noopener noreferrer">警察庁「基本的なセキュリティ対策」</a></p>
+      </li>
+      <li><h3>大切なデータをバックアップする</h3>
+        <p>写真や書類などは、別の場所にも保存しておくと、故障や被害のときに取り戻しやすくなります。</p>
+        <p class="note">根拠：<a href="https://www.ncsc.gov.uk/static-assets/documents/cyberaware/microbusiness/CyberAware_MicroBusinesses%20Leaflet_Read_15.02.21.pdf" target="_blank" rel="noopener noreferrer">英国NCSC「Cyber Aware」（小規模事業者向けの資料、英語）</a></p>
+      </li>
+    </ol>
+
+    <section>
+      <h2>被害にあったかも、と思ったら</h2>
+      <ul>
+        <li>日本：<a href="https://www.npa.go.jp/bureau/cyber/soudan.html" target="_blank" rel="noopener noreferrer">警察庁「サイバー事案に関する相談窓口」</a>／<a href="https://www.ipa.go.jp/security/index.html" target="_blank" rel="noopener noreferrer">IPA（情報処理推進機構）「情報セキュリティ」</a>／買い物や契約のトラブルは <a href="https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/" target="_blank" rel="noopener noreferrer">消費者ホットライン188</a></li>
+        <li>アメリカ：<a href="https://www.cisa.gov/topics/individuals-and-families" target="_blank" rel="noopener noreferrer">CISA の個人・家族向けの対策の案内（英語）</a>（被害の届け出先は、お住まいの地域の警察などにご確認ください）</li>
+        <li>イギリス：<a href="https://www.ncsc.gov.uk/section/about-this-website/report-scam-website" target="_blank" rel="noopener noreferrer">NCSC へのあやしいサイトの報告（英語）</a></li>
+        <li>そのほかの国：<a href="./">地球儀</a>で「ITセキュリティ」のタブを選び、ご自身の国を選ぶと、その国のセキュリティの専門機関が画面の下部に出ます。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>このページについて</h2>
+      <p>このページでは、身を守るための対策だけを扱い、攻撃のやり方は扱いません。内容は2026年10月25日に根拠のページを確認したものです。最新の情報は、各公的機関のページでご確認ください。このサイトが、個人情報・パスワード・お金を求めることはありません。</p>
+      <p><a href="about.html">このサイトについて</a>／<a href="./">地球儀へ戻る</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+  "_note": "WHO公表タイトル中の英語病名を日本語に置き換えるための対訳表。一致しなければ英語のまま表示する（推測で訳さない）。長い語から順に照合する。",
+  "terms": [
+    [
+      "Middle East respiratory syndrome coronavirus",
+      "中東呼吸器症候群（MERS）"
+    ],
+    [
+      "Middle East respiratory syndrome",
+      "中東呼吸器症候群（MERS）"
+    ],
+    [
+      "Crimean-Congo haemorrhagic fever",
+      "クリミア・コンゴ出血熱"
+    ],
+    [
+      "Marburg virus disease",
+      "マールブルグ病"
+    ],
+    [
+      "Ebola virus disease",
+      "エボラ病"
+    ],
+    [
+      "Ebola disease",
+      "エボラ病"
+    ],
+    [
+      "Avian Influenza",
+      "鳥インフルエンザ"
+    ],
+    [
+      "Avian influenza",
+      "鳥インフルエンザ"
+    ],
+    [
+      "Rift Valley fever",
+      "リフトバレー熱"
+    ],
+    [
+      "Lassa fever",
+      "ラッサ熱"
+    ],
+    [
+      "Yellow fever",
+      "黄熱"
+    ],
+    [
+      "Nipah virus infection",
+      "ニパウイルス感染症"
+    ],
+    [
+      "Nipah virus",
+      "ニパウイルス感染症"
+    ],
+    [
+      "Oropouche virus disease",
+      "オロプーシェ熱"
+    ],
+    [
+      "Chikungunya",
+      "チクングニア熱"
+    ],
+    [
+      "Dengue",
+      "デング熱"
+    ],
+    [
+      "Diphtheria",
+      "ジフテリア"
+    ],
+    [
+      "Poliomyelitis",
+      "ポリオ"
+    ],
+    [
+      "poliovirus",
+      "ポリオウイルス"
+    ],
+    [
+      "Meningitis",
+      "髄膜炎"
+    ],
+    [
+      "Cholera",
+      "コレラ"
+    ],
+    [
+      "Measles",
+      "麻しん（はしか）"
+    ],
+    [
+      "Mpox",
+      "エムポックス"
+    ],
+    [
+      "Plague",
+      "ペスト"
+    ],
+    [
+      "Anthrax",
+      "炭疽"
+    ],
+    [
+      "Zika virus disease",
+      "ジカウイルス感染症"
+    ],
+    [
+      "Hepatitis E",
+      "E型肝炎"
+    ],
+    [
+      "Influenza",
+      "インフルエンザ"
+    ],
+    [
+      "Pneumonia of undetermined etiology",
+      "原因不明の肺炎"
+    ],
+    [
+      "Hantavirus",
+      "ハンタウイルス感染症"
+    ]
+  ]
+}

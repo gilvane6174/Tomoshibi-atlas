@@ -1,0 +1,925 @@
+{
+  "_note": "リンクとして掲載してよいURLの許可リスト。host は完全一致、subdomains:true の場合のみサブドメインも許可、path がある場合はパスも正規表現で照合。追加・削除は運用者の個別承認が必要。AI運用者は変更しないこと（AGENTS.md参照）。",
+  "linkHosts": [
+    {
+      "host": "who.int",
+      "subdomains": true,
+      "label": "世界保健機関（WHO）"
+    },
+    {
+      "host": "www.cisa.gov",
+      "label": "米国サイバーセキュリティ・インフラセキュリティ庁（CISA）"
+    },
+    {
+      "host": "nvd.nist.gov",
+      "path": "^/vuln/detail/CVE-\\d{4}-\\d{4,7}$",
+      "label": "米国NIST 脆弱性データベース（NVD）"
+    },
+    {
+      "host": "www.jpcert.or.jp",
+      "label": "JPCERTコーディネーションセンター"
+    },
+    {
+      "host": "www.ipa.go.jp",
+      "label": "情報処理推進機構（IPA）"
+    },
+    {
+      "host": "jvn.jp",
+      "label": "Japan Vulnerability Notes（JVN）"
+    },
+    {
+      "host": "www.mhlw.go.jp",
+      "label": "厚生労働省"
+    },
+    {
+      "host": "jihs.go.jp",
+      "subdomains": true,
+      "label": "国立健康危機管理研究機構（JIHS）"
+    },
+    {
+      "host": "www.cdc.gov",
+      "label": "米国疾病予防管理センター（CDC）"
+    },
+    {
+      "host": "www.ecdc.europa.eu",
+      "label": "欧州疾病予防管理センター（ECDC）"
+    },
+    {
+      "host": "pubmed.ncbi.nlm.nih.gov",
+      "label": "PubMed（米国国立医学図書館）"
+    },
+    {
+      "host": "pmc.ncbi.nlm.nih.gov",
+      "label": "PubMed Central（米国国立医学図書館）"
+    },
+    {
+      "host": "www.nih.gov",
+      "label": "米国国立衛生研究所（NIH）"
+    },
+    {
+      "host": "www.oecd.org",
+      "label": "経済協力開発機構（OECD）"
+    },
+    {
+      "host": "www.ilo.org",
+      "label": "国際労働機関（ILO）"
+    },
+    {
+      "host": "www.un.org",
+      "label": "国際連合"
+    },
+    {
+      "host": "www.nature.com",
+      "label": "Nature（査読誌）"
+    },
+    {
+      "host": "www.thelancet.com",
+      "label": "The Lancet（査読誌）"
+    },
+    {
+      "host": "www.nejm.org",
+      "label": "NEJM（査読誌）"
+    },
+    {
+      "host": "www.bmj.com",
+      "label": "BMJ（査読誌）"
+    },
+    {
+      "host": "doi.org",
+      "path": "^/10\\.(1038|1016|1056|1136|1001|1371|1186|1093|1002|1111|1161|7326|15585)/\\S+$",
+      "label": "DOI（論文の恒久リンク）。主要な査読誌の出版社の番号に限る。追加は運用者の承認が必要"
+    }
+  ],
+  "_directoryNote": "国・分野別の相談先リンク集（data/directory/links.json）に載せてよいURLの許可リスト。追加・削除は運用者の個別承認が必要。",
+  "directoryHosts": [
+    {
+      "host": "go.jp",
+      "subdomains": true,
+      "label": "日本の政府機関（.go.jp）"
+    },
+    {
+      "host": "www.houterasu.or.jp",
+      "label": "法テラス（日本司法支援センター）"
+    },
+    {
+      "host": "www.jpcert.or.jp",
+      "label": "JPCERTコーディネーションセンター"
+    },
+    {
+      "host": "www.riken.jp",
+      "label": "理化学研究所"
+    },
+    {
+      "host": "who.int",
+      "subdomains": true,
+      "label": "世界保健機関（WHO）"
+    },
+    {
+      "host": "www.ecdc.europa.eu",
+      "label": "欧州疾病予防管理センター（ECDC）"
+    },
+    {
+      "host": "www.enisa.europa.eu",
+      "label": "欧州連合サイバーセキュリティ機関（ENISA）"
+    },
+    {
+      "host": "www.usa.gov",
+      "label": "米国政府ポータル（USA.gov）"
+    },
+    {
+      "host": "988lifeline.org",
+      "label": "米国 988 自殺・危機ライフライン"
+    },
+    {
+      "host": "www.cisa.gov",
+      "label": "米国CISA"
+    },
+    {
+      "host": "www.cdc.gov",
+      "label": "米国CDC"
+    },
+    {
+      "host": "www.nih.gov",
+      "label": "米国NIH"
+    },
+    {
+      "host": "pubmed.ncbi.nlm.nih.gov",
+      "label": "PubMed"
+    },
+    {
+      "host": "www.gov.uk",
+      "label": "英国政府（GOV.UK）"
+    },
+    {
+      "host": "www.ncsc.gov.uk",
+      "label": "英国NCSC"
+    },
+    {
+      "host": "aile.gov.tr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "cert.gov.ng",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "csb.gov.bn",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "cyber.gouv.fr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "dsa.cy",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "health.gov.sk",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "health.gov.tt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "kdca.go.kr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mcp.gov.ba",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mfsva.gouvernement.lu",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "moh.gov.bn",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "moh.gov.bt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "molsa.gov.so",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "moz.gov.ua",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mrosp.gov.hr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "msdf.gov.qa",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "msp.gov.ua",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "ncdc.gov.ng",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "ncsc.gov.ie",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "nih.gov.so",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "nijz.si",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "nksc.lt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "phc.org.ua",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "sam.lrv.lt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "sante.gouv.fr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "santesecu.public.lu",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "shendetesia.gov.al",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "socmin.lrv.lt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "solidarites.gouv.fr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "solomons.gov.sb",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.acn.gov.it",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.bmas.de",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.bsi.bund.de",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.btcirt.bt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.bundesgesundheitsministerium.de",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cert.br",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cert.hr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cert.si",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.dsd.gov.za",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.bm",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.br",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.bw",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.ie",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.il",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.mo",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.si",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.government.nl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.health.gov.za",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.health.govt.nz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.hpsc.ie",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.hzjz.hr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.kemkes.go.id",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.minsalud.gob.bo",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.mohw.go.kr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.moph.gov.af",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.moph.gov.lb",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.mpsvr.sk",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.msd.govt.nz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.ncsc.govt.nz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.ncsc.nl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.rivm.nl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.rki.de",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.salud.gob.ec",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.santepubliquefrance.fr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.sassa.gov.za",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.sk-cert.sk",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "zdravlje.gov.hr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "anci.gob.cl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "ccb.belgium.be",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "cert.pl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "cert.se",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "csa.gov.gh",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "cyber.gc.ca",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "dss.gov.au",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "en.nhc.gov.cn",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "eody.gov.gr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "gov.uz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "ke-cirt.go.ke",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "moh.gov.gh",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "moh.gov.vn",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "moha.gov.vn",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mohfw.gov.in",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mohp.gov.np",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mowcsc.gov.np",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mpps.gob.ve",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "mzd.gov.cz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "nacsa.gov.my",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "nca.gov.sa",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "pkcert.gov.pk",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "portugal.gov.pt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "sciensano.be",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "socialjustice.gov.in",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "socialprotection.go.ke",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.ages.at",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.argentina.gob.ar",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.bag.admin.ch",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.bsv.admin.ch",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.canada.ca",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cdc.gov.tw",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cert-in.org.in",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cert.at",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cert.ug",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.cyber.gov.au",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.doh.gov.ph",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.dsca.gob.es",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.dswd.gov.ph",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.folkhalsomyndigheten.se",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.ghs.gov.gh",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gob.mx",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.gov.pl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.health.belgium.be",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.hrsd.gov.sa",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.incibe.es",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.ins.gov.co",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.insa.gov.et",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.ispch.cl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.minsal.cl",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.minsalud.gov.co",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.moh.go.tz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.moh.gov.sa",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.mohw.gov.tw",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.mpsv.gov.cz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.nhsrc.gov.pk",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.nih.org.pk",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.nimr.or.tz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.nukib.gov.cz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.regeringen.se",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.sanidad.gob.es",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.sfaa.gov.tw",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.snf.ch",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.sns.gov.pt",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.sozialministerium.gv.at",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.thaicert.or.th",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.tzcert.go.tz",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.uvri.go.ug",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.kisa.or.kr",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.bacs.admin.ch",
+      "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "government.is",
+      "label": "Ministry of Health（ISL）"
+    },
+    {
+      "host": "cert.is",
+      "label": "CERT-IS（ISL）"
+    },
+    {
+      "host": "island.is",
+      "label": "The Directorate of Health（ISL）"
+    },
+    {
+      "host": "www.iss.sm",
+      "label": "Istituto per la Sicurezza Sociale（SMR）"
+    },
+    {
+      "host": "www.sintmaartengov.org",
+      "label": "Department of Public Health（SXM）"
+    },
+    {
+      "host": "www.fiji.gov.fj",
+      "label": "Ministry of Health and Medical Services（FJI）"
+    },
+    {
+      "host": "sehiyye.gov.az",
+      "label": "Ministry of Health（AZE）"
+    },
+    {
+      "host": "sosial.gov.az",
+      "label": "Ministry of Labour and Social Protection of Population（AZE）"
+    },
+    {
+      "host": "www.cert.gov.az",
+      "label": "Azerbaijan Government CERT (CERT.GOV.AZ)（AZE）"
+    },
+    {
+      "host": "bvi.gov.vg",
+      "label": "Ministry of Health and Social Development（VGB）"
+    },
+    {
+      "host": "govcert.rks-gov.net",
+      "label": "Kosovo Government CERT (GovCERT XK)（KOS）"
+    },
+    {
+      "host": "health.gov.vc",
+      "label": "Ministry of Health, Wellness, Environmental Health and Energy（VCT）"
+    },
+    {
+      "host": "mobilization.gov.vc",
+      "label": "Ministry of National Mobilisation, Social Development, Gender Affairs and Persons with Disabilities（VCT）"
+    },
+    {
+      "host": "mohap.gov.ae",
+      "label": "Ministry of Health and Prevention（ARE）"
+    },
+    {
+      "host": "moh.gov.om",
+      "label": "Ministry of Health（OMN）"
+    },
+    {
+      "host": "gov.om",
+      "label": "Ministry of Social Development（OMN）"
+    },
+    {
+      "host": "moh.gov.kh",
+      "label": "Ministry of Health（KHM）"
+    },
+    {
+      "host": "mosvy.gov.kh",
+      "label": "Ministry of Social Affairs, Veterans and Youth Rehabilitation（KHM）"
+    },
+    {
+      "host": "www.health.gov.ck",
+      "label": "Te Marae Ora Cook Islands Ministry of Health（COK）"
+    },
+    {
+      "host": "www.gov.je",
+      "label": "Health and Care Jersey（JEY）"
+    },
+    {
+      "host": "www.moh.gov.bh",
+      "label": "Ministry of Health（BHR）"
+    },
+    {
+      "host": "health.gov.am",
+      "label": "Ministry of Health of the Republic of Armenia（ARM）"
+    },
+    {
+      "host": "isaa.am",
+      "label": "AM-CERT – National Computer Emergency Response Team of Armenia（ARM）"
+    },
+    {
+      "host": "www.gub.uy",
+      "label": "Ministerio de Salud Pública（URY）"
+    },
+    {
+      "host": "gov.gg",
+      "label": "Public Health Services – States of Guernsey（GGY）"
+    },
+    {
+      "host": "www.gov.gd",
+      "label": "Ministry of Health, Wellness & Religious Affairs（GRD）"
+    },
+    {
+      "host": "www.health.gov.ws",
+      "label": "Ministry of Health（WSM）"
+    },
+    {
+      "host": "mwcsd.gov.ws",
+      "label": "Ministry of Women, Community and Social Development（WSM）"
+    },
+    {
+      "host": "mcit.gov.ws",
+      "label": "Samoa Computer Emergency Response Team (SamCERT)（WSM）"
+    },
+    {
+      "host": "sm.ee",
+      "label": "Ministry of Social Affairs（EST）"
+    },
+    {
+      "host": "ria.ee",
+      "label": "Information System Authority (RIA) – CERT-EE（EST）"
+    },
+    {
+      "host": "gov.ky",
+      "label": "Ministry of Health, Environment and Sustainability（CYM）"
+    },
+    {
+      "host": "mhss.gov.na",
+      "label": "Ministry of Health and Social Services（NAM）"
+    },
+    {
+      "host": "moh.gov.sg",
+      "label": "Ministry of Health（SGP）"
+    },
+    {
+      "host": "www.msf.gov.sg",
+      "label": "Ministry of Social and Family Development（SGP）"
+    },
+    {
+      "host": "www.csa.gov.sg",
+      "label": "Cyber Security Agency of Singapore（SGP）"
+    },
+    {
+      "host": "mpsv.gov.cz",
+      "label": "Ministry of Labour and Social Affairs (CZE)"
+    }
+  ],
+  "fetchEndpoints": {
+    "whoDon": "https://www.who.int/api/news/diseaseoutbreaknews",
+    "cisaKev": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+    "cisaKevMirror": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json",
+    "jpcertRss": "https://www.jpcert.or.jp/rss/jpcert.rdf"
+  },
+  "enabledFetchers": {
+    "whoDon": true,
+    "cisaKev": true,
+    "jpcertRss": false
+  },
+  "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
+  "forbiddenPhrases": [
+    "治る",
+    "治り",
+    "治っ",
+    "治せ",
+    "治癒",
+    "なおる",
+    "なおり",
+    "なおっ",
+    "なおせ",
+    "完治",
+    "根治",
+    "効く",
+    "効き",
+    "効い",
+    "効果があ",
+    "効果的",
+    "効果抜群",
+    "必ず治",
+    "必ず効",
+    "必ず改善",
+    "必ず良く",
+    "必ずよく",
+    "確実に治",
+    "確実に効",
+    "完全に治",
+    "絶対に治",
+    "絶対に効",
+    "奇跡",
+    "特効薬",
+    "万能",
+    "副作用なし",
+    "副作用はな",
+    "副作用がな",
+    "予防でき",
+    "予防し",
+    "100%",
+    "百パーセント",
+    "最悪の国",
+    "最低の国",
+    "劣って",
+    "遅れた国",
+    "ダメな国"
+  ],
+  "forbiddenPatternsEn": [
+    "\\bcur(e|es|ed|ing|ative)\\b",
+    "\\bmiracl",
+    "\\bmiracul",
+    "\\bguarantee",
+    "\\b100 ?(%|percent)",
+    "one hundred percent",
+    "\\bproven\\b",
+    "\\balways works\\b",
+    "\\b(no|without|free of) side[ -]?effects?",
+    "side[ -]?effects?[ -]?free",
+    "\\bworst countr",
+    "\\binferior countr",
+    "\\bbackward countr"
+  ]
+}

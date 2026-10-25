@@ -1,0 +1,2455 @@
+{
+  "note": "リンク集の各リンクを、いつ・どの方法で確認したかの記録。サイトに表示するのは method が fetched（AIが公式ページを開いて確認）または operator（運用者がブラウザで確認）のものだけ。unrecorded・unverified・linked-from のものは表示しない。運用者が確認したら node scripts/mark-link-checked.mjs <URL> で operator に書き換える。",
+  "links": {
+    "jp-w-jiritsu": {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000059425.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "生活困窮者自立支援制度 ｜厚生労働省 / Ministry of Health, Labour and Welfare, Japan (MHLW)"
+    },
+    "jp-w-sumakoma": {
+      "url": "https://sumakoma.mhlw.go.jp/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "2-3生活困窮者自立支援制度 生活に困窮している方に対する包括的な相談支援 - 住まい・生活の困りごと相談『すまこま。』 / 厚生労働省 (MHLW) project, operated by ホームレス支援全国ネットワーク"
+    },
+    "jp-w-hogo": {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "生活保護制度 ｜厚生労働省 / Ministry of Health, Labour and Welfare (Japan)"
+    },
+    "jp-w-hellowork": {
+      "url": "https://www.hellowork.mhlw.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-w-shogai": {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "障害者福祉 ｜厚生労働省 / 厚生労働省 (MHLW, Japan)"
+    },
+    "jp-w-hattatsu": {
+      "url": "https://hattatsu.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-w-kaigo": {
+      "url": "https://www.kaigokensaku.mhlw.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-w-189": {
+      "url": "https://kodomoshien.cfa.go.jp/no-gyakutai/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-w-dv": {
+      "url": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "DV相談について | 内閣府男女共同参画局 / Gender Equality Bureau, Cabinet Office (Japan)"
+    },
+    "jp-w-houterasu": {
+      "url": "https://www.houterasu.or.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-w-188": {
+      "url": "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "消費者ホットライン | 消費者庁。本文・リンクに不審な点なし。meta keywords に詐欺の種類としてアダルトサイト関連語があるが、ワンクリック詐欺などの相談分類と判断"
+    },
+    "jp-w-foreign": {
+      "url": "https://www.moj.go.jp/isa/support/portal/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "外国人生活支援ポータルサイト (HTML <title> reads 'Features · Bootstrap v5.3') / Immigration Services Agency of Japan (Ministry of Justice)"
+    },
+    "jp-w-nenkin": {
+      "url": "https://www.nenkin.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-m-mamorou": {
+      "url": "https://www.mhlw.go.jp/mamorouyokokoro/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jp-m-ncnp": {
+      "url": "https://kokoro.ncnp.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jp-m-kokoronomimi": {
+      "url": "https://kokoro.mhlw.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jp-m-policy": {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/kokoro/index.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jp-s-nco": {
+      "url": "https://www.cyber.go.jp/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "国家サイバー統括室 / National Cybersecurity Office, Cabinet Secretariat (Japan)"
+    },
+    "jp-s-portal": {
+      "url": "https://security-portal.cyber.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-s-ipa": {
+      "url": "https://www.ipa.go.jp/security/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "情報セキュリティ | IPA 独立行政法人 情報処理推進機構 / IPA (Information-technology Promotion Agency, Japan)"
+    },
+    "jp-s-kokokara": {
+      "url": "https://www.ipa.go.jp/security/kokokara/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-s-jpcert": {
+      "url": "https://www.jpcert.or.jp/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "JPCERT コーディネーションセンター / JPCERT/CC (Japan national CSIRT, general incorporated association)"
+    },
+    "jp-s-npa": {
+      "url": "https://www.npa.go.jp/bureau/cyber/soudan.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "サイバー事案に関する相談窓口｜警察庁Webサイト / National Police Agency of Japan (警察庁)"
+    },
+    "jp-s-npa-basic": {
+      "url": "https://www.npa.go.jp/bureau/cyber/countermeasures/basic.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "基本的なセキュリティ対策｜警察庁Webサイト / National Police Agency of Japan, Cyber Police Bureau"
+    },
+    "jp-s-soumu": {
+      "url": "https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "国民のためのサイバーセキュリティサイト / 総務省 (Ministry of Internal Affairs and Communications, Japan)"
+    },
+    "jp-s-nict": {
+      "url": "https://www.nict.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-s-aisi": {
+      "url": "https://aisi.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-r-amed": {
+      "url": "https://www.amed.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-r-jihs": {
+      "url": "https://www.jihs.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-r-jst": {
+      "url": "https://www.jst.go.jp/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "国立研究開発法人科学技術振興機構 / Japan Science and Technology Agency (JST)"
+    },
+    "jp-r-riken": {
+      "url": "https://www.riken.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-r-aist": {
+      "url": "https://www.aist.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-o-mhlw": {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "感染症情報 ｜厚生労働省 / Ministry of Health, Labour and Welfare, Japan (MHLW)"
+    },
+    "jp-o-jihs": {
+      "url": "https://www.jihs.go.jp/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "jp-o-forth": {
+      "url": "https://www.forth.go.jp/index.html",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "us-w-benefits": {
+      "url": "https://www.usa.gov/benefits",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Government benefits | USAGov / USAGov (U.S. General Services Administration)"
+    },
+    "us-w-finder": {
+      "url": "https://www.usa.gov/benefit-finder",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Find government benefits and financial help | USAGov / USAGov, U.S. General Services Administration"
+    },
+    "us-m-988": {
+      "url": "https://988lifeline.org/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "us-s-cisa-ind": {
+      "url": "https://www.cisa.gov/topics/individuals-and-families",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Individuals and Families / CISA (US Department of Homeland Security)"
+    },
+    "us-r-nih": {
+      "url": "https://www.nih.gov/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "National Institutes of Health (NIH) | / National Institutes of Health (US HHS)"
+    },
+    "us-o-cdc": {
+      "url": "https://www.cdc.gov/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Centers for Disease Control and Prevention | CDC / U.S. Centers for Disease Control and Prevention (CDC)"
+    },
+    "gb-w-benefits": {
+      "url": "https://www.gov.uk/benefits",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Welfare - GOV.UK / UK Government (GOV.UK; DWP/HMRC content)"
+    },
+    "gb-s-ncsc": {
+      "url": "https://www.ncsc.gov.uk/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "The National Cyber Security Centre | National Cyber Security Centre / National Cyber Security Centre (UK, part of GCHQ)"
+    },
+    "gb-s-scam": {
+      "url": "https://www.ncsc.gov.uk/section/about-this-website/report-scam-website",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Report a suspicious website | National Cyber Security Centre / UK National Cyber Security Centre (part of GCHQ)"
+    },
+    "afg-health-ministry-outbreak": {
+      "url": "https://www.moph.gov.af/index.php/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "afg-health-ministry-mental": {
+      "url": "https://www.moph.gov.af/index.php/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "alb-health-ministry-outbreak": {
+      "url": "https://shendetesia.gov.al/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "alb-health-ministry-mental": {
+      "url": "https://shendetesia.gov.al/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bmu-health-ministry-outbreak": {
+      "url": "https://www.gov.bm/ministry/health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bmu-health-ministry-mental": {
+      "url": "https://www.gov.bm/ministry/health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "btn-health-ministry-outbreak": {
+      "url": "https://moh.gov.bt/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "btn-health-ministry-mental": {
+      "url": "https://moh.gov.bt/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "btn-cert-security": {
+      "url": "https://www.btcirt.bt/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "bol-health-ministry-outbreak": {
+      "url": "https://www.minsalud.gob.bo/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bol-health-ministry-mental": {
+      "url": "https://www.minsalud.gob.bo/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bih-health-ministry-outbreak": {
+      "url": "https://mcp.gov.ba/en/competences-of-the-ministry",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bih-health-ministry-mental": {
+      "url": "https://mcp.gov.ba/en/competences-of-the-ministry",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bwa-welfare-ministry-welfare": {
+      "url": "https://www.gov.bw/ministries/ministry-local-government-and-traditional-affairs",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "gov.bw ministry page; Department of Social Development runs Destitute Allowance, Old Age Pension"
+    },
+    "bra-health-ministry-outbreak": {
+      "url": "https://www.gov.br/saude/pt-br",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bra-health-ministry-mental": {
+      "url": "https://www.gov.br/saude/pt-br",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bra-welfare-ministry-welfare": {
+      "url": "https://www.gov.br/mds/pt-br",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Página inicial — Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome"
+    },
+    "bra-cert-security": {
+      "url": "https://www.cert.br/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: CERT.br – Centro de Estudos, Resposta e Tratamento de Incidentes de Segurança no Brasil; national CSIRT of last resort maintained by NIC.br"
+    },
+    "brn-health-ministry-outbreak": {
+      "url": "https://moh.gov.bn/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "brn-health-ministry-mental": {
+      "url": "https://moh.gov.bn/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "brn-cert-security": {
+      "url": "https://csb.gov.bn/brucert",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: BruCERT | Cyber Security Brunei; 'the national and government CERT'"
+    },
+    "hrv-health-ministry-outbreak": {
+      "url": "https://zdravlje.gov.hr/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "hrv-public-health-institute-outbreak": {
+      "url": "https://www.hzjz.hr/en/about-us/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About us | Croatian Institute of Public Health"
+    },
+    "hrv-health-ministry-mental": {
+      "url": "https://zdravlje.gov.hr/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "hrv-welfare-ministry-welfare": {
+      "url": "https://mrosp.gov.hr/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Ministarstvo rada, mirovinskog sustava, obitelji i socijalne politike - Naslovna"
+    },
+    "hrv-cert-security": {
+      "url": "https://www.cert.hr/en/home-page/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "About National CERT - CERT.hr / National CERT of Croatia (CARNET)"
+    },
+    "hrv-public-health-institute-research": {
+      "url": "https://www.hzjz.hr/en/about-us/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About us | Croatian Institute of Public Health"
+    },
+    "cyp-cert-security": {
+      "url": "https://dsa.cy/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Digital Security Authority - Home; states the DSA incorporates the National CSIRT"
+    },
+    "ecu-health-ministry-outbreak": {
+      "url": "https://www.salud.gob.ec/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ecu-health-ministry-mental": {
+      "url": "https://www.salud.gob.ec/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "fra-health-ministry-outbreak": {
+      "url": "https://sante.gouv.fr/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "fra-public-health-institute-outbreak": {
+      "url": "https://www.santepubliquefrance.fr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Accueil | Santé publique France; legal notice states public body under the health ministry"
+    },
+    "fra-health-ministry-mental": {
+      "url": "https://sante.gouv.fr/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "fra-welfare-ministry-welfare": {
+      "url": "https://solidarites.gouv.fr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Accueil | solidarites.gouv.fr | Ministère du Travail et des Solidarités"
+    },
+    "fra-cert-security": {
+      "url": "https://cyber.gouv.fr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Nos actualités à la une — ANSSI"
+    },
+    "fra-public-health-institute-research": {
+      "url": "https://www.santepubliquefrance.fr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Accueil | Santé publique France; legal notice states public body under the health ministry"
+    },
+    "deu-health-ministry-outbreak": {
+      "url": "https://www.bundesgesundheitsministerium.de/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "deu-public-health-institute-outbreak": {
+      "url": "https://www.rki.de/DE/Home/home_node.html",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "deu-health-ministry-mental": {
+      "url": "https://www.bundesgesundheitsministerium.de/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "deu-welfare-ministry-welfare": {
+      "url": "https://www.bmas.de/DE/Startseite/start.html",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "deu-cert-security": {
+      "url": "https://www.bsi.bund.de/EN/Home/home_node.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: BSI - Federal Office for Information Security"
+    },
+    "deu-public-health-institute-research": {
+      "url": "https://www.rki.de/DE/Home/home_node.html",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "idn-health-ministry-outbreak": {
+      "url": "https://www.kemkes.go.id/eng/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "idn-health-ministry-mental": {
+      "url": "https://www.kemkes.go.id/eng/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "irl-health-ministry-outbreak": {
+      "url": "https://www.gov.ie/health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "irl-public-health-institute-outbreak": {
+      "url": "https://www.hpsc.ie/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: HPSC – Home; HPSC is part of the Health Service Executive"
+    },
+    "irl-health-ministry-mental": {
+      "url": "https://www.gov.ie/health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "irl-welfare-ministry-welfare": {
+      "url": "https://www.gov.ie/en/department-of-social-protection/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "gov.ie page: Department of Social Protection (income supports, Intreo, State Pension)"
+    },
+    "irl-cert-security": {
+      "url": "https://ncsc.gov.ie/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: NCSC: National Cyber Security Centre; encompasses national CSIRT-IE"
+    },
+    "irl-public-health-institute-research": {
+      "url": "https://www.hpsc.ie/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: HPSC – Home; HPSC is part of the Health Service Executive"
+    },
+    "isr-health-ministry-outbreak": {
+      "url": "https://www.gov.il/en/departments/ministry_of_health",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch: failed at site (client_error); nothing retrieved."
+    },
+    "isr-health-ministry-mental": {
+      "url": "https://www.gov.il/en/departments/ministry_of_health",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch: failed at site (client_error); nothing retrieved."
+    },
+    "ita-cert-security": {
+      "url": "https://www.acn.gov.it/en",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)."
+    },
+    "lbn-health-ministry-outbreak": {
+      "url": "https://www.moph.gov.lb/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "lbn-health-ministry-mental": {
+      "url": "https://www.moph.gov.lb/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ltu-health-ministry-outbreak": {
+      "url": "https://sam.lrv.lt/en/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ltu-health-ministry-mental": {
+      "url": "https://sam.lrv.lt/en/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ltu-welfare-ministry-welfare": {
+      "url": "https://socmin.lrv.lt/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Home - Lietuvos Respublikos socialinės apsaugos ir darbo ministerija"
+    },
+    "ltu-cert-security": {
+      "url": "https://nksc.lt/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page identifies National Cyber Security Centre under the Ministry of National Defence; hosts NCSC CERT-LT reports"
+    },
+    "lux-health-ministry-outbreak": {
+      "url": "https://santesecu.public.lu/en/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "lux-health-ministry-mental": {
+      "url": "https://santesecu.public.lu/en/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "lux-welfare-ministry-welfare": {
+      "url": "https://mfsva.gouvernement.lu/fr.html",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "mac-health-ministry-outbreak": {
+      "url": "https://www.gov.mo/en/entity-page/entity-552/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "mac-health-ministry-mental": {
+      "url": "https://www.gov.mo/en/entity-page/entity-552/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "mac-welfare-ministry-welfare": {
+      "url": "https://www.gov.mo/en/entity-page/entity-692/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "official Macao SAR Government portal entity page for the Social Welfare Bureau (IAS) (lists own site only as http://www.ias.gov.mo, not https-verified)"
+    },
+    "nld-health-ministry-outbreak": {
+      "url": "https://www.government.nl/ministries/ministry-of-health-welfare-and-sport",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "nld-public-health-institute-outbreak": {
+      "url": "https://www.rivm.nl/en/about-rivm/mission-and-strategy/our-work",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "RIVM 'our work' page on rivm.nl; national public health knowledge institute"
+    },
+    "nld-health-ministry-mental": {
+      "url": "https://www.government.nl/ministries/ministry-of-health-welfare-and-sport",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "nld-welfare-ministry-welfare": {
+      "url": "https://www.government.nl/ministries/ministry-of-social-affairs-and-employment",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Ministry of Social Affairs and Employment | Government.nl"
+    },
+    "nld-cert-security": {
+      "url": "https://www.ncsc.nl/en/about-us",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Who we are and what we do | NCSC-NL; part of the Ministry of Justice and Security"
+    },
+    "nld-public-health-institute-research": {
+      "url": "https://www.rivm.nl/en/about-rivm/mission-and-strategy/our-work",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "RIVM 'our work' page on rivm.nl; national public health knowledge institute"
+    },
+    "nzl-health-ministry-outbreak": {
+      "url": "https://www.health.govt.nz/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "nzl-health-ministry-mental": {
+      "url": "https://www.health.govt.nz/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "nzl-welfare-ministry-welfare": {
+      "url": "https://www.msd.govt.nz/about-msd-and-our-work/index.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About us and our work - Ministry of Social Development"
+    },
+    "nzl-cert-security": {
+      "url": "https://www.ncsc.govt.nz/who-we-are/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Who we are – NCSC NZ"
+    },
+    "nga-public-health-institute-outbreak": {
+      "url": "https://ncdc.gov.ng/ncdc",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Nigeria Centre for Disease Control and Prevention"
+    },
+    "nga-public-health-institute-research": {
+      "url": "https://ncdc.gov.ng/ncdc",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Nigeria Centre for Disease Control and Prevention"
+    },
+    "nga-cert-security": {
+      "url": "https://cert.gov.ng/about-us",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "About Us page of ngCERT on cert.gov.ng (government .gov.ng domain)"
+    },
+    "qat-welfare-ministry-welfare": {
+      "url": "https://msdf.gov.qa/en/about-ministry",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About the ministry | MSDF; states established in the State of Qatar in 2021"
+    },
+    "kor-health-ministry-outbreak": {
+      "url": "https://www.mohw.go.kr/eng",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "kor-public-health-institute-outbreak": {
+      "url": "https://kdca.go.kr/eng/index.do",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Korea Disease Control and Prevention Agency"
+    },
+    "kor-health-ministry-mental": {
+      "url": "https://www.mohw.go.kr/eng",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "kor-public-health-institute-research": {
+      "url": "https://kdca.go.kr/eng/index.do",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Korea Disease Control and Prevention Agency"
+    },
+    "kor-cert-security": {
+      "url": "https://www.kisa.or.kr/EN",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動の確認で問題あり）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "Correct org and no spam, but fetched content was essentially empty (section headings only; likely JS-rendered). Recheck in a browser."
+    },
+    "svk-health-ministry-outbreak": {
+      "url": "https://health.gov.sk/Titulka",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "svk-health-ministry-mental": {
+      "url": "https://health.gov.sk/Titulka",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "svk-welfare-ministry-welfare": {
+      "url": "https://www.mpsvr.sk/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Ministry of Labour, Social Affairs and Family of the Slovak Republic / Ministry of Labour, Social Affairs and Family of the Slovak Republic"
+    },
+    "svk-cert-security": {
+      "url": "https://www.sk-cert.sk/en/about-us/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About us ~ SK-CERT; created by the National Security Authority (NBU)"
+    },
+    "svn-health-ministry-outbreak": {
+      "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-health/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "svn-public-health-institute-outbreak": {
+      "url": "https://nijz.si/en/NIJZ/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: NIJZ | Nijz; Nacionalni inštitut za javno zdravje"
+    },
+    "svn-health-ministry-mental": {
+      "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-health/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "svn-welfare-ministry-welfare": {
+      "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-demography-family-and-social-affairs/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Ministry of Demography, Family and Social Affairs | GOV.SI"
+    },
+    "svn-cert-security": {
+      "url": "https://www.cert.si/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About SI-CERT; national CSIRT of Slovenia, operated within ARNES public institute"
+    },
+    "svn-public-health-institute-research": {
+      "url": "https://nijz.si/en/NIJZ/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: NIJZ | Nijz; Nacionalni inštitut za javno zdravje"
+    },
+    "slb-health-ministry-outbreak": {
+      "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "slb-health-ministry-mental": {
+      "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "som-public-health-institute-outbreak": {
+      "url": "https://nih.gov.so/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "som-welfare-ministry-welfare": {
+      "url": "https://molsa.gov.so/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)"
+    },
+    "som-public-health-institute-research": {
+      "url": "https://nih.gov.so/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "zaf-health-ministry-outbreak": {
+      "url": "https://www.health.gov.za/aboutus/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "zaf-health-ministry-mental": {
+      "url": "https://www.health.gov.za/aboutus/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "zaf-welfare-ministry-welfare": {
+      "url": "https://www.dsd.gov.za/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "zaf-welfare-ministry-welfare-2": {
+      "url": "https://www.sassa.gov.za/SitePages/HomePage.aspx",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)."
+    },
+    "tto-health-ministry-outbreak": {
+      "url": "https://health.gov.tt/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "tto-health-ministry-mental": {
+      "url": "https://health.gov.tt/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "tur-welfare-ministry-welfare": {
+      "url": "https://aile.gov.tr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: T.C. Aile ve Sosyal Hizmetler Bakanlığı | Anasayfa"
+    },
+    "ukr-health-ministry-outbreak": {
+      "url": "https://moz.gov.ua/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ukr-public-health-institute-outbreak": {
+      "url": "https://phc.org.ua",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "ukr-health-ministry-mental": {
+      "url": "https://moz.gov.ua/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ukr-welfare-ministry-welfare": {
+      "url": "https://msp.gov.ua/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Ministry of Social Policy, Family and Unity of Ukraine"
+    },
+    "ukr-public-health-institute-research": {
+      "url": "https://phc.org.ua",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "chn-health-ministry-outbreak": {
+      "url": "https://en.nhc.gov.cn/about.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "chn-health-ministry-mental": {
+      "url": "https://en.nhc.gov.cn/about.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ind-health-ministry-outbreak": {
+      "url": "https://mohfw.gov.in",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ind-health-ministry-mental": {
+      "url": "https://mohfw.gov.in",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ind-welfare-ministry-welfare": {
+      "url": "https://socialjustice.gov.in",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Home | Department of Social Justice and Empowerment - Government of India / Dept. of Social Justice and Empowerment, Ministry of Social Justice and Empowerment,"
+    },
+    "ind-cert-security": {
+      "url": "https://www.cert-in.org.in",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "pak-health-ministry-outbreak": {
+      "url": "https://www.nhsrc.gov.pk/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "pak-public-health-institute-outbreak": {
+      "url": "https://www.nih.org.pk/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "pak-health-ministry-mental": {
+      "url": "https://www.nhsrc.gov.pk/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "pak-public-health-institute-research": {
+      "url": "https://www.nih.org.pk/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "pak-cert-security": {
+      "url": "https://pkcert.gov.pk/about-us/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: PKCERT - The National CERT of Pakistan; described as a national government entity"
+    },
+    "mex-welfare-ministry-welfare": {
+      "url": "https://www.gob.mx/bienestar",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "phl-health-ministry-outbreak": {
+      "url": "https://www.doh.gov.ph/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)"
+    },
+    "phl-health-ministry-mental": {
+      "url": "https://www.doh.gov.ph/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)"
+    },
+    "phl-welfare-ministry-welfare": {
+      "url": "https://www.dswd.gov.ph/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "vnm-health-ministry-outbreak": {
+      "url": "https://moh.gov.vn/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "vnm-health-ministry-mental": {
+      "url": "https://moh.gov.vn/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "vnm-welfare-ministry-welfare": {
+      "url": "https://moha.gov.vn/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "eth-cert-security": {
+      "url": "https://www.insa.gov.et/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: INSA | Information Network Security Administration; links Ethio Cyber Emergency Response Team"
+    },
+    "tha-cert-security": {
+      "url": "https://www.thaicert.or.th/en/homepage/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
+      "evidence": "page title: Homepage - Thailand Computer Emergency Response Team (ThaiCERT); National Computer Security Incident Response Coordination Center, ncsa.or.th contac"
+    },
+    "ken-welfare-ministry-welfare": {
+      "url": "https://socialprotection.go.ke/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "homepage of State Department for Social Protection and Senior Citizen Affairs, Ministry of Labour and Social Protection"
+    },
+    "ken-cert-security": {
+      "url": "https://ke-cirt.go.ke/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "tza-health-ministry-outbreak": {
+      "url": "https://www.moh.go.tz/sw",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "tza-health-ministry-mental": {
+      "url": "https://www.moh.go.tz/sw",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "tza-cert-security": {
+      "url": "https://www.tzcert.go.tz/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: TZ-CERT - Tanzania Computer Emergency Response Team; profile page states National CERT within TCRA"
+    },
+    "tza-research-research": {
+      "url": "https://www.nimr.or.tz/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)"
+    },
+    "col-health-ministry-outbreak": {
+      "url": "https://www.minsalud.gov.co/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "col-public-health-institute-outbreak": {
+      "url": "https://www.ins.gov.co/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: INS Colombia; Instituto Nacional de Salud (canonical Paginas/Inicio.aspx)"
+    },
+    "col-health-ministry-mental": {
+      "url": "https://www.minsalud.gov.co/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "col-public-health-institute-research": {
+      "url": "https://www.ins.gov.co/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: INS Colombia; Instituto Nacional de Salud (canonical Paginas/Inicio.aspx)"
+    },
+    "esp-health-ministry-outbreak": {
+      "url": "https://www.sanidad.gob.es/home.htm",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "esp-health-ministry-mental": {
+      "url": "https://www.sanidad.gob.es/home.htm",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "esp-welfare-ministry-welfare": {
+      "url": "https://www.dsca.gob.es/es",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "ministry homepage (links to IMSERSO, servicios sociales, dependencia)"
+    },
+    "esp-cert-security": {
+      "url": "https://www.incibe.es/incibe-cert",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: INCIBE-CERT | INCIBE"
+    },
+    "arg-health-ministry-outbreak": {
+      "url": "https://www.argentina.gob.ar/salud",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "arg-public-health-institute-outbreak": {
+      "url": "https://www.argentina.gob.ar/salud/anlis",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: ANLIS Malbrán; under Ministerio de Salud; linked from argentina.gob.ar/salud"
+    },
+    "arg-health-ministry-mental": {
+      "url": "https://www.argentina.gob.ar/salud",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "arg-welfare-ministry-welfare": {
+      "url": "https://www.argentina.gob.ar/capital-humano",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Ministerio de Capital Humano | Argentina.gob.ar; includes Secretaría de Trabajo, Empleo y Seguridad Social; linked from argentina.gob.ar/organismos"
+    },
+    "arg-cert-security": {
+      "url": "https://www.argentina.gob.ar/ciberseguridad/certar",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: CERT.ar | Argentina.gob.ar; 'Equipo de Respuesta ante Emergencias Informáticas nacional'"
+    },
+    "arg-public-health-institute-research": {
+      "url": "https://www.argentina.gob.ar/salud/anlis",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: ANLIS Malbrán; under Ministerio de Salud; linked from argentina.gob.ar/salud"
+    },
+    "uga-cert-security": {
+      "url": "https://www.cert.ug/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: National Cert | Uganda National Computer Emergency Response Team; run by NITA-U; also linked from nita.go.ug CERT page"
+    },
+    "uga-research-research": {
+      "url": "https://www.uvri.go.ug/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "site heading: Uganda Virus Research Institute; government institution under the Ministry of Health"
+    },
+    "can-health-ministry-outbreak": {
+      "url": "https://www.canada.ca/en/health-canada.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "can-public-health-institute-outbreak": {
+      "url": "https://www.canada.ca/en/public-health.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Public Health Agency of Canada - Canada.ca / Public Health Agency of Canada (PHAC)"
+    },
+    "can-health-ministry-mental": {
+      "url": "https://www.canada.ca/en/health-canada.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "can-welfare-ministry-welfare": {
+      "url": "https://www.canada.ca/en/employment-social-development/corporate",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "ESDC Corporate information - Canada.ca / Employment and Social Development Canada (Government of Canada)"
+    },
+    "can-cert-security": {
+      "url": "https://cyber.gc.ca/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Canadian Centre for Cyber Security; Government of Canada branding, operated by CSE"
+    },
+    "can-public-health-institute-research": {
+      "url": "https://www.canada.ca/en/public-health.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Public Health Agency of Canada - Canada.ca / Public Health Agency of Canada (PHAC)"
+    },
+    "pol-health-ministry-outbreak": {
+      "url": "https://www.gov.pl/web/zdrowie",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "pol-health-ministry-mental": {
+      "url": "https://www.gov.pl/web/zdrowie",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "pol-welfare-ministry-welfare": {
+      "url": "https://www.gov.pl/web/rodzina",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Ministerstwo Rodziny, Pracy i Polityki Społecznej - Portal Gov.pl / Ministry of Family, Labour and Social Policy (Poland)"
+    },
+    "pol-cert-security": {
+      "url": "https://cert.pl/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: CERT Polska; CSIRT NASK, one of three national-level CSIRTs"
+    },
+    "sau-health-ministry-outbreak": {
+      "url": "https://www.moh.gov.sa/pages/default.aspx",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sau-health-ministry-mental": {
+      "url": "https://www.moh.gov.sa/pages/default.aspx",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sau-welfare-ministry-welfare": {
+      "url": "https://www.hrsd.gov.sa/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: The official website of the Ministry of HRSD"
+    },
+    "sau-cert-security": {
+      "url": "https://nca.gov.sa/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: National Cybersecurity Authority | NCA"
+    },
+    "uzb-health-ministry-outbreak": {
+      "url": "https://gov.uz/en/ssv/pages/about",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "uzb-health-ministry-mental": {
+      "url": "https://gov.uz/en/ssv/pages/about",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "aus-welfare-ministry-welfare": {
+      "url": "https://dss.gov.au/about-us",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "'About us' page of the Department of Social Services"
+    },
+    "aus-cert-security": {
+      "url": "https://www.cyber.gov.au/about-us",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About ASD's ACSC"
+    },
+    "mys-cert-security": {
+      "url": "https://nacsa.gov.my/index.php",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: National Cyber Security Agency (NACSA), Malaysia"
+    },
+    "gha-health-ministry-outbreak": {
+      "url": "https://moh.gov.gh",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "gha-public-health-institute-outbreak": {
+      "url": "https://www.ghs.gov.gh/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "gha-health-ministry-mental": {
+      "url": "https://moh.gov.gh",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "gha-cert-security": {
+      "url": "https://csa.gov.gh/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: CSA || Home; established by Cybersecurity Act, 2020 (Act 1038); hosts CERT-GH"
+    },
+    "gha-public-health-institute-research": {
+      "url": "https://www.ghs.gov.gh/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "npl-health-ministry-outbreak": {
+      "url": "https://mohp.gov.np/pages/introduction",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "npl-health-ministry-mental": {
+      "url": "https://mohp.gov.np/pages/introduction",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "npl-welfare-ministry-welfare": {
+      "url": "https://mowcsc.gov.np/en/pages/31/49633572",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "Ministry introduction page under 'Government Of Nepal'; covers social welfare"
+    },
+    "ven-health-ministry-outbreak": {
+      "url": "https://mpps.gob.ve",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ven-health-ministry-mental": {
+      "url": "https://mpps.gob.ve",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "twn-health-ministry-outbreak": {
+      "url": "https://www.mohw.gov.tw/mp-1.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "twn-public-health-institute-outbreak": {
+      "url": "https://www.cdc.gov.tw/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "twn-health-ministry-mental": {
+      "url": "https://www.mohw.gov.tw/mp-1.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "twn-welfare-ministry-welfare": {
+      "url": "https://www.sfaa.gov.tw/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)"
+    },
+    "twn-public-health-institute-research": {
+      "url": "https://www.cdc.gov.tw/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "chl-health-ministry-outbreak": {
+      "url": "https://www.minsal.cl",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "chl-public-health-institute-outbreak": {
+      "url": "https://www.ispch.cl/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "chl-health-ministry-mental": {
+      "url": "https://www.minsal.cl",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "chl-cert-security": {
+      "url": "https://anci.gob.cl/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Agencia Nacional de Ciberseguridad"
+    },
+    "chl-public-health-institute-research": {
+      "url": "https://www.ispch.cl/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "swe-health-ministry-outbreak": {
+      "url": "https://www.regeringen.se/sveriges-regering/socialdepartementet/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "swe-public-health-institute-outbreak": {
+      "url": "https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "swe-health-ministry-mental": {
+      "url": "https://www.regeringen.se/sveriges-regering/socialdepartementet/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "swe-public-health-institute-research": {
+      "url": "https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "swe-cert-security": {
+      "url": "https://cert.se/en/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: CERT-SE – The national CSIRT of Sweden; located at NCSC-SE, part of FRA"
+    },
+    "che-health-ministry-outbreak": {
+      "url": "https://www.bag.admin.ch/de",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "che-health-ministry-mental": {
+      "url": "https://www.bag.admin.ch/de",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "che-welfare-ministry-welfare": {
+      "url": "https://www.bsv.admin.ch/bsv/de/home/bsv.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Das BSV - Übersicht"
+    },
+    "che-cert-security": {
+      "url": "https://www.bacs.admin.ch/en/start-bacs-en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "The NCSC is now a federal office / Swiss Federal Office for Cyber Security (BACS/NCSC), DDPS, Swiss federal authorities"
+    },
+    "che-research-research": {
+      "url": "https://www.snf.ch/de",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "aut-health-ministry-outbreak": {
+      "url": "https://www.sozialministerium.gv.at/public.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "aut-public-health-institute-outbreak": {
+      "url": "https://www.ages.at/startseite/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "aut-health-ministry-mental": {
+      "url": "https://www.sozialministerium.gv.at/public.html",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "aut-public-health-institute-research": {
+      "url": "https://www.ages.at/startseite/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "aut-cert-security": {
+      "url": "https://www.cert.at/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "bel-health-ministry-outbreak": {
+      "url": "https://www.health.belgium.be/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bel-public-health-institute-outbreak": {
+      "url": "https://sciensano.be/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "Sciensano home: 'Connects health, science and society'"
+    },
+    "bel-health-ministry-mental": {
+      "url": "https://www.health.belgium.be/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bel-public-health-institute-research": {
+      "url": "https://sciensano.be/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "Sciensano home: 'Connects health, science and society'"
+    },
+    "bel-cert-security": {
+      "url": "https://ccb.belgium.be/organisation",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "About us / Centre for Cybersecurity Belgium (CCB)"
+    },
+    "prt-health-ministry-outbreak": {
+      "url": "https://www.sns.gov.pt/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "prt-health-ministry-mental": {
+      "url": "https://www.sns.gov.pt/",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
+      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+    },
+    "prt-welfare-ministry-welfare": {
+      "url": "https://portugal.gov.pt/pt/gc25/area-de-governo/trabalho-solidariedade-e-seguranca-social/ministro",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Maria do Rosário Palma Ramalho - Ministra do Trabalho, Solidariedade e Segurança Social - Trabalho, Solidariedade e Segurança Social - XXV Governo Constituciona"
+    },
+    "grc-public-health-institute-outbreak": {
+      "url": "https://eody.gov.gr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Home - ΕΟΔΥ; Εθνικός Οργανισμός Δημόσιας Υγείας"
+    },
+    "grc-public-health-institute-research": {
+      "url": "https://eody.gov.gr/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Home - ΕΟΔΥ; Εθνικός Οργανισμός Δημόσιας Υγείας"
+    },
+    "cze-health-ministry-outbreak": {
+      "url": "https://mzd.gov.cz/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "cze-health-ministry-mental": {
+      "url": "https://mzd.gov.cz/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "cze-welfare-ministry-welfare": {
+      "url": "https://mpsv.gov.cz/ministerstvo",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。旧URL www.mpsv.gov.cz は名前解決エラーのため差し替え）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果"
+    },
+    "cze-cert-security": {
+      "url": "https://www.nukib.gov.cz",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "in-o-don": {
+      "url": "https://www.who.int/emergencies/disease-outbreak-news",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Disease Outbreak News / World Health Organization (WHO)"
+    },
+    "in-o-ecdc": {
+      "url": "https://www.ecdc.europa.eu/en",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Homepage | European Centre for Disease Prevention and Control / European Centre for Disease Prevention and Control (EU agency)"
+    },
+    "in-m-who": {
+      "url": "https://www.who.int/health-topics/mental-health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "in-s-enisa": {
+      "url": "https://www.enisa.europa.eu/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Home | ENISA / European Union Agency for Cybersecurity (ENISA)"
+    },
+    "in-s-kev": {
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "Known Exploited Vulnerabilities Catalog / CISA, U.S. Department of Homeland Security"
+    },
+    "in-r-who": {
+      "url": "https://www.who.int/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
+      "evidence": "World Health Organization (WHO) / World Health Organization (UN agency)"
+    },
+    "in-r-pubmed": {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "isl-health-ministry-outbreak": {
+      "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "isl-health-ministry-mental": {
+      "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "isl-welfare-ministry-welfare": {
+      "url": "https://government.is/ministries/ministry-of-social-affairs-and-housing/about-the-ministry",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "government.is about page; covers social affairs and social security (heading also shows 'Ministry of Social Affairs and Labour')"
+    },
+    "isl-cert-security": {
+      "url": "https://cert.is/english",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page states CERT-IS is the national CERT, operating under the Electronic Communications Office of Iceland"
+    },
+    "isl-public-health-institute-outbreak": {
+      "url": "https://island.is/en/o/directorate-of-health/about-directorate-of-health",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title 'About the Directorate of Health'; Chief Epidemiologist responsible for communicable disease control"
+    },
+    "isl-public-health-institute-research": {
+      "url": "https://island.is/en/o/directorate-of-health/about-directorate-of-health",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title 'About the Directorate of Health'; Chief Epidemiologist responsible for communicable disease control"
+    },
+    "smr-welfare-ministry-welfare": {
+      "url": "https://www.iss.sm/on-line/home/chi-siamo.html",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title 'ISS - Istituto per la Sicurezza Sociale di San Marino'; covers healthcare, family allowances, pensions"
+    },
+    "sxm-health-ministry-outbreak": {
+      "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Department-of-Public-Health.aspx",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sxm-health-ministry-mental": {
+      "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Department-of-Public-Health.aspx",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sxm-welfare-ministry-welfare": {
+      "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Community-Development-Family-Humanitarian-Affairs.aspx",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "executing agency within the Ministry of Public Health, Social Development and Labour"
+    },
+    "fji-health-ministry-outbreak": {
+      "url": "https://www.fiji.gov.fj/Archive/Directory/Ministries-and-Department/Ministry-of-Health",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
+      "evidence": "Fijian Government directory page for the Ministry of Health and Medical Services"
+    },
+    "fji-health-ministry-mental": {
+      "url": "https://www.fiji.gov.fj/Archive/Directory/Ministries-and-Department/Ministry-of-Health",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
+      "evidence": "Fijian Government directory page for the Ministry of Health and Medical Services"
+    },
+    "aze-health-ministry-outbreak": {
+      "url": "https://sehiyye.gov.az/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "aze-health-ministry-mental": {
+      "url": "https://sehiyye.gov.az/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "aze-welfare-ministry-welfare": {
+      "url": "https://sosial.gov.az/en/ministry/regulation",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "ministry regulation page on sosial.gov.az; root not seen in results so stable section used"
+    },
+    "aze-cert-security": {
+      "url": "https://www.cert.gov.az/en/page/rfc-2350",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page heading: CERT.GOV.AZ - RFC 2350; under Special Communication and Information Security State Service"
+    },
+    "vgb-health-ministry-outbreak": {
+      "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "vgb-health-ministry-mental": {
+      "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "vgb-welfare-ministry-welfare": {
+      "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "kos-cert-security": {
+      "url": "https://govcert.rks-gov.net/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Home — GovCERT Kosovo; unit of the Agency for Information Society"
+    },
+    "vct-health-ministry-outbreak": {
+      "url": "https://health.gov.vc/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "vct-health-ministry-mental": {
+      "url": "https://health.gov.vc/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "vct-welfare-ministry-welfare": {
+      "url": "https://mobilization.gov.vc",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "ministry homepage with divisions and contact info; no spam signs"
+    },
+    "are-health-ministry-outbreak": {
+      "url": "https://mohap.gov.ae/en/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "are-health-ministry-mental": {
+      "url": "https://mohap.gov.ae/en/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "omn-health-ministry-outbreak": {
+      "url": "https://moh.gov.om/en/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "omn-health-ministry-mental": {
+      "url": "https://moh.gov.om/en/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "omn-welfare-ministry-welfare": {
+      "url": "https://gov.om/en/ministry-of-social-development",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title 'Ministry of Social Development - Gov.om' (ministry profile on official national portal; ministry's own site not verified)"
+    },
+    "khm-health-ministry-outbreak": {
+      "url": "https://moh.gov.kh/en/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "khm-health-ministry-mental": {
+      "url": "https://moh.gov.kh/en/home",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "khm-welfare-ministry-welfare": {
+      "url": "https://mosvy.gov.kh/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "fetched mosvy.gov.kh home with ministry news; no spam or redirect seen"
+    },
+    "cok-health-ministry-outbreak": {
+      "url": "https://www.health.gov.ck/about",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "cok-health-ministry-mental": {
+      "url": "https://www.health.gov.ck/about",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jey-health-ministry-outbreak": {
+      "url": "https://www.gov.je/Government/Departments/HealthCare/Pages/index.aspx",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jey-health-ministry-mental": {
+      "url": "https://www.gov.je/Government/Departments/HealthCare/Pages/index.aspx",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "jey-welfare-ministry-welfare": {
+      "url": "https://www.gov.je/Government/Departments/EmploymentSocialSecurityHousing/Pages/index.aspx",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: Employment, Social Security and Housing (formerly Customer and Local Services), gov.je department page listing benefits and pensions"
+    },
+    "bhr-health-ministry-outbreak": {
+      "url": "https://www.moh.gov.bh/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "bhr-health-ministry-mental": {
+      "url": "https://www.moh.gov.bh/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "arm-health-ministry-outbreak": {
+      "url": "https://health.gov.am/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "arm-health-ministry-mental": {
+      "url": "https://health.gov.am/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "arm-cert-security": {
+      "url": "https://isaa.am/en/am-cert-computer-emergency-response-team",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
+      "evidence": "Information Systems Agency of Armenia page describing AM-CERT as the National CERT/CSIRT of Armenia; no spam"
+    },
+    "ury-health-ministry-outbreak": {
+      "url": "https://www.gub.uy/ministerio-salud-publica/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ury-health-ministry-mental": {
+      "url": "https://www.gub.uy/ministerio-salud-publica/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ury-welfare-ministry-welfare": {
+      "url": "https://www.gub.uy/ministerio-desarrollo-social/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "ury-cert-security": {
+      "url": "https://www.gub.uy/centro-nacional-respuesta-incidentes-seguridad-informatica/",
+      "checkedAt": "2026-10-26",
+      "method": "fetched",
+      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+    },
+    "ggy-health-ministry-outbreak": {
+      "url": "https://gov.gg/publichealth",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "ggy-health-ministry-mental": {
+      "url": "https://gov.gg/publichealth",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "grd-health-ministry-outbreak": {
+      "url": "https://www.gov.gd/health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "grd-health-ministry-mental": {
+      "url": "https://www.gov.gd/health",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "grd-welfare-ministry-welfare": {
+      "url": "https://www.gov.gd/index.php/sociald",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "gov.gd ministry page headed Ministry of Social & Community Development, Housing and Gender Affairs (contact directory)"
+    },
+    "wsm-health-ministry-outbreak": {
+      "url": "https://www.health.gov.ws/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "wsm-health-ministry-mental": {
+      "url": "https://www.health.gov.ws/",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "wsm-welfare-ministry-welfare": {
+      "url": "https://mwcsd.gov.ws/office-of-the-ceo/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page heading: Ministry of Women, Community and Social Development (Office of the CEO)"
+    },
+    "wsm-cert-security": {
+      "url": "https://mcit.gov.ws/programs/cert",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "MCIT page describing SamCERT as Samoa's National Cyber Security Agency"
+    },
+    "est-health-ministry-outbreak": {
+      "url": "https://sm.ee/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "est-health-ministry-mental": {
+      "url": "https://sm.ee/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "est-welfare-ministry-welfare": {
+      "url": "https://sm.ee/en",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "est-cert-security": {
+      "url": "https://ria.ee/en/cert-ee-20-years-protecting-estonias-cyberspace",
+      "checkedAt": null,
+      "method": "unverified",
+      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
+      "evidence": "page title: CERT-EE: 20 years of protecting Estonia's cyberspace | RIA; RIA is the National Cyber Security Centre (NCSC-EE); updated 11.02.2026"
+    },
+    "cym-health-ministry-outbreak": {
+      "url": "https://gov.ky/mhes",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "cym-health-ministry-mental": {
+      "url": "https://gov.ky/mhes",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "nam-health-ministry-outbreak": {
+      "url": "https://mhss.gov.na/site-map",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "nam-health-ministry-mental": {
+      "url": "https://mhss.gov.na/site-map",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sgp-health-ministry-outbreak": {
+      "url": "https://moh.gov.sg/contact-us",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sgp-health-ministry-mental": {
+      "url": "https://moh.gov.sg/contact-us",
+      "checkedAt": "2026-10-26",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
+    },
+    "sgp-welfare-ministry-welfare": {
+      "url": "https://www.msf.gov.sg/",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "MSF homepage; listed as ministry website on sgdi.gov.sg/ministries/msf"
+    },
+    "sgp-cert-security": {
+      "url": "https://www.csa.gov.sg/about-csa",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "page title: About CSA | Cyber Security Agency of Singapore (SingCERT is part of CSA)"
+    },
+    "x-who": {
+      "url": "https://x.com/WHO",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.who.int/）",
+      "evidence": ""
+    },
+    "x-enisa-eu": {
+      "url": "https://x.com/enisa_eu",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.enisa.europa.eu/）",
+      "evidence": ""
+    },
+    "x-cdcgov": {
+      "url": "https://x.com/CDCgov",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.cdc.gov/digital-social-media-tools/Social-Media-Channels.html）",
+      "evidence": ""
+    },
+    "x-nih": {
+      "url": "https://x.com/NIH",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.nih.gov/news-events/nih-social-media）",
+      "evidence": ""
+    },
+    "x-ncsc": {
+      "url": "https://x.com/ncsc",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.ncsc.gov.uk/）",
+      "evidence": ""
+    },
+    "x-mhlwitter": {
+      "url": "https://x.com/MHLWitter",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.mhlw.go.jp/stf/twitter.html）",
+      "evidence": ""
+    },
+    "x-japancybergov": {
+      "url": "https://x.com/JapanCyberGov",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.cyber.go.jp/socialmedia_global.html）",
+      "evidence": ""
+    },
+    "x-jpcert": {
+      "url": "https://x.com/jpcert",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.jpcert.or.jp/twitter.html）",
+      "evidence": ""
+    },
+    "x-ipajp": {
+      "url": "https://x.com/IPAjp",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.ipa.go.jp/socialmedia/x.html）",
+      "evidence": ""
+    },
+    "x-jihs2025": {
+      "url": "https://x.com/JIHS2025",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.jihs.go.jp/aboutus/2025SNS.html）",
+      "evidence": ""
+    },
+    "x-caa-shohishacho": {
+      "url": "https://x.com/caa_shohishacho",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.caa.go.jp/socialmedia_guideline/twitter）",
+      "evidence": ""
+    },
+    "x-kodomokatei": {
+      "url": "https://x.com/KodomoKatei",
+      "checkedAt": "2026-10-25",
+      "method": "fetched",
+      "how": "AIが機関の公式サイトの掲載ページを開き、このアカウントが載っていることを確認（https://www.cfa.go.jp/social-media-policy）",
+      "evidence": ""
+    }
+  }
+}

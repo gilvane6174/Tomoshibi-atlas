@@ -1,0 +1,13 @@
+# すべての変更は運用者の承認が必要。
+# 運用者の GitHub ユーザー名（別のアカウントで運用する場合は全行を置き換える。docs/GITHUB-SETTINGS.md 参照）。
+*                     @gilvane6174
+
+# 特に重要：AI運用者は変更しない領域（変更には運用者の個別承認が必要）
+/.github/             @gilvane6174
+/scripts/             @gilvane6174
+/site/                @gilvane6174
+/AGENTS.md            @gilvane6174
+/ops/                 @gilvane6174
+/docs/                @gilvane6174
+/.githooks/           @gilvane6174
+/data/directory/      @gilvane6174

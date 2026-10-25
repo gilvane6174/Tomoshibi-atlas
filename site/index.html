@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- 外部への通信・埋め込み・インラインスクリプトをすべて禁止（自サイトのファイルのみ） -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a0f16">
+  <meta name="description" content="Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころ・福祉・医療研究の公的な情報と、AIやITのセキュリティ上の脅威を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。">
+  <title>Tomoshibi Atlas（ともしびアトラス）｜感染症・こころ・福祉・サイバー脅威を地球儀で — Yutaka Yoshioka（吉岡有隆）</title>
+  <meta name="author" content="Yutaka Yoshioka（吉岡有隆）">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tomoshibi Atlas（ともしびアトラス）">
+  <meta property="og:title" content="Tomoshibi Atlas（ともしびアトラス）｜灯の地図">
+  <meta property="og:description" content="Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころ・福祉・医療研究の公的な情報と、AIやITのセキュリティ上の脅威を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- seo:abs（公開URLが分かるときだけ、組み立て時に canonical などを入れる） -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Tomoshibi Atlas", "alternateName": ["ともしびアトラス", "灯の地図", "灯アトラス", "Tomoshibi Atlas（ともしびアトラス）", "Atlas of Lights"], "description": "Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころ・福祉・医療研究の公的な情報と、AIやITのセキュリティ上の脅威を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。", "inLanguage": ["ja", "en"], "author": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "creator": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "publisher": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "isAccessibleForFree": true, "keywords": "Tomoshibi Atlas, ともしびアトラス, 灯の地図, Yutaka Yoshioka, 吉岡有隆, 感染症, こころ, 福祉, 相談窓口, ITセキュリティ, 地球儀"}</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="vendor/d3-array.min.js" defer></script>
+  <script src="vendor/d3-geo.min.js" defer></script>
+  <script src="js/main.js" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#list-panel" data-i18n="control.list">一覧</a>
+
+  <header class="topbar">
+    <a class="brand" href="./" id="brand-link">
+      <svg class="brand-logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="logo-flame" cx="50%" cy="62%" r="60%"><stop offset="0" stop-color="#fff6e2"/><stop offset=".45" stop-color="#f6cf8e"/><stop offset="1" stop-color="#e9a75a"/></radialGradient>
+          <radialGradient id="logo-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#f2c27a" stop-opacity=".6"/><stop offset="1" stop-color="#f2c27a" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="16" cy="14" r="12" fill="url(#logo-glow)"/>
+        <path d="M5.5 19.5a10.5 10.5 0 0 0 21 0" fill="none" stroke="#6f8db3" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M9.5 24.2a10.5 4 0 0 0 13 0" fill="none" stroke="#3f5778" stroke-width="1.1" stroke-linecap="round"/>
+        <path d="M16 5.2c3.2 3.9 4.7 6.6 4.7 9.1a4.7 4.7 0 0 1-9.4 0c0-2.5 1.5-5.2 4.7-9.1z" fill="url(#logo-flame)"/>
+        <circle cx="16" cy="14.6" r="1.6" fill="#fffaf0"/>
+      </svg>
+      <span class="brand-name">Tomoshibi Atlas</span>
+      <span class="brand-sub" data-i18n="site.sub">灯の地図</span>
+    </a>
+
+    <nav class="layers" aria-label="分野" id="layers-nav">
+      <div class="layer-group" role="tablist" id="tabs-light"></div>
+      <span class="layer-divider" aria-hidden="true"></span>
+      <div class="layer-group" role="tablist" id="tabs-caution"></div>
+    </nav>
+
+    <div class="tools">
+      <div class="search">
+        <label for="search-input" class="visually-hidden" data-i18n="search.label">国・地域を検索</label>
+        <input id="search-input" type="search" data-i18n-placeholder="search.placeholder" placeholder="国・地域を検索" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false">
+        <ul id="search-results" class="search-results" role="listbox" hidden></ul>
+      </div>
+      <button type="button" class="icon-btn" id="btn-locate" data-i18n="control.locate">現在地</button>
+      <button type="button" class="icon-btn desktop-only" id="btn-list" aria-controls="list-panel" aria-expanded="false" data-i18n="control.list">一覧</button>
+      <button type="button" class="icon-btn desktop-only" id="btn-guide" aria-controls="guide-panel" aria-expanded="false" data-i18n="control.guide">使い方</button>
+      <a class="icon-btn lang desktop-only" id="btn-lang" href="?lang=en" hreflang="en" lang="en">English</a>
+      <button type="button" class="menu-btn mobile-only" id="btn-menu" aria-controls="menu-drawer" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true"></span><span data-i18n="control.menu">メニュー</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- スマートフォン用：いま表示している分野（押すとメニューが開く） -->
+  <div class="mobile-bar mobile-only" id="mobile-bar">
+    <button type="button" class="current-layer" id="current-layer" aria-controls="menu-drawer" aria-expanded="false">
+      <span class="cl-label" data-i18n="nav.current">表示中の分野</span>
+      <span class="cl-name" id="current-layer-name"></span>
+      <span class="cl-change" data-i18n="nav.change">切り替える</span>
+    </button>
+  </div>
+
+  <div id="menu-backdrop" class="menu-backdrop" hidden></div>
+  <nav id="menu-drawer" class="drawer" aria-labelledby="menu-title" hidden>
+    <div class="drawer-head">
+      <h2 id="menu-title" data-i18n="control.menu">メニュー</h2>
+      <button type="button" class="close" id="menu-close" aria-label="×">×</button>
+    </div>
+    <div class="drawer-body">
+      <p class="drawer-group light" data-i18n="group.light">灯（ともしび）— 支える情報</p>
+      <div id="drawer-light" class="drawer-layers"></div>
+      <p class="drawer-group caution" data-i18n="group.caution">警鐘（けいしょう）— 注意が必要な情報</p>
+      <div id="drawer-caution" class="drawer-layers"></div>
+      <div class="drawer-actions">
+        <button type="button" class="drawer-action" id="drawer-list" data-i18n="control.list">一覧</button>
+        <button type="button" class="drawer-action" id="drawer-guide" data-i18n="purpose.open">目的と使い方</button>
+        <button type="button" class="drawer-action" id="drawer-locate" data-i18n="control.locate">現在地</button>
+        <a class="drawer-action lang" id="drawer-lang" href="?lang=en" hreflang="en" lang="en">English</a>
+        <a class="drawer-action" id="drawer-about" href="about.html" data-i18n="purpose.title">このサイトについて</a>
+      </div>
+      <p class="drawer-tagline" data-i18n="site.tagline"></p>
+    </div>
+  </nav>
+
+  <div id="sample-banner" class="sample-banner" hidden></div>
+
+  <main class="stage">
+    <canvas id="globe" aria-hidden="true"></canvas>
+    <div id="labels" class="labels"></div>
+
+    <section class="purpose-card desktop-only" aria-labelledby="purpose-title">
+      <h1 id="purpose-title" data-i18n="site.tagline">人の病とこころの不調、AIやITシステムの課題を、一つの地球儀で。</h1>
+      <p data-i18n="purpose.body">感染症・こころ・福祉・医療研究の公表情報と、AIやITシステムを脅かすセキュリティ上の脅威を、同じ地球儀の上に並べています。人の健康とシステムの不調を見比べ、その関わりに気づきやすくすることで、人がよりよく暮らすための備えに役立てることを目指しています。</p>
+      <p class="layer-caption" id="layer-caption" aria-live="polite"></p>
+      <button type="button" class="text-btn" id="btn-purpose" aria-controls="guide-panel" data-i18n="purpose.open">目的と使い方</button>
+    </section>
+
+    <div class="globe-controls">
+      <button type="button" class="ctrl" id="btn-rotate" aria-pressed="true">回転を止める</button>
+      <button type="button" class="ctrl" id="btn-reset" data-i18n="control.reset">初期表示</button>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <aside id="guide-panel" class="panel panel-guide" aria-labelledby="guide-title" hidden>
+    <div class="panel-head">
+      <h2 id="guide-title" data-i18n="guide.title">目的と使い方</h2>
+      <button type="button" class="close" id="guide-close" aria-label="×">×</button>
+    </div>
+    <div id="guide-body" class="panel-body"></div>
+  </aside>
+
+  <aside id="detail-panel" class="panel" aria-labelledby="detail-title" hidden>
+    <div class="panel-head">
+      <h2 id="detail-title"></h2>
+      <button type="button" class="close" id="detail-close" aria-label="×">×</button>
+    </div>
+    <div id="detail-body" class="panel-body"></div>
+  </aside>
+
+  <aside id="list-panel" class="panel panel-list" aria-labelledby="list-title" hidden>
+    <div class="panel-head">
+      <h2 id="list-title"></h2>
+      <button type="button" class="close" id="list-close" aria-label="×">×</button>
+    </div>
+    <div id="list-body" class="panel-body"></div>
+  </aside>
+
+  <footer class="statusbar">
+    <span id="status-text">…</span>
+    <a href="about.html" id="operator-link" data-i18n="footer.operator">運営：Yutaka Yoshioka（非営利）</a>
+    <a href="about.html#disclaimer" id="disclaimer-link" data-i18n="status.disclaimer">医療・法律上の判断には使わないでください（免責事項）</a>
+  </footer>
+
+  <noscript><p class="noscript">Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。このサイトの地球儀表示にはJavaScriptが必要です。<a href="about.html">サイトの説明</a> / <a href="about.en.html">About (English)</a></p></noscript>
+</body>
+</html>

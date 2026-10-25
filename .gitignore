@@ -1,0 +1,15 @@
+# 組み立て結果（毎回作り直す）
+_site/
+
+# 秘密情報を誤って入れないため
+.env
+.env.*
+*.pem
+*.key
+*.token
+
+# その他
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,27 @@
+# 掲載リンクの安全確認（週1回）。証明書エラー・リンク切れ・別ドメインへの転送・改ざんの兆候を調べる。
+# 問題があればこのワークフローが失敗し、運用者に通知が届く。リポジトリへは書き込まない。
+name: Link safety check
+
+on:
+  schedule:
+    - cron: '27 0 * * 1' # 毎週月曜 09:27（日本時間）
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          check-latest: true
+      - name: Check links
+        run: node scripts/check-links.mjs

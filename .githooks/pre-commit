@@ -1,0 +1,5 @@
+#!/bin/sh
+# コミット前に個人情報・秘密情報とデータ形式を検査する（任意）。
+# 有効にする: git config core.hooksPath .githooks
+node scripts/check-privacy.mjs || exit 1
+node scripts/validate-data.mjs || exit 1

@@ -1,0 +1,77 @@
+# 毎日1回、決まった時刻に公的機関の公表情報を取得 → 検査 → GitHub Pages へ公開する。
+# 取得先への負担を避けるため、各情報源へのアクセスは1回の実行につき1回だけ（手動実行は必要なときだけ）。
+# リポジトリへは一切書き込まない（contents: read）。取得・検査に失敗したら公開しないので、
+# 公開中のサイトは前回の内容のまま残る。生成AIはこの処理に関与しない。
+name: Build and deploy
+
+on:
+  schedule:
+    - cron: '43 20 * * *' # 毎日 05:43（日本時間）
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'data/curated/**'
+      - 'scripts/**'
+      - 'data/directory/**'
+
+permissions: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 100 # コミット履歴の検査用
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          check-latest: true # 毎回、24系の最新（セキュリティ修正済み）を使う
+      # 外部パッケージは使わない（npm install しない）
+      - name: Privacy check
+        run: node scripts/check-privacy.mjs
+      - name: Commit history check (names and emails)
+        env:
+          MAINTAINER_LOGIN: ${{ vars.MAINTAINER_LOGIN }}
+          AI_ACCOUNT_LOGINS: ${{ vars.AI_ACCOUNT_LOGINS }}
+        run: node scripts/check-history.mjs
+      - name: Repository settings check
+        run: node scripts/check-repo.mjs
+      - name: Self test
+        run: node scripts/test.mjs
+      - name: Validate curated data
+        run: node scripts/validate-data.mjs
+      - name: Fetch, validate and build
+        run: node scripts/build.mjs
+        env:
+          SITE_URL: ${{ vars.SITE_URL }} # 公開URL（任意。設定すると canonical・sitemap を作る）
+          GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }} # 任意。Search Console の所有確認用の値
+          BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }} # 任意
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+          include-hidden-files: true # .well-known/security.txt（脆弱性の連絡先）を含めるため
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

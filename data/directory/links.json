@@ -1,0 +1,5706 @@
+{
+  "schemaVersion": 2,
+  "_note": "国・分野ごとの公的な相談先・機関のリンク集。公式サイトであることをページを開いて確認したもの（AIによる調査と別のAIによる確認を含む。確認の記録は evidence.json）だけを載せる。運用者による確認は順次行う。AI・botは変更しない（AGENTS.md参照）。",
+  "reviewedAt": "2026-10-25",
+  "categories": [
+    {
+      "id": "general",
+      "ja": "くらしの公的な支援（全般）",
+      "jaKana": "くらしの こうてきな しえん（ぜんぱん）",
+      "en": "Public support in general"
+    },
+    {
+      "id": "money",
+      "ja": "お金や くらしに困っている",
+      "jaKana": "おかねや くらしに こまっている",
+      "en": "Money and daily living"
+    },
+    {
+      "id": "work",
+      "ja": "仕事のこと",
+      "jaKana": "しごとの こと",
+      "en": "Work and jobs"
+    },
+    {
+      "id": "disability",
+      "ja": "障がい・発達の特性のこと",
+      "jaKana": "しょうがい・はったつの とくせいの こと",
+      "en": "Disability and developmental differences"
+    },
+    {
+      "id": "care",
+      "ja": "介護のこと",
+      "jaKana": "かいごの こと",
+      "en": "Care for older people"
+    },
+    {
+      "id": "family",
+      "ja": "家族・子ども・暴力のこと",
+      "jaKana": "かぞく・こども・ぼうりょくの こと",
+      "en": "Family, children and violence"
+    },
+    {
+      "id": "law",
+      "ja": "契約・借金・法律のこと",
+      "jaKana": "けいやく・しゃっきん・ほうりつの こと",
+      "en": "Contracts, debt and legal trouble"
+    },
+    {
+      "id": "foreign",
+      "ja": "外国から来た人へ",
+      "jaKana": "がいこくから きた ひとへ",
+      "en": "For people from other countries"
+    },
+    {
+      "id": "pension",
+      "ja": "年金のこと",
+      "jaKana": "ねんきんの こと",
+      "en": "Pensions"
+    }
+  ],
+  "countries": {
+    "JPN": {
+      "welfare": [
+        {
+          "id": "jp-w-jiritsu",
+          "cat": "money",
+          "name": {
+            "ja": "生活困窮者自立支援制度（厚生労働省）",
+            "jaKana": "せいかつこんきゅうしゃ じりつ しえん せいど（こうせいろうどうしょう）",
+            "en": "Support for people in financial hardship (MHLW)"
+          },
+          "desc": {
+            "ja": "仕事・住まい・お金など、くらしの困りごとをまとめて相談できる国のしくみです。",
+            "jaKana": "しごと・すまい・おかね など、くらしの こまりごとを まとめて そうだんできる くにの しくみです。",
+            "en": "A national scheme where you can talk about work, housing, money and other daily-life problems in one place."
+          },
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000059425.html"
+        },
+        {
+          "id": "jp-w-sumakoma",
+          "cat": "money",
+          "name": {
+            "ja": "住まい・生活の困りごと相談窓口「すまこま。」",
+            "jaKana": "すまい・せいかつの こまりごと そうだん まどぐち「すまこま。」",
+            "en": "Sumakoma: housing and living support finder"
+          },
+          "desc": {
+            "ja": "住まいや生活の困りごとの相談先を、地域ごとにさがせるサイトです（厚生労働省の事業で、運営は委託を受けた団体が行っています）。",
+            "jaKana": "すまいや せいかつの こまりごとの そうだんさきを、ちいき ごとに さがせる サイト です（こうせいろうどうしょうの じぎょうで、うんえいは いたくを うけた だんたいが おこなって います）。",
+            "en": "Find local help with housing and daily-living problems (a Ministry of Health, Labour and Welfare programme run by a commissioned organisation)."
+          },
+          "url": "https://sumakoma.mhlw.go.jp/"
+        },
+        {
+          "id": "jp-w-hogo",
+          "cat": "money",
+          "name": {
+            "ja": "生活保護制度（厚生労働省）",
+            "jaKana": "せいかつほご せいど（こうせいろうどうしょう）",
+            "en": "Public assistance (MHLW)"
+          },
+          "desc": {
+            "ja": "くらしに必要なお金が足りないときに、国が支えるしくみです。相談は、住んでいる地域の福祉事務所で受けられます。",
+            "jaKana": "くらしに ひつような おかねが たりない ときに、くにが ささえる しくみです。そうだんは、すんでいる ちいきの ふくし じむしょで うけられます。",
+            "en": "Support when you do not have enough money to live. You can ask at the welfare office in your area."
+          },
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html"
+        },
+        {
+          "id": "jp-w-hellowork",
+          "cat": "work",
+          "name": {
+            "ja": "ハローワーク インターネットサービス",
+            "jaKana": "ハローワーク インターネット サービス",
+            "en": "Hello Work Internet Service"
+          },
+          "desc": {
+            "ja": "仕事さがしや、仕事をやめたときの手続き（雇用保険）の案内です。",
+            "jaKana": "しごと さがしや、しごとを やめた ときの てつづき（こよう ほけん）の あんない です。",
+            "en": "Job search and guidance on unemployment insurance procedures."
+          },
+          "url": "https://www.hellowork.mhlw.go.jp/"
+        },
+        {
+          "id": "jp-w-shogai",
+          "cat": "disability",
+          "name": {
+            "ja": "障がい者福祉（厚生労働省）",
+            "jaKana": "しょうがいしゃ ふくし（こうせいろうどうしょう）",
+            "en": "Welfare for persons with disabilities (MHLW)"
+          },
+          "desc": {
+            "ja": "障がいのある人が使える福祉サービスや制度の案内です。",
+            "jaKana": "しょうがいの ある ひとが つかえる ふくし サービスや せいどの あんない です。",
+            "en": "Welfare services and systems available to people with disabilities."
+          },
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/index.html"
+        },
+        {
+          "id": "jp-w-hattatsu",
+          "cat": "disability",
+          "name": {
+            "ja": "発達障がいナビポータル",
+            "jaKana": "はったつしょうがい ナビ ポータル",
+            "en": "Developmental disabilities navigation portal"
+          },
+          "desc": {
+            "ja": "発達障がいについて、本人・家族・支える人に向けた情報を国がまとめたサイトです。",
+            "jaKana": "はったつしょうがいに ついて、ほんにん・かぞく・ささえる ひとに むけた じょうほうを くにが まとめた サイト です。",
+            "en": "A national site with information for people with developmental disabilities, their families and supporters (Japanese)."
+          },
+          "url": "https://hattatsu.go.jp/"
+        },
+        {
+          "id": "jp-w-kaigo",
+          "cat": "care",
+          "name": {
+            "ja": "介護サービス情報公表システム",
+            "jaKana": "かいご サービス じょうほう こうひょう システム",
+            "en": "Long-term care service information system"
+          },
+          "desc": {
+            "ja": "介護サービスの事業所などを、地域からさがせる国のシステムです。",
+            "jaKana": "かいご サービスの じぎょうしょ などを、ちいきから さがせる くにの システム です。",
+            "en": "A national system to search for care service providers by area (Japanese)."
+          },
+          "url": "https://www.kaigokensaku.mhlw.go.jp/"
+        },
+        {
+          "id": "jp-w-189",
+          "cat": "family",
+          "name": {
+            "ja": "子ども虐待の相談・通告（189）",
+            "jaKana": "こども ぎゃくたいの そうだん・つうこく（189）",
+            "en": "Child abuse consultation and reporting (189)"
+          },
+          "desc": {
+            "ja": "子どもが虐待されているかもしれない、と思ったときの相談先（電話189）の案内です。こども家庭庁のページです。",
+            "jaKana": "こどもが ぎゃくたい されて いるかも しれない、と おもった ときの そうだんさき（でんわ 189）の あんない です。こども かてい ちょうの ページ です。",
+            "en": "Where to call (189) if you think a child may be abused. A Children and Families Agency page."
+          },
+          "url": "https://kodomoshien.cfa.go.jp/no-gyakutai/"
+        },
+        {
+          "id": "jp-w-dv",
+          "cat": "family",
+          "name": {
+            "ja": "DV相談について（内閣府）",
+            "jaKana": "DV そうだんに ついて（ないかくふ）",
+            "en": "Domestic violence consultation (Cabinet Office)"
+          },
+          "desc": {
+            "ja": "配偶者などからの暴力（DV）の相談先の案内です。",
+            "jaKana": "はいぐうしゃ などからの ぼうりょく（DV）の そうだんさきの あんない です。",
+            "en": "Where to get help with domestic violence from a spouse or similar partner."
+          },
+          "url": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html"
+        },
+        {
+          "id": "jp-w-houterasu",
+          "cat": "law",
+          "name": {
+            "ja": "法テラス（日本司法支援センター）",
+            "jaKana": "ほうテラス（にほん しほう しえん センター）",
+            "en": "Houterasu (Japan Legal Support Center)"
+          },
+          "desc": {
+            "ja": "借金・離婚・相続など、法律の困りごとの相談先を案内する国の機関です。",
+            "jaKana": "しゃっきん・りこん・そうぞく など、ほうりつの こまりごとの そうだんさきを あんない する くにの きかん です。",
+            "en": "A public body that guides you to help with legal problems such as debt, divorce or inheritance."
+          },
+          "url": "https://www.houterasu.or.jp/"
+        },
+        {
+          "id": "jp-w-188",
+          "cat": "law",
+          "name": {
+            "ja": "消費者ホットライン188（消費者庁）",
+            "jaKana": "しょうひしゃ ホットライン 188（しょうひしゃちょう）",
+            "en": "Consumer hotline 188 (Consumer Affairs Agency)"
+          },
+          "desc": {
+            "ja": "買い物や契約のトラブル、しつこい勧誘などの相談先につながる電話番号（188）の案内です。",
+            "jaKana": "かいものや けいやくの トラブル、しつこい かんゆう などの そうだんさきに つながる でんわばんごう（188）の あんない です。",
+            "en": "The 188 number connects you to local help with shopping, contract trouble or pushy sales."
+          },
+          "url": "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/"
+        },
+        {
+          "id": "jp-w-foreign",
+          "cat": "foreign",
+          "name": {
+            "ja": "外国人生活支援ポータルサイト（出入国在留管理庁）",
+            "jaKana": "がいこくじん せいかつ しえん ポータル サイト（しゅつにゅうこく ざいりゅう かんりちょう）",
+            "en": "Portal for foreign residents (Immigration Services Agency)"
+          },
+          "desc": {
+            "ja": "日本でくらす外国人に向けて、生活・仕事・相談先の情報をまとめた国のサイトです。",
+            "jaKana": "にほんで くらす がいこくじんに むけて、せいかつ・しごと・そうだんさきの じょうほうを まとめた くにの サイト です。",
+            "en": "A national site for foreign residents with information on daily life, work and where to ask for help."
+          },
+          "url": "https://www.moj.go.jp/isa/support/portal/index.html"
+        },
+        {
+          "id": "jp-w-nenkin",
+          "cat": "pension",
+          "name": {
+            "ja": "日本年金機構",
+            "jaKana": "にほん ねんきん きこう",
+            "en": "Japan Pension Service"
+          },
+          "desc": {
+            "ja": "年金の手続きや相談の案内です。",
+            "jaKana": "ねんきんの てつづきや そうだんの あんない です。",
+            "en": "Pension procedures and where to ask about them."
+          },
+          "url": "https://www.nenkin.go.jp/"
+        }
+      ],
+      "mental": [
+        {
+          "id": "jp-m-mamorou",
+          "name": {
+            "ja": "まもろうよ こころ（厚生労働省）",
+            "jaKana": "まもろうよ こころ（こうせいろうどうしょう）",
+            "en": "Mamorou yo Kokoro (MHLW)"
+          },
+          "desc": {
+            "ja": "電話やSNSで話を聞いてもらえる相談先を、国がまとめたページです。",
+            "jaKana": "でんわや SNSで はなしを きいて もらえる そうだんさきを、くにが まとめた ページ です。",
+            "en": "A national page listing phone and social-media services where someone will listen to you."
+          },
+          "url": "https://www.mhlw.go.jp/mamorouyokokoro/"
+        },
+        {
+          "id": "jp-m-ncnp",
+          "name": {
+            "ja": "こころの情報サイト（国立精神・神経医療研究センター）",
+            "jaKana": "こころの じょうほう サイト（こくりつ せいしん・しんけい いりょう けんきゅう センター）",
+            "en": "Kokoro information site (NCNP)"
+          },
+          "desc": {
+            "ja": "こころの病気や治療、相談先について、国の専門機関がわかりやすく説明しているサイトです。",
+            "jaKana": "こころの びょうきや ちりょう、そうだんさきに ついて、くにの せんもん きかんが わかりやすく せつめい している サイト です。",
+            "en": "A national specialist centre explains mental illness, treatment and where to get support (Japanese)."
+          },
+          "url": "https://kokoro.ncnp.go.jp/"
+        },
+        {
+          "id": "jp-m-kokoronomimi",
+          "name": {
+            "ja": "こころの耳（厚生労働省）",
+            "jaKana": "こころの みみ（こうせいろうどうしょう）",
+            "en": "Kokoro no Mimi (MHLW)"
+          },
+          "desc": {
+            "ja": "働く人と家族、職場に向けた、こころの健康のサイトです。相談窓口の案内もあります。",
+            "jaKana": "はたらく ひとと かぞく、しょくばに むけた、こころの けんこうの サイト です。そうだん まどぐちの あんないも あります。",
+            "en": "Mental health portal for working people, their families and workplaces, including where to get support."
+          },
+          "url": "https://kokoro.mhlw.go.jp/"
+        },
+        {
+          "id": "jp-m-policy",
+          "name": {
+            "ja": "心の健康（厚生労働省）",
+            "jaKana": "こころの けんこう（こうせいろうどうしょう）",
+            "en": "Mental health policy (MHLW)"
+          },
+          "desc": {
+            "ja": "こころの健康についての国の取り組みの案内です。",
+            "jaKana": "こころの けんこうに ついての くにの とりくみの あんない です。",
+            "en": "The government's work on mental health."
+          },
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/kokoro/index.html"
+        }
+      ],
+      "security": [
+        {
+          "id": "jp-s-nco",
+          "name": {
+            "ja": "国家サイバー統括室（内閣官房）",
+            "jaKana": "こっか サイバー とうかつしつ（ないかく かんぼう）",
+            "en": "National Cybersecurity Office (Cabinet Secretariat)"
+          },
+          "desc": {
+            "ja": "国のサイバーセキュリティ政策の中心となる組織です。",
+            "jaKana": "くにの サイバー セキュリティ せいさくの ちゅうしんと なる そしき です。",
+            "en": "The government's central body for cybersecurity policy."
+          },
+          "url": "https://www.cyber.go.jp/"
+        },
+        {
+          "id": "jp-s-portal",
+          "name": {
+            "ja": "サイバーセキュリティ・ポータルサイト",
+            "jaKana": "サイバー セキュリティ・ポータル サイト",
+            "en": "Cybersecurity portal"
+          },
+          "desc": {
+            "ja": "国がまとめた、一人ひとりができる対策の情報サイトです。",
+            "jaKana": "くにが まとめた、ひとり ひとりが できる たいさくの じょうほう サイト です。",
+            "en": "Government site on security steps everyone can take (Japanese)."
+          },
+          "url": "https://security-portal.cyber.go.jp/"
+        },
+        {
+          "id": "jp-s-ipa",
+          "name": {
+            "ja": "IPA 情報セキュリティ",
+            "jaKana": "IPA じょうほう セキュリティ",
+            "en": "IPA information security"
+          },
+          "desc": {
+            "ja": "ウイルスや詐欺の手口、対策、ソフトの弱点（脆弱性）の情報を出している国の機関です。",
+            "jaKana": "ウイルスや さぎの てぐち、たいさく、ソフトの じゃくてん（ぜいじゃくせい）の じょうほうを だしている くにの きかん です。",
+            "en": "A public agency publishing information on malware, scams, countermeasures and software vulnerabilities."
+          },
+          "url": "https://www.ipa.go.jp/security/index.html"
+        },
+        {
+          "id": "jp-s-kokokara",
+          "name": {
+            "ja": "ここからセキュリティ！（IPA）",
+            "jaKana": "ここから セキュリティ！（IPA）",
+            "en": "Koko kara Security! (IPA)"
+          },
+          "desc": {
+            "ja": "困ったときの相談先や対策を、目的別にさがせる入口のサイトです。",
+            "jaKana": "こまった ときの そうだんさきや たいさくを、もくてき べつに さがせる いりぐちの サイト です。",
+            "en": "An entry site to find help and countermeasures by situation (Japanese)."
+          },
+          "url": "https://www.ipa.go.jp/security/kokokara/"
+        },
+        {
+          "id": "jp-s-jpcert",
+          "name": {
+            "ja": "JPCERTコーディネーションセンター",
+            "jaKana": "JPCERT コーディネーション センター",
+            "en": "JPCERT/CC"
+          },
+          "desc": {
+            "ja": "サイバー攻撃などの報告を受け、対応の調整や注意喚起をしている専門機関です（国の委託も受けて活動する一般社団法人です）。",
+            "jaKana": "サイバー こうげき などの ほうこくを うけ、たいおうの ちょうせいや ちゅうい かんきを している せんもん きかん です（くにの いたくも うけて かつどう する いっぱん しゃだん ほうじん です）。",
+            "en": "Receives incident reports, coordinates responses and issues alerts (a general incorporated association that also works under government contracts)."
+          },
+          "url": "https://www.jpcert.or.jp/"
+        },
+        {
+          "id": "jp-s-npa",
+          "name": {
+            "ja": "サイバー事案の相談窓口（警察庁）",
+            "jaKana": "サイバー じあんの そうだん まどぐち（けいさつちょう）",
+            "en": "Cybercrime consultation (National Police Agency)"
+          },
+          "desc": {
+            "ja": "ネット上の犯罪被害を、警察に相談・通報するための案内です。",
+            "jaKana": "ネットじょうの はんざい ひがいを、けいさつに そうだん・つうほう する ための あんない です。",
+            "en": "How to consult or report online crime to the police."
+          },
+          "url": "https://www.npa.go.jp/bureau/cyber/soudan.html"
+        },
+        {
+          "id": "jp-s-npa-basic",
+          "name": {
+            "ja": "基本的なセキュリティ対策（警察庁）",
+            "jaKana": "きほんてきな セキュリティ たいさく（けいさつちょう）",
+            "en": "Basic security measures (National Police Agency)"
+          },
+          "desc": {
+            "ja": "毎日の生活でできる、基本的な対策の説明です。",
+            "jaKana": "まいにちの せいかつで できる、きほんてきな たいさくの せつめい です。",
+            "en": "Basic steps you can take in daily life."
+          },
+          "url": "https://www.npa.go.jp/bureau/cyber/countermeasures/basic.html"
+        },
+        {
+          "id": "jp-s-soumu",
+          "name": {
+            "ja": "国民のためのサイバーセキュリティサイト（総務省）",
+            "jaKana": "こくみんの ための サイバー セキュリティ サイト（そうむしょう）",
+            "en": "Cybersecurity site for the public (MIC)"
+          },
+          "desc": {
+            "ja": "インターネットを安全に使うための基本を、一般の人向けに説明しています。",
+            "jaKana": "インターネットを あんぜんに つかう ための きほんを、いっぱんの ひと むけに せつめい しています。",
+            "en": "Explains the basics of using the internet safely for the general public."
+          },
+          "url": "https://www.soumu.go.jp/main_sosiki/cybersecurity/kokumin/"
+        },
+        {
+          "id": "jp-s-nict",
+          "name": {
+            "ja": "情報通信研究機構（NICT）",
+            "jaKana": "じょうほう つうしん けんきゅう きこう（NICT）",
+            "en": "NICT"
+          },
+          "desc": {
+            "ja": "通信とサイバーセキュリティを研究している国の研究機関です。",
+            "jaKana": "つうしんと サイバー セキュリティを けんきゅう している くにの けんきゅう きかん です。",
+            "en": "A national research institute for communications and cybersecurity."
+          },
+          "url": "https://www.nict.go.jp/"
+        },
+        {
+          "id": "jp-s-aisi",
+          "name": {
+            "ja": "AIセーフティ・インスティテュート（J-AISI）",
+            "jaKana": "AI セーフティ・インスティテュート（J-AISI）",
+            "en": "Japan AI Safety Institute (J-AISI)"
+          },
+          "desc": {
+            "ja": "AIの安全性の評価や研究に取り組む国の組織です。",
+            "jaKana": "AIの あんぜんせいの ひょうかや けんきゅうに とりくむ くにの そしき です。",
+            "en": "A national body working on evaluating and researching AI safety."
+          },
+          "url": "https://aisi.go.jp/"
+        }
+      ],
+      "research": [
+        {
+          "id": "jp-r-amed",
+          "name": {
+            "ja": "日本医療研究開発機構（AMED）",
+            "jaKana": "にほん いりょう けんきゅう かいはつ きこう（AMED）",
+            "en": "AMED"
+          },
+          "desc": {
+            "ja": "医療の研究開発を支援する国の機関です。",
+            "jaKana": "いりょうの けんきゅう かいはつを しえん する くにの きかん です。",
+            "en": "A national agency funding and supporting medical research and development."
+          },
+          "url": "https://www.amed.go.jp/"
+        },
+        {
+          "id": "jp-r-jihs",
+          "name": {
+            "ja": "国立健康危機管理研究機構（JIHS）",
+            "jaKana": "こくりつ けんこう きき かんり けんきゅう きこう（JIHS）",
+            "en": "JIHS"
+          },
+          "desc": {
+            "ja": "感染症などの健康危機に備え、研究と医療を行う国の機関です。",
+            "jaKana": "かんせんしょう などの けんこう ききに そなえ、けんきゅうと いりょうを おこなう くにの きかん です。",
+            "en": "A national institute for research and medical care to prepare for health crises such as infectious diseases."
+          },
+          "url": "https://www.jihs.go.jp/"
+        },
+        {
+          "id": "jp-r-jst",
+          "name": {
+            "ja": "科学技術振興機構（JST）",
+            "jaKana": "かがく ぎじゅつ しんこう きこう（JST）",
+            "en": "JST"
+          },
+          "desc": {
+            "ja": "科学技術の研究を支援する国の機関です。",
+            "jaKana": "かがく ぎじゅつの けんきゅうを しえん する くにの きかん です。",
+            "en": "A national agency supporting science and technology research."
+          },
+          "url": "https://www.jst.go.jp/index.html"
+        },
+        {
+          "id": "jp-r-riken",
+          "name": {
+            "ja": "理化学研究所（理研）",
+            "jaKana": "りかがく けんきゅうしょ（りけん）",
+            "en": "RIKEN"
+          },
+          "desc": {
+            "ja": "生命科学やAIなど、幅広い分野を研究している日本の研究所です。",
+            "jaKana": "せいめい かがくや AI など、はばひろい ぶんやを けんきゅう している にほんの けんきゅうしょ です。",
+            "en": "Japan's research institute covering many fields, including life sciences and AI."
+          },
+          "url": "https://www.riken.jp/"
+        },
+        {
+          "id": "jp-r-aist",
+          "name": {
+            "ja": "産業技術総合研究所（産総研）",
+            "jaKana": "さんぎょう ぎじゅつ そうごう けんきゅうしょ（さんそうけん）",
+            "en": "AIST"
+          },
+          "desc": {
+            "ja": "AIなど、社会や産業に役立つ技術を研究している国の研究所です。",
+            "jaKana": "AI など、しゃかいや さんぎょうに やくだつ ぎじゅつを けんきゅう している くにの けんきゅうしょ です。",
+            "en": "A national institute researching technologies for society and industry, including AI."
+          },
+          "url": "https://www.aist.go.jp/"
+        }
+      ],
+      "outbreak": [
+        {
+          "id": "jp-o-mhlw",
+          "name": {
+            "ja": "感染症情報（厚生労働省）",
+            "jaKana": "かんせんしょう じょうほう（こうせいろうどうしょう）",
+            "en": "Infectious disease information (MHLW)"
+          },
+          "desc": {
+            "ja": "国内の感染症について、病気ごとの説明と国の対策の案内です。",
+            "jaKana": "こくないの かんせんしょうに ついて、びょうき ごとの せつめいと くにの たいさくの あんない です。",
+            "en": "Disease-by-disease information and government measures for infectious diseases in Japan."
+          },
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/index.html"
+        },
+        {
+          "id": "jp-o-jihs",
+          "name": {
+            "ja": "国立健康危機管理研究機構（JIHS）",
+            "jaKana": "こくりつ けんこう きき かんり けんきゅう きこう（JIHS）",
+            "en": "JIHS"
+          },
+          "desc": {
+            "ja": "感染症の発生状況や専門的な情報を出している国の機関です。",
+            "jaKana": "かんせんしょうの はっせい じょうきょうや せんもんてきな じょうほうを だしている くにの きかん です。",
+            "en": "A national institute publishing surveillance data and expert information on infectious diseases."
+          },
+          "url": "https://www.jihs.go.jp/"
+        },
+        {
+          "id": "jp-o-forth",
+          "name": {
+            "ja": "FORTH（厚生労働省検疫所）",
+            "jaKana": "FORTH（こうせいろうどうしょう けんえきじょ）",
+            "en": "FORTH (MHLW Quarantine Station)"
+          },
+          "desc": {
+            "ja": "海外へ行く人向けに、国や地域ごとの感染症情報を出しています。",
+            "jaKana": "かいがいへ いく ひと むけに、くにや ちいき ごとの かんせんしょう じょうほうを だしています。",
+            "en": "Infectious disease information by country for people travelling abroad."
+          },
+          "url": "https://www.forth.go.jp/index.html"
+        }
+      ]
+    },
+    "USA": {
+      "welfare": [
+        {
+          "id": "us-w-benefits",
+          "cat": "money",
+          "name": {
+            "ja": "政府の給付・支援（USA.gov）",
+            "jaKana": "せいふの きゅうふ・しえん（USA.gov）",
+            "en": "Government benefits (USA.gov)"
+          },
+          "desc": {
+            "ja": "お金・食べ物・住まい・医療などの公的支援をまとめた米国政府のページです（英語）。",
+            "jaKana": "おかね・たべもの・すまい・いりょう などの こうてき しえんを まとめた べいこく せいふの ページ です（えいご）。",
+            "en": "US government guide to benefits for money, food, housing, health care and more."
+          },
+          "url": "https://www.usa.gov/benefits"
+        },
+        {
+          "id": "us-w-finder",
+          "cat": "money",
+          "name": {
+            "ja": "ベネフィット・ファインダー（USA.gov）",
+            "jaKana": "ベネフィット・ファインダー（USA.gov）",
+            "en": "Benefit finder (USA.gov)"
+          },
+          "desc": {
+            "ja": "いくつかの質問に答えると、使えるかもしれない支援を案内します（英語）。",
+            "jaKana": "いくつかの しつもんに こたえると、つかえるかも しれない しえんを あんない します（えいご）。",
+            "en": "Answer a few questions to see benefits you may be able to get."
+          },
+          "url": "https://www.usa.gov/benefit-finder"
+        }
+      ],
+      "mental": [
+        {
+          "id": "us-m-988",
+          "name": {
+            "ja": "988 自殺・危機ライフライン",
+            "jaKana": "988 じさつ・きき ライフライン",
+            "en": "988 Suicide & Crisis Lifeline"
+          },
+          "desc": {
+            "ja": "米国の全国の相談窓口です。電話・ショートメッセージ・チャットで話を聞いてもらえます（英語・スペイン語など）。国の資金で運営されていますが、運営しているのは非営利団体です。",
+            "jaKana": "べいこくの ぜんこくの そうだん まどぐち です。でんわ・ショート メッセージ・チャットで はなしを きいて もらえます（えいご・スペインご など）。くにの しきんで うんえい されて いますが、うんえい して いるのは ひえいり だんたい です。",
+            "en": "US national crisis line: call, text or chat (English, Spanish and more). Government-funded; run by a non-profit organisation."
+          },
+          "url": "https://988lifeline.org/"
+        }
+      ],
+      "security": [
+        {
+          "id": "us-s-cisa-ind",
+          "name": {
+            "ja": "個人・家族向けの対策（CISA）",
+            "jaKana": "こじん・かぞく むけの たいさく（CISA）",
+            "en": "Individuals and families (CISA)"
+          },
+          "desc": {
+            "ja": "米国のサイバーセキュリティ機関による、一般の人向けの対策の案内です（英語）。",
+            "jaKana": "べいこくの サイバー セキュリティ きかんに よる、いっぱんの ひと むけの たいさくの あんない です（えいご）。",
+            "en": "Security advice for the public from the US cybersecurity agency."
+          },
+          "url": "https://www.cisa.gov/topics/individuals-and-families"
+        }
+      ],
+      "research": [
+        {
+          "id": "us-r-nih",
+          "name": {
+            "ja": "米国国立衛生研究所（NIH）",
+            "jaKana": "べいこく こくりつ えいせい けんきゅうじょ（NIH）",
+            "en": "National Institutes of Health (NIH)"
+          },
+          "desc": {
+            "ja": "医療・健康の研究を行い、支援している米国の機関です（英語）。",
+            "jaKana": "いりょう・けんこうの けんきゅうを おこない、しえん している べいこくの きかん です（えいご）。",
+            "en": "The US agency conducting and funding medical and health research."
+          },
+          "url": "https://www.nih.gov/"
+        }
+      ],
+      "outbreak": [
+        {
+          "id": "us-o-cdc",
+          "name": {
+            "ja": "米国疾病予防管理センター（CDC）",
+            "jaKana": "べいこく しっぺい よぼう かんり センター（CDC）",
+            "en": "CDC"
+          },
+          "desc": {
+            "ja": "米国の感染症や健康の情報を出している機関です（英語）。",
+            "jaKana": "べいこくの かんせんしょうや けんこうの じょうほうを だしている きかん です（えいご）。",
+            "en": "The US public health agency for infectious diseases and health information."
+          },
+          "url": "https://www.cdc.gov/"
+        }
+      ]
+    },
+    "GBR": {
+      "welfare": [
+        {
+          "id": "gb-w-benefits",
+          "cat": "money",
+          "name": {
+            "ja": "給付・手当（GOV.UK）",
+            "jaKana": "きゅうふ・てあて（GOV.UK）",
+            "en": "Benefits (GOV.UK)"
+          },
+          "desc": {
+            "ja": "英国の公的な給付や手当の案内です（英語）。",
+            "jaKana": "えいこくの こうてきな きゅうふや てあての あんない です（えいご）。",
+            "en": "UK government guide to benefits."
+          },
+          "url": "https://www.gov.uk/benefits"
+        }
+      ],
+      "security": [
+        {
+          "id": "gb-s-ncsc",
+          "name": {
+            "ja": "英国国家サイバーセキュリティセンター（NCSC）",
+            "jaKana": "えいこく こっか サイバー セキュリティ センター（NCSC）",
+            "en": "National Cyber Security Centre (NCSC)"
+          },
+          "desc": {
+            "ja": "英国のサイバーセキュリティの中心機関です。個人向けの対策もあります（英語）。",
+            "jaKana": "えいこくの サイバー セキュリティの ちゅうしん きかん です。こじん むけの たいさくも あります（えいご）。",
+            "en": "The UK's lead cybersecurity body, with advice for individuals."
+          },
+          "url": "https://www.ncsc.gov.uk/"
+        },
+        {
+          "id": "gb-s-scam",
+          "name": {
+            "ja": "詐欺サイトの報告（NCSC）",
+            "jaKana": "さぎ サイトの ほうこく（NCSC）",
+            "en": "Report a scam website (NCSC)"
+          },
+          "desc": {
+            "ja": "あやしいサイトを見つけたときの報告方法の案内です（英語）。",
+            "jaKana": "あやしい サイトを みつけた ときの ほうこく ほうほうの あんない です（えいご）。",
+            "en": "How to report a suspicious website."
+          },
+          "url": "https://www.ncsc.gov.uk/section/about-this-website/report-scam-website"
+        }
+      ]
+    },
+    "AFG": {
+      "outbreak": [
+        {
+          "id": "afg-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アフガニスタン公衆衛生省",
+            "jaKana": "アフガニスタン こうしゅう えいせい しょう",
+            "en": "Ministry of Public Health"
+          },
+          "url": "https://www.moph.gov.af/index.php/en",
+          "pageLang": [
+            "en"
+          ],
+          "desc": {
+            "ja": "アフガニスタンで保健行政を担っている当局の公式サイトです（この当局を正式に承認している国は限られています）。",
+            "jaKana": "アフガニスタンで ほけん ぎょうせいを になって いる とうきょくの こうしき サイト です（この とうきょくを せいしきに しょうにん している くには かぎられて います）。",
+            "en": "Official site of the authority currently running health administration in Afghanistan (few countries formally recognise this authority)."
+          }
+        }
+      ],
+      "mental": [
+        {
+          "id": "afg-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アフガニスタン公衆衛生省",
+            "jaKana": "アフガニスタン こうしゅう えいせい しょう",
+            "en": "Ministry of Public Health"
+          },
+          "url": "https://www.moph.gov.af/index.php/en",
+          "pageLang": [
+            "en"
+          ],
+          "desc": {
+            "ja": "アフガニスタンで保健行政を担っている当局の公式サイトです（この当局を正式に承認している国は限られています）。",
+            "jaKana": "アフガニスタンで ほけん ぎょうせいを になって いる とうきょくの こうしき サイト です（この とうきょくを せいしきに しょうにん している くには かぎられて います）。",
+            "en": "Official site of the authority currently running health administration in Afghanistan (few countries formally recognise this authority)."
+          }
+        }
+      ]
+    },
+    "ALB": {
+      "outbreak": [
+        {
+          "id": "alb-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アルバニア保健社会福祉省",
+            "jaKana": "アルバニア ほけん しゃかい ふくし しょう",
+            "en": "Ministry of Health and Social Welfare"
+          },
+          "url": "https://shendetesia.gov.al/en",
+          "pageLang": [
+            "sq",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "alb-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アルバニア保健社会福祉省",
+            "jaKana": "アルバニア ほけん しゃかい ふくし しょう",
+            "en": "Ministry of Health and Social Welfare"
+          },
+          "url": "https://shendetesia.gov.al/en",
+          "pageLang": [
+            "sq",
+            "en"
+          ]
+        }
+      ]
+    },
+    "BMU": {
+      "outbreak": [
+        {
+          "id": "bmu-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "バミューダ諸島保健省",
+            "jaKana": "バミューダ しょとう ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.gov.bm/ministry/health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "bmu-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "バミューダ諸島保健省",
+            "jaKana": "バミューダ しょとう ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.gov.bm/ministry/health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "BTN": {
+      "outbreak": [
+        {
+          "id": "btn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ブータン保健省",
+            "jaKana": "ブータン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.bt/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "btn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ブータン保健省",
+            "jaKana": "ブータン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.bt/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "btn-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ブータンBtCIRT",
+            "jaKana": "ブータン BtCIRT",
+            "en": "Bhutan Computer Incident Response Team (BtCIRT)"
+          },
+          "url": "https://www.btcirt.bt/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "BOL": {
+      "outbreak": [
+        {
+          "id": "bol-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ボリビア保健スポーツ省",
+            "jaKana": "ボリビア ほけん スポーツ しょう",
+            "en": "Ministerio de Salud y Deportes"
+          },
+          "url": "https://www.minsalud.gob.bo/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "bol-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ボリビア保健スポーツ省",
+            "jaKana": "ボリビア ほけん スポーツ しょう",
+            "en": "Ministerio de Salud y Deportes"
+          },
+          "url": "https://www.minsalud.gob.bo/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "BIH": {
+      "outbreak": [
+        {
+          "id": "bih-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ボスニア・ヘルツェゴビナ民政省",
+            "jaKana": "ボスニア・ヘルツェゴビナ みんせいしょう",
+            "en": "Ministry of Civil Affairs of Bosnia and Herzegovina"
+          },
+          "url": "https://mcp.gov.ba/en/competences-of-the-ministry",
+          "pageLang": [
+            "bs",
+            "hr",
+            "sr"
+          ],
+          "desc": {
+            "ja": "ボスニア・ヘルツェゴビナでは保健は主に構成体（エンティティ）ごとに担われており、この省は国のレベルで調整を担う機関です。",
+            "jaKana": "ボスニア・ヘルツェゴビナでは ほけんは おもに こうせいたい（エンティティ）ごとに になわれて おり、この しょうは くにの レベルで ちょうせいを になう きかん です。",
+            "en": "In Bosnia and Herzegovina, health is mainly run by the entities; this ministry coordinates at state level."
+          }
+        }
+      ],
+      "mental": [
+        {
+          "id": "bih-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ボスニア・ヘルツェゴビナ民政省",
+            "jaKana": "ボスニア・ヘルツェゴビナ みんせいしょう",
+            "en": "Ministry of Civil Affairs of Bosnia and Herzegovina"
+          },
+          "url": "https://mcp.gov.ba/en/competences-of-the-ministry",
+          "pageLang": [
+            "bs",
+            "hr",
+            "sr"
+          ],
+          "desc": {
+            "ja": "ボスニア・ヘルツェゴビナでは保健は主に構成体（エンティティ）ごとに担われており、この省は国のレベルで調整を担う機関です。",
+            "jaKana": "ボスニア・ヘルツェゴビナでは ほけんは おもに こうせいたい（エンティティ）ごとに になわれて おり、この しょうは くにの レベルで ちょうせいを になう きかん です。",
+            "en": "In Bosnia and Herzegovina, health is mainly run by the entities; this ministry coordinates at state level."
+          }
+        }
+      ]
+    },
+    "BWA": {
+      "welfare": [
+        {
+          "id": "bwa-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ボツワナ地方自治・伝統問題省",
+            "jaKana": "ボツワナ ちほう じち でんとう もんだい しょう",
+            "en": "Ministry of Local Government and Traditional Affairs"
+          },
+          "url": "https://www.gov.bw/ministries/ministry-local-government-and-traditional-affairs",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "BRA": {
+      "outbreak": [
+        {
+          "id": "bra-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ブラジル保健省",
+            "jaKana": "ブラジル ほけんしょう",
+            "en": "Ministério da Saúde"
+          },
+          "url": "https://www.gov.br/saude/pt-br",
+          "pageLang": [
+            "pt"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "bra-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ブラジル保健省",
+            "jaKana": "ブラジル ほけんしょう",
+            "en": "Ministério da Saúde"
+          },
+          "url": "https://www.gov.br/saude/pt-br",
+          "pageLang": [
+            "pt"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "bra-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ブラジル開発・社会扶助・家族・飢餓対策省",
+            "jaKana": "ブラジル かいはつ・しゃかい ふじょ・かぞく・きが たいさく しょう",
+            "en": "Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome"
+          },
+          "url": "https://www.gov.br/mds/pt-br",
+          "pageLang": [
+            "pt"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "bra-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ブラジルCERT.br",
+            "jaKana": "ブラジル CERT.br",
+            "en": "CERT.br"
+          },
+          "url": "https://www.cert.br/",
+          "pageLang": [
+            "pt",
+            "en"
+          ],
+          "desc": {
+            "ja": "ブラジルのサイバー攻撃への対応や注意の呼びかけを行う専門チームです（運営は非営利の民間団体NIC.brです）。",
+            "jaKana": "ブラジルの サイバー こうげきへの たいおうや ちゅういの よびかけを おこなう せんもん チーム です（うんえいは ひえいりの みんかん だんたい NIC.br です）。",
+            "en": "Brazil's CSIRT for cyber incidents and warnings (run by NIC.br, a non-profit organisation)."
+          }
+        }
+      ]
+    },
+    "BRN": {
+      "outbreak": [
+        {
+          "id": "brn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ブルネイ保健省",
+            "jaKana": "ブルネイ ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.bn/",
+          "pageLang": [
+            "ms",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "brn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ブルネイ保健省",
+            "jaKana": "ブルネイ ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.bn/",
+          "pageLang": [
+            "ms",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "brn-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ブルネイBruCERT（サイバーセキュリティ・ブルネイ）",
+            "jaKana": "ブルネイ BruCERT（サイバー セキュリティ・ブルネイ）",
+            "en": "Brunei Computer Emergency Response Team (BruCERT), Cyber Security Brunei"
+          },
+          "url": "https://csb.gov.bn/brucert",
+          "pageLang": [
+            "en",
+            "ms"
+          ]
+        }
+      ]
+    },
+    "HRV": {
+      "outbreak": [
+        {
+          "id": "hrv-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "クロアチア保健省",
+            "jaKana": "クロアチア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://zdravlje.gov.hr/",
+          "pageLang": [
+            "hr"
+          ]
+        },
+        {
+          "id": "hrv-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "クロアチア公衆衛生研究所",
+            "jaKana": "クロアチア こうしゅう えいせい けんきゅうじょ",
+            "en": "Croatian Institute of Public Health"
+          },
+          "url": "https://www.hzjz.hr/en/about-us/",
+          "pageLang": [
+            "hr",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "hrv-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "クロアチア保健省",
+            "jaKana": "クロアチア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://zdravlje.gov.hr/",
+          "pageLang": [
+            "hr"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "hrv-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "クロアチア労働・年金制度・家族・社会政策省",
+            "jaKana": "クロアチア ろうどう・ねんきん せいど・かぞく・しゃかい せいさく しょう",
+            "en": "Ministry of Labour, Pension System, Family and Social Policy"
+          },
+          "url": "https://mrosp.gov.hr/en",
+          "pageLang": [
+            "hr",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "hrv-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "クロアチア国家CERT（CERT.hr）",
+            "jaKana": "クロアチア こっか CERT（CERT.hr）",
+            "en": "National CERT"
+          },
+          "url": "https://www.cert.hr/en/home-page/",
+          "pageLang": [
+            "hr",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "hrv-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "クロアチア公衆衛生研究所",
+            "jaKana": "クロアチア こうしゅう えいせい けんきゅうじょ",
+            "en": "Croatian Institute of Public Health"
+          },
+          "url": "https://www.hzjz.hr/en/about-us/",
+          "pageLang": [
+            "hr",
+            "en"
+          ]
+        }
+      ]
+    },
+    "CYP": {
+      "security": [
+        {
+          "id": "cyp-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "キプロスデジタルセキュリティ庁",
+            "jaKana": "キプロス デジタル セキュリティ ちょう",
+            "en": "Digital Security Authority"
+          },
+          "url": "https://dsa.cy/en/",
+          "pageLang": [
+            "el",
+            "en"
+          ]
+        }
+      ]
+    },
+    "ECU": {
+      "outbreak": [
+        {
+          "id": "ecu-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "エクアドル公衆衛生省",
+            "jaKana": "エクアドル こうしゅう えいせい しょう",
+            "en": "Ministerio de Salud Pública"
+          },
+          "url": "https://www.salud.gob.ec/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ecu-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "エクアドル公衆衛生省",
+            "jaKana": "エクアドル こうしゅう えいせい しょう",
+            "en": "Ministerio de Salud Pública"
+          },
+          "url": "https://www.salud.gob.ec/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "FRA": {
+      "outbreak": [
+        {
+          "id": "fra-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "フランス保健省",
+            "jaKana": "フランス ほけんしょう",
+            "en": "Ministry of Health, Families, Autonomy and Persons with Disabilities"
+          },
+          "url": "https://sante.gouv.fr/",
+          "pageLang": [
+            "fr"
+          ]
+        },
+        {
+          "id": "fra-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "フランス公衆衛生庁（Santé publique France）",
+            "jaKana": "フランス こうしゅう えいせい ちょう（Santé publique France）",
+            "en": "Santé publique France"
+          },
+          "url": "https://www.santepubliquefrance.fr/",
+          "pageLang": [
+            "fr",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "fra-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "フランス保健省",
+            "jaKana": "フランス ほけんしょう",
+            "en": "Ministry of Health, Families, Autonomy and Persons with Disabilities"
+          },
+          "url": "https://sante.gouv.fr/",
+          "pageLang": [
+            "fr"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "fra-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "フランス労働・連帯省",
+            "jaKana": "フランス ろうどう れんたい しょう",
+            "en": "Ministry of Labour and Solidarity"
+          },
+          "url": "https://solidarites.gouv.fr/",
+          "pageLang": [
+            "fr"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "fra-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "フランス国家サイバーセキュリティ庁（ANSSI）",
+            "jaKana": "フランス こっか サイバー セキュリティ ちょう（ANSSI）",
+            "en": "National Cybersecurity Agency of France (ANSSI)"
+          },
+          "url": "https://cyber.gouv.fr/",
+          "pageLang": [
+            "fr",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "fra-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "フランス公衆衛生庁（Santé publique France）",
+            "jaKana": "フランス こうしゅう えいせい ちょう（Santé publique France）",
+            "en": "Santé publique France"
+          },
+          "url": "https://www.santepubliquefrance.fr/",
+          "pageLang": [
+            "fr",
+            "en"
+          ]
+        }
+      ]
+    },
+    "DEU": {
+      "outbreak": [
+        {
+          "id": "deu-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ドイツ連邦保健省",
+            "jaKana": "ドイツ れんぽう ほけんしょう",
+            "en": "Federal Ministry of Health"
+          },
+          "url": "https://www.bundesgesundheitsministerium.de/",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        },
+        {
+          "id": "deu-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ドイツロベルト・コッホ研究所（RKI）",
+            "jaKana": "ドイツ ロベルト・コッホ けんきゅうじょ（RKI）",
+            "en": "Robert Koch Institute"
+          },
+          "url": "https://www.rki.de/DE/Home/home_node.html",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "deu-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ドイツ連邦保健省",
+            "jaKana": "ドイツ れんぽう ほけんしょう",
+            "en": "Federal Ministry of Health"
+          },
+          "url": "https://www.bundesgesundheitsministerium.de/",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "deu-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ドイツ連邦労働社会省",
+            "jaKana": "ドイツ れんぽう ろうどう しゃかい しょう",
+            "en": "Federal Ministry of Labour and Social Affairs"
+          },
+          "url": "https://www.bmas.de/DE/Startseite/start.html",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "deu-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ドイツ連邦情報セキュリティ庁（BSI）",
+            "jaKana": "ドイツ れんぽう じょうほう セキュリティ ちょう（BSI）",
+            "en": "Federal Office for Information Security (BSI)"
+          },
+          "url": "https://www.bsi.bund.de/EN/Home/home_node.html",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "deu-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ドイツロベルト・コッホ研究所（RKI）",
+            "jaKana": "ドイツ ロベルト・コッホ けんきゅうじょ（RKI）",
+            "en": "Robert Koch Institute"
+          },
+          "url": "https://www.rki.de/DE/Home/home_node.html",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        }
+      ]
+    },
+    "IDN": {
+      "outbreak": [
+        {
+          "id": "idn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "インドネシア保健省",
+            "jaKana": "インドネシア ほけんしょう",
+            "en": "Ministry of Health Republic of Indonesia"
+          },
+          "url": "https://www.kemkes.go.id/eng/home",
+          "pageLang": [
+            "id",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "idn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "インドネシア保健省",
+            "jaKana": "インドネシア ほけんしょう",
+            "en": "Ministry of Health Republic of Indonesia"
+          },
+          "url": "https://www.kemkes.go.id/eng/home",
+          "pageLang": [
+            "id",
+            "en"
+          ]
+        }
+      ]
+    },
+    "IRL": {
+      "outbreak": [
+        {
+          "id": "irl-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アイルランド保健省",
+            "jaKana": "アイルランド ほけんしょう",
+            "en": "Department of Health"
+          },
+          "url": "https://www.gov.ie/health",
+          "pageLang": [
+            "en",
+            "ga"
+          ]
+        },
+        {
+          "id": "irl-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "アイルランド保健保護監視センター（HPSC）",
+            "jaKana": "アイルランド ほけん ほご かんし センター（HPSC）",
+            "en": "Health Protection Surveillance Centre"
+          },
+          "url": "https://www.hpsc.ie/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "irl-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アイルランド保健省",
+            "jaKana": "アイルランド ほけんしょう",
+            "en": "Department of Health"
+          },
+          "url": "https://www.gov.ie/health",
+          "pageLang": [
+            "en",
+            "ga"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "irl-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "アイルランド社会保護省",
+            "jaKana": "アイルランド しゃかい ほごしょう",
+            "en": "Department of Social Protection"
+          },
+          "url": "https://www.gov.ie/en/department-of-social-protection/",
+          "pageLang": [
+            "en",
+            "ga"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "irl-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "アイルランド国家サイバーセキュリティセンター（NCSC）",
+            "jaKana": "アイルランド こっか サイバー セキュリティ センター（NCSC）",
+            "en": "National Cyber Security Centre"
+          },
+          "url": "https://ncsc.gov.ie/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "irl-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "アイルランド保健保護監視センター（HPSC）",
+            "jaKana": "アイルランド ほけん ほご かんし センター（HPSC）",
+            "en": "Health Protection Surveillance Centre"
+          },
+          "url": "https://www.hpsc.ie/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "ISR": {
+      "outbreak": [
+        {
+          "id": "isr-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "イスラエル保健省",
+            "jaKana": "イスラエル ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.gov.il/en/departments/ministry_of_health",
+          "pageLang": [
+            "he",
+            "en",
+            "ar"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "isr-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "イスラエル保健省",
+            "jaKana": "イスラエル ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.gov.il/en/departments/ministry_of_health",
+          "pageLang": [
+            "he",
+            "en",
+            "ar"
+          ]
+        }
+      ]
+    },
+    "ITA": {
+      "security": [
+        {
+          "id": "ita-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "イタリア国家サイバーセキュリティ庁（ACN）",
+            "jaKana": "イタリア こっか サイバー セキュリティ ちょう（ACN）",
+            "en": "Agenzia per la Cybersicurezza Nazionale"
+          },
+          "url": "https://www.acn.gov.it/en",
+          "pageLang": [
+            "it",
+            "en"
+          ]
+        }
+      ]
+    },
+    "LBN": {
+      "outbreak": [
+        {
+          "id": "lbn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "レバノン公衆衛生省",
+            "jaKana": "レバノン こうしゅう えいせいしょう",
+            "en": "Ministry of Public Health"
+          },
+          "url": "https://www.moph.gov.lb/",
+          "pageLang": [
+            "ar",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "lbn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "レバノン公衆衛生省",
+            "jaKana": "レバノン こうしゅう えいせいしょう",
+            "en": "Ministry of Public Health"
+          },
+          "url": "https://www.moph.gov.lb/",
+          "pageLang": [
+            "ar",
+            "en"
+          ]
+        }
+      ]
+    },
+    "LTU": {
+      "outbreak": [
+        {
+          "id": "ltu-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "リトアニア保健省",
+            "jaKana": "リトアニア ほけんしょう",
+            "en": "Ministry of Health of the Republic of Lithuania"
+          },
+          "url": "https://sam.lrv.lt/en/",
+          "pageLang": [
+            "lt",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ltu-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "リトアニア保健省",
+            "jaKana": "リトアニア ほけんしょう",
+            "en": "Ministry of Health of the Republic of Lithuania"
+          },
+          "url": "https://sam.lrv.lt/en/",
+          "pageLang": [
+            "lt",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "ltu-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "リトアニア社会保障労働省",
+            "jaKana": "リトアニア しゃかい ほしょう ろうどうしょう",
+            "en": "Ministry of Social Security and Labour of the Republic of Lithuania"
+          },
+          "url": "https://socmin.lrv.lt/en/",
+          "pageLang": [
+            "lt",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "ltu-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "リトアニア国家サイバーセキュリティセンター（NKSC/CERT-LT）",
+            "jaKana": "リトアニア こっか サイバー セキュリティ センター（NKSC/CERT-LT）",
+            "en": "National Cyber Security Centre under the Ministry of National Defence"
+          },
+          "url": "https://nksc.lt/en/",
+          "pageLang": [
+            "lt",
+            "en"
+          ]
+        }
+      ]
+    },
+    "LUX": {
+      "outbreak": [
+        {
+          "id": "lux-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ルクセンブルク保健・社会保障省",
+            "jaKana": "ルクセンブルク ほけん・しゃかい ほしょう しょう",
+            "en": "Ministry of Health and Social Security"
+          },
+          "url": "https://santesecu.public.lu/en/",
+          "pageLang": [
+            "fr",
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "lux-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ルクセンブルク保健・社会保障省",
+            "jaKana": "ルクセンブルク ほけん・しゃかい ほしょう しょう",
+            "en": "Ministry of Health and Social Security"
+          },
+          "url": "https://santesecu.public.lu/en/",
+          "pageLang": [
+            "fr",
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "lux-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ルクセンブルク家族・連帯・共生・受入れ省",
+            "jaKana": "ルクセンブルク かぞく・れんたい・きょうせい・うけいれ しょう",
+            "en": "Ministère de la Famille, des Solidarités, du Vivre ensemble et de l'Accueil"
+          },
+          "url": "https://mfsva.gouvernement.lu/fr.html",
+          "pageLang": [
+            "fr",
+            "de",
+            "en"
+          ]
+        }
+      ]
+    },
+    "MAC": {
+      "outbreak": [
+        {
+          "id": "mac-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "マカオ衛生局",
+            "jaKana": "マカオ えいせい きょく",
+            "en": "Health Bureau"
+          },
+          "url": "https://www.gov.mo/en/entity-page/entity-552/",
+          "pageLang": [
+            "zh",
+            "pt",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "mac-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "マカオ衛生局",
+            "jaKana": "マカオ えいせい きょく",
+            "en": "Health Bureau"
+          },
+          "url": "https://www.gov.mo/en/entity-page/entity-552/",
+          "pageLang": [
+            "zh",
+            "pt",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "mac-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "マカオ社会工作局",
+            "jaKana": "マカオ しゃかい こうさく きょく",
+            "en": "Social Welfare Bureau"
+          },
+          "url": "https://www.gov.mo/en/entity-page/entity-692/",
+          "pageLang": [
+            "zh",
+            "pt",
+            "en"
+          ]
+        }
+      ]
+    },
+    "NLD": {
+      "outbreak": [
+        {
+          "id": "nld-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "オランダ保健福祉スポーツ省",
+            "jaKana": "オランダ ほけん ふくし スポーツ しょう",
+            "en": "Ministry of Health, Welfare and Sport"
+          },
+          "url": "https://www.government.nl/ministries/ministry-of-health-welfare-and-sport",
+          "pageLang": [
+            "en",
+            "nl"
+          ]
+        },
+        {
+          "id": "nld-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "オランダ国立公衆衛生環境研究所（RIVM）",
+            "jaKana": "オランダ こくりつ こうしゅう えいせい かんきょう けんきゅうじょ（RIVM）",
+            "en": "National Institute for Public Health and the Environment (RIVM)"
+          },
+          "url": "https://www.rivm.nl/en/about-rivm/mission-and-strategy/our-work",
+          "pageLang": [
+            "en",
+            "nl"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "nld-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "オランダ保健福祉スポーツ省",
+            "jaKana": "オランダ ほけん ふくし スポーツ しょう",
+            "en": "Ministry of Health, Welfare and Sport"
+          },
+          "url": "https://www.government.nl/ministries/ministry-of-health-welfare-and-sport",
+          "pageLang": [
+            "en",
+            "nl"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "nld-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "オランダ社会雇用省",
+            "jaKana": "オランダ しゃかい こよう しょう",
+            "en": "Ministry of Social Affairs and Employment"
+          },
+          "url": "https://www.government.nl/ministries/ministry-of-social-affairs-and-employment",
+          "pageLang": [
+            "en",
+            "nl"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "nld-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "オランダ国家サイバーセキュリティセンター（NCSC-NL）",
+            "jaKana": "オランダ こっか サイバー セキュリティ センター（NCSC-NL）",
+            "en": "National Cyber Security Centre (NCSC-NL)"
+          },
+          "url": "https://www.ncsc.nl/en/about-us",
+          "pageLang": [
+            "en",
+            "nl"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "nld-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "オランダ国立公衆衛生環境研究所（RIVM）",
+            "jaKana": "オランダ こくりつ こうしゅう えいせい かんきょう けんきゅうじょ（RIVM）",
+            "en": "National Institute for Public Health and the Environment (RIVM)"
+          },
+          "url": "https://www.rivm.nl/en/about-rivm/mission-and-strategy/our-work",
+          "pageLang": [
+            "en",
+            "nl"
+          ]
+        }
+      ]
+    },
+    "NZL": {
+      "outbreak": [
+        {
+          "id": "nzl-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ニュージーランド保健省",
+            "jaKana": "ニュージーランド ほけんしょう",
+            "en": "Ministry of Health – Manatū Hauora"
+          },
+          "url": "https://www.health.govt.nz/",
+          "pageLang": [
+            "en",
+            "mi"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "nzl-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ニュージーランド保健省",
+            "jaKana": "ニュージーランド ほけんしょう",
+            "en": "Ministry of Health – Manatū Hauora"
+          },
+          "url": "https://www.health.govt.nz/",
+          "pageLang": [
+            "en",
+            "mi"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "nzl-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ニュージーランド社会開発省",
+            "jaKana": "ニュージーランド しゃかい かいはつ しょう",
+            "en": "Ministry of Social Development"
+          },
+          "url": "https://www.msd.govt.nz/about-msd-and-our-work/index.html",
+          "pageLang": [
+            "en",
+            "mi"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "nzl-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ニュージーランド国家サイバーセキュリティセンター（NCSC）",
+            "jaKana": "ニュージーランド こっか サイバー セキュリティ センター（NCSC）",
+            "en": "National Cyber Security Centre (NCSC)"
+          },
+          "url": "https://www.ncsc.govt.nz/who-we-are/",
+          "pageLang": [
+            "en",
+            "mi"
+          ]
+        }
+      ]
+    },
+    "NGA": {
+      "outbreak": [
+        {
+          "id": "nga-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ナイジェリア疾病予防管理センター（NCDC）",
+            "jaKana": "ナイジェリア しっぺい よぼう かんり センター（NCDC）",
+            "en": "Nigeria Centre for Disease Control and Prevention"
+          },
+          "url": "https://ncdc.gov.ng/ncdc",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "nga-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ナイジェリア疾病予防管理センター（NCDC）",
+            "jaKana": "ナイジェリア しっぺい よぼう かんり センター（NCDC）",
+            "en": "Nigeria Centre for Disease Control and Prevention"
+          },
+          "url": "https://ncdc.gov.ng/ncdc",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "nga-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ナイジェリアngCERT",
+            "jaKana": "ナイジェリア ngCERT",
+            "en": "Nigeria Computer Emergency Response Team (ngCERT)"
+          },
+          "url": "https://cert.gov.ng/about-us",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "QAT": {
+      "welfare": [
+        {
+          "id": "qat-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "カタール社会開発・家族省",
+            "jaKana": "カタール しゃかい かいはつ・かぞく しょう",
+            "en": "Ministry of Social Development and Family"
+          },
+          "url": "https://msdf.gov.qa/en/about-ministry",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ]
+    },
+    "KOR": {
+      "outbreak": [
+        {
+          "id": "kor-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "韓国保健福祉部",
+            "jaKana": "かんこく ほけん ふくしぶ",
+            "en": "Ministry of Health and Welfare"
+          },
+          "url": "https://www.mohw.go.kr/eng",
+          "pageLang": [
+            "en"
+          ]
+        },
+        {
+          "id": "kor-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "韓国疾病管理庁（KDCA）",
+            "jaKana": "かんこく しっぺい かんり ちょう（KDCA）",
+            "en": "Korea Disease Control and Prevention Agency"
+          },
+          "url": "https://kdca.go.kr/eng/index.do",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "kor-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "韓国保健福祉部",
+            "jaKana": "かんこく ほけん ふくしぶ",
+            "en": "Ministry of Health and Welfare"
+          },
+          "url": "https://www.mohw.go.kr/eng",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "kor-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "韓国疾病管理庁（KDCA）",
+            "jaKana": "かんこく しっぺい かんり ちょう（KDCA）",
+            "en": "Korea Disease Control and Prevention Agency"
+          },
+          "url": "https://kdca.go.kr/eng/index.do",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "kor-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "韓国インターネット振興院（KISA）",
+            "jaKana": "かんこく インターネット しんこういん（KISA）",
+            "en": "Korea Internet & Security Agency"
+          },
+          "url": "https://www.kisa.or.kr/EN",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "SVK": {
+      "outbreak": [
+        {
+          "id": "svk-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スロバキア保健省",
+            "jaKana": "スロバキア ほけんしょう",
+            "en": "Ministry of Health of the Slovak Republic"
+          },
+          "url": "https://health.gov.sk/Titulka",
+          "pageLang": [
+            "sk",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "svk-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スロバキア保健省",
+            "jaKana": "スロバキア ほけんしょう",
+            "en": "Ministry of Health of the Slovak Republic"
+          },
+          "url": "https://health.gov.sk/Titulka",
+          "pageLang": [
+            "sk",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "svk-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "スロバキア労働・社会問題・家族省",
+            "jaKana": "スロバキア ろうどう・しゃかい もんだい・かぞく しょう",
+            "en": "Ministry of Labour, Social Affairs and Family of the Slovak Republic"
+          },
+          "url": "https://www.mpsvr.sk/en/",
+          "pageLang": [
+            "sk",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "svk-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "スロバキア国家サイバーセキュリティセンター（SK-CERT）",
+            "jaKana": "スロバキア こっか サイバー セキュリティ センター（SK-CERT）",
+            "en": "National Cyber Security Centre SK-CERT"
+          },
+          "url": "https://www.sk-cert.sk/en/about-us/",
+          "pageLang": [
+            "sk",
+            "en"
+          ]
+        }
+      ]
+    },
+    "SVN": {
+      "outbreak": [
+        {
+          "id": "svn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スロベニア保健省",
+            "jaKana": "スロベニア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-health/",
+          "pageLang": [
+            "sl",
+            "en"
+          ]
+        },
+        {
+          "id": "svn-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "スロベニア国立公衆衛生研究所（NIJZ）",
+            "jaKana": "スロベニア こくりつ こうしゅう えいせい けんきゅうじょ（NIJZ）",
+            "en": "National Institute of Public Health"
+          },
+          "url": "https://nijz.si/en/NIJZ/",
+          "pageLang": [
+            "sl",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "svn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スロベニア保健省",
+            "jaKana": "スロベニア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-health/",
+          "pageLang": [
+            "sl",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "svn-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "スロベニア人口・家族・社会問題省",
+            "jaKana": "スロベニア じんこう・かぞく・しゃかい もんだい しょう",
+            "en": "Ministry of Demography, Family and Social Affairs"
+          },
+          "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-demography-family-and-social-affairs/",
+          "pageLang": [
+            "sl",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "svn-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "スロベニアSI-CERT",
+            "jaKana": "スロベニア SI-CERT",
+            "en": "SI-CERT"
+          },
+          "url": "https://www.cert.si/en",
+          "pageLang": [
+            "sl",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "svn-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "スロベニア国立公衆衛生研究所（NIJZ）",
+            "jaKana": "スロベニア こくりつ こうしゅう えいせい けんきゅうじょ（NIJZ）",
+            "en": "National Institute of Public Health"
+          },
+          "url": "https://nijz.si/en/NIJZ/",
+          "pageLang": [
+            "sl",
+            "en"
+          ]
+        }
+      ]
+    },
+    "SLB": {
+      "outbreak": [
+        {
+          "id": "slb-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ソロモン諸島保健医療省",
+            "jaKana": "ソロモン しょとう ほけん いりょう しょう",
+            "en": "Ministry of Health & Medical Services"
+          },
+          "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "slb-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ソロモン諸島保健医療省",
+            "jaKana": "ソロモン しょとう ほけん いりょう しょう",
+            "en": "Ministry of Health & Medical Services"
+          },
+          "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "SOM": {
+      "outbreak": [
+        {
+          "id": "som-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ソマリア国立保健研究所",
+            "jaKana": "ソマリア こくりつ ほけん けんきゅうじょ",
+            "en": "Somali National Institute of Health"
+          },
+          "url": "https://nih.gov.so/",
+          "pageLang": [
+            "so",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "som-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ソマリア労働・社会問題省",
+            "jaKana": "ソマリア ろうどう・しゃかい もんだい しょう",
+            "en": "Ministry of Labour and Social Affairs"
+          },
+          "url": "https://molsa.gov.so/",
+          "pageLang": [
+            "so",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "som-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ソマリア国立保健研究所",
+            "jaKana": "ソマリア こくりつ ほけん けんきゅうじょ",
+            "en": "Somali National Institute of Health"
+          },
+          "url": "https://nih.gov.so/",
+          "pageLang": [
+            "so",
+            "en"
+          ]
+        }
+      ]
+    },
+    "ZAF": {
+      "outbreak": [
+        {
+          "id": "zaf-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "南アフリカ共和国保健省",
+            "jaKana": "みなみアフリカ きょうわこく ほけんしょう",
+            "en": "National Department of Health"
+          },
+          "url": "https://www.health.gov.za/aboutus/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "zaf-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "南アフリカ共和国保健省",
+            "jaKana": "みなみアフリカ きょうわこく ほけんしょう",
+            "en": "National Department of Health"
+          },
+          "url": "https://www.health.gov.za/aboutus/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "zaf-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "南アフリカ共和国社会開発省",
+            "jaKana": "みなみアフリカ きょうわこく しゃかい かいはつ しょう",
+            "en": "Department of Social Development"
+          },
+          "url": "https://www.dsd.gov.za/",
+          "pageLang": [
+            "en"
+          ]
+        },
+        {
+          "id": "zaf-welfare-ministry-welfare-2",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "南アフリカ共和国社会保障庁（SASSA）",
+            "jaKana": "みなみアフリカ きょうわこく しゃかい ほしょう ちょう（SASSA）",
+            "en": "South African Social Security Agency"
+          },
+          "url": "https://www.sassa.gov.za/SitePages/HomePage.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "TTO": {
+      "outbreak": [
+        {
+          "id": "tto-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "トリニダード・トバゴ保健省",
+            "jaKana": "トリニダード・トバゴ ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://health.gov.tt/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "tto-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "トリニダード・トバゴ保健省",
+            "jaKana": "トリニダード・トバゴ ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://health.gov.tt/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "TUR": {
+      "welfare": [
+        {
+          "id": "tur-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "トルコ家族社会サービス省",
+            "jaKana": "トルコ かぞく しゃかい サービス しょう",
+            "en": "Ministry of Family and Social Services"
+          },
+          "url": "https://aile.gov.tr/",
+          "pageLang": [
+            "tr"
+          ]
+        }
+      ]
+    },
+    "UKR": {
+      "outbreak": [
+        {
+          "id": "ukr-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ウクライナ保健省",
+            "jaKana": "ウクライナ ほけんしょう",
+            "en": "Ministry of Health of Ukraine"
+          },
+          "url": "https://moz.gov.ua/",
+          "pageLang": [
+            "uk",
+            "en"
+          ]
+        },
+        {
+          "id": "ukr-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ウクライナ保健省公衆衛生センター",
+            "jaKana": "ウクライナ ほけんしょう こうしゅう えいせい センター",
+            "en": "Public Health Center of the Ministry of Health of Ukraine"
+          },
+          "url": "https://phc.org.ua",
+          "pageLang": [
+            "uk",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ukr-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ウクライナ保健省",
+            "jaKana": "ウクライナ ほけんしょう",
+            "en": "Ministry of Health of Ukraine"
+          },
+          "url": "https://moz.gov.ua/",
+          "pageLang": [
+            "uk",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "ukr-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ウクライナ社会政策・家族・統一省",
+            "jaKana": "ウクライナ しゃかい せいさく・かぞく・とういつ しょう",
+            "en": "Ministry of Social Policy, Family and Unity of Ukraine"
+          },
+          "url": "https://msp.gov.ua/en",
+          "pageLang": [
+            "uk",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "ukr-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ウクライナ保健省公衆衛生センター",
+            "jaKana": "ウクライナ ほけんしょう こうしゅう えいせい センター",
+            "en": "Public Health Center of the Ministry of Health of Ukraine"
+          },
+          "url": "https://phc.org.ua",
+          "pageLang": [
+            "uk",
+            "en"
+          ]
+        }
+      ]
+    },
+    "CHN": {
+      "outbreak": [
+        {
+          "id": "chn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "中国国家衛生健康委員会",
+            "jaKana": "ちゅうごく こっか えいせい けんこう いいんかい",
+            "en": "National Health Commission of the People's Republic of China"
+          },
+          "url": "https://en.nhc.gov.cn/about.html",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "chn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "中国国家衛生健康委員会",
+            "jaKana": "ちゅうごく こっか えいせい けんこう いいんかい",
+            "en": "National Health Commission of the People's Republic of China"
+          },
+          "url": "https://en.nhc.gov.cn/about.html",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "IND": {
+      "outbreak": [
+        {
+          "id": "ind-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "インド保健家族福祉省",
+            "jaKana": "インド ほけん かぞく ふくし しょう",
+            "en": "Ministry of Health and Family Welfare"
+          },
+          "url": "https://mohfw.gov.in",
+          "pageLang": [
+            "en",
+            "hi"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ind-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "インド保健家族福祉省",
+            "jaKana": "インド ほけん かぞく ふくし しょう",
+            "en": "Ministry of Health and Family Welfare"
+          },
+          "url": "https://mohfw.gov.in",
+          "pageLang": [
+            "en",
+            "hi"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "ind-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "インド社会正義・エンパワーメント省",
+            "jaKana": "インド しゃかい せいぎ・エンパワーメント しょう",
+            "en": "Ministry of Social Justice and Empowerment"
+          },
+          "url": "https://socialjustice.gov.in",
+          "pageLang": [
+            "en",
+            "hi"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "ind-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "インドコンピュータ緊急対応チーム（CERT-In）",
+            "jaKana": "インド コンピュータ きんきゅう たいおう チーム（CERT-In）",
+            "en": "Indian Computer Emergency Response Team (CERT-In)"
+          },
+          "url": "https://www.cert-in.org.in",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "PAK": {
+      "outbreak": [
+        {
+          "id": "pak-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "パキスタン国家保健サービス・規制・調整省",
+            "jaKana": "パキスタン こっか ほけん サービス・きせい・ちょうせい しょう",
+            "en": "Ministry of National Health Services Regulations & Coordination"
+          },
+          "url": "https://www.nhsrc.gov.pk/",
+          "pageLang": [
+            "en"
+          ]
+        },
+        {
+          "id": "pak-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "パキスタン国立保健研究所（NIH）",
+            "jaKana": "パキスタン こくりつ ほけん けんきゅうじょ（NIH）",
+            "en": "National Institute of Health"
+          },
+          "url": "https://www.nih.org.pk/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "pak-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "パキスタン国家保健サービス・規制・調整省",
+            "jaKana": "パキスタン こっか ほけん サービス・きせい・ちょうせい しょう",
+            "en": "Ministry of National Health Services Regulations & Coordination"
+          },
+          "url": "https://www.nhsrc.gov.pk/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "pak-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "パキスタン国立保健研究所（NIH）",
+            "jaKana": "パキスタン こくりつ ほけん けんきゅうじょ（NIH）",
+            "en": "National Institute of Health"
+          },
+          "url": "https://www.nih.org.pk/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "pak-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "パキスタン国家サイバー緊急対応チーム（PKCERT）",
+            "jaKana": "パキスタン こっか サイバー きんきゅう たいおう チーム（PKCERT）",
+            "en": "National Cyber Emergency Response Team of Pakistan (PKCERT)"
+          },
+          "url": "https://pkcert.gov.pk/about-us/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "MEX": {
+      "welfare": [
+        {
+          "id": "mex-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "メキシコ福祉省（Secretaría de Bienestar）",
+            "jaKana": "メキシコ ふくし しょう（Secretaría de Bienestar）",
+            "en": "Secretaría de Bienestar"
+          },
+          "url": "https://www.gob.mx/bienestar",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "PHL": {
+      "outbreak": [
+        {
+          "id": "phl-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "フィリピン保健省",
+            "jaKana": "フィリピン ほけんしょう",
+            "en": "Department of Health"
+          },
+          "url": "https://www.doh.gov.ph/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "phl-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "フィリピン保健省",
+            "jaKana": "フィリピン ほけんしょう",
+            "en": "Department of Health"
+          },
+          "url": "https://www.doh.gov.ph/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "phl-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "フィリピン社会福祉開発省",
+            "jaKana": "フィリピン しゃかい ふくし かいはつ しょう",
+            "en": "Department of Social Welfare and Development"
+          },
+          "url": "https://www.dswd.gov.ph/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "VNM": {
+      "outbreak": [
+        {
+          "id": "vnm-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ベトナム保健省",
+            "jaKana": "ベトナム ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.vn/",
+          "pageLang": [
+            "vi"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "vnm-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ベトナム保健省",
+            "jaKana": "ベトナム ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.vn/",
+          "pageLang": [
+            "vi"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "vnm-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ベトナム内務省",
+            "jaKana": "ベトナム ないむしょう",
+            "en": "Ministry of Home Affairs"
+          },
+          "url": "https://moha.gov.vn/",
+          "pageLang": [
+            "vi"
+          ]
+        }
+      ]
+    },
+    "ETH": {
+      "security": [
+        {
+          "id": "eth-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "エチオピア情報ネットワーク安全庁（INSA）",
+            "jaKana": "エチオピア じょうほう ネットワーク あんぜん ちょう（INSA）",
+            "en": "Information Network Security Administration (INSA)"
+          },
+          "url": "https://www.insa.gov.et/",
+          "pageLang": [
+            "en",
+            "am"
+          ]
+        }
+      ]
+    },
+    "THA": {
+      "security": [
+        {
+          "id": "tha-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "タイThaiCERT",
+            "jaKana": "タイ ThaiCERT",
+            "en": "Thailand Computer Emergency Response Team (ThaiCERT)"
+          },
+          "url": "https://www.thaicert.or.th/en/homepage/",
+          "pageLang": [
+            "en",
+            "th"
+          ]
+        }
+      ]
+    },
+    "KEN": {
+      "welfare": [
+        {
+          "id": "ken-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ケニア社会保護・高齢者担当局",
+            "jaKana": "ケニア しゃかい ほご・こうれいしゃ たんとう きょく",
+            "en": "State Department for Social Protection and Senior Citizen Affairs"
+          },
+          "url": "https://socialprotection.go.ke/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "ken-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ケニア国家コンピュータ事案対応チーム（KE-CIRT/CC）",
+            "jaKana": "ケニア こっか コンピュータ じあん たいおう チーム（KE-CIRT/CC）",
+            "en": "National KE-CIRT/CC"
+          },
+          "url": "https://ke-cirt.go.ke/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "TZA": {
+      "outbreak": [
+        {
+          "id": "tza-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "タンザニア保健省",
+            "jaKana": "タンザニア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.moh.go.tz/sw",
+          "pageLang": [
+            "sw",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "tza-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "タンザニア保健省",
+            "jaKana": "タンザニア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.moh.go.tz/sw",
+          "pageLang": [
+            "sw",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "tza-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "タンザニアTZ-CERT",
+            "jaKana": "タンザニア TZ-CERT",
+            "en": "Tanzania Computer Emergency Response Team (TZ-CERT)"
+          },
+          "url": "https://www.tzcert.go.tz/",
+          "pageLang": [
+            "en",
+            "sw"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "tza-research-research",
+          "role": "research",
+          "name": {
+            "ja": "タンザニア国立医学研究所（NIMR）",
+            "jaKana": "タンザニア こくりつ いがく けんきゅうじょ（NIMR）",
+            "en": "National Institute for Medical Research (NIMR)"
+          },
+          "url": "https://www.nimr.or.tz/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "COL": {
+      "outbreak": [
+        {
+          "id": "col-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "コロンビア保健社会保護省",
+            "jaKana": "コロンビア ほけん しゃかい ほご しょう",
+            "en": "Ministerio de Salud y Protección Social"
+          },
+          "url": "https://www.minsalud.gov.co/",
+          "pageLang": [
+            "es"
+          ]
+        },
+        {
+          "id": "col-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "コロンビア国立保健研究所",
+            "jaKana": "コロンビア こくりつ ほけん けんきゅうじょ",
+            "en": "Instituto Nacional de Salud"
+          },
+          "url": "https://www.ins.gov.co/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "col-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "コロンビア保健社会保護省",
+            "jaKana": "コロンビア ほけん しゃかい ほご しょう",
+            "en": "Ministerio de Salud y Protección Social"
+          },
+          "url": "https://www.minsalud.gov.co/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "col-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "コロンビア国立保健研究所",
+            "jaKana": "コロンビア こくりつ ほけん けんきゅうじょ",
+            "en": "Instituto Nacional de Salud"
+          },
+          "url": "https://www.ins.gov.co/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "ESP": {
+      "outbreak": [
+        {
+          "id": "esp-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スペイン保健省",
+            "jaKana": "スペイン ほけんしょう",
+            "en": "Ministerio de Sanidad"
+          },
+          "url": "https://www.sanidad.gob.es/home.htm",
+          "pageLang": [
+            "es",
+            "ca",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "esp-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スペイン保健省",
+            "jaKana": "スペイン ほけんしょう",
+            "en": "Ministerio de Sanidad"
+          },
+          "url": "https://www.sanidad.gob.es/home.htm",
+          "pageLang": [
+            "es",
+            "ca",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "esp-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "スペイン社会権・消費・アジェンダ2030省",
+            "jaKana": "スペイン しゃかいけん・しょうひ・アジェンダ2030 しょう",
+            "en": "Ministerio de Derechos Sociales, Consumo y Agenda 2030"
+          },
+          "url": "https://www.dsca.gob.es/es",
+          "pageLang": [
+            "es",
+            "ca",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "esp-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "スペイン国立サイバーセキュリティ研究所（INCIBE-CERT）",
+            "jaKana": "スペイン こくりつ サイバー セキュリティ けんきゅうじょ（INCIBE-CERT）",
+            "en": "INCIBE-CERT (Instituto Nacional de Ciberseguridad)"
+          },
+          "url": "https://www.incibe.es/incibe-cert",
+          "pageLang": [
+            "es",
+            "en"
+          ]
+        }
+      ]
+    },
+    "ARG": {
+      "outbreak": [
+        {
+          "id": "arg-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アルゼンチン保健省",
+            "jaKana": "アルゼンチン ほけんしょう",
+            "en": "Ministerio de Salud"
+          },
+          "url": "https://www.argentina.gob.ar/salud",
+          "pageLang": [
+            "es"
+          ]
+        },
+        {
+          "id": "arg-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "アルゼンチン国立保健検査所・研究所管理局（ANLIS Malbrán）",
+            "jaKana": "アルゼンチン こくりつ ほけん けんさじょ・けんきゅうじょ かんり きょく（ANLIS Malbrán）",
+            "en": "ANLIS Malbrán"
+          },
+          "url": "https://www.argentina.gob.ar/salud/anlis",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "arg-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アルゼンチン保健省",
+            "jaKana": "アルゼンチン ほけんしょう",
+            "en": "Ministerio de Salud"
+          },
+          "url": "https://www.argentina.gob.ar/salud",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "arg-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "アルゼンチン人的資本省",
+            "jaKana": "アルゼンチン じんてき しほん しょう",
+            "en": "Ministerio de Capital Humano"
+          },
+          "url": "https://www.argentina.gob.ar/capital-humano",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "arg-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "アルゼンチンCERT.ar",
+            "jaKana": "アルゼンチン CERT.ar",
+            "en": "CERT.ar"
+          },
+          "url": "https://www.argentina.gob.ar/ciberseguridad/certar",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "arg-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "アルゼンチン国立保健検査所・研究所管理局（ANLIS Malbrán）",
+            "jaKana": "アルゼンチン こくりつ ほけん けんさじょ・けんきゅうじょ かんり きょく（ANLIS Malbrán）",
+            "en": "ANLIS Malbrán"
+          },
+          "url": "https://www.argentina.gob.ar/salud/anlis",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "UGA": {
+      "security": [
+        {
+          "id": "uga-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ウガンダ国家コンピュータ緊急対応チーム（CERT.UG）",
+            "jaKana": "ウガンダ こっか コンピュータ きんきゅう たいおう チーム（CERT.UG）",
+            "en": "Uganda National Computer Emergency Response Team (CERT.UG)"
+          },
+          "url": "https://www.cert.ug/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "uga-research-research",
+          "role": "research",
+          "name": {
+            "ja": "ウガンダウイルス研究所",
+            "jaKana": "ウガンダ ウイルス けんきゅうじょ",
+            "en": "Uganda Virus Research Institute"
+          },
+          "url": "https://www.uvri.go.ug/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "CAN": {
+      "outbreak": [
+        {
+          "id": "can-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "カナダ保健省（Health Canada）",
+            "jaKana": "カナダ ほけんしょう（Health Canada）",
+            "en": "Health Canada"
+          },
+          "url": "https://www.canada.ca/en/health-canada.html",
+          "pageLang": [
+            "en",
+            "fr"
+          ]
+        },
+        {
+          "id": "can-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "カナダ公衆衛生庁",
+            "jaKana": "カナダ こうしゅう えいせい ちょう",
+            "en": "Public Health Agency of Canada"
+          },
+          "url": "https://www.canada.ca/en/public-health.html",
+          "pageLang": [
+            "en",
+            "fr"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "can-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "カナダ保健省（Health Canada）",
+            "jaKana": "カナダ ほけんしょう（Health Canada）",
+            "en": "Health Canada"
+          },
+          "url": "https://www.canada.ca/en/health-canada.html",
+          "pageLang": [
+            "en",
+            "fr"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "can-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "カナダ雇用・社会開発省（ESDC）",
+            "jaKana": "カナダ こよう・しゃかい かいはつ しょう（ESDC）",
+            "en": "Employment and Social Development Canada"
+          },
+          "url": "https://www.canada.ca/en/employment-social-development/corporate",
+          "pageLang": [
+            "en",
+            "fr"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "can-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "カナダサイバーセキュリティセンター",
+            "jaKana": "カナダ サイバー セキュリティ センター",
+            "en": "Canadian Centre for Cyber Security"
+          },
+          "url": "https://cyber.gc.ca/en/",
+          "pageLang": [
+            "en",
+            "fr"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "can-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "カナダ公衆衛生庁",
+            "jaKana": "カナダ こうしゅう えいせい ちょう",
+            "en": "Public Health Agency of Canada"
+          },
+          "url": "https://www.canada.ca/en/public-health.html",
+          "pageLang": [
+            "en",
+            "fr"
+          ]
+        }
+      ]
+    },
+    "POL": {
+      "outbreak": [
+        {
+          "id": "pol-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ポーランド保健省",
+            "jaKana": "ポーランド ほけんしょう",
+            "en": "Ministry of Health (Ministerstwo Zdrowia)"
+          },
+          "url": "https://www.gov.pl/web/zdrowie",
+          "pageLang": [
+            "pl"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "pol-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ポーランド保健省",
+            "jaKana": "ポーランド ほけんしょう",
+            "en": "Ministry of Health (Ministerstwo Zdrowia)"
+          },
+          "url": "https://www.gov.pl/web/zdrowie",
+          "pageLang": [
+            "pl"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "pol-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ポーランド家族・労働・社会政策省",
+            "jaKana": "ポーランド かぞく・ろうどう・しゃかい せいさく しょう",
+            "en": "Ministry of Family, Labour and Social Policy"
+          },
+          "url": "https://www.gov.pl/web/rodzina",
+          "pageLang": [
+            "pl"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "pol-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ポーランドCERT Polska",
+            "jaKana": "ポーランド CERT Polska",
+            "en": "CERT Polska"
+          },
+          "url": "https://cert.pl/en/",
+          "pageLang": [
+            "en",
+            "pl"
+          ]
+        }
+      ]
+    },
+    "SAU": {
+      "outbreak": [
+        {
+          "id": "sau-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "サウジアラビア保健省",
+            "jaKana": "サウジアラビア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.moh.gov.sa/pages/default.aspx",
+          "pageLang": [
+            "ar",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "sau-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "サウジアラビア保健省",
+            "jaKana": "サウジアラビア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.moh.gov.sa/pages/default.aspx",
+          "pageLang": [
+            "ar",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "sau-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "サウジアラビア人的資源・社会開発省",
+            "jaKana": "サウジアラビア じんてき しげん・しゃかい かいはつ しょう",
+            "en": "Ministry of Human Resources and Social Development"
+          },
+          "url": "https://www.hrsd.gov.sa/en",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "sau-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "サウジアラビア国家サイバーセキュリティ庁（NCA）",
+            "jaKana": "サウジアラビア こっか サイバー セキュリティ ちょう（NCA）",
+            "en": "National Cybersecurity Authority"
+          },
+          "url": "https://nca.gov.sa/en/",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ]
+    },
+    "UZB": {
+      "outbreak": [
+        {
+          "id": "uzb-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ウズベキスタン保健省",
+            "jaKana": "ウズベキスタン ほけんしょう",
+            "en": "Ministry of Health of the Republic of Uzbekistan"
+          },
+          "url": "https://gov.uz/en/ssv/pages/about",
+          "pageLang": [
+            "uz",
+            "ru",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "uzb-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ウズベキスタン保健省",
+            "jaKana": "ウズベキスタン ほけんしょう",
+            "en": "Ministry of Health of the Republic of Uzbekistan"
+          },
+          "url": "https://gov.uz/en/ssv/pages/about",
+          "pageLang": [
+            "uz",
+            "ru",
+            "en"
+          ]
+        }
+      ]
+    },
+    "AUS": {
+      "welfare": [
+        {
+          "id": "aus-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "オーストラリア社会サービス省",
+            "jaKana": "オーストラリア しゃかい サービス しょう",
+            "en": "Department of Social Services"
+          },
+          "url": "https://dss.gov.au/about-us",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "aus-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "オーストラリア信号総局 オーストラリアサイバーセキュリティセンター（ASD's ACSC）",
+            "jaKana": "オーストラリア しんごう そうきょく オーストラリア サイバー セキュリティ センター（ASD's ACSC）",
+            "en": "Australian Signals Directorate's Australian Cyber Security Centre"
+          },
+          "url": "https://www.cyber.gov.au/about-us",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "MYS": {
+      "security": [
+        {
+          "id": "mys-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "マレーシア国家サイバーセキュリティ庁（NACSA）",
+            "jaKana": "マレーシア こっか サイバー セキュリティ ちょう（NACSA）",
+            "en": "National Cyber Security Agency (NACSA)"
+          },
+          "url": "https://nacsa.gov.my/index.php",
+          "pageLang": [
+            "en",
+            "ms"
+          ]
+        }
+      ]
+    },
+    "GHA": {
+      "outbreak": [
+        {
+          "id": "gha-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ガーナ保健省",
+            "jaKana": "ガーナ ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.gh",
+          "pageLang": [
+            "en"
+          ]
+        },
+        {
+          "id": "gha-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ガーナ保健サービス（GHS）",
+            "jaKana": "ガーナ ほけん サービス（GHS）",
+            "en": "Ghana Health Service"
+          },
+          "url": "https://www.ghs.gov.gh/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "gha-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ガーナ保健省",
+            "jaKana": "ガーナ ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.gh",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "gha-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ガーナサイバーセキュリティ庁（CSA）",
+            "jaKana": "ガーナ サイバー セキュリティ ちょう（CSA）",
+            "en": "Cyber Security Authority"
+          },
+          "url": "https://csa.gov.gh/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "gha-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ガーナ保健サービス（GHS）",
+            "jaKana": "ガーナ ほけん サービス（GHS）",
+            "en": "Ghana Health Service"
+          },
+          "url": "https://www.ghs.gov.gh/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "NPL": {
+      "outbreak": [
+        {
+          "id": "npl-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ネパール保健人口省",
+            "jaKana": "ネパール ほけん じんこうしょう",
+            "en": "Ministry of Health and Population"
+          },
+          "url": "https://mohp.gov.np/pages/introduction",
+          "pageLang": [
+            "en",
+            "ne"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "npl-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ネパール保健人口省",
+            "jaKana": "ネパール ほけん じんこうしょう",
+            "en": "Ministry of Health and Population"
+          },
+          "url": "https://mohp.gov.np/pages/introduction",
+          "pageLang": [
+            "en",
+            "ne"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "npl-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ネパール女性・子ども・高齢者省",
+            "jaKana": "ネパール じょせい・こども・こうれいしゃしょう",
+            "en": "Ministry of Women, Children and Senior Citizens"
+          },
+          "url": "https://mowcsc.gov.np/en/pages/31/49633572",
+          "pageLang": [
+            "en",
+            "ne"
+          ]
+        }
+      ]
+    },
+    "VEN": {
+      "outbreak": [
+        {
+          "id": "ven-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ベネズエラ保健省",
+            "jaKana": "ベネズエラ ほけんしょう",
+            "en": "Ministerio del Poder Popular para la Salud"
+          },
+          "url": "https://mpps.gob.ve",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ven-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ベネズエラ保健省",
+            "jaKana": "ベネズエラ ほけんしょう",
+            "en": "Ministerio del Poder Popular para la Salud"
+          },
+          "url": "https://mpps.gob.ve",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "TWN": {
+      "outbreak": [
+        {
+          "id": "twn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "台湾衛生福利部",
+            "jaKana": "たいわん えいせい ふくしぶ",
+            "en": "Ministry of Health and Welfare"
+          },
+          "url": "https://www.mohw.gov.tw/mp-1.html",
+          "pageLang": [
+            "zh",
+            "en"
+          ]
+        },
+        {
+          "id": "twn-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "台湾衛生福利部疾病管制署",
+            "jaKana": "たいわん えいせい ふくしぶ しっぺい かんせいしょ",
+            "en": "Taiwan Centers for Disease Control"
+          },
+          "url": "https://www.cdc.gov.tw/",
+          "pageLang": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "twn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "台湾衛生福利部",
+            "jaKana": "たいわん えいせい ふくしぶ",
+            "en": "Ministry of Health and Welfare"
+          },
+          "url": "https://www.mohw.gov.tw/mp-1.html",
+          "pageLang": [
+            "zh",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "twn-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "台湾衛生福利部社会家庭署",
+            "jaKana": "たいわん えいせい ふくしぶ しゃかい かていしょ",
+            "en": "Social and Family Affairs Administration"
+          },
+          "url": "https://www.sfaa.gov.tw/",
+          "pageLang": [
+            "zh"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "twn-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "台湾衛生福利部疾病管制署",
+            "jaKana": "たいわん えいせい ふくしぶ しっぺい かんせいしょ",
+            "en": "Taiwan Centers for Disease Control"
+          },
+          "url": "https://www.cdc.gov.tw/",
+          "pageLang": [
+            "zh",
+            "en"
+          ]
+        }
+      ]
+    },
+    "CHL": {
+      "outbreak": [
+        {
+          "id": "chl-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "チリ保健省",
+            "jaKana": "チリ ほけんしょう",
+            "en": "Ministerio de Salud"
+          },
+          "url": "https://www.minsal.cl",
+          "pageLang": [
+            "es"
+          ]
+        },
+        {
+          "id": "chl-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "チリ公衆衛生研究所（ISP）",
+            "jaKana": "チリ こうしゅう えいせい けんきゅうじょ（ISP）",
+            "en": "Instituto de Salud Pública de Chile"
+          },
+          "url": "https://www.ispch.cl/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "chl-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "チリ保健省",
+            "jaKana": "チリ ほけんしょう",
+            "en": "Ministerio de Salud"
+          },
+          "url": "https://www.minsal.cl",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "chl-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "チリ国家サイバーセキュリティ庁（ANCI）",
+            "jaKana": "チリ こっか サイバー セキュリティ ちょう（ANCI）",
+            "en": "Agencia Nacional de Ciberseguridad"
+          },
+          "url": "https://anci.gob.cl/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "chl-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "チリ公衆衛生研究所（ISP）",
+            "jaKana": "チリ こうしゅう えいせい けんきゅうじょ（ISP）",
+            "en": "Instituto de Salud Pública de Chile"
+          },
+          "url": "https://www.ispch.cl/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "SWE": {
+      "outbreak": [
+        {
+          "id": "swe-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スウェーデン社会省",
+            "jaKana": "スウェーデン しゃかいしょう",
+            "en": "Ministry of Health and Social Affairs (Socialdepartementet)"
+          },
+          "url": "https://www.regeringen.se/sveriges-regering/socialdepartementet/",
+          "pageLang": [
+            "sv"
+          ]
+        },
+        {
+          "id": "swe-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "スウェーデン公衆衛生庁",
+            "jaKana": "スウェーデン こうしゅう えいせい ちょう",
+            "en": "Public Health Agency of Sweden (Folkhälsomyndigheten)"
+          },
+          "url": "https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/",
+          "pageLang": [
+            "en",
+            "sv"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "swe-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スウェーデン社会省",
+            "jaKana": "スウェーデン しゃかいしょう",
+            "en": "Ministry of Health and Social Affairs (Socialdepartementet)"
+          },
+          "url": "https://www.regeringen.se/sveriges-regering/socialdepartementet/",
+          "pageLang": [
+            "sv"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "swe-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "スウェーデン公衆衛生庁",
+            "jaKana": "スウェーデン こうしゅう えいせい ちょう",
+            "en": "Public Health Agency of Sweden (Folkhälsomyndigheten)"
+          },
+          "url": "https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/",
+          "pageLang": [
+            "en",
+            "sv"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "swe-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "スウェーデンCERT-SE",
+            "jaKana": "スウェーデン CERT-SE",
+            "en": "CERT-SE – The national CSIRT of Sweden"
+          },
+          "url": "https://cert.se/en/",
+          "pageLang": [
+            "en",
+            "sv"
+          ]
+        }
+      ]
+    },
+    "CHE": {
+      "outbreak": [
+        {
+          "id": "che-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スイス連邦保健庁（BAG）",
+            "jaKana": "スイス れんぽう ほけん ちょう（BAG）",
+            "en": "Federal Office of Public Health FOPH (Bundesamt für Gesundheit BAG)"
+          },
+          "url": "https://www.bag.admin.ch/de",
+          "pageLang": [
+            "de",
+            "fr",
+            "it"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "che-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "スイス連邦保健庁（BAG）",
+            "jaKana": "スイス れんぽう ほけん ちょう（BAG）",
+            "en": "Federal Office of Public Health FOPH (Bundesamt für Gesundheit BAG)"
+          },
+          "url": "https://www.bag.admin.ch/de",
+          "pageLang": [
+            "de",
+            "fr",
+            "it"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "che-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "スイス連邦社会保険庁（BSV）",
+            "jaKana": "スイス れんぽう しゃかい ほけん ちょう（BSV）",
+            "en": "Federal Social Insurance Office FSIO (Bundesamt für Sozialversicherungen BSV)"
+          },
+          "url": "https://www.bsv.admin.ch/bsv/de/home/bsv.html",
+          "pageLang": [
+            "de",
+            "fr",
+            "it"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "che-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "スイス連邦サイバーセキュリティ庁（BACS）",
+            "jaKana": "スイス れんぽう サイバー セキュリティ ちょう（BACS）",
+            "en": "Federal Office for Cybersecurity (Bundesamt für Cybersicherheit BACS)"
+          },
+          "url": "https://www.bacs.admin.ch/en/start-bacs-en",
+          "pageLang": [
+            "en",
+            "de",
+            "fr"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "che-research-research",
+          "role": "research",
+          "name": {
+            "ja": "スイス国立科学財団（SNF）",
+            "jaKana": "スイス こくりつ かがく ざいだん（SNF）",
+            "en": "Swiss National Science Foundation (SNF)"
+          },
+          "url": "https://www.snf.ch/de",
+          "pageLang": [
+            "de",
+            "fr",
+            "en"
+          ],
+          "desc": {
+            "ja": "スイスの公的な研究資金を配分する機関です（国の委託を受けた財団で、政府の省庁ではありません）。",
+            "jaKana": "スイスの こうてきな けんきゅう しきんを はいぶん する きかん です（くにの いたくを うけた ざいだんで、せいふの しょうちょう では ありません）。",
+            "en": "Distributes public research funding in Switzerland (a foundation mandated by the federal government, not a government ministry)."
+          }
+        }
+      ]
+    },
+    "AUT": {
+      "outbreak": [
+        {
+          "id": "aut-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "オーストリア連邦労働・社会・保健・介護・消費者保護省",
+            "jaKana": "オーストリア れんぽう ろうどう・しゃかい・ほけん・かいご・しょうひしゃ ほご しょう",
+            "en": "Federal Ministry of Labour, Social Affairs, Health, Care and Consumer Protection"
+          },
+          "url": "https://www.sozialministerium.gv.at/public.html",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        },
+        {
+          "id": "aut-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "オーストリア保健・食品安全局（AGES）",
+            "jaKana": "オーストリア ほけん・しょくひん あんぜん きょく（AGES）",
+            "en": "AGES – Austrian Agency for Health and Food Safety"
+          },
+          "url": "https://www.ages.at/startseite/",
+          "pageLang": [
+            "de",
+            "en"
+          ],
+          "desc": {
+            "ja": "感染症や食品の安全を調べる、オーストリアの公衆衛生の専門機関です（国が所有する会社の形をとっています）。",
+            "jaKana": "かんせんしょうや しょくひんの あんぜんを しらべる、オーストリアの こうしゅう えいせいの せんもん きかん です（くにが しょゆう する かいしゃの かたちを とって います）。",
+            "en": "Austria's public health and food safety agency (a company owned by the Republic of Austria)."
+          }
+        }
+      ],
+      "mental": [
+        {
+          "id": "aut-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "オーストリア連邦労働・社会・保健・介護・消費者保護省",
+            "jaKana": "オーストリア れんぽう ろうどう・しゃかい・ほけん・かいご・しょうひしゃ ほご しょう",
+            "en": "Federal Ministry of Labour, Social Affairs, Health, Care and Consumer Protection"
+          },
+          "url": "https://www.sozialministerium.gv.at/public.html",
+          "pageLang": [
+            "de",
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "aut-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "オーストリア保健・食品安全局（AGES）",
+            "jaKana": "オーストリア ほけん・しょくひん あんぜん きょく（AGES）",
+            "en": "AGES – Austrian Agency for Health and Food Safety"
+          },
+          "url": "https://www.ages.at/startseite/",
+          "pageLang": [
+            "de",
+            "en"
+          ],
+          "desc": {
+            "ja": "感染症や食品の安全を調べる、オーストリアの公衆衛生の専門機関です（国が所有する会社の形をとっています）。",
+            "jaKana": "かんせんしょうや しょくひんの あんぜんを しらべる、オーストリアの こうしゅう えいせいの せんもん きかん です（くにが しょゆう する かいしゃの かたちを とって います）。",
+            "en": "Austria's public health and food safety agency (a company owned by the Republic of Austria)."
+          }
+        }
+      ],
+      "security": [
+        {
+          "id": "aut-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "オーストリアCERT.at",
+            "jaKana": "オーストリア CERT.at",
+            "en": "CERT.at (national CERT)"
+          },
+          "url": "https://www.cert.at/",
+          "pageLang": [
+            "de",
+            "en"
+          ],
+          "desc": {
+            "ja": "オーストリアの国家CERT（サイバー攻撃への対応や注意の呼びかけを行う専門チーム）です。法律に基づく国の役割を、会社（CERT.at GmbH）が担っています。",
+            "jaKana": "オーストリアの こっか CERT（サイバー こうげきへの たいおうや ちゅういの よびかけを おこなう せんもん チーム）です。ほうりつに もとづく くにの やくわりを、かいしゃ（CERT.at GmbH）が になって います。",
+            "en": "Austria's national CERT (handles cyber incidents and issues warnings). This statutory national role is carried out by a company, CERT.at GmbH."
+          }
+        }
+      ]
+    },
+    "BEL": {
+      "outbreak": [
+        {
+          "id": "bel-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ベルギー連邦公衆衛生・食品安全・環境省",
+            "jaKana": "ベルギー れんぽう こうしゅう えいせい・しょくひん あんぜん・かんきょう しょう",
+            "en": "FPS Health, Food Chain Safety and Environment (FPS Public Health)"
+          },
+          "url": "https://www.health.belgium.be/en",
+          "pageLang": [
+            "nl",
+            "fr",
+            "de"
+          ]
+        },
+        {
+          "id": "bel-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ベルギー国立公衆衛生研究所（Sciensano）",
+            "jaKana": "ベルギー こくりつ こうしゅう えいせい けんきゅうじょ（Sciensano）",
+            "en": "Sciensano"
+          },
+          "url": "https://sciensano.be/en",
+          "pageLang": [
+            "nl",
+            "fr",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "bel-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ベルギー連邦公衆衛生・食品安全・環境省",
+            "jaKana": "ベルギー れんぽう こうしゅう えいせい・しょくひん あんぜん・かんきょう しょう",
+            "en": "FPS Health, Food Chain Safety and Environment (FPS Public Health)"
+          },
+          "url": "https://www.health.belgium.be/en",
+          "pageLang": [
+            "nl",
+            "fr",
+            "de"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "bel-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ベルギー国立公衆衛生研究所（Sciensano）",
+            "jaKana": "ベルギー こくりつ こうしゅう えいせい けんきゅうじょ（Sciensano）",
+            "en": "Sciensano"
+          },
+          "url": "https://sciensano.be/en",
+          "pageLang": [
+            "nl",
+            "fr",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "bel-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ベルギー・サイバーセキュリティセンター（CCB）",
+            "jaKana": "ベルギー・サイバー セキュリティ センター（CCB）",
+            "en": "Centre for Cybersecurity Belgium (CCB)"
+          },
+          "url": "https://ccb.belgium.be/organisation",
+          "pageLang": [
+            "en",
+            "nl",
+            "fr"
+          ]
+        }
+      ]
+    },
+    "PRT": {
+      "outbreak": [
+        {
+          "id": "prt-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ポルトガル国民保健サービス（SNS）",
+            "jaKana": "ポルトガル こくみん ほけん サービス（SNS）",
+            "en": "Serviço Nacional de Saúde (SNS)"
+          },
+          "url": "https://www.sns.gov.pt/",
+          "pageLang": [
+            "pt"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "prt-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ポルトガル国民保健サービス（SNS）",
+            "jaKana": "ポルトガル こくみん ほけん サービス（SNS）",
+            "en": "Serviço Nacional de Saúde (SNS)"
+          },
+          "url": "https://www.sns.gov.pt/",
+          "pageLang": [
+            "pt"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "prt-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ポルトガル労働・連帯・社会保障省",
+            "jaKana": "ポルトガル ろうどう・れんたい・しゃかい ほしょう しょう",
+            "en": "Ministry of Labour, Solidarity and Social Security"
+          },
+          "url": "https://portugal.gov.pt/pt/gc25/area-de-governo/trabalho-solidariedade-e-seguranca-social/ministro",
+          "pageLang": [
+            "pt"
+          ]
+        }
+      ]
+    },
+    "GRC": {
+      "outbreak": [
+        {
+          "id": "grc-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ギリシャ国立公衆衛生機関（EODY）",
+            "jaKana": "ギリシャ こくりつ こうしゅう えいせい きかん（EODY）",
+            "en": "National Public Health Organization (EODY)"
+          },
+          "url": "https://eody.gov.gr/",
+          "pageLang": [
+            "el"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "grc-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "ギリシャ国立公衆衛生機関（EODY）",
+            "jaKana": "ギリシャ こくりつ こうしゅう えいせい きかん（EODY）",
+            "en": "National Public Health Organization (EODY)"
+          },
+          "url": "https://eody.gov.gr/",
+          "pageLang": [
+            "el"
+          ]
+        }
+      ]
+    },
+    "CZE": {
+      "outbreak": [
+        {
+          "id": "cze-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "チェコ保健省",
+            "jaKana": "チェコ ほけんしょう",
+            "en": "Ministry of Health of the Czech Republic"
+          },
+          "url": "https://mzd.gov.cz/",
+          "pageLang": [
+            "cs"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "cze-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "チェコ保健省",
+            "jaKana": "チェコ ほけんしょう",
+            "en": "Ministry of Health of the Czech Republic"
+          },
+          "url": "https://mzd.gov.cz/",
+          "pageLang": [
+            "cs"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "cze-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "チェコ労働社会問題省",
+            "jaKana": "チェコ ろうどう しゃかい もんだい しょう",
+            "en": "Ministry of Labour and Social Affairs (MPSV)"
+          },
+          "url": "https://mpsv.gov.cz/ministerstvo",
+          "pageLang": [
+            "cs"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "cze-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "チェコ国家サイバー・情報セキュリティ庁（NÚKIB）",
+            "jaKana": "チェコ こっか サイバー・じょうほう セキュリティ ちょう（NÚKIB）",
+            "en": "National Cyber and Information Security Agency (NÚKIB)"
+          },
+          "url": "https://www.nukib.gov.cz",
+          "pageLang": [
+            "cs",
+            "en"
+          ]
+        }
+      ]
+    },
+    "ISL": {
+      "outbreak": [
+        {
+          "id": "isl-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アイスランド保健省",
+            "jaKana": "アイスランド ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
+          "pageLang": [
+            "en"
+          ]
+        },
+        {
+          "id": "isl-public-health-institute-outbreak",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "アイスランド保健局",
+            "jaKana": "アイスランド ほけん きょく",
+            "en": "The Directorate of Health"
+          },
+          "url": "https://island.is/en/o/directorate-of-health/about-directorate-of-health",
+          "pageLang": [
+            "en",
+            "is"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "isl-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アイスランド保健省",
+            "jaKana": "アイスランド ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "isl-public-health-institute-research",
+          "role": "public-health-institute",
+          "name": {
+            "ja": "アイスランド保健局",
+            "jaKana": "アイスランド ほけん きょく",
+            "en": "The Directorate of Health"
+          },
+          "url": "https://island.is/en/o/directorate-of-health/about-directorate-of-health",
+          "pageLang": [
+            "en",
+            "is"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "isl-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "アイスランド社会問題・住宅省",
+            "jaKana": "アイスランド しゃかい もんだい じゅうたく しょう",
+            "en": "Ministry of Social Affairs and Housing"
+          },
+          "url": "https://government.is/ministries/ministry-of-social-affairs-and-housing/about-the-ministry",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "isl-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "アイスランドCERT-IS",
+            "jaKana": "アイスランド CERT-IS",
+            "en": "CERT-IS"
+          },
+          "url": "https://cert.is/english",
+          "pageLang": [
+            "en",
+            "is"
+          ]
+        }
+      ]
+    },
+    "SMR": {
+      "welfare": [
+        {
+          "id": "smr-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "サンマリノ社会保障機構（ISS）",
+            "jaKana": "サンマリノ しゃかい ほしょう きこう（ISS）",
+            "en": "Istituto per la Sicurezza Sociale"
+          },
+          "url": "https://www.iss.sm/on-line/home/chi-siamo.html",
+          "pageLang": [
+            "it"
+          ]
+        }
+      ]
+    },
+    "SXM": {
+      "outbreak": [
+        {
+          "id": "sxm-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "シント・マールテン公衆衛生局",
+            "jaKana": "シント マールテン こうしゅう えいせい きょく",
+            "en": "Department of Public Health"
+          },
+          "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Department-of-Public-Health.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "sxm-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "シント・マールテン公衆衛生局",
+            "jaKana": "シント マールテン こうしゅう えいせい きょく",
+            "en": "Department of Public Health"
+          },
+          "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Department-of-Public-Health.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "sxm-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "シント・マールテン地域開発・家族・人道問題局（CDFHA）",
+            "jaKana": "シント マールテン ちいき かいはつ かぞく じんどう もんだい きょく（CDFHA）",
+            "en": "Community Development, Family & Humanitarian Affairs (CDFHA)"
+          },
+          "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Community-Development-Family-Humanitarian-Affairs.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "FJI": {
+      "outbreak": [
+        {
+          "id": "fji-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "フィジー保健医療サービス省",
+            "jaKana": "フィジー ほけん いりょう サービス しょう",
+            "en": "Ministry of Health and Medical Services"
+          },
+          "url": "https://www.fiji.gov.fj/Archive/Directory/Ministries-and-Department/Ministry-of-Health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "fji-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "フィジー保健医療サービス省",
+            "jaKana": "フィジー ほけん いりょう サービス しょう",
+            "en": "Ministry of Health and Medical Services"
+          },
+          "url": "https://www.fiji.gov.fj/Archive/Directory/Ministries-and-Department/Ministry-of-Health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "AZE": {
+      "outbreak": [
+        {
+          "id": "aze-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アゼルバイジャン保健省",
+            "jaKana": "アゼルバイジャン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://sehiyye.gov.az/en",
+          "pageLang": [
+            "en",
+            "az"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "aze-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アゼルバイジャン保健省",
+            "jaKana": "アゼルバイジャン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://sehiyye.gov.az/en",
+          "pageLang": [
+            "en",
+            "az"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "aze-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "アゼルバイジャン労働・社会保護省",
+            "jaKana": "アゼルバイジャン ろうどう しゃかい ほごしょう",
+            "en": "Ministry of Labour and Social Protection of Population"
+          },
+          "url": "https://sosial.gov.az/en/ministry/regulation",
+          "pageLang": [
+            "en",
+            "az"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "aze-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "アゼルバイジャン政府CERT（CERT.GOV.AZ）",
+            "jaKana": "アゼルバイジャン せいふ CERT（CERT.GOV.AZ）",
+            "en": "Azerbaijan Government CERT (CERT.GOV.AZ)"
+          },
+          "url": "https://www.cert.gov.az/en/page/rfc-2350",
+          "pageLang": [
+            "en",
+            "az"
+          ]
+        }
+      ]
+    },
+    "VGB": {
+      "outbreak": [
+        {
+          "id": "vgb-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "イギリス領ヴァージン諸島保健・社会開発省",
+            "jaKana": "イギリスりょう ヴァージン しょとう ほけん しゃかい かいはつしょう",
+            "en": "Ministry of Health and Social Development"
+          },
+          "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "vgb-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "イギリス領ヴァージン諸島保健・社会開発省",
+            "jaKana": "イギリスりょう ヴァージン しょとう ほけん しゃかい かいはつしょう",
+            "en": "Ministry of Health and Social Development"
+          },
+          "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "vgb-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "イギリス領ヴァージン諸島保健・社会開発省",
+            "jaKana": "イギリスりょう ヴァージン しょとう ほけん しゃかい かいはつしょう",
+            "en": "Ministry of Health and Social Development"
+          },
+          "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "KOS": {
+      "security": [
+        {
+          "id": "kos-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "コソボ政府CERT（GovCERT XK）",
+            "jaKana": "コソボ せいふ CERT（GovCERT XK）",
+            "en": "Kosovo Government CERT (GovCERT XK)"
+          },
+          "url": "https://govcert.rks-gov.net/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "VCT": {
+      "outbreak": [
+        {
+          "id": "vct-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "セントビンセント・グレナディーン保健・ウェルネス・環境保健・エネルギー省",
+            "jaKana": "セントビンセント グレナディーン ほけん ウェルネス かんきょう ほけん エネルギーしょう",
+            "en": "Ministry of Health, Wellness, Environmental Health and Energy"
+          },
+          "url": "https://health.gov.vc/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "vct-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "セントビンセント・グレナディーン保健・ウェルネス・環境保健・エネルギー省",
+            "jaKana": "セントビンセント グレナディーン ほけん ウェルネス かんきょう ほけん エネルギーしょう",
+            "en": "Ministry of Health, Wellness, Environmental Health and Energy"
+          },
+          "url": "https://health.gov.vc/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "vct-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "セントビンセント・グレナディーン国家動員・社会開発省",
+            "jaKana": "セントビンセント グレナディーン こっか どういん しゃかい かいはつしょう",
+            "en": "Ministry of National Mobilisation and Social Development"
+          },
+          "url": "https://mobilization.gov.vc",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "ARE": {
+      "outbreak": [
+        {
+          "id": "are-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アラブ首長国連邦保健予防省",
+            "jaKana": "アラブ しゅちょうこく れんぽう ほけん よぼう しょう",
+            "en": "Ministry of Health and Prevention"
+          },
+          "url": "https://mohap.gov.ae/en/home",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "are-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アラブ首長国連邦保健予防省",
+            "jaKana": "アラブ しゅちょうこく れんぽう ほけん よぼう しょう",
+            "en": "Ministry of Health and Prevention"
+          },
+          "url": "https://mohap.gov.ae/en/home",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ]
+    },
+    "OMN": {
+      "outbreak": [
+        {
+          "id": "omn-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "オマーン保健省",
+            "jaKana": "オマーン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.om/en/home",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "omn-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "オマーン保健省",
+            "jaKana": "オマーン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.om/en/home",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "omn-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "オマーン社会開発省",
+            "jaKana": "オマーン しゃかい かいはつ しょう",
+            "en": "Ministry of Social Development"
+          },
+          "url": "https://gov.om/en/ministry-of-social-development",
+          "pageLang": [
+            "en",
+            "ar"
+          ]
+        }
+      ]
+    },
+    "KHM": {
+      "outbreak": [
+        {
+          "id": "khm-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "カンボジア保健省",
+            "jaKana": "カンボジア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.kh/en/home",
+          "pageLang": [
+            "en",
+            "km"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "khm-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "カンボジア保健省",
+            "jaKana": "カンボジア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.kh/en/home",
+          "pageLang": [
+            "en",
+            "km"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "khm-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "カンボジア社会福祉・退役軍人・青少年更生省",
+            "jaKana": "カンボジア しゃかい ふくし たいえき ぐんじん せいしょうねん こうせい しょう",
+            "en": "Ministry of Social Affairs, Veterans and Youth Rehabilitation"
+          },
+          "url": "https://mosvy.gov.kh/",
+          "pageLang": [
+            "km",
+            "en"
+          ]
+        }
+      ]
+    },
+    "COK": {
+      "outbreak": [
+        {
+          "id": "cok-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "クック諸島保健省（テ・マラエ・オラ）",
+            "jaKana": "クック しょとう ほけんしょう（テ マラエ オラ）",
+            "en": "Te Marae Ora Cook Islands Ministry of Health"
+          },
+          "url": "https://www.health.gov.ck/about",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "cok-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "クック諸島保健省（テ・マラエ・オラ）",
+            "jaKana": "クック しょとう ほけんしょう（テ マラエ オラ）",
+            "en": "Te Marae Ora Cook Islands Ministry of Health"
+          },
+          "url": "https://www.health.gov.ck/about",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "JEY": {
+      "outbreak": [
+        {
+          "id": "jey-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ジャージー保健医療ケア局（Health and Care Jersey）",
+            "jaKana": "ジャージー ほけん いりょう ケア きょく（Health and Care Jersey）",
+            "en": "Health and Care Jersey"
+          },
+          "url": "https://www.gov.je/Government/Departments/HealthCare/Pages/index.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "jey-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ジャージー保健医療ケア局（Health and Care Jersey）",
+            "jaKana": "ジャージー ほけん いりょう ケア きょく（Health and Care Jersey）",
+            "en": "Health and Care Jersey"
+          },
+          "url": "https://www.gov.je/Government/Departments/HealthCare/Pages/index.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "jey-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ジャージー雇用・社会保障・住宅局",
+            "jaKana": "ジャージー こよう しゃかい ほしょう じゅうたく きょく",
+            "en": "Employment, Social Security and Housing"
+          },
+          "url": "https://www.gov.je/Government/Departments/EmploymentSocialSecurityHousing/Pages/index.aspx",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "BHR": {
+      "outbreak": [
+        {
+          "id": "bhr-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "バーレーン保健省",
+            "jaKana": "バーレーン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.moh.gov.bh/",
+          "pageLang": [
+            "ar",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "bhr-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "バーレーン保健省",
+            "jaKana": "バーレーン ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.moh.gov.bh/",
+          "pageLang": [
+            "ar",
+            "en"
+          ]
+        }
+      ]
+    },
+    "ARM": {
+      "outbreak": [
+        {
+          "id": "arm-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アルメニア保健省",
+            "jaKana": "アルメニア ほけんしょう",
+            "en": "Ministry of Health of the Republic of Armenia"
+          },
+          "url": "https://health.gov.am/en",
+          "pageLang": [
+            "hy",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "arm-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "アルメニア保健省",
+            "jaKana": "アルメニア ほけんしょう",
+            "en": "Ministry of Health of the Republic of Armenia"
+          },
+          "url": "https://health.gov.am/en",
+          "pageLang": [
+            "hy",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "arm-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "アルメニア国家CERT（AM-CERT）",
+            "jaKana": "アルメニア こっか CERT（AM-CERT）",
+            "en": "AM-CERT – National Computer Emergency Response Team of Armenia"
+          },
+          "url": "https://isaa.am/en/am-cert-computer-emergency-response-team",
+          "pageLang": [
+            "en",
+            "hy"
+          ]
+        }
+      ]
+    },
+    "URY": {
+      "outbreak": [
+        {
+          "id": "ury-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ウルグアイ公衆衛生省",
+            "jaKana": "ウルグアイ こうしゅう えいせい しょう",
+            "en": "Ministerio de Salud Pública"
+          },
+          "url": "https://www.gub.uy/ministerio-salud-publica/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ury-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ウルグアイ公衆衛生省",
+            "jaKana": "ウルグアイ こうしゅう えいせい しょう",
+            "en": "Ministerio de Salud Pública"
+          },
+          "url": "https://www.gub.uy/ministerio-salud-publica/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "ury-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "ウルグアイ社会開発省",
+            "jaKana": "ウルグアイ しゃかい かいはつ しょう",
+            "en": "Ministerio de Desarrollo Social (MIDES)"
+          },
+          "url": "https://www.gub.uy/ministerio-desarrollo-social/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "ury-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "ウルグアイ国家情報セキュリティ事案対応センター（CERTuy）",
+            "jaKana": "ウルグアイ こっか じょうほう セキュリティ じあん たいおう センター（CERTuy）",
+            "en": "Centro Nacional de Respuesta a Incidentes de Seguridad Informática (CERTuy)"
+          },
+          "url": "https://www.gub.uy/centro-nacional-respuesta-incidentes-seguridad-informatica/",
+          "pageLang": [
+            "es"
+          ]
+        }
+      ]
+    },
+    "GGY": {
+      "outbreak": [
+        {
+          "id": "ggy-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ガーンジー公衆衛生サービス",
+            "jaKana": "ガーンジー こうしゅう えいせい サービス",
+            "en": "Public Health Services – States of Guernsey"
+          },
+          "url": "https://gov.gg/publichealth",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "ggy-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ガーンジー公衆衛生サービス",
+            "jaKana": "ガーンジー こうしゅう えいせい サービス",
+            "en": "Public Health Services – States of Guernsey"
+          },
+          "url": "https://gov.gg/publichealth",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "GRD": {
+      "outbreak": [
+        {
+          "id": "grd-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "グレナダ保健・ウェルネス・宗教省",
+            "jaKana": "グレナダ ほけん ウェルネス しゅうきょう しょう",
+            "en": "Ministry of Health, Wellness & Religious Affairs"
+          },
+          "url": "https://www.gov.gd/health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "grd-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "グレナダ保健・ウェルネス・宗教省",
+            "jaKana": "グレナダ ほけん ウェルネス しゅうきょう しょう",
+            "en": "Ministry of Health, Wellness & Religious Affairs"
+          },
+          "url": "https://www.gov.gd/health",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "grd-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "グレナダ社会・地域開発・住宅・ジェンダー省",
+            "jaKana": "グレナダ しゃかい ちいき かいはつ じゅうたく ジェンダー しょう",
+            "en": "Ministry of Social & Community Development, Housing and Gender Affairs"
+          },
+          "url": "https://www.gov.gd/index.php/sociald",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "WSM": {
+      "outbreak": [
+        {
+          "id": "wsm-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "サモア保健省",
+            "jaKana": "サモア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.health.gov.ws/",
+          "pageLang": [
+            "en",
+            "sm"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "wsm-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "サモア保健省",
+            "jaKana": "サモア ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://www.health.gov.ws/",
+          "pageLang": [
+            "en",
+            "sm"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "wsm-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "サモア女性・地域社会開発省",
+            "jaKana": "サモア じょせい ちいき しゃかい かいはつ しょう",
+            "en": "Ministry of Women, Community and Social Development"
+          },
+          "url": "https://mwcsd.gov.ws/office-of-the-ceo/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "wsm-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "サモアCERT（SamCERT）",
+            "jaKana": "サモア CERT（SamCERT）",
+            "en": "Samoa Computer Emergency Response Team (SamCERT)"
+          },
+          "url": "https://mcit.gov.ws/programs/cert",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "EST": {
+      "outbreak": [
+        {
+          "id": "est-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "エストニア社会問題省",
+            "jaKana": "エストニア しゃかい もんだい しょう",
+            "en": "Ministry of Social Affairs"
+          },
+          "url": "https://sm.ee/en",
+          "pageLang": [
+            "et",
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "est-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "エストニア社会問題省",
+            "jaKana": "エストニア しゃかい もんだい しょう",
+            "en": "Ministry of Social Affairs"
+          },
+          "url": "https://sm.ee/en",
+          "pageLang": [
+            "et",
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "est-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "エストニア社会問題省",
+            "jaKana": "エストニア しゃかい もんだい しょう",
+            "en": "Ministry of Social Affairs"
+          },
+          "url": "https://sm.ee/en",
+          "pageLang": [
+            "et",
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "est-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "エストニア情報システム庁（RIA）CERT-EE",
+            "jaKana": "エストニア じょうほう システム ちょう（RIA）CERT-EE",
+            "en": "Information System Authority (RIA) – CERT-EE"
+          },
+          "url": "https://ria.ee/en/cert-ee-20-years-protecting-estonias-cyberspace",
+          "pageLang": [
+            "et",
+            "en"
+          ]
+        }
+      ]
+    },
+    "CYM": {
+      "outbreak": [
+        {
+          "id": "cym-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ケイマン諸島保健・環境・持続可能性省",
+            "jaKana": "ケイマン しょとう ほけん かんきょう じぞく かのうせい しょう",
+            "en": "Ministry of Health, Environment and Sustainability"
+          },
+          "url": "https://gov.ky/mhes",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "cym-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ケイマン諸島保健・環境・持続可能性省",
+            "jaKana": "ケイマン しょとう ほけん かんきょう じぞく かのうせい しょう",
+            "en": "Ministry of Health, Environment and Sustainability"
+          },
+          "url": "https://gov.ky/mhes",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "NAM": {
+      "outbreak": [
+        {
+          "id": "nam-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ナミビア保健社会サービス省",
+            "jaKana": "ナミビア ほけん しゃかい サービス しょう",
+            "en": "Ministry of Health and Social Services"
+          },
+          "url": "https://mhss.gov.na/site-map",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "nam-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "ナミビア保健社会サービス省",
+            "jaKana": "ナミビア ほけん しゃかい サービス しょう",
+            "en": "Ministry of Health and Social Services"
+          },
+          "url": "https://mhss.gov.na/site-map",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    "SGP": {
+      "outbreak": [
+        {
+          "id": "sgp-health-ministry-outbreak",
+          "role": "health-ministry",
+          "name": {
+            "ja": "シンガポール保健省",
+            "jaKana": "シンガポール ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.sg/contact-us",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "mental": [
+        {
+          "id": "sgp-health-ministry-mental",
+          "role": "health-ministry",
+          "name": {
+            "ja": "シンガポール保健省",
+            "jaKana": "シンガポール ほけんしょう",
+            "en": "Ministry of Health"
+          },
+          "url": "https://moh.gov.sg/contact-us",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "welfare": [
+        {
+          "id": "sgp-welfare-ministry-welfare",
+          "cat": "general",
+          "role": "welfare-ministry",
+          "name": {
+            "ja": "シンガポール社会・家族開発省",
+            "jaKana": "シンガポール しゃかい かぞく かいはつ しょう",
+            "en": "Ministry of Social and Family Development"
+          },
+          "url": "https://www.msf.gov.sg/",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "security": [
+        {
+          "id": "sgp-cert-security",
+          "role": "cert",
+          "name": {
+            "ja": "シンガポールサイバーセキュリティ庁（CSA）",
+            "jaKana": "シンガポール サイバー セキュリティ ちょう（CSA）",
+            "en": "Cyber Security Agency of Singapore"
+          },
+          "url": "https://www.csa.gov.sg/about-csa",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ]
+    }
+  },
+  "international": {
+    "outbreak": [
+      {
+        "id": "in-o-don",
+        "name": {
+          "ja": "WHO 疾病発生ニュース（DON）",
+          "jaKana": "WHO しっぺい はっせい ニュース（DON）",
+          "en": "WHO Disease Outbreak News"
+        },
+        "desc": {
+          "ja": "世界保健機関（WHO）が、国際的に注意が必要な感染症などの発生を選んで公表しているページです（英語）。",
+          "jaKana": "せかい ほけん きかん（WHO）が、こくさいてきに ちゅういが ひつような かんせんしょう などの はっせいを えらんで こうひょう している ページ です（えいご）。",
+          "en": "WHO's official reports on selected disease outbreaks and public health events of international concern."
+        },
+        "url": "https://www.who.int/emergencies/disease-outbreak-news"
+      },
+      {
+        "id": "in-o-ecdc",
+        "name": {
+          "ja": "欧州疾病予防管理センター（ECDC）",
+          "jaKana": "おうしゅう しっぺい よぼう かんり センター（ECDC）",
+          "en": "ECDC"
+        },
+        "desc": {
+          "ja": "ヨーロッパを中心に、世界の感染症の状況を毎週まとめているEUの機関です（英語）。",
+          "jaKana": "ヨーロッパを ちゅうしんに、せかいの かんせんしょうの じょうきょうを まいしゅう まとめている EUの きかん です（えいご）。",
+          "en": "The EU agency publishing weekly reports on infectious disease threats."
+        },
+        "url": "https://www.ecdc.europa.eu/en"
+      }
+    ],
+    "mental": [
+      {
+        "id": "in-m-who",
+        "name": {
+          "ja": "こころの健康（WHO）",
+          "jaKana": "こころの けんこう（WHO）",
+          "en": "Mental health (WHO)"
+        },
+        "desc": {
+          "ja": "世界保健機関による、こころの健康についての基本的な情報です（英語ほか）。",
+          "jaKana": "せかい ほけん きかんに よる、こころの けんこうに ついての きほんてきな じょうほう です（えいご ほか）。",
+          "en": "Basic information on mental health from the World Health Organization."
+        },
+        "url": "https://www.who.int/health-topics/mental-health"
+      }
+    ],
+    "security": [
+      {
+        "id": "in-s-enisa",
+        "name": {
+          "ja": "欧州連合サイバーセキュリティ機関（ENISA）",
+          "jaKana": "おうしゅう れんごう サイバー セキュリティ きかん（ENISA）",
+          "en": "ENISA"
+        },
+        "desc": {
+          "ja": "EUのサイバーセキュリティ機関です。脅威の動向をまとめた報告を出しています（英語）。",
+          "jaKana": "EUの サイバー セキュリティ きかん です。きょういの どうこうを まとめた ほうこくを だしています（えいご）。",
+          "en": "The EU cybersecurity agency, publishing reports on the threat landscape."
+        },
+        "url": "https://www.enisa.europa.eu/"
+      },
+      {
+        "id": "in-s-kev",
+        "name": {
+          "ja": "悪用が確認された脆弱性の一覧（CISA KEV）",
+          "jaKana": "あくようが かくにん された ぜいじゃくせいの いちらん（CISA KEV）",
+          "en": "Known Exploited Vulnerabilities (CISA KEV)"
+        },
+        "desc": {
+          "ja": "実際の攻撃に使われたと確認されたソフトの弱点の一覧です。このサイトの「ITセキュリティ」の情報元です（英語）。",
+          "jaKana": "じっさいの こうげきに つかわれたと かくにん された ソフトの じゃくてんの いちらん です。この サイトの「IT セキュリティ」の じょうほうもと です（えいご）。",
+          "en": "A catalogue of vulnerabilities confirmed to be exploited. The source of this site's IT security layer."
+        },
+        "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      }
+    ],
+    "research": [
+      {
+        "id": "in-r-who",
+        "name": {
+          "ja": "世界保健機関（WHO）",
+          "jaKana": "せかい ほけん きかん（WHO）",
+          "en": "World Health Organization (WHO)"
+        },
+        "desc": {
+          "ja": "世界の健康についての指針を示し、各国の対応を調整している国連の機関です。",
+          "jaKana": "せかいの けんこうに ついての ししんを しめし、かっこくの たいおうを ちょうせい している こくれんの きかん です。",
+          "en": "The UN agency setting global health guidance and coordinating responses."
+        },
+        "url": "https://www.who.int/"
+      },
+      {
+        "id": "in-r-pubmed",
+        "name": {
+          "ja": "PubMed（米国国立医学図書館）",
+          "jaKana": "PubMed（べいこく こくりつ いがく としょかん）",
+          "en": "PubMed (US National Library of Medicine)"
+        },
+        "desc": {
+          "ja": "世界の医学論文をさがせる無料のデータベースです（英語）。",
+          "jaKana": "せかいの いがく ろんぶんを さがせる むりょうの データベース です（えいご）。",
+          "en": "A free database for searching medical research papers worldwide."
+        },
+        "url": "https://pubmed.ncbi.nlm.nih.gov/"
+      }
+    ],
+    "welfare": []
+  },
+  "social": {
+    "INTL": [
+      {
+        "id": "x-who",
+        "org": {
+          "ja": "世界保健機関（WHO）",
+          "jaKana": "せかい ほけん きかん（WHO）",
+          "en": "World Health Organization (WHO)"
+        },
+        "url": "https://x.com/WHO",
+        "layers": [
+          "outbreak",
+          "research",
+          "mental"
+        ]
+      },
+      {
+        "id": "x-enisa-eu",
+        "org": {
+          "ja": "欧州連合サイバーセキュリティ機関（ENISA）",
+          "jaKana": "おうしゅう れんごう サイバー セキュリティ きかん（ENISA）",
+          "en": "EU Agency for Cybersecurity (ENISA)"
+        },
+        "url": "https://x.com/enisa_eu",
+        "layers": [
+          "security"
+        ]
+      }
+    ],
+    "USA": [
+      {
+        "id": "x-cdcgov",
+        "org": {
+          "ja": "米国疾病予防管理センター（CDC）",
+          "jaKana": "べいこく しっぺい よぼう かんり センター（CDC）",
+          "en": "US Centers for Disease Control and Prevention (CDC)"
+        },
+        "url": "https://x.com/CDCgov",
+        "layers": [
+          "outbreak"
+        ]
+      },
+      {
+        "id": "x-nih",
+        "org": {
+          "ja": "米国国立衛生研究所（NIH）",
+          "jaKana": "べいこく こくりつ えいせい けんきゅうじょ（NIH）",
+          "en": "US National Institutes of Health (NIH)"
+        },
+        "url": "https://x.com/NIH",
+        "layers": [
+          "research"
+        ]
+      }
+    ],
+    "GBR": [
+      {
+        "id": "x-ncsc",
+        "org": {
+          "ja": "英国国家サイバーセキュリティセンター（NCSC）",
+          "jaKana": "えいこく こっか サイバー セキュリティ センター（NCSC）",
+          "en": "UK National Cyber Security Centre (NCSC)"
+        },
+        "url": "https://x.com/ncsc",
+        "layers": [
+          "security"
+        ]
+      }
+    ],
+    "JPN": [
+      {
+        "id": "x-mhlwitter",
+        "org": {
+          "ja": "厚生労働省",
+          "jaKana": "こうせいろうどうしょう",
+          "en": "Ministry of Health, Labour and Welfare (Japan)"
+        },
+        "url": "https://x.com/MHLWitter",
+        "layers": [
+          "outbreak",
+          "mental",
+          "welfare"
+        ]
+      },
+      {
+        "id": "x-japancybergov",
+        "org": {
+          "ja": "国家サイバー統括室",
+          "jaKana": "こっか サイバー とうかつしつ",
+          "en": "National Cybersecurity Office (Japan)"
+        },
+        "url": "https://x.com/JapanCyberGov",
+        "layers": [
+          "security"
+        ]
+      },
+      {
+        "id": "x-jpcert",
+        "org": {
+          "ja": "JPCERTコーディネーションセンター",
+          "jaKana": "JPCERT コーディネーション センター",
+          "en": "JPCERT/CC"
+        },
+        "url": "https://x.com/jpcert",
+        "layers": [
+          "security"
+        ]
+      },
+      {
+        "id": "x-ipajp",
+        "org": {
+          "ja": "情報処理推進機構（IPA）",
+          "jaKana": "じょうほう しょり すいしん きこう（IPA）",
+          "en": "Information-technology Promotion Agency, Japan (IPA)"
+        },
+        "url": "https://x.com/IPAjp",
+        "layers": [
+          "security"
+        ]
+      },
+      {
+        "id": "x-jihs2025",
+        "org": {
+          "ja": "国立健康危機管理研究機構（JIHS）",
+          "jaKana": "こくりつ けんこう きき かんり けんきゅう きこう（JIHS）",
+          "en": "Japan Institute for Health Security (JIHS)"
+        },
+        "url": "https://x.com/JIHS2025",
+        "layers": [
+          "outbreak",
+          "research"
+        ]
+      },
+      {
+        "id": "x-caa-shohishacho",
+        "org": {
+          "ja": "消費者庁",
+          "jaKana": "しょうひしゃちょう",
+          "en": "Consumer Affairs Agency (Japan)"
+        },
+        "url": "https://x.com/caa_shohishacho",
+        "layers": [
+          "welfare"
+        ]
+      },
+      {
+        "id": "x-kodomokatei",
+        "org": {
+          "ja": "こども家庭庁",
+          "jaKana": "こども かていちょう",
+          "en": "Children and Families Agency (Japan)"
+        },
+        "url": "https://x.com/KodomoKatei",
+        "layers": [
+          "welfare"
+        ]
+      }
+    ]
+  }
+}
