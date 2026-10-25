@@ -33,6 +33,21 @@ for (const line of out.split('\n').filter(Boolean)) {
 // --strict のときは、すべての参照から届く「保存されたファイルの中身（blob）」を1つ残らず個人情報・秘密情報の検査にかける。
 // 差分ではなく中身そのものを見るため、マージの解決時だけに入れて後で消したもの・コミットメッセージ以外のあらゆる版も対象になる。
 // コミットメッセージも検査する。内容は表示しない。
+// 公開ワークフロー（通常）でも、直近7日のコミットメッセージに AI との会話の URL・セッション情報・個人情報が無いかを調べる
+if (!process.argv.includes('--strict')) {
+  let recentMsgs = '';
+  try {
+    recentMsgs = execFileSync('git', ['log', '--all', '--since=7.days', '--format=%x01%H%n%B'], { encoding: 'utf8', maxBuffer: 1 << 28, stdio: ['ignore', 'pipe', 'ignore'] });
+  } catch {
+    console.error('git のコミットメッセージを読めませんでした');
+    process.exit(1);
+  }
+  let sha = '';
+  for (const line of recentMsgs.split('\n')) {
+    if (line.startsWith('\x01')) sha = line.slice(1, 8);
+    else for (const label of scanText(line)) bad.push(`${sha}: コミットメッセージに「${label}」の疑い`);
+  }
+}
 if (process.argv.includes('--strict')) {
   const opts = { encoding: 'utf8', maxBuffer: 1 << 30, stdio: ['pipe', 'pipe', 'ignore'] };
   let objects = '';
