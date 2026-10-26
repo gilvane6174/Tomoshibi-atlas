@@ -3,7 +3,12 @@
 
 const MAX_BYTES = 15 * 1024 * 1024;
 
-export async function fetchText(url, { timeoutMs = 30000 } = {}) {
+export async function fetchText(url, opts = {}) {
+  return new TextDecoder('utf-8', { fatal: true }).decode(await fetchBytes(url, opts));
+}
+
+// 本文をバイト列のまま受け取る（文字コードを呼び出し側で決める RSS などのため）
+export async function fetchBytes(url, { timeoutMs = 30000 } = {}) {
   const res = await fetch(url, {
     redirect: 'error',
     signal: AbortSignal.timeout(timeoutMs),
@@ -26,7 +31,7 @@ export async function fetchText(url, { timeoutMs = 30000 } = {}) {
     }
     chunks.push(value);
   }
-  return new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks));
+  return Buffer.concat(chunks);
 }
 
 export async function fetchJson(url, opts) {

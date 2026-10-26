@@ -38,7 +38,7 @@ export function normalizeDon(raw, now = Date.now()) {
   const url = ITEM_BASE + encodeURIComponent(slug);
   if (!isAllowedUrl(url)) return null;
   const publishedAt = toIsoDate(published);
-  if (!withinDays(publishedAt, RULES.outbreak.keepDays, now)) return null;
+  if (!withinDays(publishedAt, RULES.outbreak.fillDays, now)) return null;
 
   const { disease, place } = splitTitle(title);
   let countries = [];

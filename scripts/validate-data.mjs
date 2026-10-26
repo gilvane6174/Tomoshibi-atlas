@@ -6,14 +6,17 @@ import { pathToFileURL } from 'node:url';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { scanText } from './check-privacy.mjs';
-import { DATA_ROOT, readCode, readData, isAllowedUrl, isDirectoryUrl, looksLikeHtml, isValidDate, findForbidden, findAttackDetail, hasInvisible, hasMixedScript, notFutureJst } from './lib/safety.mjs';
+import { DATA_ROOT, readCode, readData, isAllowedUrl, isDirectoryUrl, isAnimalUrl, looksLikeHtml, isValidDate, findForbidden, findAttackDetail, hasInvisible, hasMixedScript, notFutureJst, siWithoutExplanation, mentionsSuperIntelligence } from './lib/safety.mjs';
 
-export const LAYERS = ['outbreak', 'research', 'mental', 'welfare', 'security'];
-export const CURATED_LAYERS = ['research', 'mental', 'welfare'];
-export const TAGS = ['ransomware', 'ai', 'statistics', 'support', 'policy', 'early-stage', 'approved'];
+export const LAYERS = ['outbreak', 'research', 'mental', 'welfare', 'security', 'crime', 'disaster', 'quake'];
+export const CURATED_LAYERS = ['research', 'mental', 'welfare', 'crime', 'disaster'];
+// 相談先リンク集・公式Xアカウントで使える分野（防犯・防災はリンク集を表示しないため含めない。site/js/data.js の DIR_LAYERS と合わせる）
+const DIR_LAYER_IDS = ['outbreak', 'research', 'mental', 'welfare', 'security'];
+export const TAGS = ['ransomware', 'ai', 'statistics', 'support', 'policy', 'early-stage', 'approved', 'security', 'disaster', 'crime'];
 const PLACE_BASIS = ['reported_country', 'publisher_country', 'global', 'unknown'];
 const CURATED_PLACE_BASIS = ['reported_country', 'global'];
-const SOURCE_TYPES = ['peer_reviewed', 'public_agency', 'intl_org'];
+// vendor … 製品の開発元の公式発表（セキュリティ更新の配布など。研究と対策の分野だけ）
+const SOURCE_TYPES = ['peer_reviewed', 'public_agency', 'intl_org', 'vendor'];
 const COUNTRY_IDS = new Set(readCode('site/data/geo/country-index.json').map((c) => c.id));
 const ID = /^[a-z0-9][a-z0-9-]{2,120}$/;
 const TOPIC = /^[a-z0-9][a-z0-9-]{1,59}$/;
@@ -70,8 +73,10 @@ export function validateItems(items, { layer, curated }) {
     if (ids.has(it.id)) errors.push(`${p}: id が重複`);
     ids.add(it.id);
 
-    const both = curated ? ['ja', 'en'] : ['ja'];
+    // 手動掲載は日英とも必須。自動取得は原文の言語だけでよい（日本語か英語のどちらかは必須。機械翻訳しない）
+    const both = curated ? ['ja', 'en'] : [];
     checkText(it.title, `${p}.title`, errors, { need: both, max: curated ? 80 : 300 });
+    if (!curated && !(typeof it.title?.ja === 'string' && it.title.ja.trim()) && !(typeof it.title?.en === 'string' && it.title.en.trim())) errors.push(`${p}.title: ja か en のどちらかが必須`);
     checkText(it.summary, `${p}.summary`, errors, { need: curated ? both : [], max: 200 });
     checkText(it.attribution, `${p}.attribution`, errors, { need: curated && it.layer === 'welfare' ? both : [], max: 80 });
     if (it.topic !== undefined && (typeof it.topic !== 'string' || !TOPIC.test(it.topic))) errors.push(`${p}: topic は英小文字・数字・ハイフン（2〜60文字）`);
@@ -106,7 +111,13 @@ export function validateItems(items, { layer, curated }) {
       errors.push(`${p}: tags は ${TAGS.join(' / ')} のみ`);
 
     if (curated) {
-      if (!SOURCE_TYPES.includes(it.sourceType)) errors.push(`${p}: sourceType は peer_reviewed / public_agency / intl_org`);
+      // 「SI」だけの表記は意味が分からないため、説明を添える（リンク集の SI-CERT などの固有名は対象外）
+      for (const [k, obj] of [['title', it.title], ['summary', it.summary], ['attribution', it.attribution]])
+        for (const lang of ['ja', 'en']) if (typeof obj?.[lang] === 'string' && siWithoutExplanation(obj[lang])) errors.push(`${p}.${k}.${lang}: 「SI」だけでは意味が分からないため、「SI（Super Intelligence。米国政府の文書でのAIの呼び方）」のように説明を添える（ops/CURATION.md）`);
+      // SI（Super Intelligence）と書かれた AI 関連の情報は、AI の情報として「ai」の印を付ける
+      if (mentionsSuperIntelligence(JSON.stringify([it.title, it.summary, it.attribution])) && !(it.tags || []).includes('ai')) errors.push(`${p}: SI（Super Intelligence）の情報は AI 関連として tags に ai を付ける`);
+      if (!SOURCE_TYPES.includes(it.sourceType)) errors.push(`${p}: sourceType は peer_reviewed / public_agency / intl_org / vendor`);
+      else if (it.sourceType === 'vendor' && it.layer !== 'research') errors.push(`${p}: 開発元の発表（vendor）は「研究と対策」の分野だけ`);
       if (!isValidDate(it.checkedAt) || !notFutureJst(it.checkedAt)) errors.push(`${p}: checkedAt（原典を確認した日）が必須。未来日は不可`);
       else if (isValidDate(it.publishedAt) && it.checkedAt < it.publishedAt.slice(0, 10)) errors.push(`${p}: checkedAt が公表日より前`);
     }
@@ -205,7 +216,7 @@ export function validateDirectoryDoc(doc, rel = 'directory') {
           if (!ID.test(a?.id || '')) errors.push(`${p}.id: 不正`);
           DIR_TEXT(a?.org, `${p}.org`, errors, 80);
           if (!/^https:\/\/x\.com\/[A-Za-z0-9_]{1,15}$/.test(a?.url || '')) errors.push(`${p}.url: https://x.com/<アカウント名> の形だけ`);
-          if (!Array.isArray(a?.layers) || !a.layers.length || !a.layers.every((l) => LAYERS.includes(l))) errors.push(`${p}.layers: 分野名の配列が必要`);
+          if (!Array.isArray(a?.layers) || !a.layers.length || !a.layers.every((l) => DIR_LAYER_IDS.includes(l))) errors.push(`${p}.layers: 分野名の配列が必要`);
         });
       }
   }
@@ -223,7 +234,7 @@ export function validateDirectoryDoc(doc, rel = 'directory') {
   const checkBlock = (block, path) => {
     if (!isObj(block)) return errors.push(`${path}: オブジェクトが必要`);
     for (const [layer, links] of Object.entries(block)) {
-      if (!LAYERS.includes(layer)) errors.push(`${path}.${layer}: 分野名が不正`);
+      if (!DIR_LAYER_IDS.includes(layer)) errors.push(`${path}.${layer}: 分野名が不正`);
       if (!Array.isArray(links)) {
         errors.push(`${path}.${layer}: 配列が必要`);
         continue;
@@ -258,6 +269,72 @@ export function validateDirectoryDoc(doc, rel = 'directory') {
   return errors.map((e) => (e.startsWith(rel) ? e : `${rel} ${e}`));
 }
 
+// 日本の47都道府県の福祉ページ（data/directory/prefectures.json）
+export function validatePrefectures(rel = 'data/directory/prefectures.json') {
+  const errors = [];
+  const doc = readData(rel);
+  if (!isObj(doc) || doc.schemaVersion !== 1 || !Array.isArray(doc.prefectures)) return [`${rel}: 形式が不正`];
+  if (doc.prefectures.length !== 47) errors.push(`${rel}: 47都道府県すべてを並べる（${doc.prefectures.length}件）`);
+  const ids = new Set();
+  doc.prefectures.forEach((p, i) => {
+    const at = `${rel} prefectures[${i}]`;
+    if (p.code !== String(i + 1).padStart(2, '0')) errors.push(`${at}: code は 01〜47 の順番`);
+    for (const k of Object.keys(p)) if (!['code', 'ja', 'en', 'links'].includes(k)) errors.push(`${at}.${k}: 使えないキー`);
+    if (typeof p.ja !== 'string' || !/^[\p{Script=Han}\p{Script=Hiragana}]{2,5}$/u.test(p.ja)) errors.push(`${at}.ja: 都道府県名が不正`);
+    if (typeof p.en !== 'string' || !/^[A-Za-z ]{4,40}$/.test(p.en)) errors.push(`${at}.en: 英語名が不正`);
+    if (!Array.isArray(p.links) || p.links.length > 3) return errors.push(`${at}.links: 0〜3件の配列`);
+    p.links.forEach((l, j) => {
+      const lp = `${at}.links[${j}]`;
+      for (const k of Object.keys(l)) if (!['id', 'role', 'title', 'url'].includes(k)) errors.push(`${lp}.${k}: 使えないキー`);
+      if (l.id !== `jp-pref-${p.code}-${l.role}`) errors.push(`${lp}.id は jp-pref-<code>-<role>`);
+      if (ids.has(l.id)) errors.push(`${lp}: id が重複`);
+      ids.add(l.id);
+      if (!['main', 'consult'].includes(l.role)) errors.push(`${lp}.role は main / consult`);
+      checkText(l.title, `${lp}.title`, errors, { need: ['ja', 'en'], max: 90 });
+      if (!isDirectoryUrl(l.url) || /\.pdf$/i.test(l.url)) errors.push(`${lp}.url: 許可リスト外・https でない・?や#・PDF`);
+      // その都道府県自身の公式ドメインであること（例：北海道→pref.hokkaido、東京都→metro.tokyo）
+      else {
+        const host = new URL(l.url).hostname;
+        const key = p.code === '13' ? 'metro.tokyo' : `pref.${p.en.split(' ')[0].toLowerCase()}`;
+        if (!(host.includes(`${key}.lg.jp`) || host.endsWith(`${key}.jp`))) errors.push(`${lp}.url: ${p.ja}の公式ドメイン（${key}）ではない`);
+      }
+    });
+  });
+  walkStrings(doc, rel, errors, { curated: true, maxLen: 400 });
+  return errors;
+}
+
+// 「今日の動物たち」の豆知識（data/curated/animals.json）
+// やさしい話だけを載せるため、悲しい・怖い話につながる言葉は機械的に止める（最後は運用者が読んで判断する）
+const ANIMAL_SAD = /(死|殺|絶滅|狩|捕食|食べられ|密猟|病気|感染|けが|負傷|虐待|駆除|危機|減少|脅威|death|dead|\bdie[sd]?\b|dying|kill|hunt|poach|extinct|endanger|threat|prey|disease|injur|cull|declin)/i;
+const ANIMAL_KEYS = new Set(['id', 'country', 'animal', 'text', 'source', 'checkedAt']);
+export function validateAnimals(rel = 'data/curated/animals.json') {
+  const errors = [];
+  const doc = readData(rel);
+  if (!isObj(doc) || doc.schemaVersion !== 1 || !Array.isArray(doc.facts)) return [`${rel}: 形式が不正（schemaVersion 1 と facts 配列）`];
+  if (!isValidDate(doc.reviewedAt) || !notFutureJst(doc.reviewedAt)) errors.push(`${rel}: reviewedAt が不正`);
+  if (doc.facts.length < 30) errors.push(`${rel}: 豆知識は30件以上必要（毎日入れ替えるため）`);
+  const ids = new Set();
+  doc.facts.forEach((f, i) => {
+    const p = `${rel} facts[${i}]${typeof f?.id === 'string' ? '(' + f.id + ')' : ''}`;
+    if (!isObj(f)) return errors.push(`${p}: オブジェクトではない`);
+    for (const k of Object.keys(f)) if (!ANIMAL_KEYS.has(k)) errors.push(`${p}.${k}: 使えないキー`);
+    if (typeof f.id !== 'string' || !/^animal-[a-z0-9-]{3,70}$/.test(f.id)) errors.push(`${p}: id は animal- で始まる英小文字・数字・ハイフン`);
+    if (ids.has(f.id)) errors.push(`${p}: id が重複`);
+    ids.add(f.id);
+    if (!COUNTRY_IDS.has(f.country)) errors.push(`${p}: 国コード ${f.country} が索引にない`);
+    checkText(f.animal, `${p}.animal`, errors, { need: ['ja', 'en'], max: 40 });
+    checkText(f.text, `${p}.text`, errors, { need: ['ja', 'en'], max: 170 });
+    if (typeof f.text?.ja === 'string' && f.text.ja.length > 90) errors.push(`${p}.text.ja: 90文字以内`);
+    for (const s of [f.text?.ja, f.text?.en, f.animal?.ja, f.animal?.en]) if (typeof s === 'string' && ANIMAL_SAD.test(s)) errors.push(`${p}: 癒しのコーナーに合わない言葉（死・狩り・絶滅・病気など）が含まれている`);
+    if (!isObj(f.source) || typeof f.source.name !== 'string' || !f.source.name.trim() || Object.keys(f.source).some((k) => !['name', 'url'].includes(k))) errors.push(`${p}.source: name と url が必要`);
+    else if (!isAnimalUrl(f.source.url)) errors.push(`${p}.source.url: 許可リスト（animalHosts）外・https でない・?や#を含む`);
+    if (!isValidDate(f.checkedAt) || !notFutureJst(f.checkedAt)) errors.push(`${p}.checkedAt が不正`);
+  });
+  walkStrings(doc.facts, rel, errors, { curated: true, maxLen: 400 });
+  return errors;
+}
+
 // リンク集の確認記録（evidence.json）：すべてのリンクに記録があり、URLが一致し、方法が決まった値であること
 const METHODS = new Set(['fetched', 'operator', 'linked-from', 'unrecorded', 'unverified']);
 export function validateEvidence(linksRel = 'data/directory/links.json', evRel = 'data/directory/evidence.json') {
@@ -265,7 +342,8 @@ export function validateEvidence(linksRel = 'data/directory/links.json', evRel =
   const doc = readData(linksRel);
   const ev = readData(evRel).links || {};
   const ids = new Set();
-  const blocks = [...Object.values(doc.countries || {}), doc.international || {}, doc.social || {}];
+  const prefs = readData('data/directory/prefectures.json').prefectures || [];
+  const blocks = [...Object.values(doc.countries || {}), doc.international || {}, doc.social || {}, { prefectures: prefs.flatMap((p) => p.links || []) }];
   for (const block of blocks)
     for (const links of Object.values(block))
       for (const l of links) {
@@ -285,6 +363,8 @@ export function validateEvidence(linksRel = 'data/directory/links.json', evRel =
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const errors = [
+    ...validateAnimals(),
+    ...validatePrefectures(),
     ...validateEvidence(),
     ...validateCuratedPair('data/curated/entries.json', 'data/curated/changelog.json'),
     ...validateDirectory('data/directory/links.json'),

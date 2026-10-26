@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "_note": "日本の47都道府県の、福祉・生活支援の公式ページ（福祉の探し方ページで表示）。各都道府県の公式ドメインのページだけ。確認の記録は evidence.json。リンクがない県は、全国共通の窓口の案内を表示する。（段階1：リンクは段階2で、確認の記録と一緒に追加する）",
+  "reviewedAt": "2026-10-26",
+  "prefectures": [
+    {
+      "code": "01",
+      "ja": "北海道",
+      "en": "Hokkaido",
+      "links": []
+    },
+    {
+      "code": "02",
+      "ja": "青森県",
+      "en": "Aomori Prefecture",
+      "links": []
+    },
+    {
+      "code": "03",
+      "ja": "岩手県",
+      "en": "Iwate Prefecture",
+      "links": []
+    },
+    {
+      "code": "04",
+      "ja": "宮城県",
+      "en": "Miyagi Prefecture",
+      "links": []
+    },
+    {
+      "code": "05",
+      "ja": "秋田県",
+      "en": "Akita Prefecture",
+      "links": []
+    },
+    {
+      "code": "06",
+      "ja": "山形県",
+      "en": "Yamagata Prefecture",
+      "links": []
+    },
+    {
+      "code": "07",
+      "ja": "福島県",
+      "en": "Fukushima Prefecture",
+      "links": []
+    },
+    {
+      "code": "08",
+      "ja": "茨城県",
+      "en": "Ibaraki Prefecture",
+      "links": []
+    },
+    {
+      "code": "09",
+      "ja": "栃木県",
+      "en": "Tochigi Prefecture",
+      "links": []
+    },
+    {
+      "code": "10",
+      "ja": "群馬県",
+      "en": "Gunma Prefecture",
+      "links": []
+    },
+    {
+      "code": "11",
+      "ja": "埼玉県",
+      "en": "Saitama Prefecture",
+      "links": []
+    },
+    {
+      "code": "12",
+      "ja": "千葉県",
+      "en": "Chiba Prefecture",
+      "links": []
+    },
+    {
+      "code": "13",
+      "ja": "東京都",
+      "en": "Tokyo Metropolis",
+      "links": []
+    },
+    {
+      "code": "14",
+      "ja": "神奈川県",
+      "en": "Kanagawa Prefecture",
+      "links": []
+    },
+    {
+      "code": "15",
+      "ja": "新潟県",
+      "en": "Niigata Prefecture",
+      "links": []
+    },
+    {
+      "code": "16",
+      "ja": "富山県",
+      "en": "Toyama Prefecture",
+      "links": []
+    },
+    {
+      "code": "17",
+      "ja": "石川県",
+      "en": "Ishikawa Prefecture",
+      "links": []
+    },
+    {
+      "code": "18",
+      "ja": "福井県",
+      "en": "Fukui Prefecture",
+      "links": []
+    },
+    {
+      "code": "19",
+      "ja": "山梨県",
+      "en": "Yamanashi Prefecture",
+      "links": []
+    },
+    {
+      "code": "20",
+      "ja": "長野県",
+      "en": "Nagano Prefecture",
+      "links": []
+    },
+    {
+      "code": "21",
+      "ja": "岐阜県",
+      "en": "Gifu Prefecture",
+      "links": []
+    },
+    {
+      "code": "22",
+      "ja": "静岡県",
+      "en": "Shizuoka Prefecture",
+      "links": []
+    },
+    {
+      "code": "23",
+      "ja": "愛知県",
+      "en": "Aichi Prefecture",
+      "links": []
+    },
+    {
+      "code": "24",
+      "ja": "三重県",
+      "en": "Mie Prefecture",
+      "links": []
+    },
+    {
+      "code": "25",
+      "ja": "滋賀県",
+      "en": "Shiga Prefecture",
+      "links": []
+    },
+    {
+      "code": "26",
+      "ja": "京都府",
+      "en": "Kyoto Prefecture",
+      "links": []
+    },
+    {
+      "code": "27",
+      "ja": "大阪府",
+      "en": "Osaka Prefecture",
+      "links": []
+    },
+    {
+      "code": "28",
+      "ja": "兵庫県",
+      "en": "Hyogo Prefecture",
+      "links": []
+    },
+    {
+      "code": "29",
+      "ja": "奈良県",
+      "en": "Nara Prefecture",
+      "links": []
+    },
+    {
+      "code": "30",
+      "ja": "和歌山県",
+      "en": "Wakayama Prefecture",
+      "links": []
+    },
+    {
+      "code": "31",
+      "ja": "鳥取県",
+      "en": "Tottori Prefecture",
+      "links": []
+    },
+    {
+      "code": "32",
+      "ja": "島根県",
+      "en": "Shimane Prefecture",
+      "links": []
+    },
+    {
+      "code": "33",
+      "ja": "岡山県",
+      "en": "Okayama Prefecture",
+      "links": []
+    },
+    {
+      "code": "34",
+      "ja": "広島県",
+      "en": "Hiroshima Prefecture",
+      "links": []
+    },
+    {
+      "code": "35",
+      "ja": "山口県",
+      "en": "Yamaguchi Prefecture",
+      "links": []
+    },
+    {
+      "code": "36",
+      "ja": "徳島県",
+      "en": "Tokushima Prefecture",
+      "links": []
+    },
+    {
+      "code": "37",
+      "ja": "香川県",
+      "en": "Kagawa Prefecture",
+      "links": []
+    },
+    {
+      "code": "38",
+      "ja": "愛媛県",
+      "en": "Ehime Prefecture",
+      "links": []
+    },
+    {
+      "code": "39",
+      "ja": "高知県",
+      "en": "Kochi Prefecture",
+      "links": []
+    },
+    {
+      "code": "40",
+      "ja": "福岡県",
+      "en": "Fukuoka Prefecture",
+      "links": []
+    },
+    {
+      "code": "41",
+      "ja": "佐賀県",
+      "en": "Saga Prefecture",
+      "links": []
+    },
+    {
+      "code": "42",
+      "ja": "長崎県",
+      "en": "Nagasaki Prefecture",
+      "links": []
+    },
+    {
+      "code": "43",
+      "ja": "熊本県",
+      "en": "Kumamoto Prefecture",
+      "links": []
+    },
+    {
+      "code": "44",
+      "ja": "大分県",
+      "en": "Oita Prefecture",
+      "links": []
+    },
+    {
+      "code": "45",
+      "ja": "宮崎県",
+      "en": "Miyazaki Prefecture",
+      "links": []
+    },
+    {
+      "code": "46",
+      "ja": "鹿児島県",
+      "en": "Kagoshima Prefecture",
+      "links": []
+    },
+    {
+      "code": "47",
+      "ja": "沖縄県",
+      "en": "Okinawa Prefecture",
+      "links": []
+    }
+  ]
+}

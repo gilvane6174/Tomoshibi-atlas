@@ -4,6 +4,8 @@
 const NS = 'http://www.w3.org/2000/svg';
 const PATHS = {
   light: [['path', { d: 'M8 1.6c2.1 2.6 3.1 4.4 3.1 6.1a3.1 3.1 0 0 1-6.2 0C4.9 6 5.9 4.2 8 1.6z', fill: 'currentColor' }], ['path', { d: 'M3.4 12.6a7 2.4 0 0 0 9.2 0', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.2', 'stroke-linecap': 'round', opacity: '.7' }]],
+  // 癒し：小さな足あと（肉球）
+  calm: [['ellipse', { cx: '8', cy: '10.6', rx: '3.3', ry: '2.8', fill: 'currentColor' }], ['circle', { cx: '3.6', cy: '6.8', r: '1.5', fill: 'currentColor' }], ['circle', { cx: '6.3', cy: '4.2', r: '1.5', fill: 'currentColor' }], ['circle', { cx: '9.7', cy: '4.2', r: '1.5', fill: 'currentColor' }], ['circle', { cx: '12.4', cy: '6.8', r: '1.5', fill: 'currentColor' }]],
   caution: [['path', { d: 'M8 1.8 14.6 13.6H1.4z', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.5', 'stroke-linejoin': 'round' }], ['path', { d: 'M8 6.2v3.6', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round' }], ['circle', { cx: '8', cy: '11.7', r: '.95', fill: 'currentColor' }]],
 };
 

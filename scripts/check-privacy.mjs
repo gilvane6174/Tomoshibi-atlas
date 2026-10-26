@@ -28,9 +28,10 @@ export const RULES = [
   ['住所らしき記述', /[^\s、。]{1,10}(市|区|町|村)[^\s、。]{0,12}\d+\s?(丁目|番地?|号|-\d+)/],
   ['GitHubトークン', new RegExp('gh' + '[pousr]_[A-Za-z0-9]{20,}|github' + '_pat_[A-Za-z0-9_]{20,}')],
   [
+    // sk- は英単語の途中（risk-… など）を除く
     'APIキー・秘密鍵らしき文字列',
     new RegExp(
-      ['sk-' + '[A-Za-z0-9_-]{20,}', 'sk_' + '(live|test)_[A-Za-z0-9]{10,}', 'AKIA' + '[0-9A-Z]{16}', 'AIza' + '[0-9A-Za-z_-]{30,}', 'glpat' + '-[A-Za-z0-9_-]{15,}', 'xox' + '[baprs]-[A-Za-z0-9-]{10,}', 'eyJ' + '[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}', '-----BEGIN [A-Z ]*PRIVATE ' + 'KEY-----'].join('|'),
+      ['(?<![A-Za-z0-9])sk-' + '[A-Za-z0-9_-]{20,}', 'sk_' + '(live|test)_[A-Za-z0-9]{10,}', 'AKIA' + '[0-9A-Z]{16}', 'AIza' + '[0-9A-Za-z_-]{30,}', 'glpat' + '-[A-Za-z0-9_-]{15,}', 'xox' + '[baprs]-[A-Za-z0-9-]{10,}', 'eyJ' + '[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}', '-----BEGIN [A-Z ]*PRIVATE ' + 'KEY-----'].join('|'),
     ),
   ],
   ['AIとの会話・作業のURL', new RegExp('(claude\\.ai|chatgpt\\.com|chat\\.openai\\.com|grok\\.com|x\\.com/i/grok|gemini\\.google\\.com|g\\.co/gemini|perplexity\\.ai|poe\\.com|copilot\\.microsoft\\.com|chat\\.deepseek\\.com|chat\\.mistral\\.ai)/[^\\s)"\']+', 'i')],

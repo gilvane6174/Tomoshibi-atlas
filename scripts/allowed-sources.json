@@ -88,6 +88,226 @@
       "host": "doi.org",
       "path": "^/10\\.(1038|1016|1056|1136|1001|1371|1186|1093|1002|1111|1161|7326|15585)/\\S+$",
       "label": "DOI（論文の恒久リンク）。主要な査読誌の出版社の番号に限る。追加は運用者の承認が必要"
+    },
+    {
+      "host": "www.interpol.int",
+      "label": "国際刑事警察機構（INTERPOL）"
+    },
+    {
+      "host": "www.gov.uk",
+      "label": "英国政府（GOV.UK）"
+    },
+    {
+      "host": "www.canada.ca",
+      "label": "カナダ政府"
+    },
+    {
+      "host": "www.unicef.org",
+      "label": "国連児童基金（UNICEF）"
+    },
+    {
+      "host": "www.cao.go.jp",
+      "label": "内閣府"
+    },
+    {
+      "host": "www8.cao.go.jp",
+      "label": "内閣府"
+    },
+    {
+      "host": "www.mext.go.jp",
+      "label": "文部科学省"
+    },
+    {
+      "host": "www.tewhatuora.govt.nz",
+      "label": "ニュージーランド保健庁（Health New Zealand）"
+    },
+    {
+      "host": "www.inegi.org.mx",
+      "label": "メキシコ国立統計地理情報院（INEGI）"
+    },
+    {
+      "host": "www.census.gov",
+      "label": "米国国勢調査局"
+    },
+    {
+      "host": "www.statssa.gov.za",
+      "label": "南アフリカ統計局"
+    },
+    {
+      "host": "www150.statcan.gc.ca",
+      "label": "カナダ統計局"
+    },
+    {
+      "host": "www-cloud.cso.ie",
+      "label": "アイルランド中央統計局（CSO）"
+    },
+    {
+      "host": "www.destatis.de",
+      "label": "ドイツ連邦統計局"
+    },
+    {
+      "host": "www.drees.solidarites-sante.gouv.fr",
+      "label": "フランス保健・連帯省 研究・統計局（DREES）"
+    },
+    {
+      "host": "www.worldbank.org",
+      "label": "世界銀行"
+    },
+    {
+      "host": "labour.gov.in",
+      "label": "インド労働雇用省"
+    },
+    {
+      "host": "earthquake.usgs.gov",
+      "path": "^/earthquakes/eventpage/[a-z0-9]{4,24}$",
+      "label": "米国地質調査所（USGS）地震情報"
+    },
+    {
+      "host": "chromereleases.googleblog.com",
+      "label": "Google Chrome 公式リリース情報（ベンダー公式）"
+    },
+    {
+      "host": "www.ncsc.gov.uk",
+      "label": "英国国家サイバーセキュリティセンター（NCSC）"
+    },
+    {
+      "host": "www.ncsc.govt.nz",
+      "label": "ニュージーランド国家サイバーセキュリティセンター（NCSC）"
+    },
+    {
+      "host": "wmo.int",
+      "label": "世界気象機関（WMO）"
+    },
+    {
+      "host": "www.undrr.org",
+      "label": "国連防災機関（UNDRR）"
+    },
+    {
+      "host": "www.jma.go.jp",
+      "label": "気象庁"
+    },
+    {
+      "host": "www.data.jma.go.jp",
+      "label": "気象庁"
+    },
+    {
+      "host": "www.ftc.gov",
+      "label": "米国連邦取引委員会（FTC）"
+    },
+    {
+      "host": "www.caa.go.jp",
+      "label": "消費者庁"
+    },
+    {
+      "host": "www.mha.gov.sg",
+      "label": "シンガポール内務省"
+    },
+    {
+      "host": "www.npa.go.jp",
+      "label": "警察庁"
+    },
+    {
+      "host": "www.fdma.go.jp",
+      "label": "総務省消防庁"
+    },
+    {
+      "host": "www.bousai.go.jp",
+      "label": "内閣府（防災担当）"
+    },
+    {
+      "host": "www.fsa.go.jp",
+      "label": "金融庁"
+    },
+    {
+      "host": "www.police.gov.sg",
+      "label": "シンガポール警察"
+    },
+    {
+      "host": "eu-space.europa.eu",
+      "label": "欧州連合宇宙計画機関（EUSPA、コペルニクス）"
+    },
+    {
+      "host": "adinet.ahacentre.org",
+      "label": "ASEAN防災人道支援調整センター（AHAセンター）"
+    },
+    {
+      "host": "antifraudcentre-centreantifraude.ca",
+      "label": "カナダ反詐欺センター（カナダ政府）"
+    },
+    {
+      "host": "www.ons.gov.uk",
+      "label": "英国国家統計局（ONS）"
+    },
+    {
+      "host": "www.gov-online.go.jp",
+      "label": "政府広報オンライン（内閣府）"
+    },
+    {
+      "host": "www.usgs.gov",
+      "path": "^/faqs/",
+      "label": "米国地質調査所（USGS）よくある質問（利用条件）"
+    },
+    {
+      "host": "www.whitehouse.gov",
+      "path": "^/presidential-actions/",
+      "label": "米国ホワイトハウス（大統領令の原文）"
+    },
+    {
+      "host": "www.nationalarchives.gov.uk",
+      "path": "^/doc/open-government-licence/",
+      "label": "英国国立公文書館（Open Government Licence の本文）"
+    },
+    {
+      "host": "www.kokusen.go.jp",
+      "label": "国民生活センター"
+    },
+    {
+      "host": "www.city.nagoya.jp",
+      "label": "名古屋市"
+    },
+    {
+      "host": "www.nasc.gov.au",
+      "label": "豪州 国家詐欺対策センター（NASC）"
+    },
+    {
+      "host": "www.ic3.gov",
+      "label": "米FBI インターネット犯罪苦情センター（IC3）",
+      "path": "^/PSA/"
+    },
+    {
+      "host": "www.reportfraud.police.uk",
+      "label": "英国 Report Fraud（警察の詐欺通報窓口）",
+      "path": "^/news/"
+    },
+    {
+      "host": "www.mlit.go.jp",
+      "label": "国土交通省"
+    },
+    {
+      "host": "www.maff.go.jp",
+      "label": "農林水産省"
+    },
+    {
+      "host": "public.wmo.int",
+      "label": "世界気象機関（WMO）"
+    },
+    {
+      "host": "www.unognewsroom.org",
+      "label": "国連ジュネーブ事務局 報道室",
+      "path": "^/story/"
+    },
+    {
+      "host": "reliefweb.int",
+      "label": "ReliefWeb（国連人道問題調整事務所）",
+      "path": "^/report/"
+    },
+    {
+      "host": "ahacentre.org",
+      "label": "ASEAN防災人道支援調整センター（AHAセンター）"
+    },
+    {
+      "host": "www.paho.org",
+      "label": "汎米保健機構（PAHO）"
     }
   ],
   "_directoryNote": "国・分野別の相談先リンク集（data/directory/links.json）に載せてよいURLの許可リスト。追加・削除は運用者の個別承認が必要。",
@@ -849,18 +1069,174 @@
     {
       "host": "mpsv.gov.cz",
       "label": "Ministry of Labour and Social Affairs (CZE)"
+    },
+    {
+      "host": "web.pref.hyogo.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.fukushi.metro.tokyo.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.aichi.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.aomori.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.chiba.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.ehime.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.fukuoka.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.fukushima.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.gifu.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.hiroshima.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.hokkaido.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.ibaraki.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.kagawa.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.kagoshima.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.kanagawa.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.kochi.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.kumamoto.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.kyoto.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.mie.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.miyagi.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.miyazaki.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.nagano.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.nagasaki.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.niigata.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.oita.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.okinawa.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.osaka.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.saga.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.saitama.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.shiga.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.shimane.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.shizuoka.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.tochigi.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.tottori.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.wakayama.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.yamanashi.jp",
+      "label": "都道府県の公式サイト（福祉）"
     }
   ],
   "fetchEndpoints": {
     "whoDon": "https://www.who.int/api/news/diseaseoutbreaknews",
     "cisaKev": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
     "cisaKevMirror": "https://raw.githubusercontent.com/cisagov/kev-data/main/known_exploited_vulnerabilities.json",
-    "jpcertRss": "https://www.jpcert.or.jp/rss/jpcert.rdf"
+    "jpcertRss": "https://www.jpcert.or.jp/rss/jpcert.rdf",
+    "usgsQuakes": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson",
+    "fsaNews": "https://www.fsa.go.jp/fsaNewsListAll_rss2.xml",
+    "ftcConsumer": "https://www.ftc.gov/feeds/press-release-consumer-protection.xml",
+    "ncscNews": "https://www.ncsc.gov.uk/api/1/services/v1/news-rss-feed.xml",
+    "fdmaDisaster": "https://www.fdma.go.jp/disaster/info/index.xml",
+    "cdcMmwr": "https://tools.cdc.gov/api/v2/resources/media/342778.rss"
   },
   "enabledFetchers": {
     "whoDon": true,
     "cisaKev": true,
-    "jpcertRss": false
+    "jpcertRss": false,
+    "usgsQuakes": true,
+    "ncscNews": true,
+    "fsaNews": true,
+    "ftcConsumer": true,
+    "fdmaDisaster": true,
+    "cdcMmwr": false
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [
@@ -921,5 +1297,225 @@
     "\\bworst countr",
     "\\binferior countr",
     "\\bbackward countr"
-  ]
+  ],
+  "_animalNote": "「今日の動物たち」の原典に使ってよいサイト（公的機関・公的な博物館や動物園・大学・ユネスコなど）。追加は運用者の承認が必要。",
+  "animalHosts": [
+    {
+      "host": "arctic.au.dk"
+    },
+    {
+      "host": "australian.museum"
+    },
+    {
+      "host": "avesis.ktu.edu.tr"
+    },
+    {
+      "host": "biodiversityireland.ie"
+    },
+    {
+      "host": "biodiversitysg.nparks.gov.sg"
+    },
+    {
+      "host": "blog.doc.govt.nz"
+    },
+    {
+      "host": "brzoo.org"
+    },
+    {
+      "host": "christmasislandnationalpark.gov.au"
+    },
+    {
+      "host": "classic.nationalparks.fi"
+    },
+    {
+      "host": "cruise-handbook.npolar.no"
+    },
+    {
+      "host": "doc.govt.nz"
+    },
+    {
+      "host": "donauauen.at"
+    },
+    {
+      "host": "ead.gov.ae"
+    },
+    {
+      "host": "eng.nationalparkvadehavet.dk"
+    },
+    {
+      "host": "environment.bm"
+    },
+    {
+      "host": "galapagos.gob.ec"
+    },
+    {
+      "host": "herpetologia.fciencias.unam.mx"
+    },
+    {
+      "host": "journals.uct.ac.za"
+    },
+    {
+      "host": "lazoo.org"
+    },
+    {
+      "host": "lemur.duke.edu"
+    },
+    {
+      "host": "mnzoo.org"
+    },
+    {
+      "host": "mosj.no"
+    },
+    {
+      "host": "nationalpark.ch"
+    },
+    {
+      "host": "nationalzoo.si.edu"
+    },
+    {
+      "host": "nparks.gov.sg"
+    },
+    {
+      "host": "npolar.no"
+    },
+    {
+      "host": "ocean.si.edu"
+    },
+    {
+      "host": "parks.canada.ca"
+    },
+    {
+      "host": "parks.qld.gov.au"
+    },
+    {
+      "host": "primate.wisc.edu"
+    },
+    {
+      "host": "pure.ewha.ac.kr"
+    },
+    {
+      "host": "qsr.waddensea-worldheritage.org"
+    },
+    {
+      "host": "simbio.mma.gob.cl"
+    },
+    {
+      "host": "stri-apps.si.edu"
+    },
+    {
+      "host": "whc.unesco.org"
+    },
+    {
+      "host": "www.afcd.gov.hk"
+    },
+    {
+      "host": "www.amnh.org"
+    },
+    {
+      "host": "www.antarctica.gov.au"
+    },
+    {
+      "host": "www.argentina.gob.ar"
+    },
+    {
+      "host": "www.belfastcity.gov.uk"
+    },
+    {
+      "host": "www.biodic.go.jp"
+    },
+    {
+      "host": "www.cam.ac.uk"
+    },
+    {
+      "host": "www.city.sapporo.jp"
+    },
+    {
+      "host": "www.cms.int"
+    },
+    {
+      "host": "www.conaf.cl"
+    },
+    {
+      "host": "www.conanp.gob.mx"
+    },
+    {
+      "host": "www.doc.govt.nz"
+    },
+    {
+      "host": "www.ead.gov.ae"
+    },
+    {
+      "host": "www.env.go.jp"
+    },
+    {
+      "host": "www.esabii.biodic.go.jp"
+    },
+    {
+      "host": "www.fisheries.noaa.gov"
+    },
+    {
+      "host": "www.fws.gov"
+    },
+    {
+      "host": "www.gob.mx"
+    },
+    {
+      "host": "www.hnp.hu"
+    },
+    {
+      "host": "www.mercantour-parcnational.fr"
+    },
+    {
+      "host": "www.metsa.fi"
+    },
+    {
+      "host": "www.nationalzoo.si.edu"
+    },
+    {
+      "host": "www.nature.scot"
+    },
+    {
+      "host": "www.nhm.ac.uk"
+    },
+    {
+      "host": "www.nparks.gov.sg"
+    },
+    {
+      "host": "www.nps.gov"
+    },
+    {
+      "host": "www.oregonzoo.org"
+    },
+    {
+      "host": "www.ox.ac.uk"
+    },
+    {
+      "host": "www.pngp.it"
+    },
+    {
+      "host": "www.sanparks.org"
+    },
+    {
+      "host": "www.slu.se"
+    },
+    {
+      "host": "www.stat.gl"
+    },
+    {
+      "host": "www.torontozoo.com"
+    },
+    {
+      "host": "www.usgs.gov"
+    },
+    {
+      "host": "www.ust.is"
+    },
+    {
+      "host": "zoo.hr"
+    },
+    {
+      "host": "zoo.kyiv.ua"
+    }
+  ],
+  "_fetcherNote": "enabledFetchers は、利用条件を一次情報で確認できた情報源だけ true にする（docs/SOURCES.md に確認日と根拠）。日本の省庁の RSS は、RSS ページに「ホームページの作成・再配布は固くお断り」等の記載がないかも確認する"
 }

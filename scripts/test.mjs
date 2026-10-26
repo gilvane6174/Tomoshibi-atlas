@@ -5,13 +5,18 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { checkCleanPng } from './check-privacy.mjs';
 import { judge } from './scope-guard.mjs';
+import { pickDaily, toItems } from './lib/animals.mjs';
+import { fitCount } from './importance-rules.mjs';
+import { parseFeed, parseFeedDate } from './lib/feed.mjs';
+import { FEEDS, inspectFeed, normalizeFeedItem, decodeFeed, reiwaUpdatedDate } from './fetch-feeds.mjs';
 import { normalizeDon } from './fetch-who-don.mjs';
 import { normalizeKev, parseJpcertRdf } from './fetch-security.mjs';
 import { validateItems, validateChangelog, validateDirectoryDoc } from './validate-data.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { checkNode } from './lib/node-guard.mjs';
 import { parseSiteUrl } from './lib/seo.mjs';
-import { isAllowedUrl, cleanText, readJson, findAttackDetail } from './lib/safety.mjs';
+import { isAllowedUrl, cleanText, readJson, findAttackDetail, siWithoutExplanation } from './lib/safety.mjs';
+import { normalizeQuake, processQuakes, placeToCountries, inspectQuakes, quakeStatusOf } from './fetch-usgs.mjs';
 
 const NOW = Date.parse('2026-10-25T00:00:00Z');
 let n = 0;
@@ -48,18 +53,18 @@ test('WHO: 一部でも国名不明なら地球儀に置かない', () => {
 test('WHO: 不正なURL断片・HTML・不可視文字・未来日・古すぎる日付を落とす/無害化する', () => {
   assert.equal(normalizeDon({ Title: 'X', PublicationDate: '2026-10-01', UrlName: '../../evil' }, NOW), null);
   assert.equal(normalizeDon({ Title: 'X', PublicationDate: '2031-01-01', UrlName: 'a-b-c' }, NOW), null);
-  assert.equal(normalizeDon({ Title: 'X', PublicationDate: '2025-01-01', UrlName: 'a-b-c' }, NOW), null);
+  assert.equal(normalizeDon({ Title: 'X', PublicationDate: '2024-01-01', UrlName: 'a-b-c' }, NOW), null); // 補充の上限（2年）より古い
   const it = normalizeDon({ Title: 'Cholera‮ <img src=x onerror=alert(1)> – Peru', PublicationDate: '2026-10-01', UrlName: 'abc-1' }, NOW);
   assert.ok(!/[<>‮]/.test(it.title.original));
 });
 
-test('KEV: 30日以内のみ、ランサムウェアKnownは major、場所は発表機関の所在国', () => {
+test('KEV: 補充の上限（1年）以内のみ、ランサムウェアKnownは major、場所は発表機関の所在国', () => {
   const v = { cveID: 'CVE-2026-12345', vendorProject: 'Acme', product: 'Gate', vulnerabilityName: 'Acme Gate RCE', dateAdded: '2026-10-20', knownRansomwareCampaignUse: 'Known', requiredAction: 'Apply mitigations per vendor instructions.' };
   const it = normalizeKev(v, NOW);
   assert.equal(it.importance, 'major');
   assert.equal(it.placeBasis, 'publisher_country');
   assert.deepEqual(it.countries, ['USA']);
-  assert.equal(normalizeKev({ ...v, dateAdded: '2026-08-01' }, NOW), null);
+  assert.equal(normalizeKev({ ...v, dateAdded: '2025-08-01' }, NOW), null); // 補充の上限（1年）より古い
   assert.equal(normalizeKev({ ...v, cveID: 'CVE-2026-1"><script>' }, NOW), null);
   assert.equal(normalizeKev({ ...v, requiredAction: '' }, NOW), null); // 対処方法が示されていないものは載せない
 });
@@ -279,6 +284,147 @@ test('変更範囲の検査（scope-guard）：AI・外部の PR は data/curate
   assert.deepEqual(judge({ ...base, author: 'dependabot[bot]', files: [m('.github/workflows/deploy.yml')] }), []);
   assert.ok(judge({ ...base, author: 'dependabot[bot]', files: [m('scripts/a.mjs')] }).length);
   assert.ok(judge({ ...base, owner: '', files: [m('data/curated/entries.json')] }).length);
+});
+
+test('今日の動物たち：日付だけで決まり、国が重ならず、日によって入れ替わる', () => {
+  const facts = readJson('data/curated/animals.json').facts;
+  const a = pickDaily(facts, '2026-10-26');
+  assert.deepEqual(a.map((f) => f.id), pickDaily(facts, '2026-10-26').map((f) => f.id));
+  assert.equal(a.length, 20);
+  assert.equal(new Set(a.map((f) => f.country)).size, a.length);
+  assert.notDeepEqual(a.map((f) => f.id), pickDaily(facts, '2026-10-27').map((f) => f.id));
+  const items = toItems(a, '2026-10-26');
+  assert.ok(items.every((it) => it.layer === 'animals' && it.countries.length === 1 && it.publishedAt === '2026-10-26'));
+});
+
+test('表示件数：掲載期間内を最大30件、足りなければ古い情報を小さく補って20件にそろえる', () => {
+  const now = Date.parse('2026-10-26T00:00:00Z');
+  const day = (n) => new Date(now - n * 86400000).toISOString().slice(0, 10);
+  const mk = (n, extra = {}) => ({ id: 'x' + n, layer: 'outbreak', importance: 'major', publishedAt: day(n), ...extra });
+  // 期間内5件・期間外30件 → 20件（期間外の15件は小さな文字・older）
+  const few = fitCount([...Array.from({ length: 5 }, (_, i) => mk(i)), ...Array.from({ length: 30 }, (_, i) => mk(200 + i))], 120, now);
+  assert.equal(few.length, 20);
+  assert.equal(few.filter((x) => x.older).length, 15);
+  assert.ok(few.filter((x) => x.older).every((x) => x.importance === 'minor'));
+  assert.ok(few.slice(0, 5).every((x) => !x.older && x.importance === 'major'));
+  // 期間内40件 → 新しい順に30件
+  const many = fitCount(Array.from({ length: 40 }, (_, i) => mk(i)), 120, now);
+  assert.equal(many.length, 30);
+  assert.equal(many[29].id, 'x29');
+  // 以前の情報は、置き換えた情報が表示されているときだけ残る
+  const sup = fitCount([mk(1), mk(2, { superseded: true, supersededBy: 'x1' }), mk(3, { superseded: true, supersededBy: 'gone' })], 120, now);
+  assert.deepEqual(sup.map((x) => x.id), ['x1', 'x2']);
+  // 補う古さの上限（fillDays）：防犯・防災などで古すぎる情報を補わない
+  const capped = fitCount([mk(1), mk(100), mk(170), mk(400)], 90, now, 30, 180);
+  assert.deepEqual(capped.map((x) => x.id), ['x1', 'x100', 'x170']);
+  // 手動掲載（期間なし）は、新しい順に30件まで
+  assert.equal(fitCount(Array.from({ length: 40 }, (_, i) => mk(i * 50)), null, now).length, 30);
+});
+
+test('SI（Super Intelligence）：説明のない「SI」は拒否し、SI の情報には ai の印を求める', () => {
+  const base = { id: 'research-2026-si-test', layer: 'research', title: { ja: '米国のSI指針', en: 'US SI guidance' }, summary: { ja: 'a', en: 'b' }, tags: ['policy'], topic: 'si-test', countries: ['USA'], placeBasis: 'reported_country', importance: 'minor', publishedAt: '2026-10-01', checkedAt: '2026-10-26', source: { name: 'x', url: 'https://www.who.int/news' }, sourceType: 'public_agency' };
+  assert.ok(validateItems([base], { curated: true }).some((e) => e.includes('「SI」だけでは')));
+  const ok = { ...base, title: { ja: '米国のSI（Super Intelligence。米国政府の文書でのAIの呼び方）指針', en: 'US Super Intelligence (SI) guidance' } };
+  assert.ok(validateItems([ok], { curated: true }).some((e) => e.includes('tags に ai')));
+  assert.ok(!validateItems([{ ...ok, tags: ['policy', 'ai'] }], { curated: true }).some((e) => /SI|ai を付ける/.test(e)));
+  assert.ok(!siWithoutExplanation('SI-CERT（スロベニア）'));
+  assert.ok(siWithoutExplanation('SI units'));
+  assert.ok(siWithoutExplanation('米国のＳＩ指針')); // 全角も検出
+});
+
+test('USGS 地震：M5.5以上・正しい形だけ、国は場所の表記の最後で決め、分からなければ置かない', () => {
+  const f = (o = {}, p = {}) => ({ type: 'Feature', id: 'us7000abcd', properties: { type: 'earthquake', mag: 6.2, place: '37 km SW of Hualien City, Taiwan', time: Date.parse('2026-10-24T03:00:00Z'), ...p }, ...o });
+  const it = normalizeQuake(f(), NOW);
+  assert.equal(it.layer, 'quake');
+  assert.deepEqual(it.countries, ['TWN']);
+  assert.equal(it.importance, 'major');
+  assert.equal(it.source.url, 'https://earthquake.usgs.gov/earthquakes/eventpage/us7000abcd');
+  assert.ok(isAllowedUrl(it.source.url));
+  assert.equal(normalizeQuake(f({}, { mag: 5.0 }), NOW), null);
+  assert.throws(() => normalizeQuake(f({ id: '../x' }), NOW)); // 形の異常は例外（inspectQuakes が異常として数える）
+  assert.equal(normalizeQuake(f({}, { type: 'quarry blast' }), NOW), null);
+  assert.equal(normalizeQuake(f({}, { time: Date.parse('2026-08-01T00:00:00Z') }), NOW), null); // 30日より前
+  assert.deepEqual(normalizeQuake(f({}, { place: 'south of the Fiji Islands' }), NOW).countries, []);
+  assert.deepEqual(placeToCountries('100 km S of Sand Point, Alaska'), ['USA']);
+  // 北方領土・千島列島などは、USGS が Russia と書いても地球儀には置かない（日本の一般的な地図の表し方に合わせる）
+  assert.deepEqual(placeToCountries("100 km SE of Kuril'sk, Russia"), []);
+  assert.deepEqual(placeToCountries('50 km E of Shikotan, Russia'), []);
+  assert.deepEqual(placeToCountries('20 km N of Tbilisi, Georgia'), []);
+  assert.deepEqual(placeToCountries('10 km W of Ridgecrest, CA'), ['USA']);
+  assert.ok(!/[<>]/.test(normalizeQuake(f({}, { place: '<img src=x> 10 km N of X, Japan' }), NOW).title.ja));
+  assert.throws(() => processQuakes({ type: 'x' }, NOW));
+});
+
+test('USGS 地震：範囲外の時刻（1e20 など）の項目だけを除き、正常な項目は残す。取得状態は最後の検査の後で決める', () => {
+  const ok = { type: 'Feature', id: 'us7000good', properties: { type: 'earthquake', mag: 6.0, place: '10 km N of X, Japan', time: Date.parse('2026-10-24T00:00:00Z') } };
+  const bad = (time, id) => ({ type: 'Feature', id, properties: { type: 'earthquake', mag: 6.0, place: 'x, Japan', time } });
+  const got = inspectQuakes({ type: 'FeatureCollection', features: [ok, bad(1e20, 'us7000bad1'), bad(-1e20, 'us7000bad2'), bad('2026', 'us7000bad3'), null] }, NOW);
+  assert.deepEqual(got.items.map((x) => x.id), ['usgs-us7000good']);
+  assert.equal(got.raw, 5);
+  assert.throws(() => normalizeQuake(bad(1e20, 'us7000bad1'), NOW));
+  assert.equal(got.errors, 4);
+  assert.equal(quakeStatusOf({ raw: 5, normalized: 1, errors: 0, valid: 1 }), 'ok');
+  assert.equal(quakeStatusOf({ raw: 0, normalized: 0, errors: 0, valid: 0 }), 'empty');
+  assert.equal(quakeStatusOf({ raw: 40, normalized: 0, errors: 0, valid: 0 }), 'empty'); // M5.5未満だけ＝正常な0件
+  assert.equal(quakeStatusOf({ raw: 3, normalized: 0, errors: 3, valid: 0 }), 'invalid'); // 全件が例外
+  assert.equal(quakeStatusOf({ raw: 3, normalized: 2, errors: 0, valid: 0 }), 'invalid'); // 変換できても最後の検査で全件不合格
+});
+
+test('RSS/Atom：見出し・リンク・日付だけを読み、DOCTYPE/ENTITY を拒否。項目の異常はその項目だけ除く', () => {
+  const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>x</title>
+    <item><title><![CDATA[New scam &amp; fraud advice]]></title><link>https://www.ncsc.gov.uk/news/scam-advice</link><pubDate>Fri, 23 Oct 2026 09:00:00 GMT</pubDate><description>body not read</description></item>
+    <item><title>Evil</title><link>https://evil.example/x</link><pubDate>Fri, 23 Oct 2026 09:00:00 GMT</pubDate></item>
+    <item><title>No date</title><link>https://www.ncsc.gov.uk/news/a</link></item>
+    <item><title>Old</title><link>https://www.ncsc.gov.uk/news/old</link><pubDate>Fri, 01 Jan 2021 09:00:00 GMT</pubDate></item>
+  </channel></rss>`;
+  const ncsc = FEEDS.find((f) => f.key === 'ncscNews');
+  const got = inspectFeed(ncsc, rss, NOW);
+  assert.equal(got.raw, 4);
+  assert.equal(got.items.length, 1);
+  assert.equal(got.errors, 2); // 別ホストのリンク・日付なし
+  const it = got.items[0];
+  assert.equal(it.title.en, 'New scam & fraud advice');
+  assert.equal(it.title.ja, undefined); // 機械翻訳しない
+  assert.deepEqual(it.countries, ['GBR']);
+  assert.equal(it.layer, 'crime');
+  assert.deepEqual(validateItems([it], { layer: 'crime', curated: false }), []);
+  assert.throws(() => parseFeed('<!DOCTYPE x [<!ENTITY a "b">]><rss><item><title>&a;</title></item></rss>'));
+  assert.throws(() => parseFeed('<html><body>not a feed</body></html>'));
+  // Atom と RSS 1.0
+  const atom = '<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>T</title><link rel="alternate" href="https://www.ncsc.gov.uk/news/t"/><updated>2026-10-20T00:00:00Z</updated></entry></feed>';
+  assert.equal(parseFeed(atom)[0].link, 'https://www.ncsc.gov.uk/news/t');
+  const rdf = '<rdf:RDF><item rdf:about="x"><title>見出し</title><link>https://www.fsa.go.jp/news/x.html</link><dc:date>2026-10-20T10:00:00+09:00</dc:date></item></rdf:RDF>';
+  assert.equal(parseFeed(rdf)[0].title, '見出し');
+  // 「JST」表記の日付
+  assert.equal(new Date(parseFeedDate('Fri, 23 Oct 2026 17:00:00 JST')).toISOString(), '2026-10-23T08:00:00.000Z');
+  // 金融庁はキーワードで絞り込む（合わない見出しは正常な除外）
+  const fsa = FEEDS.find((f) => f.key === 'fsaNews');
+  assert.equal(normalizeFeedItem(fsa, { title: '人事異動について', link: 'https://www.fsa.go.jp/news/a.html', date: Date.parse('2026-10-20T00:00:00Z') }, NOW), null);
+  assert.equal(normalizeFeedItem(fsa, { title: '無登録で金融商品取引業を行う者への注意喚起', link: 'https://www.fsa.go.jp/news/b.html', date: Date.parse('2026-10-20T00:00:00Z') }, NOW).title.ja, '無登録で金融商品取引業を行う者への注意喚起');
+  // 消防庁の続報は同じ topic（最新の報だけを目立たせる）
+  const fdma = FEEDS.find((f) => f.key === 'fdmaDisaster');
+  const t1 = normalizeFeedItem(fdma, { title: '台風第25号による被害状況（第3報）', link: 'https://www.fdma.go.jp/disaster/info/a.html', date: Date.parse('2026-10-20T00:00:00Z') }, NOW).topic;
+  const t2 = normalizeFeedItem(fdma, { title: '台風第25号による被害状況（第4報）', link: 'https://www.fdma.go.jp/disaster/info/b.html', date: Date.parse('2026-10-21T00:00:00Z') }, NOW).topic;
+  assert.equal(t1, t2);
+  // 実際の消防庁の形：一覧ページへの相対パス＋目印、pubDate は第1報の日付、見出しに「第N報・R8.10.26更新」
+  const fdmaXml = '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>災害情報一覧</title>' +
+    '<item><title>令和8年台風第30号及び前線による被害及び消防機関等の対応状況（第3報・R8.10.26更新）</title><link>/disaster/info/#070300</link><pubDate>Sun, 25 Oct 2026 10:00:00 +0900</pubDate></item>' +
+    '<item><title>令和8年台風第30号及び前線による被害及び消防機関等の対応状況（第2報・R8.10.25更新）</title><link>/disaster/info/#070299</link><pubDate>Sun, 25 Oct 2026 10:00:00 +0900</pubDate></item>' +
+    '<item><title>令和8年10月21日からの大雨による被害及び消防機関等の対応状況（第5報・R8.10.23更新）</title><link>/disaster/info/#070289</link><pubDate>Wed, 21 Oct 2026 19:45:00 +0900</pubDate></item>' +
+    '<item><title>別サイトへのリンク</title><link>https://example.com/x</link><pubDate>Wed, 21 Oct 2026 19:45:00 +0900</pubDate></item></channel></rss>';
+  const fg = inspectFeed(fdma, fdmaXml, NOW, 'https://www.fdma.go.jp/disaster/info/index.xml');
+  assert.equal(fg.items.length, 3);
+  assert.equal(fg.errors, 1); // 別ホストへのリンクは異常として除く
+  assert.equal(new Set(fg.items.map((x) => x.id)).size, 3); // 同じ一覧ページへのリンクでも、目印で別の項目として扱う
+  assert.ok(fg.items.every((x) => x.source.url === 'https://www.fdma.go.jp/disaster/info/')); // リンクに # を含めない
+  assert.equal(fg.items[0].publishedAt, '2026-10-25T15:00:00.000Z'); // 見出しの更新日（R8.10.26、日本時間）
+  assert.equal(fg.items[0].topic, fg.items[1].topic); // 第3報と第2報は同じ災害
+  assert.notEqual(fg.items[0].topic, fg.items[2].topic);
+  assert.equal(reiwaUpdatedDate('（第1報・R8.13.40更新）'), null);
+  // 文字コード：Shift_JIS の宣言どおりに読む。知らない文字コードは失敗
+  const sjis = Buffer.concat([Buffer.from('<?xml version="1.0" encoding="Shift_JIS"?><rss><item><title>'), Buffer.from([0x82, 0xa0]), Buffer.from('</title></item></rss>')]);
+  assert.ok(decodeFeed(sjis).includes('あ'));
+  assert.throws(() => decodeFeed(Buffer.from('<?xml version="1.0" encoding="UTF-7"?><rss/>')));
 });
 
 console.log(`\n${n} tests passed`);

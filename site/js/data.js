@@ -6,11 +6,25 @@ import { lang, t } from './i18n.js';
 export const LAYERS = [
   { id: 'outbreak', group: 'light', color: '#f0b45a' },
   { id: 'research', group: 'light', color: '#6cc9b8' },
-  { id: 'mental', group: 'light', color: '#aaa2ee' },
-  { id: 'welfare', group: 'light', color: '#9ccf8c' },
+  // こころと福祉：以前の「こころ」と「福祉」を一つにした分野（項目の sub に元の分類が入る）
+  { id: 'care', group: 'light', color: '#b3a6ec' },
   { id: 'security', group: 'caution', color: '#ee8593' },
+  // 防犯：詐欺・闇バイトなど犯罪の注意喚起（手動掲載＋公的機関の新着の見出し）
+  { id: 'crime', group: 'caution', color: '#e58fcf' },
+  // 防災：災害の被害状況（手動掲載＋公的機関の新着の見出し）
+  { id: 'disaster', group: 'caution', color: '#86b6ea' },
+  // 地震：米国地質調査所（USGS）の大きな地震（自動取得だけ。ほかの分野を押し流さないよう専用の分野）
+  { id: 'quake', group: 'caution', color: '#c9a77c' },
+  { id: 'animals', group: 'calm', color: '#f4c6dc' },
 ];
 export const layerById = (id) => LAYERS.find((l) => l.id === id);
+// 以前の分野名で共有されたURL（?layer=mental など）は、統合後の分野で開く
+export const LAYER_ALIAS = { mental: 'care', welfare: 'care', safety: 'crime' };
+// 緊急時の情報源ではないことの案内を出す分野
+export const SAFETY_LAYERS = new Set(['crime', 'disaster', 'quake']);
+export const resolveLayer = (id) => LAYER_ALIAS[id] || id;
+// 分野の中の、相談先リンク集の種類（こころと福祉は、福祉とこころの両方のリンク集を出す）
+export const DIR_LAYERS = { care: ['welfare', 'mental'], outbreak: ['outbreak'], research: ['research'], security: ['security'] };
 
 async function getJson(path) {
   const res = await fetch(path, { cache: 'no-cache' });
@@ -25,7 +39,8 @@ export async function loadAll() {
     getJson('data/meta.json'),
     getJson('data/geo/country-index.json'),
     getJson('data/geo/countries-110m.json'),
-    ...LAYERS.map((l) => getJson(`data/layers/${l.id}.json`)),
+    // 今日の動物たちは補助的な分野。読めなくても、ほかの分野は表示する
+    ...LAYERS.map((l) => (l.id === 'animals' ? getJson(`data/layers/${l.id}.json`).catch(() => ({ layer: 'animals', status: 'preparing', kind: 'daily', items: [] })) : getJson(`data/layers/${l.id}.json`))),
   ]);
   const layers = {};
   LAYERS.forEach((l, i) => (layers[l.id] = layerDocs[i]));

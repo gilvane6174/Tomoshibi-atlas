@@ -174,7 +174,7 @@ WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正�
 - ルールセットの「Require branches to be up to date before merging」（strict）を有効にする。緊急停止（ops/AI-PAUSE）の前に通った古い検査結果のままマージされるのを防ぐ
 - 運用者の Bypass は「For pull requests only」で、**通常は使わない**（検査が失敗した PR をマージしない）。使った場合は、理由を更新履歴に記録する
 - `dependabot/**` はブランチ制限の対象外になっている。AI・bot のアカウントがこの名前のブランチを作っても、PR 検査が Dependabot 以外のコミットを拒否するが、念のため AI 用トークンの権限は「このリポジトリの Contents と Pull requests」だけにし、Workflows 権限は与えない
-- Node.js の修正済み版の確認（`scripts/lib/node-guard.mjs`）は、手元では古い版を止め、GitHub Actions では警告にする（Actions は毎回その系列の最新版を入れるため。表の値が誤っていた場合にすべての公開が止まるのを避ける）
+- Node.js の修正済み版の確認（`scripts/lib/node-guard.mjs`）は、GitHub Actions でも手元でも、修正前の版なら処理を止める（2026-10-26 変更。以前は Actions では警告だけだった）。Actions は毎回その系列の最新版を入れるので通常は止まらない。止まったときは、最新版の配布待ちか表の値の誤りなので、運用者が表を確かめる（公開中のサイトは前回の内容のまま残る）。`TA_ALLOW_OLD_NODE=1` は手元で試すとき専用で、Actions では効かない
 - `scripts/check-privacy.mjs` などの検査は、決まった形の文字列を探す仕組み。**検査が通ったことは「個人情報が無い証明」ではない**
 
 ## リンク確認の通知（v0.7）
@@ -185,3 +185,48 @@ WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正�
 2. リポジトリの Watch を「All Activity」または「Custom → Actions など」にする（自分のリポジトリでも通知を受け取るため）
 3. 失敗したら、Actions → Link safety check → 実行結果の Summary に、危険・要確認のリンクが一覧で出る。危険は外すか差し替え、要確認はブラウザで開いて確かめる
 4. 通知が来ない場合に備え、月に1回は Actions の画面で最新の実行結果を目で確認する
+
+## 8. 2026年12月2日までに必要な設定：変更範囲の検査（scope-guard）を動かし続ける
+GitHub は、公開リポジトリで `pull_request_target` で動くワークフローを、**2026年12月2日から既定で止める**と発表した（GitHub Changelog 2026-09-17「Workflow execution protections in GitHub Actions generally available」、10月21日に日付を更新）。
+このリポジトリの `.github/workflows/scope-guard.yml` はこの仕組みで動いているため、何もしないと12月2日以降に検査が動かず、必須の検査（scope-guard）が終わらないので PR を取り込めなくなる。
+
+`pull_request`（通常の PR の起動条件）に変えるのは**勧めない**。`pull_request` では PR 側のワークフローの定義が使われるため、PR の中で scope-guard.yml を書き換えると検査をすり抜けられてしまう（この検査を作った理由そのもの）。
+
+手順（運用者が GitHub の画面で行う。画面の名前は変わることがある）：
+1. リポジトリの **Settings → Actions → Policies**（「Actions policies」）を開く
+2. 新しいポリシーを作る。名前は例として「scope-guard だけ pull_request_target を許可」
+3. 対象（target）を **ワークフローのファイル `.github/workflows/scope-guard.yml` だけ**に絞る（workflow file targeting）
+4. **Restrict events** で `pull_request_target` を許可する
+5. **Restrict actors** を設定する場合は、運用者・Dependabot・AI 用アカウントが PR を出せる状態を保つ
+6. 状態を Active にして保存。次の PR で「Scope guard」が動くことを確かめる
+7. ほかのワークフローには `pull_request_target` を許可しない（`scripts/check-repo.mjs` も scope-guard 以外での使用を禁止している）
+
+参考：GitHub Docs「Control workflow execution」「About Actions policies」。Evaluate（試験）モードは GitHub Enterprise Cloud だけのため、この設定は Active で行う。
+
+## 9. 推奨：すべてのブランチでワークフローの追加・変更を制限する
+2026年10月には、盗まれたトークンで約1,900のアカウントに不正なワークフローを置く攻撃（GhostAction）が報告された。main 以外の新しいブランチに置かれたワークフローも `push` で動くため、次を推奨する。
+- **Settings → Rules → Rulesets** で、対象ブランチを **All branches（すべてのブランチ）** にしたルールを作り、「Restrict file paths」で `.github/workflows/**` の変更を制限する（運用者だけ bypass）
+- 個人アクセストークン（classic）は作らない。必要なら期限の短い fine-grained トークンにする
+- ログインには、パスキーかセキュリティキーを使う
+- **Settings（アカウント）→ Applications → Authorized OAuth Apps** と、ログイン中のセッションを、月に1回見直す
+
+## 10. 運用者が「検査のプログラム」と「データ」を同時に変えるときの取り込み方（2段階・迂回しない）
+`validate.yml` の「Data validation (trusted)」などは、**main 側（取り込み前）の検査プログラム**で PR のデータを調べる。
+そのため、新しい分野・新しい印（tags）・新しい許可ドメインを使うデータを、検査プログラムの更新と同じ PR に入れると、古い検査プログラムが新しいデータを知らずに失敗する（設計どおり。AI や外部の PR が検査プログラムを書き換えて通すことを防ぐため）。
+
+**この場合も、検査を迂回して取り込まない。** 次の2段階に分ける。
+
+1. **段階1：検査プログラムだけを先に入れる PR**
+   - 中身：scripts/・site/・docs/・ワークフローなどの変更と、**今の main の検査で通るデータだけ**（新しい分野・印・ドメインを使うデータは入れない）
+   - 新しい検査で必要になる確認の記録（evidence など）がまだ無いデータは、空のまま入れる（例：都道府県の窓口のリンクを空にして「確認中」表示にする）
+   - main 側の検査（trusted）と、PR 側の自己テスト・組み立てが**すべて成功する**ことを確かめてから取り込む
+2. **段階2：データの PR**
+   - 段階1を取り込んだ後の main（新しい検査プログラム）で検査される
+   - trusted の検査・自己テスト・組み立てが**すべて成功する**ことを確かめてから取り込む
+
+確かめ方：
+- PR の「Checks」で、Validate と Scope guard の全手順が緑（成功）であること。trusted の手順が赤のまま取り込まない
+- 失敗したら、ログを開いて理由を読む（trusted が失敗しても、PR 側の自己テストと組み立ては原因調べのために続けて動く。ただし成功しても trusted の失敗は消えない）
+- 手元で `npm test`、`npm run validate`、`node scripts/check-repo.mjs`、`node scripts/check-privacy.mjs`、`npm run check:history` も実行しておく（Node.js は修正済みの版。古い版では止まる）
+
+管理者の権限でルールを迂回して取り込むのは、**サイトが壊れていて直す PR 自体が検査を通せないなど、ほかに方法がない緊急時だけ**。その場合は、対象の head SHA、失敗した手順と理由、手元で実行した検査の結果を PR に書き、取り込み後すぐに通常の検査が通る状態へ戻す。AI・外部の PR では絶対に迂回しない。

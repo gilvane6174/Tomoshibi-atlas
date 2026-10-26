@@ -6,6 +6,8 @@
 #   - PR のコードは取り出さない・実行しない（checkout は main 側だけ。ref: を書かない）
 #   - 権限は読み取りだけ（contents: read / pull-requests: read）。秘密情報は使わない
 #   - PR から来る値（ブランチ名など）は env: でだけ渡し、run: の中に埋め込まない
+# 注意：GitHub は 2026年12月2日から、公開リポジトリの pull_request_target を既定で止める。
+# Settings → Actions → Policies で、このファイルだけ pull_request_target を許可すること（docs/GITHUB-SETTINGS.md 8章）。
 name: Scope guard
 
 on:

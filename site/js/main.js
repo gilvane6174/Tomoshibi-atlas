@@ -3,7 +3,7 @@
 // （プレビュー環境などでページ移動ができない場合でも確実に切り替わるように）。
 
 import { detectLanguage, loadLanguage, t, setRich, applyStatic, urlForLang, lang } from './i18n.js';
-import { loadAll, LAYERS, layerById, formatDateTime, formatDate, countryName } from './data.js';
+import { loadAll, LAYERS, layerById, resolveLayer, formatDateTime, formatDate, countryName } from './data.js';
 import { Globe, sunPhase } from './globe.js';
 import { Labels } from './labels.js';
 import { renderCountry, renderList, renderGuide } from './panel.js';
@@ -89,7 +89,7 @@ async function start() {
     b.style.setProperty('--dot', l.color);
     b.append(document.createElement('span'), Object.assign(document.createElement('span'), { className: 'count' }));
     b.addEventListener('click', () => setLayer(l.id));
-    $(l.group === 'light' ? 'tabs-light' : 'tabs-caution').append(b);
+    $('tabs-' + l.group).append(b);
     tabs.set(l.id, b);
 
     const d = document.createElement('button');
@@ -101,7 +101,7 @@ async function start() {
       setLayer(l.id);
       closeMenu();
     });
-    $(l.group === 'light' ? 'drawer-light' : 'drawer-caution').append(d);
+    $('drawer-' + l.group).append(d);
     drawerItems.set(l.id, d);
   }
 
@@ -109,8 +109,8 @@ async function start() {
   function renderChrome() {
     applyStatic();
     // メニュー内の「灯／警鐘」見出しに印を付ける（applyStatic で文字が入れ替わるため毎回付け直す）
-    for (const p of document.querySelectorAll('.drawer-group')) p.prepend(groupIcon(p.classList.contains('caution') ? 'caution' : 'light'));
-    document.title = lang === 'en' ? 'Tomoshibi Atlas | Outbreaks, mental health, welfare and cyber threats on a globe — Yutaka Yoshioka' : 'Tomoshibi Atlas（ともしびアトラス）｜感染症・こころ・福祉・サイバー脅威を地球儀で — Yutaka Yoshioka（吉岡有隆）';
+    for (const p of document.querySelectorAll('.drawer-group')) p.prepend(groupIcon(['caution', 'calm'].find((g) => p.classList.contains(g)) || 'light'));
+    document.title = lang === 'en' ? 'Tomoshibi Atlas | Outbreaks, mental health, welfare, cyber threats, crime prevention and disasters on a globe — Yutaka Yoshioka' : 'Tomoshibi Atlas（ともしびアトラス）｜感染症・こころと福祉・サイバー脅威・防犯・防災を地球儀で — Yutaka Yoshioka（吉岡有隆）';
     const aboutHref = lang === 'en' ? 'about.en.html' : 'about.html';
     for (const id of ['disclaimer-link']) $(id).href = aboutHref + '#disclaimer';
     $('operator-link').href = aboutHref;
@@ -129,14 +129,17 @@ async function start() {
     $('layers-nav').setAttribute('aria-label', t('nav.layers'));
     $('tabs-light').setAttribute('aria-label', t('group.light'));
     $('tabs-caution').setAttribute('aria-label', t('group.caution'));
+    $('tabs-calm').setAttribute('aria-label', t('group.calm'));
     for (const id of ['detail-close', 'list-close', 'guide-close', 'menu-close']) $(id).setAttribute('aria-label', t('control.close'));
     $('sample-banner').hidden = data.meta.mode === 'live';
     $('sample-banner').textContent = t(data.meta.mode === 'snapshot' ? 'status.snapshot' : 'status.offline');
     for (const l of LAYERS) {
       const doc = data.layers[l.id];
-      const count = doc.status === 'preparing' ? t('status.preparing') : doc.status === 'notFetched' ? '—' : String(data.meta.layers[l.id].count);
+      const count = doc.status === 'preparing' ? t('status.preparing') : doc.status === 'notFetched' || doc.status === 'fetchFailed' ? '—' : String(data.meta.layers[l.id].count);
       const b = tabs.get(l.id);
-      b.children[0].textContent = t('layer.' + l.id);
+      // タブは短い名前（あれば）を使い、横幅に収める
+      b.children[0].textContent = t('tab.' + l.id) !== 'tab.' + l.id ? t('tab.' + l.id) : t('layer.' + l.id);
+      b.title = t('layer.' + l.id);
       b.children[1].textContent = count;
       const d = drawerItems.get(l.id);
       d.children[0].textContent = lang === 'en' ? `${t('layer.' + l.id)} (${count})` : `${t('layer.' + l.id)}（${count}）`;
@@ -162,22 +165,29 @@ async function start() {
     const m = data.meta.layers[state.current];
     let text;
     if (doc.status === 'notFetched') text = `${t('layer.' + state.current)}: ${t('status.notFetched')}`;
+    else if (doc.status === 'fetchFailed') text = `${t('layer.' + state.current)}: ${t('status.fetchFailed')}`;
     else if (doc.status === 'preparing') text = `${t('layer.' + state.current)}: ${t('status.preparing')}`;
-    else if (m.kind === 'auto') {
+    else if (m.kind === 'auto' || (m.kind === 'mixed' && m.retrievedAt)) {
       text = t('status.live', { layer: t('layer.' + state.current), count: m.count, date: formatDateTime(m.retrievedAt) });
       // 公開版で自動取得が2日以上止まっている場合は、古い可能性を知らせる
       if (data.meta.mode === 'live' && m.retrievedAt && Date.now() - Date.parse(m.retrievedAt) > 48 * 3600000) text += ' ' + t('status.stale');
     }
-    else text = t('status.curated', { layer: t('layer.' + state.current), count: m.count, date: formatDate(m.reviewedAt) });
+    else if (m.kind === 'daily') text = t('status.daily', { layer: t('layer.' + state.current), count: m.count });
+    else {
+      text = t('status.curated', { layer: t('layer.' + state.current), count: m.count, date: formatDate(m.reviewedAt) });
+      // 防犯・防災で、公開版なのに地震の自動取得ができなかったときは、そのことを知らせる
+      if (m.kind === 'mixed' && data.meta.mode === 'live' && Object.values(m.feeds || {}).some((f) => ['failed', 'invalid'].includes(f.status))) text += ' ' + t('status.quakeMissing');
+    }
     $('status-text').textContent = text;
   }
 
-  // 共有用のURL：?country=JPN&layer=welfare（国と分野だけ。個人に関わる情報は入れない）
+  // 共有用のURL：?country=JPN&layer=care（国と分野だけ。個人に関わる情報は入れない）
   function syncUrl() {
     try {
       const u = new URL(location.href);
       u.searchParams.delete('country');
       u.searchParams.delete('layer');
+      u.searchParams.delete('list');
       if (state.country && !$('detail-panel').hidden) u.searchParams.set('country', state.country);
       if (state.current !== 'outbreak') u.searchParams.set('layer', state.current);
       history.replaceState(null, '', './' + u.pathname.split('/').pop() + u.search);
@@ -200,6 +210,8 @@ async function start() {
   function refreshPanels() {
     if (state.country && !$('detail-panel').hidden) renderDetail();
     if (!$('list-panel').hidden) renderListPanel();
+    // 閉じている一覧の見出しも、言語・分野に合わせて直しておく（画面に残る隠れた文字を古いままにしない）
+    else $('list-title').textContent = t('panel.list', { layer: t('layer.' + state.current) });
     if (!$('guide-panel').hidden) renderGuide($('guide-body'), guideOpts());
   }
 
@@ -296,10 +308,10 @@ async function start() {
   $('list-close').addEventListener('click', () => hidePanel('list-panel'));
 
   // ── 目的と使い方 ──
-  // 追記の「福祉のタブで自分の国を探す」：福祉に切り替えて、検索欄にすぐ入力できるようにする
+  // 「福祉一覧とセキュリティ対策など」の「福祉のタブで自分の国を探す」：福祉に切り替えて、検索欄にすぐ入力できるようにする
   const findWelfare = () => {
     hidePanel('guide-panel');
-    setLayer('welfare');
+    setLayer('care');
     toast(t('add.findHint'));
     $('search-input').focus();
   };
@@ -483,10 +495,12 @@ async function start() {
   // 共有されたURL（?layer=…&country=…）で開いたときは、その分野・国を表示する（値は一覧にあるものだけ受け付ける）
   const params = new URLSearchParams(location.search);
   const pl = params.get('layer');
-  if (pl && LAYERS.some((l) => l.id === pl)) state.current = pl;
+  if (pl && LAYERS.some((l) => l.id === resolveLayer(pl))) state.current = resolveLayer(pl);
   setLayer(state.current);
   const pc = params.get('country');
   if (pc && data.countryMap.has(pc)) openCountry(pc, { fly: true });
+  // 「このサイトについて」などからのリンク（?layer=animals&list=1）：その分野の一覧を開いた状態で表示する
+  else if (params.get('list') === '1' && $('list-panel').hidden) toggleList();
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

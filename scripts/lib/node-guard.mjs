@@ -17,11 +17,16 @@ export function checkNode(version = process.versions.node) {
   return null;
 }
 
-// GitHub Actions では setup-node の check-latest で毎回その系列の最新版を入れるため、警告だけにする
-// （この表の値が誤っていた場合に、すべての公開が止まるのを避ける）。手元では止める。
+// 修正前の Node.js では、GitHub Actions でも手元でも止める（取得・検査・組み立て・公開をしない）。
+// GitHub Actions は setup-node の check-latest で毎回その系列の最新版を入れるため、通常はここで止まらない。
+// 止まった場合は、最新版がまだ配られていないか、この表の値の誤り。表を確かめて運用者が直す（公開は前回の内容のまま残る）。
+// TA_ALLOW_OLD_NODE=1 は、手元で古い Node.js のまま試すとき専用の逃げ道。GitHub Actions では効かない。
 const problem = checkNode();
-if (problem && process.env.GITHUB_ACTIONS === 'true') console.log(`::warning::${problem}`);
-else if (problem && process.env.TA_ALLOW_OLD_NODE !== '1') {
-  console.error(problem);
-  process.exit(1);
+if (problem) {
+  const ci = process.env.GITHUB_ACTIONS === 'true';
+  if (ci || process.env.TA_ALLOW_OLD_NODE !== '1') {
+    console.error((ci ? '::error::' : '') + problem);
+    process.exit(1);
+  }
+  console.error(`注意：TA_ALLOW_OLD_NODE=1 のため、修正前の Node.js のまま続けます（手元の確認専用。公開には使わない）：${problem}`);
 }

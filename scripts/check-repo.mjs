@@ -74,9 +74,16 @@ for (const f of ['package-lock.json', 'npm-shrinkwrap.json', 'yarn.lock', 'pnpm-
 const SERVER_EXT = new Set(['.php', '.phtml', '.php3', '.php4', '.php5', '.php7', '.php8', '.phar', '.inc', '.asp', '.aspx', '.ashx', '.jsp', '.jspx', '.cgi', '.pl', '.py', '.rb', '.sh', '.bash', '.ps1', '.bat', '.cmd', '.exe', '.dll', '.so', '.dylib', '.jar', '.war', '.wasm', '.htaccess', '.htpasswd', '.shtml']);
 const SERVER_NAMES = new Set(['.htaccess', '.htpasswd', 'web.config', '.user.ini', 'php.ini', 'Dockerfile']);
 const ALLOWED_OUTSIDE_SITE = new Set(['.githooks/pre-commit']);
+// 開発ツールの自動実行設定（エディタやAIツールが開いただけで命令を実行しうるもの）は置かない。
+// 2026年のサプライチェーン攻撃（Mini Shai-Hulud）は .claude/ や .vscode/ に自動実行の設定を仕込んで広がった。
+const TOOL_DIRS = new Set(['.claude', '.vscode', '.idea', '.cursor', '.devcontainer', '.husky', '.windsurf', '.gemini', '.codex', '.continue', '.zed', '.kiro', '.amazonq', '.roo', '.clinerules', '.mcp.json', '.cursorrules', '.windsurfrules', 'CLAUDE.md', 'GEMINI.md']);
 function walk(dir) {
   for (const name of readdirSync(dir)) {
     if (['.git', 'node_modules', '_site'].includes(name)) continue;
+    if (TOOL_DIRS.has(name)) {
+      errors.push(`${relative(ROOT, join(dir, name)) || name}: 開発ツール・AIツールの設定はリポジトリに置かない（自動実行の設定を仕込まれるおそれ）`);
+      continue;
+    }
     const full = join(dir, name);
     const rel = relative(ROOT, full).split('\\').join('/');
     const st = lstatSync(full);

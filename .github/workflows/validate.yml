@@ -66,10 +66,14 @@ jobs:
           TA_TARGET_ROOT: pr
         run: node trusted/scripts/check-repo.mjs
 
-      # 運用者がスクリプト自体を変更した場合のために、PR 側の自己テストと組み立ても行う（秘密情報が無いので安全）
+      # 運用者がスクリプト自体を変更した場合のために、PR 側の自己テストと組み立ても行う（秘密情報が無く、権限は読み取りだけなので安全）。
+      # 上の trusted の検査が失敗しても、原因を調べられるよう、この2つは続けて実行する（!cancelled()）。
+      # ただし、この2つが成功しても trusted の失敗は消えない（ジョブ全体は失敗のまま）。取り込み手順は docs/GITHUB-SETTINGS.md 10章
       - name: Self test (pull request)
+        if: ${{ !cancelled() }}
         working-directory: pr
         run: node scripts/test.mjs
       - name: Build offline (pull request, no network)
+        if: ${{ !cancelled() }}
         working-directory: pr
         run: node scripts/build.mjs --offline

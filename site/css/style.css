@@ -250,6 +250,8 @@ body.doc { overflow: auto; }
 @media (min-width: 861px) {
   body.tabs-wrap .topbar { flex-wrap: wrap; row-gap: 6px; }
   body.tabs-wrap .layers { order: 3; flex-basis: 100%; }
+  body.tabs-wrap .layers { flex-wrap: wrap; row-gap: 6px; overflow: visible; }
+  body.tabs-wrap .layer-group { flex-wrap: wrap; }
   body.tabs-wrap .tools { margin-left: auto; }
 }
 @media (max-width: 1180px) and (min-width: 861px) {
@@ -392,6 +394,9 @@ body.doc { overflow: auto; }
 .gicon { width: 1em; height: 1em; flex: none; vertical-align: -0.14em; }
 .gicon.light { color: var(--accent); filter: drop-shadow(0 0 3px rgba(242, 194, 122, 0.55)); }
 .gicon.caution { color: var(--c-security); }
+.gicon.calm { color: #f4c6dc; }
+.entry-kind.calm { color: #f6d3e3; }
+.note.calm-note { border-left: 3px solid #f4c6dc; }
 .entry-kind { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 4px; font-size: 11.5px; letter-spacing: .04em; color: var(--text-dim); }
 .entry-kind.caution { color: #f2aab3; }
 .layer-head { display: flex; align-items: center; gap: 8px; }
@@ -418,3 +423,22 @@ body.doc { overflow: auto; }
 .note.crisis-note { border-left: 3px solid var(--c-mental); color: var(--text); }
 .sns .dir-host { margin-left: 8px; }
 .terms { padding-left: 1.4em; display: grid; gap: 6px; }
+
+/* ── 日本の福祉の探し方ページ ── */
+.guide-cat { margin: 14px 0 6px; }
+.guide-cat h3 { font-size: 1rem; margin: 0 0 6px; }
+.guide-links { list-style: none; padding: 0; margin: 0 0 8px; }
+.guide-links li { padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 3px; }
+.guide-desc { font-size: 0.9rem; color: var(--text-dim); }
+.guide-checked { font-size: 0.74rem; color: var(--text-faint); }
+.guide-pref { font-weight: 600; }
+.guide-region { margin: 6px 0; border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; }
+.guide-region summary { cursor: pointer; padding: 6px 0; font-weight: 600; }
+.dir-guide { margin: 4px 0 12px; }
+.guide-link { font-weight: 600; }
+
+/* 「ひらがなで よむ」（説明ページ・福祉の探し方ページ）：.kana-std と .kana-alt を入れ替える */
+.kana-alt { display: none; }
+.kana-on .kana-alt { display: revert; }
+.kana-on .kana-std { display: none; }
+.kana-on p, .kana-on li { line-height: 1.95; letter-spacing: 0.03em; }

@@ -12,7 +12,7 @@
 import './lib/node-guard.mjs';
 import { appendFileSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { readData, isDirectoryUrl, isAllowedUrl, CODE_ROOT } from './lib/safety.mjs';
+import { readData, isDirectoryUrl, isAllowedUrl, isAnimalUrl, CODE_ROOT } from './lib/safety.mjs';
 
 const SPAM = /(slot\s*gacor|judi\s*(bola|online)|togel|sbobet|situs\s*slot|casino\s*online|online\s*casino|exam\s*dumps|viagra|cialis|replica\s*watches|オンラインカジノ|闇バイト)/i;
 const PARKED = /(this domain (is|may be) for sale|domain parking|buy this domain|under construction|site (is )?under maintenance|temporarily (unavailable|down for maintenance)|メンテナンス中|ただいまメンテナンス)/i;
@@ -34,6 +34,7 @@ for (const it of readData('data/curated/entries.json').items) {
   add(it.source.url, `entries ${it.id}`);
   for (const l of it.links || []) add(l.url, `entries ${it.id}`);
 }
+for (const f of readData('data/curated/animals.json').facts) add(f.source.url, `animals ${f.id}`);
 for (const name of readdirSync(resolve(CODE_ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
   const html = readFileSync(resolve(CODE_ROOT, 'site', name), 'utf8');
   for (const m of html.matchAll(/href="(https:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), `site/${name}`);
@@ -41,7 +42,7 @@ for (const name of readdirSync(resolve(CODE_ROOT, 'site')).filter((n) => n.endsW
 
 const allowed = (u) => {
   const bare = u.split('#')[0].split('?')[0];
-  return isDirectoryUrl(bare) || isAllowedUrl(bare) || /^https:\/\/docs\.google\.com\/forms\//.test(u);
+  return isDirectoryUrl(bare) || isAllowedUrl(bare) || isAnimalUrl(bare) || /^https:\/\/docs\.google\.com\/forms\//.test(u);
 };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const danger = [];

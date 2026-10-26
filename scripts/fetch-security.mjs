@@ -15,7 +15,7 @@ export function normalizeKev(v, now = Date.now()) {
   // 悪用予防：対処方法（修正版の適用・回避策など）が示されていないものは載せない（ops/CURATION.md「対策の公表を待つ」）
   if (!cleanText(stripTags(v.requiredAction || ''), 400)) return null;
   const publishedAt = toIsoDate(v.dateAdded);
-  if (!withinDays(publishedAt, RULES.securityKev.keepDays, now)) return null;
+  if (!withinDays(publishedAt, RULES.securityKev.fillDays, now)) return null;
   const vendor = cleanText(stripTags(v.vendorProject || ''), 80);
   const product = cleanText(stripTags(v.product || ''), 80);
   const name = cleanText(stripTags(v.vulnerabilityName || ''), 200);
@@ -75,7 +75,7 @@ export function parseJpcertRdf(xml, now = Date.now()) {
     if (!/^\/at\/\d{4}\/[a-z0-9_-]+\.html$/i.test(u.pathname)) continue;
     const link = u.origin + u.pathname;
     const publishedAt = toIsoDate(date);
-    if (!withinDays(publishedAt, RULES.securityJpcert.keepDays, now)) continue;
+    if (!withinDays(publishedAt, RULES.securityJpcert.fillDays, now)) continue;
     items.push({
       id: 'jpcert-' + u.pathname.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase(),
       layer: 'security',
