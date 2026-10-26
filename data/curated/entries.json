@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "reviewedAt": "2026-10-25",
+  "reviewedAt": "2026-10-26",
   "items": [
     {
       "id": "research-2025-ai-who-tb-cad",
@@ -546,6 +546,3344 @@
       "source": {
         "name": "WHO（世界保健機関） / World Health Organization",
         "url": "https://www.who.int/news/item/03-11-2025-who-issues-guidance-to-address-drastic-global-health-financing-cuts"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-who-hypertension-pregnancy-roadmap",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、妊娠高血圧症候群に関する2026〜2035年の世界ロードマップを発表",
+        "en": "WHO launches 2026–2035 global roadmap on hypertensive disorders of pregnancy"
+      },
+      "summary": {
+        "ja": "WHOは妊娠高血圧症候群に関する2026〜2035年の世界ロードマップを発表した。妊娠の推定10〜15%に合併し妊産婦死亡の約16%（年約4万2千人）を占めるとして、研究・医薬品・診断・実装などでの協調行動を呼びかけている。",
+        "en": "WHO launched a 2026–2035 roadmap on hypertensive disorders of pregnancy, which complicate 10–15% of pregnancies and cause ~16% of maternal deaths (~42,000 a year), urging joint action."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年10月）によれば",
+        "en": "According to WHO (October 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "hypertension-pregnancy-roadmap",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-08",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/08-10-2026-new-global-roadmap-launched-to-tackle-hypertension-in-pregnancy-a-leading-cause-of-maternal-and-newborn-deaths"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-who-child-obesity-guidelines",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、子ども・青少年の肥満に関する初の世界ガイドラインを公表",
+        "en": "WHO issues first global guidelines on child and adolescent obesity"
+      },
+      "summary": {
+        "ja": "WHOは子ども・青少年の肥満に関する初の世界ガイドラインを公表した。2024年に5〜19歳の1億7千万人が肥満だったとし、食事・運動・行動変容の支援を基本に、9歳以下には薬物療法や手術を推奨しないとしている。",
+        "en": "WHO issued its first global guidelines on child and adolescent obesity (170 million aged 5–19 in 2024), centring on diet, activity and behaviour support; drugs/surgery not advised for ages 0–9."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年10月）によれば",
+        "en": "According to WHO (October 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "child-adolescent-obesity-guidelines",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-07",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/07-10-2026-who-issues-first-global-guidelines-on-child-and-adolescent-obesity"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-who-heat-maternal-child-indicators",
+      "layer": "research",
+      "title": {
+        "ja": "極端な暑さが妊婦・新生児・子どもに与える影響を追跡する世界的枠組みが発表",
+        "en": "Framework to track extreme-heat risks to pregnant women, newborns and children"
+      },
+      "summary": {
+        "ja": "WHO・WMO・UNICEF・UNFPAは、極端な暑さが妊婦・新生児・子どもに与える健康影響を追跡する枠組みを共同で発表した。早産、死産、低出生体重、妊娠中の高血圧などを優先指標として監視するよう提案している。",
+        "en": "WHO, WMO, UNICEF and UNFPA launched a framework to track heat risks for pregnant women, newborns and children, with indicators such as preterm birth, stillbirth, low birthweight and hypertension."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年10月）によれば",
+        "en": "According to WHO (October 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "heat-maternal-child-health-indicators",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-21",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "WHO（世界保健機関） / World Health Organization",
+        "url": "https://www.who.int/news/item/21-10-2026-new-global-framework-launched-to-track-increasing-health-risks-of-extreme-heat-for-pregnant-women--newborns-and-children"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2026-mhlw-world-mental-health-day",
+      "layer": "mental",
+      "title": {
+        "ja": "世界メンタルヘルスデー2026：厚労省が「＃ココロに聞いてみよう」で普及啓発",
+        "en": "World Mental Health Day 2026: MHLW awareness campaign \"#Kokoro ni kiite miyou\""
+      },
+      "summary": {
+        "ja": "厚生労働省は世界メンタルヘルスデーに合わせた普及啓発を今年度で8年目として実施し、テーマは「＃ココロに聞いてみよう」。心のサポーター養成研修などを通じ、身近な人の変化に「気づく」「声をかける」「お話を聞く」行動を広げようとしている。",
+        "en": "For the 8th year, MHLW runs a World Mental Health Day campaign (theme: \"#Kokoro ni kiite miyou\"), promoting supporter training so people notice, reach out to and listen to those around them."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年10月）によれば",
+        "en": "According to MHLW (October 2026)"
+      },
+      "tags": [
+        "support",
+        "policy"
+      ],
+      "topic": "jpn-world-mental-health-day-campaign",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-01",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare (MHLW)",
+        "url": "https://www.mhlw.go.jp/stf/newpage_76263.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-mhlw-white-paper",
+      "layer": "welfare",
+      "title": {
+        "ja": "令和8年版厚生労働白書：医療・介護・福祉の現場で働くことを考える",
+        "en": "2026 MHLW White Paper: working in healthcare, long-term care and welfare"
+      },
+      "summary": {
+        "ja": "厚生労働省によれば、令和8年版厚生労働白書は「これからの医療・介護・福祉の現場で働くことを考える」をテーマに、2040年を見据えた課題と、ICT・AI・ロボット等の活用による生産性向上の取組を紹介している。",
+        "en": "According to MHLW, its 2026 White Paper focuses on working in healthcare, care and welfare, outlining challenges toward 2040 and productivity gains through ICT, AI and robotics."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年9月）によれば",
+        "en": "According to MHLW (September 2026)"
+      },
+      "tags": [
+        "policy",
+        "ai"
+      ],
+      "topic": "jpn-mhlw-white-paper-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-29",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare (MHLW)",
+        "url": "https://www.mhlw.go.jp/stf/newpage_75936.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-interpol-who-agreement",
+      "layer": "research",
+      "title": {
+        "ja": "INTERPOLとWHO、健康と安全の保護で協力協定に署名",
+        "en": "INTERPOL and WHO sign agreement on health and security protection"
+      },
+      "summary": {
+        "ja": "異常な生物学的事象への協調対応、大規模イベントへの備え、偽造医療製品や臓器売買への対策などで協力する。",
+        "en": "They will cooperate on responses to unusual biological events, preparing for mass gatherings, and tackling falsified medical products and organ trafficking."
+      },
+      "attribution": {
+        "ja": "INTERPOLとWHOの共同発表（2026年10月）によれば",
+        "en": "According to INTERPOL and WHO (October 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "interpol-who-health-security",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-16",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国際刑事警察機構（INTERPOL）・WHO / INTERPOL and WHO",
+        "url": "https://www.interpol.int/News-and-Events/News/2026/INTERPOL-and-WHO-sign-agreement-to-strengthen-global-health-and-security-protection"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-uk-ai-healthcare-regulation",
+      "layer": "research",
+      "title": {
+        "ja": "英国政府、医療AI規制に関する44の勧告をすべて受け入れ",
+        "en": "UK government accepts all 44 recommendations on regulating AI in healthcare"
+      },
+      "summary": {
+        "ja": "AI医療機器を使用期間を通じて評価・監視する方針で、MHRAは2026年12月までに変更管理の指針案を公表予定。",
+        "en": "AI-enabled medical devices are to be assessed and monitored throughout their working life; the MHRA plans draft guidance on managing device changes by December 2026."
+      },
+      "attribution": {
+        "ja": "英国政府の発表（2026年10月）によれば",
+        "en": "According to the UK government (October 2026)"
+      },
+      "tags": [
+        "ai",
+        "policy"
+      ],
+      "topic": "uk-ai-healthcare-regulation",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-06",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英国政府 / UK Government (GOV.UK)",
+        "url": "https://www.gov.uk/government/news/government-backs-recommendations-of-nhs-doctors-led-ai-commission"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-medical-devices-prequalification",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、医療機器の事前認証制度を避妊具と結核スクリーニング技術へ拡大",
+        "en": "WHO expands prequalification to contraceptives and TB screening technologies"
+      },
+      "summary": {
+        "ja": "これまで体外診断薬や男性割礼用器具を対象としてきた制度で、品質が保証された医療機器の範囲を広げる。",
+        "en": "The programme, which already covers in vitro diagnostics and male circumcision devices, widens the range of quality-assured medical devices it covers."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年9月）によれば",
+        "en": "According to WHO (September 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "who-medical-device-prequalification",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-09-25",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://extranet.who.int/prequal/news/who-announces-expansion-prequalification-programme-medical-devices"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-tb-ivd-prequalification-scope",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、結核のIGRA検査と標的型次世代シーケンス検査を事前認証の対象に",
+        "en": "WHO adds TB IGRA and targeted sequencing tests to diagnostics prequalification"
+      },
+      "summary": {
+        "ja": "2026年9月1日から、結核感染を調べるIGRAと結核診断用の標的型次世代シーケンス（tNGS）検査が対象になる。",
+        "en": "From 1 September 2026, interferon-gamma release assays for TB infection and targeted next-generation sequencing assays for TB diagnosis become eligible."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年8月）によれば",
+        "en": "According to WHO (August 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "tb-diagnostics-prequalification-scope",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-08-27",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://extranet.who.int/prequal/news/prequalification-vitro-diagnostics-scope-expansion"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-canada-vaccine-rd-priorities",
+      "layer": "research",
+      "title": {
+        "ja": "カナダ公衆衛生庁、ワクチン研究開発の優先病原体リストを更新",
+        "en": "Public Health Agency of Canada updates vaccine R&D priority pathogens"
+      },
+      "summary": {
+        "ja": "2015年版を改訂し、10年を見据えて結核や季節性インフルエンザ、梅毒、淋菌などを高優先度とした。",
+        "en": "Updating the 2015 list with a ten-year horizon, it ranks pathogens such as tuberculosis, seasonal influenza, syphilis and gonorrhea as high priority."
+      },
+      "attribution": {
+        "ja": "カナダ公衆衛生庁の報告（2026年7月）によれば",
+        "en": "According to the Public Health Agency of Canada (July 2026)"
+      },
+      "tags": [
+        "policy",
+        "early-stage"
+      ],
+      "topic": "canada-vaccine-rd-priorities",
+      "countries": [
+        "CAN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-29",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "カナダ公衆衛生庁 / Public Health Agency of Canada",
+        "url": "https://www.canada.ca/en/public-health/services/vaccine-research-development-priorities.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-india-immunization-2025",
+      "layer": "research",
+      "title": {
+        "ja": "インド、ワクチン未接種の子どもが2025年に減少",
+        "en": "India sees fewer zero-dose children in 2025"
+      },
+      "summary": {
+        "ja": "ワクチンを1回も受けていない子どもは2024年の90.9万人から2025年は67.9万人に減り、95%がDTP3とMCV2で守られているとされる。",
+        "en": "Zero-dose children fell from 909,000 in 2024 to 679,000 in 2025, and 95% of children are reported as protected by DTP3 and MCV2."
+      },
+      "attribution": {
+        "ja": "UNICEFインド事務所の発表（2026年7月）によれば",
+        "en": "According to UNICEF India (July 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "india-zero-dose-children",
+      "countries": [
+        "IND"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-21",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国連児童基金（UNICEF）インド / UNICEF India",
+        "url": "https://www.unicef.org/india/press-releases/global-childhood-immunization-coverage-inches-forward-despite-conflict-and-hesitancy"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-indonesia-immunization-2025",
+      "layer": "research",
+      "title": {
+        "ja": "インドネシア、DTP3とB型肝炎ワクチンの接種率が82%に上昇",
+        "en": "Indonesia raises DTP3 and HepB3 coverage to 82%"
+      },
+      "summary": {
+        "ja": "接種率は2024年の78%から2025年に82%へ上昇し、未接種の子どもは推計74.8万人から65.7万人に減った。",
+        "en": "Coverage rose from 78% in 2024 to 82% in 2025, and the estimated number of zero-dose children fell from 748,000 to 657,000."
+      },
+      "attribution": {
+        "ja": "UNICEFインドネシア事務所の発表（2026年7月）によれば",
+        "en": "According to UNICEF Indonesia (July 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "indonesia-immunization-coverage",
+      "countries": [
+        "IDN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-20",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国連児童基金（UNICEF）インドネシア / UNICEF Indonesia",
+        "url": "https://www.unicef.org/indonesia/health/press-releases/more-children-receive-lifesaving-vaccines-indonesia-advances-immunization-coverage"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-global-immunization-wuenic-2025",
+      "layer": "research",
+      "title": {
+        "ja": "世界の小児予防接種率、2025年はわずかに前進",
+        "en": "Global childhood immunization coverage inches forward in 2025"
+      },
+      "summary": {
+        "ja": "2025年にDTP3を完了した乳児は85%で、ワクチン未接種の子どもは推計1,350万人と前年より約75万人減った。",
+        "en": "In 2025, 85% of infants completed DTP3, and an estimated 13.5 million children received no vaccine, nearly 750,000 fewer than the year before."
+      },
+      "attribution": {
+        "ja": "UNICEFとWHOの発表（2026年7月）によれば",
+        "en": "According to UNICEF and WHO (July 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "global-immunization-coverage-2025",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2026-07-16",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国連児童基金（UNICEF）・WHO / UNICEF and WHO",
+        "url": "https://www.unicef.org/turkiye/en/press-releases/global-childhood-immunization-coverage-inches-forward-despite-conflict-and-hesitancy"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-jpn-amr-action-plan-revision",
+      "layer": "research",
+      "title": {
+        "ja": "厚労省、薬剤耐性（AMR）対策アクションプランの改定方針を提示",
+        "en": "MHLW sets out policy for revising Japan's AMR action plan"
+      },
+      "summary": {
+        "ja": "次期計画を2028年度から開始できるよう検討を進め、高齢者施設等での対策やワンヘルスでの関係省庁連携を議論する方針を示した。",
+        "en": "It aims to start the next plan from FY2028, with discussion to include AMR measures in elderly care facilities and One Health coordination with other ministries."
+      },
+      "attribution": {
+        "ja": "厚生労働省の資料（2026年7月）によれば",
+        "en": "According to Japan's MHLW (July 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "jpn-amr-action-plan-revision",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-15",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare",
+        "url": "https://www.mhlw.go.jp/content/10906000/001723746.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-drc-uganda-bundibugyo-ebola",
+      "layer": "research",
+      "title": {
+        "ja": "コンゴ民主共和国とウガンダでブンディブギョ型エボラが発生",
+        "en": "Bundibugyo virus disease outbreak in DR Congo and Uganda"
+      },
+      "summary": {
+        "ja": "WHOが国際的に懸念される公衆衛生上の緊急事態と宣言。ECDCはEU/EEA在住者の感染可能性を「非常に低い」と評価した。",
+        "en": "WHO declared it a Public Health Emergency of International Concern. ECDC assessed the likelihood of infection for people living in the EU/EEA as very low."
+      },
+      "attribution": {
+        "ja": "欧州疾病予防管理センターの発表（2026年5月）によれば",
+        "en": "According to ECDC (May 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "bundibugyo-ebola-outbreak",
+      "countries": [
+        "COD",
+        "UGA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-05-17",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "欧州疾病予防管理センター / European Centre for Disease Prevention and Control",
+        "url": "https://www.ecdc.europa.eu/en/news-events/who-declares-ebola-outbreak-democratic-republic-congo-public-health-emergency"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-uk-espaur-2024-2025",
+      "layer": "research",
+      "title": {
+        "ja": "英国イングランド、抗菌薬耐性の血流感染が2019年比13.1%増",
+        "en": "England: antibiotic-resistant bloodstream infections up 13.1% since 2019"
+      },
+      "summary": {
+        "ja": "2024年の耐性菌による菌血症は20,484件。抗菌薬使用量は2019年の水準より2%低かった。",
+        "en": "There were 20,484 antibiotic-resistant bacteraemia episodes in 2024, while antibiotic use was 2% below the 2019 level."
+      },
+      "attribution": {
+        "ja": "英国健康安全保障庁の報告（2026年5月）によれば",
+        "en": "According to UKHSA (May 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "uk-espaur-amr-surveillance",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-05-13",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英国健康安全保障庁 / UK Health Security Agency",
+        "url": "https://www.gov.uk/government/publications/english-surveillance-programme-for-antimicrobial-utilisation-and-resistance-espaur-2024-to-2025-report/espaur-report-2024-to-2025-extended-summary"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-malaria-infant-treatment-rdts",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、新生児・乳児向け初のマラリア治療薬と新たな迅速検査を事前認証",
+        "en": "WHO prequalifies first malaria treatment for newborns and new rapid tests"
+      },
+      "summary": {
+        "ja": "体重2〜5kgの乳児向けアルテメテル・ルメファントリン製剤に加え、HRP2遺伝子欠損株にも対応する迅速診断検査3種を認証した。",
+        "en": "It prequalified artemether-lumefantrine for infants weighing 2-5 kg, plus three rapid tests that can detect parasites lacking the HRP2 gene."
+      },
+      "attribution": {
+        "ja": "WHOの発表（2026年4月）によれば",
+        "en": "According to WHO (April 2026)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "malaria-infant-treatment-diagnostics",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-04-24",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://www.who.int/news/item/24-04-2026-who-prequalifies-first-ever-malaria-treatment-for-newborns-and-infants-adds-new-diagnostic-tests"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2025-glass-amr-report-2025",
+      "layer": "research",
+      "title": {
+        "ja": "WHO、世界抗菌薬耐性サーベイランス報告2025を公表",
+        "en": "WHO publishes Global antibiotic resistance surveillance report 2025"
+      },
+      "summary": {
+        "ja": "2023年に104か国が報告したデータなど、2,300万件超の細菌学的に確認された感染例を分析し、93の組み合わせで耐性の推計を示した。",
+        "en": "It analyses over 23 million bacteriologically confirmed infections, with 104 countries reporting data for 2023, and gives resistance estimates for 93 combinations."
+      },
+      "attribution": {
+        "ja": "WHOの報告（2025年10月）によれば",
+        "en": "According to WHO (October 2025)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "who-glass-amr-report",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2025-10-13",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240116337"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2026-cdc-yrbs-unmet-need",
+      "layer": "mental",
+      "title": {
+        "ja": "米国の高校生、心の支援が届いていない層を分析",
+        "en": "US high schoolers: who is missing out on mental health care"
+      },
+      "summary": {
+        "ja": "2025年の調査で持続的な悲しみ・絶望感を報告した高校生は33.3%。そのうちカウンセリング等を受けたのは29.6%、必要なのに受けられなかったのは28.8%でした。",
+        "en": "In the 2025 survey, 33.3% of US high school students reported persistent sadness or hopelessness; among them 29.6% got counseling or therapy and 28.8% reported an unmet need."
+      },
+      "attribution": {
+        "ja": "米国疾病予防管理センター（CDC）の発表（2026年10月）によれば",
+        "en": "According to the US CDC (October 2026)"
+      },
+      "tags": [
+        "statistics",
+        "support"
+      ],
+      "topic": "us-yrbs-unmet-mental-health-need",
+      "countries": [
+        "USA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-15",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "米国疾病予防管理センター / US Centers for Disease Control and Prevention",
+        "url": "https://www.cdc.gov/mmwr/volumes/75/su/su7501a4.htm"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-jpn-labour-safety-survey",
+      "layer": "mental",
+      "title": {
+        "ja": "職場のメンタルヘルス対策、取り組む事業所は63.0%",
+        "en": "Workplace mental health measures in place at 63.0% of Japanese sites"
+      },
+      "summary": {
+        "ja": "2025年の労働安全衛生調査で、メンタルヘルス対策に取り組む事業所は63.0%（50人以上は93.7%、10〜29人は54.6%）。取組事業所のうちストレスチェック実施は64.0%でした。",
+        "en": "Japan's 2025 occupational safety and health survey found 63.0% of workplaces take mental health measures (93.7% with 50+ staff, 54.6% with 10-29); 64.0% of those run stress checks."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年8月）によれば",
+        "en": "According to Japan's MHLW (August 2026)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "jpn-workplace-mental-health-survey",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-07",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare, Japan",
+        "url": "https://www.mhlw.go.jp/toukei/list/dl/r07-46-50_houdou.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-unicef-mhpss-results",
+      "layer": "mental",
+      "title": {
+        "ja": "ユニセフ、心のケア支援が約5,376万人に届いたと報告",
+        "en": "UNICEF reports mental health support reached 53.76 million people"
+      },
+      "summary": {
+        "ja": "ユニセフの心のケア・心理社会的支援は2025年、130超の国で子ども・若者・養育者約5,376万人に届き、うち2,570万人は人道危機下の59か国でした。",
+        "en": "UNICEF's mental health and psychosocial support reached an estimated 53.76 million children, adolescents and caregivers in 130+ countries in 2025, including 25.7 million in 59 humanitarian settings."
+      },
+      "attribution": {
+        "ja": "ユニセフの発表（2026年7月）によれば",
+        "en": "According to UNICEF (July 2026)"
+      },
+      "tags": [
+        "support",
+        "statistics"
+      ],
+      "topic": "unicef-mhpss-annual-results",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2026-07-20",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "ユニセフ / UNICEF",
+        "url": "https://www.unicef.org/reports/global-annual-results-2025-mental-health"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2026-jpn-workers-comp-mental",
+      "layer": "mental",
+      "title": {
+        "ja": "精神障がいの労災、請求・支給決定ともに増加",
+        "en": "Japan: mental disorder work-injury claims and approvals rise"
+      },
+      "summary": {
+        "ja": "2025年度の精神障がいの労災請求は4,958件、支給決定は1,082件。支給決定の出来事は上司等からのパワハラが最多で、顧客等からの著しい迷惑行為とセクハラが同数で続いた。",
+        "en": "In FY2025, Japan had 4,958 work-injury claims for mental disorders and 1,082 approvals. Power harassment by superiors was the top event, then serious customer nuisance and sexual harassment (tied)."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年7月）によれば",
+        "en": "According to Japan's MHLW (July 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "jpn-workers-comp-mental-disorders",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-07-15",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare, Japan",
+        "url": "https://www.mhlw.go.jp/stf/newpage_74476.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-jpn-loneliness-plan-revision",
+      "layer": "mental",
+      "title": {
+        "ja": "孤独・孤立対策の重点計画、改定案を議論",
+        "en": "Japan discusses revised priority plan on loneliness and isolation"
+      },
+      "summary": {
+        "ja": "推進本部で重点計画の改定案を議論。こども・若者の孤立予防、身近な人を支える「つながりサポーター」の普及、電話・SNS相談の24時間対応推進などを盛り込みました。",
+        "en": "Japan's headquarters discussed a revised loneliness plan, adding youth isolation prevention, wider 'connection supporters' who help people nearby, and 24-hour phone and social media counselling."
+      },
+      "attribution": {
+        "ja": "内閣府の資料（2026年7月）によれば",
+        "en": "According to Japan's Cabinet Office (July 2026)"
+      },
+      "tags": [
+        "policy",
+        "support"
+      ],
+      "topic": "jpn-loneliness-priority-plan-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-07-10",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府 / Cabinet Office, Japan",
+        "url": "https://www.cao.go.jp/kodoku_koritsu/torikumi/suishinhonbu/dai4/pdf/siryou1.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-ilo-psychosocial-risks",
+      "layer": "mental",
+      "title": {
+        "ja": "ILO、職場の心理社会的リスクに関する報告書",
+        "en": "ILO report on psychosocial risks in the workplace"
+      },
+      "summary": {
+        "ja": "長時間労働や雇用不安、いじめ・ハラスメントなど職場の心理社会的リスクは年84万人超の死亡と関連し、損失は世界GDPの1.37%と推計。根本原因への組織的予防を求めています。",
+        "en": "Psychosocial risks at work such as long hours, job insecurity and harassment are linked to 840,000+ deaths a year and losses of 1.37% of global GDP. The ILO urges prevention at the root."
+      },
+      "attribution": {
+        "ja": "国際労働機関の発表（2026年4月）によれば",
+        "en": "According to the ILO (April 2026)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "ilo-psychosocial-work-environment",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2026-04-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国際労働機関 / International Labour Organization",
+        "url": "https://www.ilo.org/resource/news/840000-deaths-year-linked-psychosocial-risks-work"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2026-jpn-loneliness-survey-r7",
+      "layer": "mental",
+      "title": {
+        "ja": "孤独・孤立の全国調査、約4割が孤独感",
+        "en": "Japan loneliness survey: about 4 in 10 feel lonely at times"
+      },
+      "summary": {
+        "ja": "2025年の全国調査で孤独感が「しばしば・常に」ある人は4.5%、時々・たまにを含め約4割。不安や悩みで行政やNPO等の支援を受けていない人は87.0%でした。",
+        "en": "Japan's 2025 survey found 4.5% feel lonely often or always, and about 40% at least occasionally; 87.0% had not received support from public bodies or NPOs for worries."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年4月）によれば",
+        "en": "According to Japan's Cabinet Office (April 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "jpn-loneliness-survey-2025",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-04-14",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府 / Cabinet Office, Japan",
+        "url": "https://www.cao.go.jp/kodoku_koritsu/torikumi/zenkokuchousa/r7/pdf/tyosakekka_point.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-jpn-cfa-child-council-guideline",
+      "layer": "mental",
+      "title": {
+        "ja": "こどもの自殺対策で地域協議会のガイドライン",
+        "en": "Japan issues guideline for local child suicide prevention councils"
+      },
+      "summary": {
+        "ja": "改正自殺対策基本法に基づき、学校や児童相談所、医療機関などが連携する地域協議会の設置・運営ガイドラインを自治体に通知。関連規定は2026年4月1日施行です。",
+        "en": "Under the amended suicide prevention law, a guideline was sent to local governments on councils linking schools, child guidance centres and medical institutions. The rules took effect 1 April 2026."
+      },
+      "attribution": {
+        "ja": "こども家庭庁の通知（2026年3月）によれば",
+        "en": "According to Japan's Children and Families Agency (March 2026)"
+      },
+      "tags": [
+        "policy",
+        "support"
+      ],
+      "topic": "jpn-child-suicide-prevention-councils",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-03-30",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "こども家庭庁 / Children and Families Agency, Japan",
+        "url": "https://www.mext.go.jp/content/20260406-mxt_jidou02-000048778_003.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-jpn-march-awareness-month",
+      "layer": "mental",
+      "title": {
+        "ja": "3月の自殺対策強化月間、相談支援を拡充",
+        "en": "Japan's March awareness month expands counselling support"
+      },
+      "summary": {
+        "ja": "厚生労働省は3月の自殺対策強化月間に、電話・SNS相談の拡充や中高年向けの啓発を実施。2025年の暫定値で全体は減少した一方、児童生徒は深刻な状況としています。",
+        "en": "In March, Japan's MHLW expanded phone and social media counselling and outreach to middle-aged and older adults. Provisional 2025 totals fell, but it calls the student situation serious."
+      },
+      "attribution": {
+        "ja": "厚生労働省の発表（2026年2月）によれば",
+        "en": "According to Japan's MHLW (February 2026)"
+      },
+      "tags": [
+        "support",
+        "policy"
+      ],
+      "topic": "jpn-march-suicide-prevention-month",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-02-27",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare, Japan",
+        "url": "https://www.mhlw.go.jp/stf/r7_jisatsutaisakugekkan.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2026-can-988-helpline",
+      "layer": "mental",
+      "title": {
+        "ja": "カナダ、危機相談ダイヤル「9-8-8」の支援を継続",
+        "en": "Canada renews support for the 9-8-8 crisis helpline"
+      },
+      "summary": {
+        "ja": "カナダ政府は電話・テキストで24時間対応する「9-8-8」に2年間で最大1億2,020万ドルを拠出。2023年11月の開始以来、80万件超の電話・テキストに対応しました。",
+        "en": "Canada committed up to $120.2 million over two years to 9-8-8, a 24/7 call and text line. It has handled more than 800,000 calls and texts since its November 2023 launch."
+      },
+      "attribution": {
+        "ja": "カナダ公衆衛生庁の発表（2026年1月）によれば",
+        "en": "According to the Public Health Agency of Canada (January 2026)"
+      },
+      "tags": [
+        "support",
+        "policy"
+      ],
+      "topic": "canada-988-crisis-helpline",
+      "countries": [
+        "CAN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-01-16",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "カナダ公衆衛生庁 / Public Health Agency of Canada",
+        "url": "https://www.canada.ca/en/public-health/news/2026/01/government-of-canada-announces-renewed-support-for-the-9-8-8-suicide-crisis-helpline.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2025-nzl-mha-targets",
+      "layer": "mental",
+      "title": {
+        "ja": "NZ、メンタルヘルス5目標の四半期実績資料を公表",
+        "en": "New Zealand publishes quarterly results on five mental health targets"
+      },
+      "summary": {
+        "ja": "ニュージーランド保健公社は、専門・プライマリケアへの迅速なアクセス、救急滞在の短縮、人材育成、予防・早期介入という5目標の2025年7〜9月期の実績資料を公表しました。",
+        "en": "Health New Zealand released Q1 2025/26 resources on five targets: faster specialist and primary access, shorter emergency stays, workforce growth, and prevention and early intervention."
+      },
+      "attribution": {
+        "ja": "ニュージーランド保健公社の発表（2025年12月）によれば",
+        "en": "According to Health New Zealand (December 2025)"
+      },
+      "tags": [
+        "policy",
+        "statistics"
+      ],
+      "topic": "nzl-mental-health-addiction-targets",
+      "countries": [
+        "NZL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2025-12-17",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "ニュージーランド保健公社 / Health New Zealand Te Whatu Ora",
+        "url": "https://www.tewhatuora.govt.nz/publications/mental-health-and-addiction-targets-performance-resources-2025-26"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2025-who-cross-sector-guidance",
+      "layer": "mental",
+      "title": {
+        "ja": "WHO、全省庁でメンタルヘルスを守る指針",
+        "en": "WHO guidance on mental health across all government sectors"
+      },
+      "summary": {
+        "ja": "WHOは教育、雇用、司法、社会保障など10分野ごとに心の健康を守る施策を示す初の指針を公表。分野横断の取組と8段階のロードマップを提示しました。",
+        "en": "WHO issued its first guidance setting out what 10 sectors, including education, employment, justice and social protection, can do for mental health, with an eight-step roadmap."
+      },
+      "attribution": {
+        "ja": "世界保健機関の発表（2025年11月）によれば",
+        "en": "According to WHO (November 2025)"
+      },
+      "tags": [
+        "policy"
+      ],
+      "topic": "who-mental-health-all-policies-guidance",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2025-11-24",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://www.who.int/news/item/24-11-2025-who-launches-new-guidance-to-promote-mental-health-across-all-government-sectors"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2025-who-mental-health-atlas",
+      "layer": "mental",
+      "title": {
+        "ja": "WHO「メンタルヘルス・アトラス2024」公表",
+        "en": "WHO publishes Mental Health Atlas 2024"
+      },
+      "summary": {
+        "ja": "2001年から続くシリーズの第7版で、144か国のデータを基に各国の精神保健システムとサービスを概観。遠隔医療や地域ケアなどの新たな指標を加えました。",
+        "en": "The seventh edition of a series begun in 2001 draws on data from 144 countries to review mental health systems and services, adding indicators on telehealth and community care."
+      },
+      "attribution": {
+        "ja": "世界保健機関の発表（2025年9月）によれば",
+        "en": "According to WHO (September 2025)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "who-mental-health-atlas-2024",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2025-09-02",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240114487"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2025-jpn-stress-check-small-sites",
+      "layer": "mental",
+      "title": {
+        "ja": "50人未満の事業場向けストレスチェック手引き作成へ",
+        "en": "Japan to prepare stress check manual for small workplaces"
+      },
+      "summary": {
+        "ja": "改正労働安全衛生法で50人未満の事業場にもストレスチェックが義務化されることを受け、プライバシーを守り実効性のある実施方法を示すマニュアル作成のため作業部会を設置します。",
+        "en": "With stress checks becoming mandatory for workplaces under 50 staff, Japan's MHLW set up a working group to draft a manual on practical methods that protect worker privacy."
+      },
+      "attribution": {
+        "ja": "厚生労働省の資料（2025年8月）によれば",
+        "en": "According to Japan's MHLW (August 2025)"
+      },
+      "tags": [
+        "policy",
+        "early-stage"
+      ],
+      "topic": "jpn-stress-check-small-workplaces",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2025-08-20",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "厚生労働省 / Ministry of Health, Labour and Welfare, Japan",
+        "url": "https://www.mhlw.go.jp/content/11303000/001543077.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "mental-2025-who-social-connection",
+      "layer": "mental",
+      "title": {
+        "ja": "WHO委員会、孤独から「つながり」への報告書",
+        "en": "WHO commission report: from loneliness to social connection"
+      },
+      "summary": {
+        "ja": "孤独は年約87万人の死亡と関連すると報告。社会的なつながりを心身の健康と同等に重視し、個人・地域・社会の各段階で対策を進めるよう求めています。",
+        "en": "The report links loneliness to about 870,000 deaths a year and urges treating social health as seriously as physical and mental health, with action at individual, community and societal levels."
+      },
+      "attribution": {
+        "ja": "世界保健機関の発表（2025年6月）によれば",
+        "en": "According to WHO (June 2025)"
+      },
+      "tags": [
+        "policy",
+        "statistics"
+      ],
+      "topic": "who-social-connection-commission",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2025-06-30",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界保健機関 / World Health Organization",
+        "url": "https://www.who.int/groups/commission-on-social-connection/report"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "mental-2025-gbr-school-mhst",
+      "layer": "mental",
+      "title": {
+        "ja": "イングランドの学校向けメンタルヘルス支援チーム、生徒の52%をカバー",
+        "en": "England's school mental health support teams cover 52% of pupils"
+      },
+      "summary": {
+        "ja": "イングランドでは学校の心の支援チームが生徒・学習者の52%（約500万人）、学校・カレッジの41%をカバー。2026年3月には生徒の62%に広がる見込みです。",
+        "en": "In England, school Mental Health Support Teams cover 52% of pupils and learners (about 5.0 million) and 41% of schools and colleges, with coverage projected at 62% of pupils by March 2026."
+      },
+      "attribution": {
+        "ja": "英国教育省などの発表（2025年5月）によれば",
+        "en": "According to the UK Department for Education et al. (May 2025)"
+      },
+      "tags": [
+        "support",
+        "statistics"
+      ],
+      "topic": "gbr-mental-health-support-teams",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2025-05-16",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英国政府（教育省・保健社会福祉省・NHSイングランド） / UK Government (DfE, DHSC, NHS England)",
+        "url": "https://www.gov.uk/government/publications/transforming-children-and-young-peoples-mental-health-provision"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-mexico-multidimensional-poverty",
+      "layer": "welfare",
+      "title": {
+        "ja": "メキシコの多次元貧困率、2024年は29.6%に低下",
+        "en": "Mexico: multidimensional poverty fell to 29.6% in 2024"
+      },
+      "summary": {
+        "ja": "多次元貧困の割合は2022年の36.3%から2024年は29.6%（3,850万人）に低下した。一方で社会保障へのアクセスを欠く人は48.2%に上るとしている。",
+        "en": "Multidimensional poverty fell from 36.3% in 2022 to 29.6% (38.5 million people) in 2024. INEGI notes that 48.2% of people still lacked access to social security."
+      },
+      "attribution": {
+        "ja": "メキシコ国立統計地理情報院（INEGI）の発表（2026年10月）によれば",
+        "en": "According to Mexico's INEGI (October 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "mex-multidimensional-poverty-2024",
+      "countries": [
+        "MEX"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-14",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "メキシコ国立統計地理情報院 / INEGI (Mexico)",
+        "url": "https://www.inegi.org.mx/contenidos/saladeprensa/aproposito/2026/EAP_ERRADICAC_POBREZA_26.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-us-poverty-2025",
+      "layer": "welfare",
+      "title": {
+        "ja": "米国の公式貧困率、2025年は10.2%",
+        "en": "US official poverty rate was 10.2% in 2025"
+      },
+      "summary": {
+        "ja": "公式貧困率は前年より0.5ポイント低い10.2%（3,450万人）で、子どもの貧困率は13.4%だった。補足的貧困指標（SPM）は13.1%で前年と統計的な差はなかったとしている。",
+        "en": "The official poverty rate was 10.2% (34.5 million people), down 0.5 points, and child poverty was 13.4%. The SPM rate, 13.1%, was not statistically different from 2024."
+      },
+      "attribution": {
+        "ja": "米国勢調査局の発表（2026年9月）によれば",
+        "en": "According to the US Census Bureau (September 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "usa-poverty-report-2025",
+      "countries": [
+        "USA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-15",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "米国勢調査局 / U.S. Census Bureau",
+        "url": "https://www.census.gov/library/publications/2026/demo/p60-290.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-japan-ageing-society-white-paper",
+      "layer": "welfare",
+      "title": {
+        "ja": "令和8年版高齢社会白書：高齢化率29.4%",
+        "en": "Japan Annual Report on the Ageing Society 2026: 29.4% aged 65+"
+      },
+      "summary": {
+        "ja": "2025年10月1日時点の65歳以上人口は3,622万人、高齢化率は29.4%。2070年には38.7%となり、約2.6人に1人が65歳以上になると推計している。",
+        "en": "As of 1 October 2025, 36.22 million people were aged 65+, 29.4% of the population. The report projects this share reaching 38.7% by 2070, about 1 in 2.6 people."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年6月）によれば",
+        "en": "According to Japan's Cabinet Office (June 2026)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "jpn-ageing-society-white-paper-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-06-12",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府 / Cabinet Office, Japan",
+        "url": "https://www8.cao.go.jp/kourei/whitepaper/w-2026/html/zenbun/s1_1_1.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-japan-disability-white-paper",
+      "layer": "welfare",
+      "title": {
+        "ja": "令和8年版障がい者白書が公表",
+        "en": "Japan publishes 2026 White Paper on Persons with Disabilities"
+      },
+      "summary": {
+        "ja": "33回目の国会報告で、旧優生保護法の被害者への補償、偏見や差別のない共生社会に向けた行動計画、改正障がい者差別解消法の施行1年後の事業者調査などを取り上げている。",
+        "en": "The 33rd report to the Diet covers redress for victims of the former Eugenic Protection Law, an action plan against prejudice, and a business survey a year after the revised anti-discrimination act."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年6月）によれば",
+        "en": "According to Japan's Cabinet Office (June 2026)"
+      },
+      "tags": [
+        "policy",
+        "support"
+      ],
+      "topic": "jpn-disability-white-paper-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-06-12",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府 / Cabinet Office, Japan",
+        "url": "https://www8.cao.go.jp/shougai/whitepaper/r08hakusho/gaiyou/index.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-south-africa-social-grants",
+      "layer": "welfare",
+      "title": {
+        "ja": "南アフリカ、世帯の半数が社会手当を受給",
+        "en": "South Africa: half of households receive social grants"
+      },
+      "summary": {
+        "ja": "2025年に社会手当を受けた人は39.5%、受給世帯は50.6%で、23.4%の世帯は手当を主な収入源としていた。食料へのアクセスが不十分な世帯は22.0%としている。",
+        "en": "In 2025, 39.5% of individuals and 50.6% of households benefited from social grants; 23.4% of households cited grants as main income. It reports 22.0% of households with inadequate food access."
+      },
+      "attribution": {
+        "ja": "南アフリカ統計局の一般世帯調査（2026年5月）によれば",
+        "en": "According to Statistics South Africa (May 2026)"
+      },
+      "tags": [
+        "statistics",
+        "support"
+      ],
+      "topic": "zaf-ghs-2025-social-grants",
+      "countries": [
+        "ZAF"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-05-26",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "南アフリカ統計局 / Statistics South Africa",
+        "url": "https://www.statssa.gov.za/publications/P0318/GHS%202025%20Presentation.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-unicef-report-card-20",
+      "layer": "welfare",
+      "title": {
+        "ja": "ユニセフ報告書「不平等なチャンス：子どもと経済格差」",
+        "en": "UNICEF Report Card 20: children and economic inequality"
+      },
+      "summary": {
+        "ja": "高所得・OECD 44か国を分析し、どの国でも子どもの少なくとも10人に1人が貧困状態にあるとした。家族・児童手当などセーフティネットの強化を求めている。",
+        "en": "Across 44 high-income and/or OECD countries, at least 1 in 10 children live in poverty in every country studied. UNICEF calls for stronger safety nets such as family and child benefits."
+      },
+      "attribution": {
+        "ja": "ユニセフ・イノチェンティの報告（2026年5月）によれば",
+        "en": "According to UNICEF Innocenti (May 2026)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "unicef-report-card-20-inequality",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2026-05-11",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "ユニセフ・イノチェンティ / UNICEF Innocenti",
+        "url": "https://www.unicef.org/innocenti/reports/report-card-20"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "welfare-2026-canada-income-survey-2024",
+      "layer": "welfare",
+      "title": {
+        "ja": "カナダの貧困率、2024年は11.0%",
+        "en": "Canada's poverty rate was 11.0% in 2024"
+      },
+      "summary": {
+        "ja": "市場バスケット方式による貧困率は11.0%（約450万人）、65歳以上は5.4%だった。食料不安のある世帯で暮らす人は24.0%（約980万人）としている。",
+        "en": "The Market Basket Measure poverty rate was 11.0% (about 4.5 million people), and 5.4% for seniors. It reports 24.0% of Canadians (about 9.8 million) living in food-insecure households."
+      },
+      "attribution": {
+        "ja": "カナダ統計局の発表（2026年4月）によれば",
+        "en": "According to Statistics Canada (April 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "can-income-survey-2024",
+      "countries": [
+        "CAN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-04-29",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "カナダ統計局 / Statistics Canada",
+        "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260429/dq260429a-eng.htm"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-uk-households-below-average-income",
+      "layer": "welfare",
+      "title": {
+        "ja": "英国の低所得世帯統計（2024/25年度）",
+        "en": "UK households below average income, FYE 2025"
+      },
+      "summary": {
+        "ja": "住居費控除後の相対的低所得は子ども27%、全体20%で、年金受給者は約2ポイント上昇した。ただし同省はいずれの変化も統計的に有意ではないとしている。",
+        "en": "After housing costs, 27% of children and 20% of all people were in relative low income; pensioners rose almost 2 points. DWP says none of these changes were statistically significant."
+      },
+      "attribution": {
+        "ja": "英国雇用年金省（DWP）の発表（2026年3月）によれば",
+        "en": "According to the UK DWP (March 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "gbr-hbai-fye2025",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-03-26",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英国雇用年金省 / UK Department for Work and Pensions",
+        "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025/households-below-average-income-an-analysis-of-the-uk-income-distribution-fye-1995-to-fye-2025"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-ireland-silc-2025",
+      "layer": "welfare",
+      "title": {
+        "ja": "アイルランドの所得・生活状況調査2025",
+        "en": "Ireland's Survey on Income and Living Conditions 2025"
+      },
+      "summary": {
+        "ja": "貧困リスク率は11.7%から12.6%に上昇し、継続的貧困率は4.7%に低下した。生活費支援策がなければ貧困リスク率は14.9%だったと推計している。",
+        "en": "The at-risk-of-poverty rate rose to 12.6% from 11.7%, while consistent poverty fell to 4.7%. The CSO estimates the rate would have been 14.9% without cost-of-living measures."
+      },
+      "attribution": {
+        "ja": "アイルランド中央統計局（CSO）の発表（2026年3月）によれば",
+        "en": "According to Ireland's CSO (March 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "irl-silc-2025",
+      "countries": [
+        "IRL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-03-11",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "アイルランド中央統計局 / Central Statistics Office Ireland",
+        "url": "https://www-cloud.cso.ie/en/releasesandpublications/ep/p-silc/surveyonincomeandlivingconditionssilc2025/keyfindings/"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2026-germany-poverty-risk",
+      "layer": "welfare",
+      "title": {
+        "ja": "ドイツの貧困リスク率、2025年は16.1%",
+        "en": "Germany: 16.1% at risk of poverty in 2025"
+      },
+      "summary": {
+        "ja": "2025年の貧困リスク率は前年の15.5%から16.1%（約1,330万人）に上昇した。失業者（64.9%）やひとり親世帯（28.7%）で高いとしている。",
+        "en": "In 2025, 16.1% of the population (about 13.3 million) were at risk of poverty, up from 15.5%. Rates were high among the unemployed (64.9%) and single-parent households (28.7%)."
+      },
+      "attribution": {
+        "ja": "ドイツ連邦統計局の発表（2026年2月）によれば",
+        "en": "According to Germany's Federal Statistical Office (February 2026)"
+      },
+      "tags": [
+        "statistics"
+      ],
+      "topic": "deu-poverty-risk-2025",
+      "countries": [
+        "DEU"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-02-03",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "ドイツ連邦統計局 / Destatis",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/02/PD26_039_63.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2025-france-minimum-social-benefits",
+      "layer": "welfare",
+      "title": {
+        "ja": "フランスの最低所得保障給付と再分配（2025年版）",
+        "en": "France: minimum social benefits and redistribution, 2025 edition"
+      },
+      "summary": {
+        "ja": "2023年末に最低所得保障給付は人口の10%をカバーし、支給額は316億ユーロ（GDP比1.1%）だった。給付と直接税により2022年の貧困率は21.3%から14.4%に下がったとしている。",
+        "en": "Minimum social benefits covered 10% of the population at end-2023, at €31.6 billion (1.1% of GDP). DREES says benefits and direct taxes cut the 2022 poverty rate from 21.3% to 14.4%."
+      },
+      "attribution": {
+        "ja": "フランス保健・連帯省統計局（DREES）の発表（2025年12月）によれば",
+        "en": "According to France's DREES (December 2025)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "fra-minima-sociaux-2025",
+      "countries": [
+        "FRA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2025-12-04",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "フランス保健・連帯省統計局 / DREES",
+        "url": "https://www.drees.solidarites-sante.gouv.fr/sites/default/files/2025-12/Infographie%20Minima%20Sociaux%202025.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "welfare-2025-oecd-pensions-gender-gap",
+      "layer": "welfare",
+      "title": {
+        "ja": "OECD「図表で見る年金2025」：男女の年金格差",
+        "en": "OECD Pensions at a Glance 2025: the gender pension gap"
+      },
+      "summary": {
+        "ja": "OECD平均の男女の年金格差は2007年の28%から2024年に23%へ縮小した。主因は生涯賃金の差で、育児・介護に伴う年金加算などを提言している。",
+        "en": "The average gender pension gap across OECD countries fell from 28% in 2007 to 23% in 2024. The OECD names lifetime earnings gaps as the main driver and recommends care-related pension credits."
+      },
+      "attribution": {
+        "ja": "OECDの報告（2025年11月）によれば",
+        "en": "According to the OECD (November 2025)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "oecd-pensions-at-a-glance-2025",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-11-27",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "経済協力開発機構 / OECD",
+        "url": "https://www.oecd.org/en/publications/2025/11/pensions-at-a-glance-2025_76510fe4/full-report/gender-pension-gap_90ed13b5.html"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "welfare-2025-world-bank-social-protection",
+      "layer": "welfare",
+      "title": {
+        "ja": "世界銀行「社会保障の現状報告2025」",
+        "en": "World Bank State of Social Protection Report 2025"
+      },
+      "summary": {
+        "ja": "低・中所得国の社会保障は47億人をカバーする一方、約20億人は十分にカバーされていないとした。低所得国で給付を受けるのは25%にとどまるとしている。",
+        "en": "Social protection in low- and middle-income countries covers 4.7 billion people, yet about 2 billion remain inadequately covered. The Bank says only 25% benefit in low-income countries."
+      },
+      "attribution": {
+        "ja": "世界銀行の報告（2025年4月）によれば",
+        "en": "According to the World Bank (April 2025)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "wb-state-of-social-protection-2025",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2025-04-07",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界銀行 / World Bank",
+        "url": "https://www.worldbank.org/en/topic/socialprotectionandjobs/publication/state-of-social-protection-2025-2-billion-person-challenge"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "welfare-2025-india-social-protection-coverage",
+      "layer": "welfare",
+      "title": {
+        "ja": "インドの社会保障カバー率、ILO推計で倍増",
+        "en": "India's social protection coverage doubled, citing ILO data"
+      },
+      "summary": {
+        "ja": "同省はILO世界社会保障報告2024–26を引用し、カバー率が2021年の24.4%から2024年に48.8%へ上昇したと説明。現物給付が反映されていない可能性があるとしている。",
+        "en": "Citing the ILO World Social Protection Report 2024–26, the ministry says coverage rose from 24.4% (2021) to 48.8% (2024), and that the figure may not capture in-kind benefits."
+      },
+      "attribution": {
+        "ja": "インド労働雇用省の発表（2025年3月）によれば",
+        "en": "According to India's Ministry of Labour and Employment (March 2025)"
+      },
+      "tags": [
+        "statistics",
+        "policy"
+      ],
+      "topic": "ind-social-protection-coverage",
+      "countries": [
+        "IND"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2025-03-26",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "インド労働雇用省 / Ministry of Labour and Employment, India",
+        "url": "https://labour.gov.in/sites/default/files/pib2115391.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-brotli-fix-advisory",
+      "layer": "research",
+      "title": {
+        "ja": "Brotli（C言語実装）の脆弱性、修正版への更新を呼びかけ",
+        "en": "JPCERT/CC urges updating Brotli C library to fixed versions"
+      },
+      "summary": {
+        "ja": "Brotliの展開処理の脆弱性について、v1.2.1・v1.1.1・v1.0.10への更新と、Node.js等の組み込み製品は各開発元の更新を確認・適用するよう求めた。",
+        "en": "For a flaw in Brotli decompression, it advised updating to v1.2.1, v1.1.1 or v1.0.10, and checking and applying vendor updates for products embedding it, such as Node.js."
+      },
+      "attribution": {
+        "ja": "JPCERT/CCの注意喚起（2026年10月）によれば",
+        "en": "According to JPCERT/CC (October 2026)"
+      },
+      "tags": [
+        "security",
+        "policy"
+      ],
+      "topic": "brotli-fix-advisory",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-26",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "JPCERTコーディネーションセンター / JPCERT/CC",
+        "url": "https://www.jpcert.or.jp/at/2026/at260034.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-php-security-update-advisory",
+      "layer": "research",
+      "title": {
+        "ja": "PHPの複数の脆弱性、修正版の速やかな適用を推奨",
+        "en": "JPCERT/CC recommends prompt PHP updates for multiple flaws"
+      },
+      "summary": {
+        "ja": "PHP 8.5.12・8.4.27・8.3.36・8.2.35以降への更新を推奨し、修正版のない8.1以前はサポート中の版への移行を求めた。侵害の有無の調査も呼びかけた。",
+        "en": "It recommended updating to PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35 or later, and moving from 8.1 and older, which get no fix, to supported versions. It also urged checks for compromise."
+      },
+      "attribution": {
+        "ja": "JPCERT/CCの注意喚起（2026年10月）によれば",
+        "en": "According to JPCERT/CC (October 2026)"
+      },
+      "tags": [
+        "security",
+        "policy"
+      ],
+      "topic": "php-security-update-advisory",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "JPCERTコーディネーションセンター / JPCERT/CC",
+        "url": "https://www.jpcert.or.jp/at/2026/at260033.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-microsoft-october-updates",
+      "layer": "research",
+      "title": {
+        "ja": "2026年10月のマイクロソフト更新プログラム、適用を呼びかけ",
+        "en": "JPCERT/CC urges applying Microsoft's October 2026 security updates"
+      },
+      "summary": {
+        "ja": "マイクロソフトが製品の脆弱性を修正する更新を公開した。うち1件は悪用が確認されているとされ、Microsoft UpdateやWindows Updateでの適用を求めた。",
+        "en": "Microsoft released updates fixing vulnerabilities in its products, one reportedly exploited. JPCERT/CC urged applying them via Microsoft Update or Windows Update."
+      },
+      "attribution": {
+        "ja": "JPCERT/CCの注意喚起（2026年10月）によれば",
+        "en": "According to JPCERT/CC (October 2026)"
+      },
+      "tags": [
+        "security"
+      ],
+      "topic": "microsoft-october-updates",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-14",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "JPCERTコーディネーションセンター / JPCERT/CC",
+        "url": "https://www.jpcert.or.jp/at/2026/at260031.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-chrome-155-stable-update",
+      "layer": "research",
+      "title": {
+        "ja": "Chrome 155の安定版更新、37件のセキュリティ修正",
+        "en": "Chrome 155 stable update includes 37 security fixes"
+      },
+      "summary": {
+        "ja": "GoogleはWindows・Mac向けにChrome 155.0.8059.79/.80、Linux向けに155.0.8059.79を公開し、37件のセキュリティ修正を含めた。",
+        "en": "Google released Chrome 155.0.8059.79/.80 for Windows and Mac and 155.0.8059.79 for Linux, including 37 security fixes."
+      },
+      "attribution": {
+        "ja": "Googleの発表（2026年10月）によれば",
+        "en": "According to Google (October 2026)"
+      },
+      "tags": [
+        "security"
+      ],
+      "topic": "chrome-155-stable-update",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-10-13",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "Google Chrome Releases / Google Chrome Releases",
+        "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_01668083673.html"
+      },
+      "sourceType": "vendor"
+    },
+    {
+      "id": "research-2026-uk-ncsc-ai-cyber-risk-leaders",
+      "layer": "research",
+      "title": {
+        "ja": "英NCSC、AI時代のサイバーリスクに向け経営層へ行動を要請",
+        "en": "UK NCSC urges leaders to act on AI-driven shifts in cyber risk"
+      },
+      "summary": {
+        "ja": "外部公開の縮小、パッチ適用の迅速化、サポート切れシステムへの対処、認証とアクセス管理の強化、インシデント対応の訓練を実践策として挙げた。",
+        "en": "It listed practical steps: reduce attack surface, patch faster, address legacy systems, tighten identity and access controls, and test and train for incident response."
+      },
+      "attribution": {
+        "ja": "英国家サイバーセキュリティセンターの発表（2026年6月）によれば",
+        "en": "According to the UK NCSC (June 2026)"
+      },
+      "tags": [
+        "security",
+        "ai",
+        "policy"
+      ],
+      "topic": "uk-ncsc-ai-cyber-risk-leaders",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-06-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英国家サイバーセキュリティセンター（NCSC） / UK National Cyber Security Centre",
+        "url": "https://www.ncsc.gov.uk/news/the-ai-shift-in-cyber-risk-why-leaders-must-act-now"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-agentic-ai-joint-guidance",
+      "layer": "research",
+      "title": {
+        "ja": "5か国のサイバー機関、エージェント型AIの慎重な導入へ共同指針",
+        "en": "Five countries' cyber agencies issue joint guidance on agentic AI adoption"
+      },
+      "summary": {
+        "ja": "豪・米・加・NZ・英の6機関が、エージェント型AIシステムを安全に導入するためのベストプラクティスと実行可能な推奨事項をまとめた指針を公表した。",
+        "en": "Six agencies from Australia, the US, Canada, New Zealand and the UK published guidance with best practices and actionable recommendations for securely adopting agentic AI systems."
+      },
+      "attribution": {
+        "ja": "NCSC-NZほかの共同発表（2026年5月）によれば",
+        "en": "According to NCSC-NZ and partner agencies (May 2026)"
+      },
+      "tags": [
+        "security",
+        "ai",
+        "policy"
+      ],
+      "topic": "agentic-ai-joint-guidance",
+      "countries": [
+        "AUS",
+        "USA",
+        "CAN",
+        "NZL",
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-05-01",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "ニュージーランド国家サイバーセキュリティセンター（NCSC-NZ） / New Zealand National Cyber Security Centre",
+        "url": "https://www.ncsc.govt.nz/protect-your-organisation/careful-adoption-of-agentic-ai-services/"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-uk-flood-action-online",
+      "layer": "research",
+      "title": {
+        "ja": "英政府、洪水への備えを一元化したサイト「Flood Action Online」を開設",
+        "en": "UK launches Flood Action Online, a one-stop site for flood preparedness"
+      },
+      "summary": {
+        "ja": "自宅の洪水リスク確認、洪水警報の登録、気象警報、住宅の浸水対策をまとめた。2026年4月〜2029年3月に洪水防御へ42億ポンドを投じるとしている。",
+        "en": "It brings together home flood-risk checks, flood warning sign-up, weather alerts and property resilience. £4.2 billion will go to flood defences from April 2026 to March 2029."
+      },
+      "attribution": {
+        "ja": "英環境・食料・農村地域省の発表（2026年10月）によれば",
+        "en": "According to the UK Defra (October 2026)"
+      },
+      "tags": [
+        "disaster",
+        "policy"
+      ],
+      "topic": "uk-flood-action-online",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-12",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英環境・食料・農村地域省（Defra） / UK Department for Environment, Food & Rural Affairs",
+        "url": "https://www.gov.uk/government/news/new-one-stop-shop-for-flood-preparedness-launched-as-we-approach-more-weather-whiplash"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-africa-early-warnings-call",
+      "layer": "research",
+      "title": {
+        "ja": "アフリカ早期警報フォーラム、全員を警報で守るための行動要請を採択",
+        "en": "Africa Early Warnings Forum adopts Addis Ababa Call to Action"
+      },
+      "summary": {
+        "ja": "多重災害早期警報システムを公共インフラと位置づけ国内予算を確保すること、未到達地域への普及、警報と事前行動の連携を各国などに求めた。",
+        "en": "It called for treating multi-hazard early warning systems as core public infrastructure with domestic budgets, reaching last-mile communities, and linking warnings to anticipatory action."
+      },
+      "attribution": {
+        "ja": "世界気象機関の発表（2026年9月）によれば",
+        "en": "According to WMO (September 2026)"
+      },
+      "tags": [
+        "disaster",
+        "policy"
+      ],
+      "topic": "africa-early-warnings-call",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-09-07",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界気象機関（WMO） / World Meteorological Organization",
+        "url": "https://wmo.int/media/news/addis-ababa-call-action-early-warnings-africa"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-iddrr-2026-resilience-at-home",
+      "layer": "research",
+      "title": {
+        "ja": "2026年の国際防災の日、テーマは「防災は家庭から」",
+        "en": "2026 International Day for Disaster Risk Reduction: Resilience Starts at Home"
+      },
+      "summary": {
+        "ja": "10月13日の国際防災の日のテーマを発表した。政府・民間・家庭の役割分担を示し、早期警報が危険にさらされる全員に届くことなどを重視するとしている。",
+        "en": "It set the theme for the 13 October observance, outlining roles for governments, business and households, and stressing that early warnings must reach everyone at risk."
+      },
+      "attribution": {
+        "ja": "国連防災機関の発表（2026年6月）によれば",
+        "en": "According to UNDRR (June 2026)"
+      },
+      "tags": [
+        "disaster",
+        "policy"
+      ],
+      "topic": "iddrr-2026-resilience-at-home",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-06-21",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国連防災機関（UNDRR） / UN Office for Disaster Risk Reduction",
+        "url": "https://www.undrr.org/news/undrr-announces-resilience-starts-home-theme-2026-international-day-disaster-risk-reduction"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "research-2026-jma-new-disaster-weather-info",
+      "layer": "research",
+      "title": {
+        "ja": "気象庁、警戒レベルに対応した新たな防災気象情報の運用を開始",
+        "en": "JMA starts new disaster weather information aligned with alert levels"
+      },
+      "summary": {
+        "ja": "河川氾濫・大雨・土砂災害・高潮の情報を5段階の警戒レベルに対応させ、「レベル３大雨警報」のように名称にレベルを付けた。キキクルの確認と早めの避難を呼びかけている。",
+        "en": "Flood, heavy rain, landslide and storm surge information now maps to five alert levels, with names like Level 3 Heavy Rain Warning. It urges checking Kikikuru and evacuating early."
+      },
+      "attribution": {
+        "ja": "気象庁の発表（2026年5月）によれば",
+        "en": "According to the JMA (May 2026)"
+      },
+      "tags": [
+        "disaster",
+        "policy"
+      ],
+      "topic": "jma-new-disaster-weather-info",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-05-29",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "気象庁 / Japan Meteorological Agency",
+        "url": "https://www.jma.go.jp/jma/kishou/know/bosai/keiho-update2026/index.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-ftc-impersonation-rule-platform-ads",
+      "layer": "research",
+      "title": {
+        "ja": "米FTC、なりすまし詐欺広告へのプラットフォームの関与で規則改正を検討",
+        "en": "US FTC weighs updating impersonation rule over platforms' ad tools"
+      },
+      "summary": {
+        "ja": "政府や企業をかたる詐欺に広告最適化ツールが使われている点について意見を募集する。広告主の審査や広告の監視・削除などの対策案も示した。",
+        "en": "It seeks comment on how platforms' ad-optimization tools may aid scams impersonating governments and businesses, with possible steps such as vetting advertisers and removing scam ads."
+      },
+      "attribution": {
+        "ja": "米連邦取引委員会の発表（2026年9月）によれば",
+        "en": "According to the US FTC (September 2026)"
+      },
+      "tags": [
+        "crime",
+        "policy"
+      ],
+      "topic": "ftc-impersonation-rule-platform-ads",
+      "countries": [
+        "USA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-24",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "米連邦取引委員会（FTC） / US Federal Trade Commission",
+        "url": "https://www.ftc.gov/news-events/news/press-releases/2026/09/ftc-seeks-public-comment-whether-update-rule-impersonation-government-businesses-address-platforms"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-jpn-sns-scam-ad-joint-request",
+      "layer": "research",
+      "title": {
+        "ja": "7府省庁、SNS事業者になりすまし詐欺広告対策の強化を合同要請",
+        "en": "Seven Japanese ministries jointly ask SNS firms to curb impersonation scam ads"
+      },
+      "summary": {
+        "ja": "消費者庁・警察庁・金融庁・デジタル庁・総務省・法務省・経済産業省が、SNS等を提供する大規模事業者に対し、なりすまし詐欺広告への対策強化を文書で要請した。",
+        "en": "The CAA, NPA, FSA, Digital Agency, MIC, MOJ and METI sent a written request to large SNS and similar service providers to strengthen measures against impersonation scam ads."
+      },
+      "attribution": {
+        "ja": "消費者庁の発表（2026年8月）によれば",
+        "en": "According to Japan's Consumer Affairs Agency (August 2026)"
+      },
+      "tags": [
+        "crime",
+        "policy"
+      ],
+      "topic": "jpn-sns-scam-ad-joint-request",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-07",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "消費者庁 / Consumer Affairs Agency, Japan",
+        "url": "https://www.caa.go.jp/notice/entry/047141"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-sgp-scams-countermeasures-bill",
+      "layer": "research",
+      "title": {
+        "ja": "シンガポール、詐欺対策強化の法案を議会に提出",
+        "en": "Singapore introduces Scams (Countermeasures) and Other Matters Bill"
+      },
+      "summary": {
+        "ja": "警察が事業者に詐欺関連アカウントの情報提供や無効化を命じられる仕組みや、犯罪目的のアカウント提供などへの新たな罰則を盛り込んだ。",
+        "en": "It would let police order service providers to share information on, or disable, scam-linked accounts, and creates new offences such as supplying accounts for criminal use."
+      },
+      "attribution": {
+        "ja": "シンガポール内務省の発表（2026年8月）によれば",
+        "en": "According to Singapore's Ministry of Home Affairs (August 2026)"
+      },
+      "tags": [
+        "crime",
+        "policy"
+      ],
+      "topic": "sgp-scams-countermeasures-bill",
+      "countries": [
+        "SGP"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-04",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "シンガポール内務省（MHA） / Ministry of Home Affairs, Singapore",
+        "url": "https://www.mha.gov.sg/media-room/newsroom/first-reading-of-the-scams-countermeasures-and-other-matters-bill/"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "research-2026-uk-fraud-strategy-online-crime-centre",
+      "layer": "research",
+      "title": {
+        "ja": "英政府、詐欺対策戦略2026–2029とオンライン犯罪センターを発表",
+        "en": "UK publishes Fraud Strategy 2026–2029 and new Online Crime Centre"
+      },
+      "summary": {
+        "ja": "警察・情報機関・銀行・通信・IT企業が連携するオンライン犯罪センターを2026年4月に始動し、3年間で2億5千万ポンドを投じるとしている。",
+        "en": "An Online Crime Centre uniting police, intelligence agencies, banks, mobile networks and tech firms begins in April 2026, as part of £250 million to be invested over three years."
+      },
+      "attribution": {
+        "ja": "英内務省の発表（2026年3月）によれば",
+        "en": "According to the UK Home Office (March 2026)"
+      },
+      "tags": [
+        "crime",
+        "policy"
+      ],
+      "topic": "uk-fraud-strategy-online-crime-centre",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-03-09",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英内務省 / UK Home Office",
+        "url": "https://www.gov.uk/government/news/new-disruption-unit-launched-in-crackdown-on-fraud"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-tokushu-sagi-august",
+      "layer": "crime",
+      "title": {
+        "ja": "特殊詐欺の被害額、8月末までに2,360億円超（警察庁暫定値）",
+        "en": "Japan fraud losses exceed ¥236 billion by end of August 2026"
+      },
+      "summary": {
+        "ja": "令和8年8月末までの特殊詐欺の認知件数は29,687件、被害額は2,360.7億円で前年同期より588.4億円増えた。SNS型投資詐欺の被害額は937.4億円で、不安な時は#9110や188への相談を呼びかけている。",
+        "en": "By end-August 2026, 29,687 fraud cases and ¥236.07bn in losses (+¥58.84bn YoY) were recorded; SNS investment fraud losses were ¥93.74bn. People in doubt are urged to call #9110 or 188."
+      },
+      "attribution": {
+        "ja": "警察庁の発表（2026年10月）によれば",
+        "en": "According to Japan's National Police Agency (October 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "jpn-special-fraud-2026-august",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-02",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "警察庁 / National Police Agency",
+        "url": "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/261002/01.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-heatstroke-transport-august",
+      "layer": "disaster",
+      "title": {
+        "ja": "2026年8月の熱中症による救急搬送は24,956人",
+        "en": "24,956 heatstroke ambulance transports in Japan in August 2026"
+      },
+      "summary": {
+        "ja": "8月の熱中症による救急搬送人員は24,956人で、前年8月より6,570人少なかった。死亡は34人で、65歳以上の高齢者が59.1%を占めた。",
+        "en": "Japan recorded 24,956 heatstroke ambulance transports in August 2026, 6,570 fewer than August 2025. There were 34 deaths, and people aged 65+ made up 59.1% of cases."
+      },
+      "attribution": {
+        "ja": "消防庁の発表（2026年9月）によれば",
+        "en": "According to Japan's Fire and Disaster Management Agency (September 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-heatstroke-transport-2026-august",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-25",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "消防庁 / Fire and Disaster Management Agency",
+        "url": "https://www.fdma.go.jp/pressrelease/houdou/items/kyuuki_20260925.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-typhoon-25-damage",
+      "layer": "disaster",
+      "title": {
+        "ja": "令和8年台風第25号などの被害状況、死者17人（内閣府速報）",
+        "en": "Typhoon No. 25 and related weather in Japan: 17 deaths (preliminary)"
+      },
+      "summary": {
+        "ja": "9月21日に接近した台風第25号では伊豆諸島で800mmを超える大雨となった。10月5日時点の速報で死者は17人（千葉県10人、神奈川県5人など）。この数には台風第26号と前線による被害も含まれる。",
+        "en": "Typhoon No. 25 neared on 21 Sept, with over 800 mm of rain on the Izu Islands. A 5 Oct preliminary report lists 17 deaths (10 in Chiba, 5 in Kanagawa), incl. Typhoon No. 26 and a front."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年10月）によれば",
+        "en": "According to Japan's Cabinet Office (October 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-typhoon-25-2026-damage",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-05",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府（防災担当） / Cabinet Office (Disaster Management)",
+        "url": "https://www.bousai.go.jp/updates/r8typhoon25/pdf/261005_0900.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-kumamoto-earthquake-damage",
+      "layer": "disaster",
+      "title": {
+        "ja": "令和8年熊本地震の被害状況、死者38人・住家被害約7万棟",
+        "en": "2026 Kumamoto earthquake: 38 deaths and about 70,000 homes damaged"
+      },
+      "summary": {
+        "ja": "7月28日に発生したM7.1（暫定値）・最大震度7の地震について、10月5日時点で死者38人（災害関連死の可能性がある2人を含む）、住家被害69,604棟（全壊2,408棟）とまとめている。",
+        "en": "For the M7.1 (provisional), max shindo 7 quake of 28 July, 38 deaths (incl. 2 possibly disaster-related) and 69,604 damaged homes (2,408 fully collapsed) were reported as of 5 Oct."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年10月）によれば",
+        "en": "According to Japan's Cabinet Office (October 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-kumamoto-earthquake-2026-damage",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-05",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府（防災担当） / Cabinet Office (Disaster Management)",
+        "url": "https://www.bousai.go.jp/updates/r8kumamoto_jishin/status/pdf/r8kumamoto_jishin_20261005.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-hokuriku-heavy-rain",
+      "layer": "disaster",
+      "title": {
+        "ja": "北陸の大雨と台風第24号による大雨の被害状況まとめ",
+        "en": "Damage report on Hokuriku heavy rain and Typhoon No. 24 rains"
+      },
+      "summary": {
+        "ja": "8月27日からの大雨では北陸で線状降水帯が発生し、石川・富山・福井で24時間300mmを超える記録的な雨となり、大雨特別警報が出された。台風第24号と前線でも各地で記録的大雨となった。",
+        "en": "From 27 Aug, rainbands formed over Hokuriku and Ishikawa, Toyama and Fukui saw record 24-hour rain above 300 mm and heavy-rain special warnings. Typhoon No. 24 and a front also brought record rain."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年9月）によれば",
+        "en": "According to Japan's Cabinet Office (September 2026)"
+      },
+      "tags": [
+        "disaster"
+      ],
+      "topic": "jpn-hokuriku-heavy-rain-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-11",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府（防災担当） / Cabinet Office (Disaster Management)",
+        "url": "https://www.bousai.go.jp/updates/r8hokuriku_ooame/pdf/260911_0800.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-chiba-heavy-rain",
+      "layer": "disaster",
+      "title": {
+        "ja": "令和8年8月千葉豪雨の被害状況、死者13人",
+        "en": "August 2026 Chiba heavy rain: 13 deaths reported"
+      },
+      "summary": {
+        "ja": "8月13日夕方からの線状降水帯による大雨で、千葉市では360mmを超える観測史上最大の雨となり、大雨特別警報が出された。9月9日時点で死者13人、行方不明者0人とまとめている。",
+        "en": "Rainbands from the evening of 13 Aug brought over 360 mm to Chiba City, a record, and special heavy-rain warnings were issued. As of 9 Sept, 13 deaths and no missing persons were reported."
+      },
+      "attribution": {
+        "ja": "内閣府の発表（2026年9月）によれば",
+        "en": "According to Japan's Cabinet Office (September 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-chiba-heavy-rain-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-09",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "内閣府（防災担当） / Cabinet Office (Disaster Management)",
+        "url": "https://www.bousai.go.jp/updates/r8chiba_ooame/pdf/260909_1200.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-summer-weather-heat",
+      "layer": "disaster",
+      "title": {
+        "ja": "2026年夏の天候：北日本・西日本でかなり高温",
+        "en": "Summer 2026 in Japan: well above normal heat in north and west"
+      },
+      "summary": {
+        "ja": "6〜8月の気温は北日本と西日本でかなり高く、東日本でも高かった。西日本では7月中旬・下旬と8月下旬に1946年の統計開始以降で最も高い旬平均気温となった。",
+        "en": "June-August temperatures were well above normal in northern and western Japan and above normal in the east. Western Japan saw its hottest mid/late July and late August since records began in 1946."
+      },
+      "attribution": {
+        "ja": "気象庁の発表（2026年9月）によれば",
+        "en": "According to the Japan Meteorological Agency (September 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-summer-2026-weather",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-01",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "気象庁 / Japan Meteorological Agency",
+        "url": "https://www.data.jma.go.jp/cpd/longfcst/seasonal/202608/202608s.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-fsa-secondary-fraud-warning",
+      "layer": "crime",
+      "title": {
+        "ja": "「被害回復」を装う二次被害詐欺に注意（金融庁）",
+        "en": "FSA warns of scams posing as help to recover investment losses"
+      },
+      "summary": {
+        "ja": "金融庁は、投資で損をした人に被害回復を持ち掛け、別の商品購入や手数料を求める詐欺の可能性がある手口に注意を呼びかけた。一人で対応せず188や#9110などに相談するよう勧めている。",
+        "en": "Japan's FSA warns of possible scams that offer to recover investment losses, then demand fees or new purchases. It advises not handling such contacts alone and consulting 188 or #9110."
+      },
+      "attribution": {
+        "ja": "金融庁の発表（2026年9月）によれば",
+        "en": "According to Japan's Financial Services Agency (September 2026)"
+      },
+      "tags": [
+        "crime"
+      ],
+      "topic": "jpn-fsa-loss-recovery-scam-warning",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-01",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "金融庁 / Financial Services Agency",
+        "url": "https://www.fsa.go.jp/ordinary/chuui/20260901.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-interpol-first-light",
+      "layer": "crime",
+      "title": {
+        "ja": "INTERPOL国際詐欺対策作戦、97の国・地域で5,811人逮捕",
+        "en": "INTERPOL anti-fraud operation: 5,811 arrests in 97 countries"
+      },
+      "summary": {
+        "ja": "INTERPOLの「First Light 2026」作戦（2026年1月15日〜4月30日）には97の国・地域が参加し、5,811人を逮捕、2億9,300万米ドルの不正資産を差し押さえた。投資・ロマンス・なりすまし詐欺などが対象。",
+        "en": "INTERPOL's Operation First Light 2026 (15 Jan-30 Apr) involved 97 countries and territories: 5,811 arrests and USD 293m in illicit assets intercepted, targeting investment, romance and other scams."
+      },
+      "attribution": {
+        "ja": "INTERPOLの発表（2026年7月）によれば",
+        "en": "According to INTERPOL (July 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "interpol-first-light-2026",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2026-07-09",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国際刑事警察機構（INTERPOL） / INTERPOL",
+        "url": "https://www.interpol.int/News-and-Events/News/2026/Over-5-800-arrests-USD-293-million-intercepted-in-global-fraud-bust"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "crime-2026-usa-ftc-passport-impersonation",
+      "layer": "crime",
+      "title": {
+        "ja": "米FTC、政府を装う旅券手続き代行業者を提訴",
+        "en": "US FTC sues passport service operators posing as government"
+      },
+      "summary": {
+        "ja": "米連邦取引委員会（FTC）は、連邦政府や国務省との関係を装って旅券・査証手続きを代行したとして業者を提訴した。89ドルからと広告したが実際の最低価格は148ドルで、偽の高評価も使っていたとしている。",
+        "en": "The FTC sued operators it says posed as federal or State Department-affiliated passport and visa services, advertising prices from $89 while the lowest real price was $148, and using fake reviews."
+      },
+      "attribution": {
+        "ja": "米連邦取引委員会の発表（2026年10月）によれば",
+        "en": "According to the US Federal Trade Commission (October 2026)"
+      },
+      "tags": [
+        "crime"
+      ],
+      "topic": "usa-ftc-passport-impersonation-suit",
+      "countries": [
+        "USA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "米連邦取引委員会（FTC） / Federal Trade Commission",
+        "url": "https://www.ftc.gov/news-events/news/press-releases/2026/10/ftc-sues-perpetrators-government-impersonation-scheme-over-deceptive-ads-misleading-promises-fake"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-sgp-scam-cybercrime-h1",
+      "layer": "crime",
+      "title": {
+        "ja": "シンガポール、2026年上半期の詐欺・サイバー犯罪件数17.9%減",
+        "en": "Singapore scam and cybercrime cases fall 17.9% in first half of 2026"
+      },
+      "summary": {
+        "ja": "シンガポール警察によると、2026年1〜6月の詐欺・サイバー犯罪は18,391件で前年同期比17.9%減、詐欺の被害額は約4億1,060万シンガポールドルだった。迷った時はScamShieldヘルプライン1799での確認を勧めている。",
+        "en": "Singapore Police reported 18,391 scam and cybercrime cases in Jan-Jun 2026, down 17.9%; about S$410.6m was lost to scams. It advises checking with the ScamShield Helpline (1799) when in doubt."
+      },
+      "attribution": {
+        "ja": "シンガポール警察の発表（2026年8月）によれば",
+        "en": "According to the Singapore Police Force (August 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "sgp-scam-cybercrime-2026-h1",
+      "countries": [
+        "SGP"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-26",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "シンガポール警察 / Singapore Police Force",
+        "url": "https://www.police.gov.sg/-/media/SPF/Media-Room/Statistics/Mid-Year-Scam-and-Cybercrime-Brief-2026/Mid-Year-Scam-and-Cybercrime-Brief-2026.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-eu-summer-wildfires",
+      "layer": "disaster",
+      "title": {
+        "ja": "欧州・北アフリカの夏の森林火災、焼失120万ha超（Copernicus）",
+        "en": "Summer 2026 wildfires burn over 1.2 million ha in Europe and N. Africa"
+      },
+      "summary": {
+        "ja": "EFFISのデータでは、7月1日〜8月31日の30ha以上の火災による焼失域はイベリア半島、南仏、イタリア、ギリシャ、バルカン、ウクライナ、アルジェリアなどで120万ha超に及び、1万ha超の火災は19件だった。",
+        "en": "EFFIS data show fires over 30 ha from 1 Jul to 31 Aug burned more than 1.2m ha across Iberia, southern France, Italy, Greece, the Balkans, Ukraine and Algeria; 19 fires each exceeded 10,000 ha."
+      },
+      "attribution": {
+        "ja": "EU宇宙プログラム（Copernicus）の発表（2026年9月）によれば",
+        "en": "According to the EU Space Programme (Copernicus) (September 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "europe-summer-wildfires-2026",
+      "countries": [
+        "ESP",
+        "PRT",
+        "FRA",
+        "ITA",
+        "GRC",
+        "UKR",
+        "DZA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-09-02",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "EU宇宙プログラム（Copernicus緊急管理サービス） / EU Space (Copernicus Emergency Management Service)",
+        "url": "https://eu-space.europa.eu/components/earth-observation-copernicus/image-of-the-day/severe-fires-affected-europe-and-north-africa-july-and-august-2026"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-phl-monsoon-luis-maymay",
+      "layer": "disaster",
+      "title": {
+        "ja": "フィリピン、南西モンスーンと熱帯低気圧LUIS・MAYMAYで約4万2千人が被災",
+        "en": "Philippines: about 42,000 people affected by monsoon and TCs Luis, Maymay"
+      },
+      "summary": {
+        "ja": "フィリピン国家防災評議会（NDRRMC）の8月5日の状況報告では、強まった南西モンスーンと熱帯低気圧LUIS・MAYMAYの複合的影響で12,410世帯・41,957人が被災し、住家被害は1棟だった。",
+        "en": "A 5 Aug NDRRMC situation report said the enhanced southwest monsoon and tropical cyclones Luis and Maymay affected 12,410 families (41,957 people), with one damaged house reported."
+      },
+      "attribution": {
+        "ja": "フィリピン国家防災評議会の報告（2026年8月）によれば",
+        "en": "According to the Philippines' NDRRMC (August 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "phl-monsoon-luis-maymay-2026",
+      "countries": [
+        "PHL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-05",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "フィリピン国家防災評議会（NDRRMC） / National Disaster Risk Reduction and Management Council",
+        "url": "https://adinet.ahacentre.org/assets/uploads/supported_doc/20260805-Situational_Report_No._2_for_the_Combined_Effects_of_Enhanced_Southwest_Monsoon_and_TCs_LUIS_and_MAYMAY_2026_Whole-Report.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-npl-floods-compound-risk",
+      "layer": "disaster",
+      "title": {
+        "ja": "ネパールの洪水、WMOが複合リスクへの対応を呼びかけ",
+        "en": "WMO: Nepal floods highlight compound mountain risks"
+      },
+      "summary": {
+        "ja": "10月11日にネパール中部ブディガンダキ川流域で鉄砲水が発生し、地すべりによる一時的な河道閉塞の決壊が原因の可能性があるとされる。WMOは早期警戒は不可欠だがそれだけでは災害を防げないとしている。",
+        "en": "A flash flood hit Nepal's Budhi Gandaki river system on 11 Oct, possibly from a landslide-dammed river breaching. WMO says early warning is essential but cannot prevent disasters on its own."
+      },
+      "attribution": {
+        "ja": "世界気象機関の発表（2026年10月）によれば",
+        "en": "According to the World Meteorological Organization (October 2026)"
+      },
+      "tags": [
+        "disaster"
+      ],
+      "topic": "npl-floods-2026-compound-risk",
+      "countries": [
+        "NPL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-12",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "世界気象機関（WMO） / World Meteorological Organization",
+        "url": "https://wmo.int/media/news/nepal-floods-are-call-action-compound-risks"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "crime-2026-can-fraud-trends-h1",
+      "layer": "crime",
+      "title": {
+        "ja": "カナダ、2026年上半期の詐欺被害報告額は約3億5,100万ドル",
+        "en": "Canada: about $351 million in fraud losses reported in first half of 2026"
+      },
+      "summary": {
+        "ja": "カナダ詐欺対策センターによると、2026年1〜6月の報告被害額は約3億5,100万ドルで、投資詐欺が約1億3,960万ドルと最大だった。報告されるのは詐欺全体の5〜10%と推計している。",
+        "en": "The Canadian Anti-Fraud Centre says about $351M in fraud losses was reported in Jan-Jun 2026, led by investment fraud (~$139.6M). It estimates only 5-10% of fraud is reported."
+      },
+      "attribution": {
+        "ja": "カナダ詐欺対策センターの発表（2026年8月）によれば",
+        "en": "According to the Canadian Anti-Fraud Centre (August 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "can-fraud-trends-2026-h1",
+      "countries": [
+        "CAN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-25",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "カナダ詐欺対策センター / Canadian Anti-Fraud Centre",
+        "url": "https://antifraudcentre-centreantifraude.ca/features-vedette/2026/08/fraud-trends-tendances-matiere-fraude-eng.htm"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-gbr-crime-survey-fraud",
+      "layer": "crime",
+      "title": {
+        "ja": "イングランド・ウェールズの詐欺被害推計450万件、前年比11%増",
+        "en": "England and Wales fraud estimated at 4.5 million incidents, up 11%"
+      },
+      "summary": {
+        "ja": "英国家統計局によると、2026年6月までの1年間の犯罪調査で詐欺は推計450万件と前年比11%増えた。銀行・クレジット口座の詐欺が13%増の280万件で、増加の主な要因だった。",
+        "en": "ONS says the crime survey estimated 4.5 million fraud incidents in the year to June 2026, up 11%, driven by a 13% rise in bank and credit account fraud to 2.8 million."
+      },
+      "attribution": {
+        "ja": "英国家統計局の発表（2026年10月）によれば",
+        "en": "According to the UK Office for National Statistics (October 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "gbr-crime-survey-fraud-2026-june",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "英国家統計局（ONS） / Office for National Statistics",
+        "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/crimeinenglandandwales/yearendingjune2026"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-nagoya-special-fraud-h1",
+      "layer": "crime",
+      "title": {
+        "ja": "名古屋市の上半期特殊詐欺、被害総額約72億円で前年比78.8%増",
+        "en": "Nagoya: special fraud losses in H1 2026 up 78.8% to about JPY 7.2 billion"
+      },
+      "summary": {
+        "ja": "名古屋市の令和8年上半期（暫定値）の犯罪情勢によると、特殊詐欺は820件（前年比31.0%増）、被害総額は約72億2,104万円（同78.8%増）。刑法犯認知件数は12,067件（同8.7%増）である。",
+        "en": "Nagoya City's H1 2026 crime update (provisional): 820 special fraud cases (up 31.0%), losses of about JPY 7.22 billion (up 78.8%). Total recorded penal code offences: 12,067 (up 8.7%)."
+      },
+      "attribution": {
+        "ja": "名古屋市の発表（2026年8月）によれば",
+        "en": "According to the City of Nagoya (August 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "nagoya-crime-situation-h1-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-24",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "名古屋市 / City of Nagoya",
+        "url": "https://www.city.nagoya.jp/houdou/3003942/3003947/3005356.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-kokusen-fake-postcard",
+      "layer": "crime",
+      "title": {
+        "ja": "国民生活センターをかたるニセのハガキに注意",
+        "en": "Fake postcards impersonating Japan's National Consumer Affairs Center"
+      },
+      "summary": {
+        "ja": "国民生活センターをかたる「最終確認通知書」などのニセのハガキが各地で確認されている。同センターがこうしたハガキを送ることは絶対になく、記載の連絡先には連絡せず、消費者ホットライン188へ相談するよう呼びかけている。",
+        "en": "Fake 'final confirmation notice' postcards claiming to be from Japan's consumer center are circulating. The Center never sends such cards; do not call the listed number, consult hotline 188."
+      },
+      "attribution": {
+        "ja": "国民生活センターの発表（2026年10月）によれば",
+        "en": "According to Japan's National Consumer Affairs Center (October 2026)"
+      },
+      "tags": [
+        "crime",
+        "support"
+      ],
+      "topic": "jpn-kokusen-impersonation-postcard",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-20",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国民生活センター / National Consumer Affairs Center of Japan",
+        "url": "https://www.kokusen.go.jp/news/data/n-20261020_1.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-kokusen-breaker-inspection",
+      "layer": "crime",
+      "title": {
+        "ja": "電力会社をかたる分電盤の点検商法、相談が各地に広がり増加",
+        "en": "Japan: utility-impersonating breaker-panel inspection sales spread and rise"
+      },
+      "summary": {
+        "ja": "電力会社を名乗り分電盤の点検を持ちかけ交換工事を契約させる点検商法の相談が増加。2025年度は6,545件、2026年度は7月31日までに2,223件（前年同期1,312件）。2025年度の契約当事者は70歳以上が8割を超える。",
+        "en": "Complaints about callers posing as power firms to sell breaker-panel work rose: 6,545 in FY2025 and 2,223 in FY2026 to 31 July (1,312 a year earlier). Over 80% involved people 70+."
+      },
+      "attribution": {
+        "ja": "国民生活センターの発表（2026年9月）によれば",
+        "en": "According to Japan's National Consumer Affairs Center (September 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "jpn-breaker-panel-inspection-sales",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-16",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国民生活センター / National Consumer Affairs Center of Japan",
+        "url": "https://www.kokusen.go.jp/news/data/n-20260916_2.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-kokusen-ticket-resale",
+      "layer": "crime",
+      "title": {
+        "ja": "SNSでのチケット譲渡に注意、送金後に連絡途絶の相談",
+        "en": "Japan: warning on ticket resale deals arranged over social media"
+      },
+      "summary": {
+        "ja": "国民生活センターはSNSでのチケット譲渡をめぐるトラブルに注意を呼びかけている。代金を送金した後に相手と連絡が取れなくなった事例などが寄せられており、不審な場合は消費者ホットライン188への相談を勧めている。",
+        "en": "Japan's National Consumer Affairs Center warns about ticket resale deals made via social media, citing cases where buyers paid and then lost contact with the seller. It advises consulting hotline 188."
+      },
+      "attribution": {
+        "ja": "国民生活センターの発表（2026年10月）によれば",
+        "en": "According to Japan's National Consumer Affairs Center (October 2026)"
+      },
+      "tags": [
+        "crime",
+        "support"
+      ],
+      "topic": "jpn-sns-ticket-resale-trouble",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-06",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国民生活センター / National Consumer Affairs Center of Japan",
+        "url": "https://www.kokusen.go.jp/news/data/n-20261006_1.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-kokusen-nta-sms",
+      "layer": "crime",
+      "title": {
+        "ja": "国税庁をかたる不審なSMS・メールに注意",
+        "en": "Japan: beware of SMS and emails impersonating the National Tax Agency"
+      },
+      "summary": {
+        "ja": "国民生活センターは、国税庁やe-Taxをかたり税金の納付を求める不審なSMSやメールに注意を呼びかけている。国税庁がSMSやメールで税金の納付を求めることはないとし、不安な場合は消費者ホットライン188への相談を勧める。",
+        "en": "Japan's consumer center warns of suspicious SMS and emails posing as the National Tax Agency or e-Tax demanding payment. The NTA does not request tax payment by SMS or email; consult 188."
+      },
+      "attribution": {
+        "ja": "国民生活センターの発表（2026年5月）によれば",
+        "en": "According to Japan's National Consumer Affairs Center (May 2026)"
+      },
+      "tags": [
+        "crime",
+        "security"
+      ],
+      "topic": "jpn-nta-impersonation-sms",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-05-27",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国民生活センター / National Consumer Affairs Center of Japan",
+        "url": "https://www.kokusen.go.jp/news/data/n-20260527_1.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-ipa-anshin-q2",
+      "layer": "crime",
+      "title": {
+        "ja": "IPA相談窓口、4～6月の相談3,832件　偽のウイルス警告が最多",
+        "en": "Japan IPA: 3,832 security consultations in Q2 2026, fake virus alerts top"
+      },
+      "summary": {
+        "ja": "情報処理推進機構（IPA）の情報セキュリティ安心相談窓口への2026年4～6月の相談は3,832件。手口別ではサポート詐欺につながる「ウイルス検出の偽警告」が1,428件（構成比37.3%）で最多、不正ログインが423件で続いた。",
+        "en": "Japan's IPA security helpdesk handled 3,832 consultations in Apr–Jun 2026. Fake virus alerts linked to tech-support scams led with 1,428 (37.3%), then unauthorized logins (423)."
+      },
+      "attribution": {
+        "ja": "情報処理推進機構の発表（2026年7月）によれば",
+        "en": "According to Japan's Information-technology Promotion Agency (July 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics",
+        "security"
+      ],
+      "topic": "jpn-ipa-security-consultations-q2-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "情報処理推進機構（IPA）/ Information-technology Promotion Agency, Japan",
+        "url": "https://www.ipa.go.jp/security/anshin/reports/2026q2outline.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-jpn-fsa-investment-fraud-q2",
+      "layer": "crime",
+      "title": {
+        "ja": "金融庁相談室、詐欺的な投資勧誘の相談が4～6月に1,961件",
+        "en": "Japan FSA: 1,961 reports of fraudulent investment solicitation in Apr–Jun 2026"
+      },
+      "summary": {
+        "ja": "金融庁の金融サービス利用者相談室が2026年4～6月に受け付けた相談等は15,418件。このうち投資商品・暗号資産等の詐欺的な投資勧誘に関するものが1,961件で、うち1,616件は何らかの被害があったものである。",
+        "en": "Japan's FSA counselling office received 15,418 inquiries in Apr–Jun 2026; 1,961 concerned fraudulent investment solicitation (incl. crypto), of which 1,616 involved some damage."
+      },
+      "attribution": {
+        "ja": "金融庁の発表（2026年9月）によれば",
+        "en": "According to Japan's Financial Services Agency (September 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "jpn-fsa-fraudulent-investment-q2-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-11",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "金融庁 / Financial Services Agency",
+        "url": "https://www.fsa.go.jp/soudan/2026soudan04-06/2026_04-06.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-usa-ftc-imposter-2025",
+      "layer": "crime",
+      "title": {
+        "ja": "米FTC、2025年のなりすまし詐欺被害の報告額35億ドル",
+        "en": "US FTC: people reported losing $3.5 billion to imposter scams in 2025"
+      },
+      "summary": {
+        "ja": "米連邦取引委員会（FTC）によると、2025年に報告されたなりすまし詐欺の被害額は35億ドル。企業をかたるものが約10億ドル弱、政府機関をかたるものが約9億2,000万ドル。全詐欺の報告被害額は約160億ドルで過去最高。",
+        "en": "The US FTC says people reported losing $3.5 billion to imposter scams in 2025: nearly $1 billion to business and about $920 million to government impersonators. All fraud: about $16 billion."
+      },
+      "attribution": {
+        "ja": "米連邦取引委員会の発表（2026年6月）によれば",
+        "en": "According to the US Federal Trade Commission (June 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "usa-ftc-imposter-scams-2025",
+      "countries": [
+        "USA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-06-15",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "Federal Trade Commission (FTC)",
+        "url": "https://www.ftc.gov/news-events/news/press-releases/2026/06/ftc-data-show-people-reported-losing-3-point-5-billion-imposter-scams-2025"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-aus-nasc-q1-2026",
+      "layer": "crime",
+      "title": {
+        "ja": "豪州、2026年1～3月の詐欺被害報告額2億4,830万豪ドル",
+        "en": "Australia: A$248.3 million in scam losses reported in Q1 2026"
+      },
+      "summary": {
+        "ja": "豪州の国家詐欺対策センター（NASC）によると、2026年1～3月にScamwatchとReportCyberに寄せられた報告は重複調整後60,657件、被害額2億4,830万豪ドル。同期間に詐欺サイト5,834件を閉鎖した。",
+        "en": "Australia's National Anti-Scam Centre says Scamwatch and ReportCyber received 60,657 reports (de-duplicated) with A$248.3 million in losses in Jan–Mar 2026; 5,834 scam websites were taken down."
+      },
+      "attribution": {
+        "ja": "豪州国家詐欺対策センターの発表（2026年6月）によれば",
+        "en": "According to Australia's National Anti-Scam Centre (June 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "aus-scam-losses-q1-2026",
+      "countries": [
+        "AUS"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-06-05",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "National Anti-Scam Centre (ACCC)",
+        "url": "https://www.nasc.gov.au/news/thousands-of-scam-websites-taken-down-as-online-scams-continue-to-cost-australians"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-sgp-ica-china-official-impersonation",
+      "layer": "crime",
+      "title": {
+        "ja": "シンガポール、政府職員なりすまし詐欺が1月以降少なくとも72件",
+        "en": "Singapore: at least 72 government-official impersonation scams since January"
+      },
+      "summary": {
+        "ja": "シンガポール警察によると、入国管理当局（ICA）や中国当局の職員をかたる詐欺が2026年1月以降少なくとも72件報告され、被害額は少なくとも610万シンガポールドル。身元を確認できない相手に送金しないよう呼びかけている。",
+        "en": "Singapore Police report at least 72 scams since Jan 2026 by people posing as ICA or Chinese officials; losses at least S$6.1m. Never send money to anyone whose identity is unverified."
+      },
+      "attribution": {
+        "ja": "シンガポール警察の発表（2026年8月）によれば",
+        "en": "According to the Singapore Police Force (August 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "sgp-government-official-impersonation-2026",
+      "countries": [
+        "SGP"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-14",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "Singapore Police Force",
+        "url": "https://www.police.gov.sg/media-hub/news/2026/08/20260814_police_advisory_on_government_officials_impersonation_scams_involving_impersonation"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-sgp-malware-social-ads",
+      "layer": "crime",
+      "title": {
+        "ja": "シンガポール、SNS広告経由のマルウェア被害が4月以降少なくとも62件",
+        "en": "Singapore: at least 62 malware cases via social media ads since April"
+      },
+      "summary": {
+        "ja": "シンガポール警察によると、SNS上の偽広告をきっかけとするマルウェア関連の詐欺が2026年4月以降少なくとも62件、被害額は少なくとも98万9,000シンガポールドル。アプリは公式ストアからのみ入手するよう呼びかけている。",
+        "en": "Singapore Police report at least 62 cases since April 2026 involving malware from fake social media ads, with losses of at least S$989,000. Install apps only from official stores."
+      },
+      "attribution": {
+        "ja": "シンガポール警察の発表（2026年10月）によれば",
+        "en": "According to the Singapore Police Force (October 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics",
+        "security"
+      ],
+      "topic": "sgp-malware-social-media-ads-2026",
+      "countries": [
+        "SGP"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-20",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "Singapore Police Force",
+        "url": "https://www.police.gov.sg/Media-Hub/News/2026/10/20261020_police_advisory_on_malware_from_social_media_advertisements"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-usa-ic3-impersonation-psa",
+      "layer": "crime",
+      "title": {
+        "ja": "FBI、IC3職員をかたる被害回復詐欺に注意喚起",
+        "en": "FBI warns of scammers impersonating its IC3 complaint center"
+      },
+      "summary": {
+        "ja": "米FBIは、すでに詐欺被害に遭った人に対し、FBIやIC3（インターネット犯罪苦情センター）の職員を名乗って被害金の回収を持ちかける詐欺に注意を呼びかけた。IC3が被害回収のために支払いを求めることはないとしている。",
+        "en": "The FBI warns criminals are posing as FBI or IC3 staff to offer fraud victims recovery of lost money. IC3 never asks for payment to recover funds."
+      },
+      "attribution": {
+        "ja": "米連邦捜査局の発表（2026年7月）によれば",
+        "en": "According to the US FBI (July 2026)"
+      },
+      "tags": [
+        "crime",
+        "security"
+      ],
+      "topic": "usa-ic3-impersonation-recovery-scam",
+      "countries": [
+        "USA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-20",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "FBI Internet Crime Complaint Center (IC3)",
+        "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-gbr-payment-diversion-fraud",
+      "layer": "crime",
+      "title": {
+        "ja": "英国、支払先すり替え詐欺の報告3,657件・被害1億100万ポンド超",
+        "en": "UK: 3,657 payment diversion fraud reports, over £101 million lost in 2025/26"
+      },
+      "summary": {
+        "ja": "英国の不正通報窓口Report Fraud（ロンドン市警察）によると、2025/26会計年度の支払先すり替え詐欺の報告は3,657件で前年比3%増。全体の報告被害額は減少したものの、被害額は1億100万ポンドを超えた。",
+        "en": "Report Fraud (City of London Police) received 3,657 Payment Diversion Fraud reports in 2025/26, up 3%. Overall reported losses fell, but victims still reported losing over £101 million."
+      },
+      "attribution": {
+        "ja": "ロンドン市警察（Report Fraud）の発表（2026年9月）によれば",
+        "en": "According to Report Fraud, City of London Police (September 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics"
+      ],
+      "topic": "gbr-payment-diversion-fraud-2025-26",
+      "countries": [
+        "GBR"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-09-28",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "Report Fraud (City of London Police)",
+        "url": "https://www.reportfraud.police.uk/news/criminals-steal-101-million-through-payment-diversion-fraud/"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "crime-2026-glb-interpol-serengeti-iii",
+      "layer": "crime",
+      "title": {
+        "ja": "INTERPOL、アフリカ21か国のサイバー犯罪摘発で1,462人逮捕",
+        "en": "INTERPOL: 1,462 arrests in Africa cybercrime operation Serengeti III"
+      },
+      "summary": {
+        "ja": "INTERPOLによると、アフリカ21か国が参加した「セレンゲティIII」作戦（2026年6月29日～8月31日）で1,462人が逮捕され、1億500万米ドル超を回収。被害者65,929人を特定し、関連被害額は3億8,500万米ドルを超える。",
+        "en": "INTERPOL's Operation Serengeti III (29 Jun–31 Aug 2026) across 21 African countries made 1,462 arrests, recovered over USD 105 million and identified 65,929 victims (losses over USD 385m)."
+      },
+      "attribution": {
+        "ja": "INTERPOLの発表（2026年10月）によれば",
+        "en": "According to INTERPOL (October 2026)"
+      },
+      "tags": [
+        "crime",
+        "statistics",
+        "security"
+      ],
+      "topic": "interpol-serengeti-iii-2026",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "major",
+      "publishedAt": "2026-10-22",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "INTERPOL",
+        "url": "https://www.interpol.int/News-and-Events/News/2026/Cybercrime-crackdown-in-Africa-nets-1-462-arrests-recovers-over-USD-105-million"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-jpn-typhoon-18",
+      "layer": "disaster",
+      "title": {
+        "ja": "台風第18号、鹿児島県で最大約3,500戸断水・空の便301便欠航",
+        "en": "Typhoon No. 18: up to ~3,500 Kagoshima homes lose water; 301 flights cancelled"
+      },
+      "summary": {
+        "ja": "国土交通省の令和8年台風第18号の被害状況（8月27日9時現在）によると、鹿児島県で最大約3,500戸が断水（現在約3,000戸）。8月26日は301便が欠航し、徳之島空港では最大瞬間風速54.5メートルを観測した。",
+        "en": "MLIT (27 Aug 2026, 09:00): Typhoon No. 18 cut water to up to about 3,500 Kagoshima households (about 3,000 still out); 301 flights cancelled on 26 Aug; 54.5 m/s gust at Tokunoshima Airport."
+      },
+      "attribution": {
+        "ja": "国土交通省の発表（2026年8月）によれば",
+        "en": "According to Japan's MLIT (August 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-typhoon-18-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-27",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国土交通省 / Ministry of Land, Infrastructure, Transport and Tourism",
+        "url": "https://www.mlit.go.jp/common/002018653.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-typhoon-13",
+      "layer": "disaster",
+      "title": {
+        "ja": "台風第13号、8月8日に550便欠航　鹿児島県大和村で断水",
+        "en": "Typhoon No. 13: 550 flights cancelled on 8 August, water outage in Kagoshima"
+      },
+      "summary": {
+        "ja": "国土交通省の令和8年台風第13号の被害状況（8月9日10時現在）によると、8月8日は550便が欠航し、42事業者44航路が運休。鹿児島県大和村で約236戸が断水中で、3県5区間が被災により通行止め。土砂災害は0件。",
+        "en": "MLIT (9 Aug 2026, 10:00): Typhoon No. 13 led to 550 flight cancellations on 8 Aug and 44 suspended ferry routes; about 236 households in Yamato, Kagoshima without water; no landslides."
+      },
+      "attribution": {
+        "ja": "国土交通省の発表（2026年8月）によれば",
+        "en": "According to Japan's MLIT (August 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-typhoon-13-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-09",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "国土交通省 / Ministry of Land, Infrastructure, Transport and Tourism",
+        "url": "https://www.mlit.go.jp/common/002016081.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-tokachidake-volcano",
+      "layer": "disaster",
+      "title": {
+        "ja": "十勝岳、噴火警戒レベル3（入山規制）継続　二酸化硫黄は1日900トン",
+        "en": "Mt. Tokachidake remains at alert level 3; SO2 emissions at 900 tonnes/day"
+      },
+      "summary": {
+        "ja": "気象庁の十勝岳の解説情報（10月9日）によると、噴火警戒レベル3（入山規制）が継続。火口からおおむね3kmの範囲で大きな噴石に警戒が必要。8日の現地調査で二酸化硫黄の放出量は1日あたり900トンだった。",
+        "en": "JMA's Tokachidake bulletin (9 Oct 2026) keeps Volcanic Alert Level 3 (no entry), warning of large ballistic rocks within about 3 km of the crater. SO2 measured 900 tonnes/day on 8 Oct."
+      },
+      "attribution": {
+        "ja": "気象庁の発表（2026年10月）によれば",
+        "en": "According to the Japan Meteorological Agency (October 2026)"
+      },
+      "tags": [
+        "disaster"
+      ],
+      "topic": "jpn-tokachidake-volcano-2026",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-10-09",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "気象庁 / Japan Meteorological Agency",
+        "url": "https://www.data.jma.go.jp/vois/data/report/volinfo/VK20261009160000_108.html"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-jpn-june-heavy-rain-agri",
+      "layer": "disaster",
+      "title": {
+        "ja": "6月24日からの大雨、農林水産関係で九州中心に広範な被害",
+        "en": "June 2026 heavy rain caused widespread farm damage, especially in Kyushu"
+      },
+      "summary": {
+        "ja": "農林水産省の6月24日からの大雨に関する被害状況（第9報、7月16日現在）によると、農業関係の被害は秋田県から沖縄県まで広範囲に及んだ。熊本県では農地328箇所・農業用施設329箇所が被災し、防災重点農業用ため池は全国で30箇所が被災した。",
+        "en": "MAFF's 9th report (16 Jul 2026) on the rain from 24 June: farm damage from Akita to Okinawa. Kumamoto: 328 farmland and 329 facility sites; 30 priority ponds damaged nationwide."
+      },
+      "attribution": {
+        "ja": "農林水産省の発表（2026年7月）によれば",
+        "en": "According to Japan's MAFF (July 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "jpn-june-2026-heavy-rain-agriculture",
+      "countries": [
+        "JPN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-16",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "農林水産省 / Ministry of Agriculture, Forestry and Fisheries",
+        "url": "https://www.maff.go.jp/j/saigai/attach/pdf/r80624_ooame-3.pdf"
+      },
+      "sourceType": "public_agency"
+    },
+    {
+      "id": "disaster-2026-glb-wmo-july-heat",
+      "layer": "disaster",
+      "title": {
+        "ja": "WMO、2026年7月は観測史上最も暑い7月タイに　各地で極端現象",
+        "en": "WMO: July 2026 tied as warmest July; extreme weather persists worldwide"
+      },
+      "summary": {
+        "ja": "世界気象機関（WMO）によると、2026年7月は米海洋大気庁の解析で2024年と並び観測史上最も暑い7月。中国では台風による洪水で70万人が避難し、カナダでは591件の山火事が発生中（うち43件が制御不能）だった。",
+        "en": "WMO says July 2026 tied with July 2024 as the warmest July on record (NOAA). Typhoon-driven flooding forced 700,000 evacuations in China, and Canada had 591 active wildfires, 43 out of control."
+      },
+      "attribution": {
+        "ja": "世界気象機関の発表（2026年8月）によれば",
+        "en": "According to the World Meteorological Organization (August 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "wmo-july-2026-heat-extremes",
+      "countries": [],
+      "placeBasis": "global",
+      "importance": "minor",
+      "publishedAt": "2026-08-12",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "World Meteorological Organization (WMO)",
+        "url": "https://public.wmo.int/media/news/record-breaking-heat-and-extreme-weather-continue"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-col-earthquake-damage",
+      "layer": "disaster",
+      "title": {
+        "ja": "コロンビア地震、少なくとも126人死亡・約5,000戸損壊",
+        "en": "Colombia earthquake: at least 126 dead, nearly 5,000 homes damaged"
+      },
+      "summary": {
+        "ja": "国連人道問題調整事務所（OCHA）が国連ジュネーブの会見で示した初期公式データによると、コロンビアの地震で少なくとも126人が死亡、1,495人が負傷。約5,000戸が損壊、387戸が倒壊し、550以上の教育施設が影響を受けた。",
+        "en": "Citing initial official data, UN OCHA said the Colombia earthquake killed at least 126 people and injured 1,495; nearly 5,000 homes were damaged, 387 destroyed and over 550 schools affected."
+      },
+      "attribution": {
+        "ja": "国連人道問題調整事務所の説明（2026年8月）によれば",
+        "en": "According to UN OCHA at the UN Geneva briefing (August 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "col-earthquake-damage-2026",
+      "countries": [
+        "COL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-08-11",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "UN Geneva press briefing (OCHA)",
+        "url": "https://www.unognewsroom.org/story/en/3222/un-geneva-press-briefing-11-august-2026-1"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-bra-northeast-floods",
+      "layer": "disaster",
+      "title": {
+        "ja": "ブラジル北東部で洪水・土砂災害、ペルナンブコ州で6人死亡",
+        "en": "Floods and landslides in northeast Brazil: six dead in Pernambuco"
+      },
+      "summary": {
+        "ja": "欧州委員会のECHOデイリーフラッシュ（国連OCHA・ブラジル気象庁の情報）によると、ブラジル北東部の洪水・土砂災害でペルナンブコ州では6人が死亡、27市で9,540人が避難。パライバ州では16,100人が被災し、600人が避難した。",
+        "en": "The ECHO Daily Flash, citing UN OCHA and INMET, reports six deaths and 9,540 people displaced across 27 municipalities in Pernambuco; in Paraíba 16,100 people were affected and 600 displaced."
+      },
+      "attribution": {
+        "ja": "欧州委員会ECHOの発表（2026年5月）によれば",
+        "en": "According to the European Commission's ECHO Daily Flash (May 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "bra-northeast-floods-may-2026",
+      "countries": [
+        "BRA"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-05-06",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "European Commission ECHO Daily Flash (via ReliefWeb)",
+        "url": "https://reliefweb.int/report/brazil/brazil-floods-and-landslides-update-unocha-inmet-echo-daily-flash-6-may-2026"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-vnm-tc-maysak",
+      "layer": "disaster",
+      "title": {
+        "ja": "台風MAYSAKがベトナム北部に上陸、住宅30棟の屋根損壊",
+        "en": "Tropical Cyclone MAYSAK hits northern Viet Nam, damaging 30 roofs"
+      },
+      "summary": {
+        "ja": "ASEAN防災人道支援調整センター（AHAセンター）によると、熱帯低気圧MAYSAKは7月4日夜にベトナム北部クアンニン省に上陸。ベトナム防災当局の情報で住宅30棟の屋根が損壊、8世帯21人が避難し、約600haの養殖場が浸水した。",
+        "en": "The AHA Centre reports TC MAYSAK made landfall in Quang Ninh, Viet Nam, on 4 July 2026. Per VDDMA, 30 houses had roof damage, 21 people were evacuated and about 600 ha of aquaculture flooded."
+      },
+      "attribution": {
+        "ja": "AHAセンターの発表（2026年7月）によれば",
+        "en": "According to the ASEAN AHA Centre (July 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "vnm-tc-maysak-july-2026",
+      "countries": [
+        "VNM"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-07-05",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "AHA Centre (ASEAN)",
+        "url": "https://ahacentre.org/wp-content/uploads/2026/07/FlashUpdate_01_5July2026-TC-VN.pdf"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-phl-tc-jangmi-barmm",
+      "layer": "disaster",
+      "title": {
+        "ja": "フィリピンBARMMで熱帯低気圧JANGMIによる洪水、約8万5千人被災",
+        "en": "Tropical Cyclone JANGMI floods BARMM, Philippines, affecting ~85,300 people"
+      },
+      "summary": {
+        "ja": "AHAセンターの週間災害情報（5月25～31日）によると、熱帯低気圧JANGMIの影響でフィリピンのバンサモロ自治地域（BARMM）37地区で洪水が発生し、約1万7,100世帯（8万5,300人）が被災・避難した。",
+        "en": "The AHA Centre's weekly update (25–31 May 2026) reports flooding in 37 areas of BARMM, Philippines, from Tropical Cyclone JANGMI, affecting and displacing about 17,100 families (85,300 people)."
+      },
+      "attribution": {
+        "ja": "AHAセンターの発表（2026年6月）によれば",
+        "en": "According to the ASEAN AHA Centre (June 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "phl-tc-jangmi-barmm-2026",
+      "countries": [
+        "PHL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-06-01",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "AHA Centre (ASEAN)",
+        "url": "https://ahacentre.org/weekly-disaster-update/weekly-disaster-update-25-31-may-2026/"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-idn-bungo-floods",
+      "layer": "disaster",
+      "title": {
+        "ja": "インドネシア・ジャンビ州ブンゴ県で洪水・土砂災害、住宅約5,600戸に影響",
+        "en": "Floods and landslides in Bungo, Indonesia, impact about 5,600 houses"
+      },
+      "summary": {
+        "ja": "AHAセンターの週間災害情報（5月11～17日）によると、インドネシア国家防災庁（BNPB）の情報で、ジャンビ州ブンゴ県の洪水・土砂災害により2人が死亡、約6,000世帯（2万4,400人）が被災し、住宅約5,600戸に影響が出た。",
+        "en": "The AHA Centre (11–17 May 2026), citing BNPB, reports floods and landslides in Bungo, Jambi, Indonesia killed 2, affected about 6,000 families (24,400 people) and impacted about 5,600 houses."
+      },
+      "attribution": {
+        "ja": "AHAセンターの発表（2026年5月）によれば",
+        "en": "According to the ASEAN AHA Centre (May 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "idn-bungo-floods-may-2026",
+      "countries": [
+        "IDN"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "minor",
+      "publishedAt": "2026-05-18",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "AHA Centre (ASEAN)",
+        "url": "https://ahacentre.org/weekly-disaster-update/weekly-disaster-update-11-17-may-2026/"
+      },
+      "sourceType": "intl_org"
+    },
+    {
+      "id": "disaster-2026-chl-severe-weather-october",
+      "layer": "disaster",
+      "title": {
+        "ja": "チリで荒天、住宅26戸損壊・15,035件の契約者が停電",
+        "en": "Severe weather in Chile damages 26 homes, cuts power to 15,035 customers"
+      },
+      "summary": {
+        "ja": "汎米保健機構（PAHO）がチリ国家防災庁（SENAPRED）の公式情報として伝えたところでは、チリの荒天で住宅26戸が損壊、15,035件の顧客が停電し、116校が休校した。死者は報告されていない。",
+        "en": "PAHO, citing official SENAPRED data, reports severe weather in Chile damaged 26 homes, left 15,035 customers without electricity and suspended classes at 116 schools. No deaths were reported."
+      },
+      "attribution": {
+        "ja": "汎米保健機構の発表（2026年10月）によれば",
+        "en": "According to the Pan American Health Organization (October 2026)"
+      },
+      "tags": [
+        "disaster",
+        "statistics"
+      ],
+      "topic": "chl-severe-weather-october-2026",
+      "countries": [
+        "CHL"
+      ],
+      "placeBasis": "reported_country",
+      "importance": "major",
+      "publishedAt": "2026-10-14",
+      "checkedAt": "2026-10-26",
+      "source": {
+        "name": "Pan American Health Organization (PAHO/WHO)",
+        "url": "https://www.paho.org/en/natural-hazards-monitoring/natural-hazards-monitoring-14-october-2026"
       },
       "sourceType": "intl_org"
     }
