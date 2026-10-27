@@ -446,3 +446,13 @@ body.doc { overflow: auto; }
 .kana-on .kana-alt { display: revert; }
 .kana-on .kana-std { display: none; }
 .kana-on p, .kana-on li { line-height: 1.95; letter-spacing: 0.03em; }
+
+/* 過去の記録の一覧（archive.html） */
+.archive-filter { display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 0 0 12px; }
+.archive-filter label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--text-dim); }
+.archive-filter select, .archive-filter input { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; min-width: 150px; color: var(--text); }
+.archive-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.archive-item h3 { margin: 4px 0 6px; }
+.archive-meta, .archive-foot, .archive-attr { font-size: 12.5px; color: var(--text-dim); margin: 0; }
+.archive-more { margin: 18px 0; }
+.list-lead { margin-top: 0; }

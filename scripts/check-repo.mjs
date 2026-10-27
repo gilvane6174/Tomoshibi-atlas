@@ -91,18 +91,23 @@ const TOOL_DIRS = new Set(['.claude', '.vscode', '.idea', '.cursor', '.devcontai
 function walk(dir) {
   for (const name of readdirSync(dir)) {
     if (['.git', 'node_modules', '_site'].includes(name)) continue;
-    if (TOOL_DIRS.has(name)) {
+    // 名前の判定は大文字小文字を区別しない（大文字小文字を区別しない端末では .Claude も同じフォルダとして動くため）
+    if ([...TOOL_DIRS].some((d) => d.toLowerCase() === name.toLowerCase())) {
       errors.push(`${relative(ROOT, join(dir, name)) || name}: 開発ツール・AIツールの設定はリポジトリに置かない（自動実行の設定を仕込まれるおそれ）`);
       continue;
     }
     const full = join(dir, name);
     const rel = relative(ROOT, full).split('\\').join('/');
     const st = lstatSync(full);
+    // ネイティブ拡張・パッケージ設定の名前は、ファイルでもフォルダでも置かない（.napi_cache などはフォルダとしても使われうる）
+    if (NATIVE_NAMES.has(name.toLowerCase()) || NATIVE_EXT.has(extname(name).toLowerCase())) {
+      errors.push(`${rel}: ネイティブ拡張・パッケージ設定のファイル・フォルダは置かない（インストール時に命令を実行させる手口に使われる）`);
+      continue;
+    }
     if (st.isSymbolicLink()) errors.push(`${rel}: シンボリックリンクは置かない`);
     else if (st.isDirectory()) walk(full);
     else {
       if (SERVER_NAMES.has(name) || SERVER_EXT.has(extname(name).toLowerCase())) errors.push(`${rel}: サーバー側で動くファイル・実行ファイルは置かない（静的サイト）`);
-      if (NATIVE_NAMES.has(name.toLowerCase()) || NATIVE_EXT.has(extname(name).toLowerCase())) errors.push(`${rel}: ネイティブ拡張・パッケージ設定のファイルは置かない（インストール時に命令を実行させる手口に使われる）`);
       if (/^\.github\/[^/]+$/.test(rel) && !GITHUB_ROOT_ALLOWED.has(name)) errors.push(`${rel}: .github/ の直下には決まったファイル（${[...GITHUB_ROOT_ALLOWED].join('・')}）以外を置かない`);
       if ((st.mode & 0o111) && !ALLOWED_OUTSIDE_SITE.has(rel)) errors.push(`${rel}: 実行権限を付けない`);
     }

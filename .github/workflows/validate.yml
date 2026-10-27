@@ -46,6 +46,7 @@ jobs:
         env:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           MAINTAINER_LOGIN: ${{ vars.MAINTAINER_LOGIN }}
+          OWNER_PR_CHECK: ${{ vars.OWNER_PR_CHECK }}
           AI_ACCOUNT_LOGINS: ${{ vars.AI_ACCOUNT_LOGINS }}
           GH_TOKEN: ${{ github.token }} # この main 側の検査プログラムにだけ渡す（PR 側のコードには渡さない）
           REPO: ${{ github.repository }}

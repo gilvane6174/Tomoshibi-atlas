@@ -103,9 +103,9 @@
         <thead><tr><th>分野</th><th>情報源</th><th>更新</th></tr></thead>
         <tbody>
           <tr><td>感染症</td><td>WHO 疾病発生ニュース（Disease Outbreak News）の見出し・公表日・リンク</td><td>1日2回（朝・夕方）、決まった時刻に自動取得</td></tr>
-          <tr><td>研究と対策</td><td>査読付き学術誌、公的機関・国際機関の発表（AIを活用した研究を含む）、セキュリティ更新（パッチ配布など）を知らせる公的機関・製品の開発元の公式発表、防災・防犯の公式の対策。あわせて、米国航空宇宙局（NASA）の報道発表の見出し</td><td>手動の分は運用者が原典を確認して不定期に掲載。NASAの見出しは1日2回（朝・夕方）自動取得（最大10件）</td></tr>
+          <tr><td>研究と対策</td><td>査読付き学術誌、公的機関・国際機関の発表（AIを活用した研究を含む）、セキュリティ更新（パッチ配布など）を知らせる公的機関・製品の開発元の公式発表、防災・防犯の公式の対策。あわせて、米国航空宇宙局（NASA）と米国国立衛生研究所（NIH）の報道発表の見出し</td><td>手動の分は運用者が原典を確認して不定期に掲載。NASA・NIHの見出しは1日2回（朝・夕方）自動取得（各最大10件）</td></tr>
           <tr><td>こころと福祉</td><td>こころ：公的機関の統計と相談窓口／福祉：公的機関・国際機関の報告書（以前の「こころ」「福祉」の2つの分野を一つにまとめたもの）</td><td>運用者が原典を確認して不定期に掲載</td></tr>
-          <tr><td>ITセキュリティ</td><td>米国CISA「悪用が確認された脆弱性カタログ」ほか公的機関の公表</td><td>1日2回（朝・夕方）、決まった時刻に自動取得</td></tr>
+          <tr><td>ITセキュリティ</td><td>米国CISA「悪用が確認された脆弱性カタログ」と、JPCERTコーディネーションセンター（JPCERT/CC）の注意喚起の見出し</td><td>1日2回（朝・夕方）、決まった時刻に自動取得</td></tr>
           <tr><td>防犯</td><td>警察・消費者行政・金融当局など公的機関が公表した、詐欺・闇バイトなど犯罪の注意喚起と統計。あわせて、金融庁の新着のうち詐欺・無登録業者などの注意喚起の見出し、米国連邦取引委員会（FTC）の消費者保護の報道発表、英国国家サイバーセキュリティセンター（NCSC）の新着の見出し</td><td>手動の分は運用者が原典を確認して不定期に掲載。自動取得の見出しは1日2回（朝・夕方）、情報源ごとに上限あり（金融庁 最大8件、FTC・NCSC 各最大6件）</td></tr>
           <tr><td>防災</td><td>公的機関が公表した災害（台風・大雨・猛暑・火災など）の被害状況。あわせて、総務省消防庁の災害情報の見出し</td><td>手動の分は運用者が原典を確認して不定期に掲載。消防庁の見出しは1日2回（朝・夕方）自動取得（最大10件。同じ災害の続報は最新の報を目立たせる）</td></tr>
           <tr><td>地震</td><td>米国地質調査所（USGS）の公開データによる世界の地震（マグニチュード5.5以上）</td><td>1日2回（朝・夕方）自動取得</td></tr>
@@ -199,6 +199,7 @@
 
     <section>
       <h2>更新履歴</h2>
+      <p>手動で掲載した情報は、地球儀の表示から外れても消さずに残しています。<a href="archive.html">過去の記録の一覧（データベース）</a>から、年・分野・国・言葉でさかのぼれます（自動取得の情報は保存していません）。</p>
       <div id="changelog">読み込み中…</div>
     </section>
 
@@ -214,6 +215,8 @@
         <li>金融庁の新着の見出し・総務省消防庁の災害情報の見出し：各庁のウェブサイトの利用ルール（<a href="https://www.fsa.go.jp/rules/" target="_blank" rel="noopener noreferrer">金融庁</a>・<a href="https://www.fdma.go.jp/about/others/post3.html" target="_blank" rel="noopener noreferrer">消防庁</a>）に沿って、<a href="https://www.digital.go.jp/resources/open_data/public_data_license_v1.0" target="_blank" rel="noopener noreferrer">公共データ利用規約（第1.0版）</a>のもとで利用しています（出典：金融庁ウェブサイト／消防庁ホームページ。各見出しに原典のページへのリンクを表示）。見出しは原文のままです。どの見出しを載せるか（金融庁は詐欺・無登録業者などの注意喚起に限って選んでいます）と、並べ方・まとめ方は本サイトによるもので、国が作成したものではありません。ロゴは使用していません。</li>
         <li>米国連邦取引委員会（FTC）の報道発表の見出し：FTCの<a href="https://www.ftc.gov/policy-notices/website-policy" target="_blank" rel="noopener noreferrer">ウェブサイトの方針</a>に沿って、米国政府の著作物として出典（Source: United States Federal Trade Commission, www.ftc.gov）を示して利用しています。FTCのロゴ・紋章は使用しておらず、FTCが本サイトを推薦・承認しているものではありません。</li>
         <li>米国航空宇宙局（NASA）の報道発表の見出し：NASAの<a href="https://www.nasa.gov/nasa-brand-center/images-and-media/" target="_blank" rel="noopener noreferrer">利用の手引き</a>に沿って、情報提供の目的で、出典（NASA）を示して利用しています（見出し・公表日・リンクのみ）。NASAの記章・ロゴは使用しておらず、NASAが本サイトを推薦・承認しているものではありません。</li>
+        <li>米国国立衛生研究所（NIH）の報道発表の見出し：NIHの<a href="https://www.nih.gov/about-nih/frequently-asked-questions" target="_blank" rel="noopener noreferrer">よくある質問</a>にあるとおり、公開情報の多くはパブリックドメインとして利用できるもので、出典（NIH）とリンクを示しています（見出し・公表日・リンクのみ）。NIHのロゴは使用しておらず、NIHが本サイトを推薦・承認しているものではありません。</li>
+        <li>JPCERTコーディネーションセンター（JPCERT/CC）の注意喚起の見出し：JPCERT/CCの<a href="https://www.jpcert.or.jp/rss/" target="_blank" rel="noopener noreferrer">RSSの案内</a>（「どなたでも自由にご使用ください」）に沿って、出典を示して利用しています（見出し・公表日・リンクのみ）。</li>
         <li>地図データ：Natural Earth（パブリックドメイン。「日本から見た国境」版を簡略化して使用）</li>
         <li>地球儀の描画：d3-geo、d3-array（ISCライセンス、サイト内に同梱）</li>
       </ul>

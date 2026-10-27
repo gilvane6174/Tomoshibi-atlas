@@ -202,8 +202,8 @@ async function main() {
         ? 'notFetched'
         : v.kind === 'auto' && lf.some((x) => x === 'ok' || x === 'empty')
           ? 'ok'
-          : v.kind === 'auto' && lf.some((x) => x === 'failed' || x === 'invalid')
-            ? 'fetchFailed'
+          : (v.kind === 'auto' || v.kind === 'mixed') && lf.some((x) => x === 'failed' || x === 'invalid')
+            ? 'fetchFailed' // 手動掲載も0件で、自動取得も失敗した混合分野は「準備中」ではなく「取得できなかった」と示す
             : v.kind === 'auto' && (SNAPSHOT || OFFLINE)
               ? 'notFetched'
               : 'preparing';
@@ -215,6 +215,25 @@ async function main() {
   // 更新履歴（公開用：日付・作業者の種別・要約・対象idのみ）
   const log = changelog.entries.map(({ date, by, summary, ids }) => ({ date, by, summary, ids })).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100);
   writeFileSync(resolve(OUT, 'data/changelog.json'), JSON.stringify({ mode: meta.mode, entries: log }));
+  // 過去の記録の一覧（データベース）：手動で掲載した情報（entries.json）を、表示から外れたものも含めてすべて出す。
+  // 自動取得の情報は保存しない（Actions に書き込み権限を持たせないため。2026-10-27 運用者の決定）
+  const ARCHIVE_LAYER = { mental: 'care', welfare: 'care' };
+  const archive = curated.items
+    .map(({ id, layer, title, summary, attribution, tags, countries, publishedAt, checkedAt, source }) => ({
+      id,
+      layer: ARCHIVE_LAYER[layer] || layer,
+      ...(ARCHIVE_LAYER[layer] ? { sub: layer } : {}),
+      title,
+      summary,
+      ...(attribution ? { attribution } : {}),
+      tags: tags || [],
+      countries: countries || [],
+      publishedAt,
+      checkedAt,
+      source,
+    }))
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id));
+  writeFileSync(resolve(OUT, 'data/archive.json'), JSON.stringify({ reviewedAt: curated.reviewedAt, count: archive.length, items: archive }));
   writeFileSync(resolve(OUT, 'data/meta.json'), JSON.stringify(meta));
   writeFileSync(resolve(OUT, 'data/directory.json'), JSON.stringify(directory));
   writeSeo(OUT, { siteUrl: process.env.SITE_URL, repo: process.env.GITHUB_REPOSITORY, google: process.env.GOOGLE_SITE_VERIFICATION, bing: process.env.BING_SITE_VERIFICATION, now });

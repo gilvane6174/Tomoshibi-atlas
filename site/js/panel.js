@@ -346,6 +346,8 @@ export function renderList(body, { layerId, data, onPick }) {
     if (SAFETY_LAYERS.has(layerId)) body.append(safetySupport());
     return;
   }
+  // 今日の動物たちの一覧の上部に、やさしい一言を添える
+  if (doc.kind === 'daily') body.append(el('p', 'note calm-note list-lead', t('list.animalsLead')));
   const placed = ordered(doc.items.filter((it) => it.countries?.length));
   const unplaced = ordered(doc.items.filter((it) => !it.countries?.length));
   for (const it of placed) body.append(entry(it, { countryMap: data.countryMap, asButton: true, onClick: () => onPick(it.countries[0]) }));
@@ -380,7 +382,13 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
 
   body.append(el('h3', null, t('guide.legend')));
   const leg = el('ul', 'guide-list plain');
-  for (const k of ['guide.legend.1', 'guide.legend.2', 'guide.legend.3']) leg.append(el('li', null, t(k)));
+  for (const k of ['guide.legend.1', 'guide.legend.2', 'guide.legend.4', 'guide.legend.3']) leg.append(el('li', null, t(k)));
+  // 過去の記録の一覧（データベース）へのリンク
+  const arch = el('li', null, t('guide.legend.archive') + ' ');
+  const al = el('a', 'text-link', t('guide.archiveLink'));
+  al.href = lang === 'en' ? 'archive.en.html' : 'archive.html';
+  arch.append(al);
+  leg.append(arch);
   body.append(leg);
 
   // 福祉一覧とセキュリティ対策など：福祉の相談窓口・今日の動物たち・個人でできるセキュリティ対策・研究とのつながり

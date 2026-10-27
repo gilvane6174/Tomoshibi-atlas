@@ -1231,19 +1231,21 @@
     "ncscNews": "https://www.ncsc.gov.uk/api/1/services/v1/news-rss-feed.xml",
     "fdmaDisaster": "https://www.fdma.go.jp/disaster/info/index.xml",
     "cdcMmwr": "https://tools.cdc.gov/api/v2/resources/media/342778.rss",
-    "nasaNews": "https://www.nasa.gov/news-release/feed/"
+    "nasaNews": "https://www.nasa.gov/news-release/feed/",
+    "nihNews": "https://www.nih.gov/news-releases/feed.xml"
   },
   "enabledFetchers": {
     "whoDon": true,
     "cisaKev": true,
-    "jpcertRss": false,
+    "jpcertRss": true,
     "usgsQuakes": true,
     "ncscNews": true,
     "fsaNews": true,
     "ftcConsumer": true,
     "fdmaDisaster": true,
     "cdcMmwr": false,
-    "nasaNews": true
+    "nasaNews": true,
+    "nihNews": true
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [

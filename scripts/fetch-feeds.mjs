@@ -41,7 +41,9 @@ export const FEEDS = [
     titleDate: 'reiwaUpdated',
   },
   // NASA の報道発表（研究と対策）。リンク先は www.nasa.gov/news-release/ 以下だけ（allowed-sources.json の linkHosts でも限定）
-  { key: 'nasaNews', layer: 'research', country: 'USA', lang: 'en', host: 'www.nasa.gov', source: 'NASA News Releases', maxShown: 10 },
+  { key: 'nasaNews', layer: 'research', country: 'USA', lang: 'en', host: 'www.nasa.gov', source: 'NASA News Releases', maxShown: 10, path: /^\/news-release\/[a-z0-9-]+\/?$/ },
+  // NIH の報道発表（研究と対策）。リンク先は www.nih.gov/news-events/news-releases/ 以下だけ
+  { key: 'nihNews', layer: 'research', country: 'USA', lang: 'en', host: 'www.nih.gov', source: 'US National Institutes of Health (NIH) News Releases', maxShown: 10, path: /^\/news-events\/news-releases\/[a-z0-9-]+\/?$/ },
   { key: 'cdcMmwr', layer: 'research', country: 'USA', lang: 'en', host: 'www.cdc.gov', source: 'US CDC Morbidity and Mortality Weekly Report (MMWR)', maxShown: 8 },
 ];
 
@@ -75,6 +77,8 @@ export function normalizeFeedItem(feed, raw, now = Date.now(), base = undefined)
     malformed('link');
   }
   if (u.protocol !== 'https:' || u.hostname !== feed.host || u.username || u.password || u.port) malformed('link host');
+  // 取得元によっては、リンク先の場所も決まった形に限る（path）
+  if (feed.path && !feed.path.test(u.pathname)) malformed('link path');
   // ページ内の目印（#以降）は項目を見分けるためにだけ使い、リンクからは外す（このサイトのリンクは # を含めない）
   const idSource = u.href;
   u.hash = '';

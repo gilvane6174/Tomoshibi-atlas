@@ -25,6 +25,13 @@ const tag = (block, name) => {
 // 日付：RFC 822（RSS 2.0）・ISO 8601（RSS 1.0 / Atom）。「JST」の文字表記は +0900 として読む
 export function parseFeedDate(s) {
   if (typeof s !== 'string' || !s.trim()) return null;
+  // NIH の RSS は「Fri, 10/23/2026 - 13:00」（月/日/年。時間帯の表記なし）の形。日付だけを使い、日付がずれないよう UTC の正午とする
+  const us = /^(?:[A-Za-z]{3},\s*)?(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s*-\s*\d{1,2}:\d{2})?$/.exec(s.trim());
+  if (us) {
+    const [mo, d, y] = [Number(us[1]), Number(us[2]), Number(us[3])];
+    const t = Date.UTC(y, mo - 1, d, 12);
+    return mo >= 1 && mo <= 12 && new Date(t).getUTCDate() === d ? t : null;
+  }
   const t = Date.parse(s.trim().replace(/\bJST$/i, '+0900'));
   return Number.isFinite(t) ? t : null;
 }

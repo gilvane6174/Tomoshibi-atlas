@@ -2,7 +2,7 @@
 // 使い方: node scripts/test.mjs
 
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
@@ -289,15 +289,18 @@ test('変更範囲の検査（scope-guard）：AI・外部の PR は data/curate
   assert.ok(judge({ ...base, author: 'op', files: [m('scripts/a.mjs')] }).length);
   assert.ok(judge({ ...base, author: 'op', headRef: 'fix', files: [m('scripts/a.mjs')] }).length);
   // 運用者の PR と認めるのは、GitHub App を通さずに作られたと確かめられたとき（performed_via_github_app が null）だけ
-  const own = { ...base, author: 'op', headRepo: 'op/site', headRef: 'fix', files: [m('scripts/a.mjs')] };
+  const own = { ...base, author: 'op', headRepo: 'op/site', headRef: 'fix', files: [m('scripts/a.mjs')], mode: 'verified-null' };
   assert.deepEqual(judge({ ...own, viaApp: null }), []);
+  assert.ok(judge({ ...own, viaApp: null, mode: undefined }).length); // 実機で確かめるまで（OWNER_PR_CHECK 未設定）は、null でも制限する
+  assert.ok(judge({ ...own, viaApp: null, mode: 'yes' }).length);
   assert.ok(judge({ ...own, viaApp: { slug: 'claude' } }).length); // 運用者の名義でも、アプリ経由なら制限する
   assert.ok(judge({ ...own }).length); // 確かめられない（取得失敗・項目なし）なら制限する
   assert.ok(judge({ ...own, viaApp: 'x' }).length); // 想定外の形も制限する
   assert.ok(judge({ ...own, viaApp: null, headRef: 'curated/x' }).length);
   assert.ok(judge({ ...own, viaApp: null, headRepo: 'someone/site' }).length); // フォーク
   assert.ok(judge({ ...own, viaApp: null, author: 'someone' }).length); // 別の人
-  assert.equal(ownerExemption({ author: 'op', owner: 'op', repo: 'op/site', headRepo: 'op/site', headRef: 'fix', viaApp: null }).exempt, true);
+  assert.equal(ownerExemption({ author: 'op', owner: 'op', repo: 'op/site', headRepo: 'op/site', headRef: 'fix', viaApp: null, mode: 'verified-null' }).exempt, true);
+  assert.equal(ownerExemption({ author: 'op', owner: 'op', repo: 'op/site', headRepo: 'op/site', headRef: 'fix', viaApp: null }).exempt, false);
   assert.equal(ownerExemption({ author: 'op', owner: 'op', repo: 'op/site', headRepo: 'op/site', headRef: 'fix', viaApp: undefined }).exempt, false);
   assert.deepEqual(judge({ ...base, author: 'dependabot[bot]', files: [m('.github/workflows/deploy.yml')] }), []);
   assert.ok(judge({ ...base, author: 'dependabot[bot]', files: [m('scripts/a.mjs')] }).length);
@@ -450,6 +453,17 @@ test('RSS/Atom：見出し・リンク・日付だけを読み、DOCTYPE/ENTITY 
   assert.equal(ng.errors, 2);
   assert.equal(ng.items[0].layer, 'research');
   assert.equal(ng.items[0].title.en, 'NASA, USDA Sign Agreement Advancing Earth Science, Agriculture');
+  // NIH の報道発表：日付は「Fri, 10/23/2026 - 13:00」の形（2026-10-27 に実際のフィードで確認）。リンク先は news-releases 以下だけ
+  const nih = FEEDS.find((f) => f.key === 'nihNews');
+  const hx = '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>NIH</title>' +
+    '<item><title>An extra year of secondary school lowered dementia diagnoses later in life</title><link>https://www.nih.gov/news-events/news-releases/extra-year-secondary-school-lowered-dementia-diagnoses-later-life</link><pubDate>Fri, 10/23/2026 - 13:00</pubDate></item>' +
+    '<item><title>Other</title><link>https://www.nih.gov/health-information/x</link><pubDate>Fri, 10/23/2026 - 13:00</pubDate></item></channel></rss>';
+  const hg = inspectFeed(nih, hx, NOW, 'https://www.nih.gov/news-releases/feed.xml');
+  assert.equal(hg.items.length, 1);
+  assert.equal(hg.errors, 1);
+  assert.equal(hg.items[0].publishedAt.slice(0, 10), '2026-10-23');
+  assert.equal(parseFeedDate('Wed, 10/14/2026 - 11:00'), Date.UTC(2026, 9, 14, 12));
+  assert.equal(parseFeedDate('Wed, 13/14/2026 - 11:00'), null);
   // 文字コード：Shift_JIS の宣言どおりに読む。知らない文字コードは失敗
   const sjis = Buffer.concat([Buffer.from('<?xml version="1.0" encoding="Shift_JIS"?><rss><item><title>'), Buffer.from([0x82, 0xa0]), Buffer.from('</title></item></rss>')]);
   assert.ok(decodeFeed(sjis).includes('あ'));
@@ -493,6 +507,10 @@ test('画面の取得状態：取得元の一部だけ失敗したときも知�
   // 確認版（offline / snapshot）では取得していないので知らせない
   assert.equal(notes(mixed({ fsaNews: { status: 'notFetched' } }), 'offline').length, 0);
   assert.equal(notes(mixed({ fsaNews: { status: 'failed' } }), 'snapshot').length, 0);
+  // 手動掲載も0件・自動取得も全部失敗した混合分野：「取得できなかった」と示し、取得元の名前も出す
+  const zero = statusModel({ layer: '防災', doc: { status: 'fetchFailed' }, meta: { kind: 'mixed', count: 0, retrievedAt: null, feeds: { fdmaDisaster: { status: 'failed' } } }, mode: 'live', now });
+  assert.equal(zero.key, 'status.fetchFailedShort');
+  assert.deepEqual(zero.notes[0].sources, ['fdmaDisaster']);
   // 自動取得だけの分野で取得失敗
   assert.equal(statusModel({ layer: '地震', doc: { status: 'fetchFailed' }, meta: { kind: 'auto' }, mode: 'live', now }).key, 'status.fetchFailedShort');
 });
@@ -506,12 +524,21 @@ test('検査の回避・ワーム関連：skip-checks などを見つけ、check
     cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
     const run = () => spawnSync(process.execPath, [join(root, 'scripts/check-repo.mjs')], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
     assert.equal(run().status, 0, run().stderr + run().stdout);
-    for (const f of ['.github/init.js', 'binding.gyp', 'site/addon.node', 'scripts/.napi_cache']) {
+    for (const f of ['.github/init.js', 'binding.gyp', 'site/addon.node', 'scripts/.napi_cache', 'site/Binding.GYP']) {
       writeFileSync(join(tmp, f), 'x');
       const r = run();
       assert.notEqual(r.status, 0, `${f} を拒否していない`);
       rmSync(join(tmp, f));
     }
+    // 同じ名前のフォルダ（中身が無害なテキストでも）・入れ子・大文字小文字の違いも拒否する
+    for (const d of ['scripts/.napi_cache', 'site/js/.NAPI_CACHE', 'site/deep/nest/.napi_cache', 'docs/.Claude', 'site/addon.node']) {
+      mkdirSync(join(tmp, d), { recursive: true });
+      writeFileSync(join(tmp, d, 'README.txt'), 'harmless');
+      const r = run();
+      assert.notEqual(r.status, 0, `フォルダ ${d} を拒否していない`);
+      rmSync(join(tmp, d.split('/').slice(0, 2).join('/') === 'site/deep' ? 'site/deep' : d), { recursive: true, force: true });
+    }
+    assert.equal(run().status, 0);
     const wf = join(tmp, '.github/workflows/validate.yml');
     const orig = readFileSync(wf, 'utf8');
     writeFileSync(wf, orig.replaceAll('if: ${{ success() }}', 'if: ${{ !cancelled() }}'));
@@ -520,6 +547,41 @@ test('検査の回避・ワーム関連：skip-checks などを見つけ、check
     assert.notEqual(run().status, 0, 'PR 側のコードの手順に success() が無いのを拒否していない');
     writeFileSync(wf, orig);
     assert.equal(run().status, 0);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('週次の候補の追加（add-candidates）：検査を通る項目だけを追加し、重複・不正があれば何も変えない', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-add-'));
+  try {
+    cpSync(join(root, 'data'), join(tmp, 'data'), { recursive: true });
+    // 手動掲載の分野の項目を1つ借りる（step1 のようにデータが少ない状態でも動くように、分野は問わない）
+    const items0 = readJson('data/curated/entries.json').items;
+    const base = items0.find((x) => x.layer === 'crime') || items0[0];
+    const L = base.layer;
+    const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+    const ok = { ...base, id: `${L}-2026-test-weekly-candidate`, topic: 'test-weekly-candidate', checkedAt: today };
+    const f = join(tmp, 'cand.json');
+    const run = (...a) => spawnSync(process.execPath, [join(root, 'scripts/add-candidates.mjs'), f, ...a], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
+    const before = readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8');
+    writeFileSync(f, JSON.stringify({ items: [ok] }));
+    assert.equal(run().status, 0); // 確認だけ
+    assert.equal(readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8'), before);
+    assert.equal(run('--write').status, 0);
+    const after = JSON.parse(readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8'));
+    assert.ok(after.items.some((x) => x.id === ok.id));
+    const log = JSON.parse(readFileSync(join(tmp, 'data/curated/changelog.json'), 'utf8'));
+    assert.deepEqual(log.entries.at(-1).ids, [ok.id]);
+    // 同じ id の再追加・検査に通らない項目は拒否し、ファイルを変えない
+    const now = readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8');
+    assert.notEqual(run('--write').status, 0);
+    writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-bad`, source: { name: 'x', url: 'http://example.com/' } }] }));
+    assert.notEqual(run('--write').status, 0);
+    writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-op`, extra: 'x' }] }));
+    assert.notEqual(run('--write').status, 0);
+    assert.equal(readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8'), now);
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }

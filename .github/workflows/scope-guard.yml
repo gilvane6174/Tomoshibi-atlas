@@ -42,4 +42,5 @@ jobs:
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
           MAINTAINER_LOGIN: ${{ vars.MAINTAINER_LOGIN }}
+          OWNER_PR_CHECK: ${{ vars.OWNER_PR_CHECK }} # 運用者が実機確認のあとに verified-null にする（docs/GITHUB-SETTINGS.md 6.2）
         run: node scripts/scope-guard.mjs

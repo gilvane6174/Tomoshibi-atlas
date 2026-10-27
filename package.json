@@ -17,6 +17,7 @@
     "format": "node scripts/format-data.mjs",
     "check:pr": "node scripts/check-my-pr.mjs",
     "check:history": "node scripts/check-history.mjs --strict",
-    "prepublish-check": "node scripts/prepublish-check.mjs"
+    "prepublish-check": "node scripts/prepublish-check.mjs",
+    "add:candidates": "node scripts/add-candidates.mjs"
   }
 }

@@ -122,7 +122,7 @@ WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正�
 
 GitHub App がユーザーの代理で動くと、その操作は**ユーザー本人の名前で記録**される（GitHub Docs「Authenticating with a GitHub App on behalf of a user」）。運用者のアカウントに AI の連携アプリを入れていると、AI の操作も「運用者の操作」に見える。
 
-- 検査側の対策（v1.2.4）：運用者の PR として範囲の制限を外すのは、PR が **GitHub App を通さずに作られた**と API（PR の issue 情報の `performed_via_github_app` が null）で確かめられたときだけ。取得の失敗・項目の欠落・アプリ経由のときは制限する（`scripts/lib/owner-pr.mjs`。scope-guard と validate の両方）
+- 検査側の対策（v1.2.4・v1.2.5）：運用者の PR として範囲の制限を外すのは、PR が **GitHub App を通さずに作られた**と API（PR の issue 情報の `performed_via_github_app` が null）で確かめられ、**しかもこの判定を運用者が実機で確かめてリポジトリ変数 `OWNER_PR_CHECK` を `verified-null` にしている**ときだけ。取得の失敗・項目の欠落・アプリ経由・変数が未設定のときは制限する（`scripts/lib/owner-pr.mjs`。scope-guard と validate の両方）。「null なら人間が作った」という前提は、実機で確かめるまで使わない
 - **限界**：PR の作成後に、アプリが運用者の名義でコミットを追加した場合、コミットの情報だけではアプリ経由かどうかを区別できない。また、アプリ経由で作った PR で `performed_via_github_app` が実際に入るかは、公開後に一度確かめる（下の確認）
 - [ ] 設定側の対策：AI の連携アプリ（Settings → Applications → Installed GitHub Apps の各アプリ → Repository access）で、**普段は Tomoshibi-atlas を対象から外す**。Claude に push を承認したときだけ一時的に対象に入れ、push が終わったら外す
 - [ ] 使っていない連携アプリの認可は、Settings → Applications → Authorized GitHub Apps で整理する（ただし、侵害が疑われる環境では、JFrog の注意どおり、居座るための仕組みの除去を先に行う）
@@ -134,10 +134,17 @@ GitHub App がユーザーの代理で動くと、その操作は**ユーザー�
 3. **運用者がブラウザで** PR を作る（アプリを通さない。scope-guard のログに「運用者が GitHub App を通さずに作った PR」と出ることを確かめる）
 4. Files changed を読み、検査がすべて緑になってからマージする。PR の作成後に新しいコミットが追加されていたら、その差分を読み直す（承認を流用しない）
 
-### 公開後に一度確かめること
+### 実機での確かめ方（段階1を取り込んだあと、段階2の前に行う）
 
-- [ ] 運用者がブラウザで作った PR の scope-guard のログに「運用者が GitHub App を通さずに作った PR」と出る
-- [ ] （可能なら）連携アプリから作った試験用の PR が「GitHub App（…）を通して作られた PR」と判定され、範囲の制限がかかる。入らない場合は Claude に知らせる（判定方法を見直す）
+段階1は今の main の検査で判定されるので、この確認の前に取り込める。段階2（data/directory などのデータ）は、確認が済んで変数を設定するまで「運用者の PR」と認められず、取り込めない（安全側）。
+
+1. 段階1を取り込む
+2. **ブラウザで**無害な試験用 PR を作る（例：README の1文字の変更。マージしない）。scope-guard のログに「PR の作成元（performed_via_github_app）：null（アプリの情報なし）」と出て、判定は「制限あり（OWNER_PR_CHECK 未設定）」になることを確かめる
+3. 使っている連携アプリ（Claude・ChatGPT Codex・Copilot など）**それぞれで**、無害な試験用 PR を作る（そのあいだだけリポジトリを対象に入れる）。ログに「アプリ：〈アプリ名〉」と出て、data/curated 以外の変更が拒否されることを確かめる
+4. ブラウザで作った試験用 PR に、連携アプリから後でコミットを足した場合も試す（この場合は区別できないことを確かめ、普段は連携アプリを対象から外す運用で防ぐ）
+5. 2〜3 の結果がすべて想定どおりなら、Settings → Secrets and variables → Actions → Variables で `OWNER_PR_CHECK` を `verified-null` にする。1つでも想定と違えば設定しない（そのアプリをこのリポジトリから外すか、Claude に判定方法の見直しを頼む）
+6. 確かめたログの写し（ログの画面の写しなど。トークンや個人情報は写さない）を、ドライブの作業場に保存する。試験用 PR はマージせずに閉じる
+7. 段階2の PR をブラウザで作って取り込む
 
 ## 6.5 知っておくこと（設計上の限界）
 

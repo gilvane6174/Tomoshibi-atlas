@@ -97,7 +97,13 @@ async function fetchJpcert() {
 export async function fetchSecurity() {
   const out = [];
   if (enabledFetchers.cisaKev) out.push(...(await fetchKev()));
-  if (enabledFetchers.jpcertRss) out.push(...(await fetchJpcert()));
+  // JPCERT/CC の取得に失敗しても、CISA の情報は残す（取得元ごとに分ける）
+  if (enabledFetchers.jpcertRss)
+    try {
+      out.push(...(await fetchJpcert()));
+    } catch (e) {
+      console.warn(`JPCERT/CC の取得に失敗（CISA の情報はそのまま表示）: ${e.message}`);
+    }
   out.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   return out;
 }

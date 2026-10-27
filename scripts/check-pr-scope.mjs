@@ -19,7 +19,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { scanText } from './check-privacy.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { todayJst } from './lib/safety.mjs';
-import { ownerExemption, fetchViaApp, SKIP_CHECKS } from './lib/owner-pr.mjs';
+import { ownerExemption, fetchViaApp, describeViaApp, SKIP_CHECKS } from './lib/owner-pr.mjs';
 
 const env = process.env;
 const { PR_AUTHOR = '', MAINTAINER_LOGIN = '', BASE_SHA = '', HEAD_SHA = '', HEAD_REF = '', PR_TITLE = '', PR_BODY = '', BASE_REF = '', TRUSTED_ROOT = '' } = env;
@@ -46,7 +46,8 @@ const OWNER_MAIL = new RegExp(`^(\\d+\\+)?${MAINTAINER_LOGIN.replace(/[^A-Za-z0-
 // 手元での再現（GitHub Actions の外）に限り、TA_LOCAL_VIA_APP=null で「アプリを通していない」とみなせる
 const viaApp =
   env.GITHUB_ACTIONS !== 'true' && env.TA_LOCAL_VIA_APP === 'null' ? null : await fetchViaApp(env.REPO || env.GITHUB_REPOSITORY || '', env.PR_NUMBER || '', env.GH_TOKEN || '');
-const owner = ownerExemption({ author: PR_AUTHOR, owner: MAINTAINER_LOGIN, repo: env.REPO || env.GITHUB_REPOSITORY || '', headRepo: env.HEAD_REPO || '', headRef: HEAD_REF, viaApp });
+const owner = ownerExemption({ author: PR_AUTHOR, owner: MAINTAINER_LOGIN, repo: env.REPO || env.GITHUB_REPOSITORY || '', headRepo: env.HEAD_REPO || '', headRef: HEAD_REF, viaApp, mode: env.OWNER_PR_CHECK });
+console.log(`PR の作成元（performed_via_github_app）：${describeViaApp(viaApp)}`);
 const isOwnerPr = owner.exempt;
 if (PR_AUTHOR === MAINTAINER_LOGIN && !isOwnerPr) console.log(`運用者の名義の PR ですが、範囲の制限をかけます（${owner.reason}）`);
 const log = git('log', '--format=%an%x00%ae%x00%cn%x00%ce%x00%B%x1e', `${BASE_SHA}..${HEAD_SHA}`).split('\x1e').filter((s) => s.trim());

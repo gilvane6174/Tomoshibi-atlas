@@ -12,9 +12,12 @@ const FAILED = new Set(['failed', 'invalid']);
 export function statusModel({ layer, doc, meta, mode, now = Date.now() }) {
   const m = meta || {};
   const notes = [];
-  if (doc?.status === 'notFetched') return { key: 'status.notFetchedShort', params: { layer }, notes };
-  if (doc?.status === 'fetchFailed') return { key: 'status.fetchFailedShort', params: { layer }, notes };
-  if (doc?.status === 'preparing') return { key: 'status.preparingShort', params: { layer }, notes };
+  // 公開版で、取得元の一部（または全部）が失敗・異常（件数が0件の場合も含めて、いつも知らせる）
+  const failed = mode === 'live' && m.kind === 'mixed' ? Object.entries(m.feeds || {}).filter(([, f]) => FAILED.has(f?.status)).map(([k]) => k) : [];
+  const failNote = failed.length ? [{ key: 'status.feedsMissing', sources: failed }] : [];
+  if (doc?.status === 'notFetched') return { key: 'status.notFetchedShort', params: { layer }, notes: failNote };
+  if (doc?.status === 'fetchFailed') return { key: 'status.fetchFailedShort', params: { layer }, notes: failNote };
+  if (doc?.status === 'preparing') return { key: 'status.preparingShort', params: { layer }, notes: failNote };
 
   let out;
   if (m.kind === 'auto') out = { key: 'status.live', params: { layer, count: m.count, date: m.retrievedAt } };
@@ -24,12 +27,6 @@ export function statusModel({ layer, doc, meta, mode, now = Date.now() }) {
 
   // 公開版で自動取得が2日以上止まっている
   if (mode === 'live' && (m.kind === 'auto' || m.kind === 'mixed') && m.retrievedAt && now - Date.parse(m.retrievedAt) > 48 * 3600000) notes.push({ key: 'status.stale' });
-  // 公開版で、取得元の一部（または全部）が失敗・異常
-  if (mode === 'live' && m.kind === 'mixed') {
-    const failed = Object.entries(m.feeds || {})
-      .filter(([, f]) => FAILED.has(f?.status))
-      .map(([k]) => k);
-    if (failed.length) notes.push({ key: 'status.feedsMissing', sources: failed });
-  }
+  notes.push(...failNote);
   return { ...out, notes };
 }
