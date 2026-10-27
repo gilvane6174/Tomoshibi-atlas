@@ -40,6 +40,8 @@ export const FEEDS = [
     topicSeries: /[（(]\s*第\s*[0-9０-９]+\s*報[^）)]*[）)]/g,
     titleDate: 'reiwaUpdated',
   },
+  // NASA の報道発表（研究と対策）。リンク先は www.nasa.gov/news-release/ 以下だけ（allowed-sources.json の linkHosts でも限定）
+  { key: 'nasaNews', layer: 'research', country: 'USA', lang: 'en', host: 'www.nasa.gov', source: 'NASA News Releases', maxShown: 10 },
   { key: 'cdcMmwr', layer: 'research', country: 'USA', lang: 'en', host: 'www.cdc.gov', source: 'US CDC Morbidity and Mortality Weekly Report (MMWR)', maxShown: 8 },
 ];
 

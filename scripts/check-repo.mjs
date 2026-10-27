@@ -41,6 +41,12 @@ for (const name of readdirSync(resolve(ROOT, WF))) {
     if (!/run: node scripts\/scope-guard\.mjs\s*$/m.test(noComments) || (noComments.match(/\brun:/g) || []).length !== 1) errors.push(`${rel}: 実行してよいのは node scripts/scope-guard.mjs だけ`);
     if (/write/.test(noComments.replace(/#.*$/gm, ''))) errors.push(`${rel}: 書き込み権限は与えない`);
   }
+  // PR 側のコード（working-directory: pr）は、main 側の検査がすべて成功したときだけ実行する（validate.yml）
+  if (/always\(\)|cancelled\(\)|failure\(\)|continue-on-error:\s*true/.test(noComments)) errors.push(`${rel}: always()・cancelled()・failure()・continue-on-error は使わない（検査の失敗後に処理を続けない）`);
+  {
+    const steps = noComments.split(/\n(?=\s*- (?:name|uses|run):)/);
+    for (const st of steps) if (/working-directory:\s*pr\b/.test(st) && !/run:\s*node\s+\.\.\/trusted\//.test(st) && !/\bif:\s*\$\{\{\s*success\(\)\s*\}\}/.test(st)) errors.push(`${rel}: PR 側のコードを実行する手順には if: \${{ success() }} を付ける`);
+  }
   if (/\bsecrets\./.test(text)) errors.push(`${rel}: secrets（秘密情報）は使わない設計`);
   if (/write-all|contents:\s*write|pull-requests:\s*write|actions:\s*write/.test(text)) errors.push(`${rel}: リポジトリへの書き込み権限は与えない`);
   let runIndent = -1;
@@ -74,6 +80,11 @@ for (const f of ['package-lock.json', 'npm-shrinkwrap.json', 'yarn.lock', 'pnpm-
 const SERVER_EXT = new Set(['.php', '.phtml', '.php3', '.php4', '.php5', '.php7', '.php8', '.phar', '.inc', '.asp', '.aspx', '.ashx', '.jsp', '.jspx', '.cgi', '.pl', '.py', '.rb', '.sh', '.bash', '.ps1', '.bat', '.cmd', '.exe', '.dll', '.so', '.dylib', '.jar', '.war', '.wasm', '.htaccess', '.htpasswd', '.shtml']);
 const SERVER_NAMES = new Set(['.htaccess', '.htpasswd', 'web.config', '.user.ini', 'php.ini', 'Dockerfile']);
 const ALLOWED_OUTSIDE_SITE = new Set(['.githooks/pre-commit']);
+// ネイティブ拡張・インストール時に動く仕組み（2026-10 の testmetest ワーム：binding.gyp・.node・.napi_cache を悪用。JFrog の調査）
+const NATIVE_NAMES = new Set(['binding.gyp', '.napi_cache', '.npmrc', '.yarnrc', '.yarnrc.yml']);
+const NATIVE_EXT = new Set(['.node', '.gyp', '.gypi']);
+// .github/ の直下に置いてよいもの（それ以外のファイル、たとえば同じワームの .github/init.js は置かない）
+const GITHUB_ROOT_ALLOWED = new Set(['CODEOWNERS', 'dependabot.yml', 'pull_request_template.md']);
 // 開発ツールの自動実行設定（エディタやAIツールが開いただけで命令を実行しうるもの）は置かない。
 // 2026年のサプライチェーン攻撃（Mini Shai-Hulud）は .claude/ や .vscode/ に自動実行の設定を仕込んで広がった。
 const TOOL_DIRS = new Set(['.claude', '.vscode', '.idea', '.cursor', '.devcontainer', '.husky', '.windsurf', '.gemini', '.codex', '.continue', '.zed', '.kiro', '.amazonq', '.roo', '.clinerules', '.mcp.json', '.cursorrules', '.windsurfrules', 'CLAUDE.md', 'GEMINI.md']);
@@ -91,6 +102,8 @@ function walk(dir) {
     else if (st.isDirectory()) walk(full);
     else {
       if (SERVER_NAMES.has(name) || SERVER_EXT.has(extname(name).toLowerCase())) errors.push(`${rel}: サーバー側で動くファイル・実行ファイルは置かない（静的サイト）`);
+      if (NATIVE_NAMES.has(name.toLowerCase()) || NATIVE_EXT.has(extname(name).toLowerCase())) errors.push(`${rel}: ネイティブ拡張・パッケージ設定のファイルは置かない（インストール時に命令を実行させる手口に使われる）`);
+      if (/^\.github\/[^/]+$/.test(rel) && !GITHUB_ROOT_ALLOWED.has(name)) errors.push(`${rel}: .github/ の直下には決まったファイル（${[...GITHUB_ROOT_ALLOWED].join('・')}）以外を置かない`);
       if ((st.mode & 0o111) && !ALLOWED_OUTSIDE_SITE.has(rel)) errors.push(`${rel}: 実行権限を付けない`);
     }
   }

@@ -14,6 +14,7 @@ import { validateItems, validateCuratedPair, validateDirectory, validateEvidence
 import { pickDaily, toItems } from './lib/animals.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { fitCount, RULES, MAX_BY_LAYER } from './importance-rules.mjs';
+import { isShownLink } from './lib/link-shown.mjs';
 import { writeSeo } from './lib/seo.mjs';
 
 const OFFLINE = process.argv.includes('--offline');
@@ -43,7 +44,6 @@ async function loadAuto(layer) {
   throw new Error('unknown auto layer ' + layer);
 }
 
-const SHOW_METHODS = new Set(['fetched', 'operator']);
 
 async function main() {
   const errors = [];
@@ -64,9 +64,8 @@ async function main() {
       Object.entries(block).map(([layer, links]) => [
         layer,
         links.flatMap((l) => {
-          const e = evidence[l.id];
-          if (!e || !SHOW_METHODS.has(e.method) || e.url !== l.url || !e.checkedAt) return (hidden++, []);
-          return [{ ...l, checkedAt: e.checkedAt }];
+          if (!isShownLink(l, evidence)) return (hidden++, []);
+          return [{ ...l, checkedAt: evidence[l.id].checkedAt }];
         }),
       ]),
     );
@@ -161,7 +160,7 @@ async function main() {
     outbreak: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? snapAt : now.toISOString(), items: fitCount(applySupersede(auto.outbreak, now), RULES.outbreak.keepDays, now) },
     security: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? (auto.security.length ? snapAt : null) : now.toISOString(), items: fitCount(applySupersede(auto.security, now), RULES.securityKev.keepDays, now) },
   };
-  // 手動掲載の分野も、新しい順に最大30件（新しい情報が入ると、古いものから表示を外れる）
+  // 手動掲載の分野も、新しい順に最大50件（新しい情報が入ると、古いものから表示を外れる）
   const curatedOf = (...ls) => curated.items.filter((it) => ls.includes(it.layer));
   // 研究と対策：手動掲載＋CDC などの自動の見出し（自動の分は情報源ごとの上限つき）
   layers.research = { kind: Object.values(feeds).some((f) => f.layer === 'research') ? 'mixed' : 'curated', retrievedAt: fetchedAt('research'), reviewedAt: curated.reviewedAt, items: fitCount(applySupersede([...curatedOf('research'), ...extra.research], now), null, now, MAX_BY_LAYER.research ?? undefined) };

@@ -9,6 +9,7 @@ import { Labels } from './labels.js';
 import { renderCountry, renderList, renderGuide } from './panel.js';
 import { groupIcon } from './icons.js';
 import { setupSearch } from './search.js';
+import { statusModel } from './status.js';
 
 const $ = (id) => document.getElementById(id);
 const d3 = window.d3;
@@ -161,23 +162,27 @@ async function start() {
   }
 
   function updateStatus() {
-    const doc = data.layers[state.current];
-    const m = data.meta.layers[state.current];
+    const name = t('layer.' + state.current);
+    // 文言の決め方は status.js（取得元の一部だけ失敗したときも知らせる。scripts/test.mjs で検査）
+    const s = statusModel({ layer: name, doc: data.layers[state.current], meta: data.meta.layers[state.current], mode: data.meta.mode });
     let text;
-    if (doc.status === 'notFetched') text = `${t('layer.' + state.current)}: ${t('status.notFetched')}`;
-    else if (doc.status === 'fetchFailed') text = `${t('layer.' + state.current)}: ${t('status.fetchFailed')}`;
-    else if (doc.status === 'preparing') text = `${t('layer.' + state.current)}: ${t('status.preparing')}`;
-    else if (m.kind === 'auto' || (m.kind === 'mixed' && m.retrievedAt)) {
-      text = t('status.live', { layer: t('layer.' + state.current), count: m.count, date: formatDateTime(m.retrievedAt) });
-      // 公開版で自動取得が2日以上止まっている場合は、古い可能性を知らせる
-      if (data.meta.mode === 'live' && m.retrievedAt && Date.now() - Date.parse(m.retrievedAt) > 48 * 3600000) text += ' ' + t('status.stale');
-    }
-    else if (m.kind === 'daily') text = t('status.daily', { layer: t('layer.' + state.current), count: m.count });
+    if (s.key === 'status.notFetchedShort') text = `${name}: ${t('status.notFetched')}`;
+    else if (s.key === 'status.fetchFailedShort') text = `${name}: ${t('status.fetchFailed')}`;
+    else if (s.key === 'status.preparingShort') text = `${name}: ${t('status.preparing')}`;
     else {
-      text = t('status.curated', { layer: t('layer.' + state.current), count: m.count, date: formatDate(m.reviewedAt) });
-      // 防犯・防災で、公開版なのに地震の自動取得ができなかったときは、そのことを知らせる
-      if (m.kind === 'mixed' && data.meta.mode === 'live' && Object.values(m.feeds || {}).some((f) => ['failed', 'invalid'].includes(f.status))) text += ' ' + t('status.quakeMissing');
+      const p = s.params;
+      text = t(s.key, {
+        ...p,
+        date: p.date ? (s.key === 'status.curated' ? formatDate(p.date) : formatDateTime(p.date)) : '',
+        reviewed: p.reviewed ? formatDate(p.reviewed) : '',
+      });
     }
+    for (const n of s.notes)
+      text +=
+        ' ' +
+        (n.key === 'status.feedsMissing'
+          ? t(n.key, { sources: n.sources.map((k) => t('feed.' + k)).join(lang === 'ja' ? '・' : ', ') })
+          : t(n.key));
     $('status-text').textContent = text;
   }
 

@@ -2,7 +2,8 @@
 // PR 側のフォルダを作業ディレクトリにして実行する（.github/workflows/validate.yml）。
 //
 // すべての PR：コミットの作者メールが GitHub の noreply であること、コミットメッセージと PR の題名・本文に個人情報・秘密情報が無いこと
-// 運用者の PR（作成者＝リポジトリ変数 MAINTAINER_LOGIN、かつブランチ名が curated/ で始まらない）：範囲の制限なし
+// 運用者の PR：範囲の制限なし。運用者の PR と認める条件は scripts/lib/owner-pr.mjs（scope-guard.mjs と同じ判定）。
+//   作成者＝MAINTAINER_LOGIN・同じリポジトリ・curated/ 以外のブランチ・GitHub App を通さずに作られたと API で確かめられたこと
 // Dependabot：.github/ 内の Actions 設定のみ
 // それ以外（AI・bot・外部の人、および curated/ ブランチ）：
 //   - 変更してよいのは data/curated/entries.json と data/curated/changelog.json の2つだけ（追加・削除・リンク化は不可）
@@ -18,6 +19,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { scanText } from './check-privacy.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { todayJst } from './lib/safety.mjs';
+import { ownerExemption, fetchViaApp, SKIP_CHECKS } from './lib/owner-pr.mjs';
 
 const env = process.env;
 const { PR_AUTHOR = '', MAINTAINER_LOGIN = '', BASE_SHA = '', HEAD_SHA = '', HEAD_REF = '', PR_TITLE = '', PR_BODY = '', BASE_REF = '', TRUSTED_ROOT = '' } = env;
@@ -40,7 +42,13 @@ const NOREPLY = /(@users\.noreply\.github\.com|^noreply@github\.com)$/i;
 const AI_LOGINS = (env.AI_ACCOUNT_LOGINS || '').split(',').map((s) => s.trim()).filter(Boolean);
 const NAMES = new Set([MAINTAINER_LOGIN, ...AI_LOGINS, 'dependabot[bot]', 'GitHub', 'Yutaka Yoshioka', '吉岡有隆'].filter(Boolean));
 const OWNER_MAIL = new RegExp(`^(\\d+\\+)?${MAINTAINER_LOGIN.replace(/[^A-Za-z0-9-]/g, '')}@users\\.noreply\\.github\\.com$`, 'i');
-const isOwnerPr = MAINTAINER_LOGIN && PR_AUTHOR === MAINTAINER_LOGIN && !HEAD_REF.startsWith('curated/');
+// GitHub App を通して作られた PR かどうか（API で確かめる。確かめられなければ運用者扱いしない）。
+// 手元での再現（GitHub Actions の外）に限り、TA_LOCAL_VIA_APP=null で「アプリを通していない」とみなせる
+const viaApp =
+  env.GITHUB_ACTIONS !== 'true' && env.TA_LOCAL_VIA_APP === 'null' ? null : await fetchViaApp(env.REPO || env.GITHUB_REPOSITORY || '', env.PR_NUMBER || '', env.GH_TOKEN || '');
+const owner = ownerExemption({ author: PR_AUTHOR, owner: MAINTAINER_LOGIN, repo: env.REPO || env.GITHUB_REPOSITORY || '', headRepo: env.HEAD_REPO || '', headRef: HEAD_REF, viaApp });
+const isOwnerPr = owner.exempt;
+if (PR_AUTHOR === MAINTAINER_LOGIN && !isOwnerPr) console.log(`運用者の名義の PR ですが、範囲の制限をかけます（${owner.reason}）`);
 const log = git('log', '--format=%an%x00%ae%x00%cn%x00%ce%x00%B%x1e', `${BASE_SHA}..${HEAD_SHA}`).split('\x1e').filter((s) => s.trim());
 log.forEach((rec, i) => {
   const [an, ae, cn, ce, msg] = rec.replace(/^\n/, '').split('\x00').map((x) => x ?? '');
@@ -48,6 +56,8 @@ log.forEach((rec, i) => {
   if (!NAMES.has(an.trim()) || !NAMES.has(cn.trim())) fail(`コミット${i + 1}：作者・コミッターの名前は GitHub のユーザー名にしてください（本名などの個人情報が公開されます）`);
   if (isOwnerPr && (!OWNER_MAIL.test(ae.trim()) || !(OWNER_MAIL.test(ce.trim()) || /^noreply@github\.com$/i.test(ce.trim())))) fail(`コミット${i + 1}：運用者のPRに運用者以外のコミットが含まれています`);
   for (const line of (msg || '').split('\n')) for (const label of scanText(line)) fail(`コミット${i + 1}のメッセージ：${label}`);
+  // 検査を飛ばす指示（skip-checks: true、[skip ci] など）はこのリポジトリでは使わない
+  if (SKIP_CHECKS.test(msg || '')) fail(`コミット${i + 1}のメッセージ：検査を飛ばす指示（skip-checks・skip ci など）は使えません`);
 });
 for (const [name, text] of [['PRの題名', PR_TITLE], ['PRの本文', PR_BODY]])
   for (const line of text.split('\n')) for (const label of scanText(line)) fail(`${name}：${label}`);

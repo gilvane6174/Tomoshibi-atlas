@@ -274,6 +274,16 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   h.prepend(groupIcon(layerById(layerId).group));
   h.style.setProperty('--dot', layerById(layerId).color);
   body.append(h);
+  // 下部の案内（相談先の一覧・公式X・防犯防災の案内）は先に作り、見出しのすぐ下に、そこへ一気に移動するボタンを置く
+  const safety = SAFETY_LAYERS.has(layerId) ? safetySupport() : null;
+  const dirs = (DIR_LAYERS[layerId] || []).map((dl, i) => directorySection(country, dl, data.directory, { kana, onToggleKana: i === 0 ? onToggleKana : null }));
+  const sns = DIR_LAYERS[layerId] ? snsSection(country, layerId, data.directory, { kana }) : null;
+  const targets = [
+    ...dirs.map((s) => [s, s.querySelector('h3')?.textContent]),
+    ...(sns ? [[sns, sns.querySelector('h3')?.textContent]] : []),
+    ...(safety ? [[safety, t('panel.jump.safety')]] : []),
+  ].filter(([, label]) => label);
+  if (targets.length) body.append(jumpRow(targets, layerById(layerId).color));
   if (doc.status === 'preparing') body.append(el('p', 'empty', t('status.preparingLong')));
   else if (doc.status === 'notFetched') body.append(el('p', 'empty', t('status.notFetchedLong')));
   else if (doc.status === 'fetchFailed') body.append(el('p', 'empty', t('status.fetchFailedLong')));
@@ -281,7 +291,7 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   for (const it of items) body.append(entry(it, { countryMap: data.countryMap }));
   if (items.length) body.append(note(doc.kind));
   if (layerId === 'security') body.append(el('p', 'note caution-note', t('note.security')));
-  if (SAFETY_LAYERS.has(layerId)) body.append(safetySupport());
+  if (safety) body.append(safety);
   // ほかの分野へ、この地域のまま切り替えるボタン
   const others = LAYERS.filter((l) => l.id !== layerId)
     .map((l) => [l, data.layers[l.id].items.filter((it) => !it.superseded && (it.countries || []).includes(country.id)).length])
@@ -302,11 +312,29 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   // こころと福祉の分野では、詳細の中にも、つらいとき・緊急時の連絡先の案内を出す
   if (layerId === 'care') body.append(el('p', 'note crisis-note', t('note.crisis')));
   // 下部：この国の公式リンク集（分野ごと）。今日の動物たち・防犯防災には出さない（防犯防災は上の案内で代える）
-  if (!DIR_LAYERS[layerId]) return;
   // 「ひらがなで よむ」の切り替えボタンは、最初のリンク集にだけ出す（切り替えは両方に効く）
-  DIR_LAYERS[layerId].forEach((dl, i) => body.append(directorySection(country, dl, data.directory, { kana, onToggleKana: i === 0 ? onToggleKana : null })));
-  const sns = snsSection(country, layerId, data.directory, { kana });
+  for (const s of dirs) body.append(s);
   if (sns) body.append(sns);
+}
+
+// 下部の案内へ一気に移動するボタン（ページのURLは変えない。移動先の見出しにフォーカスを移す）
+function jumpRow(targets, color) {
+  const nav = el('nav', 'jump-row');
+  nav.setAttribute('aria-label', t('panel.jump.label'));
+  for (const [section, label] of targets) {
+    const b = el('button', 'link-chip jump-chip', t('panel.jump.to', { title: label }));
+    b.type = 'button';
+    b.style.setProperty('--dot', color);
+    b.addEventListener('click', () => {
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      const target = section.querySelector('h3') || section;
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+    nav.append(b);
+  }
+  return nav;
 }
 
 export function renderList(body, { layerId, data, onPick }) {

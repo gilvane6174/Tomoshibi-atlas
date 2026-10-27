@@ -6,11 +6,13 @@
 // 「要確認」は安全の確認ができていないという意味。危険・要確認が1件でもあれば終了コード1（通知が届く）。
 // 転送は最大5回まで実際にたどり、最終的な行き先のページも同じ基準で調べる。
 // アクセスは1件ずつ、間隔をあけて行う（相手のサーバーに負担をかけない）。秘密情報は使わない。
-// 対象：リンク集・手動掲載の原典とリンク・説明ページなどの HTML 内のリンク。
+// 対象：リンク集・都道府県の窓口リンク（どちらもサイトに表示しているものだけ）・手動掲載の原典とリンク・今日の動物たちの原典・説明ページなどの HTML 内のリンク。
 //       自動取得の WHO・CISA・NVD の個別ページは、許可リストの公的機関のドメインで毎日作られるため対象外。
 //       X（旧Twitter）は自動アクセスを受け付けないため対象外（各機関の公式サイトの掲載で確認する）。
 import './lib/node-guard.mjs';
 import { appendFileSync, readFileSync, readdirSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { isShownLink } from './lib/link-shown.mjs';
 import { resolve } from 'node:path';
 import { readData, isDirectoryUrl, isAllowedUrl, isAnimalUrl, CODE_ROOT } from './lib/safety.mjs';
 
@@ -22,22 +24,27 @@ const WAIT_MS = 1200;
 const BUDGET_MS = 40 * 60 * 1000; // 全体の時間の上限（ワークフローの制限時間より短く）
 const started = Date.now();
 
-const urls = new Map();
-const add = (url, where) => typeof url === 'string' && url.startsWith('https://') && !/^https:\/\/(x|twitter)\.com\//.test(url) && (urls.has(url) || urls.set(url, where));
-const dir = readData('data/directory/links.json');
-// リンク集は、サイトに表示しているもの（確認の記録が fetched / operator のもの）だけを調べる。表示していないものは運用者の確認待ち
-const ev = readData('data/directory/evidence.json').links;
-const isShown = (l) => ['fetched', 'operator'].includes(ev[l.id]?.method);
-for (const [cid, block] of Object.entries(dir.countries)) for (const links of Object.values(block)) for (const l of links) if (isShown(l)) add(l.url, `${cid} ${l.id}`);
-for (const links of Object.values(dir.international)) for (const l of links) if (isShown(l)) add(l.url, `INTL ${l.id}`);
-for (const it of readData('data/curated/entries.json').items) {
-  add(it.source.url, `entries ${it.id}`);
-  for (const l of it.links || []) add(l.url, `entries ${it.id}`);
-}
-for (const f of readData('data/curated/animals.json').facts) add(f.source.url, `animals ${f.id}`);
-for (const name of readdirSync(resolve(CODE_ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
-  const html = readFileSync(resolve(CODE_ROOT, 'site', name), 'utf8');
-  for (const m of html.matchAll(/href="(https:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), `site/${name}`);
+// 調べる URL を集める（通信はしない）。表示していないリンク（確認の記録が無い・URL が一致しない・確認日が無い）は運用者の確認待ちなので集めない
+export function collectUrls() {
+  const urls = new Map();
+  const add = (url, where) => typeof url === 'string' && url.startsWith('https://') && !/^https:\/\/(x|twitter)\.com\//.test(url) && (urls.has(url) || urls.set(url, where));
+  const dir = readData('data/directory/links.json');
+  const ev = readData('data/directory/evidence.json').links;
+  const isShown = (l) => isShownLink(l, ev);
+  for (const [cid, block] of Object.entries(dir.countries)) for (const links of Object.values(block)) for (const l of links) if (isShown(l)) add(l.url, `${cid} ${l.id}`);
+  for (const links of Object.values(dir.international)) for (const l of links) if (isShown(l)) add(l.url, `INTL ${l.id}`);
+  // 日本の都道府県の福祉ページ（福祉の探し方ページで表示するもの）
+  for (const p of readData('data/directory/prefectures.json').prefectures) for (const l of p.links || []) if (isShown(l)) add(l.url, `JP-${p.code} ${l.id}`);
+  for (const it of readData('data/curated/entries.json').items) {
+    add(it.source.url, `entries ${it.id}`);
+    for (const l of it.links || []) add(l.url, `entries ${it.id}`);
+  }
+  for (const f of readData('data/curated/animals.json').facts) add(f.source.url, `animals ${f.id}`);
+  for (const name of readdirSync(resolve(CODE_ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
+    const html = readFileSync(resolve(CODE_ROOT, 'site', name), 'utf8');
+    for (const m of html.matchAll(/href="(https:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), `site/${name}`);
+  }
+  return { urls, ev };
 }
 
 const allowed = (u) => {
@@ -104,6 +111,8 @@ async function inspect(url) {
   return ['danger', '転送が多すぎる'];
 }
 
+async function run() {
+  const { urls, ev } = collectUrls();
 // 運用者がブラウザで確認済みの「自動アクセスだけを拒否するサイト」（evidence.json の autoCheck が "blocked-ok"）は、
 // 拒否（403/429）・中身が空のときに失敗にせず「既知」として一覧に出す（毎週の通知が当たり前にならないように）。
 // 危険（証明書・404・改ざん・転送など）は、既知でも必ず失敗にする。
@@ -148,3 +157,6 @@ const report = [
 console.log(report);
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report + '\n');
 process.exit(danger.length || review.length || skipped ? 1 : 0);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await run();

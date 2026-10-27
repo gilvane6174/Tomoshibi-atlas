@@ -246,7 +246,6 @@
   "sns.checked": "Official accounts are listed only if they appear on the body's own official website, checked on {date}. This site does not check or endorse individual posts.",
   "sns.checked.kana": "Official accounts are listed only if they appear on the body's own official website, checked on {date}. This site does not check or endorse individual posts.",
   "status.stale": "(Automatic retrieval has not updated for over 2 days. Please check the original sources for the latest situation.)",
-  "status.quakeMissing": "(some automatic sources could not be retrieved this time)",
   "locate.estimated": "Your location was estimated as \"{country}\". If this is wrong, please choose your country by search.",
   "sns.searchNote": "This site is currently run mainly from Japan, so official accounts about Japan are listed first.",
   "sns.searchNote.kana": "This site is currently run mainly from Japan, so official accounts about Japan are listed first.",
@@ -271,5 +270,17 @@
   "tag.disaster": "Disaster",
   "tag.crime": "Crime & fraud",
   "sub.mental": "Mental health",
-  "sub.welfare": "Welfare"
+  "sub.welfare": "Welfare",
+  "status.mixed": "{layer}: {count} items (headlines retrieved {date}; manual items last reviewed {reviewed})",
+  "status.feedsMissing": "(automatic headlines from {sources} could not be retrieved this time; please check the original sources)",
+  "feed.usgsQuakes": "USGS",
+  "feed.ncscNews": "UK NCSC",
+  "feed.fsaNews": "Japan FSA",
+  "feed.ftcConsumer": "US FTC",
+  "feed.fdmaDisaster": "Japan FDMA",
+  "feed.cdcMmwr": "US CDC",
+  "feed.nasaNews": "NASA",
+  "panel.jump.label": "Jump to sections below",
+  "panel.jump.to": "↓ {title}",
+  "panel.jump.safety": "Where to get help and disaster information"
 }

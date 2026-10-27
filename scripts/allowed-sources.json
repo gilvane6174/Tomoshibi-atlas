@@ -308,6 +308,11 @@
     {
       "host": "www.paho.org",
       "label": "汎米保健機構（PAHO）"
+    },
+    {
+      "host": "www.nasa.gov",
+      "path": "^/news-release/[a-z0-9-]+/?$",
+      "label": "米国航空宇宙局（NASA）の報道発表"
     }
   ],
   "_directoryNote": "国・分野別の相談先リンク集（data/directory/links.json）に載せてよいURLの許可リスト。追加・削除は運用者の個別承認が必要。",
@@ -1225,7 +1230,8 @@
     "ftcConsumer": "https://www.ftc.gov/feeds/press-release-consumer-protection.xml",
     "ncscNews": "https://www.ncsc.gov.uk/api/1/services/v1/news-rss-feed.xml",
     "fdmaDisaster": "https://www.fdma.go.jp/disaster/info/index.xml",
-    "cdcMmwr": "https://tools.cdc.gov/api/v2/resources/media/342778.rss"
+    "cdcMmwr": "https://tools.cdc.gov/api/v2/resources/media/342778.rss",
+    "nasaNews": "https://www.nasa.gov/news-release/feed/"
   },
   "enabledFetchers": {
     "whoDon": true,
@@ -1236,7 +1242,8 @@
     "fsaNews": true,
     "ftcConsumer": true,
     "fdmaDisaster": true,
-    "cdcMmwr": false
+    "cdcMmwr": false,
+    "nasaNews": true
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [

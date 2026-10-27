@@ -246,7 +246,6 @@
   "sns.checked": "公式アカウントは、各機関の公式サイトに載っているものだけを{date}に確認して掲載しています。このサイトは個々の投稿の内容を確認・保証しません。",
   "sns.checked.kana": "こうしき アカウントは、かく きかんの こうしき サイトに のって いる ものだけを {date}に かくにん して けいさい して います。この サイトは ひとつ ひとつの とうこうの ないようを かくにん・ほしょう しません。",
   "status.stale": "（自動取得が2日以上更新されていません。最新の状況は原典でご確認ください）",
-  "status.quakeMissing": "（自動取得の一部は今回は取得できませんでした）",
   "locate.estimated": "現在地から「{country}」と推定しました。違う場合は、検索で国を選び直してください。",
   "sns.searchNote": "現在は日本を中心に運用しているため、公式アカウントは日本の情報を優先して掲載しています。",
   "sns.searchNote.kana": "いまは にほんを ちゅうしんに うんよう して いるため、こうしき アカウントは にほんの じょうほうを ゆうせん して けいさい して います。",
@@ -271,5 +270,17 @@
   "tag.disaster": "防災・災害",
   "tag.crime": "防犯・詐欺",
   "sub.mental": "こころ",
-  "sub.welfare": "福祉"
+  "sub.welfare": "福祉",
+  "status.mixed": "{layer}：{count}件（見出しの取得 {date}／手動掲載の最終確認 {reviewed}）",
+  "status.feedsMissing": "（自動取得のうち {sources} は今回は取得できませんでした。最新の情報は原典でご確認ください）",
+  "feed.usgsQuakes": "米国地質調査所（USGS）",
+  "feed.ncscNews": "英国NCSC",
+  "feed.fsaNews": "金融庁",
+  "feed.ftcConsumer": "米国FTC",
+  "feed.fdmaDisaster": "消防庁",
+  "feed.cdcMmwr": "米国CDC",
+  "feed.nasaNews": "米国NASA",
+  "panel.jump.label": "このパネルの下部へ移動",
+  "panel.jump.to": "↓ {title}へ",
+  "panel.jump.safety": "相談先・防災情報の案内"
 }

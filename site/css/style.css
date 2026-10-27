@@ -204,6 +204,10 @@ body.list-open .purpose-card { display: none; }
 .entry.is-superseded { opacity: .62; }
 .entry.is-superseded .entry-title::before { background: transparent; border: 1px solid var(--dot); }
 .switch-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.jump-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 14px; }
+.jump-chip { font-size: 0.86rem; }
+.directory h3:focus, .sns h3:focus, .safety-support:focus { outline: 2px solid var(--dot, currentColor); outline-offset: 4px; border-radius: 4px; }
+.directory, .sns, .safety-support { scroll-margin-top: 12px; }
 .link-chip {
   display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; min-height: 36px; border-radius: 999px; cursor: pointer;
   background: transparent; border: 1px solid color-mix(in srgb, var(--dot) 45%, transparent); color: var(--accent);

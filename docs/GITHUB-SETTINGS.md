@@ -118,6 +118,27 @@ PR の検査（validate）は、PR 側のワークフローファイルで動く
 
 WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正が必要になることがある。AI は `scripts/` を変える PR を出せない（検査で拒否される）ため、AI には修正案（差分）を文章で出してもらい、運用者が内容を読んで理解できた場合だけ、自分のアカウントで手元に反映し、`node scripts/prepublish-check.mjs` を通してから自分の PR として出す。理解できない修正は取り込まない。
 
+## 6.2 運用者の名義で動く AI の連携アプリ（Claude・ChatGPT Codex・Copilot など）（v1.2.4）
+
+GitHub App がユーザーの代理で動くと、その操作は**ユーザー本人の名前で記録**される（GitHub Docs「Authenticating with a GitHub App on behalf of a user」）。運用者のアカウントに AI の連携アプリを入れていると、AI の操作も「運用者の操作」に見える。
+
+- 検査側の対策（v1.2.4）：運用者の PR として範囲の制限を外すのは、PR が **GitHub App を通さずに作られた**と API（PR の issue 情報の `performed_via_github_app` が null）で確かめられたときだけ。取得の失敗・項目の欠落・アプリ経由のときは制限する（`scripts/lib/owner-pr.mjs`。scope-guard と validate の両方）
+- **限界**：PR の作成後に、アプリが運用者の名義でコミットを追加した場合、コミットの情報だけではアプリ経由かどうかを区別できない。また、アプリ経由で作った PR で `performed_via_github_app` が実際に入るかは、公開後に一度確かめる（下の確認）
+- [ ] 設定側の対策：AI の連携アプリ（Settings → Applications → Installed GitHub Apps の各アプリ → Repository access）で、**普段は Tomoshibi-atlas を対象から外す**。Claude に push を承認したときだけ一時的に対象に入れ、push が終わったら外す
+- [ ] 使っていない連携アプリの認可は、Settings → Applications → Authorized GitHub Apps で整理する（ただし、侵害が疑われる環境では、JFrog の注意どおり、居座るための仕組みの除去を先に行う）
+
+### 運用者が広い範囲を変える手順（人間用）
+
+1. Claude などが作業ブランチを push する（承認した内容に限る。push の間だけ連携アプリに書き込みを許可）
+2. push が終わったら、連携アプリの対象から Tomoshibi-atlas を外す
+3. **運用者がブラウザで** PR を作る（アプリを通さない。scope-guard のログに「運用者が GitHub App を通さずに作った PR」と出ることを確かめる）
+4. Files changed を読み、検査がすべて緑になってからマージする。PR の作成後に新しいコミットが追加されていたら、その差分を読み直す（承認を流用しない）
+
+### 公開後に一度確かめること
+
+- [ ] 運用者がブラウザで作った PR の scope-guard のログに「運用者が GitHub App を通さずに作った PR」と出る
+- [ ] （可能なら）連携アプリから作った試験用の PR が「GitHub App（…）を通して作られた PR」と判定され、範囲の制限がかかる。入らない場合は Claude に知らせる（判定方法を見直す）
+
 ## 6.5 知っておくこと（設計上の限界）
 
 - `ユーザー名.github.io/Tomoshibi-atlas` で公開する場合、同じアカウントの他の GitHub Pages サイトと「同じオリジン」になります。このサイトはログインも保存データも持たないため実害はほぼありませんが、同じアカウントで信頼できないページを公開しないでください（気になる場合は独自ドメインを使う）
