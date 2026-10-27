@@ -45,20 +45,43 @@ Settings → Pages
 - [ ] Source：**GitHub Actions**
 - [ ] Settings → Environments → `github-pages` → Deployment branches：**main のみ**
 
-## 4. main ブランチの保護（Rulesets）
+## 4. main ブランチの保護（Rulesets）— 2つに分ける（v1.2.6）
 
-Settings → Rules → Rulesets → New branch ruleset（対象：`main`）
+**検査（status checks）を省略できる例外は作らない。** 自分の PR を自分で承認できない問題（承認の省略）だけを例外にするため、ルールセットを2つに分ける。GitHub の説明では、同じブランチに複数のルールセットがあると規則は合算され、Bypass は「そのルールセットの規則」を省略する設定（[About rulesets](https://docs.github.com/en/enterprise-server@3.19/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)）。分けた後に、下の「確かめ方」で実際の動きを必ず確かめる。
+
+**(A) `main-checks`（Bypass なし）** Settings → Rules → Rulesets → New branch ruleset（対象：`main`、Enforcement：Active）
 
 - [ ] Restrict deletions（削除禁止）
 - [ ] Block force pushes（force push 禁止）
+- [ ] Require status checks to pass：`validate` と **`scope-guard`** の2つ。「Require branches to be up to date before merging」も有効（緊急停止の前に通った古い検査結果のままマージされるのを防ぐ）
+  - scope-guard は main 側の定義だけで動き、AI・外部の PR が data/curated の2ファイル以外を変えていたら必ず失敗する。validate は PR範囲・個人情報・形式などの検査（main 側のスクリプトで PR 側のファイルを検査）。それでも最後に運用者が「Files changed」を確認する（下の「CI の限界」）
+- [ ] **Bypass list：空のまま**（運用者も入れない。検査に落ちた変更は、だれもマージできない）
+
+**(B) `main-review`（運用者だけ、PR のときだけ Bypass）** 対象：`main`、Enforcement：Active
+
 - [ ] Require a pull request before merging（PR 必須）
   - [ ] Required approvals：1
   - [ ] Require review from Code Owners（CODEOWNERS の承認必須）
   - [ ] Dismiss stale pull request approvals when new commits are pushed
-- [ ] Require status checks to pass：`validate` と **`scope-guard`** の2つ（scope-guard は main 側の定義だけで動き、AI・外部の PR が data/curated の2ファイル以外を変えていたら必ず失敗する。PR でワークフローを書き換えても効かない）。validate は（PR範囲・個人情報・形式などの検査をすべて含む。検査は main 側のスクリプトで PR 側のファイルに対して行うため、PR で検査スクリプトを書き換えても効かない。PR 側でワークフロー定義そのものを書き換える手口は scope-guard が止める。それでも最後に運用者が「Files changed」を確認する。下の「CI の限界」参照）
-- [ ] Bypass list：**自分（運用者）だけ**を追加し、モードは **「For pull requests only」**（「Always」にしない）
-  - 理由：自分の PR は自分で承認できないため、自分が直した変更は「PR を作ったうえで承認を省略してマージ」できるようにする。main への直接 push はできず、必ず PR を経由する。この場合は検査（validate）の結果も省略できてしまうため、緑になったことを自分で確認してからマージする
+- [ ] Bypass list：**Repository admin（運用者）だけ**、モードは **「For pull requests only」**（「Always」にしない）
+  - 理由：自分の PR は自分で承認できないため、承認だけを省略してマージできるようにする。main への直接 push はできず、必ず PR を経由する。検査は (A) が別に必須にしているので、この Bypass では省略できない
   - AI 用アカウント（6章）は Bypass に**入れない**。AI の PR は必ず運用者の承認が必要になる
+
+**移行のしかた（運用者が GitHub の画面で行う。Claude は設定を変えない）**
+
+1. 今の `main-protection` を開き、内容を控える（画面の写し。トークン等は写さない）
+2. (A) `main-checks` を新しく作って Active にする（この時点では `main-protection` も残す。規則は合算されるので、守りが弱くなる時間を作らない）
+3. (B) `main-review` を新しく作って Active にする
+4. `main-protection` を Disabled にする（すぐには消さない。1週間ほど様子を見てから消す）
+5. 確かめ方（下）を行う。想定と違えば `main-protection` を Active に戻し、Claude に知らせる
+
+**確かめ方（設定の後に一度。試験用の PR はマージせず閉じる）**
+
+- [ ] ブラウザで、検査が失敗する無害な試験用 PR を作る（例：空のファイル `scripts/.napi_cache` を足すだけの PR。check-repo が必ず拒否する）。validate が失敗し、「Merge」ボタンが押せない（Bypass の選択肢にも検査の省略が出ない）ことを確かめる
+- [ ] 検査が通る無害な試験用 PR では、承認なしで「Merge without waiting for requirements to be met（bypass）」が出ることを確かめる（承認の省略だけ）。確かめたら閉じる
+- [ ] ルールセットの「Insights」で、試験の記録を確認する。結果の画面の写しを、ドライブの作業場に保存する
+
+**残る限界**：運用者の名義で動く AI の連携アプリは、運用者と同じ「承認の省略」ができる（検査は省略できない）。そのため、連携アプリは普段このリポジトリの対象から外す（6.2）。運用者の権限そのものを AI に使わせない運用は、6章・6.1（AI 用の別アカウント・読み取り＋フォーク）を基本にする。
 
 ## 4.5 AI用アカウントが触れるブランチを限定する（Rulesets）
 
@@ -163,11 +186,12 @@ GitHub App がユーザーの代理で動くと、その操作は**ユーザー�
 
 - **GitHub のプロフィールの「Name」を、筆名（Yutaka Yoshioka または 吉岡有隆）か空欄にする**（Settings → Public profile → Name）。GitHub がマージ時に作るコミットには、ここの名前が入って公開される。公開ワークフローの `scripts/check-history.mjs` が、noreply 以外のメールや許可外の名前を見つけると公開を止める
 - **AI・bot に運用者のアカウントやトークンを使わせない**（運用者の PC で動く AI ツールに、運用者の GitHub ログインのまま操作させない）。運用者の権限で動く AI には、範囲の制限や PR 検査が効かない。AI・bot には必ず専用のアカウント（または組織の機械アカウント）を使う
-- main のルールセットの「Bypass list」に運用者を入れている場合も、**検査（status checks）は運用者の PR にも必須**にしておく（緊急時を除き、検査の失敗した変更をマージしない）
+- 検査（status checks）は、Bypass のない別のルールセット（4章の `main-checks`）で必須にする。運用者の Bypass は、承認の省略だけに使う（4章の `main-review`）
 - PR 検査（validate.yml）は **main 宛ての PR だけ**で動き、検査プログラムは常に最新の main から読み込む。宛先を別ブランチにした PR は検査で失敗する
 
 - **Settings → Code security → Private vulnerability reporting を有効にする**。サイトの `/.well-known/security.txt` は、このフォームを連絡先として案内する（個人のメールアドレスは載せない）
 - **Settings → Code security → CodeQL**：`.github/workflows/codeql.yml` が週1回と PR ごとにコードを検査する。結果は Security タブで確認
+  - [ ] **Code scanning を有効にする**（Settings → Code security → Code scanning。`codeql.yml` を使う「Advanced」の設定）。2026-10-25 の main の CodeQL は、ワークフローに `actions: read` の権限が無かったことと、Code scanning が有効でないことの表示が出て失敗していた（v1.2.6 で `actions: read` を追加。有効化は運用者の設定。直ったかは GitHub 上で確かめる）
 - 変数（Variables）：`SITE_URL`・`GOOGLE_SITE_VERIFICATION`・`BING_SITE_VERIFICATION`（いずれも任意・秘密情報ではない）。詳しくは [SEARCH.md](SEARCH.md)
 - Node.js：CI は 24 系の最新版を毎回取得する（`check-latest: true`）。さらに `scripts/lib/node-guard.mjs` が、修正前の脆弱性がある版では処理を止める。新しいセキュリティリリースが出たら、この表の最低バージョンを運用者が上げる
 
@@ -200,7 +224,7 @@ GitHub App がユーザーの代理で動くと、その操作は**ユーザー�
   2. CODEOWNERS（`.github/` と `scripts/` は運用者の承認が必須）とルールセットの「Require review from Code Owners」
   3. マージの前に、運用者が PR の「Files changed」を見て、**2つのデータファイル以外が変わっていればマージしない**（PR テンプレートの「運用者の最終確認」）
 - ルールセットの「Require branches to be up to date before merging」（strict）を有効にする。緊急停止（ops/AI-PAUSE）の前に通った古い検査結果のままマージされるのを防ぐ
-- 運用者の Bypass は「For pull requests only」で、**通常は使わない**（検査が失敗した PR をマージしない）。使った場合は、理由を更新履歴に記録する
+- 運用者の Bypass は `main-review`（承認）だけで、「For pull requests only」。検査（`main-checks`）は Bypass できない。承認を省略してマージしたときは、理由を更新履歴に記録する
 - `dependabot/**` はブランチ制限の対象外になっている。AI・bot のアカウントがこの名前のブランチを作っても、PR 検査が Dependabot 以外のコミットを拒否するが、念のため AI 用トークンの権限は「このリポジトリの Contents と Pull requests」だけにし、Workflows 権限は与えない
 - Node.js の修正済み版の確認（`scripts/lib/node-guard.mjs`）は、GitHub Actions でも手元でも、修正前の版なら処理を止める（2026-10-26 変更。以前は Actions では警告だけだった）。Actions は毎回その系列の最新版を入れるので通常は止まらない。止まったときは、最新版の配布待ちか表の値の誤りなので、運用者が表を確かめる（公開中のサイトは前回の内容のまま残る）。`TA_ALLOW_OLD_NODE=1` は手元で試すとき専用で、Actions では効かない
 - `scripts/check-privacy.mjs` などの検査は、決まった形の文字列を探す仕組み。**検査が通ったことは「個人情報が無い証明」ではない**

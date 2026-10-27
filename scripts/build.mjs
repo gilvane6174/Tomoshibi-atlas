@@ -99,7 +99,7 @@ async function main() {
   //   notFetched … ネットなしの確認版（スナップショットにその情報源のファイルが無いときも）
   // 取得時刻は ok と empty のときだけ付ける（失敗や全件異常を「取得成功」に見せない）
   const feeds = {}; // key -> { layer, status, raw, dropped }
-  const extra = { quake: [], crime: [], disaster: [], research: [] };
+  const extra = { quake: [], crime: [], disaster: [], research: [], security: [] };
   const accept = (key, layer, got, maxShown) => {
     if (!got) return (feeds[key] = { layer, status: 'notFetched', raw: 0, dropped: 0 });
     if (got.error) {
@@ -148,6 +148,26 @@ async function main() {
     } else if (!OFFLINE) results = await fetchFeeds();
     for (const f of on) accept(f.key, f.layer, results[f.key] || null, f.maxShown);
   }
+  // JPCERT/CC の注意喚起（ITセキュリティの補助の取得元）。失敗しても CISA の情報は残し、取得元ごとの状態を meta に残す
+  if (enabledFetchers.jpcertRss) {
+    const { inspectJpcertRdf, fetchJpcert } = await import('./fetch-security.mjs');
+    let got = null;
+    if (SNAPSHOT) {
+      const file = resolve(process.env.TA_SNAPSHOT_DIR, 'jpcertRss.xml');
+      if (existsSync(file))
+        try {
+          got = inspectJpcertRdf(readFileSync(file, 'utf8'), now.getTime());
+        } catch (e) {
+          got = { error: e.message };
+        }
+    } else if (!OFFLINE)
+      try {
+        got = await fetchJpcert(now.getTime());
+      } catch (e) {
+        got = { error: e.message };
+      }
+    accept('jpcertRss', 'security', got);
+  }
   const fetchedAt = (layer) =>
     Object.values(feeds).some((f) => f.layer === layer && (f.status === 'ok' || f.status === 'empty')) ? (SNAPSHOT ? snapAt : now.toISOString()) : null;
   if (errors.length) {
@@ -158,7 +178,7 @@ async function main() {
 
   const layers = {
     outbreak: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? snapAt : now.toISOString(), items: fitCount(applySupersede(auto.outbreak, now), RULES.outbreak.keepDays, now) },
-    security: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? (auto.security.length ? snapAt : null) : now.toISOString(), items: fitCount(applySupersede(auto.security, now), RULES.securityKev.keepDays, now) },
+    security: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? (auto.security.length ? snapAt : null) : now.toISOString(), items: fitCount(applySupersede([...auto.security, ...extra.security], now), RULES.securityKev.keepDays, now) },
   };
   // 手動掲載の分野も、新しい順に最大50件（新しい情報が入ると、古いものから表示を外れる）
   const curatedOf = (...ls) => curated.items.filter((it) => ls.includes(it.layer));

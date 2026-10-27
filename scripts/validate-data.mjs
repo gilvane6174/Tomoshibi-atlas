@@ -149,21 +149,28 @@ export function validateChangelog(doc, itemIds, rel) {
 }
 
 export function validateCuratedPair(entriesRel, changelogRel) {
-  const errors = [];
-  let entries, changelog;
+  let entriesRaw, changelogRaw, entries, changelog;
   try {
+    entriesRaw = readFileSync(resolve(DATA_ROOT, entriesRel), 'utf8');
+    changelogRaw = readFileSync(resolve(DATA_ROOT, changelogRel), 'utf8');
     entries = readData(entriesRel);
     changelog = readData(changelogRel);
   } catch (e) {
     return [`JSONとして読めない（${e.message}）`];
   }
+  return validateCuratedDocs({ entries, changelog, entriesRaw, changelogRaw, entriesRel, changelogRel });
+}
+
+// 書き込む前の「完成予定のデータ」も同じ基準で検査できるように、ファイルを読まずに中身だけで検査する版
+// （scripts/add-candidates.mjs が、本番のファイルを変える前に、データと履歴を一組で検査するのに使う）
+export function validateCuratedDocs({ entries, changelog, entriesRaw, changelogRaw, entriesRel = 'data/curated/entries.json', changelogRel = 'data/curated/changelog.json' }) {
+  const errors = [];
   if (!isObj(entries)) return [`${entriesRel}: 先頭はオブジェクト`];
   for (const k of Object.keys(entries)) if (!['schemaVersion', 'reviewedAt', 'items'].includes(k)) errors.push(`${entriesRel}.${k}: 定義されていない項目名`);
   if (entries.schemaVersion !== 2) errors.push(`${entriesRel}: schemaVersion は 2`);
   if (!isValidDate(entries.reviewedAt) || !notFutureJst(entries.reviewedAt)) errors.push(`${entriesRel}: reviewedAt（全体の最終確認日）が必須。未来日は不可`);
   // 決まった書式（インデント2・\u エスケープなし・キー重複なし）であること。見た目と中身のずれを防ぐ
-  for (const [rel, doc] of [[entriesRel, entries], [changelogRel, changelog]]) {
-    const raw = readFileSync(resolve(DATA_ROOT, rel), 'utf8');
+  for (const [rel, doc, raw] of [[entriesRel, entries, entriesRaw], [changelogRel, changelog, changelogRaw]]) {
     if (raw !== JSON.stringify(doc, null, 2) + '\n') errors.push(`${rel}: 決まった書式ではありません（インデント2、\\u エスケープ・重複キー・末尾の空白なし）。整形ツールで整えてください`);
   }
   errors.push(...validateItems(entries.items, { curated: true }).map((e) => `${entriesRel} ${e}`));

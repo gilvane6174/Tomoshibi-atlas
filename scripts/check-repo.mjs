@@ -104,6 +104,11 @@ function walk(dir) {
       errors.push(`${rel}: ネイティブ拡張・パッケージ設定のファイル・フォルダは置かない（インストール時に命令を実行させる手口に使われる）`);
       continue;
     }
+    // 候補の追加ツール（scripts/add-candidates.mjs）が途中で止まった印・書きかけのファイル：中途半端なデータのまま PR・公開しない
+    if (name === '.add-candidates-pending.json' || name.endsWith('.tmp-add-candidates')) {
+      errors.push(`${rel}: 候補の追加が途中で止まっています。「node scripts/add-candidates.mjs --restore」で元に戻してから進めてください`);
+      continue;
+    }
     if (st.isSymbolicLink()) errors.push(`${rel}: シンボリックリンクは置かない`);
     else if (st.isDirectory()) walk(full);
     else {

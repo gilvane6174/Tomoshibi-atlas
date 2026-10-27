@@ -273,6 +273,7 @@
   "sub.welfare": "福祉",
   "status.mixed": "{layer}：{count}件（見出しの取得 {date}／手動掲載の最終確認 {reviewed}）",
   "status.feedsMissing": "（自動取得のうち {sources} は今回は取得できませんでした。最新の情報は原典でご確認ください）",
+  "feed.jpcertRss": "JPCERT/CC",
   "feed.usgsQuakes": "米国地質調査所（USGS）",
   "feed.ncscNews": "英国NCSC",
   "feed.fsaNews": "金融庁",

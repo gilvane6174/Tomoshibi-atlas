@@ -1,6 +1,6 @@
 // 画面下の「件数と取得状態」の文言を決める（画面の部品に触らない純粋な関数。scripts/test.mjs で検査する）。
 //
-// 自動取得の見出しと手動掲載が混ざる分野（mixed：防犯・防災など）では、
+// 自動取得の見出しと手動掲載が混ざる分野（mixed：防犯・防災など）と、取得元が複数ある自動取得の分野（auto：ITセキュリティ）では、
 //   - 見出しの取得時刻と、手動掲載の最終確認日を分けて示す
 //   - 取得元の一部だけが失敗・異常のときも、成功した取得元があるかどうかに関係なく、失敗した取得元を知らせる
 //     （正常な0件＝empty は失敗として扱わない。公開版（live）以外では取得していないので知らせない）
@@ -13,7 +13,8 @@ export function statusModel({ layer, doc, meta, mode, now = Date.now() }) {
   const m = meta || {};
   const notes = [];
   // 公開版で、取得元の一部（または全部）が失敗・異常（件数が0件の場合も含めて、いつも知らせる）
-  const failed = mode === 'live' && m.kind === 'mixed' ? Object.entries(m.feeds || {}).filter(([, f]) => FAILED.has(f?.status)).map(([k]) => k) : [];
+  // 自動取得だけの分野（ITセキュリティの JPCERT/CC など）も、取得元ごとの状態があれば同じように知らせる
+  const failed = mode === 'live' && (m.kind === 'mixed' || m.kind === 'auto') ? Object.entries(m.feeds || {}).filter(([, f]) => FAILED.has(f?.status)).map(([k]) => k) : [];
   const failNote = failed.length ? [{ key: 'status.feedsMissing', sources: failed }] : [];
   if (doc?.status === 'notFetched') return { key: 'status.notFetchedShort', params: { layer }, notes: failNote };
   if (doc?.status === 'fetchFailed') return { key: 'status.fetchFailedShort', params: { layer }, notes: failNote };

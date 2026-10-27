@@ -2,7 +2,7 @@
 // 使い方: node scripts/test.mjs
 
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
@@ -18,8 +18,8 @@ import { fitCount } from './importance-rules.mjs';
 import { parseFeed, parseFeedDate } from './lib/feed.mjs';
 import { FEEDS, inspectFeed, normalizeFeedItem, decodeFeed, reiwaUpdatedDate } from './fetch-feeds.mjs';
 import { normalizeDon } from './fetch-who-don.mjs';
-import { normalizeKev, parseJpcertRdf } from './fetch-security.mjs';
-import { validateItems, validateChangelog, validateDirectoryDoc } from './validate-data.mjs';
+import { normalizeKev, parseJpcertRdf, inspectJpcertRdf } from './fetch-security.mjs';
+import { validateItems, validateChangelog, validateDirectoryDoc, validateCuratedDocs } from './validate-data.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { checkNode } from './lib/node-guard.mjs';
 import { parseSiteUrl } from './lib/seo.mjs';
@@ -78,7 +78,7 @@ test('KEV: 補充の上限（1年）以内のみ、ランサムウェアKnownは
 });
 
 test('JPCERT: 注意喚起のみ抽出、DOCTYPE/ENTITY入りは拒否', () => {
-  const xml = `<rdf:RDF><item rdf:about="x"><title>テスト注意喚起</title><link>https://www.jpcert.or.jp/at/2026/at260099.html</link><dc:date>2026-10-20T10:00+09:00</dc:date></item>
+  const xml = `<rdf:RDF xmlns:rdf="r"><channel rdf:about="c"><title>JPCERT</title></channel><item rdf:about="x"><title>テスト注意喚起</title><link>https://www.jpcert.or.jp/at/2026/at260099.html</link><dc:date>2026-10-20T10:00+09:00</dc:date></item>
   <item><title>週報</title><link>https://www.jpcert.or.jp/wr/2026/wr264001.html</link><dc:date>2026-10-20T10:00+09:00</dc:date></item>
   <item><title>偽</title><link>https://evil.example/at/x</link><dc:date>2026-10-20T10:00+09:00</dc:date></item></rdf:RDF>`;
   const items = parseJpcertRdf(xml, NOW);
@@ -149,7 +149,7 @@ test('URL許可リスト: ホスト完全一致とパス規則', () => {
 });
 
 test('JPCERT: パスを正規化してから注意喚起か判定する', () => {
-  const xml = `<rdf:RDF><item><title>x</title><link>https://www.jpcert.or.jp/at/../wr/at/</link><dc:date>2026-10-20T10:00+09:00</dc:date></item></rdf:RDF>`;
+  const xml = `<rdf:RDF><channel/><item><title>x</title><link>https://www.jpcert.or.jp/at/../wr/at/</link><dc:date>2026-10-20T10:00+09:00</dc:date></item></rdf:RDF>`;
   assert.equal(parseJpcertRdf(xml, NOW).length, 0);
 });
 
@@ -515,6 +515,54 @@ test('画面の取得状態：取得元の一部だけ失敗したときも知�
   assert.equal(statusModel({ layer: '地震', doc: { status: 'fetchFailed' }, meta: { kind: 'auto' }, mode: 'live', now }).key, 'status.fetchFailedShort');
 });
 
+test('JPCERT/CC：取得元ごとの状態（正常・正常な0件・壊れた応答・形の違う応答）を区別する', () => {
+  const wrap = (items) => `<?xml version="1.0" encoding="UTF-8"?>\n<rdf:RDF xmlns:rdf="r"><channel rdf:about="c"><title>JPCERT</title></channel>${items}</rdf:RDF>\n`;
+  const at = (n) => `<item><title>注意喚起${n}</title><link>https://www.jpcert.or.jp/at/2026/at2600${n}.html</link><dc:date>2026-10-20T10:00+09:00</dc:date></item>`;
+  const wr = '<item><title>週報</title><link>https://www.jpcert.or.jp/wr/2026/wr264001.html</link><dc:date>2026-10-20T10:00+09:00</dc:date></item>';
+  const st = (r) => quakeStatusOf({ raw: r.raw, normalized: r.items.length, errors: r.errors, valid: r.items.length });
+  assert.equal(st(inspectJpcertRdf(wrap(at(11) + wr), NOW)), 'ok');
+  assert.equal(st(inspectJpcertRdf(wrap(wr), NOW)), 'empty'); // 注意喚起がない週＝正常な0件
+  assert.equal(st(inspectJpcertRdf(wrap(''), NOW)), 'empty');
+  assert.equal(st(inspectJpcertRdf(wrap('<item><title></title><link></link></item><item>x</item>'), NOW)), 'invalid'); // 項目が壊れている
+  assert.throws(() => inspectJpcertRdf('<html><body>maintenance</body></html>', NOW)); // RSS ではない応答
+  assert.throws(() => inspectJpcertRdf(wrap(at(11)).replace('</rdf:RDF>', ''), NOW)); // 途中で切れた応答
+  assert.throws(() => inspectJpcertRdf('', NOW));
+  assert.throws(() => inspectJpcertRdf('<!DOCTYPE x>' + wrap(at(11)), NOW));
+});
+
+test('ITセキュリティ：CISA が取れて JPCERT/CC だけ失敗したら、CISA の情報は残し、画面に JPCERT/CC の失敗を出す', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-sec-'));
+  try {
+    cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
+    const snap = join(tmp, 'snap');
+    mkdirSync(snap);
+    const today = new Date().toISOString().slice(0, 10);
+    writeFileSync(join(snap, 'cisa-kev.json'), JSON.stringify([{ cveID: 'CVE-2026-11111', vendorProject: 'Example', product: 'Server', vulnerabilityName: 'Test', dateAdded: today, requiredAction: 'Apply updates per vendor instructions.', knownRansomwareCampaignUse: 'Unknown' }]));
+    const build = () => spawnSync(process.execPath, [join(root, 'scripts/build.mjs'), '--snapshot'], { env: { ...process.env, TA_TARGET_ROOT: tmp, TA_SNAPSHOT_DIR: snap, TA_SNAPSHOT_AT: new Date().toISOString() }, encoding: 'utf8' });
+    const meta = () => JSON.parse(readFileSync(join(tmp, '_site/data/meta.json'), 'utf8')).layers.security;
+    const items = () => JSON.parse(readFileSync(join(tmp, '_site/data/layers/security.json'), 'utf8')).items;
+    for (const [xml, expected] of [['<html>maintenance</html>', 'failed'], ['<?xml version="1.0"?><rdf:RDF><channel/><item><title></title></item></rdf:RDF>', 'invalid']]) {
+      writeFileSync(join(snap, 'jpcertRss.xml'), xml);
+      const r = build();
+      assert.equal(r.status, 0, r.stderr + r.stdout);
+      assert.equal(meta().feeds.jpcertRss.status, expected);
+      assert.ok(items().some((x) => x.id === 'kev-cve-2026-11111'), 'CISA の情報が残っていない');
+      // 公開版（live）の画面の文言：取得元の名前つきで欠落を知らせる
+      const s = statusModel({ layer: 'ITセキュリティ', doc: { status: 'ok' }, meta: meta(), mode: 'live', now: Date.now() });
+      assert.deepEqual(s.notes.find((n) => n.key === 'status.feedsMissing')?.sources, ['jpcertRss']);
+    }
+    // 正常な取得：失敗の表示なし、JPCERT/CC の見出しも入る
+    writeFileSync(join(snap, 'jpcertRss.xml'), `<?xml version="1.0"?><rdf:RDF><channel/><item><title>テスト注意喚起</title><link>https://www.jpcert.or.jp/at/2026/at260099.html</link><dc:date>${today}T10:00+09:00</dc:date></item></rdf:RDF>`);
+    assert.equal(build().status, 0);
+    assert.equal(meta().feeds.jpcertRss.status, 'ok');
+    assert.ok(items().some((x) => x.id.startsWith('jpcert-')));
+    assert.equal(statusModel({ layer: 'x', doc: { status: 'ok' }, meta: meta(), mode: 'live', now: Date.now() }).notes.filter((n) => n.key === 'status.feedsMissing').length, 0);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
 test('検査の回避・ワーム関連：skip-checks などを見つけ、check-repo が関連ファイルと検査後の続行を拒否する', () => {
   for (const m of ['skip-checks: true', 'Skip-Checks:TRUE', 'fix [skip ci]', '[ci skip]', '[ Skip Actions ]']) assert.ok(SKIP_CHECKS.test(m), m);
   for (const m of ['skip checks later', 'ci: skip flaky test', 'skip-checks: false']) assert.ok(!SKIP_CHECKS.test(m), m);
@@ -552,7 +600,7 @@ test('検査の回避・ワーム関連：skip-checks などを見つけ、check
   }
 });
 
-test('週次の候補の追加（add-candidates）：検査を通る項目だけを追加し、重複・不正があれば何も変えない', () => {
+test('週次の候補の追加（add-candidates）：検査を通る項目だけを追加し、全体の確認日は変えず、失敗・中断しても元に戻せる', () => {
   const root = fileURLToPath(new URL('..', import.meta.url));
   const tmp = mkdtempSync(join(tmpdir(), 'ta-add-'));
   try {
@@ -562,26 +610,104 @@ test('週次の候補の追加（add-candidates）：検査を通る項目だけ
     const base = items0.find((x) => x.layer === 'crime') || items0[0];
     const L = base.layer;
     const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
-    const ok = { ...base, id: `${L}-2026-test-weekly-candidate`, topic: 'test-weekly-candidate', checkedAt: today };
+    const ok = { ...base, id: `${L}-2026-test-weekly-candidate`, topic: 'test-weekly-candidate', checkedAt: today, importance: 'minor' };
     const f = join(tmp, 'cand.json');
-    const run = (...a) => spawnSync(process.execPath, [join(root, 'scripts/add-candidates.mjs'), f, ...a], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
-    const before = readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8');
+    const E = join(tmp, 'data/curated/entries.json');
+    const C = join(tmp, 'data/curated/changelog.json');
+    const P = join(tmp, 'data/curated/.add-candidates-pending.json');
+    const run = (args, extraEnv = {}) => spawnSync(process.execPath, [join(root, 'scripts/add-candidates.mjs'), ...args], { env: { ...process.env, TA_TARGET_ROOT: tmp, ...extraEnv }, encoding: 'utf8' });
+    const snap = () => [readFileSync(E, 'utf8'), readFileSync(C, 'utf8')];
+    const clean = () => !existsSync(P) && !existsSync(E + '.tmp-add-candidates') && !existsSync(C + '.tmp-add-candidates');
+    const before = snap();
+    const reviewedBefore = JSON.parse(before[0]).reviewedAt;
     writeFileSync(f, JSON.stringify({ items: [ok] }));
-    assert.equal(run().status, 0); // 確認だけ
-    assert.equal(readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8'), before);
-    assert.equal(run('--write').status, 0);
-    const after = JSON.parse(readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8'));
+    // 確認だけ：何も変えない
+    assert.equal(run([f]).status, 0);
+    assert.deepEqual(snap(), before);
+    // 2つ目の書き込み（更新履歴）で失敗：両方とも元のまま・印も一時ファイルも残らない
+    let r = run([f, '--write'], { TA_TEST_FAIL_AT: 'data/curated/changelog.json' });
+    assert.notEqual(r.status, 0);
+    assert.deepEqual(snap(), before, '2つ目の書き込みの失敗で元に戻っていない');
+    assert.ok(clean());
+    // 1つ目の書き込みで失敗
+    r = run([f, '--write'], { TA_TEST_FAIL_AT: 'data/curated/entries.json' });
+    assert.notEqual(r.status, 0);
+    assert.deepEqual(snap(), before);
+    assert.ok(clean());
+    // 正常な追加：全体の最終確認日（reviewedAt）は変えない。追加した項目と更新履歴だけが増える
+    r = run([f, '--write']);
+    assert.equal(r.status, 0, r.stderr);
+    const after = JSON.parse(readFileSync(E, 'utf8'));
+    assert.equal(after.reviewedAt, reviewedBefore, '候補の追加だけで全体の確認日が変わった');
     assert.ok(after.items.some((x) => x.id === ok.id));
-    const log = JSON.parse(readFileSync(join(tmp, 'data/curated/changelog.json'), 'utf8'));
-    assert.deepEqual(log.entries.at(-1).ids, [ok.id]);
-    // 同じ id の再追加・検査に通らない項目は拒否し、ファイルを変えない
-    const now = readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8');
-    assert.notEqual(run('--write').status, 0);
-    writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-bad`, source: { name: 'x', url: 'http://example.com/' } }] }));
-    assert.notEqual(run('--write').status, 0);
-    writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-op`, extra: 'x' }] }));
-    assert.notEqual(run('--write').status, 0);
-    assert.equal(readFileSync(join(tmp, 'data/curated/entries.json'), 'utf8'), now);
+    assert.deepEqual(JSON.parse(readFileSync(C, 'utf8')).entries.at(-1).ids, [ok.id]);
+    assert.ok(clean());
+    // 同じ id の再追加・検査に通らない項目・定義されていない項目名は拒否し、ファイルを変えない
+    const now = snap();
+    assert.notEqual(run([f, '--write']).status, 0);
+    for (const bad of [{ ...ok, id: `${L}-2026-test-bad`, source: { name: 'x', url: 'http://example.com/' } }, { ...ok, id: `${L}-2026-test-op`, extra: 'x' }]) {
+      writeFileSync(f, JSON.stringify({ items: [bad] }));
+      assert.notEqual(run([f, '--write']).status, 0);
+    }
+    writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-dup` }, { ...ok, id: `${L}-2026-test-dup` }] }));
+    assert.notEqual(run([f]).status, 0, '候補の中の id の重複を拒否していない');
+    assert.deepEqual(snap(), now);
+    // 完成予定の更新履歴に異常があれば、書き込む前に見つける（validateCuratedDocs）
+    const e0 = JSON.parse(now[0]);
+    const c0 = JSON.parse(now[1]);
+    const badLog = { ...c0, entries: [...c0.entries, { date: today, by: 'someone', summary: { ja: 'x', en: 'x' }, ids: [] }] };
+    assert.ok(validateCuratedDocs({ entries: e0, changelog: badLog, entriesRaw: now[0], changelogRaw: JSON.stringify(badLog, null, 2) + '\n' }).length > 0);
+    assert.equal(validateCuratedDocs({ entries: e0, changelog: c0, entriesRaw: now[0], changelogRaw: now[1] }).length, 0);
+    // 強制終了などで途中まで書かれた状態（データだけ新しく、印が残る）：ツールは追加を断り、check-repo も失敗し、--restore で元に戻る
+    const bdir = mkdtempSync(join(tmpdir(), 'ta-add-bk-'));
+    writeFileSync(join(bdir, 'entries.json'), now[0]);
+    writeFileSync(join(bdir, 'changelog.json'), now[1]);
+    writeFileSync(P, JSON.stringify({ startedAt: new Date().toISOString(), backupDir: bdir, ids: ['x'] }));
+    writeFileSync(E, JSON.stringify({ ...e0, items: [...e0.items, { ...ok, id: `${L}-2026-test-half` }] }, null, 2) + '\n');
+    writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-next` }] }));
+    assert.notEqual(run([f, '--write']).status, 0, '途中で止まった印があるのに追加した');
+    cpSync(join(root, 'scripts'), join(tmp, 'scripts'), { recursive: true });
+    cpSync(join(root, 'site'), join(tmp, 'site'), { recursive: true });
+    const repo = spawnSync(process.execPath, [join(root, 'scripts/check-repo.mjs')], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
+    assert.notEqual(repo.status, 0, 'check-repo が途中で止まった印を見逃した');
+    assert.equal(run(['--restore']).status, 0);
+    assert.deepEqual(snap(), now, '--restore で元に戻っていない');
+    assert.ok(clean());
+    rmSync(bdir, { recursive: true, force: true });
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('週次の候補の追加：AI（--by ai-curator）が作った2ファイルの差分は、AI・bot の範囲検査に通る', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-add-pr-'));
+  try {
+    cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
+    const g = (...a) => spawnSync('git', a, { cwd: tmp, encoding: 'utf8', env: { ...process.env, GIT_AUTHOR_NAME: 'ai-bot-test', GIT_AUTHOR_EMAIL: '1+ai-bot-test@users.noreply.github.com', GIT_COMMITTER_NAME: 'ai-bot-test', GIT_COMMITTER_EMAIL: '1+ai-bot-test@users.noreply.github.com' } });
+    g('init', '-q', '-b', 'main');
+    g('add', '-A');
+    g('commit', '-q', '-m', 'base');
+    const baseSha = g('rev-parse', 'HEAD').stdout.trim();
+    const items0 = readJson('data/curated/entries.json').items;
+    const base = items0.find((x) => x.layer === 'crime') || items0[0];
+    const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
+    // AI は approved（運用者の承認済み）を付けられないので、借りた項目から外す
+    const cand = { ...base, id: `${base.layer}-2026-test-ai-candidate`, topic: 'test-ai-candidate', checkedAt: today, importance: 'minor', tags: (base.tags || []).filter((t) => t !== 'approved') };
+    writeFileSync(join(tmpdir(), 'ta-ai-cand.json'), JSON.stringify({ items: [cand] }));
+    const r = spawnSync(process.execPath, [join(tmp, 'scripts/add-candidates.mjs'), join(tmpdir(), 'ta-ai-cand.json'), '--write', '--by', 'ai-curator'], { cwd: tmp, encoding: 'utf8' });
+    assert.equal(r.status, 0, r.stderr);
+    g('add', '-A');
+    g('commit', '-q', '-m', 'Add a weekly candidate');
+    const headSha = g('rev-parse', 'HEAD').stdout.trim();
+    const scope = spawnSync(process.execPath, [join(tmp, 'scripts/check-pr-scope.mjs')], {
+      cwd: tmp,
+      encoding: 'utf8',
+      env: { ...process.env, GITHUB_ACTIONS: '', PR_AUTHOR: 'ai-bot-test', AI_ACCOUNT_LOGINS: 'ai-bot-test', MAINTAINER_LOGIN: 'owner-test', BASE_SHA: baseSha, HEAD_SHA: headSha, HEAD_REF: 'curated/test', BASE_REF: 'main', PR_TITLE: 'Add a weekly candidate', PR_BODY: '', REPO: '', HEAD_REPO: '' },
+    });
+    assert.equal(scope.status, 0, scope.stderr + scope.stdout);
+    assert.match(scope.stdout, /AI・bot・外部/);
+    rmSync(join(tmpdir(), 'ta-ai-cand.json'), { force: true });
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }

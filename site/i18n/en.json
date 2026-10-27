@@ -273,6 +273,7 @@
   "sub.welfare": "Welfare",
   "status.mixed": "{layer}: {count} items (headlines retrieved {date}; manual items last reviewed {reviewed})",
   "status.feedsMissing": "(automatic headlines from {sources} could not be retrieved this time; please check the original sources)",
+  "feed.jpcertRss": "JPCERT/CC",
   "feed.usgsQuakes": "USGS",
   "feed.ncscNews": "UK NCSC",
   "feed.fsaNews": "Japan FSA",

@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
+      actions: read # CodeQL の解析が実行中のワークフローの情報を読むために必要（2026-10-25 の実行は、これが無く「Resource not accessible by integration」で失敗）
       contents: read
       security-events: write
     steps:

@@ -137,6 +137,17 @@
 6. PR を作り、テンプレートを全項目埋める
 7. 監査担当（4種）と運用者のレビューを待つ。修正依頼には同じブランチで対応する。main が進んだら取り込む（rebase または merge）。確認から3日以上たって CI が日付で失敗したら、**原典を開き直して確認してから** `checkedAt` と更新履歴の日付を直す（日付だけを書き換えない）
 
+## 週次の候補をまとめて追加する（`scripts/add-candidates.mjs`、v1.2.5〜）
+
+週次の定期タスクが作る `candidates-<日付>.json`（`{"items":[…]}`、1ファイル10件まで）から、採用する項目だけを残して使う。
+
+1. `node scripts/add-candidates.mjs <ファイル>`：確認だけ。完成予定の entries.json と changelog.json を一組で検査する（ファイルは変えない）
+2. `node scripts/add-candidates.mjs <ファイル> --write`：追加する。AI・bot が実行するときは `--by ai-curator`（`operator` を使わない）
+3. いつもどおり PR を作り、差分を読んでから取り込む
+
+- 全体の最終確認日（`reviewedAt`）は**変えない**。新しい項目の `checkedAt` と更新履歴だけが新しくなる。全体を見直したときだけ、運用者が別に `reviewedAt` を更新する（AI・bot は変えられない）
+- 書き込みの途中で失敗したら、ツールが元に戻す。強制終了などで「書き込み中」の印（`data/curated/.add-candidates-pending.json`）が残ったときは、`node scripts/add-candidates.mjs --restore` で戻す（印があるあいだは check-repo が失敗し、PR・公開できない）
+
 ## 表記のルール
 
 - 「障害」は「障がい」と書く（例：障がい者福祉、発達障がい、摂食障がい）。システムの故障などの意味では「不具合」「トラブル」を使う

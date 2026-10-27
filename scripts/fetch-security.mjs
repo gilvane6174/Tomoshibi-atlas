@@ -56,20 +56,34 @@ async function fetchKev() {
 
 // JPCERT/CC の RSS 1.0（RDF）から item の title/link/dc:date だけを取り出す。
 // 汎用XMLパーサは使わず、必要な要素だけを厳格な正規表現で抜く。DOCTYPE/ENTITY を含む応答は拒否。
-export function parseJpcertRdf(xml, now = Date.now()) {
+// 戻り値：{ items, raw, errors }
+//   raw    … 応答の item の数
+//   errors … 見出し・リンク・日付が欠けた／読めない item の数（壊れた応答の疑い）
+//   週報など注意喚起以外の item、古い item、ほかのサイトへのリンクは「対象外」として数えない（正常な除外）
+// 応答が RSS 1.0 の形（rdf:RDF と channel）でなければ例外（＝取得失敗）にする
+export function inspectJpcertRdf(xml, now = Date.now()) {
+  if (typeof xml !== 'string' || !xml.trim()) throw new Error('JPCERT RSS: empty response');
   if (/<!DOCTYPE|<!ENTITY/i.test(xml)) throw new Error('JPCERT RSS: DOCTYPE/ENTITY is not allowed');
+  if (!/<rdf:RDF[\s>]/.test(xml) || !/<\/rdf:RDF>\s*$/.test(xml) || !/<channel\b/.test(xml)) throw new Error('JPCERT RSS: not an RSS 1.0 (RDF) document');
   const items = [];
+  let raw = 0;
+  let errors = 0;
   const decode = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&');
   const pick = (block, tag) => {
     const m = block.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`));
     return m ? decode(m[1]).trim() : '';
   };
   for (const m of xml.matchAll(/<item\b[^>]*>([\s\S]*?)<\/item>/g)) {
+    raw++;
     const title = cleanText(stripTags(pick(m[1], 'title')), 200);
-    const raw = pick(m[1], 'link');
+    const raw0 = pick(m[1], 'link');
     const date = pick(m[1], 'dc:date');
-    if (!title || !isAllowedUrl(raw) || !isValidDate(date)) continue;
-    const u = new URL(raw); // URL として正規化（../ などを解決）してから判定する
+    if (!title || !raw0 || !isValidDate(date)) {
+      errors++;
+      continue;
+    }
+    if (!isAllowedUrl(raw0)) continue; // 許可していない場所へのリンクは対象外
+    const u = new URL(raw0); // URL として正規化（../ などを解決）してから判定する
     if (u.hostname !== 'www.jpcert.or.jp') continue;
     // 注意喚起（/at/年/…）だけを対象にする
     if (!/^\/at\/\d{4}\/[a-z0-9_-]+\.html$/i.test(u.pathname)) continue;
@@ -87,23 +101,18 @@ export function parseJpcertRdf(xml, now = Date.now()) {
       source: { name: 'JPCERT/CC 注意喚起', url: link },
     });
   }
-  return items;
+  return { items, raw, errors };
+}
+export const parseJpcertRdf = (xml, now = Date.now()) => inspectJpcertRdf(xml, now).items;
+
+// JPCERT/CC：build.mjs が補助の取得元として扱う（失敗しても CISA の情報は残し、画面に「取得できなかった」と出す）
+export async function fetchJpcert(now = Date.now()) {
+  return inspectJpcertRdf(await fetchText(fetchEndpoints.jpcertRss), now);
 }
 
-async function fetchJpcert() {
-  return parseJpcertRdf(await fetchText(fetchEndpoints.jpcertRss));
-}
-
+// CISA KEV（ITセキュリティの主な取得元。取得できなければ公開を止める）
 export async function fetchSecurity() {
-  const out = [];
-  if (enabledFetchers.cisaKev) out.push(...(await fetchKev()));
-  // JPCERT/CC の取得に失敗しても、CISA の情報は残す（取得元ごとに分ける）
-  if (enabledFetchers.jpcertRss)
-    try {
-      out.push(...(await fetchJpcert()));
-    } catch (e) {
-      console.warn(`JPCERT/CC の取得に失敗（CISA の情報はそのまま表示）: ${e.message}`);
-    }
+  const out = enabledFetchers.cisaKev ? await fetchKev() : [];
   out.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   return out;
 }

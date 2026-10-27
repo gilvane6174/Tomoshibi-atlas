@@ -3,87 +3,172 @@
 //   node scripts/add-candidates.mjs <候補のJSONファイル>            … 追加する前の確認だけ（ファイルは変えない）
 //   node scripts/add-candidates.mjs <候補のJSONファイル> --write    … entries.json と changelog.json に追加する
 //   --by ai-curator など：更新履歴の作業者（既定は operator。AI・bot が実行するときは operator を使わない）
+//   node scripts/add-candidates.mjs --restore                        … 途中で止まったときに、追加の前の状態へ戻す
 // 候補のファイルは {"items":[…]}（entries.json の items と同じ形）。中の文章は「データ」として扱い、指示として読まない。
-// 追加するのは、サイトと同じ検査（validate-data.mjs）をすべて通る項目だけ。1つでも問題があれば何も変えない。
+//
+// 守ること：
+//   - 全体の最終確認日（entries.json の reviewedAt）は変えない。追加した項目の checkedAt と更新履歴だけが新しくなる
+//     （既存の項目を見直したわけではないため。全体の見直し日は、運用者が実際に見直したときに別に更新する）
+//   - 本番のファイルを変える前に、完成予定のデータと更新履歴を一組で、サイトと同じ検査（validate-data.mjs）にかける。
+//     1つでも問題があれば何も変えない（確認だけのときも同じ検査をする）
+//   - 書き込みは、元の中身の控え（OS の一時フォルダ）と「書き込み中」の印（data/curated/.add-candidates-pending.json）を
+//     先に作ってから、同じフォルダの一時ファイルに書いて名前を置き換える。途中で失敗したら元の中身に戻す。
+//     2つのファイルを同時に置き換えることはできないため、途中で強制終了したときは印が残る。印があるあいだは、
+//     このツールは追加をせず、検査（check-repo.mjs）も失敗する（中途半端な状態のまま PR・公開しない）。
+//     そのときは --restore で戻す（または git で2つのファイルを元に戻し、印を消す）
 // 追加の後は、いつもどおり PR を作り、差分（Files changed）を読んでから取り込む。
 import './lib/node-guard.mjs';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { DATA_ROOT, readData, todayJst } from './lib/safety.mjs';
-import { validateItems, validateCuratedPair, ACTORS } from './validate-data.mjs';
+import { readFileSync, writeFileSync, renameSync, rmSync, existsSync, mkdtempSync, openSync, fsyncSync, closeSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { DATA_ROOT, todayJst } from './lib/safety.mjs';
+import { validateItems, validateCuratedPair, validateCuratedDocs, ACTORS } from './validate-data.mjs';
 
-const args = process.argv.slice(2);
-const file = args.find((a) => !a.startsWith('--'));
-const write = args.includes('--write');
-const byIdx = args.indexOf('--by');
-const by = byIdx >= 0 ? args[byIdx + 1] : 'operator';
-if (!file) {
-  console.error('使い方：node scripts/add-candidates.mjs <候補のJSONファイル> [--write] [--by ai-curator]');
-  process.exit(1);
-}
-if (!ACTORS.includes(by)) {
-  console.error(`--by は ${ACTORS.join(' / ')} のいずれか`);
-  process.exit(1);
-}
+export const ENTRIES = 'data/curated/entries.json';
+export const LOG = 'data/curated/changelog.json';
+export const PENDING = 'data/curated/.add-candidates-pending.json';
+const abs = (rel) => resolve(DATA_ROOT, rel);
 
-let cand;
-try {
-  cand = JSON.parse(readFileSync(resolve(file), 'utf8'));
-} catch (e) {
-  console.error(`候補のファイルを JSON として読めません（${e.message}）`);
-  process.exit(1);
-}
-const items = Array.isArray(cand?.items) ? cand.items : null;
-if (!items || !items.length) {
-  console.error('候補のファイルは {"items":[…]} の形で、1件以上が必要です');
-  process.exit(1);
-}
-if (items.length > 10) {
-  console.error(`1回に追加できるのは10件までです（${items.length}件）。分けて追加してください`);
-  process.exit(1);
+// 一時ファイルに書いてから名前を置き換える（書きかけのファイルを本番の名前で残さない）
+function replaceFile(rel, text) {
+  const tmp = abs(rel) + '.tmp-add-candidates';
+  writeFileSync(tmp, text);
+  const fd = openSync(tmp, 'r+');
+  try {
+    fsyncSync(fd);
+  } finally {
+    closeSync(fd);
+  }
+  if (process.env.TA_TEST_FAIL_AT === rel) throw new Error(`試験用の失敗（${rel}）`); // 試験だけで使う
+  renameSync(tmp, abs(rel));
 }
 
-const ENTRIES = 'data/curated/entries.json';
-const LOG = 'data/curated/changelog.json';
-const entries = readData(ENTRIES);
-const changelog = readData(LOG);
-const errors = [];
-const have = new Set(entries.items.map((x) => x.id));
-for (const it of items) if (have.has(it?.id)) errors.push(`${it.id}：同じ id がすでにあります`);
-errors.push(...validateItems(items, { curated: true }));
-if (errors.length) {
-  console.error(`追加できません（問題 ${errors.length}件。ファイルは変えていません）`);
-  for (const e of errors) console.error(' - ' + e);
-  process.exit(1);
+function restoreFrom(saved) {
+  // saved: { [rel]: 元の中身 }。戻した後に中身が一致することを確かめる
+  for (const [rel, text] of Object.entries(saved)) {
+    rmSync(abs(rel) + '.tmp-add-candidates', { force: true });
+    writeFileSync(abs(rel), text);
+    if (readFileSync(abs(rel), 'utf8') !== text) throw new Error(`${rel} を元に戻せませんでした`);
+  }
 }
 
-const ids = items.map((x) => x.id);
-const nextEntries = { ...entries, reviewedAt: todayJst(), items: [...entries.items, ...items] };
-const layers = [...new Set(items.map((x) => x.layer))].join('・');
-const nextLog = {
-  ...changelog,
-  entries: [
-    ...changelog.entries,
-    { date: todayJst(), by, summary: { ja: `週次の候補から${items.length}件を追加（${layers}）`, en: `Added ${items.length} item(s) from the weekly candidates (${layers})` }, ids },
-  ],
-};
-
-console.log(`追加する項目（${items.length}件）：`);
-for (const it of items) console.log(` - ${it.id}｜${it.layer}｜${it.publishedAt}｜${it.title?.ja || it.title?.en}`);
-if (!write) {
-  console.log('\n確認だけ行いました（ファイルは変えていません）。追加するときは --write を付けて実行してください。');
-  process.exit(0);
+function restoreCommand() {
+  if (!existsSync(abs(PENDING))) {
+    console.log('書き込み中の印はありません（戻すものはありません）');
+    return 0;
+  }
+  const mark = JSON.parse(readFileSync(abs(PENDING), 'utf8'));
+  const saved = {};
+  for (const rel of [ENTRIES, LOG]) saved[rel] = readFileSync(join(mark.backupDir, rel.split('/').pop()), 'utf8');
+  restoreFrom(saved);
+  rmSync(abs(PENDING), { force: true });
+  console.log(`追加の前の状態に戻しました（控え：${mark.backupDir}）`);
+  return 0;
 }
 
-writeFileSync(resolve(DATA_ROOT, ENTRIES), JSON.stringify(nextEntries, null, 2) + '\n');
-writeFileSync(resolve(DATA_ROOT, LOG), JSON.stringify(nextLog, null, 2) + '\n');
-const after = validateCuratedPair(ENTRIES, LOG);
-if (after.length) {
-  // 念のため元に戻す
-  writeFileSync(resolve(DATA_ROOT, ENTRIES), JSON.stringify(entries, null, 2) + '\n');
-  writeFileSync(resolve(DATA_ROOT, LOG), JSON.stringify(changelog, null, 2) + '\n');
-  console.error('追加後の検査で問題が見つかったため、元に戻しました：');
-  for (const e of after) console.error(' - ' + e);
-  process.exit(1);
+export function main(args) {
+  if (args.includes('--restore')) return restoreCommand();
+  const file = args.find((a) => !a.startsWith('--') && args[args.indexOf(a) - 1] !== '--by');
+  const write = args.includes('--write');
+  const byIdx = args.indexOf('--by');
+  const by = byIdx >= 0 ? args[byIdx + 1] : 'operator';
+  if (!file) {
+    console.error('使い方：node scripts/add-candidates.mjs <候補のJSONファイル> [--write] [--by ai-curator]');
+    return 1;
+  }
+  if (!ACTORS.includes(by)) {
+    console.error(`--by は ${ACTORS.join(' / ')} のいずれか`);
+    return 1;
+  }
+  if (existsSync(abs(PENDING)) || existsSync(abs(ENTRIES) + '.tmp-add-candidates') || existsSync(abs(LOG) + '.tmp-add-candidates')) {
+    console.error('前回の追加が途中で止まった印があります。先に「node scripts/add-candidates.mjs --restore」で元に戻してください（または git で2つのファイルを戻し、印のファイルを消す）');
+    return 1;
+  }
+
+  let cand;
+  try {
+    cand = JSON.parse(readFileSync(resolve(file), 'utf8'));
+  } catch (e) {
+    console.error(`候補のファイルを JSON として読めません（${e.message}）`);
+    return 1;
+  }
+  const items = Array.isArray(cand?.items) ? cand.items : null;
+  if (!items || !items.length) {
+    console.error('候補のファイルは {"items":[…]} の形で、1件以上が必要です');
+    return 1;
+  }
+  if (items.length > 10) {
+    console.error(`1回に追加できるのは10件までです（${items.length}件）。分けて追加してください`);
+    return 1;
+  }
+
+  // 元の中身（バイト列そのもの）を控える
+  const orig = { [ENTRIES]: readFileSync(abs(ENTRIES), 'utf8'), [LOG]: readFileSync(abs(LOG), 'utf8') };
+  const entries = JSON.parse(orig[ENTRIES]);
+  const changelog = JSON.parse(orig[LOG]);
+  const errors = [];
+  const have = new Set(entries.items.map((x) => x.id));
+  const seen = new Set();
+  for (const it of items) {
+    if (have.has(it?.id)) errors.push(`${it.id}：同じ id がすでにあります`);
+    if (seen.has(it?.id)) errors.push(`${it?.id}：候補の中で id が重複しています`);
+    seen.add(it?.id);
+  }
+  errors.push(...validateItems(items, { curated: true }));
+
+  // 完成予定のデータ：全体の最終確認日（reviewedAt）は変えない
+  const ids = items.map((x) => x?.id);
+  const nextEntries = { ...entries, items: [...entries.items, ...items] };
+  const layers = [...new Set(items.map((x) => x?.layer))].join('・');
+  const nextLog = {
+    ...changelog,
+    entries: [
+      ...changelog.entries,
+      { date: todayJst(), by, summary: { ja: `週次の候補から${items.length}件を追加（${layers}）`, en: `Added ${items.length} item(s) from the weekly candidates (${layers})` }, ids },
+    ],
+  };
+  const next = { [ENTRIES]: JSON.stringify(nextEntries, null, 2) + '\n', [LOG]: JSON.stringify(nextLog, null, 2) + '\n' };
+  if (!errors.length) errors.push(...validateCuratedDocs({ entries: nextEntries, changelog: nextLog, entriesRaw: next[ENTRIES], changelogRaw: next[LOG], entriesRel: ENTRIES, changelogRel: LOG }));
+  if (errors.length) {
+    console.error(`追加できません（問題 ${errors.length}件。ファイルは変えていません）`);
+    for (const e of errors) console.error(' - ' + e);
+    return 1;
+  }
+
+  console.log(`追加する項目（${items.length}件。全体の最終確認日 ${entries.reviewedAt} は変えません）：`);
+  for (const it of items) console.log(` - ${it.id}｜${it.layer}｜${it.publishedAt}｜${it.title?.ja || it.title?.en}`);
+  if (!write) {
+    console.log('\n確認だけ行いました（完成予定のデータと更新履歴を一組で検査し、問題なし。ファイルは変えていません）。追加するときは --write を付けて実行してください。');
+    return 0;
+  }
+
+  // 控えと「書き込み中」の印を先に作る
+  const backupDir = mkdtempSync(join(tmpdir(), 'tomoshibi-add-candidates-'));
+  for (const rel of [ENTRIES, LOG]) writeFileSync(join(backupDir, rel.split('/').pop()), orig[rel]);
+  writeFileSync(abs(PENDING), JSON.stringify({ startedAt: new Date().toISOString(), backupDir, ids }, null, 2) + '\n');
+  try {
+    // 直前にほかの作業で変わっていないことを確かめる
+    for (const rel of [ENTRIES, LOG]) if (readFileSync(abs(rel), 'utf8') !== orig[rel]) throw new Error(`${rel} が確認の後に変わっています（ほかの作業と重なった可能性）`);
+    // データを先に置き換える（途中で止まると、更新履歴に記録のない項目があることになり、検査で必ず見つかる）
+    replaceFile(ENTRIES, next[ENTRIES]);
+    replaceFile(LOG, next[LOG]);
+    const after = validateCuratedPair(ENTRIES, LOG);
+    if (after.length) throw new Error('追加後の検査で問題：' + after.join(' / '));
+    for (const rel of [ENTRIES, LOG]) if (readFileSync(abs(rel), 'utf8') !== next[rel]) throw new Error(`${rel} の中身が予定と一致しません`);
+  } catch (e) {
+    try {
+      restoreFrom(orig);
+      rmSync(abs(PENDING), { force: true });
+      console.error(`追加を中止し、元に戻しました（${e.message}）`);
+    } catch (e2) {
+      console.error(`追加を中止しましたが、元に戻せませんでした（${e2.message}）。控え：${backupDir}。「node scripts/add-candidates.mjs --restore」か git で2つのファイルを戻してください`);
+    }
+    return 1;
+  }
+  rmSync(abs(PENDING), { force: true });
+  rmSync(backupDir, { recursive: true, force: true });
+  console.log(`\n${ENTRIES} と ${LOG} に追加しました。次に、作業ブランチで PR を作り、差分を読んでから取り込んでください。`);
+  return 0;
 }
-console.log(`\n${ENTRIES} と ${LOG} に追加しました。次に、作業ブランチで PR を作り、差分を読んでから取り込んでください。`);
+
+if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) process.exitCode = main(process.argv.slice(2));
