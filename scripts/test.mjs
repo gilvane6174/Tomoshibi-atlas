@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
-import { collectUrls, visibleLength, mdSafe } from './check-links.mjs';
+import { collectUrls, visibleLength, mdSafe, judgeContent } from './check-links.mjs';
 import { readNoFollow } from './lib/safety.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { statusModel } from '../site/js/status.js';
@@ -923,6 +923,24 @@ test('コード検査の指摘への対応：シンボリックリンクを辿�
   assert.equal(visibleLength('<p>abc</p>'), 3);
   assert.equal(visibleLength('<scr<script>ipt>x'), 4); // タグの記号は1つも残らない
   assert.ok(!/[\[\]()<>`]/.test(mdSafe('x](javascript:1) <img src=x> `c`')));
+});
+
+test('リンク確認の改ざん・停止の判定：公的機関の普通のページで誤検知せず、本物の兆候は拾う', () => {
+  const long = 'お知らせ '.repeat(800);
+  const page = 'https://www.example.go.jp/a';
+  // 誤検知しない
+  assert.equal(judgeContent(`<p>Find a specialist near you. Socialist history.</p>${long}`, page), '');
+  assert.equal(judgeContent(`<p>闇バイトに注意してください。オンラインカジノは違法です。</p>${long}`, page), '');
+  assert.equal(judgeContent(`<script>var img="data:image/png;base64,QtogelXcialisZ";</script><style>.viagra{}</style>${long}`, page), '');
+  assert.equal(judgeContent(`<p>システムメンテナンス中はご利用いただけません（予定）。</p>${long}`, page), '');
+  assert.equal(judgeContent(`<a href="/kaigi">闇バイト対策</a>${long}`, page), '');
+  // 拾う
+  assert.equal(judgeContent(`<div style="display:none">Slot Gacor terpercaya</div>${long}`, page), 'spam');
+  assert.equal(judgeContent(`<a href="https://bad.example/x">オンラインカジノ</a>${long}`, page), 'spam');
+  assert.equal(judgeContent(`<a href="https://bad.example/togel">click</a>${long}`, page), 'spam');
+  assert.equal(judgeContent('<h1>ただいまメンテナンス中です</h1>', page), 'parked');
+  assert.equal(judgeContent('<p>This domain is for sale</p>', page), 'parked');
+  assert.equal(judgeContent('<!-- <script> --><p>Buy viagra</p>', page), 'spam');
 });
 
 console.log(`\n${n} tests passed`);

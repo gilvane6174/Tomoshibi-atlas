@@ -448,6 +448,10 @@
       "label": "各国の公的機関（2026-10-25 確認）"
     },
     {
+      "host": "www.msp.gov.ua",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
+    },
+    {
       "host": "ncdc.gov.ng",
       "label": "各国の公的機関（2026-10-25 確認）"
     },
@@ -516,12 +520,20 @@
       "label": "各国の公的機関（2026-10-25 確認）"
     },
     {
+      "host": "btcirt.bt",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
+    },
+    {
       "host": "www.bundesgesundheitsministerium.de",
       "label": "各国の公的機関（2026-10-25 確認）"
     },
     {
       "host": "www.cert.br",
       "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "cert.br",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
     },
     {
       "host": "www.cert.hr",
@@ -672,8 +684,16 @@
       "label": "各国の公的機関（2026-10-25 確認）"
     },
     {
+      "host": "www.cyber.gc.ca",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
+    },
+    {
       "host": "dss.gov.au",
       "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.dss.gov.au",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
     },
     {
       "host": "en.nhc.gov.cn",
@@ -706,6 +726,10 @@
     {
       "host": "mohfw.gov.in",
       "label": "各国の公的機関（2026-10-25 確認）"
+    },
+    {
+      "host": "www.mohfw.gov.in",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
     },
     {
       "host": "mohp.gov.np",
@@ -884,6 +908,10 @@
       "label": "各国の公的機関（2026-10-25 確認）"
     },
     {
+      "host": "nukib.gov.cz",
+      "label": "各国の公的機関（2026-10-25 確認）（転送先）"
+    },
+    {
       "host": "www.regeringen.se",
       "label": "各国の公的機関（2026-10-25 確認）"
     },
@@ -932,6 +960,10 @@
       "label": "Ministry of Health（ISL）"
     },
     {
+      "host": "www.government.is",
+      "label": "Ministry of Health（ISL）（転送先）"
+    },
+    {
       "host": "cert.is",
       "label": "CERT-IS（ISL）"
     },
@@ -964,8 +996,12 @@
       "label": "Azerbaijan Government CERT (CERT.GOV.AZ)（AZE）"
     },
     {
-      "host": "bvi.gov.vg",
+      "host": "gov.vg",
       "label": "Ministry of Health and Social Development（VGB）"
+    },
+    {
+      "host": "bvi.gov.vg",
+      "label": "Ministry of Health and Social Development（VGB・旧URL）"
     },
     {
       "host": "govcert.rks-gov.net",
@@ -1062,6 +1098,10 @@
     {
       "host": "moh.gov.sg",
       "label": "Ministry of Health（SGP）"
+    },
+    {
+      "host": "www.moh.gov.sg",
+      "label": "Ministry of Health（SGP）（転送先）"
     },
     {
       "host": "www.msf.gov.sg",

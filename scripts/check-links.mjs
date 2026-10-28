@@ -16,8 +16,13 @@ import { isShownLink } from './lib/link-shown.mjs';
 import { resolve } from 'node:path';
 import { readData, isDirectoryUrl, isAllowedUrl, isAnimalUrl, CODE_ROOT } from './lib/safety.mjs';
 
-const SPAM = /(slot\s*gacor|judi\s*(bola|online)|togel|sbobet|situs\s*slot|casino\s*online|online\s*casino|exam\s*dumps|viagra|cialis|replica\s*watches|オンラインカジノ|闇バイト)/i;
+// 改ざん（不正な埋め込み）の兆候。英語の語は単語の区切りで判定する（specialist の中の cialis などで誤検知しない）。
+const SPAM_WORDS = /\b(slot\s*gacor|judi\s*(bola|online)|togel|sbobet|situs\s*slot|casino\s*online|online\s*casino|exam\s*dumps|viagra|cialis|replica\s*watches)\b/i;
+// 日本語の語は、警察・法律相談などの公的な注意喚起の本文に普通に出てくるため、外部サイトへのリンクの文字・行き先にあるときだけ数える
+const SPAM_JA = /オンラインカジノ|闇バイト|ネットカジノ/;
 const PARKED = /(this domain (is|may be) for sale|domain parking|buy this domain|under construction|site (is )?under maintenance|temporarily (unavailable|down for maintenance)|メンテナンス中|ただいまメンテナンス)/i;
+// 停止・メンテナンスの表示は、本文が短いページ（停止中の案内だけのページ）のときだけ数える。通常のページの「メンテナンス中は…」の予告で誤検知しない
+const PARKED_MAX_TEXT = 3000;
 const UA = 'TomoshibiAtlasLinkCheck/1.0 (+non-profit; weekly link safety check)';
 const TIMEOUT_MS = 12000;
 const WAIT_MS = 1200;
@@ -66,10 +71,40 @@ export function visibleLength(html) {
   return t.replace(/[<>]/g, '').trim().length;
 }
 
+// ページの「見える文字」と「外部へのリンク」を取り出す（判定だけに使う。表示や書き出しには使わない）。
+// script・style・コメントの中身は除く（プログラムや埋め込み画像の符号の偶然の一致で誤検知しないため）
+export function pageSignals(html, pageUrl) {
+  let t = String(html), prev;
+  do {
+    prev = t;
+    t = t.replace(/<!--[\s\S]*?(?:-->|$)/g, ' ').replace(/<(script|style)\b[\s\S]*?(?:<\/\1\b[^>]*>|$)/gi, ' ');
+  } while (t !== prev);
+  const external = [];
+  let host = '';
+  try { host = new URL(pageUrl).hostname.replace(/^www\./, ''); } catch {}
+  for (const m of t.matchAll(/<a\b[^>]*?\bhref\s*=\s*["']?([^"'\s>]+)[^>]*>([\s\S]*?)<\/a\b/gi)) {
+    let h = '';
+    try { h = new URL(m[1], pageUrl).hostname.replace(/^www\./, ''); } catch { continue; }
+    if (h && h !== host && !h.endsWith('.' + host)) external.push(`${m[1]} ${m[2]}`);
+  }
+  let text = t;
+  do { prev = text; text = text.replace(/<[^<>]*>?/g, ' '); } while (text !== prev);
+  text = text.replace(/[<>]/g, ' ').replace(/\s+/g, ' ').trim();
+  return { text, external: external.join('\n') };
+}
+export function judgeContent(html, pageUrl) {
+  const { text, external } = pageSignals(html, pageUrl);
+  if (SPAM_WORDS.test(text) || SPAM_WORDS.test(external) || SPAM_JA.test(external)) return 'spam';
+  if (text.length < PARKED_MAX_TEXT && PARKED.test(text)) return 'parked';
+  return '';
+}
+
 // 実行結果の要約（Markdown）に書くとき、取得先から返った文字（エラー文など）で表示を崩されないよう、記号を無害化する
 export function mdSafe(s) {
   return String(s).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/[\\`*_{}\[\]<>()#!|~&]/g, (c) => `&#${c.charCodeAt(0)};`);
 }
+
+const sameSite = (a, b) => a.replace(/^www\./, '') === b.replace(/^www\./, '');
 
 async function readLimited(res) {
   const reader = res.body?.getReader();
@@ -100,7 +135,8 @@ async function inspect(url) {
       if (!allowed(next)) return ['danger', `許可リスト外のサイトへ転送（${next}）`];
       if (visited.has(next)) return ['danger', '転送が循環している'];
       visited.add(next);
-      if (new URL(next).hostname !== new URL(url).hostname) crossDomain = next;
+      // www の有無だけの違い（同じ機関のサイト）は別ドメインとして扱わない
+      if (sameSite(new URL(next).hostname, new URL(url).hostname) === false) crossDomain = next;
       current = next;
       continue;
     }
@@ -113,8 +149,9 @@ async function inspect(url) {
       return ['danger', `ページが開けない（${res.status}）`];
     }
     const text = await readLimited(res);
-    if (SPAM.test(text)) return ['danger', '改ざん・不正な埋め込みの疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
-    if (PARKED.test(text)) return ['danger', 'メンテナンス中・停止の疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
+    const sign = judgeContent(text, current);
+    if (sign === 'spam') return ['danger', '改ざん・不正な埋め込みの疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
+    if (sign === 'parked') return ['danger', 'メンテナンス中・停止の疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
     if (visibleLength(text) < 200) return ['review', '中身がほとんど空（JavaScript でしか表示されない、または停止の可能性）'];
     // 別ドメインへの転送は、行き先が問題なくても「要確認」（掲載URLを新しい公式URLに直すべきか人が判断する）
     if (crossDomain) return ['review', `別ドメインへ転送（${crossDomain}）。正しい公式の移転なら掲載URLを書き換える`];
