@@ -727,8 +727,11 @@ test('週次の候補の追加：AI（--by ai-curator）が作った2ファイ�
     const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
     // AI は approved（運用者の承認済み）を付けられないので、借りた項目から外す
     const cand = { ...base, id: `${base.layer}-2026-test-ai-candidate`, topic: 'test-ai-candidate', checkedAt: today, importance: 'minor', tags: (base.tags || []).filter((t) => t !== 'approved') };
-    writeFileSync(join(tmpdir(), 'ta-ai-cand.json'), JSON.stringify({ items: [cand] }));
-    const r = spawnSync(process.execPath, [join(tmp, 'scripts/add-candidates.mjs'), join(tmpdir(), 'ta-ai-cand.json'), '--write', '--by', 'ai-curator'], { cwd: tmp, encoding: 'utf8' });
+    // 候補のファイルは、決まった名前で OS の一時フォルダに直接置かず、このテスト専用の一時フォルダに置く（CodeQL の指摘）
+    const candDir = mkdtempSync(join(tmpdir(), 'ta-ai-cand-'));
+    const candFile = join(candDir, 'cand.json');
+    writeFileSync(candFile, JSON.stringify({ items: [cand] }));
+    const r = spawnSync(process.execPath, [join(tmp, 'scripts/add-candidates.mjs'), candFile, '--write', '--by', 'ai-curator'], { cwd: tmp, encoding: 'utf8' });
     assert.equal(r.status, 0, r.stderr);
     g('add', '-A');
     g('commit', '-q', '-m', 'Add a weekly candidate');
@@ -740,7 +743,7 @@ test('週次の候補の追加：AI（--by ai-curator）が作った2ファイ�
     });
     assert.equal(scope.status, 0, scope.stderr + scope.stdout);
     assert.match(scope.stdout, /AI・bot・外部/);
-    rmSync(join(tmpdir(), 'ta-ai-cand.json'), { force: true });
+    rmSync(candDir, { recursive: true, force: true });
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }
@@ -850,6 +853,8 @@ test('運用者の PR で安全設計のファイルが変わるときは、本�
       });
     assert.notEqual(scope('Change a check').status, 0, '確認の一文なしで通った');
     assert.notEqual(scope('<!-- 安全設計の変更を確認済み -->').status, 0, 'コメントの中の一文で通った');
+    assert.notEqual(scope('<!<!-- x -->-- 安全設計の変更を確認済み -->').status, 0, '取り除いた後にできるコメントの中の一文で通った');
+    assert.notEqual(scope('<!-- 閉じていないコメント 安全設計の変更を確認済み').status, 0, '閉じていないコメントの中の一文で通った');
     const ok = scope('差分を読みました。\n安全設計の変更を確認済み');
     assert.equal(ok.status, 0, ok.stderr + ok.stdout);
     assert.match(ok.stdout, /安全設計のファイル/);

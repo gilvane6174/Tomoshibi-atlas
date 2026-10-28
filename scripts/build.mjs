@@ -266,9 +266,17 @@ async function main() {
     const { parseSiteUrl } = await import('./lib/seo.mjs');
     const site = parseSiteUrl(process.env.SITE_URL);
     const f = resolve(OUT, '404.html');
-    if (site && existsSync(f)) {
+    // 有無を先に調べてから読む書き方は、そのあいだにファイルが変わる余地がある（CodeQL の指摘）ため、読めたときだけ直す
+    let raw404 = null;
+    if (site)
+      try {
+        raw404 = readFileSync(f, 'utf8');
+      } catch {
+        raw404 = null;
+      }
+    if (raw404 !== null) {
       const basePath = new URL(site).pathname; // 例：/Tomoshibi-atlas/
-      const html = readFileSync(f, 'utf8').replace(/\b(href|src)="(?!https:|#|\/)([^"]*)"/g, (_, attr, rel) => `${attr}="${basePath}${rel === './' ? '' : rel.replace(/^\.\//, '')}"`);
+      const html = raw404.replace(/\b(href|src)="(?!https:|#|\/)([^"]*)"/g, (_, attr, rel) => `${attr}="${basePath}${rel === './' ? '' : rel.replace(/^\.\//, '')}"`);
       writeFileSync(f, html);
     }
   }
