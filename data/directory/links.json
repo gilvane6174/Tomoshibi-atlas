@@ -4673,10 +4673,9 @@
             "jaKana": "アイスランド CERT-IS",
             "en": "CERT-IS"
           },
-          "url": "https://cert.is/english",
+          "url": "https://cert.is/um-okkur/rfc-2350/",
           "pageLang": [
-            "en",
-            "is"
+            "en"
           ]
         }
       ]
@@ -4856,7 +4855,7 @@
             "jaKana": "イギリスりょう ヴァージン しょとう ほけん しゃかい かいはつしょう",
             "en": "Ministry of Health and Social Development"
           },
-          "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+          "url": "https://gov.vg/ministry-health-and-social-development",
           "pageLang": [
             "en"
           ]
@@ -4871,7 +4870,7 @@
             "jaKana": "イギリスりょう ヴァージン しょとう ほけん しゃかい かいはつしょう",
             "en": "Ministry of Health and Social Development"
           },
-          "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+          "url": "https://gov.vg/ministry-health-and-social-development",
           "pageLang": [
             "en"
           ]
@@ -4887,7 +4886,7 @@
             "jaKana": "イギリスりょう ヴァージン しょとう ほけん しゃかい かいはつしょう",
             "en": "Ministry of Health and Social Development"
           },
-          "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
+          "url": "https://gov.vg/ministry-health-and-social-development",
           "pageLang": [
             "en"
           ]
@@ -5460,7 +5459,7 @@
             "jaKana": "サモア CERT（SamCERT）",
             "en": "Samoa Computer Emergency Response Team (SamCERT)"
           },
-          "url": "https://mcit.gov.ws/programs/cert",
+          "url": "https://mcit.gov.ws/divisions/digital-transformation-and-innovation/",
           "pageLang": [
             "en"
           ]

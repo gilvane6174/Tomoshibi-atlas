@@ -1927,11 +1927,11 @@
       "evidence": "government.is about page; covers social affairs and social security (heading also shows 'Ministry of Social Affairs and Labour')"
     },
     "isl-cert-security": {
-      "url": "https://cert.is/english",
-      "checkedAt": "2026-10-25",
+      "url": "https://cert.is/um-okkur/rfc-2350/",
+      "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
-      "evidence": "page states CERT-IS is the national CERT, operating under the Electronic Communications Office of Iceland"
+      "how": "AIが公式ページを開いて確認（2026-10-28。旧URL cert.is/english がリンク確認で404のため、同じサイトの英語のRFC 2350ページに差し替え）",
+      "evidence": "page heading: RFC-2350 (English); CERT-IS team profile pointing to www.cert.is"
     },
     "isl-public-health-institute-outbreak": {
       "url": "https://island.is/en/o/directorate-of-health/about-directorate-of-health",
@@ -2018,25 +2018,25 @@
       "evidence": "page heading: CERT.GOV.AZ - RFC 2350; under Special Communication and Information Security State Service"
     },
     "vgb-health-ministry-outbreak": {
-      "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
-      "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
-      "evidence": ""
+      "url": "https://gov.vg/ministry-health-and-social-development",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。旧URL bvi.gov.vg/content/… は運用者のブラウザで「ページが見つかりません」のため差し替え。新URLは運用者もブラウザで表示を確認）",
+      "evidence": "page title: Ministry of Health and Social Development | GOV.VG"
     },
     "vgb-health-ministry-mental": {
-      "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
-      "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
-      "evidence": ""
+      "url": "https://gov.vg/ministry-health-and-social-development",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。旧URL bvi.gov.vg/content/… は運用者のブラウザで「ページが見つかりません」のため差し替え。新URLは運用者もブラウザで表示を確認）",
+      "evidence": "page title: Ministry of Health and Social Development | GOV.VG"
     },
     "vgb-welfare-ministry-welfare": {
-      "url": "https://bvi.gov.vg/content/ministry-health-and-social-development",
-      "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
-      "evidence": ""
+      "url": "https://gov.vg/ministry-health-and-social-development",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。旧URL bvi.gov.vg/content/… は運用者のブラウザで「ページが見つかりません」のため差し替え。新URLは運用者もブラウザで表示を確認）",
+      "evidence": "page title: Ministry of Health and Social Development | GOV.VG"
     },
     "kos-cert-security": {
       "url": "https://govcert.rks-gov.net/",
@@ -2272,16 +2272,16 @@
     "wsm-welfare-ministry-welfare": {
       "url": "https://mwcsd.gov.ws/office-of-the-ceo/",
       "checkedAt": "2026-10-25",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
+      "method": "unverified",
+      "how": "2026-10-25 にAIが公式ページを開いて確認。2026-10-28 のリンク確認でドメインが見つからない（失効・停止の可能性）ため、再確認できるまで非表示",
       "evidence": "page heading: Ministry of Women, Community and Social Development (Office of the CEO)"
     },
     "wsm-cert-security": {
-      "url": "https://mcit.gov.ws/programs/cert",
-      "checkedAt": "2026-10-25",
+      "url": "https://mcit.gov.ws/divisions/digital-transformation-and-innovation/",
+      "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
-      "evidence": "MCIT page describing SamCERT as Samoa's National Cyber Security Agency"
+      "how": "AIが公式ページを開いて確認（2026-10-28。旧URL mcit.gov.ws/programs/cert がリンク確認で404のため差し替え）",
+      "evidence": "page title: Digital Transformation & Innovation Division – Ministry of Communications & Information Technology; states SamCERT is the National Cyber Security Agency now under the DTI division"
     },
     "est-health-ministry-outbreak": {
       "url": "https://sm.ee/en",
