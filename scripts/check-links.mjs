@@ -59,6 +59,18 @@ let skipped = 0;
 
 // 本文は最大 MAX_BODY バイトまでしか受け取らない（巨大な応答で止まらないように）
 const MAX_BODY = 600_000;
+// タグを除いた文字数（長さの目安を取るだけ。表示や書き出しには使わない）。入れ子・閉じ忘れでも残らないよう、変わらなくなるまで繰り返す
+export function visibleLength(html) {
+  let prev, t = String(html);
+  do { prev = t; t = t.replace(/<[^<>]*>?/g, ''); } while (t !== prev);
+  return t.replace(/[<>]/g, '').trim().length;
+}
+
+// 実行結果の要約（Markdown）に書くとき、取得先から返った文字（エラー文など）で表示を崩されないよう、記号を無害化する
+export function mdSafe(s) {
+  return String(s).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/[\\`*_{}\[\]<>()#!|~&]/g, (c) => `&#${c.charCodeAt(0)};`);
+}
+
 async function readLimited(res) {
   const reader = res.body?.getReader();
   if (!reader) return '';
@@ -103,7 +115,7 @@ async function inspect(url) {
     const text = await readLimited(res);
     if (SPAM.test(text)) return ['danger', '改ざん・不正な埋め込みの疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
     if (PARKED.test(text)) return ['danger', 'メンテナンス中・停止の疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
-    if (text.replace(/<[^>]*>/g, '').trim().length < 200) return ['review', '中身がほとんど空（JavaScript でしか表示されない、または停止の可能性）'];
+    if (visibleLength(text) < 200) return ['review', '中身がほとんど空（JavaScript でしか表示されない、または停止の可能性）'];
     // 別ドメインへの転送は、行き先が問題なくても「要確認」（掲載URLを新しい公式URLに直すべきか人が判断する）
     if (crossDomain) return ['review', `別ドメインへ転送（${crossDomain}）。正しい公式の移転なら掲載URLを書き換える`];
     return ['ok', hop ? `同じサイト内で${hop}回転送` : ''];
@@ -155,7 +167,7 @@ const report = [
   ...known.map((p) => `- ${p}`),
 ].join('\n');
 console.log(report);
-if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report + '\n');
+if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report.split('\n').map((l) => (l.startsWith('- ') ? `- ${mdSafe(l.slice(2))}` : l)).join('\n') + '\n');
 process.exit(danger.length || review.length || skipped ? 1 : 0);
 }
 

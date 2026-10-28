@@ -2,7 +2,7 @@
 // 方針：怪しいものは「直して通す」のではなく「落とす」。迷ったら表示しない。
 
 import './node-guard.mjs'; // 修正前の脆弱性がある Node.js では動かさない
-import { readFileSync, lstatSync } from 'node:fs';
+import { readFileSync, openSync, fstatSync, closeSync, constants as FS } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,10 +14,28 @@ export const ROOT = DATA_ROOT;
 
 export const readCode = (rel) => JSON.parse(readFileSync(resolve(CODE_ROOT, rel), 'utf8'));
 // データファイルはシンボリックリンクを拒否する（別ファイルにすり替える攻撃の防止）
+// 確かめてから読むまでの間にすり替えられないよう、シンボリックリンクを辿らずに開き、開いたもの自体を確かめて読む
+// （O_NOFOLLOW の無い Windows では、開いた後に通常のファイルかどうかだけを確かめる）
+export function readNoFollow(p, { maxBytes = Infinity, expect } = {}) {
+  let fd;
+  try {
+    fd = openSync(p, FS.O_RDONLY | (FS.O_NOFOLLOW || 0));
+  } catch (e) {
+    if (e.code === 'ELOOP' || e.code === 'EMLINK') throw new Error(`${p} はシンボリックリンクのため読み込みません`);
+    throw e;
+  }
+  try {
+    const st = fstatSync(fd);
+    if (!st.isFile()) throw new Error(`${p} は通常のファイルではないため読み込みません`);
+    if (expect && (st.ino !== expect.ino || st.dev !== expect.dev)) throw new Error(`${p} が確認の途中で別のファイルに替わりました`);
+    if (st.size > maxBytes) return { size: st.size, buf: null };
+    return { size: st.size, buf: readFileSync(fd) };
+  } finally {
+    closeSync(fd);
+  }
+}
 export function readData(rel) {
-  const p = resolve(DATA_ROOT, rel);
-  if (lstatSync(p).isSymbolicLink()) throw new Error(`${rel} はシンボリックリンクのため読み込みません`);
-  return JSON.parse(readFileSync(p, 'utf8'));
+  return JSON.parse(readNoFollow(resolve(DATA_ROOT, rel)).buf.toString('utf8'));
 }
 export const readJson = readCode;
 

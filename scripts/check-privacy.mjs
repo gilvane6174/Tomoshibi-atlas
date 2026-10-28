@@ -3,11 +3,11 @@
 // 例外（誤検知）は下の ALLOW に「ファイル＋種類」で登録する。ファイル内の書き込みで例外を作ることはできない。
 // 使い方: node scripts/check-privacy.mjs   （TA_TARGET_ROOT を指定すると、そのフォルダを検査する）
 
-import { readdirSync, readFileSync, lstatSync } from 'node:fs';
+import { readdirSync, lstatSync } from 'node:fs';
 import { join, relative, extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { crc32 } from 'node:zlib';
-import { DATA_ROOT } from './lib/safety.mjs';
+import { DATA_ROOT, readNoFollow } from './lib/safety.mjs';
 
 // 検査しない場所（同梱ライブラリ・地図データは第三者の公開物で、巨大なため）
 const SKIP_DIRS = new Set(['.git', 'node_modules', '_site']);
@@ -83,7 +83,7 @@ function walk(dir, findings) {
     const ext = extname(name).toLowerCase();
     // 例外：SNS共有用の画像1枚だけ。埋め込み情報（撮影情報・文字情報・位置情報など）の無いPNGであることを確かめる
     if (rel === 'site/og-image.png') {
-      const why = checkCleanPng(readFileSync(full));
+      const why = checkCleanPng(readNoFollow(full, { expect: st }).buf);
       if (why) findings.push(`${rel}  ${why}`);
       continue;
     }
@@ -91,12 +91,13 @@ function walk(dir, findings) {
       findings.push(`${rel}  画像・PDF・文書ファイルは置かない（埋め込み情報から個人情報が漏れるため）`);
       continue;
     }
-    if (st.size > 2_000_000) {
+    // 開いたファイル自体の大きさで判断する（確かめた後に差し替えられても、読んだ中身と大きさが食い違わない）
+    const { size, buf } = readNoFollow(full, { maxBytes: 2_000_000, expect: st });
+    if (!buf) {
       // 大きなファイルは、確認済みの地図データ・同梱ライブラリだけを許可する（見逃しを作らない）
-      if (!/^site\/(data\/geo|vendor)\//.test(rel)) findings.push(`${rel}  2MBを超えるファイルは置かない（検査できないため）`);
+      if (size > 2_000_000 && !/^site\/(data\/geo|vendor)\//.test(rel)) findings.push(`${rel}  2MBを超えるファイルは置かない（検査できないため）`);
       continue;
     }
-    const buf = readFileSync(full);
     if (!TEXT_EXT.has(ext) && buf.includes(0)) {
       findings.push(`${rel}  文字以外のファイルは置かない`);
       continue;

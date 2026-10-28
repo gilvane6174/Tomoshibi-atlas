@@ -177,15 +177,25 @@ for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('
     for (const d of REQUIRED_CSP) if (!csp[1].includes(d)) errors.push(`${rel}: CSP に ${d} が無い`);
     if (/unsafe-inline|unsafe-eval|unsafe-hashes|\bhttps?:|\*/.test(csp[1])) errors.push(`${rel}: CSP に外部読み込み・インライン実行の許可を入れない`);
   }
-  for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+  // 閉じタグの書き方の揺れ（</script >・</SCRIPT foo>）も拾う。開始タグの数と一致しなければ止める
+  const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\b[^>]*>/gi)];
+  if (scripts.length !== (html.match(/<script\b/gi) || []).length) errors.push(`${rel}: script タグの開始と終了が対応していない`);
+  for (const m of scripts) {
     const attrs = m[1];
     const isData = /type="application\/ld\+json"/.test(attrs);
     if (!isData && !/\bsrc="(?:js|vendor)\/[\w.-]+\.js"/.test(attrs)) errors.push(`${rel}: 自サイトの js/・vendor/ 以外のスクリプトは読み込まない`);
     if (!isData && m[2].trim()) errors.push(`${rel}: インラインのスクリプトは書かない`);
   }
-  if (/\son[a-z]+\s*=/i.test(html.replace(/<script[\s\S]*?<\/script>/gi, ''))) errors.push(`${rel}: onclick= などのイベント属性は使わない`);
+  if (/\son[a-z]+\s*=/i.test(stripScripts(html))) errors.push(`${rel}: onclick= などのイベント属性は使わない`);
   if (/<(?:iframe|embed|object|form)\b/i.test(html)) errors.push(`${rel}: iframe / embed / object / form は使わない`);
   if (/(?:src|href)="http:/i.test(html)) errors.push(`${rel}: http:// のリンク・読み込みは使わない`);
+}
+
+// script の中身を取り除いた HTML（イベント属性の検査用。表示や書き出しには使わない）。取り除いた結果に新しく script が現れても残らないよう、変わらなくなるまで繰り返す
+function stripScripts(html) {
+  let prev, t = html;
+  do { prev = t; t = t.replace(/<script\b[\s\S]*?<\/script\b[^>]*>/gi, ''); } while (t !== prev);
+  return t;
 }
 
 // 5.5 説明ページ・画面のプログラムに直接書いた外部リンク：許可リスト（公的機関などのドメイン）か、
