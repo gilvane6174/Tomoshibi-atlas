@@ -58,6 +58,291 @@
       "ids": [
         "research-2025-ai-who-tb-cad"
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "研究と対策・こころ・福祉に新しい公表情報を追加（5件）。原典を確認して作成",
+        "en": "Added new official publications to Research & Response, Mental health and Welfare (5 items), drafted from the original sources"
+      },
+      "ids": [
+        "research-2026-who-hypertension-pregnancy-roadmap",
+        "research-2026-who-child-obesity-guidelines",
+        "research-2026-who-heat-maternal-child-indicators",
+        "mental-2026-mhlw-world-mental-health-day",
+        "welfare-2026-mhlw-white-paper"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "operator",
+      "summary": {
+        "ja": "「今日の動物たち」（毎日入れ替わる動物の豆知識）と、日本の福祉の探し方のまとめページを追加。自動取得を1日2回（朝・夕方）に変更",
+        "en": "Added Today's animals (daily animal facts) and a guide to finding welfare support in Japan. Automatic retrieval now runs twice a day (morning and evening)"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "研究と対策に13件を追加（医療研究・ワクチン・薬剤耐性など）",
+        "en": "Added 13 items to Research & Response (medical research, vaccines, antimicrobial resistance and more)"
+      },
+      "ids": [
+        "research-2026-interpol-who-agreement",
+        "research-2026-uk-ai-healthcare-regulation",
+        "research-2026-medical-devices-prequalification",
+        "research-2026-tb-ivd-prequalification-scope",
+        "research-2026-canada-vaccine-rd-priorities",
+        "research-2026-india-immunization-2025",
+        "research-2026-indonesia-immunization-2025",
+        "research-2026-global-immunization-wuenic-2025",
+        "research-2026-jpn-amr-action-plan-revision",
+        "research-2026-drc-uganda-bundibugyo-ebola",
+        "research-2026-uk-espaur-2024-2025",
+        "research-2026-malaria-infant-treatment-rdts",
+        "research-2025-glass-amr-report-2025"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "研究と対策に、ITやAIのセキュリティ更新・防災・防犯の公式の対策14件を追加",
+        "en": "Added 14 official countermeasures to Research & Response: IT and AI security updates, disaster prevention and crime prevention"
+      },
+      "ids": [
+        "research-2026-brotli-fix-advisory",
+        "research-2026-php-security-update-advisory",
+        "research-2026-microsoft-october-updates",
+        "research-2026-chrome-155-stable-update",
+        "research-2026-uk-ncsc-ai-cyber-risk-leaders",
+        "research-2026-agentic-ai-joint-guidance",
+        "research-2026-uk-flood-action-online",
+        "research-2026-africa-early-warnings-call",
+        "research-2026-iddrr-2026-resilience-at-home",
+        "research-2026-jma-new-disaster-weather-info",
+        "research-2026-ftc-impersonation-rule-platform-ads",
+        "research-2026-jpn-sns-scam-ad-joint-request",
+        "research-2026-sgp-scams-countermeasures-bill",
+        "research-2026-uk-fraud-strategy-online-crime-centre"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "こころの分野に16件を追加（日本7件・海外と国際機関9件）",
+        "en": "Added 16 mental health items (7 on Japan, 9 on other countries and international bodies)"
+      },
+      "ids": [
+        "mental-2026-cdc-yrbs-unmet-need",
+        "mental-2026-jpn-labour-safety-survey",
+        "mental-2026-unicef-mhpss-results",
+        "mental-2026-jpn-workers-comp-mental",
+        "mental-2026-jpn-loneliness-plan-revision",
+        "mental-2026-ilo-psychosocial-risks",
+        "mental-2026-jpn-loneliness-survey-r7",
+        "mental-2026-jpn-cfa-child-council-guideline",
+        "mental-2026-jpn-march-awareness-month",
+        "mental-2026-can-988-helpline",
+        "mental-2025-nzl-mha-targets",
+        "mental-2025-who-cross-sector-guidance",
+        "mental-2025-who-mental-health-atlas",
+        "mental-2025-jpn-stress-check-small-sites",
+        "mental-2025-who-social-connection",
+        "mental-2025-gbr-school-mhst"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "福祉の分野に14件を追加（11か国と国際機関）",
+        "en": "Added 14 welfare items (11 countries and international bodies)"
+      },
+      "ids": [
+        "welfare-2026-mexico-multidimensional-poverty",
+        "welfare-2026-us-poverty-2025",
+        "welfare-2026-japan-ageing-society-white-paper",
+        "welfare-2026-japan-disability-white-paper",
+        "welfare-2026-south-africa-social-grants",
+        "welfare-2026-unicef-report-card-20",
+        "welfare-2026-canada-income-survey-2024",
+        "welfare-2026-uk-households-below-average-income",
+        "welfare-2026-ireland-silc-2025",
+        "welfare-2026-germany-poverty-risk",
+        "welfare-2025-france-minimum-social-benefits",
+        "welfare-2025-oecd-pensions-gender-gap",
+        "welfare-2025-world-bank-social-protection",
+        "welfare-2025-india-social-protection-coverage"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "新しい分野「防犯」「防災」に、公式の注意喚起・被害状況16件を追加",
+        "en": "Added 16 official warnings and damage reports to the new Crime prevention and Disasters sections"
+      },
+      "ids": [
+        "crime-2026-jpn-tokushu-sagi-august",
+        "disaster-2026-jpn-heatstroke-transport-august",
+        "disaster-2026-jpn-typhoon-25-damage",
+        "disaster-2026-jpn-kumamoto-earthquake-damage",
+        "disaster-2026-jpn-hokuriku-heavy-rain",
+        "disaster-2026-jpn-chiba-heavy-rain",
+        "disaster-2026-jpn-summer-weather-heat",
+        "crime-2026-jpn-fsa-secondary-fraud-warning",
+        "crime-2026-interpol-first-light",
+        "crime-2026-usa-ftc-passport-impersonation",
+        "crime-2026-sgp-scam-cybercrime-h1",
+        "disaster-2026-eu-summer-wildfires",
+        "disaster-2026-phl-monsoon-luis-maymay",
+        "disaster-2026-npl-floods-compound-risk",
+        "crime-2026-can-fraud-trends-h1",
+        "crime-2026-gbr-crime-survey-fraud"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-fact-check",
+      "summary": {
+        "ja": "追加した73件を原典と照合し、11件の表記を修正",
+        "en": "Checked the 73 new items against their sources and corrected the wording of 11"
+      },
+      "ids": [
+        "research-2026-interpol-who-agreement",
+        "research-2026-uk-ai-healthcare-regulation",
+        "research-2026-medical-devices-prequalification",
+        "research-2026-tb-ivd-prequalification-scope",
+        "research-2026-canada-vaccine-rd-priorities",
+        "research-2026-india-immunization-2025",
+        "research-2026-indonesia-immunization-2025",
+        "research-2026-global-immunization-wuenic-2025",
+        "research-2026-jpn-amr-action-plan-revision",
+        "research-2026-drc-uganda-bundibugyo-ebola",
+        "research-2026-uk-espaur-2024-2025",
+        "research-2026-malaria-infant-treatment-rdts",
+        "research-2025-glass-amr-report-2025",
+        "mental-2026-cdc-yrbs-unmet-need",
+        "mental-2026-jpn-labour-safety-survey",
+        "mental-2026-unicef-mhpss-results",
+        "mental-2026-jpn-workers-comp-mental",
+        "mental-2026-jpn-loneliness-plan-revision",
+        "mental-2026-ilo-psychosocial-risks",
+        "mental-2026-jpn-loneliness-survey-r7",
+        "mental-2026-jpn-cfa-child-council-guideline",
+        "mental-2026-jpn-march-awareness-month",
+        "mental-2026-can-988-helpline",
+        "mental-2025-nzl-mha-targets",
+        "mental-2025-who-cross-sector-guidance",
+        "mental-2025-who-mental-health-atlas",
+        "mental-2025-jpn-stress-check-small-sites",
+        "mental-2025-who-social-connection",
+        "mental-2025-gbr-school-mhst",
+        "welfare-2026-mexico-multidimensional-poverty",
+        "welfare-2026-us-poverty-2025",
+        "welfare-2026-japan-ageing-society-white-paper",
+        "welfare-2026-japan-disability-white-paper",
+        "welfare-2026-south-africa-social-grants",
+        "welfare-2026-unicef-report-card-20",
+        "welfare-2026-canada-income-survey-2024",
+        "welfare-2026-uk-households-below-average-income",
+        "welfare-2026-ireland-silc-2025",
+        "welfare-2026-germany-poverty-risk",
+        "welfare-2025-france-minimum-social-benefits",
+        "welfare-2025-oecd-pensions-gender-gap",
+        "welfare-2025-world-bank-social-protection",
+        "welfare-2025-india-social-protection-coverage",
+        "research-2026-brotli-fix-advisory",
+        "research-2026-php-security-update-advisory",
+        "research-2026-microsoft-october-updates",
+        "research-2026-chrome-155-stable-update",
+        "research-2026-uk-ncsc-ai-cyber-risk-leaders",
+        "research-2026-agentic-ai-joint-guidance",
+        "research-2026-uk-flood-action-online",
+        "research-2026-africa-early-warnings-call",
+        "research-2026-iddrr-2026-resilience-at-home",
+        "research-2026-jma-new-disaster-weather-info",
+        "research-2026-ftc-impersonation-rule-platform-ads",
+        "research-2026-jpn-sns-scam-ad-joint-request",
+        "research-2026-sgp-scams-countermeasures-bill",
+        "research-2026-uk-fraud-strategy-online-crime-centre",
+        "crime-2026-jpn-tokushu-sagi-august",
+        "disaster-2026-jpn-heatstroke-transport-august",
+        "disaster-2026-jpn-typhoon-25-damage",
+        "disaster-2026-jpn-kumamoto-earthquake-damage",
+        "disaster-2026-jpn-hokuriku-heavy-rain",
+        "disaster-2026-jpn-chiba-heavy-rain",
+        "disaster-2026-jpn-summer-weather-heat",
+        "crime-2026-jpn-fsa-secondary-fraud-warning",
+        "crime-2026-interpol-first-light",
+        "crime-2026-usa-ftc-passport-impersonation",
+        "crime-2026-sgp-scam-cybercrime-h1",
+        "disaster-2026-eu-summer-wildfires",
+        "disaster-2026-phl-monsoon-luis-maymay",
+        "disaster-2026-npl-floods-compound-risk",
+        "crime-2026-can-fraud-trends-h1",
+        "crime-2026-gbr-crime-survey-fraud"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "operator",
+      "summary": {
+        "ja": "「こころ」と「福祉」を「こころと福祉」に統合し、「防犯」「防災」「地震」の分野を追加。各分野の表示を20〜25件（こころと福祉・研究と対策は最大30件）にそろえる仕組みを追加",
+        "en": "Merged Mental health and Welfare into one section, added Crime prevention, Disasters and Earthquakes sections, and set each section to show about 20–25 items (up to 30 for Care and Research)"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-fact-check",
+      "summary": {
+        "ja": "台風第25号の被害の項目に、死者数には台風第26号と前線による被害も含まれる（原典の注記）ことを追記",
+        "en": "Noted that the Typhoon No. 25 death toll also includes damage from Typhoon No. 26 and a front, as stated in the source"
+      },
+      "ids": [
+        "disaster-2026-jpn-typhoon-25-damage"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "by": "ai-fact-check",
+      "summary": {
+        "ja": "防犯と防災の項目を追加（公的機関の原典で、作成とは別の担当が数値・日付を照合）",
+        "en": "Added crime and disaster items (figures and dates checked against official sources by a separate checker)"
+      },
+      "ids": [
+        "crime-2026-jpn-nagoya-special-fraud-h1",
+        "crime-2026-jpn-kokusen-fake-postcard",
+        "crime-2026-jpn-kokusen-breaker-inspection",
+        "crime-2026-jpn-kokusen-ticket-resale",
+        "crime-2026-jpn-kokusen-nta-sms",
+        "crime-2026-jpn-ipa-anshin-q2",
+        "crime-2026-jpn-fsa-investment-fraud-q2",
+        "crime-2026-usa-ftc-imposter-2025",
+        "crime-2026-aus-nasc-q1-2026",
+        "crime-2026-sgp-ica-china-official-impersonation",
+        "crime-2026-sgp-malware-social-ads",
+        "crime-2026-usa-ic3-impersonation-psa",
+        "crime-2026-gbr-payment-diversion-fraud",
+        "crime-2026-glb-interpol-serengeti-iii",
+        "disaster-2026-jpn-typhoon-18",
+        "disaster-2026-jpn-typhoon-13",
+        "disaster-2026-jpn-tokachidake-volcano",
+        "disaster-2026-jpn-june-heavy-rain-agri",
+        "disaster-2026-glb-wmo-july-heat",
+        "disaster-2026-col-earthquake-damage",
+        "disaster-2026-bra-northeast-floods",
+        "disaster-2026-vnm-tc-maysak",
+        "disaster-2026-phl-tc-jangmi-barmm",
+        "disaster-2026-idn-bungo-floods",
+        "disaster-2026-chl-severe-weather-october"
+      ]
     }
   ]
 }
