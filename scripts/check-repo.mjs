@@ -55,9 +55,36 @@ for (const name of readdirSync(resolve(ROOT, WF))) {
     if (onLine) errors.push(`${rel}: on: は1行で書かず、次の行から起動条件を1つずつ書く（${onLine[1].trim()}）`);
     if (/^[ \t]+["']push["'][ \t]*:/m.test(noComments) || /^[ \t]+push[ \t]*:[ \t]*\S/m.test(noComments)) errors.push(`${rel}: push: は「push:」だけを書き、次の行で branches: [main] を指定する`);
     if (/^[ \t]*-[ \t]*["']?push["']?[ \t]*$/m.test(noComments)) errors.push(`${rel}: 起動条件を「- push」の並べ方で書かない`);
-    const m = noComments.match(/^\s{2}push:[^\n]*\n((?:\s{4,}[^\n]*\n?)*)/m);
-    if (m && !/^\s{2}push:\s*$/m.test(noComments)) errors.push(`${rel}: push は「push:」の次の行で branches: [main] だけを指定する`);
-    else if (m && !(/^\s{4}branches:\s*\[\s*main\s*\]\s*$/m.test(m[1]) && !/tags|branches-ignore|paths-ignore/.test(m[1]))) errors.push(`${rel}: push での起動は branches: [main] だけにする（タグ・ほかのブランチで動かさない）`);
+    // on: のブロックを字下げで読み、push の書き方を確かめる（字下げの幅は2でも4でも同じに扱う）
+    const ls = noComments.split('\n');
+    const onIdx = ls.findIndex((l) => /^["']?on["']?[ \t]*:[ \t]*$/.test(l));
+    if (onIdx >= 0) {
+      const ind = (l) => l.search(/\S/);
+      const block = [];
+      for (let i = onIdx + 1; i < ls.length; i++) {
+        if (!ls[i].trim()) continue;
+        if (ind(ls[i]) === 0) break;
+        block.push(ls[i]);
+      }
+      if (block.some((l) => /\t/.test(l.slice(0, ind(l))))) errors.push(`${rel}: on: のブロックの字下げにタブを使わない`);
+      const child = block.length ? ind(block[0]) : 0;
+      const pi = block.findIndex((l) => ind(l) === child && /^["']?push["']?[ \t]*:/.test(l.trim()));
+      if (pi >= 0) {
+        if (block[pi].trim() !== 'push:') errors.push(`${rel}: push: は「push:」だけを書き、次の行で branches: [main] を指定する`);
+        const kids = [];
+        for (let i = pi + 1; i < block.length && ind(block[i]) > child; i++) kids.push(block[i]);
+        const gi = kids.length ? ind(kids[0]) : -1;
+        const keys = kids.filter((l) => ind(l) === gi).map((l) => l.trim());
+        const branchesOk = keys.filter((k) => /^branches[ \t]*:[ \t]*\[[ \t]*main[ \t]*\]$/.test(k)).length === 1;
+        const others = keys.filter((k) => !/^branches[ \t]*:/.test(k) && !/^paths[ \t]*:[ \t]*$/.test(k));
+        if (!branchesOk || others.length || keys.some((k) => /^branches[ \t]*:/.test(k) && !/^branches[ \t]*:[ \t]*\[[ \t]*main[ \t]*\]$/.test(k)))
+          errors.push(`${rel}: push での起動は branches: [main] だけにする（タグ・ほかのブランチ・除外の指定で動かさない。paths の指定だけは可）`);
+      }
+      // push の書き方の抜け道（並べ方・別の場所での push）を見逃さないよう、push の行以外に push という語があれば止める
+      block.forEach((l, i) => {
+        if (i !== pi && /\bpush\b/.test(l)) errors.push(`${rel}: on: の中の push は「push:」の形だけで書く（${l.trim()}）`);
+      });
+    } else if (/\bpush\b/.test(noComments.split('\njobs:')[0]) && !onLine) errors.push(`${rel}: on: の形を読み取れない（push の起動条件を確かめられない）`);
   }
   if (/\bsecrets\./.test(text)) errors.push(`${rel}: secrets（秘密情報）は使わない設計`);
   if (/write-all|contents:\s*write|pull-requests:\s*write|actions:\s*write/.test(text)) errors.push(`${rel}: リポジトリへの書き込み権限は与えない`);
@@ -194,7 +221,11 @@ for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('
       if (!okLink(m[0], `js/${name}`)) errors.push(`site/js/${name}: 許可リストに無い外部リンク（${m[0]}）`);
     }
     // 文字のエスケープや、つなぎ合わせで URL を組み立てて検査を逃れる書き方を置かない
-    if (/\\u00?2[fF]|\\x2[fF]|['"`]https?:['"`]\s*\+|atob\s*\(/.test(js)) errors.push(`site/js/${name}: URL を文字のエスケープ・つなぎ合わせ・符号化で組み立てない（検査を逃れる書き方）`);
+    // 許可した URL を取り除いたあとに「://」や、URL の部品になる文字列が残っていれば、組み立てとみなして止める
+    // （'https' + '://' + …、'http' + 's:' + '//…'、`${'https'}://` などの書き方を、正しい URL の一覧と照合できないため）
+    const rest = js.replace(/https?:\/\/[^\s'"`)\\]+/gi, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+    if (/:\s*\/\/|:\\\/\\\/|['"`]\s*\/\/[^'"`\s]|['"`]\s*:\s*\/|['"`](?:https?:?|ttps?:?)['"`]\s*[+,\]]|[+,\[]\s*['"`](?:https?:?|ttps?:?)['"`]|\$\{\s*['"`](?:https?:?|ttps?:?)['"`]|\\u00?2[fF]|\\x2[fF]|\\u00?3[aA]|\\x3[aA]|atob\s*\(|String\.raw|decodeURI/i.test(rest))
+      errors.push(`site/js/${name}: URL を文字のエスケープ・つなぎ合わせ・符号化で組み立てない（検査を逃れる書き方）`);
   }
 }
 

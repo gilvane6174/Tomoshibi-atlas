@@ -762,7 +762,7 @@ test('説明ページ・画面のプログラムの外部リンク：許可リ�
     writeFileSync(f, orig);
     const js = join(tmp, 'site/js/panel.js');
     const js0 = readFileSync(js, 'utf8');
-    for (const bad of ["\nconst X = 'https://evil.example/';\n", '\nconst X = `https://evil.example/${1}`;\n', "\nconst X = 'https:' + '//evil.example/';\n", "\nconst X = 'https:\\u002f\\u002fevil.example';\n", "\nconst X = atob('aHR0cHM6Ly9ldmlsLmV4YW1wbGU=');\n"]) {
+    for (const bad of ["\nconst X = 'https' + '://evil.example/';\n", "\nconst X = ['https', '//evil.example/'].join(':');\n", "\nconst X = `${'https'}://evil.example/`;\n", "\nconst X = 'ht' + 'tps://evil.example/';\n", "\nconst X = 'http' + 's:' + '//evil.example/';\n", "\nconst X = 'https:\\/\\/evil.example/';\n", "\nconst X = 'https://evil.example/';\n", '\nconst X = `https://evil.example/${1}`;\n', "\nconst X = 'https:' + '//evil.example/';\n", "\nconst X = 'https:\\u002f\\u002fevil.example';\n", "\nconst X = atob('aHR0cHM6Ly9ldmlsLmV4YW1wbGU=');\n"]) {
       writeFileSync(js, js0 + bad);
       assert.notEqual(run().status, 0, `画面のプログラムの ${JSON.stringify(bad)} を拒否していない`);
     }
@@ -789,6 +789,14 @@ test('乗っ取り対策：push での起動は main だけ、AI のツールの
     }
     // 1行の省略形・引用符つき・並べ方の書き方も拒否する（GPT斎のレビュー TA-v127 の指摘）
     const onBlock = w0.match(/^on:\n(?:[ \t]+.*\n|\n)*/m)[0];
+    // 4つの空白で字下げした書き方でも、同じように確かめる（GPT斎のレビュー TA-v128 の指摘）
+    const deep = 'on:\n    schedule:\n      - cron: "43 8,20 * * *"\n    workflow_dispatch:\n    push:\n      branches: [main]\n';
+    writeFileSync(wf, w0.replace(onBlock, deep));
+    assert.equal(run().status, 0, '4つの空白の正しい書き方を拒否した：' + run().stderr);
+    for (const rep of ['on:\n    push:\n      branches: ["**"]\n', 'on:\n    push:\n      tags: ["v*"]\n      branches: [main]\n', 'on:\n    push:\n      branches-ignore: [x]\n      branches: [main]\n', 'on:\n    push:\n', 'on:\n    push:\n      branches:\n        - main\n', 'on:\n    workflow_dispatch:\n    "push":\n      branches: [main]\n']) {
+      writeFileSync(wf, w0.replace(onBlock, rep));
+      assert.notEqual(run().status, 0, `起動条件 ${JSON.stringify(rep)} を拒否していない`);
+    }
     for (const rep of ['on: [push]\n', 'on: push\n', 'on: { push: { branches: [main] } }\n', 'on:\n  "push":\n    branches: [main]\n', "on:\n  'push':\n", 'on:\n  - push\n', 'on: [push, workflow_dispatch]\n']) {
       writeFileSync(wf, w0.replace(onBlock, rep));
       assert.notEqual(run().status, 0, `起動条件 ${JSON.stringify(rep)} を拒否していない`);
@@ -863,6 +871,12 @@ test('確認・改装中の表示（ops/MAINTENANCE）と、見つからない�
     assert.ok(nf.includes('href="/Tomoshibi-atlas/css/style.css"') && nf.includes('href="/Tomoshibi-atlas/welfare-guide.html"'), '404.html の相対リンクを直していない');
     assert.ok(nf.includes('noindex'));
     writeFileSync(join(tmp, 'ops/MAINTENANCE'), '');
+    // 公開と同じ組み立て（--offline なし）でも、確認・改装中のときは公的機関からの取得をせず（取得の障害で止まらず）切り替わる
+    const live = spawnSync(process.execPath, [join(root, 'scripts/build.mjs')], { env: { ...process.env, TA_TARGET_ROOT: tmp, HTTPS_PROXY: 'http://127.0.0.1:9', https_proxy: 'http://127.0.0.1:9' }, encoding: 'utf8' });
+    assert.equal(live.status, 0, '確認・改装中の組み立てが取得の障害で止まった：' + live.stderr);
+    assert.ok(readFileSync(join(tmp, '_site/index.html'), 'utf8').includes('ただいま確認・改装中です'));
+    // 旗（ops/MAINTENANCE）だけの変更でも公開の処理が動く
+    assert.match(readFileSync(join(root, '.github/workflows/deploy.yml'), 'utf8'), /- 'ops\/MAINTENANCE'/);
     r = build();
     assert.equal(r.status, 0, r.stderr);
     assert.ok(readFileSync(join(tmp, '_site/index.html'), 'utf8').includes('ただいま確認・改装中です'), 'ops/MAINTENANCE で切り替わっていない');
@@ -870,6 +884,19 @@ test('確認・改装中の表示（ops/MAINTENANCE）と、見つからない�
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }
+});
+
+test('共通の RSS・Atom 読み取り器：途中で切れた応答・閉じタグの欠けた項目は、正常な0件にせず取得失敗にする', () => {
+  const ok = '<?xml version="1.0"?><rss><channel><item><title>a</title><link>https://www.ftc.gov/x</link></item></channel></rss>\n';
+  assert.equal(parseFeed(ok).length, 1);
+  for (const bad of [
+    '<rss><channel><item><title>a</title></channel></rss>', // 閉じタグの欠けた項目
+    '<rss><channel><item><title>a</title><item><title>b</title></item></channel></rss>', // 入れ子
+    '<rss><channel><item><title>a</title></item></channel>', // 途中で切れた
+    '<rdf:RDF><channel/><item><title>a</title></rdf:RDF>',
+    '<feed><entry><title>a</title></feed>',
+  ])
+    assert.throws(() => parseFeed(bad), undefined, bad);
 });
 
 console.log(`\n${n} tests passed`);

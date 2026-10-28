@@ -73,7 +73,9 @@ const isOwner = isOwnerPr;
 const isDependabot = PR_AUTHOR === 'dependabot[bot]';
 
 // 安全設計のファイル（検査のプログラム・ワークフロー・許可リスト・AI 向けの規則・安全設計の文書）が変わるときは、
-// 運用者が差分を読んだことを PR の本文に書いてもらう（AI が手伝った変更に、安全設計の変更が紛れ込んで素通りしないように）
+// 運用者が差分を読んだことを PR の本文に書いてもらう（AI が手伝った変更に、安全設計の変更が紛れ込んで素通りしないように）。
+// 注意：これは「人が書いた」ことを証明する仕組みではない（運用者の名義で動く AI が本文を書けば通る）。うっかり素通りさせないための確認の印。
+// 本当の境界は、AI に運用者の権限を持たせないこと（docs/GITHUB-SETTINGS.md 6章）と、main の保護（4章）
 export const SAFETY_FILES = /^(\.github\/|scripts\/(check-[\w-]+|scope-guard|validate-data|build|add-candidates|fetch-[\w-]+)\.mjs$|scripts\/lib\/|scripts\/allowed-sources\.json$|AGENTS\.md$|ops\/|docs\/SECURITY-DESIGN\.md$|docs\/GITHUB-SETTINGS\.md$|\.githooks\/|package\.json$)/;
 const SAFETY_ACK = '安全設計の変更を確認済み';
 const safetyChanged = changes.map((c) => c.path).filter((p) => SAFETY_FILES.test(p));

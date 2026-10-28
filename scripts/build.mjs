@@ -17,7 +17,10 @@ import { fitCount, RULES, MAX_BY_LAYER } from './importance-rules.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { writeSeo } from './lib/seo.mjs';
 
-const OFFLINE = process.argv.includes('--offline');
+// 確認・改装中（運用者が main に ops/MAINTENANCE を置いたとき）：公的機関からの取得をせずに組み立て、トップを「確認・改装中」にする。
+// 主な取得元（WHO・CISA）の障害で公開が止まっているときでも、この表示に切り替えられるようにするため（取得の失敗で止まらない）
+const MAINTENANCE = existsSync(resolve(ROOT, 'ops/MAINTENANCE'));
+const OFFLINE = process.argv.includes('--offline') || MAINTENANCE;
 // ローカル確認用：運用者・AI が公式ページで確認した取得結果（API と同じ形の JSON）を使って組み立てる。
 //   TA_SNAPSHOT_DIR=<フォルダ> TA_SNAPSHOT_AT=<確認日時ISO> node scripts/build.mjs --snapshot
 // 公開（GitHub Actions）では使わない。
@@ -271,7 +274,7 @@ async function main() {
   }
   // 確認・改装中の表示：運用者が main に ops/MAINTENANCE を置いたときだけ、トップ（地球儀）を「ただいま確認・改装中です」に差し替える。
   // 説明ページ（福祉の相談先・セキュリティ対策・このサイトについて）はそのまま見られる。戻すときは ops/MAINTENANCE を消す
-  if (existsSync(resolve(ROOT, 'ops/MAINTENANCE'))) {
+  if (MAINTENANCE) {
     cpSync(resolve(OUT, 'maintenance.html'), resolve(OUT, 'index.html'));
     console.log('::warning::ops/MAINTENANCE があるため、トップを「確認・改装中」の表示にしました');
   }

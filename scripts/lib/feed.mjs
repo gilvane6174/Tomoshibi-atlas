@@ -43,6 +43,13 @@ export function parseFeed(xml) {
   const isAtom = /<feed[\s>]/i.test(xml) && /<entry[\s>]/i.test(xml);
   const re = isAtom ? /<entry(?:\s[^>]*)?>([\s\S]*?)<\/entry>/gi : /<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/gi;
   if (!isAtom && !/<(rss|rdf:RDF)[\s>]/i.test(xml)) throw new Error('feed: not RSS or Atom');
+  // 途中で切れた応答・閉じタグの欠けた項目を、正常な0件や少ない件数に見せない（壊れた応答として取得失敗にする）
+  if (!/<\/(rss|rdf:RDF|feed)>\s*$/i.test(xml)) throw new Error('feed: truncated (no closing root tag)');
+  const name = isAtom ? 'entry' : 'item';
+  const opens = (xml.match(new RegExp(`<${name}(?:\\s[^>]*)?>`, 'gi')) || []).length;
+  const closes = (xml.match(new RegExp(`</${name}>`, 'gi')) || []).length;
+  if (opens !== closes) throw new Error(`feed: broken ${name} structure (${opens} opening / ${closes} closing tags)`);
+  if (new RegExp(`<${name}(?:\\s[^>]*)?>(?:(?!</${name}>)[\\s\\S])*<${name}(?:\\s[^>]*)?>`, 'i').test(xml)) throw new Error(`feed: nested or unclosed ${name}`);
   for (const m of xml.matchAll(re)) {
     if (out.length >= MAX_ITEMS) break;
     const b = m[1];

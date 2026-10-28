@@ -18,6 +18,7 @@ on:
       - 'data/curated/**'
       - 'scripts/**'
       - 'data/directory/**'
+      - 'ops/MAINTENANCE' # 確認・改装中の表示の切り替え（置いたとき・消したとき）でも公開し直す
 
 permissions: {}
 
