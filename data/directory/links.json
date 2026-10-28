@@ -77,6 +77,21 @@
           "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000059425.html"
         },
         {
+          "id": "jp-w-hikikomori",
+          "cat": "general",
+          "name": {
+            "ja": "ひきこもり支援（厚生労働省）",
+            "jaKana": "ひきこもり しえん（こうせい ろうどうしょう）",
+            "en": "Support for people who are socially withdrawn (MHLW)"
+          },
+          "desc": {
+            "ja": "ひきこもりの本人や家族が相談できる、都道府県などの「ひきこもり地域支援センター」などの案内です。",
+            "jaKana": "ひきこもりの ほんにんや かぞくが そうだん できる、とどうふけん などの「ひきこもり ちいき しえん センター」などの あんない です。",
+            "en": "Information on regional support centres where people who are socially withdrawn (hikikomori) and their families can get advice."
+          },
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/hikikomori"
+        },
+        {
           "id": "jp-w-sumakoma",
           "cat": "money",
           "name": {
@@ -195,6 +210,36 @@
             "en": "Where to get help with domestic violence from a spouse or similar partner."
           },
           "url": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html"
+        },
+        {
+          "id": "jp-w-seibouryoku",
+          "cat": "family",
+          "name": {
+            "ja": "性暴力・性犯罪の相談窓口（内閣府）",
+            "jaKana": "せいぼうりょく・せいはんざいの そうだん まどぐち（ないかくふ）",
+            "en": "Help with sexual violence (Cabinet Office)"
+          },
+          "desc": {
+            "ja": "性犯罪・性暴力被害者のためのワンストップ支援センター（#8891）や、SNSで相談できる窓口などの案内です。",
+            "jaKana": "せいはんざい・せいぼうりょく ひがいしゃの ための ワンストップ しえん センター（#8891）や、SNSで そうだん できる まどぐち などの あんない です。",
+            "en": "Lists where to get help, including the one-stop support centres for victims of sexual crime and violence (#8891 in Japan) and an online chat service."
+          },
+          "url": "https://www.gender.go.jp/policy/no_violence/avjk/consultation.html"
+        },
+        {
+          "id": "jp-w-kodomo-sos",
+          "cat": "family",
+          "name": {
+            "ja": "24時間子供SOSダイヤル（文部科学省）",
+            "jaKana": "24じかん こども SOS ダイヤル（もんぶ かがくしょう）",
+            "en": "24-hour SOS line for children (MEXT)"
+          },
+          "desc": {
+            "ja": "子どもや保護者が、いじめなどの悩みを夜間・休日を含めていつでも電話で相談できる窓口の案内です。",
+            "jaKana": "こどもや ほごしゃが、いじめ などの なやみを よる・やすみの ひも ふくめて いつでも でんわで そうだん できる まどぐちの あんない です。",
+            "en": "A phone line where children and parents can talk about bullying and other worries at any time, including nights and holidays."
+          },
+          "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1306988.htm"
         },
         {
           "id": "jp-w-houterasu",
@@ -669,6 +714,42 @@
             "en": "The US public health agency for infectious diseases and health information."
           },
           "url": "https://www.cdc.gov/"
+        }
+      ],
+      "safety": [
+        {
+          "id": "usa-safety-disaster",
+          "name": {
+            "ja": "米国連邦緊急事態管理庁（FEMA）「Ready.gov」",
+            "jaKana": "べいこく れんぽう きんきゅう じたい かんりちょう（FEMA）「Ready.gov」",
+            "en": "FEMA: Ready.gov"
+          },
+          "desc": {
+            "ja": "地域の災害の危険の確かめ方、警報の受け取り方、避難の計画の立て方を案内しています。",
+            "jaKana": "ちいきの さいがいの きけんの たしかめかた、けいほうの うけとりかた、ひなんの けいかくの たてかたを あんない して います。",
+            "en": "Helps residents check local hazards, sign up for alerts and plan evacuation."
+          },
+          "url": "https://www.ready.gov/be-informed",
+          "pageLang": [
+            "en"
+          ]
+        },
+        {
+          "id": "usa-safety-crime",
+          "name": {
+            "ja": "米国連邦取引委員会（FTC）「詐欺の情報（Scams）」",
+            "jaKana": "べいこく れんぽう とりひき いいんかい（FTC）「さぎの じょうほう（Scams）」",
+            "en": "Federal Trade Commission: Consumer Advice on scams"
+          },
+          "desc": {
+            "ja": "最新の詐欺の注意喚起と、詐欺の見分け方・通報・被害の回復の方法をまとめています。",
+            "jaKana": "さいしんの さぎの ちゅうい かんきと、さぎの みわけかた・つうほう・ひがいの かいふくの ほうほうを まとめて います。",
+            "en": "Current scam alerts and guidance on spotting, reporting and recovering from fraud."
+          },
+          "url": "https://consumer.ftc.gov/scams",
+          "pageLang": [
+            "en"
+          ]
         }
       ]
     },
@@ -1328,6 +1409,42 @@
             "en"
           ]
         }
+      ],
+      "safety": [
+        {
+          "id": "fra-safety-disaster",
+          "name": {
+            "ja": "フランス政府「Géorisques」（家族の安全計画）",
+            "jaKana": "フランス せいふ「Géorisques」（かぞくの あんぜん けいかく）",
+            "en": "Government of France: Géorisques (family safety plan)"
+          },
+          "desc": {
+            "ja": "地域の危険の確認、非常用の持ち出し品の準備、身を守る行動をまとめた計画を紹介しています。",
+            "jaKana": "ちいきの きけんの かくにん、ひじょうようの もちだしひんの じゅんび、みを まもる こうどうを まとめた けいかくを しょうかい して います。",
+            "en": "A plan to check local hazards, prepare an emergency kit and learn how to protect yourself."
+          },
+          "url": "https://georisques.gouv.fr/me-preparer-me-proteger/mon-plan-familial-de-mise-en-surete",
+          "pageLang": [
+            "fr"
+          ]
+        },
+        {
+          "id": "fra-safety-crime",
+          "name": {
+            "ja": "フランス内務省「Ma Sécurité」（ネット詐欺への対処）",
+            "jaKana": "フランス ないむしょう「Ma Sécurité」（ネット さぎへの たいしょ）",
+            "en": "French Ministry of the Interior: Ma Sécurité (online scams)"
+          },
+          "desc": {
+            "ja": "ネット詐欺の見分け方と、疑わしいとき・被害にあったときの対処を説明しています。",
+            "jaKana": "ネット さぎの みわけかたと、うたがわしい とき・ひがいに あった ときの たいしょを せつめい して います。",
+            "en": "How to recognise online scams and what to do if you suspect one or have been a victim."
+          },
+          "url": "https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/numerique/arnaques-escroquerie-en-ligne-identifier-et-agir",
+          "pageLang": [
+            "fr"
+          ]
+        }
       ]
     },
     "DEU": {
@@ -1605,6 +1722,42 @@
           "pageLang": [
             "it",
             "en"
+          ]
+        }
+      ],
+      "safety": [
+        {
+          "id": "ita-safety-disaster",
+          "name": {
+            "ja": "イタリア市民保護局「Io non rischio（備えのキャンペーン）」",
+            "jaKana": "イタリア しみん ほごきょく「Io non rischio（そなえの キャンペーン）」",
+            "en": "Italian Civil Protection Department: Io non rischio"
+          },
+          "desc": {
+            "ja": "地震・洪水・火山・山火事などへの備えと、身を守る基本を紹介しています。",
+            "jaKana": "じしん・こうずい・かざん・やまかじ などへの そなえと、みを まもる きほんを しょうかい して います。",
+            "en": "Basic preparedness for earthquakes, floods, volcanoes and wildfires."
+          },
+          "url": "https://iononrischio.protezionecivile.gov.it/it",
+          "pageLang": [
+            "it"
+          ]
+        },
+        {
+          "id": "ita-safety-crime",
+          "name": {
+            "ja": "イタリア国家憲兵（カラビニエリ）「詐欺への対策」",
+            "jaKana": "イタリア こっか けんぺい（カラビニエリ）「さぎへの たいさく」",
+            "en": "Carabinieri (Italy): against scams"
+          },
+          "desc": {
+            "ja": "高齢の人をねらう手口を中心に、よくある詐欺と防ぎ方を説明しています。",
+            "jaKana": "こうれいの ひとを ねらう てぐちを ちゅうしんに、よく ある さぎと ふせぎかたを せつめい して います。",
+            "en": "Common scams, especially those targeting older people, and how to prevent them."
+          },
+          "url": "https://www.carabinieri.it/in-vostro-aiuto/consigli/pillole-di-prevenzione/contro-le-truffe",
+          "pageLang": [
+            "it"
           ]
         }
       ]
@@ -3112,6 +3265,25 @@
             "en"
           ]
         }
+      ],
+      "safety": [
+        {
+          "id": "esp-safety-crime",
+          "name": {
+            "ja": "スペイン国家警察「被害届（Denuncias）」",
+            "jaKana": "スペイン こっか けいさつ「ひがいとどけ（Denuncias）」",
+            "en": "Spanish National Police: reporting a crime"
+          },
+          "desc": {
+            "ja": "国家警察への被害届の出し方を案内する公式のページです。",
+            "jaKana": "こっか けいさつへの ひがいとどけの だしかたを あんない する こうしきの ページ です。",
+            "en": "Official National Police page on how to report a crime."
+          },
+          "url": "https://www.policia.es/_es/denuncias.php",
+          "pageLang": [
+            "es"
+          ]
+        }
       ]
     },
     "ARG": {
@@ -4262,6 +4434,42 @@
             "pt"
           ]
         }
+      ],
+      "safety": [
+        {
+          "id": "prt-safety-disaster",
+          "name": {
+            "ja": "ポルトガル国家緊急事態・市民保護庁（ANEPC）",
+            "jaKana": "ポルトガル こっか きんきゅう じたい・しみん ほごちょう（ANEPC）",
+            "en": "National Authority for Emergency and Civil Protection (ANEPC)"
+          },
+          "desc": {
+            "ja": "市民保護の警報、予防と備えの情報、緊急の連絡先（112）を載せています。",
+            "jaKana": "しみん ほごの けいほう、よぼうと そなえの じょうほう、きんきゅうの れんらくさき（112）を のせて います。",
+            "en": "Civil protection warnings, prevention and preparedness advice, and emergency contacts (112)."
+          },
+          "url": "https://prociv.gov.pt/pt/home/",
+          "pageLang": [
+            "pt"
+          ]
+        },
+        {
+          "id": "prt-safety-crime",
+          "name": {
+            "ja": "ポルトガル国家警備隊（GNR）「詐欺への注意」",
+            "jaKana": "ポルトガル こっか けいびたい（GNR）「さぎへの ちゅうい」",
+            "en": "Republican National Guard (GNR): advice on scams"
+          },
+          "desc": {
+            "ja": "ネット・銀行・恋愛などの詐欺の手口への注意と予防、通報先を説明しています。",
+            "jaKana": "ネット・ぎんこう・れんあい などの さぎの てぐちへの ちゅういと よぼう、つうほうさきを せつめい して います。",
+            "en": "Explains online, banking and romance scams, how to prevent them and where to report."
+          },
+          "url": "https://www.gnr.pt/Cons_Burlas.aspx",
+          "pageLang": [
+            "pt"
+          ]
+        }
       ]
     },
     "GRC": {
@@ -4292,6 +4500,25 @@
           "url": "https://eody.gov.gr/",
           "pageLang": [
             "el"
+          ]
+        }
+      ],
+      "safety": [
+        {
+          "id": "grc-safety-disaster",
+          "name": {
+            "ja": "ギリシャ気候危機・市民保護省「一般的な防護の指示」",
+            "jaKana": "ギリシャ きこう きき・しみん ほごしょう「いっぱんてきな ぼうごの しじ」",
+            "en": "Greek Ministry for Climate Crisis and Civil Protection: general instructions"
+          },
+          "desc": {
+            "ja": "公式の情報の入手先、緊急の番号、必要な備えなど、緊急時の基本を案内しています。",
+            "jaKana": "こうしきの じょうほうの にゅうしゅさき、きんきゅうの ばんごう、ひつような そなえ など、きんきゅう じの きほんを あんない して います。",
+            "en": "Basic guidance for emergencies: official information sources, emergency numbers and supplies."
+          },
+          "url": "https://civilprotection.gov.gr/en/odigies-prostasias/genikes-odigies",
+          "pageLang": [
+            "en"
           ]
         }
       ]
@@ -5428,6 +5655,25 @@
             "en": "Cyber Security Agency of Singapore"
           },
           "url": "https://www.csa.gov.sg/about-csa",
+          "pageLang": [
+            "en"
+          ]
+        }
+      ],
+      "safety": [
+        {
+          "id": "sgp-safety-crime",
+          "name": {
+            "ja": "シンガポール政府「ScamShield」",
+            "jaKana": "シンガポール せいふ「ScamShield」",
+            "en": "Government of Singapore: ScamShield"
+          },
+          "desc": {
+            "ja": "詐欺かどうかの確認、手口の解説、被害の通報と相談先を案内する政府のサイトです。",
+            "jaKana": "さぎ かどうかの かくにん、てぐちの かいせつ、ひがいの つうほうと そうだんさきを あんない する せいふの サイト です。",
+            "en": "Government site to check suspected scams, learn about scam types, report them and get help."
+          },
+          "url": "https://www.scamshield.gov.sg/",
           "pageLang": [
             "en"
           ]

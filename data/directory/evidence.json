@@ -2723,6 +2723,181 @@
       "method": "fetched",
       "how": "AIが公式ページを開いて確認",
       "evidence": "生活困窮者自立相談支援機関　相談窓口一覧｜沖縄県公式ホームページ"
+    },
+    "jp-w-seibouryoku": {
+      "url": "https://www.gender.go.jp/policy/no_violence/avjk/consultation.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28）",
+      "evidence": "相談窓口 - 内閣府男女共同参画局（#8891 ワンストップ支援センター、SNS相談 Cure Time などを掲載）"
+    },
+    "jp-w-kodomo-sos": {
+      "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1306988.htm",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28）",
+      "evidence": "「24時間子供SOSダイヤル」について：文部科学省（0120-0-78310、夜間・休日を含む24時間）"
+    },
+    "jp-w-hikikomori": {
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/hikikomori",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28）",
+      "evidence": "ひきこもり支援に関する取組｜厚生労働省（ひきこもり地域支援センターの案内）"
+    },
+    "usa-safety-disaster": {
+      "url": "https://www.ready.gov/be-informed",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Ready.gov「Be Informed」（ページの見出し）"
+    },
+    "usa-safety-crime": {
+      "url": "https://consumer.ftc.gov/scams",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Scams | Consumer Advice"
+    },
+    "sgp-safety-crime": {
+      "url": "https://www.scamshield.gov.sg/",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Home | ScamShield Website（A Singapore Government Agency Website）"
+    },
+    "esp-safety-crime": {
+      "url": "https://www.policia.es/_es/denuncias.php",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Portal web de la Policía Nacional - España"
+    },
+    "prt-safety-disaster": {
+      "url": "https://prociv.gov.pt/pt/home/",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "ANEPC - Autoridade Nacional de Emergência e Proteção Civil"
+    },
+    "prt-safety-crime": {
+      "url": "https://www.gnr.pt/Cons_Burlas.aspx",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "GNR（詐欺への注意のページ）"
+    },
+    "fra-safety-disaster": {
+      "url": "https://georisques.gouv.fr/me-preparer-me-proteger/mon-plan-familial-de-mise-en-surete",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Le plan individuel de mise en sûreté | Géorisques"
+    },
+    "fra-safety-crime": {
+      "url": "https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/numerique/arnaques-escroquerie-en-ligne-identifier-et-agir",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Arnaques et escroqueries en ligne : comment les identifier et agir ? | Ma Sécurité"
+    },
+    "ita-safety-disaster": {
+      "url": "https://iononrischio.protezionecivile.gov.it/it",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Io non rischio"
+    },
+    "ita-safety-crime": {
+      "url": "https://www.carabinieri.it/in-vostro-aiuto/consigli/pillole-di-prevenzione/contro-le-truffe",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "Contro le truffe"
+    },
+    "grc-safety-disaster": {
+      "url": "https://civilprotection.gov.gr/en/odigies-prostasias/genikes-odigies",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "General Instructions | Ministry for Climate Crisis and Civil Protection"
+    },
+    "jp-pref-03-main": {
+      "url": "https://www.pref.iwate.jp/kurashikankyou/fukushi/seikatujiritsusien/1003572.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "岩手県 - 生活困窮者自立支援制度"
+    },
+    "jp-pref-05-main": {
+      "url": "https://www.pref.akita.lg.jp/pages/archive/9336",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立支援制度 | 美の国あきたネット"
+    },
+    "jp-pref-06-main": {
+      "url": "https://www.pref.yamagata.jp/090014/kenfuku/fukushi/seikatsuhogo/jiritsushien.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立支援制度について | 山形県"
+    },
+    "jp-pref-10-main": {
+      "url": "https://www.pref.gunma.jp/page/1672.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活に困窮している方を支援する相談窓口について - 群馬県ホームページ(地域福祉課)"
+    },
+    "jp-pref-16-main": {
+      "url": "https://www.pref.toyama.jp/1200/kurashi/kenkou/iryou/kj00017123.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "富山県／生活困窮者自立支援制度について"
+    },
+    "jp-pref-17-main": {
+      "url": "https://www.pref.ishikawa.lg.jp/kousei/safetynet/index.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立支援制度について | 石川県"
+    },
+    "jp-pref-18-main": {
+      "url": "https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立支援制度について | 福井県ホームページ"
+    },
+    "jp-pref-29-main": {
+      "url": "https://www.pref.nara.lg.jp/n063/39628.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立相談支援機関の窓口一覧 / 奈良県（検索結果の題名。ページの本文は窓口一覧を確認）"
+    },
+    "jp-pref-33-main": {
+      "url": "https://www.pref.okayama.jp/page/689589.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立支援制度の自立相談支援機関について - 岡山県ホームページ（地域福祉課）"
+    },
+    "jp-pref-35-main": {
+      "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活困窮者自立支援・トップページ - 山口県ホームページ"
+    },
+    "jp-pref-36-main": {
+      "url": "https://www.pref.tokushima.lg.jp/ippannokata/kenko/chiikifukushi/7245697/",
+      "checkedAt": "2026-10-28",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "evidence": "生活保護、生活困窮者支援に関する相談について｜徳島県ホームページ"
     }
   }
 }

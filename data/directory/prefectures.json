@@ -39,7 +39,17 @@
       "code": "03",
       "ja": "岩手県",
       "en": "Iwate Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-03-main",
+          "role": "main",
+          "title": {
+            "ja": "岩手県「生活困窮者自立支援制度」",
+            "en": "Iwate: support for people in financial hardship"
+          },
+          "url": "https://www.pref.iwate.jp/kurashikankyou/fukushi/seikatujiritsusien/1003572.html"
+        }
+      ]
     },
     {
       "code": "04",
@@ -61,13 +71,33 @@
       "code": "05",
       "ja": "秋田県",
       "en": "Akita Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-05-main",
+          "role": "main",
+          "title": {
+            "ja": "秋田県「生活困窮者自立支援制度」",
+            "en": "Akita: support for people in financial hardship"
+          },
+          "url": "https://www.pref.akita.lg.jp/pages/archive/9336"
+        }
+      ]
     },
     {
       "code": "06",
       "ja": "山形県",
       "en": "Yamagata Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-06-main",
+          "role": "main",
+          "title": {
+            "ja": "山形県「生活困窮者自立支援制度について」",
+            "en": "Yamagata: support for people in financial hardship"
+          },
+          "url": "https://www.pref.yamagata.jp/090014/kenfuku/fukushi/seikatsuhogo/jiritsushien.html"
+        }
+      ]
     },
     {
       "code": "07",
@@ -121,7 +151,17 @@
       "code": "10",
       "ja": "群馬県",
       "en": "Gunma Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-10-main",
+          "role": "main",
+          "title": {
+            "ja": "群馬県「生活に困窮している方を支援する相談窓口について」",
+            "en": "Gunma: consultation offices for people in financial hardship"
+          },
+          "url": "https://www.pref.gunma.jp/page/1672.html"
+        }
+      ]
     },
     {
       "code": "11",
@@ -225,19 +265,49 @@
       "code": "16",
       "ja": "富山県",
       "en": "Toyama Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-16-main",
+          "role": "main",
+          "title": {
+            "ja": "富山県「生活困窮者自立支援制度について」",
+            "en": "Toyama: support for people in financial hardship"
+          },
+          "url": "https://www.pref.toyama.jp/1200/kurashi/kenkou/iryou/kj00017123.html"
+        }
+      ]
     },
     {
       "code": "17",
       "ja": "石川県",
       "en": "Ishikawa Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-17-main",
+          "role": "main",
+          "title": {
+            "ja": "石川県「生活困窮者自立支援制度について」",
+            "en": "Ishikawa: support for people in financial hardship"
+          },
+          "url": "https://www.pref.ishikawa.lg.jp/kousei/safetynet/index.html"
+        }
+      ]
     },
     {
       "code": "18",
       "ja": "福井県",
       "en": "Fukui Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-18-main",
+          "role": "main",
+          "title": {
+            "ja": "福井県「生活困窮者自立支援制度について」",
+            "en": "Fukui: support for people in financial hardship"
+          },
+          "url": "https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html"
+        }
+      ]
     },
     {
       "code": "19",
@@ -403,7 +473,17 @@
       "code": "29",
       "ja": "奈良県",
       "en": "Nara Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-29-main",
+          "role": "main",
+          "title": {
+            "ja": "奈良県「生活困窮者自立相談支援機関の窓口一覧」",
+            "en": "Nara: list of consultation offices for people in financial hardship"
+          },
+          "url": "https://www.pref.nara.lg.jp/n063/39628.html"
+        }
+      ]
     },
     {
       "code": "30",
@@ -457,7 +537,17 @@
       "code": "33",
       "ja": "岡山県",
       "en": "Okayama Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-33-main",
+          "role": "main",
+          "title": {
+            "ja": "岡山県「生活困窮者自立支援制度の自立相談支援機関について」",
+            "en": "Okayama: consultation offices for people in financial hardship"
+          },
+          "url": "https://www.pref.okayama.jp/page/689589.html"
+        }
+      ]
     },
     {
       "code": "34",
@@ -479,13 +569,33 @@
       "code": "35",
       "ja": "山口県",
       "en": "Yamaguchi Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-35-main",
+          "role": "main",
+          "title": {
+            "ja": "山口県「生活困窮者自立支援」",
+            "en": "Yamaguchi: support for people in financial hardship"
+          },
+          "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html"
+        }
+      ]
     },
     {
       "code": "36",
       "ja": "徳島県",
       "en": "Tokushima Prefecture",
-      "links": []
+      "links": [
+        {
+          "id": "jp-pref-36-main",
+          "role": "main",
+          "title": {
+            "ja": "徳島県「生活保護、生活困窮者支援に関する相談について」",
+            "en": "Tokushima: consultation on public assistance and support for people in hardship"
+          },
+          "url": "https://www.pref.tokushima.lg.jp/ippannokata/kenko/chiikifukushi/7245697/"
+        }
+      ]
     },
     {
       "code": "37",
