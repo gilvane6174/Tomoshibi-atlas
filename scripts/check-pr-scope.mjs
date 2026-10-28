@@ -78,10 +78,21 @@ const isDependabot = PR_AUTHOR === 'dependabot[bot]';
 // 本当の境界は、AI に運用者の権限を持たせないこと（docs/GITHUB-SETTINGS.md 6章）と、main の保護（4章）
 export const SAFETY_FILES = /^(\.github\/|scripts\/(check-[\w-]+|scope-guard|validate-data|build|add-candidates|fetch-[\w-]+)\.mjs$|scripts\/lib\/|scripts\/allowed-sources\.json$|AGENTS\.md$|ops\/|docs\/SECURITY-DESIGN\.md$|docs\/GITHUB-SETTINGS\.md$|\.githooks\/|package\.json$)/;
 const SAFETY_ACK = '安全設計の変更を確認済み';
+// HTML のコメント（<!-- … -->）を取り除く。取り除いた後に新しいコメントの始まりができる書き方（<!<!-- -->-- など）にも対応するため、
+// 変わらなくなるまで繰り返し、最後に閉じられていないコメントの始まりから後ろを捨てる（GitHub の表示でも、その後ろは見えない）
+const withoutComments = (text) => {
+  let s = String(text);
+  for (let prev = null; prev !== s; ) {
+    prev = s;
+    s = s.replace(/<!--[\s\S]*?-->/g, '');
+  }
+  const open = s.indexOf('<!--');
+  return open >= 0 ? s.slice(0, open) : s;
+};
 const safetyChanged = changes.map((c) => c.path).filter((p) => SAFETY_FILES.test(p));
 if (safetyChanged.length) {
   console.log(`::warning::安全設計のファイルが ${safetyChanged.length} 件変わっています。差分（Files changed）を必ず読んでください：${safetyChanged.slice(0, 30).join('、')}${safetyChanged.length > 30 ? ' ほか' : ''}`);
-  if (isOwnerPr && !PR_BODY.replace(/<!--[\s\S]*?-->/g, '').includes(SAFETY_ACK)) fail(`安全設計のファイルが変わっています（${safetyChanged.length} 件）。差分を読んだうえで、PR の本文に「${SAFETY_ACK}」と書いてください`);
+  if (isOwnerPr && !withoutComments(PR_BODY).includes(SAFETY_ACK)) fail(`安全設計のファイルが変わっています（${safetyChanged.length} 件）。差分を読んだうえで、PR の本文に「${SAFETY_ACK}」と書いてください`);
 }
 
 if (isOwner) {
