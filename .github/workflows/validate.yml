@@ -1,6 +1,7 @@
 # プルリクエストごとに検査を行う。失敗したPRはマージできない設定にする（docs/GITHUB-SETTINGS.md）。
-# 注意：pull_request_target は使わないこと（外部からのPRに書き込み権限付きでコードを実行させてしまうため）。
-# このワークフローは秘密情報を一切使わない。生成AIも呼び出さない。
+# 注意：このワークフローでは pull_request_target を使わないこと（外部からのPRのコードを書き込み権限付きで動かしてしまうため。
+# 例外は scope-guard.yml だけで、PR のコードを取り出さない）。保存した秘密情報（secrets）は使わない。生成AIも呼び出さない。
+# GitHub が発行する一時的なトークン（読み取りだけ）は、main 側の検査プログラムにだけ渡す。
 #
 # 重要：PR 側のスクリプトは書き換えられている可能性があるため、検査は「main 側（PR の分岐元）のスクリプト」で
 # 「PR 側のファイル」に対して行う（trusted/ と pr/ の2つを取り出す）。
@@ -19,6 +20,7 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+      pull-requests: read # PR が GitHub App を通して作られたかを確かめるため（読み取りだけ。scripts/lib/owner-pr.mjs）
     steps:
       - name: Checkout trusted scripts (latest main)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -44,7 +46,12 @@ jobs:
         env:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           MAINTAINER_LOGIN: ${{ vars.MAINTAINER_LOGIN }}
+          OWNER_PR_CHECK: ${{ vars.OWNER_PR_CHECK }}
           AI_ACCOUNT_LOGINS: ${{ vars.AI_ACCOUNT_LOGINS }}
+          GH_TOKEN: ${{ github.token }} # この main 側の検査プログラムにだけ渡す（PR 側のコードには渡さない）
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           BASE_REF: ${{ github.event.pull_request.base.ref }}
           TRUSTED_ROOT: ../trusted
@@ -66,10 +73,15 @@ jobs:
           TA_TARGET_ROOT: pr
         run: node trusted/scripts/check-repo.mjs
 
-      # 運用者がスクリプト自体を変更した場合のために、PR 側の自己テストと組み立ても行う（秘密情報が無いので安全）
+      # 運用者がスクリプト自体を変更した場合のために、PR 側の自己テストと組み立ても行う。
+      # PR 側のコードは、上の main 側の検査がすべて成功したときだけ実行する（success()。1つでも失敗・取り消しなら実行しない）。
+      # 秘密情報は渡さず、トークンも環境変数で渡さない。ただし、実行環境・通信・ジョブの一時的な権限はゼロではない
+      # （--offline は組み立てプログラムの引数で、通信を遮断する仕組みではない）。取り込み手順は docs/GITHUB-SETTINGS.md 10章
       - name: Self test (pull request)
+        if: ${{ success() }}
         working-directory: pr
         run: node scripts/test.mjs
-      - name: Build offline (pull request, no network)
+      - name: Build offline (pull request, no network flag only)
+        if: ${{ success() }}
         working-directory: pr
         run: node scripts/build.mjs --offline

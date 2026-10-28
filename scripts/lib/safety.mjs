@@ -117,6 +117,18 @@ export function isDirectoryUrl(url) {
 
 // 存在する日付か（2026-02-30 のような日付を拒否）、未来日でないか
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?)?$/;
+// 「今日の動物たち」の原典用：https・検索パラメータなし・animalHosts に一致するURLだけ通す
+export function isAnimalUrl(url) {
+  let u;
+  try {
+    u = new URL(url);
+  } catch {
+    return false;
+  }
+  if (u.protocol !== 'https:' || u.username || u.password || u.port || u.search || u.hash || url.includes('?') || url.includes('#')) return false;
+  return (SOURCES.animalHosts || []).some((rule) => hostRuleMatches(rule, u));
+}
+
 export function isValidDate(s, { allowFutureDays = 1 } = {}) {
   if (typeof s !== 'string') return false;
   const m = s.match(ISO_DATE);
@@ -136,3 +148,16 @@ export const todayJst = () => new Date(Date.now() + 9 * 3600000).toISOString().s
 export const notFutureJst = (s) => typeof s === 'string' && s.slice(0, 10) <= todayJst();
 
 export const toIsoDate = (s) => new Date(s).toISOString();
+
+// 「AI」の呼び方の変化への対応：米国政府は2026年9月の大統領令で、公式文書の「AI（artificial intelligence）」を
+// 「SI（Super Intelligence）」と呼び替えるよう指示した。SI と書かれた AI 関連の情報も、AI の情報として扱う。
+// ただし「SI」だけでは国際単位系・システムインテグレーター・国コード（スロベニア）などと区別できないため、
+// 同じ文の中に「Super Intelligence／スーパーインテリジェンス／AI」の説明があるときだけ AI 関連とみなす（推測で決めない）。
+export const SUPER_INTELLIGENCE = /super[\s-]*intelligence|スーパー[・\s]*インテリジェンス/i;
+export const BARE_SI = /(^|[^A-Za-z0-9-])SI(?![A-Za-z0-9-])/; // SI-CERT のような固有名は除く
+// 全角の「ＳＩ」なども同じに扱う（NFKC で正規化してから調べる）
+export const siWithoutExplanation = (raw) => {
+  const text = raw.normalize('NFKC');
+  return BARE_SI.test(text) && !SUPER_INTELLIGENCE.test(text) && !/(^|[^A-Za-z])AI(?![A-Za-z])|人工知能/.test(text);
+};
+export const mentionsSuperIntelligence = (text) => SUPER_INTELLIGENCE.test(text.normalize('NFKC'));

@@ -2,7 +2,8 @@
 // PR 側のフォルダを作業ディレクトリにして実行する（.github/workflows/validate.yml）。
 //
 // すべての PR：コミットの作者メールが GitHub の noreply であること、コミットメッセージと PR の題名・本文に個人情報・秘密情報が無いこと
-// 運用者の PR（作成者＝リポジトリ変数 MAINTAINER_LOGIN、かつブランチ名が curated/ で始まらない）：範囲の制限なし
+// 運用者の PR：範囲の制限なし。運用者の PR と認める条件は scripts/lib/owner-pr.mjs（scope-guard.mjs と同じ判定）。
+//   作成者＝MAINTAINER_LOGIN・同じリポジトリ・curated/ 以外のブランチ・GitHub App を通さずに作られたと API で確かめられたこと
 // Dependabot：.github/ 内の Actions 設定のみ
 // それ以外（AI・bot・外部の人、および curated/ ブランチ）：
 //   - 変更してよいのは data/curated/entries.json と data/curated/changelog.json の2つだけ（追加・削除・リンク化は不可）
@@ -18,6 +19,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { scanText } from './check-privacy.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { todayJst } from './lib/safety.mjs';
+import { ownerExemption, fetchViaApp, describeViaApp, SKIP_CHECKS } from './lib/owner-pr.mjs';
 
 const env = process.env;
 const { PR_AUTHOR = '', MAINTAINER_LOGIN = '', BASE_SHA = '', HEAD_SHA = '', HEAD_REF = '', PR_TITLE = '', PR_BODY = '', BASE_REF = '', TRUSTED_ROOT = '' } = env;
@@ -40,7 +42,14 @@ const NOREPLY = /(@users\.noreply\.github\.com|^noreply@github\.com)$/i;
 const AI_LOGINS = (env.AI_ACCOUNT_LOGINS || '').split(',').map((s) => s.trim()).filter(Boolean);
 const NAMES = new Set([MAINTAINER_LOGIN, ...AI_LOGINS, 'dependabot[bot]', 'GitHub', 'Yutaka Yoshioka', '吉岡有隆'].filter(Boolean));
 const OWNER_MAIL = new RegExp(`^(\\d+\\+)?${MAINTAINER_LOGIN.replace(/[^A-Za-z0-9-]/g, '')}@users\\.noreply\\.github\\.com$`, 'i');
-const isOwnerPr = MAINTAINER_LOGIN && PR_AUTHOR === MAINTAINER_LOGIN && !HEAD_REF.startsWith('curated/');
+// GitHub App を通して作られた PR かどうか（API で確かめる。確かめられなければ運用者扱いしない）。
+// 手元での再現（GitHub Actions の外）に限り、TA_LOCAL_VIA_APP=null で「アプリを通していない」とみなせる
+const viaApp =
+  env.GITHUB_ACTIONS !== 'true' && env.TA_LOCAL_VIA_APP === 'null' ? null : await fetchViaApp(env.REPO || env.GITHUB_REPOSITORY || '', env.PR_NUMBER || '', env.GH_TOKEN || '');
+const owner = ownerExemption({ author: PR_AUTHOR, owner: MAINTAINER_LOGIN, repo: env.REPO || env.GITHUB_REPOSITORY || '', headRepo: env.HEAD_REPO || '', headRef: HEAD_REF, viaApp, mode: env.OWNER_PR_CHECK });
+console.log(`PR の作成元（performed_via_github_app）：${describeViaApp(viaApp)}`);
+const isOwnerPr = owner.exempt;
+if (PR_AUTHOR === MAINTAINER_LOGIN && !isOwnerPr) console.log(`運用者の名義の PR ですが、範囲の制限をかけます（${owner.reason}）`);
 const log = git('log', '--format=%an%x00%ae%x00%cn%x00%ce%x00%B%x1e', `${BASE_SHA}..${HEAD_SHA}`).split('\x1e').filter((s) => s.trim());
 log.forEach((rec, i) => {
   const [an, ae, cn, ce, msg] = rec.replace(/^\n/, '').split('\x00').map((x) => x ?? '');
@@ -48,6 +57,8 @@ log.forEach((rec, i) => {
   if (!NAMES.has(an.trim()) || !NAMES.has(cn.trim())) fail(`コミット${i + 1}：作者・コミッターの名前は GitHub のユーザー名にしてください（本名などの個人情報が公開されます）`);
   if (isOwnerPr && (!OWNER_MAIL.test(ae.trim()) || !(OWNER_MAIL.test(ce.trim()) || /^noreply@github\.com$/i.test(ce.trim())))) fail(`コミット${i + 1}：運用者のPRに運用者以外のコミットが含まれています`);
   for (const line of (msg || '').split('\n')) for (const label of scanText(line)) fail(`コミット${i + 1}のメッセージ：${label}`);
+  // 検査を飛ばす指示（skip-checks: true、[skip ci] など）はこのリポジトリでは使わない
+  if (SKIP_CHECKS.test(msg || '')) fail(`コミット${i + 1}のメッセージ：検査を飛ばす指示（skip-checks・skip ci など）は使えません`);
 });
 for (const [name, text] of [['PRの題名', PR_TITLE], ['PRの本文', PR_BODY]])
   for (const line of text.split('\n')) for (const label of scanText(line)) fail(`${name}：${label}`);
@@ -60,6 +71,29 @@ for (let i = 0; i < raw.length; i += 2) changes.push({ status: raw[i], path: raw
 const DATA = ['data/curated/entries.json', 'data/curated/changelog.json'];
 const isOwner = isOwnerPr;
 const isDependabot = PR_AUTHOR === 'dependabot[bot]';
+
+// 安全設計のファイル（検査のプログラム・ワークフロー・許可リスト・AI 向けの規則・安全設計の文書）が変わるときは、
+// 運用者が差分を読んだことを PR の本文に書いてもらう（AI が手伝った変更に、安全設計の変更が紛れ込んで素通りしないように）。
+// 注意：これは「人が書いた」ことを証明する仕組みではない（運用者の名義で動く AI が本文を書けば通る）。うっかり素通りさせないための確認の印。
+// 本当の境界は、AI に運用者の権限を持たせないこと（docs/GITHUB-SETTINGS.md 6章）と、main の保護（4章）
+export const SAFETY_FILES = /^(\.github\/|scripts\/(check-[\w-]+|scope-guard|validate-data|build|add-candidates|fetch-[\w-]+)\.mjs$|scripts\/lib\/|scripts\/allowed-sources\.json$|AGENTS\.md$|ops\/|docs\/SECURITY-DESIGN\.md$|docs\/GITHUB-SETTINGS\.md$|\.githooks\/|package\.json$)/;
+const SAFETY_ACK = '安全設計の変更を確認済み';
+// HTML のコメント（<!-- … -->）を取り除く。取り除いた後に新しいコメントの始まりができる書き方（<!<!-- -->-- など）にも対応するため、
+// 変わらなくなるまで繰り返し、最後に閉じられていないコメントの始まりから後ろを捨てる（GitHub の表示でも、その後ろは見えない）
+const withoutComments = (text) => {
+  let s = String(text);
+  for (let prev = null; prev !== s; ) {
+    prev = s;
+    s = s.replace(/<!--[\s\S]*?-->/g, '');
+  }
+  const open = s.indexOf('<!--');
+  return open >= 0 ? s.slice(0, open) : s;
+};
+const safetyChanged = changes.map((c) => c.path).filter((p) => SAFETY_FILES.test(p));
+if (safetyChanged.length) {
+  console.log(`::warning::安全設計のファイルが ${safetyChanged.length} 件変わっています。差分（Files changed）を必ず読んでください：${safetyChanged.slice(0, 30).join('、')}${safetyChanged.length > 30 ? ' ほか' : ''}`);
+  if (isOwnerPr && !withoutComments(PR_BODY).includes(SAFETY_ACK)) fail(`安全設計のファイルが変わっています（${safetyChanged.length} 件）。差分を読んだうえで、PR の本文に「${SAFETY_ACK}」と書いてください`);
+}
 
 if (isOwner) {
   console.log('運用者のPR：範囲の制限なし（レビューは必須）');

@@ -3,17 +3,34 @@
 // （プレビュー環境などでページ移動ができない場合でも確実に切り替わるように）。
 
 import { detectLanguage, loadLanguage, t, setRich, applyStatic, urlForLang, lang } from './i18n.js';
-import { loadAll, LAYERS, layerById, formatDateTime, formatDate, countryName } from './data.js';
+import { loadAll, LAYERS, layerById, resolveLayer, formatDateTime, formatDate, countryName } from './data.js';
 import { Globe, sunPhase } from './globe.js';
 import { Labels } from './labels.js';
 import { renderCountry, renderList, renderGuide } from './panel.js';
 import { groupIcon } from './icons.js';
 import { setupSearch } from './search.js';
+import { statusModel } from './status.js';
 
 const $ = (id) => document.getElementById(id);
 const d3 = window.d3;
 const PANELS = ['detail-panel', 'list-panel', 'guide-panel'];
 const isNarrow = () => window.innerWidth <= 860;
+
+// 読み込み中の表示を消す／読み込めなかったときの表示を出す
+const slowTimer = setTimeout(() => {
+  const s = $('loading-slow');
+  if (s) s.hidden = false;
+}, 12000);
+function hideLoading() {
+  clearTimeout(slowTimer);
+  const l = $('loading');
+  if (l) l.hidden = true;
+}
+function showLoadError() {
+  hideLoading();
+  const e = $('load-error');
+  if (e) e.hidden = false;
+}
 
 async function start() {
   try {
@@ -21,6 +38,7 @@ async function start() {
   } catch {
     // 言語ファイルが読めない場合も、何が起きたかと再読み込みの方法を伝える
     $('status-text').textContent = '読み込みに失敗しました。ページを再読み込みしてください。/ Failed to load. Please reload the page.';
+    showLoadError();
     return;
   }
 
@@ -30,6 +48,7 @@ async function start() {
   } catch {
     applyStatic();
     $('status-text').textContent = t('status.error');
+    showLoadError();
     return;
   }
 
@@ -89,7 +108,7 @@ async function start() {
     b.style.setProperty('--dot', l.color);
     b.append(document.createElement('span'), Object.assign(document.createElement('span'), { className: 'count' }));
     b.addEventListener('click', () => setLayer(l.id));
-    $(l.group === 'light' ? 'tabs-light' : 'tabs-caution').append(b);
+    $('tabs-' + l.group).append(b);
     tabs.set(l.id, b);
 
     const d = document.createElement('button');
@@ -101,7 +120,7 @@ async function start() {
       setLayer(l.id);
       closeMenu();
     });
-    $(l.group === 'light' ? 'drawer-light' : 'drawer-caution').append(d);
+    $('drawer-' + l.group).append(d);
     drawerItems.set(l.id, d);
   }
 
@@ -109,13 +128,16 @@ async function start() {
   function renderChrome() {
     applyStatic();
     // メニュー内の「灯／警鐘」見出しに印を付ける（applyStatic で文字が入れ替わるため毎回付け直す）
-    for (const p of document.querySelectorAll('.drawer-group')) p.prepend(groupIcon(p.classList.contains('caution') ? 'caution' : 'light'));
-    document.title = lang === 'en' ? 'Tomoshibi Atlas | Outbreaks, mental health, welfare and cyber threats on a globe — Yutaka Yoshioka' : 'Tomoshibi Atlas（ともしびアトラス）｜感染症・こころ・福祉・サイバー脅威を地球儀で — Yutaka Yoshioka（吉岡有隆）';
+    for (const p of document.querySelectorAll('.drawer-group')) p.prepend(groupIcon(['caution', 'calm'].find((g) => p.classList.contains(g)) || 'light'));
+    document.title = lang === 'en' ? 'Tomoshibi Atlas | Outbreaks, welfare, disasters, earthquakes, crime prevention and cyber threats on a globe — Yutaka Yoshioka' : 'Tomoshibi Atlas（ともしびアトラス）｜感染症・福祉情報・防災・地震・防犯・サイバー脅威を地球儀で — Yutaka Yoshioka（吉岡有隆）';
     const aboutHref = lang === 'en' ? 'about.en.html' : 'about.html';
     for (const id of ['disclaimer-link']) $(id).href = aboutHref + '#disclaimer';
     $('operator-link').href = aboutHref;
     document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
     $('drawer-about').href = aboutHref;
+    // トップと（スマートフォンの）メニューから、福祉の相談先とセキュリティ対策の説明ページへ直接進める
+    for (const id of ['quick-welfare', 'drawer-welfare']) $(id).href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
+    for (const id of ['quick-security', 'drawer-security']) $(id).href = lang === 'en' ? 'security-basics.en.html' : 'security-basics.html';
     $('brand-link').href = urlForLang(lang);
     const other = lang === 'en' ? 'ja' : 'en';
     for (const id of ['btn-lang', 'drawer-lang']) {
@@ -129,14 +151,17 @@ async function start() {
     $('layers-nav').setAttribute('aria-label', t('nav.layers'));
     $('tabs-light').setAttribute('aria-label', t('group.light'));
     $('tabs-caution').setAttribute('aria-label', t('group.caution'));
+    $('tabs-calm').setAttribute('aria-label', t('group.calm'));
     for (const id of ['detail-close', 'list-close', 'guide-close', 'menu-close']) $(id).setAttribute('aria-label', t('control.close'));
     $('sample-banner').hidden = data.meta.mode === 'live';
     $('sample-banner').textContent = t(data.meta.mode === 'snapshot' ? 'status.snapshot' : 'status.offline');
     for (const l of LAYERS) {
       const doc = data.layers[l.id];
-      const count = doc.status === 'preparing' ? t('status.preparing') : doc.status === 'notFetched' ? '—' : String(data.meta.layers[l.id].count);
+      const count = doc.status === 'preparing' ? t('status.preparing') : doc.status === 'notFetched' || doc.status === 'fetchFailed' ? '—' : String(data.meta.layers[l.id].count);
       const b = tabs.get(l.id);
-      b.children[0].textContent = t('layer.' + l.id);
+      // タブは短い名前（あれば）を使い、横幅に収める
+      b.children[0].textContent = t('tab.' + l.id) !== 'tab.' + l.id ? t('tab.' + l.id) : t('layer.' + l.id);
+      b.title = t('layer.' + l.id);
       b.children[1].textContent = count;
       const d = drawerItems.get(l.id);
       d.children[0].textContent = lang === 'en' ? `${t('layer.' + l.id)} (${count})` : `${t('layer.' + l.id)}（${count}）`;
@@ -158,26 +183,37 @@ async function start() {
   }
 
   function updateStatus() {
-    const doc = data.layers[state.current];
-    const m = data.meta.layers[state.current];
+    const name = t('layer.' + state.current);
+    // 文言の決め方は status.js（取得元の一部だけ失敗したときも知らせる。scripts/test.mjs で検査）
+    const s = statusModel({ layer: name, doc: data.layers[state.current], meta: data.meta.layers[state.current], mode: data.meta.mode });
     let text;
-    if (doc.status === 'notFetched') text = `${t('layer.' + state.current)}: ${t('status.notFetched')}`;
-    else if (doc.status === 'preparing') text = `${t('layer.' + state.current)}: ${t('status.preparing')}`;
-    else if (m.kind === 'auto') {
-      text = t('status.live', { layer: t('layer.' + state.current), count: m.count, date: formatDateTime(m.retrievedAt) });
-      // 公開版で自動取得が2日以上止まっている場合は、古い可能性を知らせる
-      if (data.meta.mode === 'live' && m.retrievedAt && Date.now() - Date.parse(m.retrievedAt) > 48 * 3600000) text += ' ' + t('status.stale');
+    if (s.key === 'status.notFetchedShort') text = `${name}: ${t('status.notFetched')}`;
+    else if (s.key === 'status.fetchFailedShort') text = `${name}: ${t('status.fetchFailed')}`;
+    else if (s.key === 'status.preparingShort') text = `${name}: ${t('status.preparing')}`;
+    else {
+      const p = s.params;
+      text = t(s.key, {
+        ...p,
+        date: p.date ? (s.key === 'status.curated' ? formatDate(p.date) : formatDateTime(p.date)) : '',
+        reviewed: p.reviewed ? formatDate(p.reviewed) : '',
+      });
     }
-    else text = t('status.curated', { layer: t('layer.' + state.current), count: m.count, date: formatDate(m.reviewedAt) });
+    for (const n of s.notes)
+      text +=
+        ' ' +
+        (n.key === 'status.feedsMissing'
+          ? t(n.key, { sources: n.sources.map((k) => t('feed.' + k)).join(lang === 'ja' ? '・' : ', ') })
+          : t(n.key));
     $('status-text').textContent = text;
   }
 
-  // 共有用のURL：?country=JPN&layer=welfare（国と分野だけ。個人に関わる情報は入れない）
+  // 共有用のURL：?country=JPN&layer=care（国と分野だけ。個人に関わる情報は入れない）
   function syncUrl() {
     try {
       const u = new URL(location.href);
       u.searchParams.delete('country');
       u.searchParams.delete('layer');
+      u.searchParams.delete('list');
       if (state.country && !$('detail-panel').hidden) u.searchParams.set('country', state.country);
       if (state.current !== 'outbreak') u.searchParams.set('layer', state.current);
       history.replaceState(null, '', './' + u.pathname.split('/').pop() + u.search);
@@ -200,6 +236,8 @@ async function start() {
   function refreshPanels() {
     if (state.country && !$('detail-panel').hidden) renderDetail();
     if (!$('list-panel').hidden) renderListPanel();
+    // 閉じている一覧の見出しも、言語・分野に合わせて直しておく（画面に残る隠れた文字を古いままにしない）
+    else $('list-title').textContent = t('panel.list', { layer: t('layer.' + state.current) });
     if (!$('guide-panel').hidden) renderGuide($('guide-body'), guideOpts());
   }
 
@@ -296,10 +334,10 @@ async function start() {
   $('list-close').addEventListener('click', () => hidePanel('list-panel'));
 
   // ── 目的と使い方 ──
-  // 追記の「福祉のタブで自分の国を探す」：福祉に切り替えて、検索欄にすぐ入力できるようにする
+  // 「福祉一覧とセキュリティ対策など」の「福祉のタブで自分の国を探す」：福祉に切り替えて、検索欄にすぐ入力できるようにする
   const findWelfare = () => {
     hidePanel('guide-panel');
-    setLayer('welfare');
+    setLayer('care');
     toast(t('add.findHint'));
     $('search-input').focus();
   };
@@ -483,11 +521,20 @@ async function start() {
   // 共有されたURL（?layer=…&country=…）で開いたときは、その分野・国を表示する（値は一覧にあるものだけ受け付ける）
   const params = new URLSearchParams(location.search);
   const pl = params.get('layer');
-  if (pl && LAYERS.some((l) => l.id === pl)) state.current = pl;
+  if (pl && LAYERS.some((l) => l.id === resolveLayer(pl))) state.current = resolveLayer(pl);
   setLayer(state.current);
   const pc = params.get('country');
   if (pc && data.countryMap.has(pc)) openCountry(pc, { fly: true });
+  // 「このサイトについて」などからのリンク（?layer=animals&list=1）：その分野の一覧を開いた状態で表示する
+  else if (params.get('list') === '1' && $('list-panel').hidden) toggleList();
+  // 地球儀が描かれてから、読み込み中の表示を消す
+  requestAnimationFrame(() => requestAnimationFrame(hideLoading));
 }
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-else start();
+// 想定外のエラーで止まったときも、利用者に「確認中です」と案内を出す
+const run = () =>
+  start().catch(() => {
+    showLoadError();
+  });
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+else run();

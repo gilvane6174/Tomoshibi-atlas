@@ -25,8 +25,12 @@ const PAGES = [
   ['about.en.html', 'about.en.html', 'en'],
   ['security-basics.html', 'security-basics.html', 'ja'],
   ['security-basics.en.html', 'security-basics.en.html', 'en'],
+  ['archive.html', 'archive.html', 'ja'],
+  ['archive.en.html', 'archive.en.html', 'en'],
+  ['welfare-guide.html', 'welfare-guide.html', 'ja'],
+  ['welfare-guide.en.html', 'welfare-guide.en.html', 'en'],
 ];
-const PAIRS = { 'index.html': ['', '?lang=en'], 'about.html': ['about.html', 'about.en.html'], 'about.en.html': ['about.html', 'about.en.html'], 'security-basics.html': ['security-basics.html', 'security-basics.en.html'], 'security-basics.en.html': ['security-basics.html', 'security-basics.en.html'] };
+const PAIRS = { 'index.html': ['', '?lang=en'], 'about.html': ['about.html', 'about.en.html'], 'about.en.html': ['about.html', 'about.en.html'], 'security-basics.html': ['security-basics.html', 'security-basics.en.html'], 'security-basics.en.html': ['security-basics.html', 'security-basics.en.html'], 'welfare-guide.html': ['welfare-guide.html', 'welfare-guide.en.html'], 'welfare-guide.en.html': ['welfare-guide.html', 'welfare-guide.en.html'], 'archive.html': ['archive.html', 'archive.en.html'], 'archive.en.html': ['archive.html', 'archive.en.html'] };
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export function writeSeo(out, { siteUrl, repo, google, bing, now = new Date() }) {

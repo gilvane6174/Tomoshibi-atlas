@@ -1,9 +1,11 @@
 // 説明ページに、現在のデータの時点と更新履歴を表示する（文字はすべて textContent で入れる）。
+// 「つらい気持ちを抱えている方へ」の「ひらがなで よむ」ボタンもここで動かす。
+import { setupKanaSwitch } from './kana-switch.js';
 
 const isEn = document.documentElement.lang === 'en';
 const NAMES = isEn
-  ? { outbreak: 'Infectious diseases', research: 'Research & Response', mental: 'Mental health', welfare: 'Welfare', security: 'IT security' }
-  : { outbreak: '感染症', research: '研究と対策', mental: 'こころ', welfare: '福祉', security: 'ITセキュリティ' };
+  ? { outbreak: 'Infectious diseases', research: 'Research & Response', care: 'Mental health & Welfare', security: 'IT security', crime: 'Crime prevention', disaster: 'Disasters', quake: 'Earthquakes', animals: "Today's animals" }
+  : { outbreak: '感染症', research: '研究と対策', care: 'こころと福祉', security: 'ITセキュリティ', crime: '防犯', disaster: '防災', quake: '地震', animals: '今日の動物たち' };
 const BY = isEn ? { operator: 'Operator', ai: 'AI assistant (reviewed by the operator)', bot: 'Bot (reviewed by the operator)' } : { operator: '運用者', ai: 'AIによる作業（運用者が確認）', bot: 'ボットによる作業（運用者が確認）' };
 const locale = isEn ? 'en-GB' : 'ja-JP';
 const fmt = (iso, time) =>
@@ -32,8 +34,14 @@ async function showTime() {
           ? isEn ? 'coming soon' : '準備中'
           : m.status === 'notFetched'
             ? isEn ? 'fetched automatically when published; not in this review copy' : '公開時に自動取得（この確認版では未取得）'
+          : m.status === 'fetchFailed'
+            ? isEn ? 'could not be retrieved this time' : '今回は取得できませんでした'
+          : m.kind === 'daily'
+            ? isEn ? 'changes every day' : '毎日入れ替え'
           : m.kind === 'auto'
             ? `${isEn ? 'retrieved' : '取得'} ${fmt(m.retrievedAt, true)}`
+          : m.kind === 'mixed'
+            ? `${isEn ? 'automatic headlines retrieved' : '自動取得の分は取得'} ${m.retrievedAt ? fmt(m.retrievedAt, true) : Object.values(m.feeds || {}).some((f) => ['failed', 'invalid'].includes(f.status)) ? (isEn ? '(could not be retrieved this time)' : '（今回は取得できませんでした）') : isEn ? '(not in this copy)' : '（この確認版では未取得）'}${isEn ? ', others last reviewed' : '、ほかは最終確認'} ${fmt(m.reviewedAt)}`
             : `${isEn ? 'last reviewed' : '最終確認'} ${fmt(m.reviewedAt)}`;
       ul.append(el('li', `${NAMES[id] || id}: ${m.count}${isEn ? ' items' : '件'} (${when})`));
     }
@@ -62,3 +70,5 @@ async function showLog() {
 
 showTime();
 showLog();
+
+setupKanaSwitch();

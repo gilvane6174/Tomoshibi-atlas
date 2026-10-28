@@ -2,7 +2,7 @@
 
 import { t, pickText, setRich, lang } from './i18n.js';
 import { groupIcon } from './icons.js';
-import { LAYERS, layerById, safeHttpsUrl, formatDate, countryName, ageDays, ageLabel } from './data.js';
+import { LAYERS, layerById, DIR_LAYERS, SAFETY_LAYERS, safeHttpsUrl, formatDate, countryName, ageDays, ageLabel } from './data.js';
 
 const el = (tag, cls, text) => {
   const e = document.createElement(tag);
@@ -46,6 +46,7 @@ export function entry(item, { countryMap, asButton = false, onClick } = {}) {
   // 状態の表示：以前の情報／古い公表／言語
   const flags = el('p', 'entry-flags');
   if (item.superseded) flags.append(badge('superseded', t('badge.superseded')));
+  else if (item.older) flags.append(badge('stale', t('badge.older')));
   else if (ageDays(item.publishedAt) > 30) flags.append(badge('stale', t('badge.stale')));
   if (title.shownIn === 'ja' && lang === 'en') flags.append(badge('lang', t('badge.jaOnly')));
   if (title.shownIn === 'en' && lang === 'ja') flags.append(badge('lang', t('badge.enOnly')));
@@ -65,12 +66,23 @@ export function entry(item, { countryMap, asButton = false, onClick } = {}) {
   }
 
   const meta = el('p', 'entry-meta');
+  const places = (item.countries || []).map((id) => countryName(countryMap?.get(id))).filter(Boolean);
+  // 今日の動物たち：公表日・場所の根拠ではなく、「今日の動物」と国名だけを出す
+  if (item.layer === 'animals') {
+    meta.append(el('span', null, t('meta.today', { date: formatDate(item.publishedAt) })));
+    if (places.length) meta.append(el('span', null, places.join(lang === 'en' ? ', ' : '・')));
+    box.append(meta);
+    const src = link(item.source.url, `${t('link.source')}: ${item.source.name}`);
+    if (src) box.append(el('p', 'entry-links').appendChild(src).parentNode);
+    return box;
+  }
   const age = lang === 'en' ? ` (${ageLabel(item.publishedAt)})` : `（${ageLabel(item.publishedAt)}）`;
   meta.append(el('span', null, t('meta.published', { date: formatDate(item.publishedAt) }) + age));
   if (item.checkedAt) meta.append(el('span', null, t('meta.checked', { date: formatDate(item.checkedAt) })));
-  const places = (item.countries || []).map((id) => countryName(countryMap?.get(id))).filter(Boolean);
   const basis = t('basis.' + item.placeBasis);
   meta.append(el('span', null, places.length ? `${places.join(lang === 'en' ? ', ' : '・')} — ${basis}` : basis));
+  // こころと福祉：もとの分類（こころ／福祉）を小さく示す
+  if (item.sub) meta.append(el('span', 'tag sub-' + item.sub, t('sub.' + item.sub)));
   for (const tag of item.tags || []) meta.append(el('span', 'tag', t('tag.' + tag)));
   box.append(meta);
 
@@ -85,7 +97,46 @@ export function entry(item, { countryMap, asButton = false, onClick } = {}) {
   return box;
 }
 
-const note = (kind) => el('p', 'note', t(kind === 'auto' ? 'note.auto' : 'note.curated'));
+const note = (kind) => el('p', 'note' + (kind === 'daily' ? ' calm-note' : ''), t(kind === 'auto' ? 'note.auto' : kind === 'daily' ? 'note.animals' : kind === 'mixed' ? 'note.mixed' : 'note.curated'));
+
+// 防犯・防災：このサイトは緊急時の情報源ではないことと、日本の公式の相談先・防災情報への案内
+// （リンク先は運用者・AIが公式であることを確認したもの。site/about.html にも同じリンクを載せ、毎週のリンク確認の対象にしている）
+const SAFETY_LINKS = [
+  ['https://www.jma.go.jp/bosai/', 'support.safety.jma'],
+  ['https://www.gsi.go.jp/bousaichiri/bousaichiri61053.html', 'support.safety.hazard'],
+  ['https://www.gov-online.go.jp/kurashinosodan/list/ct_bouhan.html', 'support.safety.police'],
+  ['https://www.gov-online.go.jp/kurashinosodan/list/fu_caa.html', 'support.safety.consumer'],
+];
+// 防犯・防災の案内：その国・地域の公的機関の案内を出す（日本の窓口を、ほかの国の情報の下に出さない）
+//   国を選んでいないとき（一覧）：一般の注意と、「日本の場合」の窓口
+//   日本：日本の窓口
+//   日本以外：その国のリンク集（data/directory/links.json の safety）。まだ確認できていない国は、現地の公式の情報に従うよう案内するだけ
+function safetySupport(countryId = null, dir = null) {
+  const wrap = el('div', 'note support safety-support');
+  const ul = el('ul', 'support-links');
+  const addJapan = () => {
+    for (const [url, key] of SAFETY_LINKS) {
+      const a = link(url, t(key));
+      if (a) ul.append(el('li').appendChild(a).parentNode);
+    }
+  };
+  if (countryId === 'JPN') {
+    wrap.append(el('p', null, t('note.safety')));
+    addJapan();
+    wrap.append(ul);
+  } else if (countryId) {
+    wrap.append(el('p', null, t('note.safety.abroad')));
+    const own = dir?.countries?.[countryId]?.safety || [];
+    if (own.length) wrap.append(dirList(own, false));
+    else wrap.append(el('p', null, t('note.safety.abroadNone')));
+  } else {
+    wrap.append(el('p', null, t('note.safety.general')));
+    wrap.append(el('p', 'safety-japan-head', t('note.safety.japanHead')));
+    addJapan();
+    wrap.append(ul);
+  }
+  return wrap;
+}
 
 function mentalSupport() {
   const wrap = el('div', 'note support');
@@ -142,6 +193,8 @@ function dirLink(l, kana) {
   if (note) li.append(el('span', 'dir-lang', note));
   li.append(host);
   if (l.checkedAt) li.append(el('span', 'dir-checked', t(kana && lang === 'ja' ? 'dir.checked.kana' : 'dir.checked', { date: kana && lang === 'ja' ? kanaDate(l.checkedAt) : formatDate(l.checkedAt) })));
+  // 確認から半年（183日）以上たったリンクは、そのことを示す（リンク先の内容が変わっている可能性がある）
+  if (l.checkedAt && Date.now() - Date.parse(l.checkedAt) > 183 * 86400000) li.append(el('span', 'dir-stale', t(kana && lang === 'ja' ? 'dir.stale.kana' : 'dir.stale')));
   return li;
 }
 
@@ -158,7 +211,7 @@ export function directorySection(country, layerId, dir, { kana = false, onToggle
   const k = lang === 'ja' && kana;
   const tk = (key, vars) => t(k ? key + '.kana' : key, vars);
   const wrap = el('section', 'directory' + (k ? ' is-kana' : ''));
-  wrap.style.setProperty('--dot', layerById(layerId).color);
+  wrap.style.setProperty('--dot', (layerById(layerId) || layerById('care')).color);
   const head = el('div', 'dir-head');
   head.append(el('h3', null, tk(DIR_TITLE[layerId])));
   if (lang === 'ja' && onToggleKana) {
@@ -177,6 +230,12 @@ export function directorySection(country, layerId, dir, { kana = false, onToggle
   const own = dir.countries?.[country.id]?.[layerId] || [];
   const intl = dir.international?.[layerId] || [];
 
+  // 日本の福祉：困りごと別・都道府県別のまとめページへの案内を先頭に出す
+  if (country.id === 'JPN' && layerId === 'welfare') {
+    const g = el('a', 'text-link guide-link', tk('dir.jpGuide'));
+    g.href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
+    wrap.append(el('p', 'dir-guide').appendChild(g).parentNode);
+  }
   if (own.length && layerId === 'welfare') {
     wrap.append(el('p', 'dir-lead', tk('dir.lead.welfare')), el('h4', 'dir-sub', tk('dir.forPeople')));
     for (const c of dir.categories) {
@@ -203,13 +262,14 @@ export function directorySection(country, layerId, dir, { kana = false, onToggle
 // ── X（旧Twitter）：投稿は取得・表示せず、公的機関の公式アカウントへのリンクだけを出す ──
 // 一般の検索へのリンクは出さない（未確認の投稿や危険なサイトへ誘導しうるため。ops/LINK-SAFETY.md）
 export function snsSection(country, layerId, dir, { kana = false } = {}) {
+  const ids = DIR_LAYERS[layerId] || [layerId];
   const k = lang === 'ja' && kana;
   const tk = (key, vars) => t(k ? key + '.kana' : key, vars);
   const wrap = el('section', 'sns' + (k ? ' is-kana' : ''));
   wrap.append(el('h3', null, tk('sns.title')));
   wrap.append(el('p', 'note', tk('sns.note')));
   wrap.append(el('p', 'note', tk('sns.checked', { date: k ? kanaDate(dir?.reviewedAt) : formatDate(dir?.reviewedAt) })));
-  const accounts = [...(dir?.social?.[country.id] || []), ...(dir?.social?.INTL || [])].filter((a) => a.layers.includes(layerId));
+  const accounts = [...(dir?.social?.[country.id] || []), ...(dir?.social?.INTL || [])].filter((a) => a.layers.some((l) => ids.includes(l)));
   if (!accounts.length) return null;
   {
     wrap.append(el('h4', 'dir-sub', tk('sns.official')));
@@ -236,12 +296,24 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   h.prepend(groupIcon(layerById(layerId).group));
   h.style.setProperty('--dot', layerById(layerId).color);
   body.append(h);
+  // 下部の案内（相談先の一覧・公式X・防犯防災の案内）は先に作り、見出しのすぐ下に、そこへ一気に移動するボタンを置く
+  const safety = SAFETY_LAYERS.has(layerId) ? safetySupport(country.id, data.directory) : null;
+  const dirs = (DIR_LAYERS[layerId] || []).map((dl, i) => directorySection(country, dl, data.directory, { kana, onToggleKana: i === 0 ? onToggleKana : null }));
+  const sns = DIR_LAYERS[layerId] ? snsSection(country, layerId, data.directory, { kana }) : null;
+  const targets = [
+    ...dirs.map((s) => [s, s.querySelector('h3')?.textContent]),
+    ...(sns ? [[sns, sns.querySelector('h3')?.textContent]] : []),
+    ...(safety ? [[safety, t('panel.jump.safety')]] : []),
+  ].filter(([, label]) => label);
+  if (targets.length) body.append(jumpRow(targets, layerById(layerId).color));
   if (doc.status === 'preparing') body.append(el('p', 'empty', t('status.preparingLong')));
   else if (doc.status === 'notFetched') body.append(el('p', 'empty', t('status.notFetchedLong')));
+  else if (doc.status === 'fetchFailed') body.append(el('p', 'empty', t('status.fetchFailedLong')));
   else if (!items.length) body.append(el('p', 'empty', t('panel.none')));
   for (const it of items) body.append(entry(it, { countryMap: data.countryMap }));
   if (items.length) body.append(note(doc.kind));
   if (layerId === 'security') body.append(el('p', 'note caution-note', t('note.security')));
+  if (safety) body.append(safety);
   // ほかの分野へ、この地域のまま切り替えるボタン
   const others = LAYERS.filter((l) => l.id !== layerId)
     .map((l) => [l, data.layers[l.id].items.filter((it) => !it.superseded && (it.countries || []).includes(country.id)).length])
@@ -259,22 +331,45 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
     body.append(row, el('p', 'hint', t('panel.otherHint')));
   }
 
-  // こころの分野では、詳細の中にも、つらいとき・緊急時の連絡先の案内を出す
-  if (layerId === 'mental') body.append(el('p', 'note crisis-note', t('note.crisis')));
-  // 下部：この国の公式リンク集（分野ごと）
-  body.append(directorySection(country, layerId, data.directory, { kana, onToggleKana }));
-  const sns = snsSection(country, layerId, data.directory, { kana });
+  // こころと福祉の分野では、詳細の中にも、つらいとき・緊急時の連絡先の案内を出す
+  if (layerId === 'care') body.append(el('p', 'note crisis-note', t('note.crisis')));
+  // 下部：この国の公式リンク集（分野ごと）。今日の動物たち・防犯防災には出さない（防犯防災は上の案内で代える）
+  // 「ひらがなで よむ」の切り替えボタンは、最初のリンク集にだけ出す（切り替えは両方に効く）
+  for (const s of dirs) body.append(s);
   if (sns) body.append(sns);
+}
+
+// 下部の案内へ一気に移動するボタン（ページのURLは変えない。移動先の見出しにフォーカスを移す）
+function jumpRow(targets, color) {
+  const nav = el('nav', 'jump-row');
+  nav.setAttribute('aria-label', t('panel.jump.label'));
+  for (const [section, label] of targets) {
+    const b = el('button', 'link-chip jump-chip', t('panel.jump.to', { title: label }));
+    b.type = 'button';
+    b.style.setProperty('--dot', color);
+    b.addEventListener('click', () => {
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      const target = section.querySelector('h3') || section;
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+    nav.append(b);
+  }
+  return nav;
 }
 
 export function renderList(body, { layerId, data, onPick }) {
   body.replaceChildren();
   const doc = data.layers[layerId];
-  if (doc.status === 'preparing' || doc.status === 'notFetched') {
-    body.append(el('p', 'empty', t(doc.status === 'preparing' ? 'status.preparingLong' : 'status.notFetchedLong')));
-    if (layerId === 'mental') body.append(mentalSupport());
+  if (doc.status === 'preparing' || doc.status === 'notFetched' || doc.status === 'fetchFailed') {
+    body.append(el('p', 'empty', t({ preparing: 'status.preparingLong', notFetched: 'status.notFetchedLong', fetchFailed: 'status.fetchFailedLong' }[doc.status])));
+    if (layerId === 'care') body.append(mentalSupport());
+    if (SAFETY_LAYERS.has(layerId)) body.append(safetySupport());
     return;
   }
+  // 今日の動物たちの一覧の上部に、やさしい一言を添える
+  if (doc.kind === 'daily') body.append(el('p', 'note calm-note list-lead', t('list.animalsLead')));
   const placed = ordered(doc.items.filter((it) => it.countries?.length));
   const unplaced = ordered(doc.items.filter((it) => !it.countries?.length));
   for (const it of placed) body.append(entry(it, { countryMap: data.countryMap, asButton: true, onClick: () => onPick(it.countries[0]) }));
@@ -284,7 +379,8 @@ export function renderList(body, { layerId, data, onPick }) {
   }
   body.append(note(doc.kind));
   if (layerId === 'security') body.append(el('p', 'note caution-note', t('note.security')));
-  if (layerId === 'mental') body.append(mentalSupport());
+  if (layerId === 'care') body.append(mentalSupport());
+  if (SAFETY_LAYERS.has(layerId)) body.append(safetySupport());
 }
 
 export function renderGuide(body, { aboutHref, onFindWelfare }) {
@@ -308,10 +404,16 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
 
   body.append(el('h3', null, t('guide.legend')));
   const leg = el('ul', 'guide-list plain');
-  for (const k of ['guide.legend.1', 'guide.legend.2', 'guide.legend.3']) leg.append(el('li', null, t(k)));
+  for (const k of ['guide.legend.1', 'guide.legend.2', 'guide.legend.4', 'guide.legend.3']) leg.append(el('li', null, t(k)));
+  // 過去の記録の一覧（データベース）へのリンク
+  const arch = el('li', null, t('guide.legend.archive') + ' ');
+  const al = el('a', 'text-link', t('guide.archiveLink'));
+  al.href = lang === 'en' ? 'archive.en.html' : 'archive.html';
+  arch.append(al);
+  leg.append(arch);
   body.append(leg);
 
-  // 追記：福祉の相談窓口・個人でできるセキュリティ対策・研究とのつながり
+  // 福祉一覧とセキュリティ対策など：福祉の相談窓口・今日の動物たち・個人でできるセキュリティ対策・研究とのつながり
   const add = el('section', 'addendum');
   add.append(el('h3', null, t('add.title')));
   const w = el('p', null, t('add.welfare'));
@@ -322,6 +424,14 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
     b.addEventListener('click', onFindWelfare);
     add.append(el('p', null).appendChild(b).parentNode);
   }
+  const wg = el('a', 'text-link', t('add.welfareGuide'));
+  wg.href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
+  add.append(el('p', null).appendChild(wg).parentNode);
+  // 今日の動物たちの一覧を開く（分野を切り替えて一覧を開いた状態で読み込み直す）。上の福祉の案内とは別の話だと分かるよう、ひと言を添える
+  add.append(el('p', 'guide-animals-lead', t('add.animalsLead')));
+  const an = el('a', 'text-link', t('add.animals'));
+  an.href = './?layer=animals&list=1' + (lang === 'en' ? '&lang=en' : '');
+  add.append(el('p', null).appendChild(an).parentNode);
   add.append(el('p', null, t('add.security')));
   const sec = el('a', 'text-link', t('add.securityBtn'));
   sec.href = lang === 'en' ? 'security-basics.en.html' : 'security-basics.html';
@@ -334,4 +444,8 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
   const more = el('a', 'text-link', t('guide.more'));
   more.href = aboutHref;
   body.append(el('p', null).appendChild(more).parentNode);
+  // 開発応援チップ（任意）：目立たせず、説明ページの案内へ（決済サービスへの直接のリンクはこの画面に置かない）
+  const sup = el('a', 'text-link small-link', t('guide.support'));
+  sup.href = aboutHref + '#support';
+  body.append(el('p', 'note', null).appendChild(sup).parentNode);
 }

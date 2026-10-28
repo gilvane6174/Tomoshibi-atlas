@@ -1,0 +1,1588 @@
+{
+  "schemaVersion": 1,
+  "_note": "「今日の動物たち」の豆知識。毎日の組み立てのとき、日付をもとにこの中から自動で選んで地球儀に表示する。公的機関・公的な博物館や動物園・大学・ユネスコなどの原典で確かめた、やさしい話だけを載せる（ops/CURATION.md「今日の動物たち」）。",
+  "reviewedAt": "2026-10-26",
+  "facts": [
+    {
+      "id": "animal-jpn-japanese-giant-salamander",
+      "country": "JPN",
+      "animal": {
+        "ja": "オオサンショウウオ",
+        "en": "Japanese giant salamander"
+      },
+      "text": {
+        "ja": "オオサンショウウオは世界で2番目に大きいサンショウウオで、皮膚を通してもガス交換（呼吸）をしています。",
+        "en": "Japanese giant salamanders are the world's second-largest salamanders, and their skin works as a surface for breathing (gas exchange)."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/japanese-giant-salamander"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-jpn-okinawa-rail",
+      "country": "JPN",
+      "animal": {
+        "ja": "ヤンバルクイナ",
+        "en": "Okinawa rail"
+      },
+      "text": {
+        "ja": "ヤンバルクイナは沖縄本島北部の森にすむ日本固有の鳥で、ほとんど飛ばずに地上で暮らし、地面に巣を作ります。",
+        "en": "The Okinawa rail lives only in the forests of northern Okinawa Island. It lives on the ground, hardly flies, and nests on the ground."
+      },
+      "source": {
+        "name": "環境省 生物多様性センター（自然環境保全基礎調査）（PDF）",
+        "url": "https://www.biodic.go.jp/reports2/6th/6_bird_species/pdf/yanbarukuina.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-jpn-red-crowned-crane",
+      "country": "JPN",
+      "animal": {
+        "ja": "タンチョウ",
+        "en": "Red-crowned crane"
+      },
+      "text": {
+        "ja": "多くのタンチョウは渡りをしますが、日本のタンチョウは渡りをせず、一年中同じ地域で暮らします。",
+        "en": "Most red-crowned cranes migrate, but the Japanese population is non-migratory and stays year-round."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/red-crowned-crane"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-aus-koala",
+      "country": "AUS",
+      "animal": {
+        "ja": "コアラ",
+        "en": "Koala"
+      },
+      "text": {
+        "ja": "コアラは食物繊維の多いユーカリの葉を消化するために、長い盲腸を持っています。",
+        "en": "Koalas have a long caecum to help digest eucalypt leaves, which are high in fibre."
+      },
+      "source": {
+        "name": "Australian Museum",
+        "url": "https://australian.museum/learn/animals/mammals/koala/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-aus-short-beaked-echidna",
+      "country": "AUS",
+      "animal": {
+        "ja": "ハリモグラ",
+        "en": "Short-beaked echidna"
+      },
+      "text": {
+        "ja": "ハリモグラの赤ちゃんは母親の袋の中で育ち、トゲが生えてチクチクしてくると、母親が掘った巣穴へお引っ越しします。",
+        "en": "Baby echidnas grow up in their mother's pouch; once they grow spines and get too prickly, mum moves them to a burrow she digs."
+      },
+      "source": {
+        "name": "Australian Museum",
+        "url": "https://australian.museum/learn/animals/mammals/short-beaked-echidna/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-aus-laughing-kookaburra",
+      "country": "AUS",
+      "animal": {
+        "ja": "ワライカワセミ",
+        "en": "Laughing kookaburra"
+      },
+      "text": {
+        "ja": "ワライカワセミの笑い声のような鳴き声は、実は「ここは私たちの縄張り」と他の鳥に知らせる合図です。",
+        "en": "The kookaburra's famous 'laugh' is actually a territorial call telling other birds to stay away."
+      },
+      "source": {
+        "name": "Australian Museum",
+        "url": "https://australian.museum/learn/animals/birds/laughing-kookaburra/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nzl-kiwi",
+      "country": "NZL",
+      "animal": {
+        "ja": "キーウィ",
+        "en": "Kiwi"
+      },
+      "text": {
+        "ja": "キーウィは飛べない鳥で、毛のようなふさふさの羽毛と丈夫な脚を持ち、尾は外から見えません。",
+        "en": "Kiwi are flightless birds with shaggy, hair-like feathers, sturdy legs and no visible tail."
+      },
+      "source": {
+        "name": "Department of Conservation (New Zealand)",
+        "url": "https://doc.govt.nz/kiwi"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nzl-kea",
+      "country": "NZL",
+      "animal": {
+        "ja": "ケア",
+        "en": "Kea"
+      },
+      "text": {
+        "ja": "ケアは世界で唯一の山にすむオウムで、その名前はマオリの人々が鳴き声にちなんで付けたものです。",
+        "en": "The kea is the world's only mountain parrot, and its name was given by Māori after the sound of its call."
+      },
+      "source": {
+        "name": "Department of Conservation (New Zealand)",
+        "url": "https://blog.doc.govt.nz/2014/09/17/photo-of-the-week-kea/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-chn-giant-panda",
+      "country": "CHN",
+      "animal": {
+        "ja": "ジャイアントパンダ",
+        "en": "Giant panda"
+      },
+      "text": {
+        "ja": "ジャイアントパンダはふだん単独で暮らしますが、さえずるような声やヤギのような声、ほえ声などさまざまな声を出します。",
+        "en": "Giant pandas usually live alone, but they can chirp, honk, bleat, chomp and bark."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/news/50-panda-facts-celebrate-50-years-giant-pandas-smithsonians-national-zoo"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-chn-red-crowned-crane",
+      "country": "CHN",
+      "animal": {
+        "ja": "タンチョウ",
+        "en": "Red-crowned crane"
+      },
+      "text": {
+        "ja": "中国東北部にもすむタンチョウのつがいは基本的に一夫一妻で、家族は次の繁殖期まで一緒に過ごします。",
+        "en": "Red-crowned cranes, found in northeast China, generally pair for life, and families stay together until the next breeding season."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/red-crowned-crane"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-kor-red-crowned-crane",
+      "country": "KOR",
+      "animal": {
+        "ja": "タンチョウ",
+        "en": "Red-crowned crane"
+      },
+      "text": {
+        "ja": "冬に韓国を訪れるタンチョウの頭の赤い部分は、羽ではなく、むき出しの赤い皮膚です。",
+        "en": "Red-crowned cranes visit Korea in winter. The red 'crown' on their head is bare red skin, not feathers."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/red-crowned-crane"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mng-przewalski-s-horse",
+      "country": "MNG",
+      "animal": {
+        "ja": "モウコノウマ",
+        "en": "Przewalski's horse"
+      },
+      "text": {
+        "ja": "モンゴルではモウコノウマを「タヒ」と呼び、「精霊」という意味です。たてがみはシマウマのように立っています。",
+        "en": "In Mongolia, Przewalski's horses are called takhi, meaning 'spirit'. Their dark manes stand upright like a zebra's."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/przewalskis-horse"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ind-sloth-bear",
+      "country": "IND",
+      "animal": {
+        "ja": "ナマケグマ",
+        "en": "Sloth bear"
+      },
+      "text": {
+        "ja": "ナマケグマは鼻の穴を完全に閉じられるので、シロアリの巣を探るときもほこりや虫が入りません。",
+        "en": "Sloth bears can close their nostrils completely, keeping out dust and insects while they dig into termite nests."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/node/6810"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ind-asian-elephant",
+      "country": "IND",
+      "animal": {
+        "ja": "アジアゾウ",
+        "en": "Asian elephant"
+      },
+      "text": {
+        "ja": "アジアゾウの妊娠期間は平均約659日で、哺乳類の中で最も長いとされています。",
+        "en": "Asian elephant pregnancies last about 659 days on average, the longest gestation of any mammal."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/asian-elephant-faqs"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-lka-sloth-bear",
+      "country": "LKA",
+      "animal": {
+        "ja": "ナマケグマ",
+        "en": "Sloth bear"
+      },
+      "text": {
+        "ja": "ナマケグマは、子どもを背中に乗せて運ぶのが習慣になっている唯一のクマです。",
+        "en": "Sloth bears are the only bears that routinely carry their cubs on their backs."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/node/6810"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mys-clouded-leopard",
+      "country": "MYS",
+      "animal": {
+        "ja": "ウンピョウ",
+        "en": "Clouded leopard"
+      },
+      "text": {
+        "ja": "ウンピョウは特別な足首の骨のおかげで、頭を下にしたまま木を降りることができます。",
+        "en": "Thanks to special ankle bones, clouded leopards can climb headfirst down trees."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/clouded-leopard"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-bgd-clouded-leopard",
+      "country": "BGD",
+      "animal": {
+        "ja": "ウンピョウ",
+        "en": "Clouded leopard"
+      },
+      "text": {
+        "ja": "ウンピョウの毛皮は茶色や黄灰色で、不規則な黒っぽいしまや斑点、まだら模様でおおわれています。",
+        "en": "A clouded leopard's brown or yellowish-grey coat is covered with irregular dark stripes, spots and blotches."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/clouded-leopard"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-idn-orangutan",
+      "country": "IDN",
+      "animal": {
+        "ja": "オランウータン",
+        "en": "Orangutan"
+      },
+      "text": {
+        "ja": "ボルネオ島とスマトラ島にすむオランウータンは、長く力強い腕を使い、一生の多くを木の上で過ごします。",
+        "en": "Orangutans of Borneo and Sumatra spend much of their lives in the trees, moving with their long, powerful arms."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo & Conservation Biology Institute",
+        "url": "https://nationalzoo.si.edu/animals/news/meet-orangutans-living-smithsonians-national-zoo"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-sgp-smooth-coated-otter",
+      "country": "SGP",
+      "animal": {
+        "ja": "ビロードカワウソ",
+        "en": "Smooth-coated otter"
+      },
+      "text": {
+        "ja": "シンガポールではビロードカワウソの家族が各地で暮らし、マングローブや池、街中の水路にも姿を見せます。",
+        "en": "In Singapore, smooth-coated otter families live in many areas, using mangroves, ponds and even urban canals."
+      },
+      "source": {
+        "name": "National Parks Board Singapore (NParks)",
+        "url": "https://biodiversitysg.nparks.gov.sg/our-biodiversity/mammals/other-mammals/smooth-coated-otter/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ata-ad-lie-penguin",
+      "country": "ATA",
+      "animal": {
+        "ja": "アデリーペンギン",
+        "en": "Adélie penguin"
+      },
+      "text": {
+        "ja": "アデリーペンギンは雪が積もった氷の上では、おなかで滑ってそりのように進むのが好きです。",
+        "en": "When enough snow covers the ice, Adélie penguins prefer to flop onto their bellies and toboggan along."
+      },
+      "source": {
+        "name": "Australian Antarctic Division",
+        "url": "https://www.antarctica.gov.au/about-antarctica/animals/penguins/adelie-penguin/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ata-emperor-penguin",
+      "country": "ATA",
+      "animal": {
+        "ja": "コウテイペンギン",
+        "en": "Emperor penguin"
+      },
+      "text": {
+        "ja": "コウテイペンギンのオスたちは身を寄せ合って暖まり、群れの内側は最高24℃にもなります。",
+        "en": "Male emperor penguins huddle together to share warmth; inside a huddle it can be as warm as +24°C."
+      },
+      "source": {
+        "name": "Australian Antarctic Division",
+        "url": "https://www.antarctica.gov.au/about-antarctica/animals/penguins/emperor-penguin/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ata-weddell-seal",
+      "country": "ATA",
+      "animal": {
+        "ja": "ウェッデルアザラシ",
+        "en": "Weddell seal"
+      },
+      "text": {
+        "ja": "ウェッデルアザラシは、南極大陸に一年中すむ哺乳類の中で、最も南まで暮らしています。",
+        "en": "Weddell seals are the most southerly ranging mammal living permanently on the Antarctic continent."
+      },
+      "source": {
+        "name": "Australian Antarctic Division",
+        "url": "https://www.antarctica.gov.au/about-antarctica/animals/seals/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-usa-american-bison",
+      "country": "USA",
+      "animal": {
+        "ja": "アメリカバイソン",
+        "en": "American bison"
+      },
+      "text": {
+        "ja": "アメリカバイソンは2016年に米国の「国の哺乳類」となり、ハクトウワシと並ぶ国のシンボルになりました。",
+        "en": "In 2016 the American bison became the US national mammal, joining the bald eagle as a national symbol."
+      },
+      "source": {
+        "name": "U.S. National Park Service",
+        "url": "https://www.nps.gov/articles/15-facts-about-bison.htm"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-usa-bald-eagle",
+      "country": "USA",
+      "animal": {
+        "ja": "ハクトウワシ",
+        "en": "Bald eagle"
+      },
+      "text": {
+        "ja": "ハクトウワシの巣は人が入れるほど大きく、毎年巣作りの前に枝が継ぎ足されていきます。",
+        "en": "Bald eagle nests are big enough to fit a person inside, and they are added to each year before nesting."
+      },
+      "source": {
+        "name": "U.S. National Park Service",
+        "url": "https://www.nps.gov/miss/learn/nature/birdsbald.htm"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-usa-humpback-whale",
+      "country": "USA",
+      "animal": {
+        "ja": "ザトウクジラ",
+        "en": "Humpback whale"
+      },
+      "text": {
+        "ja": "ハワイで繁殖するザトウクジラの尾びれの模様は1頭ずつ違い、指紋のように個体を見分けられます。",
+        "en": "Humpback whales breed around Hawaii, and each whale's tail fluke pattern is unique, like a fingerprint."
+      },
+      "source": {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/humpback-whale"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-can-common-loon",
+      "country": "CAN",
+      "animal": {
+        "ja": "ハシグロアビ",
+        "en": "Common loon"
+      },
+      "text": {
+        "ja": "ハシグロアビのひなは、母鳥の背中に乗せてもらって水の上を移動することがあります。",
+        "en": "Common loon chicks can sometimes be seen catching a ride on their mother's back."
+      },
+      "source": {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/mb/riding/nature/animals/birds/huard-loon"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-can-moose",
+      "country": "CAN",
+      "animal": {
+        "ja": "ヘラジカ",
+        "en": "Moose"
+      },
+      "text": {
+        "ja": "ヘラジカの角はオスだけに生え、繁殖期のあとに自然に落ちて、毎年新しく生え替わります。",
+        "en": "Only bull moose grow antlers; they fall off naturally after the mating season and a new pair grows each year."
+      },
+      "source": {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/mb/wapusk/nature/faune-animals/mammiferes-mammals/orignal-moose"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-can-pika",
+      "country": "CAN",
+      "animal": {
+        "ja": "ナキウサギ",
+        "en": "Pika"
+      },
+      "text": {
+        "ja": "バンフ国立公園のナキウサギは見つけにくいですが、「イープ」という高い声で居場所がわかります。",
+        "en": "Pikas in Banff are well camouflaged, but you can often find them by their high-pitched \"eep\" call."
+      },
+      "source": {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/ab/banff/nature/faune-wildlife/mammal/smallmammals-petitsmammiferes"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mex-monarch-butterfly",
+      "country": "MEX",
+      "animal": {
+        "ja": "オオカバマダラ",
+        "en": "Monarch butterfly"
+      },
+      "text": {
+        "ja": "オオカバマダラはカナダや米国から約4500kmを旅し、11月〜3月をメキシコのモミの森で過ごします。",
+        "en": "Monarchs travel about 4,500 km from Canada and the US to spend November to March in Mexico's oyamel fir forests."
+      },
+      "source": {
+        "name": "CONANP (Comisión Nacional de Áreas Naturales Protegidas)",
+        "url": "https://www.conanp.gob.mx/temp/mariposa.php"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mex-gray-whale",
+      "country": "MEX",
+      "animal": {
+        "ja": "コククジラ",
+        "en": "Gray whale"
+      },
+      "text": {
+        "ja": "コククジラはメキシコの浅いラグーンや湾で、主に1月初めから2月中旬に赤ちゃんを産みます。",
+        "en": "Gray whale mothers give birth in the shallow lagoons and bays of Mexico, mainly from early January to mid-February."
+      },
+      "source": {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/gray-whale"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mex-loggerhead-turtle",
+      "country": "MEX",
+      "animal": {
+        "ja": "アカウミガメ",
+        "en": "Loggerhead turtle"
+      },
+      "text": {
+        "ja": "太平洋のアカウミガメの一部は海を横断し、約1万3000km旅してバハ・カリフォルニア沖の餌場に来ます。",
+        "en": "Some Pacific loggerheads cross the whole ocean, nearly 8,000 miles, to feeding grounds off Baja California, Mexico."
+      },
+      "source": {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/feature-story/10-tremendous-turtle-facts"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-bra-golden-lion-tamarin",
+      "country": "BRA",
+      "animal": {
+        "ja": "ゴールデンライオンタマリン",
+        "en": "Golden lion tamarin"
+      },
+      "text": {
+        "ja": "ブラジル南東部にすむゴールデンライオンタマリンは群れ全員で子育てし、赤ちゃんを一番運ぶのは父親です。",
+        "en": "Golden lion tamarins of southeastern Brazil raise infants as a group, and the adult male does most of the carrying."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/golden-lion-tamarin"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-bra-sloth",
+      "country": "BRA",
+      "animal": {
+        "ja": "ナマケモノ",
+        "en": "Sloth"
+      },
+      "text": {
+        "ja": "ナマケモノの毛には縦の溝があり、そこに藻が育つので、体が緑がかって葉にまぎれます。",
+        "en": "Each sloth hair has grooves where algae grow, giving sloths a green tint that helps them blend into leaves."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/news/why-are-sloths-so-slow-and-other-sloth-facts"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-per-andean-bear",
+      "country": "PER",
+      "animal": {
+        "ja": "メガネグマ",
+        "en": "Andean bear"
+      },
+      "text": {
+        "ja": "メガネグマは南米で唯一のクマで、ブロメリア（パイナップルの仲間）を食べる唯一のクマです。",
+        "en": "The Andean bear is South America's only native bear and the only bear species known to eat bromeliads."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/andean-bear"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-per-peruvian-pelican",
+      "country": "PER",
+      "animal": {
+        "ja": "ペルーペリカン",
+        "en": "Peruvian pelican"
+      },
+      "text": {
+        "ja": "ペルーペリカンはペルーとチリの海岸にすみ、近い仲間のカッショクペリカンよりずっと大きな体をしています。",
+        "en": "Peruvian pelicans live along the coasts of Peru and Chile and are significantly larger than their cousin, the brown pelican."
+      },
+      "source": {
+        "name": "Smithsonian Ocean",
+        "url": "https://ocean.si.edu/ocean-life/seabirds/pelicans-world"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-per-peruvian-booby",
+      "country": "PER",
+      "animal": {
+        "ja": "ペルーカツオドリ",
+        "en": "Peruvian booby"
+      },
+      "text": {
+        "ja": "ペルーカツオドリは白い頭と首が目印で、沖合の島などに大きな集団で巣をつくります。",
+        "en": "Peruvian boobies have a striking white head and neck, and nest in large colonies, especially on offshore islands."
+      },
+      "source": {
+        "name": "Smithsonian Ocean",
+        "url": "https://ocean.si.edu/ocean-life/seabirds/meet-booby-family"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-arg-southern-right-whale",
+      "country": "ARG",
+      "animal": {
+        "ja": "ミナミセミクジラ",
+        "en": "Southern right whale"
+      },
+      "text": {
+        "ja": "ミナミセミクジラは6月から12月初めにバルデス半島の沿岸を訪れ、子どもを産みます。",
+        "en": "Southern right whales visit the coast of Península Valdés from June to early December to mate and have calves."
+      },
+      "source": {
+        "name": "Gobierno de Argentina (Turismo)",
+        "url": "https://www.argentina.gob.ar/jefatura/turismo/viaja-por-argentina/avistar-ballenas-en-peninsula-valdes"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-arg-magellanic-penguin",
+      "country": "ARG",
+      "animal": {
+        "ja": "マゼランペンギン",
+        "en": "Magellanic penguin"
+      },
+      "text": {
+        "ja": "毎年の繁殖期には、約40万羽のマゼランペンギンがアルゼンチンのプンタ・トンボに集まって巣をつくります。",
+        "en": "Each breeding season, some 400,000 Magellanic penguins come to Punta Tombo, Argentina, to nest on the shore."
+      },
+      "source": {
+        "name": "Smithsonian Ocean",
+        "url": "https://ocean.si.edu/ocean-life/seabirds/penguins"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-arg-patagonian-mara",
+      "country": "ARG",
+      "animal": {
+        "ja": "パタゴニアマーラ",
+        "en": "Patagonian mara"
+      },
+      "text": {
+        "ja": "パタゴニアマーラはアルゼンチンだけにすむげっ歯類で、バルデス半島などで見られます。",
+        "en": "The Patagonian mara is a rodent found only in Argentina, and lives on Península Valdés."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/937/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-pry-maned-wolf",
+      "country": "PRY",
+      "animal": {
+        "ja": "タテガミオオカミ",
+        "en": "Maned wolf"
+      },
+      "text": {
+        "ja": "タテガミオオカミは果物も食べ、好物のロベイラは「オオカミの果実」という意味の名前です。",
+        "en": "Maned wolves eat fruit too; their favourite, lobeira, has a name meaning \"fruit of the wolf\"."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/maned-wolf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-chl-pudu",
+      "country": "CHL",
+      "animal": {
+        "ja": "プーズー",
+        "en": "Pudu"
+      },
+      "text": {
+        "ja": "プーズーはチリの在来のシカで最も小さく、肩の高さは40cm以下、体重は10kg以下です。",
+        "en": "The pudu is the smallest of Chile's native deer, no more than 40 cm tall at the shoulder and 10 kg in weight."
+      },
+      "source": {
+        "name": "Ministerio del Medio Ambiente de Chile (SIMBIO)",
+        "url": "https://simbio.mma.gob.cl/Especies/Details/4604"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-chl-humboldt-penguin",
+      "country": "CHL",
+      "animal": {
+        "ja": "フンボルトペンギン",
+        "en": "Humboldt penguin"
+      },
+      "text": {
+        "ja": "フンボルトペンギンはアタカマ砂漠の暑い海岸にすみ、顔の大きな羽毛のない部分で涼しさを保ちます。",
+        "en": "Humboldt penguins live on the hot Atacama Desert coast; large bare patches on their faces help them keep cool."
+      },
+      "source": {
+        "name": "Smithsonian Ocean",
+        "url": "https://ocean.si.edu/ocean-life/seabirds/penguins"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ecu-blue-footed-booby",
+      "country": "ECU",
+      "animal": {
+        "ja": "アオアシカツオドリ",
+        "en": "Blue-footed booby"
+      },
+      "text": {
+        "ja": "アオアシカツオドリは求愛ダンスで足を見せ合います。足が青いほど健康な鳥のしるしです。",
+        "en": "Blue-footed boobies show off their feet in courtship dances; bluer feet mean a healthier bird."
+      },
+      "source": {
+        "name": "Smithsonian Ocean",
+        "url": "https://ocean.si.edu/ocean-life/seabirds/blue-footed-booby"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ecu-gal-pagos-penguin",
+      "country": "ECU",
+      "animal": {
+        "ja": "ガラパゴスペンギン",
+        "en": "Galápagos penguin"
+      },
+      "text": {
+        "ja": "ガラパゴス諸島のガラパゴスペンギンは、世界で最も北にすむペンギンです。",
+        "en": "The Galápagos penguin is the most northerly penguin species in the world."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ecu-marine-iguana",
+      "country": "ECU",
+      "animal": {
+        "ja": "ウミイグアナ",
+        "en": "Marine iguana"
+      },
+      "text": {
+        "ja": "ガラパゴス諸島のウミイグアナは、世界で唯一の海にすむイグアナです。",
+        "en": "The Galápagos marine iguana is the only marine iguana in the world."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-grl-narwhal",
+      "country": "GRL",
+      "animal": {
+        "ja": "イッカク",
+        "en": "Narwhal"
+      },
+      "text": {
+        "ja": "グリーンランドの海にもすむイッカクの長い「角」は実は歯で、左巻きのらせん状に伸びています。",
+        "en": "The narwhal's long tusk, seen in waters off Greenland, is actually a tooth that grows in a left-handed spiral."
+      },
+      "source": {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/narwhal"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-grl-beluga-whale",
+      "country": "GRL",
+      "animal": {
+        "ja": "シロイルカ",
+        "en": "Beluga whale"
+      },
+      "text": {
+        "ja": "シロイルカは首の骨がつながっていないので、うなずいたり首を左右に振ったりできます。",
+        "en": "Belugas' neck bones are not fused, so they can nod and turn their heads from side to side."
+      },
+      "source": {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/beluga-whale"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-cri-olive-ridley-turtle",
+      "country": "CRI",
+      "animal": {
+        "ja": "ヒメウミガメ",
+        "en": "Olive ridley turtle"
+      },
+      "text": {
+        "ja": "コスタリカの太平洋岸では、ヒメウミガメが「アリバダ」と呼ばれる大集団で一斉に産卵します。",
+        "en": "On Costa Rica's Pacific coast, olive ridleys nest together in huge synchronized events called \"arribadas\"."
+      },
+      "source": {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/olive-ridley-turtle"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-cri-ruby-throated-hummingbird",
+      "country": "CRI",
+      "animal": {
+        "ja": "ノドアカハチドリ",
+        "en": "Ruby-throated hummingbird"
+      },
+      "text": {
+        "ja": "ノドアカハチドリは冬をコスタリカなど中米で過ごし、渡りのときはメキシコ湾を飛んで横断します。",
+        "en": "Ruby-throated hummingbirds winter in Central America, including Costa Rica, crossing the Gulf of Mexico on migration."
+      },
+      "source": {
+        "name": "U.S. Fish & Wildlife Service",
+        "url": "https://www.fws.gov/story/hummingbirds-north-america"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-cub-bee-hummingbird",
+      "country": "CUB",
+      "animal": {
+        "ja": "マメハチドリ",
+        "en": "Bee hummingbird"
+      },
+      "text": {
+        "ja": "キューバのマメハチドリは、体重がわずか1.95gしかないとても小さな鳥です。",
+        "en": "Cuba's bee hummingbird weighs only 1.95 grams."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/migratory-birds/hummingbirds"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ven-matamata-turtle",
+      "country": "VEN",
+      "animal": {
+        "ja": "マタマタ",
+        "en": "Matamata turtle"
+      },
+      "text": {
+        "ja": "マタマタは長い鼻先をシュノーケルのように使い、先端だけ水面に出して呼吸できます。",
+        "en": "The matamata uses its long snout like a snorkel, breathing with only the tip at the surface."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/matamata-turtle"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-guy-southern-tamandua",
+      "country": "GUY",
+      "animal": {
+        "ja": "ミナミコアリクイ",
+        "en": "Southern tamandua"
+      },
+      "text": {
+        "ja": "ミナミコアリクイは物をつかめる尾で木を移動し、母親は子どもを背中に乗せて運びます。",
+        "en": "Southern tamanduas use a grasping tail to move through trees, and mothers carry their young on their backs."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/southern-tamandua"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-bhs-caribbean-flamingo",
+      "country": "BHS",
+      "animal": {
+        "ja": "ベニイロフラミンゴ",
+        "en": "Caribbean flamingo"
+      },
+      "text": {
+        "ja": "バハマなどにすむベニイロフラミンゴのピンク色は、食べる藻や小さなエビの色素から生まれます。",
+        "en": "Caribbean flamingos, found in the Bahamas and beyond, get their pink from pigments in the algae and brine shrimp they eat."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/news/why-are-flamingos-pink-and-other-flamingo-facts"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-gbr-european-hedgehog",
+      "country": "GBR",
+      "animal": {
+        "ja": "ハリネズミ",
+        "en": "European hedgehog"
+      },
+      "text": {
+        "ja": "ハリネズミの冬ごもり用の巣は「ハイバーナキュラム」と呼ばれ、冬の間に巣を作り直すこともあります。",
+        "en": "A hedgehog's winter nest is called a 'hibernaculum', and hedgehogs may wake during winter to build a new one."
+      },
+      "source": {
+        "name": "Natural History Museum, London",
+        "url": "https://www.nhm.ac.uk/discover/hedgehog-erinaceus-europaeus.html"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-gbr-eurasian-otter",
+      "country": "GBR",
+      "animal": {
+        "ja": "カワウソ",
+        "en": "Eurasian otter"
+      },
+      "text": {
+        "ja": "スコットランドのカワウソは海辺で暮らす割合が高く、海の近くの個体は川の個体より狭い範囲で暮らします。",
+        "en": "Many of Scotland's otters live on the coast, and coastal otters tend to have much smaller home ranges than river otters."
+      },
+      "source": {
+        "name": "NatureScot",
+        "url": "https://www.nature.scot/plants-animals-and-fungi/mammals/land-mammals/otter"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-gbr-pine-marten",
+      "country": "GBR",
+      "animal": {
+        "ja": "マツテン",
+        "en": "Pine marten"
+      },
+      "text": {
+        "ja": "マツテンは濃い茶色の毛に、のどの大きなクリーム色の模様が目印です。",
+        "en": "Pine martens have dark brown fur with a large, creamy-white patch at the throat."
+      },
+      "source": {
+        "name": "NatureScot",
+        "url": "https://www.nature.scot/plants-animals-and-fungi/mammals/land-mammals/pine-marten"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-irl-irish-hare",
+      "country": "IRL",
+      "animal": {
+        "ja": "アイルランドノウサギ",
+        "en": "Irish hare"
+      },
+      "text": {
+        "ja": "アイルランドノウサギはユキウサギの亜種で、アイルランドにしかいません。繁殖期にはボクシングをする姿も見られます。",
+        "en": "The Irish hare, a subspecies of the mountain hare, is found only in Ireland and can be spotted boxing in the breeding season."
+      },
+      "source": {
+        "name": "National Biodiversity Data Centre (Ireland)（PDF）",
+        "url": "https://biodiversityireland.ie/app/uploads/2023/12/Species-Profile-35-Irish-hare.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nor-svalbard-reindeer",
+      "country": "NOR",
+      "animal": {
+        "ja": "スバールバルトナカイ",
+        "en": "Svalbard reindeer"
+      },
+      "text": {
+        "ja": "スバールバルトナカイはノルウェー領スバールバル諸島だけにすむ固有のトナカイで、冬は分厚い毛に包まれます。",
+        "en": "The Svalbard reindeer lives only on Norway's Svalbard archipelago and grows a very thick winter coat."
+      },
+      "source": {
+        "name": "Norwegian Polar Institute",
+        "url": "https://npolar.no/en/species/svalbard-reindeer/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nor-svalbard-rock-ptarmigan",
+      "country": "NOR",
+      "animal": {
+        "ja": "スバールバルライチョウ",
+        "en": "Svalbard rock ptarmigan"
+      },
+      "text": {
+        "ja": "スバールバルライチョウは、スバールバル諸島で一年中暮らす唯一の陸の鳥です。",
+        "en": "The Svalbard rock ptarmigan is the only land bird that lives in Svalbard all year round."
+      },
+      "source": {
+        "name": "Norwegian Polar Institute",
+        "url": "https://npolar.no/en/themes/fauna-svalbard/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-swe-moose",
+      "country": "SWE",
+      "animal": {
+        "ja": "ヘラジカ",
+        "en": "Moose"
+      },
+      "text": {
+        "ja": "スウェーデンのヘラジカは季節ごとに夏と冬のすみかを移動し、その道筋は母から子へと受け継がれていきます。",
+        "en": "Swedish moose migrate between summer and winter ranges, and the migration is learned socially, passed from mothers to calves."
+      },
+      "source": {
+        "name": "Swedish University of Agricultural Sciences (SLU)",
+        "url": "https://www.slu.se/en/themes/tema-alg/algarna-och-vi/the-great-moose-migration/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-fin-siberian-flying-squirrel",
+      "country": "FIN",
+      "animal": {
+        "ja": "タイリクモモンガ",
+        "en": "Siberian flying squirrel"
+      },
+      "text": {
+        "ja": "フィンランドのタイリクモモンガの分布は、ロシアを経て太平洋側の日本まで続いています。",
+        "en": "The Siberian flying squirrel's range stretches from Finland through Russia all the way to the Pacific and Japan."
+      },
+      "source": {
+        "name": "Metsähallitus",
+        "url": "https://www.metsa.fi/en/project/flying-squirrel-life/flying-squirrel-information/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-fin-siberian-jay",
+      "country": "FIN",
+      "animal": {
+        "ja": "アカオカケス",
+        "en": "Siberian jay"
+      },
+      "text": {
+        "ja": "アカオカケスは、フィンランドのウルホ・ケッコネン国立公園の古い森を好んで暮らす鳥です。",
+        "en": "Siberian jays favour the old-growth forests of Finland's Urho Kekkonen National Park."
+      },
+      "source": {
+        "name": "Metsähallitus (Nationalparks.fi)",
+        "url": "https://classic.nationalparks.fi/en-US/urhokekkonennp/nature"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-isl-atlantic-puffin",
+      "country": "ISL",
+      "animal": {
+        "ja": "ニシツノメドリ",
+        "en": "Atlantic puffin"
+      },
+      "text": {
+        "ja": "夏の終わりのアイスランドには1000万羽を超えるニシツノメドリ（パフィン）がいます。",
+        "en": "By late summer, there are over 10 million puffins in Iceland."
+      },
+      "source": {
+        "name": "Environment Agency of Iceland（PDF）",
+        "url": "https://www.ust.is/library/Skrar/Baeklingar/Enska-UST/11_vol_info_AI_Flora.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-isl-arctic-fox",
+      "country": "ISL",
+      "animal": {
+        "ja": "ホッキョクギツネ",
+        "en": "Arctic fox"
+      },
+      "text": {
+        "ja": "ホッキョクギツネは、アイスランドにもともとすんでいる唯一の陸の哺乳類です。",
+        "en": "The Arctic fox is the only native land mammal in Iceland."
+      },
+      "source": {
+        "name": "Environment Agency of Iceland（PDF）",
+        "url": "https://www.ust.is/library/Skrar/Baeklingar/Enska-UST/11_vol_info_AI_Flora.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-isl-harlequin-duck",
+      "country": "ISL",
+      "animal": {
+        "ja": "シノリガモ",
+        "en": "Harlequin duck"
+      },
+      "text": {
+        "ja": "大西洋の真ん中にあるアイスランドには、シノリガモなど北米の鳥が3種すんでいます。",
+        "en": "Iceland's mid-Atlantic position makes it home to three North American bird species, including the harlequin duck."
+      },
+      "source": {
+        "name": "Environment Agency of Iceland（PDF）",
+        "url": "https://www.ust.is/library/Skrar/Baeklingar/Enska-UST/11_vol_info_AI_Flora.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-deu-grey-seal",
+      "country": "DEU",
+      "animal": {
+        "ja": "ハイイロアザラシ",
+        "en": "Grey seal"
+      },
+      "text": {
+        "ja": "ワッデン海のハイイロアザラシは冬に出産し、赤ちゃんは寒さから身を守る白い毛に包まれて生まれます。",
+        "en": "Grey seals in the Wadden Sea give birth in winter, and pups are born with white fur that keeps them warm."
+      },
+      "source": {
+        "name": "Wadden Sea World Heritage (Common Wadden Sea Secretariat) Quality Status Report",
+        "url": "https://qsr.waddensea-worldheritage.org/reports/marine-mammals"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-deu-harbour-porpoise",
+      "country": "DEU",
+      "animal": {
+        "ja": "ネズミイルカ",
+        "en": "Harbour porpoise"
+      },
+      "text": {
+        "ja": "ネズミイルカはドイツのワッデン海で一年中見られ、出産は6〜7月ごろが中心です。",
+        "en": "Harbour porpoises occur year-round in the German Wadden Sea, with births in the North Sea peaking in June and July."
+      },
+      "source": {
+        "name": "Wadden Sea World Heritage (Common Wadden Sea Secretariat) Quality Status Report",
+        "url": "https://qsr.waddensea-worldheritage.org/reports/marine-mammals"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nld-harbour-seal",
+      "country": "NLD",
+      "animal": {
+        "ja": "ゼニガタアザラシ",
+        "en": "Harbour seal"
+      },
+      "text": {
+        "ja": "ワッデン海のゼニガタアザラシの赤ちゃんは、生まれてすぐに泳ぐことができます。",
+        "en": "Harbour seal pups in the Wadden Sea can swim right after they are born."
+      },
+      "source": {
+        "name": "Wadden Sea World Heritage (Common Wadden Sea Secretariat) Quality Status Report",
+        "url": "https://qsr.waddensea-worldheritage.org/reports/marine-mammals"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-fra-alpine-marmot",
+      "country": "FRA",
+      "animal": {
+        "ja": "アルプスマーモット",
+        "en": "Alpine marmot"
+      },
+      "text": {
+        "ja": "アルプスマーモットは仲間との暮らしを好み、にぎやかな社会生活を送るコロニーをつくります。",
+        "en": "Alpine marmots seek out the company of their own kind and form colonies with a strong social life."
+      },
+      "source": {
+        "name": "Mercantour National Park（PDF）",
+        "url": "https://www.mercantour-parcnational.fr/sites/mercantour-parcnational.fr/files/documents/downloads/guide-56p-english-web_0.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-fra-black-grouse",
+      "country": "FRA",
+      "animal": {
+        "ja": "クロライチョウ",
+        "en": "Black grouse"
+      },
+      "text": {
+        "ja": "クロライチョウのオスたちは、繁殖期に向かい合って「恋の一騎打ち」のようなディスプレイをします。",
+        "en": "Male black grouse face off in courtship 'love jousts'."
+      },
+      "source": {
+        "name": "Mercantour National Park（PDF）",
+        "url": "https://www.mercantour-parcnational.fr/sites/mercantour-parcnational.fr/files/documents/downloads/guide-56p-english-web_0.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-che-chamois",
+      "country": "CHE",
+      "animal": {
+        "ja": "シャモア",
+        "en": "Chamois"
+      },
+      "text": {
+        "ja": "シャモアは黒っぽい脚と、黒とベージュの顔の模様、背中の濃い線が見分けるポイントです。",
+        "en": "Chamois can be recognised by their dark legs, black-and-beige face mask and the dark line along their back."
+      },
+      "source": {
+        "name": "Swiss National Park",
+        "url": "https://nationalpark.ch/en/nature/animals/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-che-bearded-vulture",
+      "country": "CHE",
+      "animal": {
+        "ja": "ヒゲワシ",
+        "en": "Bearded vulture"
+      },
+      "text": {
+        "ja": "大人のヒゲワシはオレンジ色のお腹とひし形の尾が目印で、上昇気流に乗って羽ばたかずに舞い上がります。",
+        "en": "Adult bearded vultures have an orange belly and diamond-shaped tail, and circle up on updrafts without flapping."
+      },
+      "source": {
+        "name": "Swiss National Park",
+        "url": "https://nationalpark.ch/en/nature/animals/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-che-red-deer",
+      "country": "CHE",
+      "animal": {
+        "ja": "アカシカ",
+        "en": "Red deer"
+      },
+      "text": {
+        "ja": "スイス国立公園のトゥルプチュン谷では、9月中旬から始まるアカシカの繁殖期が特別な見どころです。",
+        "en": "In the Swiss National Park, the red deer rut that begins in mid-September is a special spectacle in Val Trupchun."
+      },
+      "source": {
+        "name": "Swiss National Park",
+        "url": "https://nationalpark.ch/en/nature/animals/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ita-alpine-ibex",
+      "country": "ITA",
+      "animal": {
+        "ja": "アルプスアイベックス",
+        "en": "Alpine ibex"
+      },
+      "text": {
+        "ja": "アルプスアイベックスはイタリアのグラン・パラディーゾ国立公園のシンボルで、今では公園全体で見られます。",
+        "en": "The Alpine ibex is the symbol of Italy's Gran Paradiso National Park and has now spread all over the park."
+      },
+      "source": {
+        "name": "Gran Paradiso National Park",
+        "url": "https://www.pngp.it/en/nature-and-research/fauna/grasslands-and-rocky-environments"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-esp-herons",
+      "country": "ESP",
+      "animal": {
+        "ja": "サギ類",
+        "en": "Herons"
+      },
+      "text": {
+        "ja": "スペインのドニャーナ国立公園には、地中海地域でも最大級のサギの集団繁殖地があります。",
+        "en": "Spain's Doñana National Park has one of the largest heronries in the Mediterranean region."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/685/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ken-grevy-s-zebra",
+      "country": "KEN",
+      "animal": {
+        "ja": "グレビーシマウマ",
+        "en": "Grevy's zebra"
+      },
+      "text": {
+        "ja": "グレビーシマウマは、ほかのシマウマと違って決まった群れや大人どうしの固定した絆をつくりません。",
+        "en": "Unlike all other zebras, Grevy's zebras do not form permanent herds or permanent social bonds between adults."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/grevys-zebra"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ken-lesser-flamingo",
+      "country": "KEN",
+      "animal": {
+        "ja": "コフラミンゴ",
+        "en": "Lesser flamingo"
+      },
+      "text": {
+        "ja": "ケニアの大地溝帯の湖は、コフラミンゴにとって世界で最も重要な採食地です。",
+        "en": "Kenya's Great Rift Valley lakes are the single most important foraging site for the lesser flamingo anywhere."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1060/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-ken-naked-mole-rat",
+      "country": "KEN",
+      "animal": {
+        "ja": "ハダカデバネズミ",
+        "en": "Naked mole-rat"
+      },
+      "text": {
+        "ja": "ハダカデバネズミは唇を前歯の後ろで閉じられるので、口に土を入れずに穴を掘れます。",
+        "en": "Naked mole-rats can close their lips behind their front teeth, so they dig without getting dirt in their mouths."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/naked-mole-rat"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-tza-wildebeest",
+      "country": "TZA",
+      "animal": {
+        "ja": "ヌー",
+        "en": "Wildebeest"
+      },
+      "text": {
+        "ja": "セレンゲティのヌーは、ケニアとタンザニアにまたがる約1000kmの円を描くように毎年大移動します。",
+        "en": "Serengeti wildebeest make an annual circular trek of about 1,000 km spanning Kenya and Tanzania."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/156/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-tza-ostrich",
+      "country": "TZA",
+      "animal": {
+        "ja": "ダチョウ",
+        "en": "Ostrich"
+      },
+      "text": {
+        "ja": "タンザニアのセレンゲティ国立公園は、国内で最も多くのダチョウが暮らす場所です。",
+        "en": "Tanzania's Serengeti National Park has the country's largest ostrich population."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/156/"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-tza-lesser-kudu",
+      "country": "TZA",
+      "animal": {
+        "ja": "レッサークーズー",
+        "en": "Lesser kudu"
+      },
+      "text": {
+        "ja": "レッサークーズーは水場に頼らず、葉に含まれる水分で水分補給ができます。",
+        "en": "Lesser kudu can get their water from the moisture in leaves instead of relying on water sources."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/lesser-kudu"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-zaf-african-penguin",
+      "country": "ZAF",
+      "animal": {
+        "ja": "ケープペンギン",
+        "en": "African penguin"
+      },
+      "text": {
+        "ja": "ケープペンギンは一生同じパートナーと過ごし、交代で卵を温めてヒナを育てます。",
+        "en": "African penguins are monogamous; lifelong partners take turns incubating eggs and feeding their young."
+      },
+      "source": {
+        "name": "SANParks (South African National Parks)（PDF）",
+        "url": "https://www.sanparks.org/wp-content/uploads/2024/02/boulders-brochure.pdf"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nam-damaraland-mole-rat",
+      "country": "NAM",
+      "animal": {
+        "ja": "ダマラランドデバネズミ",
+        "en": "Damaraland mole rat"
+      },
+      "text": {
+        "ja": "ダマラランドデバネズミは目がとても小さいものの、角膜で空気の流れを感じ取れます。",
+        "en": "Damaraland mole rats have tiny eyes, but their corneas are sensitive to air currents."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/damaraland-mole-rat"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mdg-ring-tailed-lemur",
+      "country": "MDG",
+      "animal": {
+        "ja": "ワオキツネザル",
+        "en": "Ring-tailed lemur"
+      },
+      "text": {
+        "ja": "ワオキツネザルの尾には、どの個体にも13本ほど黒と白の縞があります。",
+        "en": "Every ring-tailed lemur has about 13 alternating black and white bands on its tail."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/ring-tailed-lemur"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mdg-black-and-white-ruffed-lemur",
+      "country": "MDG",
+      "animal": {
+        "ja": "クロシロエリマキキツネザル",
+        "en": "Black-and-white ruffed lemur"
+      },
+      "text": {
+        "ja": "クロシロエリマキキツネザルは「世界最大の送粉者」で、顔についた花粉を木から木へ運びます。",
+        "en": "Black-and-white ruffed lemurs are called the world's largest pollinators, carrying pollen on their faces between trees."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/black-and-white-ruffed-lemur"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mdg-tenrec",
+      "country": "MDG",
+      "animal": {
+        "ja": "テンレック",
+        "en": "Tenrec"
+      },
+      "text": {
+        "ja": "ハリネズミに似たマダガスカルのテンレックは、実はハリネズミよりゾウに近い仲間です。",
+        "en": "Hedgehog-like tenrecs of Madagascar are more closely related to elephants than to hedgehogs."
+      },
+      "source": {
+        "name": "Natural History Museum, London",
+        "url": "https://www.nhm.ac.uk/discover/the-weird-world-of-tenrecs.html"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-bwa-sitatunga",
+      "country": "BWA",
+      "animal": {
+        "ja": "シタツンガ",
+        "en": "Sitatunga"
+      },
+      "text": {
+        "ja": "シタツンガは細長く大きく開くひづめで、沼や湿地のやわらかい地面を歩けます。",
+        "en": "Sitatunga have long, wide-splayed hooves that help them walk on soft ground such as swamps and marshes."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/sitatunga"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-bwa-meerkat",
+      "country": "BWA",
+      "animal": {
+        "ja": "ミーアキャット",
+        "en": "Meerkat"
+      },
+      "text": {
+        "ja": "ミーアキャットはおしゃべりな動物で、少なくとも10種類の鳴き声を使い分けます。",
+        "en": "Meerkats are chatty animals with at least ten distinctive vocalizations."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/meerkat"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-nam-cheetah",
+      "country": "NAM",
+      "animal": {
+        "ja": "チーター",
+        "en": "Cheetah"
+      },
+      "text": {
+        "ja": "チーターは息を吸うときも吐くときも、数分間ゴロゴロとのどを鳴らし続けることがあります。",
+        "en": "Cheetahs purr while breathing both in and out, and the purr may go on for minutes."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/cheetah"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-egy-fennec-fox",
+      "country": "EGY",
+      "animal": {
+        "ja": "フェネック",
+        "en": "Fennec fox"
+      },
+      "text": {
+        "ja": "フェネックは体に対する耳の大きさがイヌ科で一番で、その耳で熱を逃がします。",
+        "en": "Fennec foxes have the largest ears relative to body size of any canid, and use them to release heat."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/fennec-fox"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-mar-barbary-macaque",
+      "country": "MAR",
+      "animal": {
+        "ja": "バーバリーマカク",
+        "en": "Barbary macaque"
+      },
+      "text": {
+        "ja": "モロッコなどにすむバーバリーマカクは、群れの大人のオスもメスも自分の子以外の子どもの世話をします。",
+        "en": "In Barbary macaque groups, adult males and females look after all the young, not just their own."
+      },
+      "source": {
+        "name": "Natural History Museum, London",
+        "url": "https://www.nhm.ac.uk/discover/barbary-macaques-europe-and-north-africas-last-monkeys.html"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-jor-rock-hyrax",
+      "country": "JOR",
+      "animal": {
+        "ja": "イワハイラックス",
+        "en": "Rock hyrax"
+      },
+      "text": {
+        "ja": "イワハイラックスの上の前歯は一生伸び続け、小さな牙のように見えます。",
+        "en": "Rock hyraxes' upper incisors grow continuously and look like small tusks."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/rock-hyrax"
+      },
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-tcd-dama-gazelle",
+      "country": "TCD",
+      "animal": {
+        "ja": "ダマガゼル",
+        "en": "Dama gazelle"
+      },
+      "text": {
+        "ja": "ダマガゼルは必要な水分の多くを、食べる植物からとっています。",
+        "en": "Dama gazelles get most of their water from the plants they eat."
+      },
+      "source": {
+        "name": "Smithsonian's National Zoo",
+        "url": "https://nationalzoo.si.edu/animals/dama-gazelle"
+      },
+      "checkedAt": "2026-10-26"
+    }
+  ]
+}

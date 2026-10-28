@@ -5,7 +5,8 @@
 
 ## 0. アカウント
 
-- [ ] 2要素認証（2FA）が有効になっている
+- [ ] 2要素認証（2FA）が有効になっている。**パスキーかセキュリティキーを推奨**（SMS より乗っ取られにくい）。2026年10月の GhostAction の再発では、乗っ取られた保守者のアカウントから、秘密情報を盗むワークフローが大量のリポジトリに置かれた
+- [ ] 月1回：Settings → Applications（Authorized OAuth Apps・Authorized GitHub Apps・Installed GitHub Apps）、Settings → Developer settings → Personal access tokens、Settings → SSH and GPG keys、Settings → Sessions を見て、覚えのないもの・使っていないものが無いか確かめる（消すときは、侵害の疑いがあれば先に封じ込めの手順を確かめる。6.2）
 - [ ] Settings → Emails →「Keep my email addresses private」と「Block command line pushes that expose my email」を有効にし、コミットに使うメールを GitHub が用意する noreply アドレス（末尾が users.noreply.github.com のもの）にする
 - [ ] ローカルで作業する場合、`git config user.email` が noreply アドレス、`git config user.name` が GitHub のユーザー名になっている（本名を入れない。CI が拒否する）
 
@@ -45,20 +46,43 @@ Settings → Pages
 - [ ] Source：**GitHub Actions**
 - [ ] Settings → Environments → `github-pages` → Deployment branches：**main のみ**
 
-## 4. main ブランチの保護（Rulesets）
+## 4. main ブランチの保護（Rulesets）— 2つに分ける（v1.2.6）
 
-Settings → Rules → Rulesets → New branch ruleset（対象：`main`）
+**検査（status checks）を省略できる例外は作らない。** 自分の PR を自分で承認できない問題（承認の省略）だけを例外にするため、ルールセットを2つに分ける。GitHub の説明では、同じブランチに複数のルールセットがあると規則は合算され、Bypass は「そのルールセットの規則」を省略する設定（[About rulesets](https://docs.github.com/en/enterprise-server@3.19/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)）。分けた後に、下の「確かめ方」で実際の動きを必ず確かめる。
+
+**(A) `main-checks`（Bypass なし）** Settings → Rules → Rulesets → New branch ruleset（対象：`main`、Enforcement：Active）
 
 - [ ] Restrict deletions（削除禁止）
 - [ ] Block force pushes（force push 禁止）
+- [ ] Require status checks to pass：`validate` と **`scope-guard`** の2つ。「Require branches to be up to date before merging」も有効（緊急停止の前に通った古い検査結果のままマージされるのを防ぐ）
+  - scope-guard は main 側の定義だけで動き、AI・外部の PR が data/curated の2ファイル以外を変えていたら必ず失敗する。validate は PR範囲・個人情報・形式などの検査（main 側のスクリプトで PR 側のファイルを検査）。それでも最後に運用者が「Files changed」を確認する（下の「CI の限界」）
+- [ ] **Bypass list：空のまま**（運用者も入れない。検査に落ちた変更は、だれもマージできない）
+
+**(B) `main-review`（運用者だけ、PR のときだけ Bypass）** 対象：`main`、Enforcement：Active
+
 - [ ] Require a pull request before merging（PR 必須）
   - [ ] Required approvals：1
   - [ ] Require review from Code Owners（CODEOWNERS の承認必須）
   - [ ] Dismiss stale pull request approvals when new commits are pushed
-- [ ] Require status checks to pass：`validate` と **`scope-guard`** の2つ（scope-guard は main 側の定義だけで動き、AI・外部の PR が data/curated の2ファイル以外を変えていたら必ず失敗する。PR でワークフローを書き換えても効かない）。validate は（PR範囲・個人情報・形式などの検査をすべて含む。検査は main 側のスクリプトで PR 側のファイルに対して行うため、PR で検査スクリプトを書き換えても効かない。PR 側でワークフロー定義そのものを書き換える手口は scope-guard が止める。それでも最後に運用者が「Files changed」を確認する。下の「CI の限界」参照）
-- [ ] Bypass list：**自分（運用者）だけ**を追加し、モードは **「For pull requests only」**（「Always」にしない）
-  - 理由：自分の PR は自分で承認できないため、自分が直した変更は「PR を作ったうえで承認を省略してマージ」できるようにする。main への直接 push はできず、必ず PR を経由する。この場合は検査（validate）の結果も省略できてしまうため、緑になったことを自分で確認してからマージする
+- [ ] Bypass list：**Repository admin（運用者）だけ**、モードは **「For pull requests only」**（「Always」にしない）
+  - 理由：自分の PR は自分で承認できないため、承認だけを省略してマージできるようにする。main への直接 push はできず、必ず PR を経由する。検査は (A) が別に必須にしているので、この Bypass では省略できない
   - AI 用アカウント（6章）は Bypass に**入れない**。AI の PR は必ず運用者の承認が必要になる
+
+**移行のしかた（運用者が GitHub の画面で行う。Claude は設定を変えない）**
+
+1. 今の `main-protection` を開き、内容を控える（画面の写し。トークン等は写さない）
+2. (A) `main-checks` を新しく作って Active にする（この時点では `main-protection` も残す。規則は合算されるので、守りが弱くなる時間を作らない）
+3. (B) `main-review` を新しく作って Active にする
+4. `main-protection` を Disabled にする（すぐには消さない。1週間ほど様子を見てから消す）
+5. 確かめ方（下）を行う。想定と違えば `main-protection` を Active に戻し、Claude に知らせる
+
+**確かめ方（設定の後に一度。試験用の PR はマージせず閉じる）**
+
+- [ ] ブラウザで、検査が失敗する無害な試験用 PR を作る（例：空のファイル `scripts/.napi_cache` を足すだけの PR。check-repo が必ず拒否する）。validate が失敗し、「Merge」ボタンが押せない（Bypass の選択肢にも検査の省略が出ない）ことを確かめる
+- [ ] 検査が通る無害な試験用 PR では、承認なしで「Merge without waiting for requirements to be met（bypass）」が出ることを確かめる（承認の省略だけ）。確かめたら閉じる
+- [ ] ルールセットの「Insights」で、試験の記録を確認する。結果の画面の写しを、ドライブの作業場に保存する
+
+**残る限界**：運用者の名義で動く AI の連携アプリは、運用者と同じ「承認の省略」ができる（検査は省略できない）。そのため、連携アプリは普段このリポジトリの対象から外す（6.2）。運用者の権限そのものを AI に使わせない運用は、6章・6.1（AI 用の別アカウント・読み取り＋フォーク）を基本にする。
 
 ## 4.5 AI用アカウントが触れるブランチを限定する（Rulesets）
 
@@ -118,6 +142,34 @@ PR の検査（validate）は、PR 側のワークフローファイルで動く
 
 WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正が必要になることがある。AI は `scripts/` を変える PR を出せない（検査で拒否される）ため、AI には修正案（差分）を文章で出してもらい、運用者が内容を読んで理解できた場合だけ、自分のアカウントで手元に反映し、`node scripts/prepublish-check.mjs` を通してから自分の PR として出す。理解できない修正は取り込まない。
 
+## 6.2 運用者の名義で動く AI の連携アプリ（Claude・ChatGPT Codex・Copilot など）（v1.2.4）
+
+GitHub App がユーザーの代理で動くと、その操作は**ユーザー本人の名前で記録**される（GitHub Docs「Authenticating with a GitHub App on behalf of a user」）。運用者のアカウントに AI の連携アプリを入れていると、AI の操作も「運用者の操作」に見える。
+
+- 検査側の対策（v1.2.4・v1.2.5）：運用者の PR として範囲の制限を外すのは、PR が **GitHub App を通さずに作られた**と API（PR の issue 情報の `performed_via_github_app` が null）で確かめられ、**しかもこの判定を運用者が実機で確かめてリポジトリ変数 `OWNER_PR_CHECK` を `verified-null` にしている**ときだけ。取得の失敗・項目の欠落・アプリ経由・変数が未設定のときは制限する（`scripts/lib/owner-pr.mjs`。scope-guard と validate の両方）。「null なら人間が作った」という前提は、実機で確かめるまで使わない
+- **限界**：PR の作成後に、アプリが運用者の名義でコミットを追加した場合、コミットの情報だけではアプリ経由かどうかを区別できない。また、アプリ経由で作った PR で `performed_via_github_app` が実際に入るかは、公開後に一度確かめる（下の確認）
+- [ ] 設定側の対策：AI の連携アプリ（Settings → Applications → Installed GitHub Apps の各アプリ → Repository access）で、**普段は Tomoshibi-atlas を対象から外す**。Claude に push を承認したときだけ一時的に対象に入れ、push が終わったら外す
+- [ ] 使っていない連携アプリの認可は、Settings → Applications → Authorized GitHub Apps で整理する（ただし、侵害が疑われる環境では、JFrog の注意どおり、居座るための仕組みの除去を先に行う）
+
+### 運用者が広い範囲を変える手順（人間用）
+
+1. Claude などが作業ブランチを push する（承認した内容に限る。push の間だけ連携アプリに書き込みを許可）
+2. push が終わったら、連携アプリの対象から Tomoshibi-atlas を外す
+3. **運用者がブラウザで** PR を作る（アプリを通さない。scope-guard のログに「運用者が GitHub App を通さずに作った PR」と出ることを確かめる）
+4. Files changed を読み、検査がすべて緑になってからマージする。PR の作成後に新しいコミットが追加されていたら、その差分を読み直す（承認を流用しない）
+
+### 実機での確かめ方（段階1を取り込んだあと、段階2の前に行う）
+
+段階1は今の main の検査で判定されるので、この確認の前に取り込める。段階2（data/directory などのデータ）は、確認が済んで変数を設定するまで「運用者の PR」と認められず、取り込めない（安全側）。
+
+1. 段階1を取り込む
+2. **ブラウザで**無害な試験用 PR を作る（例：README の1文字の変更。マージしない）。scope-guard のログに「PR の作成元（performed_via_github_app）：null（アプリの情報なし）」と出て、判定は「制限あり（OWNER_PR_CHECK 未設定）」になることを確かめる
+3. 使っている連携アプリ（Claude・ChatGPT Codex・Copilot など）**それぞれで**、無害な試験用 PR を作る（そのあいだだけリポジトリを対象に入れる）。ログに「アプリ：〈アプリ名〉」と出て、data/curated 以外の変更が拒否されることを確かめる
+4. ブラウザで作った試験用 PR に、連携アプリから後でコミットを足した場合も試す（この場合は区別できないことを確かめ、普段は連携アプリを対象から外す運用で防ぐ）
+5. 2〜3 の結果がすべて想定どおりなら、Settings → Secrets and variables → Actions → Variables で `OWNER_PR_CHECK` を `verified-null` にする。1つでも想定と違えば設定しない（そのアプリをこのリポジトリから外すか、Claude に判定方法の見直しを頼む）
+6. 確かめたログの写し（ログの画面の写しなど。トークンや個人情報は写さない）を、ドライブの作業場に保存する。試験用 PR はマージせずに閉じる
+7. 段階2の PR をブラウザで作って取り込む
+
 ## 6.5 知っておくこと（設計上の限界）
 
 - `ユーザー名.github.io/Tomoshibi-atlas` で公開する場合、同じアカウントの他の GitHub Pages サイトと「同じオリジン」になります。このサイトはログインも保存データも持たないため実害はほぼありませんが、同じアカウントで信頼できないページを公開しないでください（気になる場合は独自ドメインを使う）
@@ -135,11 +187,12 @@ WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正�
 
 - **GitHub のプロフィールの「Name」を、筆名（Yutaka Yoshioka または 吉岡有隆）か空欄にする**（Settings → Public profile → Name）。GitHub がマージ時に作るコミットには、ここの名前が入って公開される。公開ワークフローの `scripts/check-history.mjs` が、noreply 以外のメールや許可外の名前を見つけると公開を止める
 - **AI・bot に運用者のアカウントやトークンを使わせない**（運用者の PC で動く AI ツールに、運用者の GitHub ログインのまま操作させない）。運用者の権限で動く AI には、範囲の制限や PR 検査が効かない。AI・bot には必ず専用のアカウント（または組織の機械アカウント）を使う
-- main のルールセットの「Bypass list」に運用者を入れている場合も、**検査（status checks）は運用者の PR にも必須**にしておく（緊急時を除き、検査の失敗した変更をマージしない）
+- 検査（status checks）は、Bypass のない別のルールセット（4章の `main-checks`）で必須にする。運用者の Bypass は、承認の省略だけに使う（4章の `main-review`）
 - PR 検査（validate.yml）は **main 宛ての PR だけ**で動き、検査プログラムは常に最新の main から読み込む。宛先を別ブランチにした PR は検査で失敗する
 
 - **Settings → Code security → Private vulnerability reporting を有効にする**。サイトの `/.well-known/security.txt` は、このフォームを連絡先として案内する（個人のメールアドレスは載せない）
 - **Settings → Code security → CodeQL**：`.github/workflows/codeql.yml` が週1回と PR ごとにコードを検査する。結果は Security タブで確認
+  - [ ] **Code scanning を有効にする**（Settings → Code security → Code scanning。`codeql.yml` を使う「Advanced」の設定）。2026-10-25 の main の CodeQL は、ワークフローに `actions: read` の権限が無かったことと、Code scanning が有効でないことの表示が出て失敗していた（v1.2.6 で `actions: read` を追加。有効化は運用者の設定。直ったかは GitHub 上で確かめる）
 - 変数（Variables）：`SITE_URL`・`GOOGLE_SITE_VERIFICATION`・`BING_SITE_VERIFICATION`（いずれも任意・秘密情報ではない）。詳しくは [SEARCH.md](SEARCH.md)
 - Node.js：CI は 24 系の最新版を毎回取得する（`check-latest: true`）。さらに `scripts/lib/node-guard.mjs` が、修正前の脆弱性がある版では処理を止める。新しいセキュリティリリースが出たら、この表の最低バージョンを運用者が上げる
 
@@ -172,9 +225,9 @@ WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正�
   2. CODEOWNERS（`.github/` と `scripts/` は運用者の承認が必須）とルールセットの「Require review from Code Owners」
   3. マージの前に、運用者が PR の「Files changed」を見て、**2つのデータファイル以外が変わっていればマージしない**（PR テンプレートの「運用者の最終確認」）
 - ルールセットの「Require branches to be up to date before merging」（strict）を有効にする。緊急停止（ops/AI-PAUSE）の前に通った古い検査結果のままマージされるのを防ぐ
-- 運用者の Bypass は「For pull requests only」で、**通常は使わない**（検査が失敗した PR をマージしない）。使った場合は、理由を更新履歴に記録する
+- 運用者の Bypass は `main-review`（承認）だけで、「For pull requests only」。検査（`main-checks`）は Bypass できない。承認を省略してマージしたときは、理由を更新履歴に記録する
 - `dependabot/**` はブランチ制限の対象外になっている。AI・bot のアカウントがこの名前のブランチを作っても、PR 検査が Dependabot 以外のコミットを拒否するが、念のため AI 用トークンの権限は「このリポジトリの Contents と Pull requests」だけにし、Workflows 権限は与えない
-- Node.js の修正済み版の確認（`scripts/lib/node-guard.mjs`）は、手元では古い版を止め、GitHub Actions では警告にする（Actions は毎回その系列の最新版を入れるため。表の値が誤っていた場合にすべての公開が止まるのを避ける）
+- Node.js の修正済み版の確認（`scripts/lib/node-guard.mjs`）は、GitHub Actions でも手元でも、修正前の版なら処理を止める（2026-10-26 変更。以前は Actions では警告だけだった）。Actions は毎回その系列の最新版を入れるので通常は止まらない。止まったときは、最新版の配布待ちか表の値の誤りなので、運用者が表を確かめる（公開中のサイトは前回の内容のまま残る）。`TA_ALLOW_OLD_NODE=1` は手元で試すとき専用で、Actions では効かない
 - `scripts/check-privacy.mjs` などの検査は、決まった形の文字列を探す仕組み。**検査が通ったことは「個人情報が無い証明」ではない**
 
 ## リンク確認の通知（v0.7）
@@ -185,3 +238,48 @@ WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正�
 2. リポジトリの Watch を「All Activity」または「Custom → Actions など」にする（自分のリポジトリでも通知を受け取るため）
 3. 失敗したら、Actions → Link safety check → 実行結果の Summary に、危険・要確認のリンクが一覧で出る。危険は外すか差し替え、要確認はブラウザで開いて確かめる
 4. 通知が来ない場合に備え、月に1回は Actions の画面で最新の実行結果を目で確認する
+
+## 8. 2026年12月2日までに必要な設定：変更範囲の検査（scope-guard）を動かし続ける
+GitHub は、公開リポジトリで `pull_request_target` で動くワークフローを、**2026年12月2日から既定で止める**と発表した（GitHub Changelog 2026-09-17「Workflow execution protections in GitHub Actions generally available」、10月21日に日付を更新）。
+このリポジトリの `.github/workflows/scope-guard.yml` はこの仕組みで動いているため、何もしないと12月2日以降に検査が動かず、必須の検査（scope-guard）が終わらないので PR を取り込めなくなる。
+
+`pull_request`（通常の PR の起動条件）に変えるのは**勧めない**。`pull_request` では PR 側のワークフローの定義が使われるため、PR の中で scope-guard.yml を書き換えると検査をすり抜けられてしまう（この検査を作った理由そのもの）。
+
+手順（運用者が GitHub の画面で行う。画面の名前は変わることがある）：
+1. リポジトリの **Settings → Actions → Policies**（「Actions policies」）を開く
+2. 新しいポリシーを作る。名前は例として「scope-guard だけ pull_request_target を許可」
+3. 対象（target）を **ワークフローのファイル `.github/workflows/scope-guard.yml` だけ**に絞る（workflow file targeting）
+4. **Restrict events** で `pull_request_target` を許可する
+5. **Restrict actors** を設定する場合は、運用者・Dependabot・AI 用アカウントが PR を出せる状態を保つ
+6. 状態を Active にして保存。次の PR で「Scope guard」が動くことを確かめる
+7. ほかのワークフローには `pull_request_target` を許可しない（`scripts/check-repo.mjs` も scope-guard 以外での使用を禁止している）
+
+参考：GitHub Docs「Control workflow execution」「About Actions policies」。Evaluate（試験）モードは GitHub Enterprise Cloud だけのため、この設定は Active で行う。
+
+## 9. 推奨：すべてのブランチでワークフローの追加・変更を制限する
+2026年10月には、盗まれたトークンで約1,900のアカウントに不正なワークフローを置く攻撃（GhostAction）が報告された。main 以外の新しいブランチに置かれたワークフローも `push` で動くため、次を推奨する。
+- **Settings → Rules → Rulesets** で、対象ブランチを **All branches（すべてのブランチ）** にしたルールを作り、「Restrict file paths」で `.github/workflows/**` の変更を制限する（運用者だけ bypass）
+- 個人アクセストークン（classic）は作らない。必要なら期限の短い fine-grained トークンにする
+- ログインには、パスキーかセキュリティキーを使う
+- **Settings（アカウント）→ Applications → Authorized OAuth Apps** と、ログイン中のセッションを、月に1回見直す
+
+## 10. 運用者が「検査のプログラム」と「データ」を同時に変えるときの取り込み方（2段階・迂回しない）
+`validate.yml` の「Data validation (trusted)」などは、**main 側（取り込み前）の検査プログラム**で PR のデータを調べる。
+そのため、新しい分野・新しい印（tags）・新しい許可ドメインを使うデータを、検査プログラムの更新と同じ PR に入れると、古い検査プログラムが新しいデータを知らずに失敗する（設計どおり。AI や外部の PR が検査プログラムを書き換えて通すことを防ぐため）。
+
+**この場合も、検査を迂回して取り込まない。** 次の2段階に分ける。
+
+1. **段階1：検査プログラムだけを先に入れる PR**
+   - 中身：scripts/・site/・docs/・ワークフローなどの変更と、**今の main の検査で通るデータだけ**（新しい分野・印・ドメインを使うデータは入れない）
+   - 新しい検査で必要になる確認の記録（evidence など）がまだ無いデータは、空のまま入れる（例：都道府県の窓口のリンクを空にして「確認中」表示にする）
+   - main 側の検査（trusted）と、PR 側の自己テスト・組み立てが**すべて成功する**ことを確かめてから取り込む
+2. **段階2：データの PR**
+   - 段階1を取り込んだ後の main（新しい検査プログラム）で検査される
+   - trusted の検査・自己テスト・組み立てが**すべて成功する**ことを確かめてから取り込む
+
+確かめ方：
+- PR の「Checks」で、Validate と Scope guard の全手順が緑（成功）であること。trusted の手順が赤のまま取り込まない
+- 失敗したら、ログを開いて理由を読む（trusted が失敗しても、PR 側の自己テストと組み立ては原因調べのために続けて動く。ただし成功しても trusted の失敗は消えない）
+- 手元で `npm test`、`npm run validate`、`node scripts/check-repo.mjs`、`node scripts/check-privacy.mjs`、`npm run check:history` も実行しておく（Node.js は修正済みの版。古い版では止まる）
+
+管理者の権限でルールを迂回して取り込むのは、**サイトが壊れていて直す PR 自体が検査を通せないなど、ほかに方法がない緊急時だけ**。その場合は、対象の head SHA、失敗した手順と理由、手元で実行した検査の結果を PR に書き、取り込み後すぐに通常の検査が通る状態へ戻す。AI・外部の PR では絶対に迂回しない。

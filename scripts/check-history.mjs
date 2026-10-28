@@ -10,6 +10,7 @@ import { scanText, ALLOW, checkCleanPng } from './check-privacy.mjs';
 const env = process.env;
 // 運用者のユーザー名は CODEOWNERS からも読む（変数を設定する前の最初の公開でも誤検知しないように）
 import { readFileSync } from 'node:fs';
+import { SKIP_CHECKS } from './lib/owner-pr.mjs';
 const owner = (readFileSync(new URL('../.github/CODEOWNERS', import.meta.url), 'utf8').match(/^\*\s+@([A-Za-z0-9-]+)/m) || [])[1];
 const NAMES = new Set(['GitHub', 'dependabot[bot]', 'github-actions[bot]', '吉岡有隆', 'Yutaka Yoshioka', owner, env.MAINTAINER_LOGIN, ...(env.AI_ACCOUNT_LOGINS || '').split(',').map((s) => s.trim())].filter(Boolean));
 const NOREPLY = /(@users\.noreply\.github\.com|^noreply@github\.com)$/i;
@@ -45,7 +46,11 @@ if (!process.argv.includes('--strict')) {
   let sha = '';
   for (const line of recentMsgs.split('\n')) {
     if (line.startsWith('\x01')) sha = line.slice(1, 8);
-    else for (const label of scanText(line)) bad.push(`${sha}: コミットメッセージに「${label}」の疑い`);
+    else {
+      for (const label of scanText(line)) bad.push(`${sha}: コミットメッセージに「${label}」の疑い`);
+      // 検査を飛ばす指示（skip-checks: true、[skip ci] など）はこのリポジトリでは使わない（2026-10 の testmetest ワームの手口）
+      if (SKIP_CHECKS.test(line)) bad.push(`${sha}: コミットメッセージに検査を飛ばす指示（skip-checks・skip ci など）`);
+    }
   }
 }
 if (process.argv.includes('--strict')) {
@@ -88,7 +93,11 @@ if (process.argv.includes('--strict')) {
   let sha = '';
   for (const line of messages.split('\n')) {
     if (line.startsWith('\x01')) sha = line.slice(1, 8);
-    else for (const label of scanText(line)) bad.push(`${sha}: コミットメッセージに「${label}」の疑い`);
+    else {
+      for (const label of scanText(line)) bad.push(`${sha}: コミットメッセージに「${label}」の疑い`);
+      // 検査を飛ばす指示（skip-checks: true、[skip ci] など）はこのリポジトリでは使わない（2026-10 の testmetest ワームの手口）
+      if (SKIP_CHECKS.test(line)) bad.push(`${sha}: コミットメッセージに検査を飛ばす指示（skip-checks・skip ci など）`);
+    }
   }
 }
 // 公開前の確認は、最初の push の前に手元で `node scripts/check-history.mjs --strict` を実行して行う（全履歴）。
