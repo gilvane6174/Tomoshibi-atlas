@@ -61,7 +61,7 @@
       <div class="callout">
         <p>This site collects <strong>headlines and links</strong> to information published by public bodies, international organizations, peer-reviewed journals and similar sources. It is not medical, legal, financial or other professional advice. For decisions about your health, treatment or use of public services, always consult a doctor, a qualified professional or an official service.</p>
         <p>All content reflects the information <strong>as of the date it was retrieved or checked</strong> and may differ from the current situation. Always check the original source through the link provided.</p>
-        <p><strong>Updates are not immediate.</strong> Automatically retrieved topics are updated twice a day at fixed times (early morning and early evening, Japan time) and when the operator updates the site, and are not updated on days when retrieval fails. Topics that the operator adds after checking the original sources are updated irregularly, depending on the operator's circumstances and health, so new information may not appear right away.</p>
+        <p><strong>Updates are not immediate.</strong> Automatically retrieved topics are updated twice a day at fixed times (early morning and early evening, Japan time) and when the operator updates the site, and are not updated when retrieval from the main sources fails (if only a supplementary source fails, the update goes ahead without it and the status line says so). Topics that the operator adds after checking the original sources are updated irregularly, depending on the operator's circumstances and health, so new information may not appear right away.</p>
         <p>This is not an official site of WHO, CISA, JPCERT/CC, the Ministry of Health, Labour and Welfare of Japan, the OECD or any other cited organization, and it is not endorsed by them.</p>
       </div>
       <p>AI is used to help prepare and check content. Content prepared with AI is checked against the original sources (including checks by a separate AI) and published with the operator's approval, but it may still contain errors. If you notice an error, please let us know through the <a href="#feedback">feedback form</a>.</p>
@@ -175,13 +175,13 @@
 
     <section>
       <h2>Safety in operation</h2>
-      <p><strong>Beware of impersonation.</strong> This site never asks for personal information, passwords or money. If someone contacts you by email, social media or phone claiming to be this site or its operator (Yutaka Yoshioka), do not respond. As a rule, we do not reply to messages about this site (see "Feedback" below).</p>
+      <p><strong>Beware of impersonation.</strong> This site and its operator will never contact you to ask for personal information, passwords or money (including tips). (The feedback form passes on only your email address, because of a Google setting.) If someone contacts you by email, social media or phone claiming to be this site or its operator (Yutaka Yoshioka), do not respond. As a rule, we do not reply to messages about this site (see "Feedback" below).</p>
       <p><strong>We do not link to sites that may be unsafe.</strong> Many visitors are in difficulty or anxious, so links go only to official sites of governments, public bodies and international organisations. We do not link to sites that show certificate warnings, do not load, show signs of tampering, pages that ask you to download files, log in or pay, private or personal sites, or short URLs. Organisations with a public role (such as a government-funded crisis line or a national CERT designated by law) may be listed, with how they are run stated in the description. Links are checked automatically every week after publication and removed if a problem is found. When in doubt, we leave a link out. For countries and regions affected by war or conflict, each official site is reviewed individually: public information that helps people living there (health care, livelihood support, safety information and so on) is listed, while pages that include calls for military cooperation or similar content are not.</p>
       <p><strong>Preventing misuse:</strong> IT security information is limited to what public bodies have already published (such as vulnerabilities confirmed to be exploited, with official remediation guidance). The site does not publish how to carry out attacks, attack code, details usable in attacks (such as IP addresses or file hashes), undisclosed or unpatched vulnerabilities, or system details of individual affected organisations. <strong>To prevent misuse, vulnerability reports are added only after the vendor, government or public bodies have published countermeasures (such as a fix or workaround).</strong> Information sent to us before countermeasures are published will not be posted (if you find a vulnerability, please report it to the product vendor or, in Japan, to IPA's reporting service). Automated checks block such content before publication. Information retrieved automatically every day (WHO, CISA) is published after these automated checks only, without human review; information added manually is reviewed by the operator before publication.</p>
       <ul>
         <li>This is a static site with no server, login, input forms or API keys.</li>
         <li>Automatic updates (infectious diseases and IT security) use only a fixed program and do not pass external text to generative AI.</li>
-        <li>On days when retrieval or checks fail, publication stops and the previous content remains.</li>
+        <li>If retrieval from the main sources (WHO, CISA) or the checks on the published data fail, publication stops and the previous content remains. If only a supplementary source (USGS earthquakes, or headlines from JPCERT/CC, NCSC, FSA, FTC, FDMA, NASA or NIH) cannot be retrieved, the site is still updated with the other information, and the status line at the bottom of the screen names the source that could not be retrieved.</li>
         <li>Changes prepared by AI (manually added information, the link directory and so on) are published only with the operator's approval. The link directory shows only links with a check record, as described above. Information retrieved automatically every day by fixed procedures (WHO, CISA) is published after automated checks only.</li>
       </ul>
     </section>
@@ -189,11 +189,27 @@
     <section id="feedback">
       <h2>Feedback, corrections and update notices</h2>
       <ul>
-        <li>Please send <strong>error reports, correction requests and suggestions</strong> through the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeaBNKQCavRffRIuYMr4G78d8dWgp1r07ret-Ar78SI8E76ow/viewform" target="_blank" rel="noopener noreferrer">feedback form (Google Forms, in Japanese)</a> where possible. <strong>As a rule, we do not reply to messages about this site</strong> (we only check them and act where needed). Changes may take time or may not be possible. Important changes will be announced on X (below) where possible.</li>
+        <li>Please send <strong>error reports, correction requests and suggestions</strong> through the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeaBNKQCavRffRIuYMr4G78d8dWgp1r07ret-Ar78SI8E76ow/viewform" target="_blank" rel="noopener noreferrer">feedback form (Google Forms, in Japanese; your email address is sent to the operator)</a> where possible (please read the note below before opening it). <strong>As a rule, we do not reply to messages about this site</strong> (we only check them and act where needed). Changes may take time or may not be possible. Important changes will be announced on X (below) where possible.</li>
         <li>The form is a Google service (Google's privacy policy applies). Because the form is shared with other purposes, <strong>Google sends the respondent's email address to the operator</strong>. For messages about this site, your email address is used only to check what you sent and is not used to reply (it may be used to reply to enquiries about other services handled through the same form). It is never published or given to third parties. <strong>Please do not include any other personal information (such as your name, address or health information).</strong></li>
         <li>Requests from site or account operators to <strong>remove a link</strong> are accepted through the same form and handled as soon as we can after checking.</li>
         <li><strong>New features may be added in the future.</strong> Suggestions for features you would like are welcome through the same form, but we cannot promise whether or when they will be implemented.</li>
         <li><strong>Site updates</strong> are announced on X (formerly Twitter) at <a href="https://x.com/yutakaapp_" target="_blank" rel="noopener noreferrer">@yutakaapp_</a>.</li>
+      </ul>
+    </section>
+
+    <section id="support">
+      <h2>Supporting the site (optional)</h2>
+      <p>Tomoshibi Atlas is free for everyone, with no ads, analytics or sign-up. <strong>Supporting the site does not change what you see or what you can use.</strong> All information, including the guides to support services, is free.</p>
+      <p>The site is run by an individual (Yutaka Yoshioka) not for profit ("non-profit" on this site means this; it is not a registered non-profit organisation). If you would like to support its upkeep and future improvements, you can send an optional tip through the external services below. Tips are used to keep the site running (domain, working environment and so on) and to improve it.</p>
+      <ul>
+        <li><a href="https://buymeacoffee.com/yoshiokayutaka" target="_blank" rel="noopener noreferrer">Buy Me a Coffee (English, for supporters outside Japan)</a></li>
+        <li><a href="https://ofuse.me/yoshiokayutaka" target="_blank" rel="noopener noreferrer">OFUSE (Japanese, for supporters in Japan)</a></li>
+      </ul>
+      <ul class="note-list">
+        <li>Both links open an external service. Payments and personal information are handled under that service's own terms and policies. This site never receives card details or other payment information.</li>
+        <li>Tips are not donations and are not tax-deductible. There are no special rewards in return.</li>
+        <li>This site and its operator will never contact you to ask for tips or money. If you receive such a message, it may be impersonation.</li>
+        <li>If you are going through a hard time, please don't worry about supporting the site; just use the information and services you need.</li>
       </ul>
     </section>
 

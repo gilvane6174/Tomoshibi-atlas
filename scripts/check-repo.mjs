@@ -10,7 +10,7 @@
 import { readFileSync, readdirSync, lstatSync, existsSync } from 'node:fs';
 import { resolve, join, relative, extname } from 'node:path';
 import { createHash } from 'node:crypto';
-import { DATA_ROOT as ROOT } from './lib/safety.mjs';
+import { DATA_ROOT as ROOT, readCode, isAllowedUrl, isDirectoryUrl, isAnimalUrl } from './lib/safety.mjs';
 
 const errors = [];
 const read = (rel) => readFileSync(resolve(ROOT, rel), 'utf8');
@@ -46,6 +46,13 @@ for (const name of readdirSync(resolve(ROOT, WF))) {
   {
     const steps = noComments.split(/\n(?=\s*- (?:name|uses|run):)/);
     for (const st of steps) if (/working-directory:\s*pr\b/.test(st) && !/run:\s*node\s+\.\.\/trusted\//.test(st) && !/\bif:\s*\$\{\{\s*success\(\)\s*\}\}/.test(st)) errors.push(`${rel}: PR 側のコードを実行する手順には if: \${{ success() }} を付ける`);
+  }
+  // push での起動は main だけに限る（乗っ取られたアカウントが別のブランチに置いたワークフローを、push で動かされないように。
+  // 2026年10月の GhostAction の再発では、どのブランチへの push でも動くワークフローが仕込まれた）
+  {
+    const m = noComments.match(/^\s{2}push:[^\n]*\n((?:\s{4,}[^\n]*\n?)*)/m);
+    if (m && !/^\s{2}push:\s*$/m.test(noComments)) errors.push(`${rel}: push は「push:」の次の行で branches: [main] だけを指定する`);
+    else if (m && !(/^\s{4}branches:\s*\[\s*main\s*\]\s*$/m.test(m[1]) && !/tags|branches-ignore|paths-ignore/.test(m[1]))) errors.push(`${rel}: push での起動は branches: [main] だけにする（タグ・ほかのブランチで動かさない）`);
   }
   if (/\bsecrets\./.test(text)) errors.push(`${rel}: secrets（秘密情報）は使わない設計`);
   if (/write-all|contents:\s*write|pull-requests:\s*write|actions:\s*write/.test(text)) errors.push(`${rel}: リポジトリへの書き込み権限は与えない`);
@@ -87,6 +94,9 @@ const NATIVE_EXT = new Set(['.node', '.gyp', '.gypi']);
 const GITHUB_ROOT_ALLOWED = new Set(['CODEOWNERS', 'dependabot.yml', 'pull_request_template.md']);
 // 開発ツールの自動実行設定（エディタやAIツールが開いただけで命令を実行しうるもの）は置かない。
 // 2026年のサプライチェーン攻撃（Mini Shai-Hulud）は .claude/ や .vscode/ に自動実行の設定を仕込んで広がった。
+// AI のコーディングツールに読ませる設定・指示のファイル（MCP サーバーの設定や、AI への指示書を仕込まれる手口がある。
+// 2026年10月のワームは、AI のツールに MCP サーバーの設定を書き込んで居座った）。このリポジトリでは AGENTS.md だけを使う
+const AI_CONFIG_NAMES = new Set(['.mcp.json', 'mcp.json', 'claude.md', 'claude.local.md', 'gemini.md', '.cursorrules', '.windsurfrules', '.clinerules', '.aider.conf.yml', 'copilot-instructions.md']);
 const TOOL_DIRS = new Set(['.claude', '.vscode', '.idea', '.cursor', '.devcontainer', '.husky', '.windsurf', '.gemini', '.codex', '.continue', '.zed', '.kiro', '.amazonq', '.roo', '.clinerules', '.mcp.json', '.cursorrules', '.windsurfrules', 'CLAUDE.md', 'GEMINI.md']);
 function walk(dir) {
   for (const name of readdirSync(dir)) {
@@ -99,6 +109,10 @@ function walk(dir) {
     const full = join(dir, name);
     const rel = relative(ROOT, full).split('\\').join('/');
     const st = lstatSync(full);
+    if (AI_CONFIG_NAMES.has(name.toLowerCase())) {
+      errors.push(`${rel}: AI のツールの設定・指示のファイルは置かない（AI への指示は AGENTS.md だけ。MCP サーバーの設定などを仕込まれるおそれ）`);
+      continue;
+    }
     // ネイティブ拡張・パッケージ設定の名前は、ファイルでもフォルダでも置かない（.napi_cache などはフォルダとしても使われうる）
     if (NATIVE_NAMES.has(name.toLowerCase()) || NATIVE_EXT.has(extname(name).toLowerCase())) {
       errors.push(`${rel}: ネイティブ拡張・パッケージ設定のファイル・フォルダは置かない（インストール時に命令を実行させる手口に使われる）`);
@@ -140,6 +154,25 @@ for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('
   if (/\son[a-z]+\s*=/i.test(html.replace(/<script[\s\S]*?<\/script>/gi, ''))) errors.push(`${rel}: onclick= などのイベント属性は使わない`);
   if (/<(?:iframe|embed|object|form)\b/i.test(html)) errors.push(`${rel}: iframe / embed / object / form は使わない`);
   if (/(?:src|href)="http:/i.test(html)) errors.push(`${rel}: http:// のリンク・読み込みは使わない`);
+}
+
+// 5.5 説明ページ・画面のプログラムに直接書いた外部リンク：許可リスト（公的機関などのドメイン）か、
+//     scripts/allowed-sources.json の pageLinks に完全一致で書いた URL（置いてよいページも一致）だけ。
+//     許可リストは main 側（信頼できる側）のものを使う（PR で許可リストとリンクを同時に足して通すことはできない）
+{
+  const pageLinks = readCode('scripts/allowed-sources.json').pageLinks || [];
+  const okLink = (url, page) => isAllowedUrl(url) || isDirectoryUrl(url) || isAnimalUrl(url) || pageLinks.some((l) => l.url === url && (l.pages || []).includes(page));
+  for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
+    for (const m of read(`site/${name}`).matchAll(/\b(?:href|src)="(https:\/\/[^"]+)"/gi)) {
+      const url = m[1].replace(/&amp;/g, '&');
+      if (!okLink(url, name)) errors.push(`site/${name}: 許可リストに無い外部リンク（${url}）。公的機関などは scripts/allowed-sources.json の許可リスト、それ以外は pageLinks に置くページと一緒に登録する`);
+    }
+  }
+  for (const name of readdirSync(resolve(ROOT, 'site/js')).filter((n) => n.endsWith('.js'))) {
+    for (const m of read(`site/js/${name}`).matchAll(/['"`](https:\/\/[^'"`\s]+)['"`]/g)) {
+      if (!okLink(m[1], `js/${name}`)) errors.push(`site/js/${name}: 許可リストに無い外部リンク（${m[1]}）`);
+    }
+  }
 }
 
 // 6. 同梱ライブラリの中身（更新するときは中身を確認してから、ここの値も更新する）

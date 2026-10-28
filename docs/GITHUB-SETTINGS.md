@@ -5,7 +5,8 @@
 
 ## 0. アカウント
 
-- [ ] 2要素認証（2FA）が有効になっている
+- [ ] 2要素認証（2FA）が有効になっている。**パスキーかセキュリティキーを推奨**（SMS より乗っ取られにくい）。2026年10月の GhostAction の再発では、乗っ取られた保守者のアカウントから、秘密情報を盗むワークフローが大量のリポジトリに置かれた
+- [ ] 月1回：Settings → Applications（Authorized OAuth Apps・Authorized GitHub Apps・Installed GitHub Apps）、Settings → Developer settings → Personal access tokens、Settings → SSH and GPG keys、Settings → Sessions を見て、覚えのないもの・使っていないものが無いか確かめる（消すときは、侵害の疑いがあれば先に封じ込めの手順を確かめる。6.2）
 - [ ] Settings → Emails →「Keep my email addresses private」と「Block command line pushes that expose my email」を有効にし、コミットに使うメールを GitHub が用意する noreply アドレス（末尾が users.noreply.github.com のもの）にする
 - [ ] ローカルで作業する場合、`git config user.email` が noreply アドレス、`git config user.name` が GitHub のユーザー名になっている（本名を入れない。CI が拒否する）
 

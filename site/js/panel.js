@@ -103,6 +103,7 @@ const note = (kind) => el('p', 'note' + (kind === 'daily' ? ' calm-note' : ''), 
 // （リンク先は運用者・AIが公式であることを確認したもの。site/about.html にも同じリンクを載せ、毎週のリンク確認の対象にしている）
 const SAFETY_LINKS = [
   ['https://www.jma.go.jp/bosai/', 'support.safety.jma'],
+  ['https://www.gsi.go.jp/bousaichiri/bousaichiri61053.html', 'support.safety.hazard'],
   ['https://www.gov-online.go.jp/kurashinosodan/list/ct_bouhan.html', 'support.safety.police'],
   ['https://www.gov-online.go.jp/kurashinosodan/list/fu_caa.html', 'support.safety.consumer'],
 ];
@@ -173,6 +174,8 @@ function dirLink(l, kana) {
   if (note) li.append(el('span', 'dir-lang', note));
   li.append(host);
   if (l.checkedAt) li.append(el('span', 'dir-checked', t(kana && lang === 'ja' ? 'dir.checked.kana' : 'dir.checked', { date: kana && lang === 'ja' ? kanaDate(l.checkedAt) : formatDate(l.checkedAt) })));
+  // 確認から半年（183日）以上たったリンクは、そのことを示す（リンク先の内容が変わっている可能性がある）
+  if (l.checkedAt && Date.now() - Date.parse(l.checkedAt) > 183 * 86400000) li.append(el('span', 'dir-stale', t(kana && lang === 'ja' ? 'dir.stale.kana' : 'dir.stale')));
   return li;
 }
 
@@ -421,4 +424,8 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
   const more = el('a', 'text-link', t('guide.more'));
   more.href = aboutHref;
   body.append(el('p', null).appendChild(more).parentNode);
+  // 開発応援チップ（任意）：目立たせず、説明ページの案内へ（決済サービスへの直接のリンクはこの画面に置かない）
+  const sup = el('a', 'text-link small-link', t('guide.support'));
+  sup.href = aboutHref + '#support';
+  body.append(el('p', 'note', null).appendChild(sup).parentNode);
 }

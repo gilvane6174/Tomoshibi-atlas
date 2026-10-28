@@ -117,6 +117,9 @@ async function start() {
     $('operator-link').href = aboutHref;
     document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
     $('drawer-about').href = aboutHref;
+    // トップと（スマートフォンの）メニューから、福祉の相談先とセキュリティ対策の説明ページへ直接進める
+    for (const id of ['quick-welfare', 'drawer-welfare']) $(id).href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
+    for (const id of ['quick-security', 'drawer-security']) $(id).href = lang === 'en' ? 'security-basics.en.html' : 'security-basics.html';
     $('brand-link').href = urlForLang(lang);
     const other = lang === 'en' ? 'ja' : 'en';
     for (const id of ['btn-lang', 'drawer-lang']) {

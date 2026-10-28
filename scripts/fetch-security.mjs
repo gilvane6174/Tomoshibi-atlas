@@ -65,6 +65,11 @@ export function inspectJpcertRdf(xml, now = Date.now()) {
   if (typeof xml !== 'string' || !xml.trim()) throw new Error('JPCERT RSS: empty response');
   if (/<!DOCTYPE|<!ENTITY/i.test(xml)) throw new Error('JPCERT RSS: DOCTYPE/ENTITY is not allowed');
   if (!/<rdf:RDF[\s>]/.test(xml) || !/<\/rdf:RDF>\s*$/.test(xml) || !/<channel\b/.test(xml)) throw new Error('JPCERT RSS: not an RSS 1.0 (RDF) document');
+  // 閉じタグの欠けた item（途中で壊れた項目）を読み飛ばして「正常な0件」に見せないよう、開始と終了の数をそろえて確かめる
+  const opens = (xml.match(/<item\b[^>]*>/g) || []).length;
+  const closes = (xml.match(/<\/item>/g) || []).length;
+  if (opens !== closes) throw new Error(`JPCERT RSS: broken item structure (${opens} opening / ${closes} closing tags)`);
+  if (/<item\b[^>]*>(?:(?!<\/item>)[\s\S])*<item\b/.test(xml)) throw new Error('JPCERT RSS: nested or unclosed item');
   const items = [];
   let raw = 0;
   let errors = 0;

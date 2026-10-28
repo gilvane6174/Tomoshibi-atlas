@@ -20,6 +20,7 @@
 import './lib/node-guard.mjs';
 import { readFileSync, writeFileSync, renameSync, rmSync, existsSync, mkdtempSync, openSync, fsyncSync, closeSync } from 'node:fs';
 import { resolve, join } from 'node:path';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { DATA_ROOT, todayJst } from './lib/safety.mjs';
 import { validateItems, validateCuratedPair, validateCuratedDocs, ACTORS } from './validate-data.mjs';
@@ -43,6 +44,25 @@ function replaceFile(rel, text) {
   renameSync(tmp, abs(rel));
 }
 
+const sha = (text) => createHash('sha256').update(text).digest('hex');
+
+// このツールが書いた中身（next）か、元の中身（orig）のファイルだけを元に戻す。ほかの作業が書いたファイルは一覧で返す
+export function restoreOwn(orig, next) {
+  const foreign = [];
+  for (const rel of [ENTRIES, LOG]) {
+    rmSync(abs(rel) + '.tmp-add-candidates', { force: true });
+    const now = readFileSync(abs(rel), 'utf8');
+    if (now === orig[rel]) continue;
+    if (now !== next[rel]) {
+      foreign.push(rel);
+      continue;
+    }
+    writeFileSync(abs(rel), orig[rel]);
+    if (readFileSync(abs(rel), 'utf8') !== orig[rel]) foreign.push(rel);
+  }
+  return { foreign };
+}
+
 function restoreFrom(saved) {
   // saved: { [rel]: 元の中身 }。戻した後に中身が一致することを確かめる
   for (const [rel, text] of Object.entries(saved)) {
@@ -60,6 +80,15 @@ function restoreCommand() {
   const mark = JSON.parse(readFileSync(abs(PENDING), 'utf8'));
   const saved = {};
   for (const rel of [ENTRIES, LOG]) saved[rel] = readFileSync(join(mark.backupDir, rel.split('/').pop()), 'utf8');
+  // 今のファイルが「控え（元の中身）」か「このツールが書く予定だった中身」なら戻す。それ以外（ほかの作業の変更）は止まる
+  const foreign = [ENTRIES, LOG].filter((rel) => {
+    const now = readFileSync(abs(rel), 'utf8');
+    return now !== saved[rel] && sha(now) !== mark.expected?.[rel];
+  });
+  if (foreign.length && !process.argv.includes('--force-restore')) {
+    console.error(`${foreign.join('・')} に、このツール以外の変更があるようです。戻すと、その変更が消えます。中身を確かめ、git で戻すか、消えてよいときだけ --restore --force-restore を付けてください`);
+    return 1;
+  }
   restoreFrom(saved);
   rmSync(abs(PENDING), { force: true });
   console.log(`追加の前の状態に戻しました（控え：${mark.backupDir}）`);
@@ -142,13 +171,19 @@ export function main(args) {
     return 0;
   }
 
+  if (process.env.TA_TEST_OTHER_WRITE) writeFileSync(abs(LOG), orig[LOG].replace(/\n$/, '') + '\n\n'); // 試験だけで使う（ほかの作業が書いた状態を作る）
+  // 直前にほかの作業で変わっていないことを確かめる。変わっていたら、何も書かず・何も戻さずに終わる
+  // （ほかの作業の変更を、古い控えで上書きしないため）
+  for (const rel of [ENTRIES, LOG])
+    if (readFileSync(abs(rel), 'utf8') !== orig[rel]) {
+      console.error(`追加を中止しました：${rel} が確認の後に変わっています（ほかの作業と重なった可能性）。ファイルは変えていません。もう一度、確認からやり直してください`);
+      return 1;
+    }
   // 控えと「書き込み中」の印を先に作る
   const backupDir = mkdtempSync(join(tmpdir(), 'tomoshibi-add-candidates-'));
   for (const rel of [ENTRIES, LOG]) writeFileSync(join(backupDir, rel.split('/').pop()), orig[rel]);
-  writeFileSync(abs(PENDING), JSON.stringify({ startedAt: new Date().toISOString(), backupDir, ids }, null, 2) + '\n');
+  writeFileSync(abs(PENDING), JSON.stringify({ startedAt: new Date().toISOString(), backupDir, ids, expected: { [ENTRIES]: sha(next[ENTRIES]), [LOG]: sha(next[LOG]) } }, null, 2) + '\n');
   try {
-    // 直前にほかの作業で変わっていないことを確かめる
-    for (const rel of [ENTRIES, LOG]) if (readFileSync(abs(rel), 'utf8') !== orig[rel]) throw new Error(`${rel} が確認の後に変わっています（ほかの作業と重なった可能性）`);
     // データを先に置き換える（途中で止まると、更新履歴に記録のない項目があることになり、検査で必ず見つかる）
     replaceFile(ENTRIES, next[ENTRIES]);
     replaceFile(LOG, next[LOG]);
@@ -156,13 +191,14 @@ export function main(args) {
     if (after.length) throw new Error('追加後の検査で問題：' + after.join(' / '));
     for (const rel of [ENTRIES, LOG]) if (readFileSync(abs(rel), 'utf8') !== next[rel]) throw new Error(`${rel} の中身が予定と一致しません`);
   } catch (e) {
-    try {
-      restoreFrom(orig);
-      rmSync(abs(PENDING), { force: true });
-      console.error(`追加を中止し、元に戻しました（${e.message}）`);
-    } catch (e2) {
-      console.error(`追加を中止しましたが、元に戻せませんでした（${e2.message}）。控え：${backupDir}。「node scripts/add-candidates.mjs --restore」か git で2つのファイルを戻してください`);
+    // 戻すのは「このツールが書いた中身」か「元の中身のまま」のファイルだけ。どちらでもない（ほかの作業が書いた）ファイルは触らない
+    const r = restoreOwn(orig, next);
+    if (r.foreign.length) {
+      console.error(`追加を中止しました（${e.message}）。${r.foreign.join('・')} はこのツール以外の変更があるため触っていません。控え：${backupDir}。中身を確かめてから git で戻してください（印は残しています）`);
+      return 1;
     }
+    rmSync(abs(PENDING), { force: true });
+    console.error(`追加を中止し、元に戻しました（${e.message}）`);
     return 1;
   }
   rmSync(abs(PENDING), { force: true });

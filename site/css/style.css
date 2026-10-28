@@ -232,7 +232,8 @@ body.list-open .purpose-card { display: none; }
   background: linear-gradient(to top, rgba(10, 15, 22, 0.95), rgba(10, 15, 22, 0));
 }
 .statusbar a { color: var(--text-dim); }
-.noscript { position: fixed; inset: 40% 10% auto; text-align: center; }
+.noscript { position: fixed; inset: 15% 6% auto; max-width: 640px; margin: 0 auto; text-align: left; line-height: 1.7; background: rgba(10, 16, 28, 0.94); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; z-index: 50; }
+.noscript ul { margin: 8px 0; padding-left: 1.2em; }
 
 /* ── 説明ページ ───────────────────────── */
 body.doc { overflow: auto; }
@@ -456,3 +457,12 @@ body.doc { overflow: auto; }
 .archive-meta, .archive-foot, .archive-attr { font-size: 12.5px; color: var(--text-dim); margin: 0; }
 .archive-more { margin: 18px 0; }
 .list-lead { margin-top: 0; }
+
+/* 説明ページの補足の箇条書き（応援チップの注意など） */
+.note-list { font-size: 13px; color: var(--text-dim); }
+
+/* トップの常設リンク（福祉の相談先・セキュリティ対策） */
+.quick-links { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; }
+
+/* 確認から時間がたったリンクの表示 */
+.dir-stale, .guide-stale { display: block; font-size: 11.5px; color: #e8b35a; }

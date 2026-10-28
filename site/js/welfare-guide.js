@@ -74,6 +74,8 @@ function national(dir) {
       li.append(a);
       if (l.desc) li.append(el('span', 'guide-desc', pick(l.desc)));
       if (l.checkedAt) li.append(el('span', 'guide-checked', isEn ? `checked ${fmtDate(l.checkedAt)}` : kana ? `${kanaDate(l.checkedAt)} かくにん` : `${fmtDate(l.checkedAt)}確認`));
+      // 確認から半年（183日）以上たったリンクは、そのことを示す
+      if (l.checkedAt && Date.now() - Date.parse(l.checkedAt) > 183 * 86400000) li.append(el('span', 'guide-stale', isEn ? 'Checked over 6 months ago; the page may have changed' : kana ? 'かくにんから はんとし いじょう たって います' : '確認から半年以上たっています。内容が変わっている場合があります'));
       ul.append(li);
     }
     g.append(ul);

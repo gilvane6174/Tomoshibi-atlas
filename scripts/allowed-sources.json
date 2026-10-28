@@ -1526,5 +1526,70 @@
       "host": "zoo.kyiv.ua"
     }
   ],
+  "_pageLinksNote": "説明ページ（site/*.html）と画面のプログラム（site/js/*.js）に直接書く外部リンクのうち、上の linkHosts・directoryHosts・animalHosts に当たらないものは、ここに URL を完全一致で書いたものだけを許す（scripts/check-repo.mjs が検査）。pages はそのリンクを置いてよいページ。決済サービス（応援チップ）は、説明ページ（about）だけに置き、手動掲載のデータやリンク集には使えない。",
+  "pageLinks": [
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSeaBNKQCavRffRIuYMr4G78d8dWgp1r07ret-Ar78SI8E76ow/viewform",
+      "pages": [
+        "about.html",
+        "about.en.html"
+      ],
+      "label": "ご意見・修正依頼フォーム（Googleフォーム）"
+    },
+    {
+      "url": "https://x.com/yutakaapp_",
+      "pages": [
+        "about.html",
+        "about.en.html"
+      ],
+      "label": "更新のお知らせ（X）"
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "pages": [
+        "about.en.html"
+      ],
+      "label": "CC BY-NC-SA 4.0"
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja",
+      "pages": [
+        "about.html"
+      ],
+      "label": "CC BY-NC-SA 4.0（日本語）"
+    },
+    {
+      "url": "https://github.com/cisagov/kev-data",
+      "pages": [
+        "about.html",
+        "about.en.html"
+      ],
+      "label": "CISA KEV の公式の配布（予備の取得先）"
+    },
+    {
+      "url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "pages": [
+        "about.html",
+        "about.en.html"
+      ],
+      "label": "NASA の利用条件"
+    },
+    {
+      "url": "https://ofuse.me/yoshiokayutaka",
+      "pages": [
+        "about.html",
+        "about.en.html"
+      ],
+      "label": "開発応援チップ（OFUSE・日本語）"
+    },
+    {
+      "url": "https://buymeacoffee.com/yoshiokayutaka",
+      "pages": [
+        "about.html",
+        "about.en.html"
+      ],
+      "label": "開発応援チップ（Buy Me a Coffee・英語）"
+    }
+  ],
   "_fetcherNote": "enabledFetchers は、利用条件を一次情報で確認できた情報源だけ true にする（docs/SOURCES.md に確認日と根拠）。日本の省庁の RSS は、RSS ページに「ホームページの作成・再配布は固くお断り」等の記載がないかも確認する"
 }

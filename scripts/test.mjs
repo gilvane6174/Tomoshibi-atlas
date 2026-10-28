@@ -6,7 +6,8 @@ import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync, mkdirSync, ex
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
 import { collectUrls } from './check-links.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { statusModel } from '../site/js/status.js';
@@ -527,6 +528,10 @@ test('JPCERT/CC：取得元ごとの状態（正常・正常な0件・壊れた�
   assert.throws(() => inspectJpcertRdf('<html><body>maintenance</body></html>', NOW)); // RSS ではない応答
   assert.throws(() => inspectJpcertRdf(wrap(at(11)).replace('</rdf:RDF>', ''), NOW)); // 途中で切れた応答
   assert.throws(() => inspectJpcertRdf('', NOW));
+  // 閉じタグの欠けた項目：読み飛ばして0件にせず、壊れた応答として扱う
+  assert.throws(() => inspectJpcertRdf(wrap('<item><title>壊れた項目</title><link>https://www.jpcert.or.jp/at/2026/at260011.html</link>'), NOW));
+  assert.throws(() => inspectJpcertRdf(wrap('<item><title>a</title>' + at(11)), NOW));
+  assert.throws(() => inspectJpcertRdf(wrap(at(11) + '</item>'), NOW));
   assert.throws(() => inspectJpcertRdf('<!DOCTYPE x>' + wrap(at(11)), NOW));
 });
 
@@ -634,6 +639,14 @@ test('週次の候補の追加（add-candidates）：検査を通る項目だけ
     assert.notEqual(r.status, 0);
     assert.deepEqual(snap(), before);
     assert.ok(clean());
+    // 確認の後に、ほかの作業がファイルを変えた：何も書かず、ほかの作業の変更も消さない
+    r = run([f, '--write'], { TA_TEST_OTHER_WRITE: '1' });
+    assert.notEqual(r.status, 0);
+    const other = readFileSync(C, 'utf8');
+    assert.notEqual(other, before[1], '試験の前提（ほかの作業の変更）ができていない');
+    assert.equal(readFileSync(E, 'utf8'), before[0]);
+    assert.ok(clean());
+    writeFileSync(C, before[1]); // 試験の後片付け（ほかの作業の変更を取り消す）
     // 正常な追加：全体の最終確認日（reviewedAt）は変えない。追加した項目と更新履歴だけが増える
     r = run([f, '--write']);
     assert.equal(r.status, 0, r.stderr);
@@ -662,16 +675,36 @@ test('週次の候補の追加（add-candidates）：検査を通る項目だけ
     const bdir = mkdtempSync(join(tmpdir(), 'ta-add-bk-'));
     writeFileSync(join(bdir, 'entries.json'), now[0]);
     writeFileSync(join(bdir, 'changelog.json'), now[1]);
-    writeFileSync(P, JSON.stringify({ startedAt: new Date().toISOString(), backupDir: bdir, ids: ['x'] }));
-    writeFileSync(E, JSON.stringify({ ...e0, items: [...e0.items, { ...ok, id: `${L}-2026-test-half` }] }, null, 2) + '\n');
+    const half = JSON.stringify({ ...e0, items: [...e0.items, { ...ok, id: `${L}-2026-test-half` }] }, null, 2) + '\n';
+    const sha = (x) => createHash('sha256').update(x).digest('hex');
+    writeFileSync(P, JSON.stringify({ startedAt: new Date().toISOString(), backupDir: bdir, ids: ['x'], expected: { 'data/curated/entries.json': sha(half), 'data/curated/changelog.json': 'x' } }));
+    writeFileSync(E, half);
     writeFileSync(f, JSON.stringify({ items: [{ ...ok, id: `${L}-2026-test-next` }] }));
     assert.notEqual(run([f, '--write']).status, 0, '途中で止まった印があるのに追加した');
     cpSync(join(root, 'scripts'), join(tmp, 'scripts'), { recursive: true });
     cpSync(join(root, 'site'), join(tmp, 'site'), { recursive: true });
     const repo = spawnSync(process.execPath, [join(root, 'scripts/check-repo.mjs')], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
     assert.notEqual(repo.status, 0, 'check-repo が途中で止まった印を見逃した');
+    // 印が残っていても、このツール以外の変更があるファイルは --restore でも消さない
+    writeFileSync(C, now[1].replace(/\n$/, '') + '\n\n');
+    assert.notEqual(run(['--restore']).status, 0, 'ほかの作業の変更を --restore で消そうとした');
+    writeFileSync(C, now[1]);
     assert.equal(run(['--restore']).status, 0);
     assert.deepEqual(snap(), now, '--restore で元に戻っていない');
+    // 途中の失敗のあとの戻し：このツールが書いた中身だけを戻し、ほかの作業の中身は触らない
+    const o = { 'data/curated/entries.json': now[0], 'data/curated/changelog.json': now[1] };
+    const nx = { 'data/curated/entries.json': half, 'data/curated/changelog.json': 'planned' };
+    writeFileSync(E, half);
+    writeFileSync(C, 'someone else');
+    // 大きなデータはコマンドの引数に入らないので、ファイルで渡す（TA_TARGET_ROOT を変えるため別のプロセスで動かす）
+    writeFileSync(join(tmp, 'o.json'), JSON.stringify(o));
+    writeFileSync(join(tmp, 'nx.json'), JSON.stringify(nx));
+    const code = `import { readFileSync } from 'node:fs'; import { restoreOwn } from ${JSON.stringify(pathToFileURL(join(root, 'scripts/add-candidates.mjs')).href)}; const rd = (f) => JSON.parse(readFileSync(f, 'utf8')); console.log(JSON.stringify(restoreOwn(rd(process.argv[1]), rd(process.argv[2]))));`;
+    const rr = spawnSync(process.execPath, ['--input-type=module', '-e', code, join(tmp, 'o.json'), join(tmp, 'nx.json')], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
+    assert.deepEqual(JSON.parse(rr.stdout.trim().split('\n').pop()).foreign, ['data/curated/changelog.json'], rr.stderr);
+    assert.equal(readFileSync(E, 'utf8'), now[0], 'このツールが書いた中身を戻していない');
+    assert.equal(readFileSync(C, 'utf8'), 'someone else', 'ほかの作業の中身を上書きした');
+    writeFileSync(C, now[1]);
     assert.ok(clean());
     rmSync(bdir, { recursive: true, force: true });
   } finally {
@@ -708,6 +741,57 @@ test('週次の候補の追加：AI（--by ai-curator）が作った2ファイ�
     assert.equal(scope.status, 0, scope.stderr + scope.stdout);
     assert.match(scope.stdout, /AI・bot・外部/);
     rmSync(join(tmpdir(), 'ta-ai-cand.json'), { force: true });
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('説明ページ・画面のプログラムの外部リンク：許可リストか、置いてよいページを決めた URL だけ（応援チップは about だけ）', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-links-'));
+  try {
+    cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
+    const run = () => spawnSync(process.execPath, [join(root, 'scripts/check-repo.mjs')], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
+    assert.equal(run().status, 0, run().stderr);
+    const f = join(tmp, 'site/welfare-guide.html');
+    const orig = readFileSync(f, 'utf8');
+    for (const bad of ['<a href="https://evil.example/">x</a>', '<a href="https://ofuse.me/yoshiokayutaka">x</a>', '<a href="https://bit.ly/abc">x</a>', '<img src="https://evil.example/p.png">']) {
+      writeFileSync(f, orig.replace('</body>', bad + '</body>'));
+      assert.notEqual(run().status, 0, `${bad} を拒否していない`);
+    }
+    writeFileSync(f, orig);
+    const js = join(tmp, 'site/js/panel.js');
+    const js0 = readFileSync(js, 'utf8');
+    writeFileSync(js, js0 + "\nconst X = 'https://evil.example/';\n");
+    assert.notEqual(run().status, 0, '画面のプログラムの許可外リンクを拒否していない');
+    writeFileSync(js, js0);
+    assert.equal(run().status, 0);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('乗っ取り対策：push での起動は main だけ、AI のツールの設定ファイル（MCP など）は置かない', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-wf-'));
+  try {
+    cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
+    const run = () => spawnSync(process.execPath, [join(root, 'scripts/check-repo.mjs')], { env: { ...process.env, TA_TARGET_ROOT: tmp }, encoding: 'utf8' });
+    assert.equal(run().status, 0, run().stderr);
+    const wf = join(tmp, '.github/workflows/deploy.yml');
+    const w0 = readFileSync(wf, 'utf8');
+    for (const bad of ['  push:\n    branches: [main]\n', '  push:\n    branches: [main]\n']) assert.ok(w0.includes(bad));
+    for (const rep of ['  push:\n', '  push:\n    branches: ["**"]\n', '  push:\n    tags: ["v*"]\n    branches: [main]\n', '  push: { branches: [main] }\n']) {
+      writeFileSync(wf, w0.replace('  push:\n    branches: [main]\n', rep));
+      assert.notEqual(run().status, 0, `push の起動条件 ${JSON.stringify(rep)} を拒否していない`);
+    }
+    writeFileSync(wf, w0);
+    for (const f of ['.mcp.json', 'site/mcp.json', 'docs/CLAUDE.local.md', 'scripts/.aider.conf.yml']) {
+      writeFileSync(join(tmp, f), '{}');
+      assert.notEqual(run().status, 0, `${f} を拒否していない`);
+      rmSync(join(tmp, f));
+    }
+    assert.equal(run().status, 0);
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }
