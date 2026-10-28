@@ -2,13 +2,14 @@
 // 使い方: node scripts/test.mjs
 
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, cpSync, rmSync, mkdirSync, existsSync, symlinkSync, lstatSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
-import { collectUrls } from './check-links.mjs';
+import { collectUrls, visibleLength, mdSafe } from './check-links.mjs';
+import { readNoFollow } from './lib/safety.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { statusModel } from '../site/js/status.js';
 import { checkCleanPng } from './check-privacy.mjs';
@@ -902,6 +903,26 @@ test('共通の RSS・Atom 読み取り器：途中で切れた応答・閉じ�
     '<feed><entry><title>a</title></feed>',
   ])
     assert.throws(() => parseFeed(bad), undefined, bad);
+});
+
+test('コード検査の指摘への対応：シンボリックリンクを辿らずに読む・タグ除去の繰り返し・要約の記号の無害化', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'ta-nofollow-'));
+  try {
+    writeFileSync(join(dir, 'a.json'), '{"x":1}');
+    assert.equal(readNoFollow(join(dir, 'a.json')).buf.toString(), '{"x":1}');
+    assert.equal(readNoFollow(join(dir, 'a.json'), { maxBytes: 3 }).buf, null);
+    if (process.platform !== 'win32') {
+      symlinkSync(join(dir, 'a.json'), join(dir, 'link.json'));
+      assert.throws(() => readNoFollow(join(dir, 'link.json')), /シンボリックリンク/);
+    }
+    writeFileSync(join(dir, 'b.json'), '{}');
+    assert.throws(() => readNoFollow(join(dir, 'a.json'), { expect: lstatSync(join(dir, 'b.json')) }), /別のファイル/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+  assert.equal(visibleLength('<p>abc</p>'), 3);
+  assert.equal(visibleLength('<scr<script>ipt>x'), 4); // タグの記号は1つも残らない
+  assert.ok(!/[\[\]()<>`]/.test(mdSafe('x](javascript:1) <img src=x> `c`')));
 });
 
 console.log(`\n${n} tests passed`);
