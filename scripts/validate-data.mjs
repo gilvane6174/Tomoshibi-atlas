@@ -11,7 +11,7 @@ import { DATA_ROOT, readCode, readData, isAllowedUrl, isDirectoryUrl, isAnimalUr
 export const LAYERS = ['outbreak', 'research', 'mental', 'welfare', 'security', 'crime', 'disaster', 'quake'];
 export const CURATED_LAYERS = ['research', 'mental', 'welfare', 'crime', 'disaster'];
 // 相談先リンク集・公式Xアカウントで使える分野（防犯・防災はリンク集を表示しないため含めない。site/js/data.js の DIR_LAYERS と合わせる）
-const DIR_LAYER_IDS = ['outbreak', 'research', 'mental', 'welfare', 'security'];
+const DIR_LAYER_IDS = ['outbreak', 'research', 'mental', 'welfare', 'security', 'safety']; // safety：防災・防犯の、その国の公的機関の案内（2026-10-28 追加）
 export const TAGS = ['ransomware', 'ai', 'statistics', 'support', 'policy', 'early-stage', 'approved', 'security', 'disaster', 'crime'];
 const PLACE_BASIS = ['reported_country', 'publisher_country', 'global', 'unknown'];
 const CURATED_PLACE_BASIS = ['reported_country', 'global'];

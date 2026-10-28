@@ -72,6 +72,16 @@ const DATA = ['data/curated/entries.json', 'data/curated/changelog.json'];
 const isOwner = isOwnerPr;
 const isDependabot = PR_AUTHOR === 'dependabot[bot]';
 
+// 安全設計のファイル（検査のプログラム・ワークフロー・許可リスト・AI 向けの規則・安全設計の文書）が変わるときは、
+// 運用者が差分を読んだことを PR の本文に書いてもらう（AI が手伝った変更に、安全設計の変更が紛れ込んで素通りしないように）
+export const SAFETY_FILES = /^(\.github\/|scripts\/(check-[\w-]+|scope-guard|validate-data|build|add-candidates|fetch-[\w-]+)\.mjs$|scripts\/lib\/|scripts\/allowed-sources\.json$|AGENTS\.md$|ops\/|docs\/SECURITY-DESIGN\.md$|docs\/GITHUB-SETTINGS\.md$|\.githooks\/|package\.json$)/;
+const SAFETY_ACK = '安全設計の変更を確認済み';
+const safetyChanged = changes.map((c) => c.path).filter((p) => SAFETY_FILES.test(p));
+if (safetyChanged.length) {
+  console.log(`::warning::安全設計のファイルが ${safetyChanged.length} 件変わっています。差分（Files changed）を必ず読んでください：${safetyChanged.slice(0, 30).join('、')}${safetyChanged.length > 30 ? ' ほか' : ''}`);
+  if (isOwnerPr && !PR_BODY.replace(/<!--[\s\S]*?-->/g, '').includes(SAFETY_ACK)) fail(`安全設計のファイルが変わっています（${safetyChanged.length} 件）。差分を読んだうえで、PR の本文に「${SAFETY_ACK}」と書いてください`);
+}
+
 if (isOwner) {
   console.log('運用者のPR：範囲の制限なし（レビューは必須）');
 } else if (isDependabot) {

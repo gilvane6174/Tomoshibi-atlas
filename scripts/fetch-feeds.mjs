@@ -44,6 +44,9 @@ export const FEEDS = [
   { key: 'nasaNews', layer: 'research', country: 'USA', lang: 'en', host: 'www.nasa.gov', source: 'NASA News Releases', maxShown: 10, path: /^\/news-release\/[a-z0-9-]+\/?$/ },
   // NIH の報道発表（研究と対策）。リンク先は www.nih.gov/news-events/news-releases/ 以下だけ
   { key: 'nihNews', layer: 'research', country: 'USA', lang: 'en', host: 'www.nih.gov', source: 'US National Institutes of Health (NIH) News Releases', maxShown: 10, path: /^\/news-events\/news-releases\/[a-z0-9-]+\/?$/ },
+  // IPA（情報処理推進機構）の「重要なセキュリティ情報」（ITセキュリティ）。修正版の公開に合わせた対策の呼びかけ。
+  // 「事前準備のお願い」（修正版の公開の予告）は、対策の公表前の情報になるため取り込まない（ops/CURATION.md「対策の公表を待つ」）
+  { key: 'ipaAlert', layer: 'security', country: 'JPN', lang: 'ja', host: 'www.ipa.go.jp', source: 'IPA（情報処理推進機構）重要なセキュリティ情報', maxShown: 10, path: /^\/security\/security-alert\/\d{4}\/[a-z0-9_-]+\.html$/i, exclude: /事前準備|事前の準備|予告/ },
   { key: 'cdcMmwr', layer: 'research', country: 'USA', lang: 'en', host: 'www.cdc.gov', source: 'US CDC Morbidity and Mortality Weekly Report (MMWR)', maxShown: 8 },
 ];
 
@@ -93,6 +96,7 @@ export function normalizeFeedItem(feed, raw, now = Date.now(), base = undefined)
   const publishedAt = new Date(t).toISOString();
   if (!withinDays(publishedAt, FEED_KEEP_DAYS, now)) return null;
   if (feed.filter && !feed.filter.test(title)) return null;
+  if (feed.exclude && feed.exclude.test(title)) return null;
   const series = feed.topicSeries ? title.replace(feed.topicSeries, '').replace(/\s+/g, '') : null;
   return {
     ...(series ? { topic: `${feed.key.toLowerCase()}-${createHash('sha256').update(series).digest('hex').slice(0, 12)}` } : {}),

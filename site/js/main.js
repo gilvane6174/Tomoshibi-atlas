@@ -16,12 +16,29 @@ const d3 = window.d3;
 const PANELS = ['detail-panel', 'list-panel', 'guide-panel'];
 const isNarrow = () => window.innerWidth <= 860;
 
+// 読み込み中の表示を消す／読み込めなかったときの表示を出す
+const slowTimer = setTimeout(() => {
+  const s = $('loading-slow');
+  if (s) s.hidden = false;
+}, 12000);
+function hideLoading() {
+  clearTimeout(slowTimer);
+  const l = $('loading');
+  if (l) l.hidden = true;
+}
+function showLoadError() {
+  hideLoading();
+  const e = $('load-error');
+  if (e) e.hidden = false;
+}
+
 async function start() {
   try {
     await loadLanguage(detectLanguage());
   } catch {
     // 言語ファイルが読めない場合も、何が起きたかと再読み込みの方法を伝える
     $('status-text').textContent = '読み込みに失敗しました。ページを再読み込みしてください。/ Failed to load. Please reload the page.';
+    showLoadError();
     return;
   }
 
@@ -31,6 +48,7 @@ async function start() {
   } catch {
     applyStatic();
     $('status-text').textContent = t('status.error');
+    showLoadError();
     return;
   }
 
@@ -111,7 +129,7 @@ async function start() {
     applyStatic();
     // メニュー内の「灯／警鐘」見出しに印を付ける（applyStatic で文字が入れ替わるため毎回付け直す）
     for (const p of document.querySelectorAll('.drawer-group')) p.prepend(groupIcon(['caution', 'calm'].find((g) => p.classList.contains(g)) || 'light'));
-    document.title = lang === 'en' ? 'Tomoshibi Atlas | Outbreaks, mental health, welfare, cyber threats, crime prevention and disasters on a globe — Yutaka Yoshioka' : 'Tomoshibi Atlas（ともしびアトラス）｜感染症・こころと福祉・サイバー脅威・防犯・防災を地球儀で — Yutaka Yoshioka（吉岡有隆）';
+    document.title = lang === 'en' ? 'Tomoshibi Atlas | Outbreaks, welfare, disasters, earthquakes, crime prevention and cyber threats on a globe — Yutaka Yoshioka' : 'Tomoshibi Atlas（ともしびアトラス）｜感染症・福祉情報・防災・地震・防犯・サイバー脅威を地球儀で — Yutaka Yoshioka（吉岡有隆）';
     const aboutHref = lang === 'en' ? 'about.en.html' : 'about.html';
     for (const id of ['disclaimer-link']) $(id).href = aboutHref + '#disclaimer';
     $('operator-link').href = aboutHref;
@@ -509,7 +527,14 @@ async function start() {
   if (pc && data.countryMap.has(pc)) openCountry(pc, { fly: true });
   // 「このサイトについて」などからのリンク（?layer=animals&list=1）：その分野の一覧を開いた状態で表示する
   else if (params.get('list') === '1' && $('list-panel').hidden) toggleList();
+  // 地球儀が描かれてから、読み込み中の表示を消す
+  requestAnimationFrame(() => requestAnimationFrame(hideLoading));
 }
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-else start();
+// 想定外のエラーで止まったときも、利用者に「確認中です」と案内を出す
+const run = () =>
+  start().catch(() => {
+    showLoadError();
+  });
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+else run();

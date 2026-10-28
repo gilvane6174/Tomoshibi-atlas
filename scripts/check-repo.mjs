@@ -50,6 +50,11 @@ for (const name of readdirSync(resolve(ROOT, WF))) {
   // push での起動は main だけに限る（乗っ取られたアカウントが別のブランチに置いたワークフローを、push で動かされないように。
   // 2026年10月の GhostAction の再発では、どのブランチへの push でも動くワークフローが仕込まれた）
   {
+    // 起動条件を1行で書く省略形（on: push、on: [push, …]、on: { push: … }）や、引用符つきの "push": は使わない（検査のため、ブロックの形だけにする）
+    const onLine = noComments.match(/^["']?on["']?[ \t]*:[ \t]*(\S.*)$/m);
+    if (onLine) errors.push(`${rel}: on: は1行で書かず、次の行から起動条件を1つずつ書く（${onLine[1].trim()}）`);
+    if (/^[ \t]+["']push["'][ \t]*:/m.test(noComments) || /^[ \t]+push[ \t]*:[ \t]*\S/m.test(noComments)) errors.push(`${rel}: push: は「push:」だけを書き、次の行で branches: [main] を指定する`);
+    if (/^[ \t]*-[ \t]*["']?push["']?[ \t]*$/m.test(noComments)) errors.push(`${rel}: 起動条件を「- push」の並べ方で書かない`);
     const m = noComments.match(/^\s{2}push:[^\n]*\n((?:\s{4,}[^\n]*\n?)*)/m);
     if (m && !/^\s{2}push:\s*$/m.test(noComments)) errors.push(`${rel}: push は「push:」の次の行で branches: [main] だけを指定する`);
     else if (m && !(/^\s{4}branches:\s*\[\s*main\s*\]\s*$/m.test(m[1]) && !/tags|branches-ignore|paths-ignore/.test(m[1]))) errors.push(`${rel}: push での起動は branches: [main] だけにする（タグ・ほかのブランチで動かさない）`);
@@ -162,16 +167,34 @@ for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('
 {
   const pageLinks = readCode('scripts/allowed-sources.json').pageLinks || [];
   const okLink = (url, page) => isAllowedUrl(url) || isDirectoryUrl(url) || isAnimalUrl(url) || pageLinks.some((l) => l.url === url && (l.pages || []).includes(page));
+  // 文字参照（&#x2F; など）を元の文字に戻してから、引用符の種類や属性に関係なく、HTML の中のすべての http(s) の URL を調べる
+  const decode = (h) =>
+    h
+      .replace(/&#x([0-9a-f]+);?/gi, (_, x) => String.fromCodePoint(parseInt(x, 16)))
+      .replace(/&#(\d+);?/g, (_, d) => String.fromCodePoint(Number(d)))
+      .replace(/&colon;/gi, ':')
+      .replace(/&sol;/gi, '/')
+      .replace(/&period;/gi, '.')
+      .replace(/&amp;/gi, '&');
   for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
-    for (const m of read(`site/${name}`).matchAll(/\b(?:href|src)="(https:\/\/[^"]+)"/gi)) {
-      const url = m[1].replace(/&amp;/g, '&');
+    const html = decode(read(`site/${name}`));
+    for (const m of html.matchAll(/https?:\/\/[^\s"'<>()]+/gi)) {
+      const url = m[0].replace(/[.,、。）)]+$/, '');
+      if (url === 'https://schema.org') continue; // 構造化データの書式の宣言（リンクではない）
       if (!okLink(url, name)) errors.push(`site/${name}: 許可リストに無い外部リンク（${url}）。公的機関などは scripts/allowed-sources.json の許可リスト、それ以外は pageLinks に置くページと一緒に登録する`);
     }
+    // スキームを省いた外部リンク（//example.com）や、javascript:・vbscript:・data: のリンクを置かない
+    if (/\b(?:href|src|action|formaction|poster|srcset)\s*=\s*["']?\s*(?:\/\/|javascript:|vbscript:|data:)/i.test(html)) errors.push(`site/${name}: スキームを省いたリンク（//…）や javascript:・data: のリンクは使わない`);
   }
   for (const name of readdirSync(resolve(ROOT, 'site/js')).filter((n) => n.endsWith('.js'))) {
-    for (const m of read(`site/js/${name}`).matchAll(/['"`](https:\/\/[^'"`\s]+)['"`]/g)) {
-      if (!okLink(m[1], `js/${name}`)) errors.push(`site/js/${name}: 許可リストに無い外部リンク（${m[1]}）`);
+    const js = read(`site/js/${name}`);
+    // 引用符の種類や書き方に関係なく、プログラムの中のすべての http(s) の URL を調べる（SVG の名前空間の宣言だけは除く）
+    for (const m of js.matchAll(/https?:\/\/[^\s'"`)\\]+/gi)) {
+      if (m[0] === 'http://www.w3.org/2000/svg') continue;
+      if (!okLink(m[0], `js/${name}`)) errors.push(`site/js/${name}: 許可リストに無い外部リンク（${m[0]}）`);
     }
+    // 文字のエスケープや、つなぎ合わせで URL を組み立てて検査を逃れる書き方を置かない
+    if (/\\u00?2[fF]|\\x2[fF]|['"`]https?:['"`]\s*\+|atob\s*\(/.test(js)) errors.push(`site/js/${name}: URL を文字のエスケープ・つなぎ合わせ・符号化で組み立てない（検査を逃れる書き方）`);
   }
 }
 

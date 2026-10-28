@@ -755,15 +755,17 @@ test('説明ページ・画面のプログラムの外部リンク：許可リ�
     assert.equal(run().status, 0, run().stderr);
     const f = join(tmp, 'site/welfare-guide.html');
     const orig = readFileSync(f, 'utf8');
-    for (const bad of ['<a href="https://evil.example/">x</a>', '<a href="https://ofuse.me/yoshiokayutaka">x</a>', '<a href="https://bit.ly/abc">x</a>', '<img src="https://evil.example/p.png">']) {
+    for (const bad of ['<a href="https://evil.example/">x</a>', '<a href="https://ofuse.me/yoshiokayutaka">x</a>', '<a href="https://bit.ly/abc">x</a>', '<img src="https://evil.example/p.png">', "<a href='https://evil.example/'>x</a>", '<a href=https://evil.example/>x</a>', '<a href="https&#x3A;&#x2F;&#x2F;evil.example/">x</a>', '<a href="&#104;ttps://evil.example/">x</a>', '<a href="//evil.example/">x</a>', '<a href="javascript:alert(1)">x</a>', '<p>https://evil.example/</p>']) {
       writeFileSync(f, orig.replace('</body>', bad + '</body>'));
       assert.notEqual(run().status, 0, `${bad} を拒否していない`);
     }
     writeFileSync(f, orig);
     const js = join(tmp, 'site/js/panel.js');
     const js0 = readFileSync(js, 'utf8');
-    writeFileSync(js, js0 + "\nconst X = 'https://evil.example/';\n");
-    assert.notEqual(run().status, 0, '画面のプログラムの許可外リンクを拒否していない');
+    for (const bad of ["\nconst X = 'https://evil.example/';\n", '\nconst X = `https://evil.example/${1}`;\n', "\nconst X = 'https:' + '//evil.example/';\n", "\nconst X = 'https:\\u002f\\u002fevil.example';\n", "\nconst X = atob('aHR0cHM6Ly9ldmlsLmV4YW1wbGU=');\n"]) {
+      writeFileSync(js, js0 + bad);
+      assert.notEqual(run().status, 0, `画面のプログラムの ${JSON.stringify(bad)} を拒否していない`);
+    }
     writeFileSync(js, js0);
     assert.equal(run().status, 0);
   } finally {
@@ -785,6 +787,12 @@ test('乗っ取り対策：push での起動は main だけ、AI のツールの
       writeFileSync(wf, w0.replace('  push:\n    branches: [main]\n', rep));
       assert.notEqual(run().status, 0, `push の起動条件 ${JSON.stringify(rep)} を拒否していない`);
     }
+    // 1行の省略形・引用符つき・並べ方の書き方も拒否する（GPT斎のレビュー TA-v127 の指摘）
+    const onBlock = w0.match(/^on:\n(?:[ \t]+.*\n|\n)*/m)[0];
+    for (const rep of ['on: [push]\n', 'on: push\n', 'on: { push: { branches: [main] } }\n', 'on:\n  "push":\n    branches: [main]\n', "on:\n  'push':\n", 'on:\n  - push\n', 'on: [push, workflow_dispatch]\n']) {
+      writeFileSync(wf, w0.replace(onBlock, rep));
+      assert.notEqual(run().status, 0, `起動条件 ${JSON.stringify(rep)} を拒否していない`);
+    }
     writeFileSync(wf, w0);
     for (const f of ['.mcp.json', 'site/mcp.json', 'docs/CLAUDE.local.md', 'scripts/.aider.conf.yml']) {
       writeFileSync(join(tmp, f), '{}');
@@ -792,6 +800,73 @@ test('乗っ取り対策：push での起動は main だけ、AI のツールの
       rmSync(join(tmp, f));
     }
     assert.equal(run().status, 0);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('IPA の重要なセキュリティ情報：対策の呼びかけだけを取り込み、修正版の公開の予告や別の場所へのリンクは除く', () => {
+  const ipa = FEEDS.find((f) => f.key === 'ipaAlert');
+  assert.ok(ipa, 'ipaAlert の定義が無い');
+  // 2026-10-28 に確認した実際の形（RSS 1.0、dc:date は日付のみで時刻は 0時）に合わせた試験用の応答
+  const item = (title, link, date = '2026-10-22T00:00:00+09:00') => `<item rdf:about="${link}"><title>${title}</title><link>${link}</link><dc:date>${date}</dc:date></item>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://purl.org/rss/1.0/"><channel rdf:about="x"><title>緊急対策情報・注意喚起（重要なセキュリティ情報）RSS</title></channel>${item('PHPの脆弱性対策について', 'https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html')}${item('【事前準備のお願い】ある製品の修正版の公開について', 'https://www.ipa.go.jp/security/security-alert/2026/alert20261027.html')}${item('別の場所', 'https://www.ipa.go.jp/security/other/x.html')}${item('別のサイト', 'https://evil.example/security/security-alert/2026/a.html')}</rdf:RDF>`;
+  const r = inspectFeed(ipa, xml, Date.parse('2026-10-28T00:00:00Z'));
+  assert.equal(r.items.length, 1);
+  assert.equal(r.items[0].title.ja, 'PHPの脆弱性対策について');
+  assert.equal(r.items[0].layer, 'security');
+  assert.deepEqual(r.items[0].countries, ['JPN']);
+  assert.equal(r.items[0].publishedAt.slice(0, 10), '2026-10-21'); // 日本時間 10/22 0時 ＝ 世界時 10/21
+  assert.equal(r.errors, 2); // 決まった場所以外へのリンクは異常として数える（予告は対象外で、異常ではない）
+});
+
+test('運用者の PR で安全設計のファイルが変わるときは、本文に「安全設計の変更を確認済み」が必要（コメントの中は数えない）', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-ack-'));
+  try {
+    cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
+    const who = { GIT_AUTHOR_NAME: 'owner-test', GIT_AUTHOR_EMAIL: '1+owner-test@users.noreply.github.com', GIT_COMMITTER_NAME: 'owner-test', GIT_COMMITTER_EMAIL: '1+owner-test@users.noreply.github.com' };
+    const g = (...a) => spawnSync('git', a, { cwd: tmp, encoding: 'utf8', env: { ...process.env, ...who } });
+    g('init', '-q', '-b', 'main');
+    g('add', '-A');
+    g('commit', '-q', '-m', 'base');
+    const baseSha = g('rev-parse', 'HEAD').stdout.trim();
+    writeFileSync(join(tmp, 'scripts/check-repo.mjs'), readFileSync(join(tmp, 'scripts/check-repo.mjs'), 'utf8') + '\n// test\n');
+    g('commit', '-q', '-am', 'Change a check');
+    const headSha = g('rev-parse', 'HEAD').stdout.trim();
+    const scope = (body) =>
+      spawnSync(process.execPath, [join(root, 'scripts/check-pr-scope.mjs')], {
+        cwd: tmp,
+        encoding: 'utf8',
+        env: { ...process.env, GITHUB_ACTIONS: '', TA_LOCAL_VIA_APP: 'null', OWNER_PR_CHECK: 'verified-null', PR_AUTHOR: 'owner-test', MAINTAINER_LOGIN: 'owner-test', AI_ACCOUNT_LOGINS: '', REPO: 'o/r', HEAD_REPO: 'o/r', BASE_SHA: baseSha, HEAD_SHA: headSha, HEAD_REF: 'update/test', BASE_REF: 'main', PR_TITLE: 'Change a check', PR_BODY: body },
+      });
+    assert.notEqual(scope('Change a check').status, 0, '確認の一文なしで通った');
+    assert.notEqual(scope('<!-- 安全設計の変更を確認済み -->').status, 0, 'コメントの中の一文で通った');
+    const ok = scope('差分を読みました。\n安全設計の変更を確認済み');
+    assert.equal(ok.status, 0, ok.stderr + ok.stdout);
+    assert.match(ok.stdout, /安全設計のファイル/);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('確認・改装中の表示（ops/MAINTENANCE）と、見つからないページ（404.html）のリンクの直し', () => {
+  const root = fileURLToPath(new URL('..', import.meta.url));
+  const tmp = mkdtempSync(join(tmpdir(), 'ta-mt-'));
+  try {
+    cpSync(root, tmp, { recursive: true, filter: (src) => !/[\\/](\.git|_site|node_modules)([\\/]|$)/.test(src) });
+    const build = (env = {}) => spawnSync(process.execPath, [join(root, 'scripts/build.mjs'), '--offline'], { env: { ...process.env, TA_TARGET_ROOT: tmp, ...env }, encoding: 'utf8' });
+    let r = build({ SITE_URL: 'https://example.github.io/Tomoshibi-atlas/' });
+    assert.equal(r.status, 0, r.stderr);
+    assert.ok(!readFileSync(join(tmp, '_site/index.html'), 'utf8').includes('ただいま確認・改装中です'));
+    const nf = readFileSync(join(tmp, '_site/404.html'), 'utf8');
+    assert.ok(nf.includes('href="/Tomoshibi-atlas/css/style.css"') && nf.includes('href="/Tomoshibi-atlas/welfare-guide.html"'), '404.html の相対リンクを直していない');
+    assert.ok(nf.includes('noindex'));
+    writeFileSync(join(tmp, 'ops/MAINTENANCE'), '');
+    r = build();
+    assert.equal(r.status, 0, r.stderr);
+    assert.ok(readFileSync(join(tmp, '_site/index.html'), 'utf8').includes('ただいま確認・改装中です'), 'ops/MAINTENANCE で切り替わっていない');
+    assert.ok(readFileSync(join(tmp, '_site/welfare-guide.html'), 'utf8').includes('福祉'), '説明ページが消えた');
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }

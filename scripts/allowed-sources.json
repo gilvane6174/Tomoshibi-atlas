@@ -1218,6 +1218,94 @@
     {
       "host": "www.pref.yamanashi.jp",
       "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.ready.gov",
+      "label": "USA の公的機関（防災・防犯）"
+    },
+    {
+      "host": "consumer.ftc.gov",
+      "label": "USA の公的機関（防災・防犯）"
+    },
+    {
+      "host": "www.scamshield.gov.sg",
+      "label": "SGP の公的機関（防災・防犯）"
+    },
+    {
+      "host": "www.policia.es",
+      "label": "ESP の公的機関（防災・防犯）"
+    },
+    {
+      "host": "prociv.gov.pt",
+      "label": "PRT の公的機関（防災・防犯）"
+    },
+    {
+      "host": "www.gnr.pt",
+      "label": "PRT の公的機関（防災・防犯）"
+    },
+    {
+      "host": "georisques.gouv.fr",
+      "label": "FRA の公的機関（防災・防犯）"
+    },
+    {
+      "host": "www.masecurite.interieur.gouv.fr",
+      "label": "FRA の公的機関（防災・防犯）"
+    },
+    {
+      "host": "iononrischio.protezionecivile.gov.it",
+      "label": "ITA の公的機関（防災・防犯）"
+    },
+    {
+      "host": "www.carabinieri.it",
+      "label": "ITA の公的機関（防災・防犯）"
+    },
+    {
+      "host": "civilprotection.gov.gr",
+      "label": "GRC の公的機関（防災・防犯）"
+    },
+    {
+      "host": "www.pref.iwate.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.akita.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.yamagata.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.gunma.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.toyama.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.ishikawa.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.fukui.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.nara.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.okayama.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.yamaguchi.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.pref.tokushima.lg.jp",
+      "label": "都道府県の公式サイト（福祉）"
     }
   ],
   "fetchEndpoints": {
@@ -1232,7 +1320,8 @@
     "fdmaDisaster": "https://www.fdma.go.jp/disaster/info/index.xml",
     "cdcMmwr": "https://tools.cdc.gov/api/v2/resources/media/342778.rss",
     "nasaNews": "https://www.nasa.gov/news-release/feed/",
-    "nihNews": "https://www.nih.gov/news-releases/feed.xml"
+    "nihNews": "https://www.nih.gov/news-releases/feed.xml",
+    "ipaAlert": "https://www.ipa.go.jp/security/alert-rss.rdf"
   },
   "enabledFetchers": {
     "whoDon": true,
@@ -1245,7 +1334,8 @@
     "fdmaDisaster": true,
     "cdcMmwr": false,
     "nasaNews": true,
-    "nihNews": true
+    "nihNews": true,
+    "ipaAlert": true
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [

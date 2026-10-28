@@ -257,6 +257,24 @@ async function main() {
   writeFileSync(resolve(OUT, 'data/meta.json'), JSON.stringify(meta));
   writeFileSync(resolve(OUT, 'data/directory.json'), JSON.stringify(directory));
   writeSeo(OUT, { siteUrl: process.env.SITE_URL, repo: process.env.GITHUB_REPOSITORY, google: process.env.GOOGLE_SITE_VERIFICATION, bing: process.env.BING_SITE_VERIFICATION, now });
+  // 見つからないページ（404.html）：GitHub Pages は、どの深さの存在しない URL にもこのページを返すため、
+  // 公開 URL が分かるときは、相対のリンク（css/… など）をサイトの先頭からの絶対パスに直す
+  {
+    const { parseSiteUrl } = await import('./lib/seo.mjs');
+    const site = parseSiteUrl(process.env.SITE_URL);
+    const f = resolve(OUT, '404.html');
+    if (site && existsSync(f)) {
+      const basePath = new URL(site).pathname; // 例：/Tomoshibi-atlas/
+      const html = readFileSync(f, 'utf8').replace(/\b(href|src)="(?!https:|#|\/)([^"]*)"/g, (_, attr, rel) => `${attr}="${basePath}${rel === './' ? '' : rel.replace(/^\.\//, '')}"`);
+      writeFileSync(f, html);
+    }
+  }
+  // 確認・改装中の表示：運用者が main に ops/MAINTENANCE を置いたときだけ、トップ（地球儀）を「ただいま確認・改装中です」に差し替える。
+  // 説明ページ（福祉の相談先・セキュリティ対策・このサイトについて）はそのまま見られる。戻すときは ops/MAINTENANCE を消す
+  if (existsSync(resolve(ROOT, 'ops/MAINTENANCE'))) {
+    cpSync(resolve(OUT, 'maintenance.html'), resolve(OUT, 'index.html'));
+    console.log('::warning::ops/MAINTENANCE があるため、トップを「確認・改装中」の表示にしました');
+  }
   if (!existsSync(resolve(OUT, 'index.html'))) throw new Error('index.html missing');
   console.log(`build OK (${meta.mode}):`, Object.entries(meta.layers).map(([k, v]) => `${k}=${v.count}`).join(' '));
 }

@@ -107,15 +107,34 @@ const SAFETY_LINKS = [
   ['https://www.gov-online.go.jp/kurashinosodan/list/ct_bouhan.html', 'support.safety.police'],
   ['https://www.gov-online.go.jp/kurashinosodan/list/fu_caa.html', 'support.safety.consumer'],
 ];
-function safetySupport() {
+// 防犯・防災の案内：その国・地域の公的機関の案内を出す（日本の窓口を、ほかの国の情報の下に出さない）
+//   国を選んでいないとき（一覧）：一般の注意と、「日本の場合」の窓口
+//   日本：日本の窓口
+//   日本以外：その国のリンク集（data/directory/links.json の safety）。まだ確認できていない国は、現地の公式の情報に従うよう案内するだけ
+function safetySupport(countryId = null, dir = null) {
   const wrap = el('div', 'note support safety-support');
-  wrap.append(el('p', null, t('note.safety')));
   const ul = el('ul', 'support-links');
-  for (const [url, key] of SAFETY_LINKS) {
-    const a = link(url, t(key));
-    if (a) ul.append(el('li').appendChild(a).parentNode);
+  const addJapan = () => {
+    for (const [url, key] of SAFETY_LINKS) {
+      const a = link(url, t(key));
+      if (a) ul.append(el('li').appendChild(a).parentNode);
+    }
+  };
+  if (countryId === 'JPN') {
+    wrap.append(el('p', null, t('note.safety')));
+    addJapan();
+    wrap.append(ul);
+  } else if (countryId) {
+    wrap.append(el('p', null, t('note.safety.abroad')));
+    const own = dir?.countries?.[countryId]?.safety || [];
+    if (own.length) wrap.append(dirList(own, false));
+    else wrap.append(el('p', null, t('note.safety.abroadNone')));
+  } else {
+    wrap.append(el('p', null, t('note.safety.general')));
+    wrap.append(el('p', 'safety-japan-head', t('note.safety.japanHead')));
+    addJapan();
+    wrap.append(ul);
   }
-  wrap.append(ul);
   return wrap;
 }
 
@@ -278,7 +297,7 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   h.style.setProperty('--dot', layerById(layerId).color);
   body.append(h);
   // 下部の案内（相談先の一覧・公式X・防犯防災の案内）は先に作り、見出しのすぐ下に、そこへ一気に移動するボタンを置く
-  const safety = SAFETY_LAYERS.has(layerId) ? safetySupport() : null;
+  const safety = SAFETY_LAYERS.has(layerId) ? safetySupport(country.id, data.directory) : null;
   const dirs = (DIR_LAYERS[layerId] || []).map((dl, i) => directorySection(country, dl, data.directory, { kana, onToggleKana: i === 0 ? onToggleKana : null }));
   const sns = DIR_LAYERS[layerId] ? snsSection(country, layerId, data.directory, { kana }) : null;
   const targets = [
@@ -408,7 +427,8 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
   const wg = el('a', 'text-link', t('add.welfareGuide'));
   wg.href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
   add.append(el('p', null).appendChild(wg).parentNode);
-  // 今日の動物たちの一覧を開く（分野を切り替えて一覧を開いた状態で読み込み直す）
+  // 今日の動物たちの一覧を開く（分野を切り替えて一覧を開いた状態で読み込み直す）。上の福祉の案内とは別の話だと分かるよう、ひと言を添える
+  add.append(el('p', 'guide-animals-lead', t('add.animalsLead')));
   const an = el('a', 'text-link', t('add.animals'));
   an.href = './?layer=animals&list=1' + (lang === 'en' ? '&lang=en' : '');
   add.append(el('p', null).appendChild(an).parentNode);
