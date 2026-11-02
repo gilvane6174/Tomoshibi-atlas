@@ -12,6 +12,7 @@ import { collectUrls, visibleLength, mdSafe, judgeContent } from './check-links.
 import { readNoFollow } from './lib/safety.mjs';
 import { parseLiveQuakes, usgsEventUrl, cleanPlace, LIVE_RULES } from '../site/js/quake-live.js';
 import { mergeQuakes } from '../site/js/quake-core.js';
+import { parseWorldBank, WB_INDICATORS, buildCompare } from './fetch-worldbank.mjs';
 import { RULES as IMP_RULES, SHOW as IMP_SHOW } from './importance-rules.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { statusModel } from '../site/js/status.js';
@@ -989,7 +990,7 @@ test('地震のブラウザ直接取得：組み立て時と同じ決まりで�
 });
 
 test('CSP：外部への通信の例外は index.html の USGS の1か所だけ', () => {
-  for (const name of ['index.html', 'about.html', 'welfare-guide.html', '404.html']) {
+  for (const name of ['index.html', 'about.html', 'welfare-guide.html', '404.html', 'compare.html', 'compare.en.html']) {
     const html = readFileSync(new URL('../site/' + name, import.meta.url), 'utf8');
     const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/)[1];
     const connect = csp.split(';').map((x) => x.trim()).find((x) => x.startsWith('connect-src'));
@@ -1001,6 +1002,33 @@ test('CSP：外部への通信の例外は index.html の USGS の1か所だけ'
 test('見出しの AI 関連の印：語の区切りで判定し、AIDS・Thai などには付けない', () => {
   for (const s of ['FTC sues AI company', '生成AIを悪用した詐欺', 'ＡＩの利用', 'Deepfake scams', 'Artificial intelligence guidance', 'LLM risks']) assert.ok(isAiHeadline(s), s);
   for (const s of ['AIDS response', 'Thai officials', 'Said Ai', 'Maintenance notice', '台風の被害']) assert.ok(!isAiHeadline(s), s);
+});
+
+test('世界をくらべる：世界銀行の応答から、地図にある国の最新の値と年だけを取り出し、異常な値・地域の集計は除く', async () => {
+  const ind = WB_INDICATORS.find((x) => x.code === 'SI.POV.GINI');
+  const ids = new Set(['JPN', 'BRA', 'ZAF']);
+  const now = Date.parse('2026-11-02T00:00:00Z');
+  const row = (iso, date, value, code = 'SI.POV.GINI') => ({ indicator: { id: code, value: 'Gini index' }, country: { id: 'XX', value: 'x' }, countryiso3code: iso, date, value, unit: '', obs_status: '', decimal: 1 });
+  const doc = [{ page: 1, pages: 1, per_page: 400, total: 7, sourceid: '2', lastupdated: '2026-10-08' }, [
+    row('JPN', '2020', 32.9), row('BRA', '2023', 51.6), row('WLD', '2022', 38), // 世界の集計は除く
+    row('ZAF', '2014', null), // 値なし
+    row('BRA', '2019', 53.4), // 古い年は使わない
+    row('JPN', '2030', 30), // 未来の年 → 異常
+    row('ZAF', '2015', 250), // 範囲外 → 異常
+  ]];
+  const got = parseWorldBank(doc, ind, ids, now);
+  assert.deepEqual(got.values, { JPN: [32.9, 2020], BRA: [51.6, 2023] });
+  assert.equal(got.errors, 2);
+  assert.throws(() => parseWorldBank([{ message: [{ id: '120', value: 'Invalid value' }] }], ind, ids, now));
+  assert.throws(() => parseWorldBank({ not: 'array' }, ind, ids, now));
+  // 別の指標の行が混ざっていれば異常として数え、値には使わない
+  const other = parseWorldBank([{}, [row('JPN', '2020', 1, 'OTHER')]], ind, ids, now);
+  assert.equal(other.count, 0);
+  assert.equal(other.errors, 1);
+  // 確認版（ネットなし）では取得しない
+  const off = await buildCompare({ countryIds: ids, offline: true, now: new Date(now) });
+  assert.ok(off.indicators.length === 4 && off.indicators.every((i) => i.status === 'notFetched' && i.count === 0));
+  assert.ok(WB_INDICATORS.every((i) => /^https:[/][/]data[.]worldbank[.]org[/]indicator[/]/.test(i.source.url)));
 });
 
 console.log(`\n${n} tests passed`);

@@ -2912,6 +2912,104 @@
       "method": "fetched",
       "how": "AIが公式ページを開いて確認",
       "evidence": "全国の精神保健福祉センター｜厚生労働省（47都道府県と政令指定都市の一覧。令和6年12月現在）"
+    },
+    "jp-pref-01-mind": {
+      "url": "https://www.pref.hokkaido.lg.jp/hf/sfc/index.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "精神保健福祉センター - 保健福祉部精神保健福祉センター（北海道の公式サイト）"
+    },
+    "jp-pref-02-mind": {
+      "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/seifuku/index.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "青森県立精神保健福祉センター｜青森県庁ウェブサイト"
+    },
+    "jp-pref-08-mind": {
+      "url": "https://www.pref.ibaraki.jp/hokenfukushi/seiho/sodan/seishin/homepage-file/09senta.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "茨城県精神保健福祉センターについて／茨城県"
+    },
+    "jp-pref-11-mind": {
+      "url": "https://www.pref.saitama.lg.jp/soshiki/b0606/index.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "埼玉県の公式サイトの精神保健福祉センターのページ（業務・所在地・連絡先）"
+    },
+    "jp-pref-13-mind": {
+      "url": "https://www.fukushi.metro.tokyo.lg.jp/chusou/index.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "東京都立中部総合精神保健福祉センター（担当：港・新宿・品川・目黒・大田・世田谷・渋谷・中野・杉並・練馬の10区）"
+    },
+    "jp-pref-14-mind": {
+      "url": "https://www.pref.kanagawa.jp/docs/nx3/cnt/f531065/p829756.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "神奈川県精神保健福祉センターについて - 神奈川県ホームページ"
+    },
+    "jp-pref-15-mind": {
+      "url": "https://www.pref.niigata.lg.jp/sec/seishin/1219860089293.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "新潟県の公式サイトの精神保健福祉センターのページ（所在地・連絡先。最終更新2019年3月）"
+    },
+    "jp-pref-20-mind": {
+      "url": "https://www.pref.nagano.lg.jp/seishin/ourworks.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "長野県精神保健福祉センター事業の概要／精神保健福祉センター"
+    },
+    "jp-pref-25-mind": {
+      "url": "https://www.pref.shiga.lg.jp/seishinhoken/index.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "滋賀県立精神保健福祉センター｜滋賀県"
+    },
+    "jp-pref-31-mind": {
+      "url": "https://www.pref.tottori.lg.jp/seishincenter/",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "精神保健福祉センター（ページの下に鳥取県立精神保健福祉センターの表記）"
+    },
+    "jp-pref-32-mind": {
+      "url": "https://www.pref.shimane.lg.jp/admin/pref/soshiki/kenko/kokoro.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "島根県：心と体の相談センター（精神保健の相談など）"
+    },
+    "jp-pref-34-mind": {
+      "url": "https://www.pref.hiroshima.lg.jp/site/pareamoa/index.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "広島県立総合精神保健福祉センター（パレアモア広島）"
+    },
+    "jp-pref-37-mind": {
+      "url": "https://www.pref.kagawa.lg.jp/seishinhoken/seishinhoken/center.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "香川県精神保健福祉センターとは｜香川県"
+    },
+    "jp-pref-46-mind": {
+      "url": "https://www.pref.kagoshima.jp/ae14/kagoshima-mhwc.html",
+      "checkedAt": "2026-11-02",
+      "method": "fetched",
+      "how": "AIが公式ページを開いて確認",
+      "evidence": "鹿児島県／鹿児島県精神保健福祉センター"
     }
   }
 }

@@ -7,7 +7,8 @@
 import './lib/node-guard.mjs';
 import { cpSync, rmSync, mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { ROOT, readData, readCode } from './lib/safety.mjs';
+import { ROOT, readData, readCode, isAllowedUrl } from './lib/safety.mjs';
+import { buildCompare } from './fetch-worldbank.mjs';
 const { enabledFetchers } = readCode('scripts/allowed-sources.json');
 import { quakeStatusOf } from './fetch-usgs.mjs';
 import { validateItems, validateCuratedPair, validateDirectory, validateEvidence, validateAnimals, validatePrefectures, CURATED_LAYERS } from './validate-data.mjs';
@@ -257,6 +258,18 @@ async function main() {
     }))
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id));
   writeFileSync(resolve(OUT, 'data/archive.json'), JSON.stringify({ reviewedAt: curated.reviewedAt, count: archive.length, items: archive }));
+  // 「世界をくらべる」：世界銀行の指標（補助の情報。取得できなくても公開は止めない。確認版では取得しない）
+  {
+    const countryIds = new Set(readCode('site/data/geo/country-index.json').map((c) => c.id));
+    const compare = await buildCompare({ countryIds, offline: OFFLINE || SNAPSHOT, now });
+    for (const ind of compare.indicators)
+      if (!isAllowedUrl(ind.source.url)) {
+        console.error(`検査失敗のため公開を中止: ${ind.key} の出典のURLが許可リストに無い`);
+        process.exit(1);
+      }
+    writeFileSync(resolve(OUT, 'data/compare.json'), JSON.stringify({ mode: meta.mode, ...compare }));
+    meta.compare = Object.fromEntries(compare.indicators.map((i) => [i.key, { status: i.status, count: i.count }]));
+  }
   writeFileSync(resolve(OUT, 'data/meta.json'), JSON.stringify(meta));
   writeFileSync(resolve(OUT, 'data/directory.json'), JSON.stringify(directory));
   writeSeo(OUT, { siteUrl: process.env.SITE_URL, repo: process.env.GITHUB_REPOSITORY, google: process.env.GOOGLE_SITE_VERIFICATION, bing: process.env.BING_SITE_VERIFICATION, now });

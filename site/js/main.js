@@ -139,6 +139,7 @@ async function start() {
     // トップと（スマートフォンの）メニューから、福祉の相談先とセキュリティ対策の説明ページへ直接進める
     for (const id of ['quick-welfare', 'drawer-welfare']) $(id).href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
     for (const id of ['quick-security', 'drawer-security']) $(id).href = lang === 'en' ? 'security-basics.en.html' : 'security-basics.html';
+    for (const id of ['quick-compare', 'drawer-compare']) $(id).href = lang === 'en' ? 'compare.en.html' : 'compare.html';
     $('brand-link').href = urlForLang(lang);
     const other = lang === 'en' ? 'ja' : 'en';
     for (const id of ['btn-lang', 'drawer-lang']) {
