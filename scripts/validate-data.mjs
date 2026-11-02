@@ -296,7 +296,8 @@ export function validatePrefectures(rel = 'data/directory/prefectures.json') {
       if (l.id !== `jp-pref-${p.code}-${l.role}`) errors.push(`${lp}.id は jp-pref-<code>-<role>`);
       if (ids.has(l.id)) errors.push(`${lp}: id が重複`);
       ids.add(l.id);
-      if (!['main', 'consult'].includes(l.role)) errors.push(`${lp}.role は main / consult`);
+      // main・consult：暮らし・仕事の相談、mind：こころの健康（精神保健福祉センターなど）
+      if (!['main', 'consult', 'mind'].includes(l.role)) errors.push(`${lp}.role は main / consult / mind`);
       checkText(l.title, `${lp}.title`, errors, { need: ['ja', 'en'], max: 90 });
       if (!isDirectoryUrl(l.url) || /\.pdf$/i.test(l.url)) errors.push(`${lp}.url: 許可リスト外・https でない・?や#・PDF`);
       // その都道府県自身の公式ドメインであること（例：北海道→pref.hokkaido、東京都→metro.tokyo）

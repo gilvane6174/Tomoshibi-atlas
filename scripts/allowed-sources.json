@@ -154,6 +154,11 @@
       "label": "世界銀行"
     },
     {
+      "host": "data.worldbank.org",
+      "path": "^/indicator/[A-Z0-9.]+$",
+      "label": "世界銀行のデータ（指標の説明ページだけ）"
+    },
+    {
       "host": "labour.gov.in",
       "label": "インド労働雇用省"
     },
@@ -1361,7 +1366,11 @@
     "cdcMmwr": "https://tools.cdc.gov/api/v2/resources/media/342778.rss",
     "nasaNews": "https://www.nasa.gov/news-release/feed/",
     "nihNews": "https://www.nih.gov/news-releases/feed.xml",
-    "ipaAlert": "https://www.ipa.go.jp/security/alert-rss.rdf"
+    "ipaAlert": "https://www.ipa.go.jp/security/alert-rss.rdf",
+    "wbPoverty": "https://api.worldbank.org/v2/country/all/indicator/SI.POV.DDAY?format=json&mrnev=1&per_page=400",
+    "wbGini": "https://api.worldbank.org/v2/country/all/indicator/SI.POV.GINI?format=json&mrnev=1&per_page=400",
+    "wbGdpPpp": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.CD?format=json&mrnev=1&per_page=400",
+    "wbUnemployment": "https://api.worldbank.org/v2/country/all/indicator/SL.UEM.TOTL.ZS?format=json&mrnev=1&per_page=400"
   },
   "enabledFetchers": {
     "whoDon": true,
@@ -1375,7 +1384,11 @@
     "cdcMmwr": false,
     "nasaNews": true,
     "nihNews": true,
-    "ipaAlert": true
+    "ipaAlert": true,
+    "wbPoverty": true,
+    "wbGini": true,
+    "wbGdpPpp": true,
+    "wbUnemployment": true
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [
@@ -1658,6 +1671,14 @@
   ],
   "_pageLinksNote": "説明ページ（site/*.html）と画面のプログラム（site/js/*.js）に直接書く外部リンクのうち、上の linkHosts・directoryHosts・animalHosts に当たらないものは、ここに URL を完全一致で書いたものだけを許す（scripts/check-repo.mjs が検査）。pages はそのリンクを置いてよいページ。決済サービス（応援チップ）は、説明ページ（about）だけに置き、手動掲載のデータやリンク集には使えない。",
   "pageLinks": [
+    {
+      "url": "https://datacatalog.worldbank.org/public-licenses",
+      "pages": [
+        "compare.html",
+        "compare.en.html"
+      ],
+      "label": "世界銀行のデータの利用条件（CC BY 4.0。世界をくらべるページの出典の説明）"
+    },
     {
       "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
       "pages": [
