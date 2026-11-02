@@ -359,6 +359,7 @@ function jumpRow(targets, color) {
   return nav;
 }
 
+const LIST_PAGE = 30;
 export function renderList(body, { layerId, data, onPick }) {
   body.replaceChildren();
   const doc = data.layers[layerId];
@@ -372,10 +373,26 @@ export function renderList(body, { layerId, data, onPick }) {
   if (doc.kind === 'daily') body.append(el('p', 'note calm-note list-lead', t('list.animalsLead')));
   const placed = ordered(doc.items.filter((it) => it.countries?.length));
   const unplaced = ordered(doc.items.filter((it) => !it.countries?.length));
-  for (const it of placed) body.append(entry(it, { countryMap: data.countryMap, asButton: true, onClick: () => onPick(it.countries[0]) }));
+  // 件数が多いとき（最大100件）は、30件ずつ表示し、「さらに表示」で続きを出す（スマートフォンで長くなりすぎないように）
+  const pageIn = (list, make) => {
+    const box = el('div', 'list-page');
+    let shown = 0;
+    const more = el('button', 'more-btn');
+    more.type = 'button';
+    const next = () => {
+      for (const it of list.slice(shown, shown + LIST_PAGE)) box.append(make(it));
+      shown = Math.min(list.length, shown + LIST_PAGE);
+      more.hidden = shown >= list.length;
+      more.textContent = t('list.more', { n: list.length - shown });
+    };
+    more.addEventListener('click', next);
+    next();
+    return [box, more];
+  };
+  body.append(...pageIn(placed, (it) => entry(it, { countryMap: data.countryMap, asButton: true, onClick: () => onPick(it.countries[0]) })));
   if (unplaced.length) {
     body.append(el('h3', null, t('panel.unplaced')));
-    for (const it of unplaced) body.append(entry(it, { countryMap: data.countryMap }));
+    body.append(...pageIn(unplaced, (it) => entry(it, { countryMap: data.countryMap })));
   }
   body.append(note(doc.kind));
   if (layerId === 'security') body.append(el('p', 'note caution-note', t('note.security')));

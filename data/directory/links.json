@@ -22,6 +22,12 @@
       "en": "Work and jobs"
     },
     {
+      "id": "mind",
+      "ja": "こころの健康のこと",
+      "jaKana": "こころの けんこうの こと",
+      "en": "Mental health"
+    },
+    {
       "id": "disability",
       "ja": "障がい・発達の特性のこと",
       "jaKana": "しょうがい・はったつの とくせいの こと",
@@ -137,6 +143,21 @@
           "url": "https://www.hellowork.mhlw.go.jp/"
         },
         {
+          "id": "jp-w-seishin-center",
+          "cat": "mind",
+          "name": {
+            "ja": "全国の精神保健福祉センター（厚生労働省）",
+            "jaKana": "ぜんこくの せいしん ほけん ふくし センター（こうせいろうどうしょう）",
+            "en": "Mental health and welfare centres in Japan (MHLW)"
+          },
+          "desc": {
+            "ja": "都道府県・政令指定都市ごとにある、こころの健康や依存症などの公的な相談機関の一覧です（令和6年12月現在の一覧。最新の連絡先は各機関でご確認ください）。",
+            "jaKana": "とどうふけん・せいれい していとし ごとに ある、こころの けんこうや いぞんしょう などの こうてきな そうだん きかんの いちらん です（れいわ 6ねん 12がつ げんざいの いちらん。さいしんの れんらくさきは かく きかんで ごかくにん ください）。",
+            "en": "Public mental health and addiction consultation centres in every prefecture and major city (list as of December 2024; check current details with each centre)."
+          },
+          "url": "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iyakuhin/yakubutsuranyou_taisaku/hoken_fukushi/index.html"
+        },
+        {
           "id": "jp-w-shogai",
           "cat": "disability",
           "name": {
@@ -210,6 +231,21 @@
             "en": "Where to get help with domestic violence from a spouse or similar partner."
           },
           "url": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html"
+        },
+        {
+          "id": "jp-w-dv-center",
+          "cat": "family",
+          "name": {
+            "ja": "配偶者暴力相談支援センター（内閣府）",
+            "jaKana": "はいぐうしゃ ぼうりょく そうだん しえん センター（ないかくふ）",
+            "en": "Spousal violence counselling and support centres (Cabinet Office)"
+          },
+          "desc": {
+            "ja": "都道府県・市区町村が設けるDV（配偶者などからの暴力）の相談窓口の一覧です。全国共通の短縮番号「#8008」で、最寄りの窓口につながります。",
+            "jaKana": "とどうふけん・しくちょうそんが もうける DV（はいぐうしゃ などからの ぼうりょく）の そうだん まどぐちの いちらん です。ぜんこく きょうつうの たんしゅく ばんごう「#8008」で、もよりの まどぐちに つながります。",
+            "en": "A list of public domestic violence counselling centres run by prefectures and municipalities. The nationwide short number #8008 connects you to the nearest one."
+          },
+          "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan/01.html"
         },
         {
           "id": "jp-w-seibouryoku",

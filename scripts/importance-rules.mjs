@@ -20,16 +20,16 @@ export const RULES = {
   disaster: { keepDays: 90, fillDays: 180 },
 };
 
-// 件数の上限を分野ごとに変える場合（2026-10-27 から全分野50件にそろえたため、今は個別の指定なし。今日の動物たちは別の決まりで毎日20件）
+// 件数の上限を分野ごとに変える場合（2026-10-27 に全分野50件、2026-11-02 に全分野100件にそろえたため、今は個別の指定なし。今日の動物たちは別の決まりで毎日20件）
 export const MAX_BY_LAYER = {};
 
-// 各分野の表示件数（「以前の情報」を除く）：多すぎず少なすぎないように、20〜50件にそろえる。
-//   1. 掲載期間内（keepDays。手動掲載の分野は期間なし）の情報を、新しい順に最大50件（MAX_BY_LAYER で分野ごとに変えられる）
+// 各分野の表示件数（「以前の情報」を除く）：新しい情報が多いときに古い情報がすぐ消えないよう、20〜100件にそろえる。
+//   1. 掲載期間内（keepDays。手動掲載の分野は期間なし）の情報を、新しい順に最大100件（MAX_BY_LAYER で分野ごとに変えられる）
 //   2. それが20件に満たないときは、掲載期間を過ぎた情報（fillDays 以内）を新しい順に補い、20件にする（小さな文字で表示）
 //      自動取得の分野は取得の段階で fillDays より古いものを除く。手動掲載の分野で上限が要るものは fitCount の fillDays で渡す
 //   3. 新しい情報が入ると、古いものから順に表示から外れる（データ自体は残る）
 // 「以前の情報」（supersede）は、それを置き換えた新しい情報を表示しているときだけ残す。
-export const SHOW = { min: 20, max: 50 };
+export const SHOW = { min: 20, max: 100 };
 const newest = (a, b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id);
 export function fitCount(items, keepDays = null, now = Date.now(), max = SHOW.max, fillDays = null) {
   const sorted = [...items].sort(newest);

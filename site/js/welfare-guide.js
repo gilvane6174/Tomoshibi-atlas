@@ -55,7 +55,7 @@ const PREF_KANA = ('ほっかいどう あおもりけん いわてけん みや
   'さがけん ながさきけん くまもとけん おおいたけん みやざきけん かごしまけん おきなわけん').split(' ');
 const prefKana = (code) => PREF_KANA[Number(code) - 1] || '';
 // ひらがな表示のときのリンクの名前（都道府県のページの題名は漢字のため、役割ごとの決まった言い方にする）
-const KANA_ROLE = { main: 'せいかつ・ふくしの そうだんの ページ', consult: 'そうだん まどぐちの あんない' };
+const KANA_ROLE = { main: 'くらし・しごとの そうだんの ページ', consult: 'くらし・しごとの そうだん まどぐちの あんない' };
 
 function national(dir) {
   const box = document.getElementById('national');
@@ -84,9 +84,39 @@ function national(dir) {
   if (!box.childElementCount) box.append(el('p', 'note', isEn ? 'The list could not be shown. Please use the links in the sections below.' : kana ? 'いちらんを ひょうじ できませんでした。したの あんないを ごりよう ください。' : '一覧を表示できませんでした。下の案内をご利用ください。'));
 }
 
+// 都道府県・市区町村の窓口を、分野ごとにさがすための国の一覧（どの分野も、全国の窓口を都道府県別にさがせる公式のページ）。
+// 都道府県ごとの個別のリンクは、確認できたものから順に足していく（推測で窓口を載せない）
+const AREAS = [
+  { ja: '暮らし・お金・仕事', kana: 'くらし・おかね・しごと', en: 'Living, money and work', ids: ['jp-w-jiritsu'] },
+  { ja: 'こころの健康', kana: 'こころの けんこう', en: 'Mental health', ids: ['jp-w-seishin-center'] },
+  { ja: '子ども・子育て', kana: 'こども・こそだて', en: 'Children and parenting', ids: ['jp-w-189'] },
+  { ja: '障がい・発達の特性', kana: 'しょうがい・はったつの とくせい', en: 'Disability and developmental differences', ids: ['jp-w-shogai', 'jp-w-hattatsu'] },
+  { ja: '高齢・介護', kana: 'こうれい・かいご', en: 'Older people and care', ids: ['jp-w-kaigo'] },
+  { ja: 'DV・暴力', kana: 'DV・ぼうりょく', en: 'Domestic violence and abuse', ids: ['jp-w-dv-center', 'jp-w-seibouryoku'] },
+];
+function areaFinder(dir) {
+  const links = new Map((dir.countries?.JPN?.welfare || []).map((l) => [l.id, l]));
+  const wrap = el('div', 'guide-areas');
+  wrap.append(el('h3', null, isEn ? 'Find local services by topic' : kana ? 'ぶんやべつに、ちかくの まどぐちを さがす' : '分野別に、お住まいの地域の窓口をさがす'));
+  wrap.append(el('p', 'note', isEn ? 'Each link is a national page that lists or searches public services in every prefecture.' : kana ? 'どれも、ぜんこくの とどうふけんの まどぐちを さがせる くにの ページ です。' : 'どれも、全国の都道府県の窓口を一覧・検索できる国の公式ページです。'));
+  const ul = el('ul', 'guide-links');
+  for (const a of AREAS) {
+    const shown = a.ids.map((id) => links.get(id)).filter(Boolean).map((l) => link(l.url, pick(l.name))).filter(Boolean);
+    if (!shown.length) continue;
+    const li = el('li');
+    li.append(el('strong', 'guide-pref', isEn ? a.en : kana ? a.kana : a.ja));
+    for (const x of shown) li.append(x);
+    ul.append(li);
+  }
+  wrap.append(ul);
+  wrap.append(el('p', 'note', isEn ? 'Below: links on each prefecture\'s official website (currently mainly for living and work; other topics will be added as they are checked).' : kana ? 'したは、かく とどうふけんの こうしき サイトの ページ です（いまは くらし・しごとの そうだんが ちゅうしん です。ほかの ぶんやも、かくにん できた ものから ふやして いきます）。' : '下は、各都道府県の公式サイトのページです（今は暮らし・仕事の相談が中心です。ほかの分野も、確認できたものから順に追加します）。'));
+  return wrap;
+}
+
 function prefectures(dir) {
   const box = document.getElementById('prefectures');
   box.replaceChildren();
+  box.append(areaFinder(dir));
   const byCode = new Map((dir.prefectures || []).map((p) => [p.code, p]));
   for (const r of REGIONS) {
     const d = el('details', 'guide-region');
@@ -97,7 +127,9 @@ function prefectures(dir) {
       if (!p) continue;
       const li = el('li');
       li.append(el('strong', 'guide-pref', isEn ? p.en : kana ? prefKana(code) || p.ja : p.ja));
-      const label = (l) => (kana && !isEn ? `${prefKana(code)}の ${KANA_ROLE[l.role] || KANA_ROLE.main}` : pick(l.title));
+      // 分野を先に示す（今は暮らし・仕事の相談のページ。ほかの分野は確認できたものから追加する）
+      const area = isEn ? 'Living and work: ' : '暮らし・仕事：';
+      const label = (l) => (kana && !isEn ? `${prefKana(code)}の ${KANA_ROLE[l.role] || KANA_ROLE.main}` : area + pick(l.title));
       const shown = (p.links || []).map((l) => link(l.url, label(l))).filter(Boolean);
       if (shown.length) for (const a of shown) li.append(a);
       else li.append(el('span', 'guide-desc', isEn ? 'Being checked. Please contact the welfare office of your city, town or village, or use the nationwide services above.' : kana ? 'かくにん ちゅう です。すんで いる しくちょうそんの ふくしの まどぐち（ふくし じむしょ など）か、うえの ぜんこくの まどぐちを ごりよう ください。' : '確認中です。お住まいの市区町村の福祉の窓口（福祉事務所など）か、上の全国の窓口をご利用ください。'));
