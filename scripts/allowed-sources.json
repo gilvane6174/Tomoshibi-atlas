@@ -1659,6 +1659,13 @@
   "_pageLinksNote": "説明ページ（site/*.html）と画面のプログラム（site/js/*.js）に直接書く外部リンクのうち、上の linkHosts・directoryHosts・animalHosts に当たらないものは、ここに URL を完全一致で書いたものだけを許す（scripts/check-repo.mjs が検査）。pages はそのリンクを置いてよいページ。決済サービス（応援チップ）は、説明ページ（about）だけに置き、手動掲載のデータやリンク集には使えない。",
   "pageLinks": [
     {
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
+      "pages": [
+        "js/quake-live.js"
+      ],
+      "label": "USGS 地震の公開データ（過去7日・M4.5以上。地震の分野を開いたときにブラウザが直接読み込む。読み込むだけで、リンクとしては表示しない）"
+    },
+    {
       "url": "https://docs.google.com/forms/d/e/1FAIpQLSeaBNKQCavRffRIuYMr4G78d8dWgp1r07ret-Ar78SI8E76ow/viewform",
       "pages": [
         "about.html",
