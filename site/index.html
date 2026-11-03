@@ -29,7 +29,7 @@
   <a class="skip" href="#list-panel" data-i18n="control.list">一覧</a>
 
   <header class="topbar">
-    <a class="brand" href="./" id="brand-link">
+    <a class="brand" href="./#return" id="brand-link">
       <svg class="brand-logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
         <defs>
           <radialGradient id="logo-flame" cx="50%" cy="62%" r="60%"><stop offset="0" stop-color="#fff6e2"/><stop offset=".45" stop-color="#f6cf8e"/><stop offset="1" stop-color="#e9a75a"/></radialGradient>
@@ -85,6 +85,7 @@
       <button type="button" class="close" id="menu-close" aria-label="×">×</button>
     </div>
     <div class="drawer-body">
+      <button type="button" class="drawer-action" id="drawer-guide" data-i18n="purpose.open">目的と使い方</button>
       <p class="drawer-group light" data-i18n="group.light">灯（ともしび）— 支える情報</p>
       <div id="drawer-light" class="drawer-layers"></div>
       <p class="drawer-group caution" data-i18n="group.caution">警鐘（けいしょう）— 注意が必要な情報</p>
@@ -93,13 +94,13 @@
       <div id="drawer-calm" class="drawer-layers"></div>
       <div class="drawer-actions">
         <button type="button" class="drawer-action" id="drawer-list" data-i18n="control.list">一覧</button>
-        <button type="button" class="drawer-action" id="drawer-guide" data-i18n="purpose.open">目的と使い方</button>
+        <a class="drawer-action" id="drawer-about" href="about.html" data-i18n="purpose.title">このサイトについて</a>
         <button type="button" class="drawer-action" id="drawer-locate" data-i18n="control.locate">現在地</button>
         <a class="drawer-action lang" id="drawer-lang" href="?lang=en" hreflang="en" lang="en">English</a>
-        <a class="drawer-action" id="drawer-about" href="about.html" data-i18n="purpose.title">このサイトについて</a>
-        <a class="drawer-action" id="drawer-welfare" href="welfare-guide.html" data-i18n="quick.welfare">福祉の相談先を探す</a>
+        <a class="drawer-action" id="drawer-welfare" href="welfare-guide.html" data-i18n="quick.welfare">福祉の相談先・災害情報</a>
         <a class="drawer-action" id="drawer-security" href="security-basics.html" data-i18n="quick.security">個人でできるセキュリティ対策</a>
         <a class="drawer-action" id="drawer-compare" href="compare.html" data-i18n="quick.compare">世界をくらべる（統計）</a>
+        <a class="drawer-action" id="drawer-connections" href="connections.html" data-i18n="quick.connections">情報のつながりを見る</a>
       </div>
       <p class="drawer-tagline" data-i18n="site.tagline"></p>
     </div>
@@ -108,6 +109,7 @@
   <div id="sample-banner" class="sample-banner" hidden></div>
 
   <main class="stage">
+    <h1 class="visually-hidden mobile-only" data-i18n="site.tagline">人の病とこころの不調、AI（SI）やIT・社会システムの課題を、一つの地球儀で。</h1>
     <canvas id="globe" aria-hidden="true"></canvas>
     <!-- 読み込み中の表示（小さな地球儀がゆっくり回る。動きを減らす設定では止まる）。地球儀の準備ができたら消える -->
     <div id="loading" class="loading" role="status" aria-live="polite">
@@ -132,8 +134,14 @@
       <h1 id="purpose-title" data-i18n="site.tagline">人の病とこころの不調、AI（SI）やIT・社会システムの課題を、一つの地球儀で。</h1>
       <p data-i18n="purpose.body">感染症・こころと福祉・医療研究の公表情報と、AI（SI）やIT・社会システムを脅かすセキュリティ上の脅威、災害や犯罪の情報を、同じ地球儀の上に並べています。人の健康とシステムや社会の不調を見比べ、その関わりに気づきやすくすることで、人がよりよく暮らすための備えに役立てることを目指しています。</p>
       <p class="layer-caption" id="layer-caption" aria-live="polite"></p>
-      <button type="button" class="text-btn" id="btn-purpose" aria-controls="guide-panel" data-i18n="purpose.open">目的と使い方</button>
-      <p class="quick-links"><a href="welfare-guide.html" id="quick-welfare" class="text-link" data-i18n="quick.welfare">福祉の相談先を探す</a><span class="quick-sep" aria-hidden="true">　</span><a href="security-basics.html" id="quick-security" class="text-link" data-i18n="quick.security">個人でできるセキュリティ対策</a><span class="quick-sep" aria-hidden="true">　</span><a href="compare.html" id="quick-compare" class="text-link" data-i18n="quick.compare">世界をくらべる（統計）</a></p>
+      <div class="quick-grid">
+        <button type="button" class="quick-chip q-purpose" id="btn-purpose" aria-controls="guide-panel" data-i18n="purpose.open">目的と使い方</button>
+        <a href="about.html" id="quick-about" class="quick-chip q-about" data-i18n="purpose.title">このサイトについて</a>
+        <a href="welfare-guide.html" id="quick-welfare" class="quick-chip q-welfare" data-i18n="quick.welfare">福祉の相談先・災害情報</a>
+        <a href="security-basics.html" id="quick-security" class="quick-chip q-security" data-i18n="quick.securityShort" title="個人でできるセキュリティ対策">個人のセキュリティ対策</a>
+        <a href="compare.html" id="quick-compare" class="quick-chip q-compare" data-i18n="quick.compareShort">世界をくらべる（統計）</a>
+        <a href="connections.html" id="quick-connections" class="quick-chip q-connections" data-i18n="quick.connectionsShort">情報のつながりを見る</a>
+      </div>
     </section>
 
     <div class="globe-controls">
@@ -173,6 +181,15 @@
     <a href="about.html" id="operator-link" data-i18n="footer.operator">運営：Yutaka Yoshioka（非営利）</a>
     <a href="about.html#disclaimer" id="disclaimer-link" data-i18n="status.disclaimer">医療・法律上の判断には使わないでください（免責事項）</a>
   </footer>
+
+  <!-- 最初に開いたときのお知らせ（毎回表示。閉じるボタン・Esc・外側を押すと閉じる。記録は残さない） -->
+  <dialog id="welcome" class="welcome" aria-labelledby="welcome-title" aria-describedby="welcome-body">
+    <button type="button" class="welcome-x" id="welcome-x" aria-label="このお知らせを閉じる">×</button>
+    <h2 id="welcome-title" data-i18n="welcome.title">ようこそ、Tomoshibi Atlas へ</h2>
+    <p id="welcome-body" data-i18n="welcome.body">癒しを求めている方のために、最初のページは動物の豆知識にしています。回る地球儀と一緒に、ゆっくり見て癒されてください。</p>
+    <p class="welcome-sub" data-i18n="welcome.sub">感染症・防災・防犯などの情報は、上の分野のボタンから切り替えられます。</p>
+    <button type="button" class="welcome-close" id="welcome-close" data-i18n="welcome.close">閉じる</button>
+  </dialog>
 
   <noscript><div class="noscript"><p>Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。このサイトの地球儀表示にはJavaScriptが必要です。地球儀を使わなくても、次のページは読めます。</p><ul><li><a href="welfare-guide.html">福祉の相談先の探し方</a>（<a href="welfare-guide.en.html">English</a>。相談先の一覧の表示にはJavaScriptが必要ですが、探し方と緊急時の窓口は読めます）</li><li><a href="security-basics.html">個人でできるセキュリティ対策</a>（<a href="security-basics.en.html">English</a>）</li><li><a href="archive.html">過去の記録の一覧</a>（JavaScriptが必要です）</li><li><a href="about.html">このサイトについて・免責事項</a>（<a href="about.en.html">About (English)</a>）</li></ul><p>心や体がつらいときは、厚生労働省「<a href="https://www.mhlw.go.jp/mamorouyokokoro/" rel="noopener noreferrer">まもろうよ こころ</a>」の相談窓口もご覧ください。</p></div></noscript>
 </body>

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "_note": "日本の47都道府県の、福祉・生活支援の公式ページ（福祉の探し方ページで表示）。各都道府県の公式ドメインのページだけ。確認の記録は evidence.json。リンクがない県は、全国共通の窓口の案内を表示する。",
-  "reviewedAt": "2026-11-02",
+  "reviewedAt": "2026-11-03",
   "prefectures": [
     {
       "code": "01",
@@ -25,6 +25,227 @@
             "en": "Hokkaido: Mental Health and Welfare Center"
           },
           "url": "https://www.pref.hokkaido.lg.jp/hf/sfc/index.html"
+        },
+        {
+          "id": "jp-pref-01-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "北海道「北海道の災害・防災情報」",
+            "en": "Hokkaido: disaster and disaster-prevention information (Crisis Management Division)"
+          },
+          "url": "https://www.pref.hokkaido.lg.jp/sm/ktk/saigai-bousai.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-01-sapporo",
+          "kind": "city",
+          "name": {
+            "ja": "札幌市",
+            "en": "Sapporo City"
+          },
+          "nameKana": "さっぽろし",
+          "title": {
+            "ja": "札幌市「札幌市生活就労支援センター（ステップ）」",
+            "en": "Sapporo City: Sapporo Livelihood and Employment Support Center (STEP)"
+          },
+          "url": "https://www.city.sapporo.jp/fukushi-guide/step.html"
+        },
+        {
+          "id": "jp-local-01-hakodate",
+          "kind": "city",
+          "name": {
+            "ja": "函館市",
+            "en": "Hakodate City"
+          },
+          "nameKana": "はこだてし",
+          "title": {
+            "ja": "函館市「生活困窮者自立支援制度について」",
+            "en": "Hakodate City: Support System for People in Financial Hardship (consultation)"
+          },
+          "url": "https://www.city.hakodate.hokkaido.jp/docs/2022062700054/"
+        },
+        {
+          "id": "jp-local-01-asahikawa",
+          "kind": "city",
+          "name": {
+            "ja": "旭川市",
+            "en": "Asahikawa City"
+          },
+          "nameKana": "あさひかわし",
+          "title": {
+            "ja": "旭川市「生活困窮者自立支援制度（旭川市自立サポートセンター）」",
+            "en": "Asahikawa City: Hardship Support System (Asahikawa Independence Support Center)"
+          },
+          "url": "https://www.city.asahikawa.hokkaido.jp/kurashi/135/189/191/d052392.html"
+        },
+        {
+          "id": "jp-local-01-obihiro",
+          "kind": "city",
+          "name": {
+            "ja": "帯広市",
+            "en": "Obihiro City"
+          },
+          "nameKana": "おびひろし",
+          "title": {
+            "ja": "帯広市「自立相談支援事業（自立相談支援センターふらっと）」",
+            "en": "Obihiro City: Independence Consultation Support (Furatto center)"
+          },
+          "url": "https://www.city.obihiro.hokkaido.jp/kenko/shien/seikatsu/1005043.html"
+        },
+        {
+          "id": "jp-local-01-kushiro",
+          "kind": "city",
+          "name": {
+            "ja": "釧路市",
+            "en": "Kushiro City"
+          },
+          "nameKana": "くしろし",
+          "title": {
+            "ja": "釧路市「生活困窮者自立支援制度（生活相談支援センターくらしごと）」",
+            "en": "Kushiro City: Hardship Support System (Kurashigoto consultation center)"
+          },
+          "url": "https://www.city.kushiro.lg.jp/kenfuku/fukushi/1005014/1005015.html"
+        },
+        {
+          "id": "jp-local-01-wakkanai",
+          "kind": "city",
+          "name": {
+            "ja": "稚内市",
+            "en": "Wakkanai City"
+          },
+          "nameKana": "わっかないし",
+          "title": {
+            "ja": "稚内市「生活困窮者自立支援事業（自立生活支援センター）」",
+            "en": "Wakkanai City: Hardship Support Program (Independent Living Support Center)"
+          },
+          "url": "https://www.city.wakkanai.hokkaido.jp/fukushi/seikatsuhogo/jiritu/"
+        },
+        {
+          "id": "jp-local-01-otaru",
+          "kind": "city",
+          "name": {
+            "ja": "小樽市",
+            "en": "Otaru City"
+          },
+          "nameKana": "おたるし",
+          "title": {
+            "ja": "小樽市「福祉総合相談室『たるさぽ』」",
+            "en": "Otaru City: General Welfare Consultation Office 'Tarusapo'"
+          },
+          "url": "https://www.city.otaru.lg.jp/docs/2020111500358/"
+        },
+        {
+          "id": "jp-local-01-tomakomai",
+          "kind": "city",
+          "name": {
+            "ja": "苫小牧市",
+            "en": "Tomakomai City"
+          },
+          "nameKana": "とまこまいし",
+          "title": {
+            "ja": "苫小牧市「生活困窮者自立支援制度について」",
+            "en": "Tomakomai City: Support System for People in Financial Hardship"
+          },
+          "url": "https://www.city.tomakomai.hokkaido.jp/kenko/jiritsushien/seikatsukonkyusya.html"
+        },
+        {
+          "id": "jp-local-01-ebetsu",
+          "kind": "city",
+          "name": {
+            "ja": "江別市",
+            "en": "Ebetsu City"
+          },
+          "nameKana": "えべつし",
+          "title": {
+            "ja": "江別市「生活困窮者自立支援制度（くらしサポートセンターえべつ）」",
+            "en": "Ebetsu City: Hardship Support System (Kurashi Support Center Ebetsu)"
+          },
+          "url": "https://www.city.ebetsu.hokkaido.jp/soshiki/kenko-kanri/46522.html"
+        },
+        {
+          "id": "jp-local-01-nemuro",
+          "kind": "city",
+          "name": {
+            "ja": "根室市",
+            "en": "Nemuro City"
+          },
+          "nameKana": "ねむろし",
+          "title": {
+            "ja": "根室市「生活困窮者自立支援制度について」",
+            "en": "Nemuro City: Support System for People in Financial Hardship"
+          },
+          "url": "https://www.city.nemuro.hokkaido.jp/lifeinfo/kakuka/shiminfukushibu/shakaifukushi/gyomuannnai/8/4936.html"
+        },
+        {
+          "id": "jp-local-01-chitose",
+          "kind": "city",
+          "name": {
+            "ja": "千歳市",
+            "en": "Chitose City"
+          },
+          "nameKana": "ちとせし",
+          "title": {
+            "ja": "千歳市「生活困窮者自立支援制度」",
+            "en": "Chitose City: Support System for People in Financial Hardship"
+          },
+          "url": "https://www.city.chitose.lg.jp/docs/95-86205-166-877.html"
+        },
+        {
+          "id": "jp-local-01-hokkaido-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "北海道社会福祉協議会",
+            "en": "Hokkaido Council of Social Welfare"
+          },
+          "nameKana": "ほっかいどうしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "北海道社会福祉協議会（公式サイト）",
+            "en": "Hokkaido Council of Social Welfare (official website)"
+          },
+          "url": "https://www.hokkaidoshakyo.jp/"
+        },
+        {
+          "id": "jp-local-01-sapporo-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "札幌市社会福祉協議会",
+            "en": "Sapporo City Council of Social Welfare"
+          },
+          "nameKana": "さっぽろししゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "札幌市社会福祉協議会（公式サイト）",
+            "en": "Sapporo City Council of Social Welfare (official website)"
+          },
+          "url": "https://www.sapporo-shakyo.or.jp/"
+        },
+        {
+          "id": "jp-local-01-asahikawa-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "旭川市社会福祉協議会",
+            "en": "Asahikawa City Council of Social Welfare"
+          },
+          "nameKana": "あさひかわししゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "旭川市社会福祉協議会（公式サイト）",
+            "en": "Asahikawa City Council of Social Welfare (official website)"
+          },
+          "url": "https://www.asahikawa-shakyo.or.jp/"
+        },
+        {
+          "id": "jp-local-01-obihiro-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "帯広市社会福祉協議会",
+            "en": "Obihiro City Council of Social Welfare"
+          },
+          "nameKana": "おびひろししゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "帯広市社会福祉協議会（公式サイト）",
+            "en": "Obihiro City Council of Social Welfare (official website)"
+          },
+          "url": "https://www.obihiro-shakyo.jp/"
         }
       ]
     },
@@ -50,6 +271,45 @@
             "en": "Aomori: Prefectural Mental Health and Welfare Center"
           },
           "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/seifuku/index.html"
+        },
+        {
+          "id": "jp-pref-02-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "青森県「防災危機管理課」",
+            "en": "Aomori: Disaster Prevention and Crisis Management Division page"
+          },
+          "url": "https://www.pref.aomori.lg.jp/soshiki/kikikanri/bousai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-02-aomori",
+          "kind": "city",
+          "name": {
+            "ja": "青森市",
+            "en": "Aomori City"
+          },
+          "nameKana": "あおもりし",
+          "title": {
+            "ja": "青森市「生活困窮者自立支援制度の概要」",
+            "en": "Aomori City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.aomori.aomori.jp/hukushi_kenkou/seikatsukonkyuu/1003465.html"
+        },
+        {
+          "id": "jp-local-02-aomori-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "青森県社会福祉協議会",
+            "en": "Aomori Prefectural Council of Social Welfare"
+          },
+          "nameKana": "あおもりけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "青森県社会福祉協議会 公式サイト",
+            "en": "Aomori Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://aosyakyo.or.jp/"
         }
       ]
     },
@@ -67,6 +327,36 @@
           },
           "url": "https://www.pref.iwate.jp/kurashikankyou/fukushi/seikatujiritsusien/1003572.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-03-morioka",
+          "kind": "city",
+          "name": {
+            "ja": "盛岡市",
+            "en": "Morioka City"
+          },
+          "nameKana": "もりおかし",
+          "title": {
+            "ja": "盛岡市「生活困窮者自立支援」（くらしの相談支援室）",
+            "en": "Morioka City: support for people in financial hardship (living consultation office)"
+          },
+          "url": "https://www.city.morioka.iwate.jp/kenko_fukushi/seikatsufukushi/jiritsushien/index.html"
+        },
+        {
+          "id": "jp-local-03-iwate-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "岩手県社会福祉協議会",
+            "en": "Iwate Prefectural Council of Social Welfare"
+          },
+          "nameKana": "いわてけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "岩手県社会福祉協議会 公式サイト",
+            "en": "Iwate Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.iwate-shakyo.or.jp/"
+        }
       ]
     },
     {
@@ -82,6 +372,45 @@
             "en": "Miyagi: help for people struggling to make ends meet, with consultation offices"
           },
           "url": "https://www.pref.miyagi.jp/soshiki/syahuku/konkyusya1.html"
+        },
+        {
+          "id": "jp-pref-04-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "宮城県「防災リンク集」",
+            "en": "Miyagi: disaster prevention links (portal, shelters, hazard maps)"
+          },
+          "url": "https://www.pref.miyagi.jp/soshiki/bousai/bousai_link.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-04-sendai",
+          "kind": "city",
+          "name": {
+            "ja": "仙台市",
+            "en": "Sendai City"
+          },
+          "nameKana": "せんだいし",
+          "title": {
+            "ja": "仙台市「生活自立・仕事相談センター わんすてっぷ」",
+            "en": "Sendai City: living and work consultation centre (support for people in hardship)"
+          },
+          "url": "https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/shien.html"
+        },
+        {
+          "id": "jp-local-04-miyagi-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "宮城県社会福祉協議会",
+            "en": "Miyagi Prefectural Council of Social Welfare"
+          },
+          "nameKana": "みやぎけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "宮城県社会福祉協議会 公式サイト",
+            "en": "Miyagi Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.miyagi-sfk.net/"
         }
       ]
     },
@@ -98,6 +427,45 @@
             "en": "Akita: support for people in financial hardship"
           },
           "url": "https://www.pref.akita.lg.jp/pages/archive/9336"
+        },
+        {
+          "id": "jp-pref-05-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "秋田県「防災・災害・危機管理情報」",
+            "en": "Akita: disaster prevention, disaster and crisis management information"
+          },
+          "url": "https://www.pref.akita.lg.jp/pages/genre/11642"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-05-akita",
+          "kind": "city",
+          "name": {
+            "ja": "秋田市",
+            "en": "Akita City"
+          },
+          "nameKana": "あきたし",
+          "title": {
+            "ja": "秋田市「生活困窮者自立支援制度について」",
+            "en": "Akita City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.akita.lg.jp/kurashi/okomarinokata/1006020/1004983.html"
+        },
+        {
+          "id": "jp-local-05-akita-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "秋田県社会福祉協議会",
+            "en": "Akita Prefectural Council of Social Welfare"
+          },
+          "nameKana": "あきたけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "秋田県社会福祉協議会 公式サイト",
+            "en": "Akita Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.akitakenshakyo.or.jp/"
         }
       ]
     },
@@ -115,6 +483,22 @@
           },
           "url": "https://www.pref.yamagata.jp/090014/kenfuku/fukushi/seikatsuhogo/jiritsushien.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-06-yamagata",
+          "kind": "city",
+          "name": {
+            "ja": "山形市",
+            "en": "Yamagata City"
+          },
+          "nameKana": "やまがたし",
+          "title": {
+            "ja": "山形市「生活困窮者自立支援制度（生活サポート相談窓口）」",
+            "en": "Yamagata City: support for people in hardship (life support consultation desk)"
+          },
+          "url": "https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/fukushi/1006663/1004807.html"
+        }
       ]
     },
     {
@@ -130,6 +514,45 @@
             "en": "Fukushima: overview of public assistance and where to apply"
           },
           "url": "https://www.pref.fukushima.lg.jp/sec/21025a/seikatsuhogo1.html"
+        },
+        {
+          "id": "jp-pref-07-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "福島県「ふくしまぼうさいウェブについて」",
+            "en": "Fukushima Prefecture: about the \"Fukushima Bousai Web\" disaster information site"
+          },
+          "url": "https://www.pref.fukushima.lg.jp/site/bousai/bousai-annai.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-07-fukushima",
+          "kind": "city",
+          "name": {
+            "ja": "福島市",
+            "en": "Fukushima City"
+          },
+          "nameKana": "ふくしまし",
+          "title": {
+            "ja": "福島市「生活相談支援窓口（生活や仕事に困っている方へ）」",
+            "en": "Fukushima City: consultation desk for people struggling with living or work"
+          },
+          "url": "https://www.city.fukushima.fukushima.jp/soshiki/9/1042/1/375.html"
+        },
+        {
+          "id": "jp-local-07-fukushima-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "福島県社会福祉協議会",
+            "en": "Fukushima Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ふくしまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "福島県社会福祉協議会 公式サイト",
+            "en": "Fukushima Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.fukushimakenshakyo.or.jp/"
         }
       ]
     },
@@ -155,6 +578,45 @@
             "en": "Ibaraki: Mental Health and Welfare Center"
           },
           "url": "https://www.pref.ibaraki.jp/hokenfukushi/seiho/sodan/seishin/homepage-file/09senta.html"
+        },
+        {
+          "id": "jp-pref-08-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "茨城県「茨城県防災・危機管理ポータルサイト」",
+            "en": "Ibaraki: about the disaster prevention and crisis management portal"
+          },
+          "url": "https://www.pref.ibaraki.jp/bousaikiki/bousaikiki/bousai/bousaijyouhou.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-08-mito",
+          "kind": "city",
+          "name": {
+            "ja": "水戸市",
+            "en": "Mito City"
+          },
+          "nameKana": "みとし",
+          "title": {
+            "ja": "水戸市「自立相談支援事業（仕事・生活・住まいの相談）」",
+            "en": "Mito City: self-reliance consultation for work, living and housing problems"
+          },
+          "url": "https://www.city.mito.lg.jp/page/3455.html"
+        },
+        {
+          "id": "jp-local-08-ibaraki-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "茨城県社会福祉協議会",
+            "en": "Ibaraki Prefectural Council of Social Welfare"
+          },
+          "nameKana": "いばらきけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "茨城県社会福祉協議会 公式サイト",
+            "en": "Ibaraki Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.ibaraki-welfare.or.jp/"
         }
       ]
     },
@@ -171,6 +633,45 @@
             "en": "Tochigi: hardship support system with local consultation windows"
           },
           "url": "https://www.pref.tochigi.lg.jp/e12/seikatusienn.html"
+        },
+        {
+          "id": "jp-pref-09-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "栃木県「危機管理・防災ポータルサイト」",
+            "en": "Tochigi: crisis management and disaster prevention portal"
+          },
+          "url": "https://www.pref.tochigi.lg.jp/kurashi/bousai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-09-utsunomiya",
+          "kind": "city",
+          "name": {
+            "ja": "宇都宮市",
+            "en": "Utsunomiya City"
+          },
+          "nameKana": "うつのみやし",
+          "title": {
+            "ja": "宇都宮市「生活にお困りの方の自立に向けた相談支援窓口」",
+            "en": "Utsunomiya City: consultation desk for people in financial hardship"
+          },
+          "url": "https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/soudan/1004797.html"
+        },
+        {
+          "id": "jp-local-09-tochigi-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "栃木県社会福祉協議会",
+            "en": "Tochigi Prefectural Council of Social Welfare"
+          },
+          "nameKana": "とちぎけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "栃木県社会福祉協議会 公式サイト",
+            "en": "Tochigi Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://tochigikenshakyo.jp/"
         }
       ]
     },
@@ -187,6 +688,45 @@
             "en": "Gunma: consultation offices for people in financial hardship"
           },
           "url": "https://www.pref.gunma.jp/page/1672.html"
+        },
+        {
+          "id": "jp-pref-10-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "群馬県「危機管理課」",
+            "en": "Gunma: Crisis Management Division page"
+          },
+          "url": "https://www.pref.gunma.jp/07/a5500045.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-10-maebashi",
+          "kind": "city",
+          "name": {
+            "ja": "前橋市",
+            "en": "Maebashi City"
+          },
+          "nameKana": "まえばしし",
+          "title": {
+            "ja": "前橋市「生活困窮者自立支援制度について」",
+            "en": "Maebashi City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.maebashi.gunma.jp/soshiki/fukushibu/shakaifukushi/gyomu/3/1/1/5469.html"
+        },
+        {
+          "id": "jp-local-10-gunma-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "群馬県社会福祉協議会",
+            "en": "Gunma Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ぐんまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "群馬県社会福祉協議会 公式サイト",
+            "en": "Gunma Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.g-shakyo.or.jp/"
         }
       ]
     },
@@ -212,6 +752,45 @@
             "en": "Saitama: Prefectural Mental Health and Welfare Center"
           },
           "url": "https://www.pref.saitama.lg.jp/soshiki/b0606/index.html"
+        },
+        {
+          "id": "jp-pref-11-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "埼玉県「防災・消防」",
+            "en": "Saitama: disaster prevention and fire services"
+          },
+          "url": "https://www.pref.saitama.lg.jp/kurashi/bosai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-11-saitama",
+          "kind": "city",
+          "name": {
+            "ja": "さいたま市",
+            "en": "Saitama City"
+          },
+          "nameKana": "さいたまし",
+          "title": {
+            "ja": "さいたま市「生活困窮者自立支援制度について」",
+            "en": "Saitama City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.saitama.lg.jp/002/003/002/p054448.html"
+        },
+        {
+          "id": "jp-local-11-saitama-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "埼玉県社会福祉協議会",
+            "en": "Saitama Prefectural Council of Social Welfare"
+          },
+          "nameKana": "さいたまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "埼玉県社会福祉協議会 公式サイト",
+            "en": "Saitama Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.fukushi-saitama.or.jp/site/"
         }
       ]
     },
@@ -228,6 +807,45 @@
             "en": "Chiba: hardship support system with consultation windows by municipality"
           },
           "url": "https://www.pref.chiba.lg.jp/kenshidou/seikatukonkyuu.html"
+        },
+        {
+          "id": "jp-pref-12-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "千葉県「防災情報システム」",
+            "en": "Chiba: disaster information system (links to the disaster portal)"
+          },
+          "url": "https://www.pref.chiba.lg.jp/bousai/saigaitaisaku/jouhou/bousaijouhou.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-12-chiba",
+          "kind": "city",
+          "name": {
+            "ja": "千葉市",
+            "en": "Chiba City"
+          },
+          "nameKana": "ちばし",
+          "title": {
+            "ja": "千葉市「生活自立・仕事相談センター（自立相談支援機関）」",
+            "en": "Chiba City: living and work consultation centres (self-reliance support)"
+          },
+          "url": "https://www.city.chiba.jp/hokenfukushi/hogo/konnkyuushapr.html"
+        },
+        {
+          "id": "jp-local-12-chiba-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "千葉県社会福祉協議会",
+            "en": "Chiba Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ちばけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "千葉県社会福祉協議会 公式サイト",
+            "en": "Chiba Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.chibakenshakyo.com/"
         }
       ]
     },
@@ -262,6 +880,45 @@
             "en": "Tokyo: Central General Mental Health and Welfare Center (10 wards incl. Minato, Shinjuku)"
           },
           "url": "https://www.fukushi.metro.tokyo.lg.jp/chusou/index.html"
+        },
+        {
+          "id": "jp-pref-13-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "東京都「東京都防災ホームページ」",
+            "en": "Tokyo: Tokyo Metropolitan Government disaster prevention website"
+          },
+          "url": "https://www.bousai.metro.tokyo.lg.jp/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-13-shinjuku",
+          "kind": "city",
+          "name": {
+            "ja": "新宿区",
+            "en": "Shinjuku City"
+          },
+          "nameKana": "しんじゅくく",
+          "title": {
+            "ja": "新宿区「生活支援相談窓口へご相談ください」",
+            "en": "Shinjuku City: living support consultation desk"
+          },
+          "url": "https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002056.html"
+        },
+        {
+          "id": "jp-local-13-tokyo-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "東京都社会福祉協議会",
+            "en": "Tokyo Council of Social Welfare"
+          },
+          "nameKana": "とうきょうとしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "東京都社会福祉協議会 公式サイト",
+            "en": "Tokyo Council of Social Welfare: official site"
+          },
+          "url": "https://www.tcsw.tvac.or.jp/"
         }
       ]
     },
@@ -296,6 +953,73 @@
             "en": "Kanagawa: Mental Health and Welfare Center"
           },
           "url": "https://www.pref.kanagawa.jp/docs/nx3/cnt/f531065/p829756.html"
+        },
+        {
+          "id": "jp-pref-14-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "神奈川県「防災・消防」",
+            "en": "Kanagawa: disaster prevention and fire services"
+          },
+          "url": "https://www.pref.kanagawa.jp/menu/1/4/22/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-14-yokohama",
+          "kind": "city",
+          "name": {
+            "ja": "横浜市",
+            "en": "Yokohama City"
+          },
+          "nameKana": "よこはまし",
+          "title": {
+            "ja": "横浜市「生活困窮者自立支援制度」",
+            "en": "Yokohama City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/konnan/seikatsukonkyu.html"
+        },
+        {
+          "id": "jp-local-14-kawasaki",
+          "kind": "city",
+          "name": {
+            "ja": "川崎市",
+            "en": "Kawasaki City"
+          },
+          "nameKana": "かわさきし",
+          "title": {
+            "ja": "川崎市「生活自立・仕事相談センター（だいJOBセンター）」",
+            "en": "Kawasaki City: living and work consultation centre (Dai-JOB Center)"
+          },
+          "url": "https://www.city.kawasaki.jp/350/page/0000055699.html"
+        },
+        {
+          "id": "jp-local-14-sagamihara",
+          "kind": "city",
+          "name": {
+            "ja": "相模原市",
+            "en": "Sagamihara City"
+          },
+          "nameKana": "さがみはらし",
+          "title": {
+            "ja": "相模原市「生活困窮者自立支援制度について」",
+            "en": "Sagamihara City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.sagamihara.kanagawa.jp/kosodate/fukushi/1026642/1006553/index.html"
+        },
+        {
+          "id": "jp-local-14-kanagawa-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "神奈川県社会福祉協議会",
+            "en": "Kanagawa Prefectural Council of Social Welfare"
+          },
+          "nameKana": "かながわけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "神奈川県社会福祉協議会 公式サイト",
+            "en": "Kanagawa Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://knsyk.jp/"
         }
       ]
     },
@@ -321,6 +1045,45 @@
             "en": "Niigata: Mental Health and Welfare Center"
           },
           "url": "https://www.pref.niigata.lg.jp/sec/seishin/1219860089293.html"
+        },
+        {
+          "id": "jp-pref-15-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "新潟県「新潟県防災局のページ」",
+            "en": "Niigata: Niigata Prefecture Disaster Prevention Bureau page"
+          },
+          "url": "https://www.pref.niigata.lg.jp/site/bosai/index-2.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-15-niigata",
+          "kind": "city",
+          "name": {
+            "ja": "新潟市",
+            "en": "Niigata City"
+          },
+          "nameKana": "にいがたし",
+          "title": {
+            "ja": "新潟市「生活困窮者自立支援制度について」",
+            "en": "Niigata City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.niigata.lg.jp/iryo/kenfuku/konkyusyashien/konkyusyashien.html"
+        },
+        {
+          "id": "jp-local-15-niigata-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "新潟県社会福祉協議会",
+            "en": "Niigata Prefectural Council of Social Welfare"
+          },
+          "nameKana": "にいがたけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "新潟県社会福祉協議会 公式サイト",
+            "en": "Niigata Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.fukushiniigata.or.jp/"
         }
       ]
     },
@@ -338,6 +1101,36 @@
           },
           "url": "https://www.pref.toyama.jp/1200/kurashi/kenkou/iryou/kj00017123.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-16-toyama",
+          "kind": "city",
+          "name": {
+            "ja": "富山市",
+            "en": "Toyama City"
+          },
+          "nameKana": "とやまし",
+          "title": {
+            "ja": "富山市「生活困窮者自立支援制度に基づく相談窓口」",
+            "en": "Toyama City: consultation desk under the hardship support system"
+          },
+          "url": "https://www.city.toyama.lg.jp/health/seikatsu_k/1004449.html"
+        },
+        {
+          "id": "jp-local-16-toyama-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "富山県社会福祉協議会",
+            "en": "Toyama Prefectural Council of Social Welfare"
+          },
+          "nameKana": "とやまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "富山県社会福祉協議会 公式サイト",
+            "en": "Toyama Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.toyama-shakyo.or.jp/"
+        }
       ]
     },
     {
@@ -353,6 +1146,22 @@
             "en": "Ishikawa: support for people in financial hardship"
           },
           "url": "https://www.pref.ishikawa.lg.jp/kousei/safetynet/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-17-kanazawa",
+          "kind": "city",
+          "name": {
+            "ja": "金沢市",
+            "en": "Kanazawa City"
+          },
+          "nameKana": "かなざわし",
+          "title": {
+            "ja": "金沢市「暮らしの相談窓口」",
+            "en": "Kanazawa City: guide to everyday-life consultation desks"
+          },
+          "url": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/shiminkyodosuishinka/gyomuannai/1/1_2/1/7840.html"
         }
       ]
     },
@@ -370,6 +1179,36 @@
           },
           "url": "https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-18-fukui",
+          "kind": "city",
+          "name": {
+            "ja": "福井市",
+            "en": "Fukui City"
+          },
+          "nameKana": "ふくいし",
+          "title": {
+            "ja": "福井市「福祉総合相談室よりそい」",
+            "en": "Fukui City: general welfare consultation office 'Yorisoi'"
+          },
+          "url": "https://www.city.fukui.lg.jp/fukusi/tifukusi/seikatu/p020702.html"
+        },
+        {
+          "id": "jp-local-18-fukui-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "福井県社会福祉協議会",
+            "en": "Fukui Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ふくいけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "福井県社会福祉協議会 公式サイト",
+            "en": "Fukui Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.f-shakyo.or.jp/"
+        }
       ]
     },
     {
@@ -385,6 +1224,31 @@
             "en": "Yamanashi: consultation windows for people in financial hardship"
           },
           "url": "https://www.pref.yamanashi.jp/hokensom/jiritsusoudanshien.html"
+        },
+        {
+          "id": "jp-pref-19-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "山梨県「防災危機管理課」",
+            "en": "Yamanashi: Disaster Prevention and Crisis Management Division"
+          },
+          "url": "https://www.pref.yamanashi.jp/bousai/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-19-kofu",
+          "kind": "city",
+          "name": {
+            "ja": "甲府市",
+            "en": "Kofu City"
+          },
+          "nameKana": "こうふし",
+          "title": {
+            "ja": "甲府市「生活困窮者自立支援事業」",
+            "en": "Kofu City: support programme for people in financial hardship"
+          },
+          "url": "https://www.city.kofu.lg.jp/k039/p002974.html"
         }
       ]
     },
@@ -410,6 +1274,45 @@
             "en": "Nagano: Mental Health and Welfare Center (overview)"
           },
           "url": "https://www.pref.nagano.lg.jp/seishin/ourworks.html"
+        },
+        {
+          "id": "jp-pref-20-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "長野県「防災・安全」",
+            "en": "Nagano: disaster prevention and safety"
+          },
+          "url": "https://www.pref.nagano.lg.jp/bosaianzen/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-20-nagano",
+          "kind": "city",
+          "name": {
+            "ja": "長野市",
+            "en": "Nagano City"
+          },
+          "nameKana": "ながのし",
+          "title": {
+            "ja": "長野市「生活困窮者自立支援制度について」（まいさぽ長野市）",
+            "en": "Nagano City: support system for people in financial hardship (Maisapo Nagano)"
+          },
+          "url": "https://www.city.nagano.nagano.jp/soshiki/seikatsushien/107247.html"
+        },
+        {
+          "id": "jp-local-20-nagano-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "長野県社会福祉協議会",
+            "en": "Nagano Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ながのけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "長野県社会福祉協議会 公式サイト（ふれあいネット信州）",
+            "en": "Nagano Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.nsyakyo.or.jp/"
         }
       ]
     },
@@ -426,6 +1329,45 @@
             "en": "Gifu: Regional Welfare Division (livelihood support, consultation desks)"
           },
           "url": "https://www.pref.gifu.lg.jp/soshiki/11219/"
+        },
+        {
+          "id": "jp-pref-21-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "岐阜県「防災」",
+            "en": "Gifu: disaster prevention"
+          },
+          "url": "https://www.pref.gifu.lg.jp/life/1/3/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-21-gifu",
+          "kind": "city",
+          "name": {
+            "ja": "岐阜市",
+            "en": "Gifu City"
+          },
+          "nameKana": "ぎふし",
+          "title": {
+            "ja": "岐阜市「生活困窮者自立支援制度」",
+            "en": "Gifu City: support system for people in financial hardship"
+          },
+          "url": "https://www.city.gifu.lg.jp/kenko/seikathushien/1005026.html"
+        },
+        {
+          "id": "jp-local-21-gifu-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "岐阜県社会福祉協議会",
+            "en": "Gifu Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ぎふけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "岐阜県社会福祉協議会 公式サイト",
+            "en": "Gifu Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.winc.or.jp/"
         }
       ]
     },
@@ -442,6 +1384,59 @@
             "en": "Shizuoka: public assistance and support for people in financial hardship"
           },
           "url": "https://www.pref.shizuoka.jp/kenkofukushi/shakaifukushi/seikatsuhogo/index.html"
+        },
+        {
+          "id": "jp-pref-22-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "静岡県「防災・緊急情報」",
+            "en": "Shizuoka: disaster prevention and emergency information"
+          },
+          "url": "https://www.pref.shizuoka.jp/bosaikinkyu/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-22-shizuoka",
+          "kind": "city",
+          "name": {
+            "ja": "静岡市",
+            "en": "Shizuoka City"
+          },
+          "nameKana": "しずおかし",
+          "title": {
+            "ja": "静岡市「暮らし・しごと相談支援センター」",
+            "en": "Shizuoka City: living and work consultation support centre"
+          },
+          "url": "https://www.city.shizuoka.lg.jp/000_003097.html"
+        },
+        {
+          "id": "jp-local-22-hamamatsu",
+          "kind": "city",
+          "name": {
+            "ja": "浜松市",
+            "en": "Hamamatsu City"
+          },
+          "nameKana": "はままつし",
+          "title": {
+            "ja": "浜松市「生活困窮者自立支援」（生活自立相談支援センターつながり）",
+            "en": "Hamamatsu City: support for people in financial hardship (Tsunagari centres)"
+          },
+          "url": "https://www.city.hamamatsu.shizuoka.jp/fukushisomu/bid/tsunagari.html"
+        },
+        {
+          "id": "jp-local-22-shizuoka-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "静岡県社会福祉協議会",
+            "en": "Shizuoka Prefectural Council of Social Welfare"
+          },
+          "nameKana": "しずおかけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "静岡県社会福祉協議会 公式サイト",
+            "en": "Shizuoka Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.shizuoka-wel.jp/"
         }
       ]
     },
@@ -458,6 +1453,45 @@
             "en": "Aichi: support system for people in financial hardship"
           },
           "url": "https://www.pref.aichi.jp/soshiki/chiikifukushi/seikatsukonkyu.html"
+        },
+        {
+          "id": "jp-pref-23-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "愛知県「愛知県の災害関連情報ポータルサイト」",
+            "en": "Aichi: disaster-related information portal"
+          },
+          "url": "https://www.pref.aichi.jp/site/aichisaigai-portal/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-23-nagoya",
+          "kind": "city",
+          "name": {
+            "ja": "名古屋市",
+            "en": "Nagoya City"
+          },
+          "nameKana": "なごやし",
+          "title": {
+            "ja": "名古屋市「仕事・暮らし自立サポートセンター」",
+            "en": "Nagoya City: work and living self-reliance support centres"
+          },
+          "url": "https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016739.html"
+        },
+        {
+          "id": "jp-local-23-aichi-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "愛知県社会福祉協議会",
+            "en": "Aichi Prefectural Council of Social Welfare"
+          },
+          "nameKana": "あいちけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "愛知県社会福祉協議会 公式サイト",
+            "en": "Aichi Prefectural Council of Social Welfare: official site"
+          },
+          "url": "https://www.aichi-fukushi.or.jp/"
         }
       ]
     },
@@ -474,6 +1508,45 @@
             "en": "Mie: consultation windows for people in financial hardship"
           },
           "url": "https://www.pref.mie.lg.jp/FUKUSHI/HP/88169000001.htm"
+        },
+        {
+          "id": "jp-pref-24-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "三重県「防災・緊急情報」",
+            "en": "Mie: disaster prevention and emergency information"
+          },
+          "url": "https://www.pref.mie.lg.jp/s_bosai/bosai/index.htm"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-24-tsu",
+          "kind": "city",
+          "name": {
+            "ja": "津市",
+            "en": "Tsu City"
+          },
+          "nameKana": "つし",
+          "title": {
+            "ja": "津市「生活にお困りの人へ（生活困窮者自立支援）」",
+            "en": "Tsu City: support for people in financial hardship"
+          },
+          "url": "https://www.info.city.tsu.mie.jp/fukushi_kenkou/seikatsushienn/1003206.html"
+        },
+        {
+          "id": "jp-local-24-mie-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "三重県社会福祉協議会",
+            "en": "Mie Prefectural Council of Social Welfare"
+          },
+          "nameKana": "みえけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "三重県社会福祉協議会「トップページ」",
+            "en": "Mie Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.miewel-1.com/"
         }
       ]
     },
@@ -499,6 +1572,45 @@
             "en": "Shiga: Prefectural Mental Health and Welfare Center"
           },
           "url": "https://www.pref.shiga.lg.jp/seishinhoken/index.html"
+        },
+        {
+          "id": "jp-pref-25-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "滋賀県「防災・危機管理」",
+            "en": "Shiga: disaster prevention and crisis management"
+          },
+          "url": "https://www.pref.shiga.lg.jp/menu/25612.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-25-otsu",
+          "kind": "city",
+          "name": {
+            "ja": "大津市",
+            "en": "Otsu City"
+          },
+          "nameKana": "おおつし",
+          "title": {
+            "ja": "大津市「生活困窮者自立支援制度」",
+            "en": "Otsu City: support for people in financial hardship"
+          },
+          "url": "https://www.city.otsu.lg.jp/soshiki/020/1405/g/s/1427609467452.html"
+        },
+        {
+          "id": "jp-local-25-shiga-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "滋賀県社会福祉協議会",
+            "en": "Shiga Prefectural Council of Social Welfare"
+          },
+          "nameKana": "しがけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "滋賀県社会福祉協議会「トップページ」",
+            "en": "Shiga Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.shigashakyo.jp/"
         }
       ]
     },
@@ -515,6 +1627,45 @@
             "en": "Kyoto: support system for people struggling to make ends meet"
           },
           "url": "https://www.pref.kyoto.jp/ss-shien/seikatukonkyusya1.html"
+        },
+        {
+          "id": "jp-pref-26-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "京都府「防災・防犯・安心・安全」",
+            "en": "Kyoto: disaster prevention, crime prevention and safety"
+          },
+          "url": "https://www.pref.kyoto.jp/kurashi/bosai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-26-kyoto",
+          "kind": "city",
+          "name": {
+            "ja": "京都市",
+            "en": "Kyoto City"
+          },
+          "nameKana": "きょうとし",
+          "title": {
+            "ja": "京都市「生活困窮者自立支援制度」",
+            "en": "Kyoto City: support for people in financial hardship"
+          },
+          "url": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000282954.html"
+        },
+        {
+          "id": "jp-local-26-kyoto-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "京都府社会福祉協議会",
+            "en": "Kyoto Prefectural Council of Social Welfare"
+          },
+          "nameKana": "きょうとふしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "京都府社会福祉協議会「トップページ」",
+            "en": "Kyoto Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.kyoshakyo.or.jp/"
         }
       ]
     },
@@ -531,6 +1682,45 @@
             "en": "Osaka: support system for people in hardship and where to consult"
           },
           "url": "https://www.pref.osaka.lg.jp/o090020/shakaiengo/seikon_gaiyou/index.html"
+        },
+        {
+          "id": "jp-pref-27-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "大阪府「防災」",
+            "en": "Osaka: disaster prevention"
+          },
+          "url": "https://www.pref.osaka.lg.jp/kurashi/bousai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-27-osaka",
+          "kind": "city",
+          "name": {
+            "ja": "大阪市",
+            "en": "Osaka City"
+          },
+          "nameKana": "おおさかし",
+          "title": {
+            "ja": "大阪市「生活にお困りの方へ（自立相談支援）」",
+            "en": "Osaka City: support for people in financial hardship"
+          },
+          "url": "https://www.city.osaka.lg.jp/fukushi/page/0000303608.html"
+        },
+        {
+          "id": "jp-local-27-sakai",
+          "kind": "city",
+          "name": {
+            "ja": "堺市",
+            "en": "Sakai City"
+          },
+          "nameKana": "さかいし",
+          "title": {
+            "ja": "堺市「生活困窮者自立相談支援事業」",
+            "en": "Sakai City: support for people in financial hardship"
+          },
+          "url": "https://www.city.sakai.lg.jp/kenko/fukushikaigo/seikatsuhogo/df_filename_290407143532935.html"
         }
       ]
     },
@@ -547,6 +1737,31 @@
             "en": "Hyogo: support system for people struggling to make ends meet"
           },
           "url": "https://web.pref.hyogo.lg.jp/kf03/seikatsukonkyu.html"
+        },
+        {
+          "id": "jp-pref-28-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "兵庫県「兵庫県防災気象情報」",
+            "en": "Hyogo: disaster and weather information"
+          },
+          "url": "https://web.pref.hyogo.lg.jp/kk40/pa21_000000001.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-28-kobe",
+          "kind": "city",
+          "name": {
+            "ja": "神戸市",
+            "en": "Kobe City"
+          },
+          "nameKana": "こうべし",
+          "title": {
+            "ja": "神戸市「生活にお困りの方への相談窓口」",
+            "en": "Kobe City: consultation desks for people in financial hardship"
+          },
+          "url": "https://www.city.kobe.lg.jp/a38463/kenko/chiikifukushi/sekatsukonkyusha/gaiyou.html"
         }
       ]
     },
@@ -564,6 +1779,36 @@
           },
           "url": "https://www.pref.nara.lg.jp/n063/39628.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-29-nara",
+          "kind": "city",
+          "name": {
+            "ja": "奈良市",
+            "en": "Nara City"
+          },
+          "nameKana": "ならし",
+          "title": {
+            "ja": "奈良市「くらしとしごとサポートセンター」",
+            "en": "Nara City: living and work support centre for people in hardship"
+          },
+          "url": "https://www.city.nara.lg.jp/soshiki/33/10425.html"
+        },
+        {
+          "id": "jp-local-29-nara-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "奈良県社会福祉協議会",
+            "en": "Nara Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ならけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "奈良県社会福祉協議会「トップページ」",
+            "en": "Nara Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://nara-shakyo.jp/"
+        }
       ]
     },
     {
@@ -579,6 +1824,45 @@
             "en": "Wakayama: hardship support system with a list of consultation windows"
           },
           "url": "https://www.pref.wakayama.lg.jp/prefg/040100/seikatukonkyu/seikatukonkyu.html"
+        },
+        {
+          "id": "jp-pref-30-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "和歌山県「防災企画課」",
+            "en": "Wakayama: Disaster Prevention Planning Division (evacuation and hazard info)"
+          },
+          "url": "https://www.pref.wakayama.lg.jp/prefg/011400/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-30-wakayama",
+          "kind": "city",
+          "name": {
+            "ja": "和歌山市",
+            "en": "Wakayama City"
+          },
+          "nameKana": "わかやまし",
+          "title": {
+            "ja": "和歌山市「生活困窮者自立支援制度」",
+            "en": "Wakayama City: support for people in financial hardship"
+          },
+          "url": "https://www.city.wakayama.wakayama.jp/kurashi/kourei_kaigo/1007728/1013322/1001737.html"
+        },
+        {
+          "id": "jp-local-30-wakayama-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "和歌山県社会福祉協議会",
+            "en": "Wakayama Prefectural Council of Social Welfare"
+          },
+          "nameKana": "わかやまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "和歌山県社会福祉協議会「トップページ」",
+            "en": "Wakayama Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.wakayama-wel.jp/"
         }
       ]
     },
@@ -604,6 +1888,45 @@
             "en": "Tottori: Prefectural Mental Health and Welfare Center"
           },
           "url": "https://www.pref.tottori.lg.jp/seishincenter/"
+        },
+        {
+          "id": "jp-pref-31-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "鳥取県「鳥取県の危機管理」",
+            "en": "Tottori: crisis management and disaster information"
+          },
+          "url": "https://www.pref.tottori.lg.jp/kikikanrihp/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-31-tottori",
+          "kind": "city",
+          "name": {
+            "ja": "鳥取市",
+            "en": "Tottori City"
+          },
+          "nameKana": "とっとりし",
+          "title": {
+            "ja": "鳥取市「困りごと相談（パーソナルサポートセンター）」",
+            "en": "Tottori City: everyday-difficulty consultation (Personal Support Center)"
+          },
+          "url": "https://www.city.tottori.lg.jp/page/2031.html"
+        },
+        {
+          "id": "jp-local-31-tottori-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "鳥取県社会福祉協議会",
+            "en": "Tottori Prefectural Council of Social Welfare"
+          },
+          "nameKana": "とっとりけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "鳥取県社会福祉協議会「トップページ」",
+            "en": "Tottori Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.tottori-wel.or.jp/"
         }
       ]
     },
@@ -629,6 +1952,45 @@
             "en": "Shimane: Mind and Body Consultation Center"
           },
           "url": "https://www.pref.shimane.lg.jp/admin/pref/soshiki/kenko/kokoro.html"
+        },
+        {
+          "id": "jp-pref-32-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "島根県「防災・安全」",
+            "en": "Shimane: disaster prevention and safety"
+          },
+          "url": "https://www.pref.shimane.lg.jp/bousai_info/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-32-matsue",
+          "kind": "city",
+          "name": {
+            "ja": "松江市",
+            "en": "Matsue City"
+          },
+          "nameKana": "まつえし",
+          "title": {
+            "ja": "松江市「くらし相談支援センター」",
+            "en": "Matsue City: living consultation support centre"
+          },
+          "url": "https://www.city.matsue.lg.jp/soshikikarasagasu/kenkofukushibu_seikatsufukushika/seikatsukonkyushajiritsushienseido/2003.html"
+        },
+        {
+          "id": "jp-local-32-shimane-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "島根県社会福祉協議会",
+            "en": "Shimane Prefectural Council of Social Welfare"
+          },
+          "nameKana": "しまねけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "島根県社会福祉協議会「トップページ」",
+            "en": "Shimane Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.fukushi-shimane.or.jp/"
         }
       ]
     },
@@ -645,6 +2007,45 @@
             "en": "Okayama: consultation offices for people in financial hardship"
           },
           "url": "https://www.pref.okayama.jp/page/689589.html"
+        },
+        {
+          "id": "jp-pref-33-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "岡山県「いざという時のために」",
+            "en": "Okayama: be prepared for emergencies (crisis management division)"
+          },
+          "url": "https://www.pref.okayama.jp/page/detail-10903.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-33-okayama",
+          "kind": "city",
+          "name": {
+            "ja": "岡山市",
+            "en": "Okayama City"
+          },
+          "nameKana": "おかやまし",
+          "title": {
+            "ja": "岡山市「生活困窮者自立相談支援事業」",
+            "en": "Okayama City: support for people in financial hardship"
+          },
+          "url": "https://www.city.okayama.jp/kurashi/0000003692.html"
+        },
+        {
+          "id": "jp-local-33-okayama-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "岡山県社会福祉協議会",
+            "en": "Okayama Prefectural Council of Social Welfare"
+          },
+          "nameKana": "おかやまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "岡山県社会福祉協議会「トップページ」",
+            "en": "Okayama Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.fukushiokayama.or.jp/"
         }
       ]
     },
@@ -670,6 +2071,45 @@
             "en": "Hiroshima: Prefectural General Mental Health and Welfare Center"
           },
           "url": "https://www.pref.hiroshima.lg.jp/site/pareamoa/index.html"
+        },
+        {
+          "id": "jp-pref-34-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "広島県「防災・安全」",
+            "en": "Hiroshima: disaster prevention and safety"
+          },
+          "url": "https://www.pref.hiroshima.lg.jp/life/3/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-34-hiroshima",
+          "kind": "city",
+          "name": {
+            "ja": "広島市",
+            "en": "Hiroshima City"
+          },
+          "nameKana": "ひろしまし",
+          "title": {
+            "ja": "広島市「くらしサポートセンター」",
+            "en": "Hiroshima City: living support centre for people in hardship"
+          },
+          "url": "https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021955.html"
+        },
+        {
+          "id": "jp-local-34-hiroshima-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "広島県社会福祉協議会",
+            "en": "Hiroshima Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ひろしまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "広島県社会福祉協議会「トップページ」",
+            "en": "Hiroshima Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.hiroshima-fukushi.net/"
         }
       ]
     },
@@ -687,6 +2127,36 @@
           },
           "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-35-yamaguchi",
+          "kind": "city",
+          "name": {
+            "ja": "山口市",
+            "en": "Yamaguchi City"
+          },
+          "nameKana": "やまぐちし",
+          "title": {
+            "ja": "山口市「生活困窮者自立支援制度」",
+            "en": "Yamaguchi City: support for people in financial hardship"
+          },
+          "url": "https://www.city.yamaguchi.lg.jp/soshiki/54/83005.html"
+        },
+        {
+          "id": "jp-local-35-yamaguchi-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "山口県社会福祉協議会",
+            "en": "Yamaguchi Prefectural Council of Social Welfare"
+          },
+          "nameKana": "やまぐちけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "山口県社会福祉協議会「トップページ」",
+            "en": "Yamaguchi Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.yamaguchikensyakyo.jp/"
+        }
       ]
     },
     {
@@ -702,6 +2172,36 @@
             "en": "Tokushima: consultation on public assistance and support for people in hardship"
           },
           "url": "https://www.pref.tokushima.lg.jp/ippannokata/kenko/chiikifukushi/7245697/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-36-tokushima",
+          "kind": "city",
+          "name": {
+            "ja": "徳島市",
+            "en": "Tokushima City"
+          },
+          "nameKana": "とくしまし",
+          "title": {
+            "ja": "徳島市「さまざまな悩みの相談窓口一覧」",
+            "en": "Tokushima City: list of consultation desks (incl. financial hardship)"
+          },
+          "url": "https://www.city.tokushima.tokushima.jp/smph/kenko_fukushi/chiiki_fukushi/200100a20210331.html"
+        },
+        {
+          "id": "jp-local-36-tokushima-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "徳島県社会福祉協議会",
+            "en": "Tokushima Prefectural Council of Social Welfare"
+          },
+          "nameKana": "とくしまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "徳島県社会福祉協議会「トップページ」",
+            "en": "Tokushima Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://fukushi-tokushima.or.jp/"
         }
       ]
     },
@@ -727,6 +2227,45 @@
             "en": "Kagawa: Mental Health and Welfare Center"
           },
           "url": "https://www.pref.kagawa.lg.jp/seishinhoken/seishinhoken/center.html"
+        },
+        {
+          "id": "jp-pref-37-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "香川県「防災・安全」",
+            "en": "Kagawa: disaster prevention and safety"
+          },
+          "url": "https://www.pref.kagawa.lg.jp/bosai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-37-takamatsu",
+          "kind": "city",
+          "name": {
+            "ja": "高松市",
+            "en": "Takamatsu City"
+          },
+          "nameKana": "たかまつし",
+          "title": {
+            "ja": "高松市「生活困窮者自立支援事業」",
+            "en": "Takamatsu City: support for people in financial hardship"
+          },
+          "url": "https://www.city.takamatsu.kagawa.jp/kurashi/kenkou/seikatsuhogo/jiritsushien.html"
+        },
+        {
+          "id": "jp-local-37-kagawa-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "香川県社会福祉協議会",
+            "en": "Kagawa Prefectural Council of Social Welfare"
+          },
+          "nameKana": "かがわけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "香川県社会福祉協議会「トップページ」",
+            "en": "Kagawa Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.kagawakenshakyo.or.jp/"
         }
       ]
     },
@@ -744,6 +2283,36 @@
           },
           "url": "https://www.pref.ehime.jp/page/14914.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-38-matsuyama",
+          "kind": "city",
+          "name": {
+            "ja": "松山市",
+            "en": "Matsuyama City"
+          },
+          "nameKana": "まつやまし",
+          "title": {
+            "ja": "松山市「自立相談支援窓口」",
+            "en": "Matsuyama City: consultation desk for people in financial hardship"
+          },
+          "url": "https://www.city.matsuyama.ehime.jp/kurashi/fukushi/shakai/ziritsushien/seikonn14.html"
+        },
+        {
+          "id": "jp-local-38-ehime-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "愛媛県社会福祉協議会",
+            "en": "Ehime Prefectural Council of Social Welfare"
+          },
+          "nameKana": "えひめけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "愛媛県社会福祉協議会「トップページ」",
+            "en": "Ehime Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://ehime-shakyo.or.jp/"
+        }
       ]
     },
     {
@@ -760,6 +2329,36 @@
           },
           "url": "https://www.pref.kochi.lg.jp/doc/konnannanayamisoudan/"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-39-kochi",
+          "kind": "city",
+          "name": {
+            "ja": "高知市",
+            "en": "Kochi City"
+          },
+          "nameKana": "こうちし",
+          "title": {
+            "ja": "高知市「困窮者自立支援制度（生活支援相談センター）」",
+            "en": "Kochi City: support for people in financial hardship"
+          },
+          "url": "https://www.city.kochi.kochi.jp/soshiki/30/shien2.html"
+        },
+        {
+          "id": "jp-local-39-kochi-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "高知県社会福祉協議会",
+            "en": "Kochi Prefectural Council of Social Welfare"
+          },
+          "nameKana": "こうちけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "高知県社会福祉協議会「トップページ」",
+            "en": "Kochi Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.kochiken-shakyo.or.jp/"
+        }
       ]
     },
     {
@@ -775,6 +2374,45 @@
             "en": "Fukuoka: consult about everyday hardship (livelihood support system)"
           },
           "url": "https://www.pref.fukuoka.lg.jp/contents/seikatukonkyuusyajiritusiennseido.html"
+        },
+        {
+          "id": "jp-pref-40-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "福岡県「防災・国民保護」",
+            "en": "Fukuoka: disaster prevention and civil protection"
+          },
+          "url": "https://www.pref.fukuoka.lg.jp/life/1/1/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-40-fukuoka",
+          "kind": "city",
+          "name": {
+            "ja": "福岡市",
+            "en": "Fukuoka City"
+          },
+          "nameKana": "ふくおかし",
+          "title": {
+            "ja": "福岡市「生活自立支援センター（生活困窮者自立支援）」",
+            "en": "Fukuoka City: support for people in financial hardship"
+          },
+          "url": "https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/life/seikatsuniokomarinokata_2_2.html"
+        },
+        {
+          "id": "jp-local-40-kitakyushu",
+          "kind": "city",
+          "name": {
+            "ja": "北九州市",
+            "en": "Kitakyushu City"
+          },
+          "nameKana": "きたきゅうしゅうし",
+          "title": {
+            "ja": "北九州市「生活困窮者自立支援事業」",
+            "en": "Kitakyushu City: support for people in financial hardship"
+          },
+          "url": "https://www.city.kitakyushu.lg.jp/contents/16500062.html"
         }
       ]
     },
@@ -791,6 +2429,45 @@
             "en": "Saga: consultation windows for people facing hardship in daily life"
           },
           "url": "https://www.pref.saga.lg.jp/kiji00310113/index.html"
+        },
+        {
+          "id": "jp-pref-41-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "佐賀県「防災･減災さが」",
+            "en": "Saga: Bosai Gensai Saga disaster information portal"
+          },
+          "url": "https://www.pref.saga.lg.jp/bousai/default.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-41-saga",
+          "kind": "city",
+          "name": {
+            "ja": "佐賀市",
+            "en": "Saga City"
+          },
+          "nameKana": "さがし",
+          "title": {
+            "ja": "佐賀市「生活自立支援センター」",
+            "en": "Saga City: livelihood self-reliance support centre"
+          },
+          "url": "https://www.city.saga.lg.jp/kenko-fukushi/fukushi/7/3849.html"
+        },
+        {
+          "id": "jp-local-41-saga-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "佐賀県社会福祉協議会",
+            "en": "Saga Prefectural Council of Social Welfare"
+          },
+          "nameKana": "さがけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "佐賀県社会福祉協議会「トップページ」",
+            "en": "Saga Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.sagaken-shakyo.or.jp/"
         }
       ]
     },
@@ -808,6 +2485,36 @@
           },
           "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/shakaihukushi/hogo-jiritsu/495589.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-42-nagasaki",
+          "kind": "city",
+          "name": {
+            "ja": "長崎市",
+            "en": "Nagasaki City"
+          },
+          "nameKana": "ながさきし",
+          "title": {
+            "ja": "長崎市「生活支援相談センター」",
+            "en": "Nagasaki City: living support consultation centre"
+          },
+          "url": "https://www.city.nagasaki.lg.jp/page/3431.html"
+        },
+        {
+          "id": "jp-local-42-nagasaki-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "長崎県社会福祉協議会",
+            "en": "Nagasaki Prefectural Council of Social Welfare"
+          },
+          "nameKana": "ながさきけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "長崎県社会福祉協議会「トップページ」",
+            "en": "Nagasaki Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://nagasaki-pref-shakyo.jp/"
+        }
       ]
     },
     {
@@ -823,6 +2530,45 @@
             "en": "Kumamoto: consultation windows for people struggling to get by"
           },
           "url": "https://www.pref.kumamoto.jp/soshiki/34/50796.html"
+        },
+        {
+          "id": "jp-pref-43-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "熊本県「災害・防災・危機管理」",
+            "en": "Kumamoto: disasters, disaster prevention and crisis management"
+          },
+          "url": "https://www.pref.kumamoto.jp/life/1/2/"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-43-kumamoto",
+          "kind": "city",
+          "name": {
+            "ja": "熊本市",
+            "en": "Kumamoto City"
+          },
+          "nameKana": "くまもとし",
+          "title": {
+            "ja": "熊本市「生活自立支援センター」",
+            "en": "Kumamoto City: livelihood self-reliance support centres"
+          },
+          "url": "https://www.city.kumamoto.jp/kiji00311997/index.html"
+        },
+        {
+          "id": "jp-local-43-kumamoto-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "熊本県社会福祉協議会",
+            "en": "Kumamoto Prefectural Council of Social Welfare"
+          },
+          "nameKana": "くまもとけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "熊本県社会福祉協議会「トップページ」",
+            "en": "Kumamoto Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.fukushi-kumamoto.or.jp/"
         }
       ]
     },
@@ -840,6 +2586,36 @@
           },
           "url": "https://www.pref.oita.jp/soshiki/12000/seikatsukonkyu.html"
         }
+      ],
+      "local": [
+        {
+          "id": "jp-local-44-oita",
+          "kind": "city",
+          "name": {
+            "ja": "大分市",
+            "en": "Oita City"
+          },
+          "nameKana": "おおいたし",
+          "title": {
+            "ja": "大分市「自立生活支援センター（生活の相談）」",
+            "en": "Oita City: consultation on living worries and hardship"
+          },
+          "url": "https://www.city.oita.oita.jp/o090/kenko/fukushi/1491814356278.html"
+        },
+        {
+          "id": "jp-local-44-oita-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "大分県社会福祉協議会",
+            "en": "Oita Prefectural Council of Social Welfare"
+          },
+          "nameKana": "おおいたけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "大分県社会福祉協議会「トップページ」",
+            "en": "Oita Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.oitakensyakyo.jp/"
+        }
       ]
     },
     {
@@ -855,6 +2631,22 @@
             "en": "Miyazaki: special support site for people in financial hardship"
           },
           "url": "https://www.pref.miyazaki.lg.jp/mina-terasu/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-45-miyazaki",
+          "kind": "city",
+          "name": {
+            "ja": "宮崎市",
+            "en": "Miyazaki City"
+          },
+          "nameKana": "みやざきし",
+          "title": {
+            "ja": "宮崎市「自立相談支援センター“これから”」",
+            "en": "Miyazaki City: consultation centre for people in financial hardship"
+          },
+          "url": "https://www.city.miyazaki.miyazaki.jp/health/welfare/protection/267674.html"
         }
       ]
     },
@@ -880,6 +2672,45 @@
             "en": "Kagoshima: Mental Health and Welfare Center"
           },
           "url": "https://www.pref.kagoshima.jp/ae14/kagoshima-mhwc.html"
+        },
+        {
+          "id": "jp-pref-46-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "鹿児島県「かごしま防災ポータル」",
+            "en": "Kagoshima: Kagoshima disaster prevention portal"
+          },
+          "url": "https://www.pref.kagoshima.jp/bosai/saigai/bousaiportal.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-46-kagoshima",
+          "kind": "city",
+          "name": {
+            "ja": "鹿児島市",
+            "en": "Kagoshima City"
+          },
+          "nameKana": "かごしまし",
+          "title": {
+            "ja": "鹿児島市「生活自立支援センター」",
+            "en": "Kagoshima City: livelihood self-reliance support centre"
+          },
+          "url": "https://www.city.kagoshima.lg.jp/kenkofukushi/fukushi/hogo1/kenko/fukushi/hogo/jiritu.html"
+        },
+        {
+          "id": "jp-local-46-kagoshima-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "鹿児島県社会福祉協議会",
+            "en": "Kagoshima Prefectural Council of Social Welfare"
+          },
+          "nameKana": "かごしまけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "鹿児島県社会福祉協議会「トップページ」",
+            "en": "Kagoshima Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.kaken-shakyo.jp/"
         }
       ]
     },
@@ -905,6 +2736,45 @@
             "en": "Okinawa: list of self-reliance support consultation centres"
           },
           "url": "https://www.pref.okinawa.lg.jp/kyoiku/seikatufukushi/1007920/1033704.html"
+        },
+        {
+          "id": "jp-pref-47-bousai",
+          "role": "bousai",
+          "title": {
+            "ja": "沖縄県「防災」",
+            "en": "Okinawa: disaster prevention"
+          },
+          "url": "https://www.pref.okinawa.jp/bosaianzen/bosai/index.html"
+        }
+      ],
+      "local": [
+        {
+          "id": "jp-local-47-naha",
+          "kind": "city",
+          "name": {
+            "ja": "那覇市",
+            "en": "Naha City"
+          },
+          "nameKana": "なはし",
+          "title": {
+            "ja": "那覇市「生活困窮者自立支援制度」",
+            "en": "Naha City: support for people in financial hardship"
+          },
+          "url": "https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003475.html"
+        },
+        {
+          "id": "jp-local-47-okinawa-prefectural-shakyo",
+          "kind": "shakyo",
+          "name": {
+            "ja": "沖縄県社会福祉協議会",
+            "en": "Okinawa Prefectural Council of Social Welfare"
+          },
+          "nameKana": "おきなわけんしゃかいふくしきょうぎかい",
+          "title": {
+            "ja": "沖縄県社会福祉協議会「トップページ」",
+            "en": "Okinawa Prefectural Council of Social Welfare: home page"
+          },
+          "url": "https://www.okishakyo.or.jp/"
         }
       ]
     }

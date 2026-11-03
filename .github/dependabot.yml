@@ -6,3 +6,6 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 3
+    # 新しい版が出てから7日たってから知らせる（乗っ取られた版が出回る期間を避けるため。GitHub Docs「Optimizing PR creation for version updates」の cooldown）
+    cooldown:
+      default-days: 7

@@ -367,6 +367,132 @@
       "ids": [
         "welfare-2026-uk-hbai-children-fye2025"
       ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "情報の性質（統計・試算や推計・速報値や暫定値）の表示を、原典の種類を確かめて追加（独立した監査は未実施）",
+        "en": "Added the nature label (statistics, estimate, preliminary) after checking the type of each source (independent audit pending)"
+      },
+      "ids": [
+        "crime-2026-aus-nasc-q1-2026",
+        "crime-2026-can-fraud-trends-h1",
+        "crime-2026-gbr-crime-survey-fraud",
+        "crime-2026-gbr-payment-diversion-fraud",
+        "crime-2026-jpn-fsa-investment-fraud-q2",
+        "crime-2026-jpn-ipa-anshin-q2",
+        "crime-2026-jpn-nagoya-special-fraud-h1",
+        "crime-2026-jpn-tokushu-sagi-august",
+        "crime-2026-sgp-scam-cybercrime-h1",
+        "crime-2026-usa-ftc-imposter-2025",
+        "disaster-2026-col-earthquake-damage",
+        "disaster-2026-jpn-chiba-heavy-rain",
+        "disaster-2026-jpn-june-heavy-rain-agri",
+        "disaster-2026-jpn-kumamoto-earthquake-damage",
+        "disaster-2026-jpn-typhoon-13",
+        "disaster-2026-jpn-typhoon-18",
+        "disaster-2026-jpn-typhoon-25-damage",
+        "disaster-2026-phl-monsoon-luis-maymay",
+        "mental-2026-cdc-yrbs-unmet-need",
+        "mental-2026-ilo-psychosocial-risks",
+        "mental-2026-jpn-labour-safety-survey",
+        "mental-2026-jpn-loneliness-survey-r7",
+        "mental-2026-jpn-workers-comp-mental",
+        "research-2025-glass-amr-report-2025",
+        "research-2025-who-world-malaria-report",
+        "research-2026-global-immunization-wuenic-2025",
+        "research-2026-indonesia-immunization-2025",
+        "research-2026-uk-espaur-2024-2025",
+        "welfare-2025-india-social-protection-coverage",
+        "welfare-2026-canada-income-survey-2024",
+        "welfare-2026-germany-poverty-risk",
+        "welfare-2026-ireland-silc-2025",
+        "welfare-2026-japan-ageing-society-white-paper",
+        "welfare-2026-jpn-comprehensive-survey-living",
+        "welfare-2026-jpn-public-assistance-fy2024",
+        "welfare-2026-mexico-multidimensional-poverty",
+        "welfare-2026-south-africa-social-grants",
+        "welfare-2026-uk-child-poverty-projections",
+        "welfare-2026-uk-households-below-average-income",
+        "welfare-2026-us-poverty-2025"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "予防接種の3件で「ワクチンを1回も受けていない」を、WHOの指標の定義（最初のDTPワクチンを受けていない＝ゼロドーズ）に合わせて書き直し（独立した監査の指摘による）",
+        "en": "Reworded three immunization items to match the WHO indicator definition of zero-dose children (no first DTP dose), following an independent audit"
+      },
+      "ids": [
+        "research-2026-global-immunization-wuenic-2025",
+        "research-2026-india-immunization-2025",
+        "research-2026-indonesia-immunization-2025"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "2026年10月の公的機関の発表から、セキュリティ更新の注意喚起と防犯の注意喚起を追加（調査担当のAIが原典を開いて数値・日付を確認。独立した監査は未実施）",
+        "en": "Added a security update alert and crime-prevention warnings from October 2026 official releases (figures and dates checked against the originals; independent audit pending)"
+      },
+      "ids": [
+        "research-2026-siteguard-server-update-advisory",
+        "crime-2026-jpn-seafood-phone-sales",
+        "crime-2026-jpn-npa-data-leak-fake-email"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "2026年9〜11月の公的機関の発表から、研究と対策・こころと福祉・防災・防犯の情報を追加（調査担当のAIが原典を開いて数値・日付を確認。独立した監査は未実施）",
+        "en": "Added research, mental health and welfare, disaster and crime items from September–November 2026 official releases (checked against the originals; independent audit pending)"
+      },
+      "ids": [
+        "research-2026-barbados-emtct-hiv",
+        "research-2026-japan-disaster-agency-launch",
+        "research-2026-uk-mhra-strategy-2030-ai",
+        "welfare-2026-japan-public-assistance-july",
+        "welfare-2026-uk-opinions-cost-of-living-aug",
+        "welfare-2026-usa-health-insurance-coverage-2025",
+        "mental-2026-japan-suicide-aug-provisional",
+        "disaster-2026-jpn-heatstroke-transport-september",
+        "disaster-2026-jpn-typhoon-30-damage",
+        "disaster-2026-jpn-heavy-rain-october-21",
+        "disaster-2026-gtm-rainy-season-emergencies",
+        "disaster-2026-pan-earthquake-damage",
+        "disaster-2026-mex-disturbance-90e-floods",
+        "crime-2026-usa-ftc-older-adults-report",
+        "crime-2026-usa-ftc-imposter-scams-efforts",
+        "crime-2026-jpn-npa-malicious-app-transfers"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "独立した監査の指摘により3件の文を修正（インドの予防接種の95%の対象、バルバドスの「公衆衛生上の問題として」の限定、防災庁は発足日の決定の発表であること）",
+        "en": "Revised three items after an independent audit: what the 95% in India refers to, the \"public health problem\" qualifier for Barbados, and that the agency item reports a decided launch date"
+      },
+      "ids": [
+        "research-2026-barbados-emtct-hiv",
+        "research-2026-india-immunization-2025",
+        "research-2026-japan-disaster-agency-launch"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "SiteGuard の更新の注意喚起に、更新前に痕跡を保全する案内を追記（独立した監査の指摘。原典で確認）",
+        "en": "Added the advice to preserve traces before updating to the SiteGuard alert (independent audit; checked against the original)"
+      },
+      "ids": [
+        "research-2026-siteguard-server-update-advisory"
+      ]
     }
   ]
 }

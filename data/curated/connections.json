@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-03",
+  "themes": [
+    {
+      "id": "child-poverty-statistics",
+      "title": {
+        "ja": "子どもの貧困の統計",
+        "en": "Statistics on child poverty"
+      },
+      "summary": {
+        "ja": "各国の政府や国際機関が公表した、子どもの貧困に関する統計・試算です。",
+        "en": "Statistics and projections on child poverty published by governments and international organisations."
+      },
+      "note": {
+        "ja": "貧困の定義（相対的貧困・多次元貧困など）や調査年は国ごとに違うため、数字をそのまま比べることはできません。",
+        "en": "Definitions of poverty (relative, multidimensional and so on) and survey years differ by country, so the figures cannot be compared directly."
+      },
+      "items": [
+        "welfare-2026-unicef-report-card-20",
+        "welfare-2026-jpn-comprehensive-survey-living",
+        "welfare-2026-us-poverty-2025",
+        "welfare-2026-uk-households-below-average-income",
+        "welfare-2026-uk-child-poverty-projections",
+        "welfare-2026-argentina-unicef-child-poverty"
+      ]
+    },
+    {
+      "id": "poverty-statistics",
+      "title": {
+        "ja": "貧困と暮らしの統計（大人も含む全体）",
+        "en": "Poverty and living conditions statistics (whole population)"
+      },
+      "summary": {
+        "ja": "各国の政府が公表した、大人も含む人口全体の貧困や生活の状況に関する統計です。",
+        "en": "Statistics published by governments on poverty and living conditions for the whole population, including adults."
+      },
+      "note": {
+        "ja": "貧困の定義（相対的貧困・公式の貧困線・多次元貧困など）や調査年は国ごとに違うため、数字をそのまま比べることはできません。",
+        "en": "Definitions of poverty (relative poverty, official poverty lines, multidimensional poverty and so on) and survey years differ by country, so the figures cannot be compared directly."
+      },
+      "items": [
+        "welfare-2026-jpn-comprehensive-survey-living",
+        "welfare-2026-us-poverty-2025",
+        "welfare-2026-uk-households-below-average-income",
+        "welfare-2026-germany-poverty-risk",
+        "welfare-2026-ireland-silc-2025",
+        "welfare-2026-canada-income-survey-2024",
+        "welfare-2026-mexico-multidimensional-poverty",
+        "welfare-2025-france-minimum-social-benefits"
+      ]
+    },
+    {
+      "id": "social-protection",
+      "title": {
+        "ja": "社会保障と生活の支え",
+        "en": "Social protection and support for daily life"
+      },
+      "summary": {
+        "ja": "生活保護・社会手当・年金など、暮らしを支える制度の利用や広がりについての、各国と国際機関の情報です。",
+        "en": "Information from countries and international organisations on the use and reach of systems that support daily life, such as public assistance, social grants and pensions."
+      },
+      "items": [
+        "welfare-2026-jpn-public-assistance-fy2024",
+        "welfare-2025-world-bank-social-protection",
+        "welfare-2025-india-social-protection-coverage",
+        "welfare-2026-south-africa-social-grants",
+        "welfare-2025-france-minimum-social-benefits",
+        "welfare-2025-oecd-pensions-gender-gap"
+      ]
+    },
+    {
+      "id": "health-coverage",
+      "title": {
+        "ja": "医療を受けられること（医療費と保健の財源）",
+        "en": "Access to health care (costs and funding)"
+      },
+      "summary": {
+        "ja": "医療費の負担や、保健サービスを支える資金についての、WHOと世界銀行の情報です。",
+        "en": "Information from WHO and the World Bank on the cost of health care and the funding of health services."
+      },
+      "items": [
+        "welfare-2025-who-wb-uhc-monitoring",
+        "welfare-2025-who-health-financing-cuts"
+      ]
+    },
+    {
+      "id": "impersonation-scams",
+      "title": {
+        "ja": "公的機関や企業をかたる詐欺",
+        "en": "Scams impersonating public bodies and companies"
+      },
+      "summary": {
+        "ja": "政府機関・公的機関・企業の名前をかたる詐欺について、各国の公的機関が出した注意喚起・統計・対策です。",
+        "en": "Warnings, statistics and countermeasures from public bodies in several countries about scams that use the names of government agencies, public bodies or companies."
+      },
+      "note": {
+        "ja": "「被害を取り戻せる」と持ちかける二次被害の手口も含みます。FBIのIC3は被害回収のために支払いを求めない、国税庁はSMSやメールで納付を求めない、と案内しています。",
+        "en": "Includes follow-up scams offering to recover lost money. The FBI IC3 says it does not ask for payment to recover losses; Japan's tax agency says it does not request tax payments by SMS or e-mail."
+      },
+      "items": [
+        "crime-2026-usa-ic3-impersonation-psa",
+        "crime-2026-jpn-fsa-secondary-fraud-warning",
+        "crime-2026-usa-ftc-imposter-2025",
+        "crime-2026-sgp-ica-china-official-impersonation",
+        "crime-2026-jpn-kokusen-fake-postcard",
+        "crime-2026-jpn-kokusen-nta-sms",
+        "crime-2026-usa-ftc-passport-impersonation",
+        "research-2026-ftc-impersonation-rule-platform-ads",
+        "research-2026-jpn-sns-scam-ad-joint-request"
+      ]
+    },
+    {
+      "id": "fraud-statistics",
+      "title": {
+        "ja": "各国の詐欺被害の統計",
+        "en": "Fraud statistics by country"
+      },
+      "summary": {
+        "ja": "各国の警察・公的機関がまとめた詐欺の件数・被害額です。",
+        "en": "Numbers of fraud cases and losses compiled by police and public bodies in several countries."
+      },
+      "note": {
+        "ja": "数え方（届け出の件数・調査による推計など）や期間が国ごとに違うため、国どうしの数字は直接比べられません。",
+        "en": "Counting methods (reports received, survey estimates and so on) and periods differ by country, so the figures cannot be compared directly."
+      },
+      "items": [
+        "crime-2026-jpn-tokushu-sagi-august",
+        "crime-2026-sgp-scam-cybercrime-h1",
+        "crime-2026-can-fraud-trends-h1",
+        "crime-2026-gbr-crime-survey-fraud",
+        "crime-2026-aus-nasc-q1-2026",
+        "crime-2026-usa-ftc-imposter-2025"
+      ]
+    },
+    {
+      "id": "ai-security",
+      "title": {
+        "ja": "AIの安全な導入とサイバー対策",
+        "en": "Safe adoption of AI and cyber security"
+      },
+      "summary": {
+        "ja": "各国のサイバーセキュリティ機関が、AIを使う組織に向けて出した指針・行動の呼びかけです。",
+        "en": "Guidance and calls to action from national cyber security agencies for organisations that use AI."
+      },
+      "items": [
+        "research-2026-agentic-ai-joint-guidance",
+        "research-2026-uk-ncsc-ai-cyber-risk-leaders"
+      ]
+    },
+    {
+      "id": "ai-health",
+      "title": {
+        "ja": "医療・公衆衛生でのAIの活用",
+        "en": "AI in health care and public health"
+      },
+      "summary": {
+        "ja": "WHOや各国政府による、医療・公衆衛生でのAIの承認・活用・規制の情報です。",
+        "en": "Information from WHO and governments on approving, using and regulating AI in health care and public health."
+      },
+      "items": [
+        "research-2025-ai-who-tb-cad",
+        "research-2025-ai-who-eios-v2",
+        "research-2026-ai-who-pandemic-hub-strategy",
+        "research-2026-uk-ai-healthcare-regulation"
+      ]
+    },
+    {
+      "id": "tuberculosis",
+      "title": {
+        "ja": "結核",
+        "en": "Tuberculosis"
+      },
+      "summary": {
+        "ja": "結核の状況と、診断・検査の技術についての、WHOの報告・認証の情報です。",
+        "en": "Reports and prequalification information from WHO on tuberculosis and on diagnostic and testing technologies."
+      },
+      "items": [
+        "research-2025-who-global-tb-report",
+        "research-2026-tb-ivd-prequalification-scope",
+        "research-2026-medical-devices-prequalification",
+        "research-2025-ai-who-tb-cad"
+      ]
+    },
+    {
+      "id": "outbreak-preparedness",
+      "title": {
+        "ja": "感染症への備え",
+        "en": "Preparedness for infectious diseases"
+      },
+      "summary": {
+        "ja": "感染症の発生への対応と、次の流行に備える取り組みについての、WHOや各国の公的機関の情報です。",
+        "en": "Information from WHO and public bodies in several countries on responding to outbreaks and preparing for future epidemics."
+      },
+      "items": [
+        "research-2026-drc-uganda-bundibugyo-ebola",
+        "research-2026-interpol-who-agreement",
+        "research-2026-ai-who-pandemic-hub-strategy",
+        "research-2026-canada-vaccine-rd-priorities"
+      ]
+    },
+    {
+      "id": "malaria",
+      "title": {
+        "ja": "マラリア",
+        "en": "Malaria"
+      },
+      "summary": {
+        "ja": "マラリアの状況と、新しい治療薬・検査についての、WHOの報告・認証の情報です。",
+        "en": "Reports and prequalification information from WHO on malaria and on new treatments and tests."
+      },
+      "items": [
+        "research-2025-who-world-malaria-report",
+        "research-2026-malaria-infant-treatment-rdts"
+      ]
+    },
+    {
+      "id": "child-immunization",
+      "title": {
+        "ja": "子どもの予防接種",
+        "en": "Childhood immunization"
+      },
+      "summary": {
+        "ja": "子どもの予防接種率と、ゼロドーズ（最初のDTPワクチンを受けていない）の子どもの推計数についての、WHO・ユニセフなどの情報です。",
+        "en": "Information from WHO, UNICEF and others on childhood immunization coverage and the estimated number of zero-dose children (those who did not receive a first DTP dose)."
+      },
+      "note": {
+        "ja": "ゼロドーズは、WHOの指標で「最初のDTP（ジフテリア・破傷風・百日せき）ワクチンを受けていない子ども」として数えるもので、ほかのワクチンをすべて受けていないことまでは意味しません。",
+        "en": "The WHO indicator counts zero-dose children as those who did not receive a first dose of DTP (diphtheria-tetanus-pertussis) vaccine; it does not necessarily mean they had no other vaccines."
+      },
+      "items": [
+        "research-2026-global-immunization-wuenic-2025",
+        "research-2026-india-immunization-2025",
+        "research-2026-indonesia-immunization-2025"
+      ]
+    },
+    {
+      "id": "antimicrobial-resistance",
+      "title": {
+        "ja": "薬剤耐性（AMR）",
+        "en": "Antimicrobial resistance (AMR)"
+      },
+      "summary": {
+        "ja": "抗菌薬などの薬に耐性をもつ細菌などの広がり（薬剤耐性）について、WHO・英国・日本の報告と計画です。",
+        "en": "Reports and plans from WHO, the UK and Japan on the spread of microbes that medicines no longer work well against (antimicrobial resistance)."
+      },
+      "items": [
+        "research-2025-glass-amr-report-2025",
+        "research-2026-uk-espaur-2024-2025",
+        "research-2026-jpn-amr-action-plan-revision",
+        "research-2025-who-world-malaria-report"
+      ]
+    },
+    {
+      "id": "maternal-child-health",
+      "title": {
+        "ja": "妊娠・出産と子どもの健康",
+        "en": "Pregnancy, childbirth and child health"
+      },
+      "summary": {
+        "ja": "妊婦・新生児・子どもの健康についての、WHOなど国際機関の指針・枠組みです。",
+        "en": "Guidelines and frameworks from WHO and other international organisations on the health of pregnant women, newborns and children."
+      },
+      "items": [
+        "research-2026-who-hypertension-pregnancy-roadmap",
+        "research-2026-who-heat-maternal-child-indicators",
+        "research-2026-who-child-obesity-guidelines"
+      ]
+    },
+    {
+      "id": "heat-and-health",
+      "title": {
+        "ja": "暑さと健康",
+        "en": "Heat and health"
+      },
+      "summary": {
+        "ja": "夏の高温の記録と、暑さによる健康への影響に関する公的機関・国際機関の情報です。",
+        "en": "Records of summer heat and information from public bodies and international organisations on the health effects of heat."
+      },
+      "items": [
+        "disaster-2026-jpn-summer-weather-heat",
+        "disaster-2026-jpn-heatstroke-transport-august",
+        "disaster-2026-glb-wmo-july-heat",
+        "research-2026-who-heat-maternal-child-indicators"
+      ]
+    },
+    {
+      "id": "workplace-mental-health",
+      "title": {
+        "ja": "職場のこころの健康",
+        "en": "Mental health at work"
+      },
+      "summary": {
+        "ja": "働く人のこころの健康について、日本の白書・調査と、ILOの報告書です。",
+        "en": "Japanese white papers and surveys, and an ILO report, on the mental health of workers."
+      },
+      "items": [
+        "mental-2026-jpn-karoshi-white-paper",
+        "mental-2026-jpn-labour-safety-survey",
+        "mental-2026-jpn-workers-comp-mental",
+        "mental-2025-jpn-stress-check-small-sites",
+        "mental-2026-ilo-psychosocial-risks"
+      ]
+    },
+    {
+      "id": "loneliness",
+      "title": {
+        "ja": "孤独・孤立とつながり",
+        "en": "Loneliness, isolation and social connection"
+      },
+      "summary": {
+        "ja": "孤独・孤立についての日本の調査・計画と、WHOの委員会の報告書です。",
+        "en": "Japanese surveys and plans on loneliness and isolation, and a report by a WHO commission."
+      },
+      "items": [
+        "mental-2026-jpn-loneliness-survey-r7",
+        "mental-2026-jpn-loneliness-plan-revision",
+        "mental-2025-who-social-connection"
+      ]
+    },
+    {
+      "id": "mental-health-systems",
+      "title": {
+        "ja": "こころの健康を支える制度",
+        "en": "Systems that support mental health"
+      },
+      "summary": {
+        "ja": "こころの健康を支える医療・福祉の制度について、WHOと国連の報告・指針・宣言です。",
+        "en": "Reports, guidance and declarations from WHO and the United Nations on health and social systems that support mental health."
+      },
+      "items": [
+        "mental-2025-who-world-mental-health-today",
+        "mental-2025-un-ncd-mental-health-declaration",
+        "mental-2026-who-deinstitutionalization-guide",
+        "mental-2025-who-mental-health-atlas",
+        "mental-2025-who-cross-sector-guidance"
+      ]
+    }
+  ]
+}

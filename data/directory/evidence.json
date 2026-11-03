@@ -26,8 +26,8 @@
       "url": "https://www.hellowork.mhlw.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-w-shogai": {
       "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/index.html",
@@ -40,22 +40,22 @@
       "url": "https://hattatsu.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-w-kaigo": {
       "url": "https://www.kaigokensaku.mhlw.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-w-189": {
       "url": "https://kodomoshien.cfa.go.jp/no-gyakutai/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-w-dv": {
       "url": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html",
@@ -68,8 +68,8 @@
       "url": "https://www.houterasu.or.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-w-188": {
       "url": "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/",
@@ -89,8 +89,8 @@
       "url": "https://www.nenkin.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-m-mamorou": {
       "url": "https://www.mhlw.go.jp/mamorouyokokoro/",
@@ -131,8 +131,8 @@
       "url": "https://security-portal.cyber.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-s-ipa": {
       "url": "https://www.ipa.go.jp/security/index.html",
@@ -145,8 +145,8 @@
       "url": "https://www.ipa.go.jp/security/kokokara/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-s-jpcert": {
       "url": "https://www.jpcert.or.jp/",
@@ -180,29 +180,29 @@
       "url": "https://www.nict.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-s-aisi": {
       "url": "https://aisi.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-r-amed": {
       "url": "https://www.amed.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-r-jihs": {
       "url": "https://www.jihs.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-r-jst": {
       "url": "https://www.jst.go.jp/index.html",
@@ -215,15 +215,15 @@
       "url": "https://www.riken.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-r-aist": {
       "url": "https://www.aist.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-o-mhlw": {
       "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/kekkaku-kansenshou/index.html",
@@ -236,15 +236,15 @@
       "url": "https://www.jihs.go.jp/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "jp-o-forth": {
       "url": "https://www.forth.go.jp/index.html",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "us-w-benefits": {
       "url": "https://www.usa.gov/benefits",
@@ -369,8 +369,8 @@
       "url": "https://www.btcirt.bt/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "bol-health-ministry-outbreak": {
       "url": "https://www.minsalud.gob.bo/",
@@ -572,8 +572,8 @@
       "url": "https://www.rki.de/DE/Home/home_node.html",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "deu-health-ministry-mental": {
       "url": "https://www.bundesgesundheitsministerium.de/",
@@ -586,8 +586,8 @@
       "url": "https://www.bmas.de/DE/Startseite/start.html",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "deu-cert-security": {
       "url": "https://www.bsi.bund.de/EN/Home/home_node.html",
@@ -600,8 +600,8 @@
       "url": "https://www.rki.de/DE/Home/home_node.html",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "idn-health-ministry-outbreak": {
       "url": "https://www.kemkes.go.id/eng/home",
@@ -740,8 +740,8 @@
       "url": "https://mfsva.gouvernement.lu/fr.html",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "mac-health-ministry-outbreak": {
       "url": "https://www.gov.mo/en/entity-page/entity-552/",
@@ -1020,8 +1020,8 @@
       "url": "https://www.dsd.gov.za/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "zaf-welfare-ministry-welfare-2": {
       "url": "https://www.sassa.gov.za/SitePages/HomePage.aspx",
@@ -1062,8 +1062,8 @@
       "url": "https://phc.org.ua",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "ukr-health-ministry-mental": {
       "url": "https://moz.gov.ua/",
@@ -1083,8 +1083,8 @@
       "url": "https://phc.org.ua",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "chn-health-ministry-outbreak": {
       "url": "https://en.nhc.gov.cn/about.html",
@@ -1125,8 +1125,8 @@
       "url": "https://www.cert-in.org.in",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "pak-health-ministry-outbreak": {
       "url": "https://www.nhsrc.gov.pk/",
@@ -1139,8 +1139,8 @@
       "url": "https://www.nih.org.pk/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "pak-health-ministry-mental": {
       "url": "https://www.nhsrc.gov.pk/",
@@ -1153,8 +1153,8 @@
       "url": "https://www.nih.org.pk/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "pak-cert-security": {
       "url": "https://pkcert.gov.pk/about-us/",
@@ -1167,8 +1167,8 @@
       "url": "https://www.gob.mx/bienestar",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "phl-health-ministry-outbreak": {
       "url": "https://www.doh.gov.ph/",
@@ -1524,8 +1524,8 @@
       "url": "https://www.ghs.gov.gh/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "gha-health-ministry-mental": {
       "url": "https://moh.gov.gh",
@@ -1545,8 +1545,8 @@
       "url": "https://www.ghs.gov.gh/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "npl-health-ministry-outbreak": {
       "url": "https://mohp.gov.np/pages/introduction",
@@ -1594,8 +1594,8 @@
       "url": "https://www.cdc.gov.tw/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "twn-health-ministry-mental": {
       "url": "https://www.mohw.gov.tw/mp-1.html",
@@ -1615,8 +1615,8 @@
       "url": "https://www.cdc.gov.tw/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "chl-health-ministry-outbreak": {
       "url": "https://www.minsal.cl",
@@ -1664,8 +1664,8 @@
       "url": "https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "swe-health-ministry-mental": {
       "url": "https://www.regeringen.se/sveriges-regering/socialdepartementet/",
@@ -1678,8 +1678,8 @@
       "url": "https://www.folkhalsomyndigheten.se/the-public-health-agency-of-sweden/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "swe-cert-security": {
       "url": "https://cert.se/en/",
@@ -1720,8 +1720,8 @@
       "url": "https://www.snf.ch/de",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "aut-health-ministry-outbreak": {
       "url": "https://www.sozialministerium.gv.at/public.html",
@@ -1734,8 +1734,8 @@
       "url": "https://www.ages.at/startseite/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "aut-health-ministry-mental": {
       "url": "https://www.sozialministerium.gv.at/public.html",
@@ -1748,15 +1748,15 @@
       "url": "https://www.ages.at/startseite/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "aut-cert-security": {
       "url": "https://www.cert.at/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "bel-health-ministry-outbreak": {
       "url": "https://www.health.belgium.be/en",
@@ -1846,15 +1846,15 @@
       "url": "https://mpsv.gov.cz/ministerstvo",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。旧URL www.mpsv.gov.cz は名前解決エラーのため差し替え）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。旧URL www.mpsv.gov.cz は名前解決エラーのため差し替え）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果"
     },
     "cze-cert-security": {
       "url": "https://www.nukib.gov.cz",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）がブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIがブラウザで表示を確認（2026-10-26。自動取得はアクセス制限で不可）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "in-o-don": {
       "url": "https://www.who.int/emergencies/disease-outbreak-news",
@@ -1902,8 +1902,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "isl-health-ministry-outbreak": {
       "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
@@ -2210,15 +2210,15 @@
       "url": "https://www.gub.uy/ministerio-desarrollo-social/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "ury-cert-security": {
       "url": "https://www.gub.uy/centro-nacional-respuesta-incidentes-seguridad-informatica/",
       "checkedAt": "2026-10-26",
       "method": "fetched",
-      "how": "別のAI（GPT）が公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAI（GPT）の確認結果。Grokの確認でも公式・異常なしの判定"
+      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
+      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
     },
     "ggy-health-ministry-outbreak": {
       "url": "https://gov.gg/publichealth",
@@ -2692,8 +2692,8 @@
     "jp-pref-44-main": {
       "url": "https://www.pref.oita.jp/soshiki/12000/seikatsukonkyu.html",
       "checkedAt": "2026-10-26",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
+      "method": "unverified",
+      "how": "2026-11-03 の独立監査で取得できなかった（404 の可能性）。再確認できるまで表示しない（AIが公式ページを開いて確認）",
       "evidence": "heading: 生活困窮者自立支援制度について (search title: 生活困窮者自立支援制度について - 大分県ホームページ)"
     },
     "jp-pref-45-main": {
@@ -2749,154 +2749,154 @@
       "url": "https://www.ready.gov/be-informed",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Ready.gov「Be Informed」（ページの見出し）"
     },
     "usa-safety-crime": {
       "url": "https://consumer.ftc.gov/scams",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Scams | Consumer Advice"
     },
     "sgp-safety-crime": {
       "url": "https://www.scamshield.gov.sg/",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Home | ScamShield Website（A Singapore Government Agency Website）"
     },
     "esp-safety-crime": {
       "url": "https://www.policia.es/_es/denuncias.php",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Portal web de la Policía Nacional - España"
     },
     "prt-safety-disaster": {
       "url": "https://prociv.gov.pt/pt/home/",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "ANEPC - Autoridade Nacional de Emergência e Proteção Civil"
     },
     "prt-safety-crime": {
       "url": "https://www.gnr.pt/Cons_Burlas.aspx",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "GNR（詐欺への注意のページ）"
     },
     "fra-safety-disaster": {
       "url": "https://georisques.gouv.fr/me-preparer-me-proteger/mon-plan-familial-de-mise-en-surete",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Le plan individuel de mise en sûreté | Géorisques"
     },
     "fra-safety-crime": {
       "url": "https://www.masecurite.interieur.gouv.fr/fr/fiches-pratiques/numerique/arnaques-escroquerie-en-ligne-identifier-et-agir",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Arnaques et escroqueries en ligne : comment les identifier et agir ? | Ma Sécurité"
     },
     "ita-safety-disaster": {
       "url": "https://iononrischio.protezionecivile.gov.it/it",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Io non rischio"
     },
     "ita-safety-crime": {
       "url": "https://www.carabinieri.it/in-vostro-aiuto/consigli/pillole-di-prevenzione/contro-le-truffe",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "Contro le truffe"
     },
     "grc-safety-disaster": {
       "url": "https://civilprotection.gov.gr/en/odigies-prostasias/genikes-odigies",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "General Instructions | Ministry for Climate Crisis and Civil Protection"
     },
     "jp-pref-03-main": {
       "url": "https://www.pref.iwate.jp/kurashikankyou/fukushi/seikatujiritsusien/1003572.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "岩手県 - 生活困窮者自立支援制度"
     },
     "jp-pref-05-main": {
       "url": "https://www.pref.akita.lg.jp/pages/archive/9336",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立支援制度 | 美の国あきたネット"
     },
     "jp-pref-06-main": {
       "url": "https://www.pref.yamagata.jp/090014/kenfuku/fukushi/seikatsuhogo/jiritsushien.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立支援制度について | 山形県"
     },
     "jp-pref-10-main": {
       "url": "https://www.pref.gunma.jp/page/1672.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活に困窮している方を支援する相談窓口について - 群馬県ホームページ(地域福祉課)"
     },
     "jp-pref-16-main": {
       "url": "https://www.pref.toyama.jp/1200/kurashi/kenkou/iryou/kj00017123.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "富山県／生活困窮者自立支援制度について"
     },
     "jp-pref-17-main": {
       "url": "https://www.pref.ishikawa.lg.jp/kousei/safetynet/index.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立支援制度について | 石川県"
     },
     "jp-pref-18-main": {
       "url": "https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立支援制度について | 福井県ホームページ"
     },
     "jp-pref-29-main": {
       "url": "https://www.pref.nara.lg.jp/n063/39628.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立相談支援機関の窓口一覧 / 奈良県（検索結果の題名。ページの本文は窓口一覧を確認）"
     },
     "jp-pref-33-main": {
       "url": "https://www.pref.okayama.jp/page/689589.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立支援制度の自立相談支援機関について - 岡山県ホームページ（地域福祉課）"
     },
     "jp-pref-35-main": {
       "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立支援・トップページ - 山口県ホームページ"
     },
     "jp-pref-36-main": {
       "url": "https://www.pref.tokushima.lg.jp/ippannokata/kenko/chiikifukushi/7245697/",
       "checkedAt": "2026-10-28",
       "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のClaudeに任せて確認）",
+      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活保護、生活困窮者支援に関する相談について｜徳島県ホームページ"
     },
     "jp-w-dv-center": {
@@ -3010,6 +3010,979 @@
       "method": "fetched",
       "how": "AIが公式ページを開いて確認",
       "evidence": "鹿児島県／鹿児島県精神保健福祉センター"
+    },
+    "jp-local-01-hakodate": {
+      "url": "https://www.city.hakodate.hokkaido.jp/docs/2022062700054/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度について | 函館市"
+    },
+    "jp-local-01-chitose": {
+      "url": "https://www.city.chitose.lg.jp/docs/95-86205-166-877.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度｜北海道千歳市公式ウェブサイト"
+    },
+    "jp-local-01-otaru": {
+      "url": "https://www.city.otaru.lg.jp/docs/2020111500358/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "福祉総合相談室「たるさぽ」 | 小樽市"
+    },
+    "jp-local-01-obihiro": {
+      "url": "https://www.city.obihiro.hokkaido.jp/kenko/shien/seikatsu/1005043.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "自立相談支援事業｜ 帯広市ホームページ 十勝"
+    },
+    "jp-local-01-asahikawa": {
+      "url": "https://www.city.asahikawa.hokkaido.jp/kurashi/135/189/191/d052392.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度について | 旭川市"
+    },
+    "jp-local-01-sapporo": {
+      "url": "https://www.city.sapporo.jp/fukushi-guide/step.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "札幌市生活就労支援センター（ステップ）／札幌市"
+    },
+    "jp-local-01-nemuro": {
+      "url": "https://www.city.nemuro.hokkaido.jp/lifeinfo/kakuka/shiminfukushibu/shakaifukushi/gyomuannnai/8/4936.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度について／朝日にいちばん近い街"
+    },
+    "jp-local-01-ebetsu": {
+      "url": "https://www.city.ebetsu.hokkaido.jp/soshiki/kenko-kanri/46522.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度 ～生活に関する困りごとは「くらしサポートセンターえべつ」へ～ ｜ 北海道江別市公式ホームページ"
+    },
+    "jp-local-01-wakkanai": {
+      "url": "https://www.city.wakkanai.hokkaido.jp/fukushi/seikatsuhogo/jiritu/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援事業"
+    },
+    "jp-local-01-tomakomai": {
+      "url": "https://www.city.tomakomai.hokkaido.jp/kenko/jiritsushien/seikatsukonkyusya.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度について｜北海道苫小牧市"
+    },
+    "jp-local-01-kushiro": {
+      "url": "https://www.city.kushiro.lg.jp/kenfuku/fukushi/1005014/1005015.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
+      "evidence": "生活困窮者自立支援制度について｜釧路市ホームページ"
+    },
+    "jp-local-01-hokkaido-shakyo": {
+      "url": "https://www.hokkaidoshakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人北海道社会福祉協議会"
+    },
+    "jp-local-01-obihiro-shakyo": {
+      "url": "https://www.obihiro-shakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.obihiro.hokkaido.jp/kenko/shien/fukushi/1005053.html で確認",
+      "evidence": "帯広市社会福祉協議会 | 地域福祉・老連・共同募金 - 十勝・帯広市 / 北海道"
+    },
+    "jp-local-01-asahikawa-shakyo": {
+      "url": "https://www.asahikawa-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.asahikawa.hokkaido.jp/kurashi/135/189/191/d052392.html で確認",
+      "evidence": "社会福祉法人 旭川市社会福祉協議会"
+    },
+    "jp-local-01-sapporo-shakyo": {
+      "url": "https://www.sapporo-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 札幌市社会福祉協議会"
+    },
+    "jp-local-02-aomori": {
+      "url": "https://www.city.aomori.aomori.jp/hukushi_kenkou/seikatsukonkyuu/1003465.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.aomori.aomori.jp/hukushi_kenkou/seikatsukonkyuu/1003465.html で確認",
+      "evidence": "生活困窮者自立支援制度の概要 │ 青森市"
+    },
+    "jp-local-02-aomori-prefectural-shakyo": {
+      "url": "https://aosyakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "青森県社会福祉協議会"
+    },
+    "jp-local-03-morioka": {
+      "url": "https://www.city.morioka.iwate.jp/kenko_fukushi/seikatsufukushi/jiritsushien/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.morioka.iwate.jp/kenko_fukushi/seikatsufukushi/jiritsushien/index.html で確認",
+      "evidence": "生活困窮者自立支援｜盛岡市公式ホームページ"
+    },
+    "jp-local-03-iwate-prefectural-shakyo": {
+      "url": "https://www.iwate-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "岩手県社会福祉協議会"
+    },
+    "jp-local-04-sendai": {
+      "url": "https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/shien.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/shien.html で確認",
+      "evidence": "仙台市生活自立・仕事相談センター「わんすてっぷ」（生活困窮者自立支援制度による生活・就労・居住支援）｜仙台市"
+    },
+    "jp-local-04-miyagi-prefectural-shakyo": {
+      "url": "https://www.miyagi-sfk.net/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "宮城県社会福祉協議会"
+    },
+    "jp-local-05-akita": {
+      "url": "https://www.city.akita.lg.jp/kurashi/okomarinokata/1006020/1004983.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.akita.lg.jp/kurashi/okomarinokata/1006020/1004983.html で確認",
+      "evidence": "生活困窮者自立支援制度について｜秋田市公式サイト"
+    },
+    "jp-local-05-akita-prefectural-shakyo": {
+      "url": "https://www.akitakenshakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 秋田県社会福祉協議会"
+    },
+    "jp-local-06-yamagata": {
+      "url": "https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/fukushi/1006663/1004807.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/fukushi/1006663/1004807.html で確認",
+      "evidence": "生活困窮者自立支援制度について（生活サポート相談窓口）｜山形市公式ホームページ"
+    },
+    "jp-local-07-fukushima": {
+      "url": "https://www.city.fukushima.fukushima.jp/soshiki/9/1042/1/375.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.fukushima.fukushima.jp/soshiki/9/1042/1/375.html で確認",
+      "evidence": "生活相談支援窓口を開設しています(生活や仕事に困っている方へ)／福島市公式ホームページ"
+    },
+    "jp-local-07-fukushima-prefectural-shakyo": {
+      "url": "https://www.fukushimakenshakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 福島県社会福祉協議会（公式ホームページ）"
+    },
+    "jp-local-08-mito": {
+      "url": "https://www.city.mito.lg.jp/page/3455.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.mito.lg.jp/page/3455.html で確認",
+      "evidence": "自立相談支援事業では仕事・生活・住まいにお困りの方の相談を受け付けています（生活福祉課） - 水戸市ホームページ"
+    },
+    "jp-local-08-ibaraki-prefectural-shakyo": {
+      "url": "https://www.ibaraki-welfare.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "茨城県社会福祉協議会 | 茨城県社会福祉協議会（通称「県社協」）では、…（以下略）"
+    },
+    "jp-local-09-utsunomiya": {
+      "url": "https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/soudan/1004797.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/soudan/1004797.html で確認",
+      "evidence": "生活にお困りの方の自立に向けた相談支援窓口｜宇都宮市公式Webサイト"
+    },
+    "jp-local-09-tochigi-prefectural-shakyo": {
+      "url": "https://tochigikenshakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 栃木県社会福祉協議会（公式ホームページ）"
+    },
+    "jp-local-10-maebashi": {
+      "url": "https://www.city.maebashi.gunma.jp/soshiki/fukushibu/shakaifukushi/gyomu/3/1/1/5469.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.maebashi.gunma.jp/soshiki/fukushibu/shakaifukushi/gyomu/3/1/1/5469.html で確認",
+      "evidence": "生活困窮者自立支援制度について／前橋市"
+    },
+    "jp-local-10-gunma-prefectural-shakyo": {
+      "url": "https://www.g-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 群馬県社会福祉協議会"
+    },
+    "jp-local-11-saitama": {
+      "url": "https://www.city.saitama.lg.jp/002/003/002/p054448.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.saitama.lg.jp/002/003/002/p054448.html で確認",
+      "evidence": "さいたま市／生活困窮者自立支援制度について"
+    },
+    "jp-local-11-saitama-prefectural-shakyo": {
+      "url": "https://www.fukushi-saitama.or.jp/site/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "埼玉県社会福祉協議会"
+    },
+    "jp-local-12-chiba": {
+      "url": "https://www.city.chiba.jp/hokenfukushi/hogo/konnkyuushapr.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.chiba.jp/hokenfukushi/hogo/konnkyuushapr.html で確認",
+      "evidence": "千葉市：生活自立・仕事相談センター（自立相談支援機関）"
+    },
+    "jp-local-12-chiba-prefectural-shakyo": {
+      "url": "https://www.chibakenshakyo.com/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 千葉県社会福祉協議会 【ホームページ】"
+    },
+    "jp-local-13-shinjuku": {
+      "url": "https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002056.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.shinjuku.lg.jp/fukushi/fukushi01_002056.html で確認",
+      "evidence": "生活支援相談窓口へご相談ください：新宿区"
+    },
+    "jp-local-13-tokyo-shakyo": {
+      "url": "https://www.tcsw.tvac.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 東京都社会福祉協議会"
+    },
+    "jp-local-14-kawasaki": {
+      "url": "https://www.city.kawasaki.jp/350/page/0000055699.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kawasaki.jp/350/page/0000055699.html で確認",
+      "evidence": "川崎市 : 【生活にお困りの方へ】川崎市生活自立・仕事相談センター（だいJOBセンター）"
+    },
+    "jp-local-14-yokohama": {
+      "url": "https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/konnan/seikatsukonkyu.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/konnan/seikatsukonkyu.html で確認",
+      "evidence": "生活困窮者自立支援制度 横浜市"
+    },
+    "jp-local-14-sagamihara": {
+      "url": "https://www.city.sagamihara.kanagawa.jp/kosodate/fukushi/1026642/1006553/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.sagamihara.kanagawa.jp/kosodate/fukushi/1026642/1006553/index.html で確認",
+      "evidence": "生活困窮者自立支援制度について｜相模原市"
+    },
+    "jp-local-14-kanagawa-prefectural-shakyo": {
+      "url": "https://knsyk.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "神奈川県社会福祉協議会"
+    },
+    "jp-local-15-niigata": {
+      "url": "https://www.city.niigata.lg.jp/iryo/kenfuku/konkyusyashien/konkyusyashien.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.niigata.lg.jp/iryo/kenfuku/konkyusyashien/konkyusyashien.html で確認",
+      "evidence": "生活困窮者自立支援制度について 新潟市"
+    },
+    "jp-local-15-niigata-prefectural-shakyo": {
+      "url": "https://www.fukushiniigata.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "共に生き共につくる福祉社会を目指して"
+    },
+    "jp-local-16-toyama": {
+      "url": "https://www.city.toyama.lg.jp/health/seikatsu_k/1004449.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.toyama.lg.jp/health/seikatsu_k/1004449.html で確認",
+      "evidence": "生活困窮者自立支援制度に基づく相談窓口について｜富山市公式ウェブサイト"
+    },
+    "jp-local-16-toyama-prefectural-shakyo": {
+      "url": "https://www.toyama-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 富山県社会福祉協議会"
+    },
+    "jp-local-17-kanazawa": {
+      "url": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/shiminkyodosuishinka/gyomuannai/1/1_2/1/7840.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www4.city.kanazawa.lg.jp/soshikikarasagasu/shiminkyodosuishinka/gyomuannai/1/1_2/1/7840.html で確認",
+      "evidence": "暮らしの相談窓口／金沢市公式ホームページ いいね金沢"
+    },
+    "jp-local-18-fukui": {
+      "url": "https://www.city.fukui.lg.jp/fukusi/tifukusi/seikatu/p020702.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.fukui.lg.jp/fukusi/tifukusi/seikatu/p020702.html で確認",
+      "evidence": "福祉総合相談室よりそいのご案内"
+    },
+    "jp-local-18-fukui-prefectural-shakyo": {
+      "url": "https://www.f-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "福井県社会福祉協議会"
+    },
+    "jp-local-19-kofu": {
+      "url": "https://www.city.kofu.lg.jp/k039/p002974.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kofu.lg.jp/k039/p002974.html で確認",
+      "evidence": "甲府市生活困窮者自立支援事業／甲府市"
+    },
+    "jp-local-20-nagano": {
+      "url": "https://www.city.nagano.nagano.jp/soshiki/seikatsushien/107247.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.nagano.nagano.jp/soshiki/seikatsushien/107247.html で確認",
+      "evidence": "生活困窮者自立支援制度について"
+    },
+    "jp-local-20-nagano-prefectural-shakyo": {
+      "url": "https://www.nsyakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人長野県社会福祉協議会 ふれあいネット信州 – …（以下略）"
+    },
+    "jp-local-21-gifu": {
+      "url": "https://www.city.gifu.lg.jp/kenko/seikathushien/1005026.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.gifu.lg.jp/kenko/seikathushien/1005026.html で確認",
+      "evidence": "生活困窮者自立支援制度｜岐阜市公式ホームページ-Gifu city"
+    },
+    "jp-local-21-gifu-prefectural-shakyo": {
+      "url": "https://www.winc.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 岐阜県社会福祉協議会"
+    },
+    "jp-local-22-hamamatsu": {
+      "url": "https://www.city.hamamatsu.shizuoka.jp/fukushisomu/bid/tsunagari.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.hamamatsu.shizuoka.jp/fukushisomu/bid/tsunagari.html で確認",
+      "evidence": "生活困窮者自立支援／浜松市"
+    },
+    "jp-local-22-shizuoka": {
+      "url": "https://www.city.shizuoka.lg.jp/000_003097.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.shizuoka.lg.jp/000_003097.html で確認",
+      "evidence": "静岡市暮らし・しごと相談支援センター"
+    },
+    "jp-local-22-shizuoka-prefectural-shakyo": {
+      "url": "https://www.shizuoka-wel.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 静岡県社会福祉協議会 – …（以下略）"
+    },
+    "jp-local-23-nagoya": {
+      "url": "https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016739.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016739.html で確認",
+      "evidence": "名古屋市仕事・暮らし自立サポートセンター｜名古屋市公式ウェブサイト"
+    },
+    "jp-local-23-aichi-prefectural-shakyo": {
+      "url": "https://www.aichi-fukushi.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "愛知県社会福祉協議会"
+    },
+    "jp-local-24-tsu": {
+      "url": "https://www.info.city.tsu.mie.jp/fukushi_kenkou/seikatsushienn/1003206.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.info.city.tsu.mie.jp/fukushi_kenkou/seikatsushienn/1003206.html で確認",
+      "evidence": "生活にお困りの人へ（生活困窮者自立支援・生活保護の相談・ひきこもりなど）｜津市公式ウェブサイト－Official Website of Tsu City"
+    },
+    "jp-local-24-mie-prefectural-shakyo": {
+      "url": "https://www.miewel-1.com/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 三重県社会福祉協議会"
+    },
+    "jp-local-25-otsu": {
+      "url": "https://www.city.otsu.lg.jp/soshiki/020/1405/g/s/1427609467452.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.otsu.lg.jp/soshiki/020/1405/g/s/1427609467452.html で確認",
+      "evidence": "生活困窮者自立支援制度について／大津市"
+    },
+    "jp-local-25-shiga-prefectural-shakyo": {
+      "url": "https://www.shigashakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 滋賀県社会福祉協議会 ～滋賀の縁創造実践センター／ひたすらなるつながり～"
+    },
+    "jp-local-26-kyoto": {
+      "url": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000282954.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kyoto.lg.jp/hokenfukushi/page/0000282954.html で確認",
+      "evidence": "京都市：生活困窮者自立支援制度"
+    },
+    "jp-local-26-kyoto-prefectural-shakyo": {
+      "url": "https://www.kyoshakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "京都府社会福祉協議会 ｜ 京都府社会福祉協議会のホームページ、助成金情報、イベント情報、講座、福祉サービス等を掲載"
+    },
+    "jp-local-27-sakai": {
+      "url": "https://www.city.sakai.lg.jp/kenko/fukushikaigo/seikatsuhogo/df_filename_290407143532935.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.sakai.lg.jp/kenko/fukushikaigo/seikatsuhogo/df_filename_290407143532935.html で確認",
+      "evidence": "堺市生活困窮者自立相談支援事業の実施について"
+    },
+    "jp-local-27-osaka": {
+      "url": "https://www.city.osaka.lg.jp/fukushi/page/0000303608.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.osaka.lg.jp/fukushi/page/0000303608.html で確認",
+      "evidence": "大阪市：生活にお困りの方へ （…>生活にお困りの方へ>生活支援）"
+    },
+    "jp-local-28-kobe": {
+      "url": "https://www.city.kobe.lg.jp/a38463/kenko/chiikifukushi/sekatsukonkyusha/gaiyou.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kobe.lg.jp/a38463/kenko/chiikifukushi/sekatsukonkyusha/gaiyou.html で確認",
+      "evidence": "神戸市：生活にお困りの方への相談窓口"
+    },
+    "jp-local-29-nara": {
+      "url": "https://www.city.nara.lg.jp/soshiki/33/10425.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.nara.lg.jp/soshiki/33/10425.html で確認",
+      "evidence": "くらしとしごとサポートセンター(生活困窮者等自立支援制度)"
+    },
+    "jp-local-29-nara-prefectural-shakyo": {
+      "url": "https://nara-shakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "奈良県社会福祉協議会"
+    },
+    "jp-local-30-wakayama": {
+      "url": "https://www.city.wakayama.wakayama.jp/kurashi/kourei_kaigo/1007728/1013322/1001737.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.wakayama.wakayama.jp/kurashi/kourei_kaigo/1007728/1013322/1001737.html で確認",
+      "evidence": "生活困窮者自立支援制度｜和歌山市"
+    },
+    "jp-local-30-wakayama-prefectural-shakyo": {
+      "url": "https://www.wakayama-wel.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "和歌山県社会福祉協議会"
+    },
+    "jp-local-31-tottori": {
+      "url": "https://www.city.tottori.lg.jp/page/2031.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.tottori.lg.jp/page/2031.html で確認",
+      "evidence": "困りごと相談-あなたのくらしをサポートします 中央人権福祉センター(パーソナルサポートセンター) - 鳥取市公式ウェブサイト（中央人権福祉センター）"
+    },
+    "jp-local-31-tottori-prefectural-shakyo": {
+      "url": "https://www.tottori-wel.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "鳥取県社会福祉協議会"
+    },
+    "jp-local-32-matsue": {
+      "url": "https://www.city.matsue.lg.jp/soshikikarasagasu/kenkofukushibu_seikatsufukushika/seikatsukonkyushajiritsushienseido/2003.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.matsue.lg.jp/soshikikarasagasu/kenkofukushibu_seikatsufukushika/seikatsukonkyushajiritsushienseido/2003.html で確認",
+      "evidence": "松江市くらし相談支援センター／松江市ホームページ"
+    },
+    "jp-local-32-shimane-prefectural-shakyo": {
+      "url": "https://www.fukushi-shimane.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "【公式サイト】社会福祉法人 島根県社会福祉協議会"
+    },
+    "jp-local-33-okayama": {
+      "url": "https://www.city.okayama.jp/kurashi/0000003692.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.okayama.jp/kurashi/0000003692.html で確認",
+      "evidence": "生活や仕事の困りごと ひとりで悩まずご相談ください。（生活困窮者自立相談支援事業）※休日の相談ができるようになりました | 岡山市"
+    },
+    "jp-local-33-okayama-prefectural-shakyo": {
+      "url": "https://www.fukushiokayama.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "岡山県社会福祉協議会"
+    },
+    "jp-local-34-hiroshima": {
+      "url": "https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021955.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021955.html で確認",
+      "evidence": "広島市くらしサポートセンター｜広島市公式ウェブサイト"
+    },
+    "jp-local-34-hiroshima-prefectural-shakyo": {
+      "url": "https://www.hiroshima-fukushi.net/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "広島県社会福祉協議会"
+    },
+    "jp-local-35-yamaguchi": {
+      "url": "https://www.city.yamaguchi.lg.jp/soshiki/54/83005.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.yamaguchi.lg.jp/soshiki/54/83005.html で確認",
+      "evidence": "生活困窮者自立支援制度について - 山口市ウェブサイト"
+    },
+    "jp-local-35-yamaguchi-prefectural-shakyo": {
+      "url": "https://www.yamaguchikensyakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 山口県社会福祉協議会"
+    },
+    "jp-local-36-tokushima": {
+      "url": "https://www.city.tokushima.tokushima.jp/smph/kenko_fukushi/chiiki_fukushi/200100a20210331.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.tokushima.tokushima.jp/smph/kenko_fukushi/chiiki_fukushi/200100a20210331.html で確認",
+      "evidence": "ひとりで悩んでいませんか？さまざまな悩みの相談窓口一覧：徳島市公式ウェブサイト"
+    },
+    "jp-local-36-tokushima-prefectural-shakyo": {
+      "url": "https://fukushi-tokushima.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 徳島県社会福祉協議会"
+    },
+    "jp-local-37-takamatsu": {
+      "url": "https://www.city.takamatsu.kagawa.jp/kurashi/kenkou/seikatsuhogo/jiritsushien.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.takamatsu.kagawa.jp/kurashi/kenkou/seikatsuhogo/jiritsushien.html で確認",
+      "evidence": "生活困窮者自立支援事業について｜高松市"
+    },
+    "jp-local-37-kagawa-prefectural-shakyo": {
+      "url": "https://www.kagawakenshakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人 香川県社会福祉協議会"
+    },
+    "jp-local-38-matsuyama": {
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/fukushi/shakai/ziritsushien/seikonn14.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.matsuyama.ehime.jp/kurashi/fukushi/shakai/ziritsushien/seikonn14.html で確認",
+      "evidence": "生活、就労、住まいなどにお困りの方へ～自立相談支援窓口～ 松山市公式ホームページ PCサイト"
+    },
+    "jp-local-38-ehime-prefectural-shakyo": {
+      "url": "https://ehime-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "愛媛県社会福祉協議会「やさしさ」を抱きしめよう"
+    },
+    "jp-local-39-kochi": {
+      "url": "https://www.city.kochi.kochi.jp/soshiki/30/shien2.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kochi.kochi.jp/soshiki/30/shien2.html で確認",
+      "evidence": "困窮者自立支援制度について - 高知市ホームページ（福祉管理課）"
+    },
+    "jp-local-39-kochi-prefectural-shakyo": {
+      "url": "https://www.kochiken-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "高知県社会福祉協議会 – 高知県社会福祉協議会は、地域住民、ボランティア…（以下略）"
+    },
+    "jp-local-40-kitakyushu": {
+      "url": "https://www.city.kitakyushu.lg.jp/contents/16500062.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kitakyushu.lg.jp/contents/16500062.html で確認",
+      "evidence": "北九州市生活困窮者自立支援事業 - 北九州市"
+    },
+    "jp-local-40-fukuoka": {
+      "url": "https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/life/seikatsuniokomarinokata_2_2.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/life/seikatsuniokomarinokata_2_2.html で確認",
+      "evidence": "福岡市 生活にお困りの方の経済的な自立を支援します"
+    },
+    "jp-local-41-saga": {
+      "url": "https://www.city.saga.lg.jp/kenko-fukushi/fukushi/7/3849.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.saga.lg.jp/kenko-fukushi/fukushi/7/3849.html で確認",
+      "evidence": "佐賀市生活自立支援センター／佐賀市公式ホームページ"
+    },
+    "jp-local-41-saga-prefectural-shakyo": {
+      "url": "https://www.sagaken-shakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "佐賀県社会福祉協議会"
+    },
+    "jp-local-42-nagasaki": {
+      "url": "https://www.city.nagasaki.lg.jp/page/3431.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.nagasaki.lg.jp/page/3431.html で確認",
+      "evidence": "「長崎市生活支援相談センター」 - 長崎市ウェブサイト（生活福祉1課）"
+    },
+    "jp-local-42-nagasaki-prefectural-shakyo": {
+      "url": "https://nagasaki-pref-shakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "ながさきのふくし 長崎県社会福祉協議会"
+    },
+    "jp-local-43-kumamoto": {
+      "url": "https://www.city.kumamoto.jp/kiji00311997/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kumamoto.jp/kiji00311997/index.html で確認",
+      "evidence": "熊本市生活自立支援センターのご案内 / 熊本市公式サイト"
+    },
+    "jp-local-43-kumamoto-prefectural-shakyo": {
+      "url": "https://www.fukushi-kumamoto.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人熊本県社会福祉協議会（公式ホームページ）"
+    },
+    "jp-local-44-oita": {
+      "url": "https://www.city.oita.oita.jp/o090/kenko/fukushi/1491814356278.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.oita.oita.jp/o090/kenko/fukushi/1491814356278.html で確認",
+      "evidence": "大分市／生活の不安や心配ごとを相談してみませんか！"
+    },
+    "jp-local-44-oita-prefectural-shakyo": {
+      "url": "https://www.oitakensyakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "大分県社会福祉協議会"
+    },
+    "jp-local-45-miyazaki": {
+      "url": "https://www.city.miyazaki.miyazaki.jp/health/welfare/protection/267674.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.miyazaki.miyazaki.jp/health/welfare/protection/267674.html で確認",
+      "evidence": "（生活困窮）宮崎市自立相談支援センター”これから”について - 宮崎市 [Miyazaki City]"
+    },
+    "jp-local-46-kagoshima": {
+      "url": "https://www.city.kagoshima.lg.jp/kenkofukushi/fukushi/hogo1/kenko/fukushi/hogo/jiritu.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.kagoshima.lg.jp/kenkofukushi/fukushi/hogo1/kenko/fukushi/hogo/jiritu.html で確認",
+      "evidence": "鹿児島市生活自立支援センターの事業概要｜鹿児島市"
+    },
+    "jp-local-46-kagoshima-prefectural-shakyo": {
+      "url": "https://www.kaken-shakyo.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "社会福祉法人鹿児島県社会福祉協議会（公式ホームページ）"
+    },
+    "jp-local-47-naha": {
+      "url": "https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003475.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003475.html で確認",
+      "evidence": "生活困窮者自立支援制度｜那覇市公式ホームページ"
+    },
+    "jp-local-47-okinawa-prefectural-shakyo": {
+      "url": "https://www.okishakyo.or.jp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "evidence": "沖縄県社会福祉協議会 | 沖縄県社会福祉協議会"
+    },
+    "jp-pref-01-bousai": {
+      "url": "https://www.pref.hokkaido.lg.jp/sm/ktk/saigai-bousai.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.hokkaido.lg.jp/sm/ktk/saigai-bousai.html）",
+      "evidence": "北海道の災害・防災情報 - 総務部危機対策局危機対策課"
+    },
+    "jp-pref-02-bousai": {
+      "url": "https://www.pref.aomori.lg.jp/soshiki/kikikanri/bousai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.aomori.lg.jp/soshiki/kikikanri/bousai/index.html）",
+      "evidence": "防災危機管理課｜青森県庁ウェブサイト Aomori Prefectural Government"
+    },
+    "jp-pref-04-bousai": {
+      "url": "https://www.pref.miyagi.jp/soshiki/bousai/bousai_link.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.miyagi.jp/soshiki/bousai/bousai_link.html）",
+      "evidence": "防災リンク集 - 宮城県公式ウェブサイト"
+    },
+    "jp-pref-05-bousai": {
+      "url": "https://www.pref.akita.lg.jp/pages/genre/11642",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.akita.lg.jp/pages/genre/64816）",
+      "evidence": "防災・災害・危機管理情報 | 美の国あきたネット"
+    },
+    "jp-pref-07-bousai": {
+      "url": "https://www.pref.fukushima.lg.jp/site/bousai/bousai-annai.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.fukushima.lg.jp/site/bousai/bousai-annai.html）",
+      "evidence": "ふくしまぼうさいウェブについて - 福島県ホームページ"
+    },
+    "jp-pref-08-bousai": {
+      "url": "https://www.pref.ibaraki.jp/bousaikiki/bousaikiki/bousai/bousaijyouhou.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.ibaraki.jp/bousaikiki/bousaikiki/bousai/bousaijyouhou.html）",
+      "evidence": "茨城県防災・危機管理ポータルサイト／茨城県"
+    },
+    "jp-pref-09-bousai": {
+      "url": "https://www.pref.tochigi.lg.jp/kurashi/bousai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.tochigi.lg.jp/kurashi/bousai/index.html）",
+      "evidence": "栃木県／危機管理・防災ポータルサイト"
+    },
+    "jp-pref-10-bousai": {
+      "url": "https://www.pref.gunma.jp/07/a5500045.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.gunma.jp/07/a5500045.html）",
+      "evidence": "危機管理課 - 群馬県ホームページ"
+    },
+    "jp-pref-11-bousai": {
+      "url": "https://www.pref.saitama.lg.jp/kurashi/bosai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.saitama.lg.jp/kurashi/bosai/index.html）",
+      "evidence": "防災・消防 - 埼玉県"
+    },
+    "jp-pref-12-bousai": {
+      "url": "https://www.pref.chiba.lg.jp/bousai/saigaitaisaku/jouhou/bousaijouhou.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.chiba.lg.jp/bousai/saigaitaisaku/jouhou/bousaijouhou.html）",
+      "evidence": "防災情報システム／千葉県"
+    },
+    "jp-pref-13-bousai": {
+      "url": "https://www.bousai.metro.tokyo.lg.jp/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.bousai.metro.tokyo.lg.jp/link/1000044/1000356.html）",
+      "evidence": "トップページ｜東京都防災ホームページ"
+    },
+    "jp-pref-14-bousai": {
+      "url": "https://www.pref.kanagawa.jp/menu/1/4/22/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.kanagawa.jp/menu/1/4/22/index.html）",
+      "evidence": "防災・消防 - 神奈川県ホームページ"
+    },
+    "jp-pref-15-bousai": {
+      "url": "https://www.pref.niigata.lg.jp/site/bosai/index-2.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.niigata.lg.jp/site/bosai/index-2.html）",
+      "evidence": "新潟県防災局のページ - 新潟県ホームページ"
+    },
+    "jp-pref-19-bousai": {
+      "url": "https://www.pref.yamanashi.jp/bousai/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.yamanashi.jp/bousai/）",
+      "evidence": "山梨県／防災危機管理課"
+    },
+    "jp-pref-20-bousai": {
+      "url": "https://www.pref.nagano.lg.jp/bosaianzen/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.nagano.lg.jp/koho/mokuteki/tokusetusite.html）",
+      "evidence": "防災・安全／長野県"
+    },
+    "jp-pref-21-bousai": {
+      "url": "https://www.pref.gifu.lg.jp/life/1/3/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.gifu.lg.jp/soshiki/5.html）",
+      "evidence": "防災 - 岐阜県公式ホームページ"
+    },
+    "jp-pref-22-bousai": {
+      "url": "https://www.pref.shizuoka.jp/bosaikinkyu/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.shizuoka.jp/1066349/1066351/index.html）",
+      "evidence": "防災・緊急情報｜静岡県公式ホームページ"
+    },
+    "jp-pref-23-bousai": {
+      "url": "https://www.pref.aichi.jp/site/aichisaigai-portal/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.aichi.jp/bousai/index.html）",
+      "evidence": "愛知県の災害関連情報ポータルサイト - 愛知県"
+    },
+    "jp-pref-24-bousai": {
+      "url": "https://www.pref.mie.lg.jp/s_bosai/bosai/index.htm",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.mie.lg.jp/s_bosai/bosai/index.htm）",
+      "evidence": "三重県：防災・緊急情報"
+    },
+    "jp-pref-25-bousai": {
+      "url": "https://www.pref.shiga.lg.jp/menu/25612.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.shiga.lg.jp/menu/25612.html）",
+      "evidence": "防災・危機管理｜滋賀県"
+    },
+    "jp-pref-26-bousai": {
+      "url": "https://www.pref.kyoto.jp/kurashi/bosai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.kyoto.jp/kurashi/bosai/index.html）",
+      "evidence": "防災・防犯・安心・安全／京都府ホームページ"
+    },
+    "jp-pref-27-bousai": {
+      "url": "https://www.pref.osaka.lg.jp/kurashi/bousai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.osaka.lg.jp/kurashi/bousai/index.html）",
+      "evidence": "防災／大阪府（おおさかふ）ホームページ [Osaka Prefectural Government]"
+    },
+    "jp-pref-28-bousai": {
+      "url": "https://web.pref.hyogo.lg.jp/kk40/pa21_000000001.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://web.pref.hyogo.lg.jp/kk40/pa21_000000001.html）",
+      "evidence": "兵庫県防災気象情報 | 兵庫県"
+    },
+    "jp-pref-30-bousai": {
+      "url": "https://www.pref.wakayama.lg.jp/prefg/011400/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.wakayama.lg.jp/prefg/011400/index.html）",
+      "evidence": "防災企画課 | 和歌山県"
+    },
+    "jp-pref-31-bousai": {
+      "url": "https://www.pref.tottori.lg.jp/kikikanrihp/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.tottori.lg.jp/kikikanrihp/）",
+      "evidence": "鳥取県の危機管理"
+    },
+    "jp-pref-32-bousai": {
+      "url": "https://www.pref.shimane.lg.jp/bousai_info/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.shimane.lg.jp/bousai_info/）",
+      "evidence": "島根県：防災・安全（トップ / 防災・安全）"
+    },
+    "jp-pref-33-bousai": {
+      "url": "https://www.pref.okayama.jp/page/detail-10903.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.okayama.jp/page/detail-10903.html）",
+      "evidence": "いざという時のために - 岡山県ホームページ（危機管理課）"
+    },
+    "jp-pref-34-bousai": {
+      "url": "https://www.pref.hiroshima.lg.jp/life/3/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.hiroshima.lg.jp/life/3/）",
+      "evidence": "防災・安全 | 広島県"
+    },
+    "jp-pref-37-bousai": {
+      "url": "https://www.pref.kagawa.lg.jp/bosai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.kagawa.lg.jp/kikikanri/sogo/koho/kagawabosaipj.html）",
+      "evidence": "防災・安全｜香川県"
+    },
+    "jp-pref-40-bousai": {
+      "url": "https://www.pref.fukuoka.lg.jp/life/1/1/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.fukuoka.lg.jp/life/1/1/）",
+      "evidence": "防災・国民保護 - 福岡県庁ホームページ"
+    },
+    "jp-pref-41-bousai": {
+      "url": "https://www.pref.saga.lg.jp/bousai/default.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.saga.lg.jp/bousai/default.html）",
+      "evidence": "防災･減災さが / 佐賀県"
+    },
+    "jp-pref-43-bousai": {
+      "url": "https://www.pref.kumamoto.jp/life/1/2/",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.kumamoto.jp/）",
+      "evidence": "災害・防災・危機管理 - 熊本県ホームページ"
+    },
+    "jp-pref-46-bousai": {
+      "url": "https://www.pref.kagoshima.jp/bosai/saigai/bousaiportal.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.kagoshima.jp/bosai/index.html）",
+      "evidence": "鹿児島県／かごしま防災ポータル"
+    },
+    "jp-pref-47-bousai": {
+      "url": "https://www.pref.okinawa.jp/bosaianzen/bosai/index.html",
+      "checkedAt": "2026-11-03",
+      "method": "fetched",
+      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.okinawa.jp/bosaianzen/bosai/index.html）",
+      "evidence": "防災｜沖縄県公式ホームページ"
     }
   }
 }

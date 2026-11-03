@@ -2,6 +2,8 @@
 // 文字はすべて textContent で入れる。値の無い国は「データなし」と表示し、推計で埋めない。
 // 外部への通信はしない（同じサイトの JSON だけを読む）。
 
+import { NATURE_LABELS } from './nature.js';
+
 const isEn = document.documentElement.lang === 'en';
 const el = (tag, cls, text) => {
   const e = document.createElement(tag);
@@ -46,7 +48,15 @@ function render(data, countries) {
     tabs.append(b);
   });
   const note = document.getElementById('cmp-note');
-  note.replaceChildren(el('span', null, pick(ind.note) + ' '));
+  note.replaceChildren();
+  // 情報の性質（統計／試算・推計）。地球儀の画面と同じ言葉を使う
+  const nat = NATURE_LABELS[isEn ? 'en' : 'ja'][ind.nature];
+  if (nat) {
+    const b = el('span', 'badge nature nature-' + ind.nature, nat[0]);
+    b.title = nat[1];
+    note.append(b, ' ');
+  }
+  note.append(el('span', null, pick(ind.note) + ' '));
   const src = safeUrl(ind.source?.url);
   if (src) {
     const a = el('a', null, `${L.source}: ${ind.source.name}`);

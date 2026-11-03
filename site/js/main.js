@@ -53,7 +53,9 @@ async function start() {
     return;
   }
 
-  const state = { current: 'outbreak', country: null, sunNote: null, kana: false };
+  // 最初に開く分野は「今日の動物たち」（癒しを求めている方のため。2026-11 運用者の決定）
+  const DEFAULT_LAYER = 'animals';
+  const state = { current: DEFAULT_LAYER, country: null, sunNote: null, kana: false };
 
   // ── 地球儀 ──
   // 画面下の帯（データの時点・運営・免責）の高さに合わせて、回転・初期表示ボタンを上に逃がす
@@ -136,15 +138,23 @@ async function start() {
     $('operator-link').href = aboutHref;
     document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
     $('drawer-about').href = aboutHref;
+    $('quick-about').href = aboutHref;
     // トップと（スマートフォンの）メニューから、福祉の相談先とセキュリティ対策の説明ページへ直接進める
     for (const id of ['quick-welfare', 'drawer-welfare']) $(id).href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
     for (const id of ['quick-security', 'drawer-security']) $(id).href = lang === 'en' ? 'security-basics.en.html' : 'security-basics.html';
+    // ボタンは短い名前、正式な名前は title に
+    $('quick-security').title = t('quick.security');
+    $('quick-compare').title = t('quick.compare');
+    $('quick-connections').title = t('quick.connections');
     for (const id of ['quick-compare', 'drawer-compare']) $(id).href = lang === 'en' ? 'compare.en.html' : 'compare.html';
-    $('brand-link').href = urlForLang(lang);
+    for (const id of ['quick-connections', 'drawer-connections']) $(id).href = lang === 'en' ? 'connections.en.html' : 'connections.html';
+    $('welcome-x').setAttribute('aria-label', t('welcome.closeX'));
+    // サイトの中から地球儀へ戻るリンクには #return を付け、最初のお知らせを出さない（showWelcome の条件）
+    $('brand-link').href = urlForLang(lang) + '#return';
     const other = lang === 'en' ? 'ja' : 'en';
     for (const id of ['btn-lang', 'drawer-lang']) {
       const a = $(id);
-      a.href = urlForLang(other);
+      a.href = urlForLang(other) + '#return';
       a.hreflang = other;
       a.lang = other;
       a.textContent = t('control.lang');
@@ -216,8 +226,8 @@ async function start() {
       u.searchParams.delete('country');
       u.searchParams.delete('layer');
       u.searchParams.delete('list');
-      if (state.country && !$('detail-panel').hidden) u.searchParams.set('country', state.country);
-      if (state.current !== 'outbreak') u.searchParams.set('layer', state.current);
+      if (state.country && !$('detail-panel').hidden && !state.countryFromLocate) u.searchParams.set('country', state.country);
+      if (state.current !== DEFAULT_LAYER) u.searchParams.set('layer', state.current);
       history.replaceState(null, '', './' + u.pathname.split('/').pop() + u.search);
     } catch {
       /* URL を変えられない環境では何もしない */
@@ -326,7 +336,9 @@ async function start() {
       $('detail-body').prepend(p);
     }
   }
-  function openCountry(id, { fly, keepRotation = false, sun = null }) {
+  function openCountry(id, { fly, keepRotation = false, sun = null, fromLocate = false }) {
+    // 現在地から推定した国は、共有用の URL に書かない（閲覧者のおおよその場所が URL・履歴に残らないように）
+    state.countryFromLocate = fromLocate;
     const c = data.countryMap.get(id);
     if (!c) return;
     state.country = id;
@@ -387,7 +399,9 @@ async function start() {
     for (const e of document.body.children) if (e.id !== 'menu-drawer' && e.id !== 'menu-backdrop' && e.tagName !== 'SCRIPT') e.inert = true;
     $('btn-menu').setAttribute('aria-expanded', 'true');
     $('current-layer').setAttribute('aria-expanded', 'true');
-    (drawerItems.get(state.current) || $('menu-close')).focus();
+    // フォーカスはいまの分野に置くが、表示はメニューの一番上（目的と使い方）から見せる
+    (drawerItems.get(state.current) || $('menu-close')).focus({ preventScroll: true });
+    document.querySelector('#menu-drawer .drawer-body').scrollTop = 0;
   }
   function closeMenu() {
     const wasOpen = !$('menu-drawer').hidden;
@@ -519,7 +533,7 @@ async function start() {
         $('toast').hidden = true;
         globe.flyTo(lon, lat);
         if (id && data.countryMap.has(id)) {
-          openCountry(id, { fly: false, keepRotation: true, sun: phase });
+          openCountry(id, { fly: false, keepRotation: true, sun: phase, fromLocate: true });
           // 位置は丸めて推定しているため、国境や島の近くでは別の国になることがある
           toast(t('locate.estimated', { country: countryName(data.countryMap.get(id)) }));
         }
@@ -548,6 +562,13 @@ async function start() {
   syncHeader();
   // 共有されたURL（?layer=…&country=…）で開いたときは、その分野・国を表示する（値は一覧にあるものだけ受け付ける）
   const params = new URLSearchParams(location.search);
+  const fromSite = location.hash === '#return';
+  if (fromSite)
+    try {
+      history.replaceState(null, '', './' + location.pathname.split('/').pop() + location.search);
+    } catch {
+      /* URL を変えられない環境では何もしない */
+    }
   const pl = params.get('layer');
   if (pl && LAYERS.some((l) => l.id === resolveLayer(pl))) state.current = resolveLayer(pl);
   setLayer(state.current);
@@ -556,7 +577,57 @@ async function start() {
   // 「このサイトについて」などからのリンク（?layer=animals&list=1）：その分野の一覧を開いた状態で表示する
   else if (params.get('list') === '1' && $('list-panel').hidden) toggleList();
   // 地球儀が描かれてから、読み込み中の表示を消す
-  requestAnimationFrame(() => requestAnimationFrame(hideLoading));
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    hideLoading();
+    // 最初のお知らせは「新しく開いたとき」だけ出す（ブラウザに何も保存しない方式。2026-11-03 運用者の決定）
+    //   出さない：再読み込み・戻る/進む・サイト内のページから地球儀へ戻ったとき（#return）・言語の切り替え・共有された分野や国の URL
+    if (!pl && !pc && params.get('list') !== '1' && !fromSite && !['reload', 'back_forward'].includes(navType())) showWelcome();
+  }));
+}
+
+// ページの開き方（navigate／reload／back_forward）。取得できないときは navigate とみなす
+function navType() {
+  try {
+    return performance.getEntriesByType('navigation')[0]?.type || 'navigate';
+  } catch {
+    return 'navigate';
+  }
+}
+
+// 最初のお知らせ：閉じやすさを優先（大きな「閉じる」ボタン・右上の×・Esc・外側を押す、のどれでも閉じる）。
+// <dialog> の showModal を使い、開いているあいだは後ろを操作できないようにし、閉じたら元の場所へフォーカスを戻す
+function showWelcome() {
+  const d = document.getElementById('welcome');
+  if (!d || typeof d.showModal !== 'function' || d.open) return;
+  const close = () => d.open && d.close();
+  // 閉じた後は、いま表示している分野のボタンへフォーカスを移す（キーボードで続けて操作できるように）
+  d.addEventListener(
+    'close',
+    () => {
+      const target = [document.getElementById('current-layer'), document.querySelector('.layers [aria-selected="true"]')].find((e) => e && e.offsetParent !== null);
+      target?.focus({ preventScroll: true });
+    },
+    { once: true },
+  );
+  document.getElementById('welcome-close').addEventListener('click', close, { once: true });
+  document.getElementById('welcome-x').addEventListener('click', close, { once: true });
+  // 外側（背景）を押したときも閉じる。文字を選ぶ操作で閉じないよう、押した場所と離した場所の両方が外側のときだけ
+  let downOutside = false;
+  const outside = (e) => {
+    const r = d.getBoundingClientRect();
+    return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+  };
+  d.addEventListener('pointerdown', (e) => (downOutside = e.target === d && outside(e)));
+  d.addEventListener('pointerup', (e) => {
+    if (downOutside && e.target === d && outside(e)) close();
+    downOutside = false;
+  });
+  try {
+    d.showModal();
+    document.getElementById('welcome-close').focus();
+  } catch {
+    /* 表示できない環境では出さない（地球儀はそのまま使える） */
+  }
 }
 
 // 想定外のエラーで止まったときも、利用者に「確認中です」と案内を出す

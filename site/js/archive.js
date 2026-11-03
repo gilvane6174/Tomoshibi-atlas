@@ -1,6 +1,8 @@
 // 過去の記録の一覧（データベース）。手動で掲載した情報を、表示から外れたものも含めて、年・分野・国・言葉で絞り込んで見られる。
 // データは組み立て時に作る data/archive.json（手動掲載のみ。自動取得の情報は保存していない）。
 // 文字はすべて textContent で入れ、リンクは https だけを使う（innerHTML は使わない）。
+import { natureBadge } from './nature.js';
+
 const isEn = document.documentElement.lang === 'en';
 const PAGE = 50;
 const NAMES = isEn
@@ -75,7 +77,7 @@ async function start() {
         const art = el('article', 'archive-item');
         const meta = el('p', 'archive-meta', `${NAMES[it.layer] || it.layer}${it.sub ? `（${SUB[it.sub]}）` : ''}　${T.published} ${fmt(it.publishedAt)}　${it.countries.map((c) => cname.get(c) || c).join('・')}`);
         const title = pick(it.title);
-        art.append(meta, el('h3', null, title));
+        art.append(meta, el('h3', null, title), el('p', 'entry-flags archive-flags').appendChild(natureBadge(it, isEn ? 'en' : 'ja')).parentNode);
         const sum = pick(it.summary);
         if (it.attribution) art.append(el('p', 'archive-attr', pick(it.attribution)));
         if (sum) art.append(el('p', null, sum));

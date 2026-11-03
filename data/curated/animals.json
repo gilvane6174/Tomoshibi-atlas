@@ -956,23 +956,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-irl-irish-hare",
-      "country": "IRL",
-      "animal": {
-        "ja": "アイルランドノウサギ",
-        "en": "Irish hare"
-      },
-      "text": {
-        "ja": "アイルランドノウサギはユキウサギの亜種で、アイルランドにしかいません。繁殖期にはボクシングをする姿も見られます。",
-        "en": "The Irish hare, a subspecies of the mountain hare, is found only in Ireland and can be spotted boxing in the breeding season."
-      },
-      "source": {
-        "name": "National Biodiversity Data Centre (Ireland)（PDF）",
-        "url": "https://biodiversityireland.ie/app/uploads/2023/12/Species-Profile-35-Irish-hare.pdf"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-nor-svalbard-reindeer",
       "country": "NOR",
       "animal": {

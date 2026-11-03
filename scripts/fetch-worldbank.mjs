@@ -9,10 +9,12 @@ import { readJson } from './lib/safety.mjs';
 const { fetchEndpoints, enabledFetchers } = readJson('scripts/allowed-sources.json');
 
 // 指標の定義。range は値として認める範囲（範囲外は異常として除く）
+// nature は画面の「情報の性質」（site/js/nature.js）。失業率は ILO のモデルによる推計のため estimate
 export const WB_INDICATORS = [
   {
     key: 'wbPoverty',
     code: 'SI.POV.DDAY',
+    nature: 'statistics',
     unit: '%',
     decimals: 1,
     range: [0, 100],
@@ -26,6 +28,7 @@ export const WB_INDICATORS = [
   {
     key: 'wbGini',
     code: 'SI.POV.GINI',
+    nature: 'statistics',
     unit: '',
     decimals: 1,
     range: [0, 100],
@@ -39,6 +42,7 @@ export const WB_INDICATORS = [
   {
     key: 'wbGdpPpp',
     code: 'NY.GDP.PCAP.PP.CD',
+    nature: 'statistics',
     unit: 'intl$',
     decimals: 0,
     range: [0, 500000],
@@ -52,6 +56,7 @@ export const WB_INDICATORS = [
   {
     key: 'wbUnemployment',
     code: 'SL.UEM.TOTL.ZS',
+    nature: 'estimate',
     unit: '%',
     decimals: 1,
     range: [0, 100],
@@ -61,6 +66,90 @@ export const WB_INDICATORS = [
       en: 'Modelled estimates by the International Labour Organization for international comparison; they may differ from national official figures.',
     },
     source: { name: 'International Labour Organization, ILOSTAT (via World Bank)', url: 'https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS' },
+  },
+  {
+    key: 'wbInflation',
+    code: 'FP.CPI.TOTL.ZG',
+    nature: 'statistics',
+    unit: '%',
+    decimals: 1,
+    range: [-100, 100000],
+    name: { ja: '物価の上昇率（消費者物価、前年比）', en: 'Inflation, consumer prices (annual %)' },
+    note: {
+      ja: '平均的な消費者が買うモノやサービスの値段が、1年でどれだけ変わったか。物価の高さではなく、変化の速さを表します。旅行先で払う値段そのものではありません。',
+      en: 'Yearly change in the cost to the average consumer of a basket of goods and services. It shows how fast prices change, not how high they are, and is not the prices a traveller pays.',
+    },
+    source: { name: 'International Monetary Fund, International Financial Statistics (via World Bank)', url: 'https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG' },
+  },
+  {
+    key: 'wbWaterSafe',
+    code: 'SH.H2O.SMDW.ZS',
+    nature: 'estimate',
+    unit: '%',
+    decimals: 1,
+    range: [0, 100],
+    name: { ja: '安全に管理された飲み水を使える人の割合', en: 'People using safely managed drinking water services (% of population)' },
+    note: {
+      ja: '家の敷地内にあり、必要なときに使え、汚染のない水源の水を使える人の割合（WHO・ユニセフ合同モニタリング計画（JMP）の推計）。旅行者が水道水をそのまま飲めるかを直接示すものではありません。渡航前は、外務省の海外安全ホームページや厚生労働省検疫所（FORTH）などの公的な情報を確認してください。',
+      en: 'Share of people using an improved water source on premises, available when needed and free from contamination (estimates by the WHO/UNICEF Joint Monitoring Programme). It does not directly tell travellers whether tap water is safe to drink; check official travel health information before travelling.',
+    },
+    source: { name: 'WHO/UNICEF Joint Monitoring Programme (via World Bank)', url: 'https://data.worldbank.org/indicator/SH.H2O.SMDW.ZS' },
+  },
+  {
+    key: 'wbWaterBasic',
+    code: 'SH.H2O.BASW.ZS',
+    nature: 'estimate',
+    unit: '%',
+    decimals: 1,
+    range: [0, 100],
+    name: { ja: '少なくとも基本的な飲み水を使える人の割合', en: 'People using at least basic drinking water services (% of population)' },
+    note: {
+      ja: '往復30分以内で汲みに行ける、改善された水源の水を使える人の割合（JMP の推計）。「安全に管理された飲み水」より条件がゆるく、値のある国が多い指標です。',
+      en: 'Share of people using an improved water source within a 30-minute round trip (JMP estimates). A looser standard than "safely managed", with values for more countries.',
+    },
+    source: { name: 'WHO/UNICEF Joint Monitoring Programme (via World Bank)', url: 'https://data.worldbank.org/indicator/SH.H2O.BASW.ZS' },
+  },
+  {
+    key: 'wbSanitation',
+    code: 'SH.STA.SMSS.ZS',
+    nature: 'estimate',
+    unit: '%',
+    decimals: 1,
+    range: [0, 100],
+    name: { ja: '安全に管理されたトイレ・下水を使える人の割合', en: 'People using safely managed sanitation services (% of population)' },
+    note: {
+      ja: 'ほかの世帯と共有しない改善されたトイレを使い、排せつ物が安全に処理されている人の割合（JMP の推計）。',
+      en: 'Share of people using improved sanitation facilities not shared with other households, where excreta are safely disposed of or treated (JMP estimates).',
+    },
+    source: { name: 'WHO/UNICEF Joint Monitoring Programme (via World Bank)', url: 'https://data.worldbank.org/indicator/SH.STA.SMSS.ZS' },
+  },
+  {
+    key: 'wbPrimaryCompletion',
+    code: 'SE.PRM.CMPT.ZS',
+    nature: 'statistics',
+    unit: '%',
+    decimals: 1,
+    range: [0, 250],
+    name: { ja: '小学校の修了率（子ども）', en: 'Primary completion rate (% of relevant age group)' },
+    note: {
+      ja: '小学校の最後の学年に新しく入った子どもの数を、その学年の年齢の人口で割った値（ユネスコ統計研究所）。年齢を問わず数えるため、100%を超えることがあります。',
+      en: 'New entrants to the last grade of primary school, regardless of age, divided by the population at the entrance age for that grade (UNESCO Institute for Statistics). It can exceed 100%.',
+    },
+    source: { name: 'UNESCO Institute for Statistics (via World Bank)', url: 'https://data.worldbank.org/indicator/SE.PRM.CMPT.ZS' },
+  },
+  {
+    key: 'wbTertiary',
+    code: 'SE.TER.ENRR',
+    nature: 'statistics',
+    unit: '%',
+    decimals: 1,
+    range: [0, 250],
+    name: { ja: '大学など高等教育の就学率（大人を含む）', en: 'School enrolment, tertiary (% gross, including adults)' },
+    note: {
+      ja: '大学・短大・専門的な高等教育に在籍する人の数を、高校を出た後の5年間の年齢の人口で割った値（ユネスコ統計研究所）。社会人の学生も数えるため、100%を超えることがあります。',
+      en: 'Total enrolment in tertiary education, regardless of age, divided by the population of the five-year age group after secondary school (UNESCO Institute for Statistics). It can exceed 100%.',
+    },
+    source: { name: 'UNESCO Institute for Statistics (via World Bank)', url: 'https://data.worldbank.org/indicator/SE.TER.ENRR' },
   },
 ];
 
@@ -114,7 +203,7 @@ async function fetchOne(ind, countryIds) {
 export async function buildCompare({ countryIds, offline, now }) {
   const indicators = [];
   for (const ind of WB_INDICATORS) {
-    const base = { key: ind.key, code: ind.code, unit: ind.unit, decimals: ind.decimals, name: ind.name, note: ind.note, source: ind.source };
+    const base = { key: ind.key, code: ind.code, nature: ind.nature, unit: ind.unit, decimals: ind.decimals, name: ind.name, note: ind.note, source: ind.source };
     if (!enabledFetchers[ind.key] || !fetchEndpoints[ind.key]) indicators.push({ ...base, status: 'disabled', values: {}, count: 0 });
     else if (offline) indicators.push({ ...base, status: 'notFetched', values: {}, count: 0 });
     else {
