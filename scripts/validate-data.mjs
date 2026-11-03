@@ -3,7 +3,7 @@
 // build.mjs からも validateItems() を呼び、自動取得分も同じ基準で検査する。
 
 import { pathToFileURL } from 'node:url';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { scanText } from './check-privacy.mjs';
 import { DATA_ROOT, readCode, readData, isAllowedUrl, isDirectoryUrl, isAnimalUrl, looksLikeHtml, isValidDate, findForbidden, findAttackDetail, hasInvisible, hasMixedScript, notFutureJst, siWithoutExplanation, mentionsSuperIntelligence } from './lib/safety.mjs';
@@ -22,7 +22,11 @@ const ID = /^[a-z0-9][a-z0-9-]{2,120}$/;
 const TOPIC = /^[a-z0-9][a-z0-9-]{1,59}$/;
 // 更新履歴の作業者名は、ops/ROLES.md の役割名だけ（個人名・製品名・アカウント名は書けない）
 export const ACTORS = ['operator', 'ai-curator', 'bot-curator', 'ai-security-audit', 'ai-fact-check', 'ai-translation-audit', 'ai-balance-audit'];
-const ITEM_KEYS = new Set(['id', 'layer', 'title', 'summary', 'attribution', 'tags', 'topic', 'countries', 'placeBasis', 'importance', 'publishedAt', 'checkedAt', 'source', 'sourceType', 'links']);
+const ITEM_KEYS = new Set(['id', 'layer', 'title', 'summary', 'attribution', 'tags', 'topic', 'countries', 'placeBasis', 'importance', 'publishedAt', 'checkedAt', 'source', 'sourceType', 'nature', 'links']);
+// 情報の性質（画面の「情報の確かさ」の表示。site/js/nature.js と合わせる）。手動掲載で、公的機関・国際機関の発表のときだけ書ける。
+// 書かないときは、研究（査読論文）・開発元の発表・公式発表のどれかを sourceType から決める（地震は速報値、自動取得は公式発表の見出し）
+//   statistics … 公的な統計（調査・集計の結果）／ estimate … 試算・推計（一定の前提での計算）／ preliminary … 速報値・暫定値（まとめた時点の値）／ official … 公式発表
+export const NATURES = ['official', 'statistics', 'estimate', 'preliminary'];
 const TEXT_KEYS = new Set(['ja', 'en', 'original']);
 const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
 
@@ -110,6 +114,7 @@ export function validateItems(items, { layer, curated }) {
     if (it.tags !== undefined && (!Array.isArray(it.tags) || it.tags.some((t) => !TAGS.includes(t))))
       errors.push(`${p}: tags は ${TAGS.join(' / ')} のみ`);
 
+    if (!curated && it.nature !== undefined) errors.push(`${p}: nature は手動掲載だけ`);
     if (curated) {
       // 「SI」だけの表記は意味が分からないため、説明を添える（リンク集の SI-CERT などの固有名は対象外）
       for (const [k, obj] of [['title', it.title], ['summary', it.summary], ['attribution', it.attribution]])
@@ -118,6 +123,10 @@ export function validateItems(items, { layer, curated }) {
       if (mentionsSuperIntelligence(JSON.stringify([it.title, it.summary, it.attribution])) && !(it.tags || []).includes('ai')) errors.push(`${p}: SI（Super Intelligence）の情報は AI 関連として tags に ai を付ける`);
       if (!SOURCE_TYPES.includes(it.sourceType)) errors.push(`${p}: sourceType は peer_reviewed / public_agency / intl_org / vendor`);
       else if (it.sourceType === 'vendor' && it.layer !== 'research') errors.push(`${p}: 開発元の発表（vendor）は「研究と対策」の分野だけ`);
+      if (it.nature !== undefined) {
+        if (!NATURES.includes(it.nature)) errors.push(`${p}: nature は ${NATURES.join(' / ')} のいずれか`);
+        else if (!['public_agency', 'intl_org'].includes(it.sourceType)) errors.push(`${p}: nature は公的機関・国際機関の発表（public_agency / intl_org）のときだけ書ける（論文・開発元の発表は sourceType で表示が決まる）`);
+      }
       if (!isValidDate(it.checkedAt) || !notFutureJst(it.checkedAt)) errors.push(`${p}: checkedAt（原典を確認した日）が必須。未来日は不可`);
       else if (isValidDate(it.publishedAt) && it.checkedAt < it.publishedAt.slice(0, 10)) errors.push(`${p}: checkedAt が公表日より前`);
     }
@@ -174,6 +183,14 @@ export function validateCuratedDocs({ entries, changelog, entriesRaw, changelogR
     if (raw !== JSON.stringify(doc, null, 2) + '\n') errors.push(`${rel}: 決まった書式ではありません（インデント2、\\u エスケープ・重複キー・末尾の空白なし）。整形ツールで整えてください`);
   }
   errors.push(...validateItems(entries.items, { curated: true }).map((e) => `${entriesRel} ${e}`));
+  // 同じ原典（source.url）の項目を重ねて載せない（2026-11 に同じ統計を2件載せた反省）。続報は topic と supersede で扱う
+  const seenUrl = new Map();
+  for (const it of Array.isArray(entries.items) ? entries.items : []) {
+    const u = it?.source?.url;
+    if (typeof u !== 'string') continue;
+    if (seenUrl.has(u)) errors.push(`${entriesRel}: ${it.id} の原典が ${seenUrl.get(u)} と同じ（重複掲載のおそれ）`);
+    else seenUrl.set(u, it.id);
+  }
   const ids = Array.isArray(entries.items) ? entries.items.map((x) => x?.id).filter(Boolean) : [];
   errors.push(...validateChangelog(changelog, ids, changelogRel));
   return errors;
@@ -286,10 +303,31 @@ export function validatePrefectures(rel = 'data/directory/prefectures.json') {
   doc.prefectures.forEach((p, i) => {
     const at = `${rel} prefectures[${i}]`;
     if (p.code !== String(i + 1).padStart(2, '0')) errors.push(`${at}: code は 01〜47 の順番`);
-    for (const k of Object.keys(p)) if (!['code', 'ja', 'en', 'links'].includes(k)) errors.push(`${at}.${k}: 使えないキー`);
+    for (const k of Object.keys(p)) if (!['code', 'ja', 'en', 'links', 'local'].includes(k)) errors.push(`${at}.${k}: 使えないキー`);
+    // 市区町村・社会福祉協議会の福祉の相談ページ（2026-11 追加。運用者の決定で、市区町村の公式サイトと社会福祉協議会まで）
+    if (p.local !== undefined) {
+      if (!Array.isArray(p.local) || p.local.length > 30) errors.push(`${at}.local: 0〜30件の配列`);
+      else
+        p.local.forEach((l, j) => {
+          const lp = `${at}.local[${j}]`;
+          if (!isObj(l)) return errors.push(`${lp}: オブジェクトが必要`);
+          for (const k of Object.keys(l)) if (!['id', 'kind', 'name', 'nameKana', 'title', 'url'].includes(k)) errors.push(`${lp}.${k}: 使えないキー`);
+          if (typeof l.id !== 'string' || !new RegExp(`^jp-local-${p.code}-[a-z0-9][a-z0-9-]{1,60}$`).test(l.id)) errors.push(`${lp}.id は jp-local-${p.code}-<英小文字>`);
+          if (ids.has(l.id)) errors.push(`${lp}: id が重複`);
+          ids.add(l.id);
+          if (!['city', 'shakyo'].includes(l.kind)) errors.push(`${lp}.kind は city（市区町村）/ shakyo（社会福祉協議会）`);
+          checkText(l.name, `${lp}.name`, errors, { need: ['ja', 'en'], max: 60 });
+          if (typeof l.nameKana !== 'string' || !/^[\u3041-\u309f\u30fc ]{2,40}$/.test(l.nameKana)) errors.push(`${lp}.nameKana はひらがなで（ひらがな表示に使う）`);
+          checkText(l.title, `${lp}.title`, errors, { need: ['ja', 'en'], max: 90 });
+          if (l.kind === 'shakyo' && typeof l.name?.ja === 'string' && !l.name.ja.endsWith('社会福祉協議会')) errors.push(`${lp}.name.ja: 社会福祉協議会の名前で終わること`);
+          if (!isDirectoryUrl(l.url) || /\.pdf$/i.test(l.url)) errors.push(`${lp}.url: 許可リスト外・https でない・?や#・PDF`);
+          // 市区町村は、市区町村の公式ドメイン（city.〜.jp・〜.lg.jp）であること
+          else if (l.kind === 'city' && !/(^|\.)city\.[a-z0-9.-]+\.jp$|\.lg\.jp$/.test(new URL(l.url).hostname)) errors.push(`${lp}.url: 市区町村の公式ドメイン（city.〜.jp・〜.lg.jp）ではない`);
+        });
+    }
     if (typeof p.ja !== 'string' || !/^[\p{Script=Han}\p{Script=Hiragana}]{2,5}$/u.test(p.ja)) errors.push(`${at}.ja: 都道府県名が不正`);
     if (typeof p.en !== 'string' || !/^[A-Za-z ]{4,40}$/.test(p.en)) errors.push(`${at}.en: 英語名が不正`);
-    if (!Array.isArray(p.links) || p.links.length > 3) return errors.push(`${at}.links: 0〜3件の配列`);
+    if (!Array.isArray(p.links) || p.links.length > 4) return errors.push(`${at}.links: 0〜4件の配列`);
     p.links.forEach((l, j) => {
       const lp = `${at}.links[${j}]`;
       for (const k of Object.keys(l)) if (!['id', 'role', 'title', 'url'].includes(k)) errors.push(`${lp}.${k}: 使えないキー`);
@@ -297,7 +335,8 @@ export function validatePrefectures(rel = 'data/directory/prefectures.json') {
       if (ids.has(l.id)) errors.push(`${lp}: id が重複`);
       ids.add(l.id);
       // main・consult：暮らし・仕事の相談、mind：こころの健康（精神保健福祉センターなど）
-      if (!['main', 'consult', 'mind'].includes(l.role)) errors.push(`${lp}.role は main / consult / mind`);
+      // bousai：その都道府県の防災・災害の情報のページ（2026-11 追加）
+      if (!['main', 'consult', 'mind', 'bousai'].includes(l.role)) errors.push(`${lp}.role は main / consult / mind / bousai`);
       checkText(l.title, `${lp}.title`, errors, { need: ['ja', 'en'], max: 90 });
       if (!isDirectoryUrl(l.url) || /\.pdf$/i.test(l.url)) errors.push(`${lp}.url: 許可リスト外・https でない・?や#・PDF`);
       // その都道府県自身の公式ドメインであること（例：北海道→pref.hokkaido、東京都→metro.tokyo）
@@ -309,6 +348,55 @@ export function validatePrefectures(rel = 'data/directory/prefectures.json') {
     });
   });
   walkStrings(doc, rel, errors, { curated: true, maxLen: 400 });
+  return errors;
+}
+
+// 「つながりを見る」ページのテーマ（data/curated/connections.json。運用者だけが管理する）
+// 手動で選んだ「同じテーマの情報」の組み合わせ。情報どうしの因果関係は示さない（原因・結果を言う言葉は機械的に止める）
+const CONNECTION_CAUSAL = /(原因|引き起こ|のせいで|によって生じ|結果として|もたらし|因果|caus|lead(?:s|ing)? to|led to|because of|result(?:s|ed)? in|due to|trigger)/i;
+const CONNECTION_KEYS = new Set(['id', 'title', 'summary', 'note', 'items']);
+export function validateConnections(rel = 'data/curated/connections.json', entriesRel = 'data/curated/entries.json') {
+  const errors = [];
+  let doc, raw, entries;
+  // ファイルが無いときは検査しない（作る前の版との取り込みの順番のため。ページの組み立て（build.mjs）は、無ければ失敗する）
+  if (!existsSync(resolve(DATA_ROOT, rel))) return errors;
+  try {
+    raw = readFileSync(resolve(DATA_ROOT, rel), 'utf8');
+    doc = readData(rel);
+    entries = readData(entriesRel);
+  } catch (e) {
+    return [`${rel}: JSONとして読めない（${e.message}）`];
+  }
+  return validateConnectionsDoc(doc, raw, new Set((entries?.items || []).map((x) => x?.id)), rel);
+}
+export function validateConnectionsDoc(doc, raw, entryIds, rel = 'connections') {
+  const errors = [];
+  if (!isObj(doc)) return [`${rel}: 先頭はオブジェクト`];
+  for (const k of Object.keys(doc)) if (!['schemaVersion', 'reviewedAt', 'themes'].includes(k)) errors.push(`${rel}.${k}: 定義されていない項目名`);
+  if (doc.schemaVersion !== 1) errors.push(`${rel}: schemaVersion は 1`);
+  if (!isValidDate(doc.reviewedAt) || !notFutureJst(doc.reviewedAt)) errors.push(`${rel}: reviewedAt が不正、または未来日`);
+  if (raw !== undefined && raw !== JSON.stringify(doc, null, 2) + '\n') errors.push(`${rel}: 決まった書式ではありません（インデント2、\\u エスケープ・重複キー・末尾の空白なし）`);
+  if (!Array.isArray(doc.themes) || doc.themes.length < 1 || doc.themes.length > 30) return [...errors, `${rel}: themes は1〜30件の配列`];
+  const ids = new Set();
+  doc.themes.forEach((th, i) => {
+    const p = `${rel}.themes[${i}]${typeof th?.id === 'string' ? '(' + th.id + ')' : ''}`;
+    if (!isObj(th)) return errors.push(`${p}: オブジェクトが必要`);
+    for (const k of Object.keys(th)) if (!CONNECTION_KEYS.has(k)) errors.push(`${p}.${k}: 定義されていない項目名`);
+    if (typeof th.id !== 'string' || !TOPIC.test(th.id)) errors.push(`${p}: id は英小文字・数字・ハイフン`);
+    if (ids.has(th.id)) errors.push(`${p}: id が重複`);
+    ids.add(th.id);
+    walkStrings(Object.fromEntries(['title', 'summary', 'note'].filter((k) => th[k] !== undefined).map((k) => [k, th[k]])), p, errors, { curated: true, maxLen: 200 });
+    checkText(th.title, `${p}.title`, errors, { need: ['ja', 'en'], max: 60 });
+    checkText(th.summary, `${p}.summary`, errors, { need: ['ja', 'en'], max: 200 });
+    if (th.note !== undefined) checkText(th.note, `${p}.note`, errors, { need: ['ja', 'en'], max: 200 });
+    for (const s of [th.title?.ja, th.title?.en, th.summary?.ja, th.summary?.en, th.note?.ja, th.note?.en])
+      if (typeof s === 'string' && CONNECTION_CAUSAL.test(s)) errors.push(`${p}: 因果関係（原因・結果）を言う言葉は使わない。同じテーマで並べるだけにする`);
+    if (!Array.isArray(th.items) || th.items.length < 2 || th.items.length > 12) errors.push(`${p}: items は2〜12件の id の配列`);
+    else {
+      if (new Set(th.items).size !== th.items.length) errors.push(`${p}: items に重複`);
+      for (const x of th.items) if (typeof x !== 'string' || !entryIds.has(x)) errors.push(`${p}: ${x} は掲載中の手動掲載の項目に無い`);
+    }
+  });
   return errors;
 }
 
@@ -351,7 +439,7 @@ export function validateEvidence(linksRel = 'data/directory/links.json', evRel =
   const ev = readData(evRel).links || {};
   const ids = new Set();
   const prefs = readData('data/directory/prefectures.json').prefectures || [];
-  const blocks = [...Object.values(doc.countries || {}), doc.international || {}, doc.social || {}, { prefectures: prefs.flatMap((p) => p.links || []) }];
+  const blocks = [...Object.values(doc.countries || {}), doc.international || {}, doc.social || {}, { prefectures: prefs.flatMap((p) => p.links || []), local: prefs.flatMap((p) => p.local || []) }];
   for (const block of blocks)
     for (const links of Object.values(block))
       for (const l of links) {
@@ -375,6 +463,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     ...validatePrefectures(),
     ...validateEvidence(),
     ...validateCuratedPair('data/curated/entries.json', 'data/curated/changelog.json'),
+    ...validateConnections(),
     ...validateDirectory('data/directory/links.json'),
   ];
   if (errors.length) {
@@ -382,5 +471,5 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     for (const e of errors.slice(0, 80)) console.error(' - ' + e);
     process.exit(1);
   }
-  console.log('検査OK: 本番2ファイル＋相談先リンク集');
+  console.log('検査OK: 本番2ファイル＋つながりのテーマ＋相談先リンク集');
 }

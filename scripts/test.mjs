@@ -620,7 +620,8 @@ test('週次の候補の追加（add-candidates）：検査を通る項目だけ
     const base = items0.find((x) => x.layer === 'crime') || items0[0];
     const L = base.layer;
     const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
-    const ok = { ...base, id: `${L}-2026-test-weekly-candidate`, topic: 'test-weekly-candidate', checkedAt: today, importance: 'minor' };
+    // 原典の URL は既存と重ならないようにする（同じ原典の重複掲載は検査で止まるため）
+    const ok = { ...base, id: `${L}-2026-test-weekly-candidate`, topic: 'test-weekly-candidate', checkedAt: today, importance: 'minor', source: { ...base.source, url: base.source.url.replace(/[/]?$/, '/test-weekly-candidate') } };
     const f = join(tmp, 'cand.json');
     const E = join(tmp, 'data/curated/entries.json');
     const C = join(tmp, 'data/curated/changelog.json');
@@ -731,7 +732,7 @@ test('週次の候補の追加：AI（--by ai-curator）が作った2ファイ�
     const base = items0.find((x) => x.layer === 'crime') || items0[0];
     const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
     // AI は approved（運用者の承認済み）を付けられないので、借りた項目から外す
-    const cand = { ...base, id: `${base.layer}-2026-test-ai-candidate`, topic: 'test-ai-candidate', checkedAt: today, importance: 'minor', tags: (base.tags || []).filter((t) => t !== 'approved') };
+    const cand = { ...base, id: `${base.layer}-2026-test-ai-candidate`, topic: 'test-ai-candidate', checkedAt: today, importance: 'minor', tags: (base.tags || []).filter((t) => t !== 'approved'), source: { ...base.source, url: base.source.url.replace(/[/]?$/, '/test-ai-candidate') } };
     // 候補のファイルは、決まった名前で OS の一時フォルダに直接置かず、このテスト専用の一時フォルダに置く（CodeQL の指摘）
     const candDir = mkdtempSync(join(tmpdir(), 'ta-ai-cand-'));
     const candFile = join(candDir, 'cand.json');
@@ -1029,6 +1030,19 @@ test('世界をくらべる：世界銀行の応答から、地図にある国�
   const off = await buildCompare({ countryIds: ids, offline: true, now: new Date(now) });
   assert.ok(off.indicators.length === 4 && off.indicators.every((i) => i.status === 'notFetched' && i.count === 0));
   assert.ok(WB_INDICATORS.every((i) => /^https:[/][/]data[.]worldbank[.]org[/]indicator[/]/.test(i.source.url)));
+});
+
+test('手動掲載：同じ原典の項目を重ねて載せない', () => {
+  const entriesRaw = readFileSync(new URL('../data/curated/entries.json', import.meta.url), 'utf8');
+  const changelogRaw = readFileSync(new URL('../data/curated/changelog.json', import.meta.url), 'utf8');
+  const entries = JSON.parse(entriesRaw);
+  const changelog = JSON.parse(changelogRaw);
+  assert.deepEqual(validateCuratedDocs({ entries, changelog, entriesRaw, changelogRaw }), []);
+  const dup = { ...entries.items[0], id: entries.items[0].layer + '-2026-duplicate-test' };
+  entries.items.push(dup);
+  changelog.entries[changelog.entries.length - 1].ids.push(dup.id);
+  const errs = validateCuratedDocs({ entries, changelog, entriesRaw: JSON.stringify(entries, null, 2) + '\n', changelogRaw: JSON.stringify(changelog, null, 2) + '\n' });
+  assert.ok(errs.some((e) => e.includes('重複掲載')), errs.join('\n'));
 });
 
 console.log(`\n${n} tests passed`);

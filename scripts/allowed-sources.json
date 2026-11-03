@@ -122,6 +122,10 @@
       "label": "ニュージーランド保健庁（Health New Zealand）"
     },
     {
+      "host": "www.healthnz.govt.nz",
+      "label": "ニュージーランド保健庁（Health New Zealand）（www.tewhatuora.govt.nz からの転送先）"
+    },
+    {
       "host": "www.inegi.org.mx",
       "label": "メキシコ国立統計地理情報院（INEGI）"
     },
@@ -161,6 +165,10 @@
     {
       "host": "labour.gov.in",
       "label": "インド労働雇用省"
+    },
+    {
+      "host": "www.labour.gov.in",
+      "label": "インド労働雇用省（転送先）"
     },
     {
       "host": "earthquake.usgs.gov",
@@ -1293,6 +1301,10 @@
       "label": "FRA の公的機関（防災・防犯）"
     },
     {
+      "host": "www.georisques.gouv.fr",
+      "label": "FRA の公的機関（防災・防犯）（転送先）"
+    },
+    {
       "host": "www.masecurite.interieur.gouv.fr",
       "label": "FRA の公的機関（防災・防犯）"
     },
@@ -1351,6 +1363,434 @@
     {
       "host": "www.pref.tokushima.lg.jp",
       "label": "都道府県の公式サイト（福祉）"
+    },
+    {
+      "host": "www.city.sapporo.jp",
+      "label": "市区町村の公式サイト（札幌市）"
+    },
+    {
+      "host": "www.city.hakodate.hokkaido.jp",
+      "label": "市区町村の公式サイト（函館市）"
+    },
+    {
+      "host": "www.city.asahikawa.hokkaido.jp",
+      "label": "市区町村の公式サイト（旭川市）"
+    },
+    {
+      "host": "www.city.obihiro.hokkaido.jp",
+      "label": "市区町村の公式サイト（帯広市）"
+    },
+    {
+      "host": "www.city.kushiro.lg.jp",
+      "label": "市区町村の公式サイト（釧路市）"
+    },
+    {
+      "host": "www.city.wakkanai.hokkaido.jp",
+      "label": "市区町村の公式サイト（稚内市）"
+    },
+    {
+      "host": "www.city.otaru.lg.jp",
+      "label": "市区町村の公式サイト（小樽市）"
+    },
+    {
+      "host": "www.city.tomakomai.hokkaido.jp",
+      "label": "市区町村の公式サイト（苫小牧市）"
+    },
+    {
+      "host": "www.city.ebetsu.hokkaido.jp",
+      "label": "市区町村の公式サイト（江別市）"
+    },
+    {
+      "host": "www.city.nemuro.hokkaido.jp",
+      "label": "市区町村の公式サイト（根室市）"
+    },
+    {
+      "host": "www.city.chitose.lg.jp",
+      "label": "市区町村の公式サイト（千歳市）"
+    },
+    {
+      "host": "www.hokkaidoshakyo.jp",
+      "label": "社会福祉協議会（北海道社会福祉協議会）"
+    },
+    {
+      "host": "www.sapporo-shakyo.or.jp",
+      "label": "社会福祉協議会（札幌市社会福祉協議会）"
+    },
+    {
+      "host": "www.asahikawa-shakyo.or.jp",
+      "label": "社会福祉協議会（旭川市社会福祉協議会）"
+    },
+    {
+      "host": "www.obihiro-shakyo.jp",
+      "label": "社会福祉協議会（帯広市社会福祉協議会）"
+    },
+    {
+      "host": "aosyakyo.or.jp",
+      "label": "社会福祉協議会（青森県社会福祉協議会）"
+    },
+    {
+      "host": "www.iwate-shakyo.or.jp",
+      "label": "社会福祉協議会（岩手県社会福祉協議会）"
+    },
+    {
+      "host": "www.miyagi-sfk.net",
+      "label": "社会福祉協議会（宮城県社会福祉協議会）"
+    },
+    {
+      "host": "www.akitakenshakyo.or.jp",
+      "label": "社会福祉協議会（秋田県社会福祉協議会）"
+    },
+    {
+      "host": "www.fukushimakenshakyo.or.jp",
+      "label": "社会福祉協議会（福島県社会福祉協議会）"
+    },
+    {
+      "host": "www.ibaraki-welfare.or.jp",
+      "label": "社会福祉協議会（茨城県社会福祉協議会）"
+    },
+    {
+      "host": "tochigikenshakyo.jp",
+      "label": "社会福祉協議会（栃木県社会福祉協議会）"
+    },
+    {
+      "host": "www.g-shakyo.or.jp",
+      "label": "社会福祉協議会（群馬県社会福祉協議会）"
+    },
+    {
+      "host": "www.fukushi-saitama.or.jp",
+      "label": "社会福祉協議会（埼玉県社会福祉協議会）"
+    },
+    {
+      "host": "www.chibakenshakyo.com",
+      "label": "社会福祉協議会（千葉県社会福祉協議会）"
+    },
+    {
+      "host": "www.tcsw.tvac.or.jp",
+      "label": "社会福祉協議会（東京都社会福祉協議会）"
+    },
+    {
+      "host": "knsyk.jp",
+      "label": "社会福祉協議会（神奈川県社会福祉協議会）"
+    },
+    {
+      "host": "www.fukushiniigata.or.jp",
+      "label": "社会福祉協議会（新潟県社会福祉協議会）"
+    },
+    {
+      "host": "www.toyama-shakyo.or.jp",
+      "label": "社会福祉協議会（富山県社会福祉協議会）"
+    },
+    {
+      "host": "www.f-shakyo.or.jp",
+      "label": "社会福祉協議会（福井県社会福祉協議会）"
+    },
+    {
+      "host": "www.nsyakyo.or.jp",
+      "label": "社会福祉協議会（長野県社会福祉協議会）"
+    },
+    {
+      "host": "www.winc.or.jp",
+      "label": "社会福祉協議会（岐阜県社会福祉協議会）"
+    },
+    {
+      "host": "www.shizuoka-wel.jp",
+      "label": "社会福祉協議会（静岡県社会福祉協議会）"
+    },
+    {
+      "host": "www.aichi-fukushi.or.jp",
+      "label": "社会福祉協議会（愛知県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.aomori.aomori.jp",
+      "label": "市区町村の公式サイト（青森市）"
+    },
+    {
+      "host": "www.city.morioka.iwate.jp",
+      "label": "市区町村の公式サイト（盛岡市）"
+    },
+    {
+      "host": "www.city.sendai.jp",
+      "label": "市区町村の公式サイト（仙台市）"
+    },
+    {
+      "host": "www.city.akita.lg.jp",
+      "label": "市区町村の公式サイト（秋田市）"
+    },
+    {
+      "host": "www.city.yamagata-yamagata.lg.jp",
+      "label": "市区町村の公式サイト（山形市）"
+    },
+    {
+      "host": "www.city.fukushima.fukushima.jp",
+      "label": "市区町村の公式サイト（福島市）"
+    },
+    {
+      "host": "www.city.mito.lg.jp",
+      "label": "市区町村の公式サイト（水戸市）"
+    },
+    {
+      "host": "www.city.utsunomiya.lg.jp",
+      "label": "市区町村の公式サイト（宇都宮市）"
+    },
+    {
+      "host": "www.city.maebashi.gunma.jp",
+      "label": "市区町村の公式サイト（前橋市）"
+    },
+    {
+      "host": "www.city.saitama.lg.jp",
+      "label": "市区町村の公式サイト（さいたま市）"
+    },
+    {
+      "host": "www.city.chiba.jp",
+      "label": "市区町村の公式サイト（千葉市）"
+    },
+    {
+      "host": "www.city.shinjuku.lg.jp",
+      "label": "市区町村の公式サイト（新宿区）"
+    },
+    {
+      "host": "www.city.yokohama.lg.jp",
+      "label": "市区町村の公式サイト（横浜市）"
+    },
+    {
+      "host": "www.city.kawasaki.jp",
+      "label": "市区町村の公式サイト（川崎市）"
+    },
+    {
+      "host": "www.city.sagamihara.kanagawa.jp",
+      "label": "市区町村の公式サイト（相模原市）"
+    },
+    {
+      "host": "www.city.niigata.lg.jp",
+      "label": "市区町村の公式サイト（新潟市）"
+    },
+    {
+      "host": "www.city.toyama.lg.jp",
+      "label": "市区町村の公式サイト（富山市）"
+    },
+    {
+      "host": "www4.city.kanazawa.lg.jp",
+      "label": "市区町村の公式サイト（金沢市）"
+    },
+    {
+      "host": "www.city.fukui.lg.jp",
+      "label": "市区町村の公式サイト（福井市）"
+    },
+    {
+      "host": "www.city.kofu.lg.jp",
+      "label": "市区町村の公式サイト（甲府市）"
+    },
+    {
+      "host": "www.city.nagano.nagano.jp",
+      "label": "市区町村の公式サイト（長野市）"
+    },
+    {
+      "host": "www.city.gifu.lg.jp",
+      "label": "市区町村の公式サイト（岐阜市）"
+    },
+    {
+      "host": "www.city.shizuoka.lg.jp",
+      "label": "市区町村の公式サイト（静岡市）"
+    },
+    {
+      "host": "www.city.hamamatsu.shizuoka.jp",
+      "label": "市区町村の公式サイト（浜松市）"
+    },
+    {
+      "host": "www.city.nagoya.jp",
+      "label": "市区町村の公式サイト（名古屋市）"
+    },
+    {
+      "host": "www.miewel-1.com",
+      "label": "社会福祉協議会（三重県社会福祉協議会）"
+    },
+    {
+      "host": "www.info.city.tsu.mie.jp",
+      "label": "市区町村の公式サイト（津市）"
+    },
+    {
+      "host": "www.shigashakyo.jp",
+      "label": "社会福祉協議会（滋賀県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.otsu.lg.jp",
+      "label": "市区町村の公式サイト（大津市）"
+    },
+    {
+      "host": "www.kyoshakyo.or.jp",
+      "label": "社会福祉協議会（京都府社会福祉協議会）"
+    },
+    {
+      "host": "www.city.kyoto.lg.jp",
+      "label": "市区町村の公式サイト（京都市）"
+    },
+    {
+      "host": "www.city.osaka.lg.jp",
+      "label": "市区町村の公式サイト（大阪市）"
+    },
+    {
+      "host": "www.city.sakai.lg.jp",
+      "label": "市区町村の公式サイト（堺市）"
+    },
+    {
+      "host": "www.city.kobe.lg.jp",
+      "label": "市区町村の公式サイト（神戸市）"
+    },
+    {
+      "host": "nara-shakyo.jp",
+      "label": "社会福祉協議会（奈良県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.nara.lg.jp",
+      "label": "市区町村の公式サイト（奈良市）"
+    },
+    {
+      "host": "www.wakayama-wel.jp",
+      "label": "社会福祉協議会（和歌山県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.wakayama.wakayama.jp",
+      "label": "市区町村の公式サイト（和歌山市）"
+    },
+    {
+      "host": "www.tottori-wel.or.jp",
+      "label": "社会福祉協議会（鳥取県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.tottori.lg.jp",
+      "label": "市区町村の公式サイト（鳥取市）"
+    },
+    {
+      "host": "www.fukushi-shimane.or.jp",
+      "label": "社会福祉協議会（島根県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.matsue.lg.jp",
+      "label": "市区町村の公式サイト（松江市）"
+    },
+    {
+      "host": "www.fukushiokayama.or.jp",
+      "label": "社会福祉協議会（岡山県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.okayama.jp",
+      "label": "市区町村の公式サイト（岡山市）"
+    },
+    {
+      "host": "www.hiroshima-fukushi.net",
+      "label": "社会福祉協議会（広島県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.hiroshima.lg.jp",
+      "label": "市区町村の公式サイト（広島市）"
+    },
+    {
+      "host": "www.yamaguchikensyakyo.jp",
+      "label": "社会福祉協議会（山口県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.yamaguchi.lg.jp",
+      "label": "市区町村の公式サイト（山口市）"
+    },
+    {
+      "host": "fukushi-tokushima.or.jp",
+      "label": "社会福祉協議会（徳島県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.tokushima.tokushima.jp",
+      "label": "市区町村の公式サイト（徳島市）"
+    },
+    {
+      "host": "www.kagawakenshakyo.or.jp",
+      "label": "社会福祉協議会（香川県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.takamatsu.kagawa.jp",
+      "label": "市区町村の公式サイト（高松市）"
+    },
+    {
+      "host": "ehime-shakyo.or.jp",
+      "label": "社会福祉協議会（愛媛県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.matsuyama.ehime.jp",
+      "label": "市区町村の公式サイト（松山市）"
+    },
+    {
+      "host": "www.kochiken-shakyo.or.jp",
+      "label": "社会福祉協議会（高知県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.kochi.kochi.jp",
+      "label": "市区町村の公式サイト（高知市）"
+    },
+    {
+      "host": "www.city.fukuoka.lg.jp",
+      "label": "市区町村の公式サイト（福岡市）"
+    },
+    {
+      "host": "www.city.kitakyushu.lg.jp",
+      "label": "市区町村の公式サイト（北九州市）"
+    },
+    {
+      "host": "www.sagaken-shakyo.or.jp",
+      "label": "社会福祉協議会（佐賀県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.saga.lg.jp",
+      "label": "市区町村の公式サイト（佐賀市）"
+    },
+    {
+      "host": "nagasaki-pref-shakyo.jp",
+      "label": "社会福祉協議会（長崎県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.nagasaki.lg.jp",
+      "label": "市区町村の公式サイト（長崎市）"
+    },
+    {
+      "host": "www.fukushi-kumamoto.or.jp",
+      "label": "社会福祉協議会（熊本県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.kumamoto.jp",
+      "label": "市区町村の公式サイト（熊本市）"
+    },
+    {
+      "host": "www.oitakensyakyo.jp",
+      "label": "社会福祉協議会（大分県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.oita.oita.jp",
+      "label": "市区町村の公式サイト（大分市）"
+    },
+    {
+      "host": "www.city.miyazaki.miyazaki.jp",
+      "label": "市区町村の公式サイト（宮崎市）"
+    },
+    {
+      "host": "www.kaken-shakyo.jp",
+      "label": "社会福祉協議会（鹿児島県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.kagoshima.lg.jp",
+      "label": "市区町村の公式サイト（鹿児島市）"
+    },
+    {
+      "host": "www.okishakyo.or.jp",
+      "label": "社会福祉協議会（沖縄県社会福祉協議会）"
+    },
+    {
+      "host": "www.city.naha.okinawa.jp",
+      "label": "市区町村の公式サイト（那覇市）"
+    },
+    {
+      "host": "www.bousai.metro.tokyo.lg.jp",
+      "label": "都道府県の公式サイト（防災）"
+    },
+    {
+      "host": "www.pref.okinawa.jp",
+      "label": "都道府県の公式サイト（防災）"
     }
   ],
   "fetchEndpoints": {
@@ -1370,7 +1810,13 @@
     "wbPoverty": "https://api.worldbank.org/v2/country/all/indicator/SI.POV.DDAY?format=json&mrnev=1&per_page=400",
     "wbGini": "https://api.worldbank.org/v2/country/all/indicator/SI.POV.GINI?format=json&mrnev=1&per_page=400",
     "wbGdpPpp": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.CD?format=json&mrnev=1&per_page=400",
-    "wbUnemployment": "https://api.worldbank.org/v2/country/all/indicator/SL.UEM.TOTL.ZS?format=json&mrnev=1&per_page=400"
+    "wbUnemployment": "https://api.worldbank.org/v2/country/all/indicator/SL.UEM.TOTL.ZS?format=json&mrnev=1&per_page=400",
+    "wbWaterSafe": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.SMDW.ZS?format=json&mrnev=1&per_page=400",
+    "wbWaterBasic": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.BASW.ZS?format=json&mrnev=1&per_page=400",
+    "wbSanitation": "https://api.worldbank.org/v2/country/all/indicator/SH.STA.SMSS.ZS?format=json&mrnev=1&per_page=400",
+    "wbInflation": "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?format=json&mrnev=1&per_page=400",
+    "wbPrimaryCompletion": "https://api.worldbank.org/v2/country/all/indicator/SE.PRM.CMPT.ZS?format=json&mrnev=1&per_page=400",
+    "wbTertiary": "https://api.worldbank.org/v2/country/all/indicator/SE.TER.ENRR?format=json&mrnev=1&per_page=400"
   },
   "enabledFetchers": {
     "whoDon": true,
@@ -1388,7 +1834,13 @@
     "wbPoverty": true,
     "wbGini": true,
     "wbGdpPpp": true,
-    "wbUnemployment": true
+    "wbUnemployment": true,
+    "wbWaterSafe": true,
+    "wbWaterBasic": true,
+    "wbSanitation": true,
+    "wbInflation": true,
+    "wbPrimaryCompletion": true,
+    "wbTertiary": true
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [
@@ -1487,6 +1939,9 @@
     },
     {
       "host": "donauauen.at"
+    },
+    {
+      "host": "www.donauauen.at"
     },
     {
       "host": "ead.gov.ae"
@@ -1671,6 +2126,22 @@
   ],
   "_pageLinksNote": "説明ページ（site/*.html）と画面のプログラム（site/js/*.js）に直接書く外部リンクのうち、上の linkHosts・directoryHosts・animalHosts に当たらないものは、ここに URL を完全一致で書いたものだけを許す（scripts/check-repo.mjs が検査）。pages はそのリンクを置いてよいページ。決済サービス（応援チップ）は、説明ページ（about）だけに置き、手動掲載のデータやリンク集には使えない。",
   "pageLinks": [
+    {
+      "url": "https://ww1.issa.int/country-profiles/about",
+      "pages": [
+        "compare.html",
+        "compare.en.html"
+      ],
+      "label": "国際社会保障協会（ISSA）の各国の社会保障制度の概要（Country profiles）の説明ページ。世界をくらべるページから、各国の福祉制度の中身を知りたい人への案内（リンクのみ。本文は転載しない）"
+    },
+    {
+      "url": "https://www.issa.int/country-profiles/about",
+      "pages": [
+        "compare.html",
+        "compare.en.html"
+      ],
+      "label": "国際社会保障協会（ISSA）の各国の社会保障制度の概要（Country profiles）の説明ページ。世界をくらべるページから、各国の福祉制度の中身を知りたい人への案内（リンクのみ。本文は転載しない）"
+    },
     {
       "url": "https://datacatalog.worldbank.org/public-licenses",
       "pages": [
