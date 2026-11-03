@@ -503,3 +503,6 @@ body.doc { overflow: auto; }
 /* 福祉の探し方：分野別に全国の窓口をさがす */
 .guide-areas { margin: 4px 0 14px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; }
 .guide-areas h3 { margin: 4px 0 6px; font-size: 15px; }
+/* 一覧の絞り込み（AI関連だけ表示） */
+.filter-btn { margin: 0 0 10px; padding: 6px 12px; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 999px; background: transparent; cursor: pointer; font-size: 13px; }
+.filter-btn[aria-pressed="true"] { background: rgba(255, 255, 255, 0.12); }

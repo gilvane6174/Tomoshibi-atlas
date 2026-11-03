@@ -343,6 +343,19 @@
         "disaster-2026-idn-bungo-floods",
         "disaster-2026-chl-severe-weather-october"
       ]
+    },
+    {
+      "date": "2026-11-02",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "子どもの貧困の情報（UNICEFアルゼンチン事務所、英国政府の統計と試算）を追加（原典を開いて数値・日付を確認。独立した監査は未実施）",
+        "en": "Added items on child poverty (UNICEF Argentina, UK government statistics and projections), checked against the original sources (independent audit pending)"
+      },
+      "ids": [
+        "welfare-2026-argentina-unicef-child-poverty",
+        "welfare-2026-uk-hbai-children-fye2025",
+        "welfare-2026-uk-child-poverty-projections"
+      ]
     }
   ]
 }

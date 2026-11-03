@@ -360,6 +360,7 @@ function jumpRow(targets, color) {
 }
 
 const LIST_PAGE = 30;
+let aiFilter = { layer: null, on: false };
 export function renderList(body, { layerId, data, onPick }) {
   body.replaceChildren();
   const doc = data.layers[layerId];
@@ -371,8 +372,22 @@ export function renderList(body, { layerId, data, onPick }) {
   }
   // 今日の動物たちの一覧の上部に、やさしい一言を添える
   if (doc.kind === 'daily') body.append(el('p', 'note calm-note list-lead', t('list.animalsLead')));
-  const placed = ordered(doc.items.filter((it) => it.countries?.length));
-  const unplaced = ordered(doc.items.filter((it) => !it.countries?.length));
+  // AI 関連の印が付いた情報があるときは「AI関連だけ表示」で絞り込める（分野を変えると解除）
+  if (aiFilter.layer !== layerId) aiFilter = { layer: layerId, on: false };
+  const aiCount = doc.items.filter((it) => (it.tags || []).includes('ai') && !it.superseded).length;
+  if (aiCount) {
+    const b = el('button', 'filter-btn', aiFilter.on ? t('list.aiAll') : t('list.aiOnly', { n: aiCount }));
+    b.type = 'button';
+    b.setAttribute('aria-pressed', String(aiFilter.on));
+    b.addEventListener('click', () => {
+      aiFilter.on = !aiFilter.on;
+      renderList(body, { layerId, data, onPick });
+    });
+    body.append(b);
+  } else aiFilter.on = false;
+  const items = aiFilter.on ? doc.items.filter((it) => (it.tags || []).includes('ai')) : doc.items;
+  const placed = ordered(items.filter((it) => it.countries?.length));
+  const unplaced = ordered(items.filter((it) => !it.countries?.length));
   // 件数が多いとき（最大100件）は、30件ずつ表示し、「さらに表示」で続きを出す（スマートフォンで長くなりすぎないように）
   const pageIn = (list, make) => {
     const box = el('div', 'list-page');

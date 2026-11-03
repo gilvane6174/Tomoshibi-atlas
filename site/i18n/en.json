@@ -302,5 +302,7 @@
   "guide.legend.archive": "Manually added items are kept even after they leave the display. You can look back through them by year, section, country or keyword in the archive",
   "guide.archiveLink": "Open the archive of past items",
   "list.more": "Show more ({n} left)",
+  "list.aiOnly": "Show AI-related only ({n})",
+  "list.aiAll": "Show all",
   "list.animalsLead": "Watch the globe turn and take a gentle, relaxing moment with the animals' stories."
 }

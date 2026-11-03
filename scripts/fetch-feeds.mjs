@@ -70,6 +70,10 @@ export function reiwaUpdatedDate(title) {
 }
 
 // base：相対パスのリンクを解決するための取得先URL（消防庁の災害情報など）
+// AI に関する語（英語は単語の区切りで判定し、AIDS・Thai などの一部には反応しない）
+const AI_HEADLINE = /(?:^|[^A-Za-z0-9])(?:AI|A\.I\.|LLMs?)(?=$|[^A-Za-z0-9])|artificial intelligence|large language models?|chatbots?|deep-?fakes?|machine learning|super ?intelligence|生成AI|人工知能|ディープフェイク|チャットボット|ＡＩ/;
+export const isAiHeadline = (title) => AI_HEADLINE.test(String(title)) || /\b(?:artificial intelligence|deepfakes?|chatbots?)\b/i.test(String(title));
+
 export function normalizeFeedItem(feed, raw, now = Date.now(), base = undefined) {
   const title = cleanText(stripTags(String(raw?.title || '')), 240);
   if (!title) malformed('title');
@@ -104,7 +108,8 @@ export function normalizeFeedItem(feed, raw, now = Date.now(), base = undefined)
     layer: feed.layer,
     // 見出しは原文のまま（機械翻訳しない）。日本語の情報源は日本語、英語の情報源は英語だけ
     title: feed.lang === 'ja' ? { ja: title } : { en: title, original: title },
-    tags: [],
+    // AI（人工知能）に関する語を含む見出しには、AI 関連の印を付ける（一覧で「AI関連だけ表示」で絞り込めるように。内容の評価ではない）
+    tags: isAiHeadline(title) ? ['ai'] : [],
     countries: [feed.country],
     placeBasis: 'publisher_country',
     importance: withinDays(publishedAt, FEED_MAJOR_DAYS, now) ? 'major' : 'minor',

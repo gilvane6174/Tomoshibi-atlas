@@ -21,7 +21,7 @@ import { ownerExemption, SKIP_CHECKS } from './lib/owner-pr.mjs';
 import { pickDaily, toItems } from './lib/animals.mjs';
 import { fitCount } from './importance-rules.mjs';
 import { parseFeed, parseFeedDate } from './lib/feed.mjs';
-import { FEEDS, inspectFeed, normalizeFeedItem, decodeFeed, reiwaUpdatedDate } from './fetch-feeds.mjs';
+import { FEEDS, inspectFeed, normalizeFeedItem, decodeFeed, reiwaUpdatedDate, isAiHeadline } from './fetch-feeds.mjs';
 import { normalizeDon } from './fetch-who-don.mjs';
 import { normalizeKev, parseJpcertRdf, inspectJpcertRdf } from './fetch-security.mjs';
 import { validateItems, validateChangelog, validateDirectoryDoc, validateCuratedDocs } from './validate-data.mjs';
@@ -996,6 +996,11 @@ test('CSP：外部への通信の例外は index.html の USGS の1か所だけ'
     assert.equal(connect, name === 'index.html' ? "connect-src 'self' https://earthquake.usgs.gov" : "connect-src 'self'");
     assert.ok(csp.includes("require-trusted-types-for 'script'"));
   }
+});
+
+test('見出しの AI 関連の印：語の区切りで判定し、AIDS・Thai などには付けない', () => {
+  for (const s of ['FTC sues AI company', '生成AIを悪用した詐欺', 'ＡＩの利用', 'Deepfake scams', 'Artificial intelligence guidance', 'LLM risks']) assert.ok(isAiHeadline(s), s);
+  for (const s of ['AIDS response', 'Thai officials', 'Said Ai', 'Maintenance notice', '台風の被害']) assert.ok(!isAiHeadline(s), s);
 });
 
 console.log(`\n${n} tests passed`);
