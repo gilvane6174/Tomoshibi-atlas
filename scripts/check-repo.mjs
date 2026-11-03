@@ -167,6 +167,7 @@ function walk(dir) {
 walk(ROOT);
 
 // 5. 画面の HTML
+const LIVE_QUAKE_CSP = "connect-src 'self' https://earthquake.usgs.gov";
 const REQUIRED_CSP = ["default-src 'none'", "script-src 'self'", "base-uri 'none'", "form-action 'none'", "object-src 'none'", "require-trusted-types-for 'script'"];
 for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
   const rel = `site/${name}`;
@@ -174,8 +175,13 @@ for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('
   const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/);
   if (!csp) errors.push(`${rel}: CSP の meta が無い`);
   else {
-    for (const d of REQUIRED_CSP) if (!csp[1].includes(d)) errors.push(`${rel}: CSP に ${d} が無い`);
-    if (/unsafe-inline|unsafe-eval|unsafe-hashes|\bhttps?:|\*/.test(csp[1])) errors.push(`${rel}: CSP に外部読み込み・インライン実行の許可を入れない`);
+    // 外部への通信の例外は、地球儀のページ（index.html）から USGS の地震の公開データを読む1か所だけ（site/js/quake-live.js）
+    let policy = csp[1];
+    // （認めるのは、この一字一句と完全に一致するときだけ。ほかのページ・ほかの書き方は下の検査で止める）
+    if (name === 'index.html') policy = policy.replace(LIVE_QUAKE_CSP + ';', "connect-src 'self';");
+    for (const d of REQUIRED_CSP) if (!policy.includes(d)) errors.push(`${rel}: CSP に ${d} が無い`);
+    if (/unsafe-inline|unsafe-eval|unsafe-hashes|\bhttps?:|\*/.test(policy)) errors.push(`${rel}: CSP に外部読み込み・インライン実行の許可を入れない`);
+    if (!/connect-src 'self';/.test(policy)) errors.push(`${rel}: CSP の connect-src は 'self' だけにする（例外は index.html の USGS の1か所）`);
   }
   // 閉じタグの書き方の揺れ（</script >・</SCRIPT foo>）も拾う。開始タグの数と一致しなければ止める
   const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\b[^>]*>/gi)];
@@ -214,7 +220,8 @@ function stripScripts(html) {
       .replace(/&period;/gi, '.')
       .replace(/&amp;/gi, '&');
   for (const name of readdirSync(resolve(ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
-    const html = decode(read(`site/${name}`));
+    // CSP の meta（上の 5. で一字一句検査済み）は、リンクではないので除いてから調べる
+    const html = decode(read(`site/${name}`)).replace(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/, '');
     for (const m of html.matchAll(/https?:\/\/[^\s"'<>()]+/gi)) {
       const url = m[0].replace(/[.,、。）)]+$/, '');
       if (url === 'https://schema.org') continue; // 構造化データの書式の宣言（リンクではない）
