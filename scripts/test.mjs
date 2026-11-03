@@ -10,6 +10,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import { collectUrls, visibleLength, mdSafe, judgeContent } from './check-links.mjs';
 import { readNoFollow } from './lib/safety.mjs';
+import { parseLiveQuakes, usgsEventUrl, cleanPlace, LIVE_RULES } from '../site/js/quake-live.js';
+import { mergeQuakes } from '../site/js/quake-core.js';
+import { RULES as IMP_RULES, SHOW as IMP_SHOW } from './importance-rules.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { statusModel } from '../site/js/status.js';
 import { checkCleanPng } from './check-privacy.mjs';
@@ -320,7 +323,7 @@ test('今日の動物たち：日付だけで決まり、国が重ならず、�
   assert.ok(items.every((it) => it.layer === 'animals' && it.countries.length === 1 && it.publishedAt === '2026-10-26'));
 });
 
-test('表示件数：掲載期間内を最大50件、足りなければ古い情報を小さく補って20件にそろえる', () => {
+test('表示件数：掲載期間内を最大100件、足りなければ古い情報を小さく補って20件にそろえる', () => {
   const now = Date.parse('2026-10-26T00:00:00Z');
   const day = (n) => new Date(now - n * 86400000).toISOString().slice(0, 10);
   const mk = (n, extra = {}) => ({ id: 'x' + n, layer: 'outbreak', importance: 'major', publishedAt: day(n), ...extra });
@@ -330,18 +333,18 @@ test('表示件数：掲載期間内を最大50件、足りなければ古い情
   assert.equal(few.filter((x) => x.older).length, 15);
   assert.ok(few.filter((x) => x.older).every((x) => x.importance === 'minor'));
   assert.ok(few.slice(0, 5).every((x) => !x.older && x.importance === 'major'));
-  // 期間内60件 → 新しい順に50件
-  const many = fitCount(Array.from({ length: 60 }, (_, i) => mk(i)), 120, now);
-  assert.equal(many.length, 50);
-  assert.equal(many[49].id, 'x49');
+  // 期間内110件 → 新しい順に100件
+  const many = fitCount(Array.from({ length: 110 }, (_, i) => mk(i)), 119, now);
+  assert.equal(many.length, 100);
+  assert.equal(many[99].id, 'x99');
   // 以前の情報は、置き換えた情報が表示されているときだけ残る
   const sup = fitCount([mk(1), mk(2, { superseded: true, supersededBy: 'x1' }), mk(3, { superseded: true, supersededBy: 'gone' })], 120, now);
   assert.deepEqual(sup.map((x) => x.id), ['x1', 'x2']);
   // 補う古さの上限（fillDays）：防犯・防災などで古すぎる情報を補わない
-  const capped = fitCount([mk(1), mk(100), mk(170), mk(400)], 90, now, 50, 180);
+  const capped = fitCount([mk(1), mk(100), mk(170), mk(400)], 90, now, 100, 180);
   assert.deepEqual(capped.map((x) => x.id), ['x1', 'x100', 'x170']);
-  // 手動掲載（期間なし）は、新しい順に50件まで
-  assert.equal(fitCount(Array.from({ length: 60 }, (_, i) => mk(i * 50)), null, now).length, 50);
+  // 手動掲載（期間なし）は、新しい順に100件まで
+  assert.equal(fitCount(Array.from({ length: 120 }, (_, i) => mk(i * 50)), null, now).length, 100);
 });
 
 test('SI（Super Intelligence）：説明のない「SI」は拒否し、SI の情報には ai の印を求める', () => {
@@ -941,6 +944,58 @@ test('リンク確認の改ざん・停止の判定：公的機関の普通の�
   assert.equal(judgeContent('<h1>ただいまメンテナンス中です</h1>', page), 'parked');
   assert.equal(judgeContent('<p>This domain is for sale</p>', page), 'parked');
   assert.equal(judgeContent('<!-- <script> --><p>Buy viagra</p>', page), 'spam');
+});
+
+test('地震のブラウザ直接取得：組み立て時と同じ決まりで変換し、USGS の地震のページ以外のリンクや異常な項目は除く', () => {
+  // 組み立て（Node）とブラウザで決まりの値がずれていない
+  assert.equal(LIVE_RULES.keepDays, IMP_RULES.quake.keepDays);
+  assert.equal(LIVE_RULES.majorWithinDays, IMP_RULES.quake.majorWithinDays);
+  assert.equal(LIVE_RULES.max, IMP_SHOW.max);
+  const now = Date.parse('2026-11-02T00:00:00Z');
+  const countries = JSON.parse(readFileSync(new URL('../site/data/geo/country-index.json', import.meta.url), 'utf8'));
+  const feat = (id, p = {}) => ({ type: 'Feature', id, properties: { type: 'earthquake', mag: 6.1, place: '37 km SW of Hualien City, Taiwan', time: now - 3600000, url: 'https://earthquake.usgs.gov/earthquakes/eventpage/' + id, ...p } });
+  const doc = { type: 'FeatureCollection', features: [
+    feat('us7000aaaa'),
+    feat('us7000bbbb', { url: 'https://evil.example/earthquakes/eventpage/us7000bbbb' }), // 別のサイトへのリンク → 除く
+    feat('us7000cccc', { url: 'https://earthquake.usgs.gov/earthquakes/eventpage/us7000zzzz' }), // id と一致しない → 除く
+    feat('us7000dddd', { mag: 4.9 }), // 対象外の小さな地震
+    feat('us7000eeee', { place: '<img src=x onerror=alert(1)>10 km N of Tokyo, Japan' }), // タグの形の文字は除く
+    feat('BAD ID!'),
+    { type: 'Feature', id: 'us7000ffff' }, // 形の異常
+  ] };
+  const items = parseLiveQuakes(doc, countries, now);
+  assert.deepEqual(items.map((x) => x.id), ['usgs-us7000aaaa', 'usgs-us7000eeee']);
+  assert.deepEqual(items[0].countries, ['TWN']);
+  assert.equal(items[0].importance, 'major');
+  assert.ok(!/[<>]/.test(items[1].title.ja + items[1].title.en));
+  assert.deepEqual(items[1].countries, ['JPN']);
+  // 組み立て時（Node）の変換と同じ結果になる（リンクの決め方以外）
+  const nodeIt = normalizeQuake(feat('us7000aaaa'), now);
+  assert.deepEqual({ ...items[0] }, { ...nodeIt });
+  // 応答全体の形が違えば失敗にする（組み立て時の一覧のまま表示する）
+  assert.throws(() => parseLiveQuakes({ type: 'X' }, countries, now));
+  assert.equal(usgsEventUrl('us7000aaaa', { url: 'http://earthquake.usgs.gov/earthquakes/eventpage/us7000aaaa' }), null);
+  assert.equal(usgsEventUrl('us7000aaaa', { url: 'https://earthquake.usgs.gov/earthquakes/eventpage/us7000aaaa?x=1' }), null);
+  assert.equal(cleanPlace('<b>a</b> <scr<script>ipt>b', 120), 'a ipt b'); // タグの形の記号は1つも残らない
+  // まとめ方：同じ地震は新しい方、期間外は外し、新しい順に上限まで
+  const old = { id: 'usgs-old', publishedAt: new Date(now - 40 * 86400000).toISOString() };
+  const prev = { id: 'usgs-us7000aaaa', publishedAt: items[0].publishedAt, title: { ja: '古い' } };
+  const merged = mergeQuakes(items, [prev, old], now, LIVE_RULES);
+  assert.deepEqual(merged.map((x) => x.id), ['usgs-us7000aaaa', 'usgs-us7000eeee']);
+  assert.notEqual(merged[0].title.ja, '古い');
+  // 状態の文言：直接読み込みのときは、そのことを示し、2日以上止まっている注意は出さない
+  const st = statusModel({ layer: '地震', doc: { items: [] }, meta: { kind: 'auto', count: 2, retrievedAt: '2026-10-01T00:00:00Z', live: true }, mode: 'live', now });
+  assert.deepEqual(st.notes.map((x) => x.key), ['status.liveDirect']);
+});
+
+test('CSP：外部への通信の例外は index.html の USGS の1か所だけ', () => {
+  for (const name of ['index.html', 'about.html', 'welfare-guide.html', '404.html']) {
+    const html = readFileSync(new URL('../site/' + name, import.meta.url), 'utf8');
+    const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/)[1];
+    const connect = csp.split(';').map((x) => x.trim()).find((x) => x.startsWith('connect-src'));
+    assert.equal(connect, name === 'index.html' ? "connect-src 'self' https://earthquake.usgs.gov" : "connect-src 'self'");
+    assert.ok(csp.includes("require-trusted-types-for 'script'"));
+  }
 });
 
 console.log(`\n${n} tests passed`);

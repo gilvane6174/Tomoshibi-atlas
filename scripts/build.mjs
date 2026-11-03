@@ -183,7 +183,7 @@ async function main() {
     outbreak: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? snapAt : now.toISOString(), items: fitCount(applySupersede(auto.outbreak, now), RULES.outbreak.keepDays, now) },
     security: { kind: 'auto', retrievedAt: OFFLINE ? null : SNAPSHOT ? (auto.security.length ? snapAt : null) : now.toISOString(), items: fitCount(applySupersede([...auto.security, ...extra.security], now), RULES.securityKev.keepDays, now) },
   };
-  // 手動掲載の分野も、新しい順に最大50件（新しい情報が入ると、古いものから表示を外れる）
+  // 手動掲載の分野も、新しい順に最大100件（新しい情報が入ると、古いものから表示を外れる）
   const curatedOf = (...ls) => curated.items.filter((it) => ls.includes(it.layer));
   // 研究と対策：手動掲載＋CDC などの自動の見出し（自動の分は情報源ごとの上限つき）
   layers.research = { kind: Object.values(feeds).some((f) => f.layer === 'research') ? 'mixed' : 'curated', retrievedAt: fetchedAt('research'), reviewedAt: curated.reviewedAt, items: fitCount(applySupersede([...curatedOf('research'), ...extra.research], now), null, now, MAX_BY_LAYER.research ?? undefined) };
@@ -205,7 +205,7 @@ async function main() {
   }
   // 地震：USGS の自動取得だけ（専用の分野。ほかの分野の情報を押し流さない）
   layers.quake = { kind: 'auto', retrievedAt: fetchedAt('quake'), items: fitCount(applySupersede(extra.quake, now), RULES.quake.keepDays, now) };
-  // 今日の動物たち：日本時間の日付で、豆知識の一覧から自動で選ぶ（1日2回の公開でも、同じ日なら同じ動物）
+  // 今日の動物たち：日本時間の日付で、豆知識の一覧から自動で選ぶ（1日3回の公開でも、同じ日なら同じ動物）
   const animals = readData('data/curated/animals.json');
   const todayJ = new Date(now.getTime() + 9 * 3600000).toISOString().slice(0, 10);
   layers.animals = { kind: 'daily', reviewedAt: animals.reviewedAt, items: toItems(pickDaily(animals.facts, todayJ), todayJ) };

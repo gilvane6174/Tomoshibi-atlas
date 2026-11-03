@@ -10,6 +10,7 @@ import { renderCountry, renderList, renderGuide } from './panel.js';
 import { groupIcon } from './icons.js';
 import { setupSearch } from './search.js';
 import { statusModel } from './status.js';
+import { refreshQuakes } from './quake-live.js';
 
 const $ = (id) => document.getElementById(id);
 const d3 = window.d3;
@@ -222,8 +223,34 @@ async function start() {
     }
   }
 
+  // ── 地震：分野を開いているあいだだけ、USGS の公開データをブラウザから直接読み込む（公開版だけ。10分に1回まで） ──
+  // 失敗しても組み立て時の一覧をそのまま表示する（quake-live.js）
+  let quakeAt = 0;
+  let quakeBusy = false;
+  async function liveQuakes() {
+    if (data.meta.mode !== 'live' || state.current !== 'quake' || quakeBusy || document.hidden || Date.now() - quakeAt < 10 * 60000) return;
+    quakeBusy = true;
+    quakeAt = Date.now();
+    try {
+      if (await refreshQuakes(data)) {
+        renderChrome();
+        if (state.current === 'quake') {
+          labels.setItems(data.layers.quake.items, data.countryMap, layerById('quake'));
+          refreshPanels();
+        }
+      }
+    } catch {
+      /* 読み込めないときは、組み立て時の一覧のまま */
+    } finally {
+      quakeBusy = false;
+    }
+  }
+  setInterval(liveQuakes, 60000);
+  document.addEventListener('visibilitychange', liveQuakes);
+
   function setLayer(id) {
     state.current = id;
+    if (id === 'quake') liveQuakes();
     syncCurrent();
     const tab = tabs.get(id);
     if (tab.offsetParent) tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });

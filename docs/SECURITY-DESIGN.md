@@ -24,6 +24,7 @@
 | AI のコーディングツールへの設定の仕込み（2026年10月、typosquatting の npm パッケージから広がるワームが、AI のツールに MCP サーバーの設定を書き込み、Git の設定も書き換えたと報告） | AI のツールや開発環境が、仕込まれた設定で命令を実行し、鍵やトークンを盗む | 外部パッケージを入れない。`check-repo.mjs` が AI・エディタの設定フォルダと、MCP の設定・AI への指示書のファイル（`.mcp.json`・`CLAUDE.md`・`.cursorrules` など）を拒否（AI への指示は `AGENTS.md` だけ）。リポジトリの外（作業する PC の設定）は検査できないため、運用者の PC では知らないパッケージを入れない・AI に依存の追加をさせない |
 | 安全設計のファイルの、気づかない変更（AI に手伝わせた変更に紛れ込む） | 検査・許可リスト・ワークフロー・AI 向けの規則・安全設計の文書が、運用者の PR の中で気づかれずに変わる | 該当ファイルが変わる PR では、ログに一覧を出し、運用者が PR の本文に「安全設計の変更を確認済み」と書かないと検査を通さない（`check-pr-scope.mjs`。ひな形のコメントの中は数えない）。**これは人が書いたことの証明ではない**（運用者の名義で動く AI が本文を書けば通る）。うっかり素通りさせないための確認の印で、本当の境界は AI に運用者の権限を持たせないこと（GITHUB-SETTINGS.md 6章）と main の保護（4章） |
 | 検査に失敗した PR のコードの実行 | 範囲違反などで止めるべき PR のコードが CI で動く | PR 側のテストと組み立ては、main 側の検査がすべて成功したときだけ実行（validate.yml の `if: ${{ success() }}`。`always()`・`cancelled()` などは `check-repo.mjs` が拒否）。`--offline` は通信を遮断する仕組みではない |
+| `pull_request_target` などでのフォークのコードの取り出し（2026年10月 Wiz「The Pwn Request Reckoning」：7月20日の actions/checkout の修正より前の版を SHA で固定していると、保護が効かない。`git clone`・`gh pr checkout` など手動の取り出しも同じ） | 修正前の checkout を固定したままのワークフローが、フォークのコードを取り出して実行する | すべてのワークフローの actions/checkout は修正済みの v7.0.1（3d3c42e…）。scope-guard（`pull_request_target`）は main 側だけを取り出し（`ref:` を書かない）、PR のコードを取り出す・実行するコマンドを使わない。`issue_comment`・`repository_dispatch`・`workflow_run` は使っていない。**2026年12月2日から GitHub が公開リポジトリの `pull_request_target` を既定で止めるため、それまでに scope-guard だけを許可する設定が必要**（docs/GITHUB-SETTINGS.md 8章） |
 | Action のタグ書き換え（2025年3月 tj-actions/changed-files、2026年5月 actions-cool 系） | 人気 Action のタグが悪性コミットに付け替えられ、タグ指定の利用者が秘密情報を盗まれた | すべての Action を**コミットSHAで固定**（上流リポジトリで実在を確認済み）。GitHub の「SHA固定を必須にする」設定も有効化（`GITHUB-SETTINGS.md`）。Dependabot の更新 PR は内容を確認してからマージ |
 | npm の自己増殖型ワーム（2025年9月・11月 Shai-Hulud、2026年4月 SAP 関連パッケージ） | インストール時に実行されるスクリプトが秘密情報を盗み、さらに他のパッケージへ広がった | npm パッケージを**一切インストールしない**設計。描画ライブラリは固定版を同梱し、SHA-256 を記録 |
 | リリース工程の侵害（2026年 Checkmarx・Bitwarden CLI） | 正規の配布物に悪性コードが混入した | 外部のバイナリ・CLI を CI で使わない。Node.js 標準機能だけで動く |
@@ -35,9 +36,9 @@
 3. **書き込ませない**：自動更新は `contents: read`。AI は2ファイルへの PR だけ
 4. **検査で止める**：範囲・個人情報・コミット情報・形式・断定表現・リンク先・見えない文字・更新履歴の整合を CI が検査し、失敗したら公開しない。PR の検査は **main 側のスクリプト**で行うため、PR でスクリプトを書き換えてもすり抜けられない
 5. **失敗したら前回を残す**：取得・検査の失敗時は公開を止める
-6. **画面で実行させない**：表示はすべて `textContent`、CSP で外部通信・インラインスクリプトを禁止
+6. **画面で実行させない**：表示はすべて `textContent`、CSP で外部通信・インラインスクリプトを禁止（Trusted Types も必須）。外部への通信の例外は、地球儀のページ（index.html）が地震の分野を開いているあいだだけ USGS の地震の公開データ（earthquake.usgs.gov の1か所）を読む `site/js/quake-live.js` だけ。CSP の connect-src でその1か所に限り、応答は大きさ・時間・形を検査し、組み立て時と同じ決まり（`site/js/quake-core.js`）で変換、リンクは USGS の地震のページの形だけ、Cookie・リファラーは送らない。`scripts/check-repo.mjs` が CSP の一字一句を検査する
 7. **人が最後に決める**：書く者と監査する者を分け、運用者がマージする
-8. **相手に迷惑をかけない**：定時の取得は1日2回（ほかに main の更新時・手動実行時のみ）、AI の調査もアクセス回数を制限（`ops/SCHEDULE.md`）
+8. **相手に迷惑をかけない**：定時の取得は1日3回（ほかに main の更新時・手動実行時のみ）、AI の調査もアクセス回数を制限（`ops/SCHEDULE.md`）
 
 ## 残っている限界（正直な記録）
 
@@ -45,6 +46,7 @@
 - GitHub Pages では HTTP ヘッダーを設定できず、クリックジャッキング対策（frame-ancestors）は効かない。このサイトはログインも操作による被害も無いため影響は小さい
 - `ユーザー名.github.io` の下で公開する場合、同じアカウントの他の Pages と同じオリジンになる
 - `pull_request` のワークフロー定義は PR 側のものが使われるため、ワークフロー自体を書き換えた外部（フォーク）からの PR は検査を偽装できる。AI 用アカウントは Workflows 権限が無いのでこれはできない。外部の PR は「実行前に承認」の設定と、運用者による差分の確認で防ぐ
+- 地震のブラウザからの直接読み込み：USGS の配信が改ざん・乗っ取りされた場合、検査を通る範囲の地震の文字列（場所の表記など）が表示されうる。文字として表示するだけで、スクリプトとして実行されることはなく、リンクは USGS の地震のページの形に限る。また、閲覧者の IP アドレスなどは通常の通信として USGS に届く（説明ページのプライバシーの節に明記）
 - 取得先（WHO・CISA）そのものが改ざんされた場合、見出しの文字列は検査を通れば表示される。ただしリンク先は許可された公式URLの形に限られ、スクリプトとして実行されることはない
 
 ## 参考資料
@@ -53,6 +55,9 @@
 - Cloud Security Alliance, "prt-scan: GitHub Actions Supply Chain Campaign"（2026年4月）https://labs.cloudsecurityalliance.org/research/csa-research-note-github-actions-prt-scan-supply-chain-2026/
 - DEV Community, "GitHub Actions supply chain in 2026"（tj-actions、Trivy、Bitwarden ほかのまとめ）https://dev.to/alejandxr/github-actions-supply-chain-in-2026-tj-actions-trivy-bitwarden-and-the-year-the-bots-showed-up-239n
 - "Popular GitHub Action Tags Redirected to Imposter Commit"（2026年5月）https://blog.rankiteo.com/git1779179198-github-cyber-attack-may-2026/
+- Wiz, "The Pwn Request Reckoning: What Still Works Against GitHub Actions"（2026年10月26日）https://www.wiz.io/blog/github-actions-security-pwn-request-reckoning
+- GitHub Changelog, "Workflow execution protections in GitHub Actions generally available"（2026年9月17日、10月21日に施行日を12月2日へ更新）https://github.blog/changelog/2026-09-17-workflow-execution-protections-in-github-actions-generally-available/
+- GitHub Changelog, "Actions pull_request_target and environment branch protections changes"（2025年11月7日、12月8日施行）https://github.blog/changelog/2025-11-07-actions-pull_request_target-and-environment-branch-protections-changes/
 - GitHub Changelog, "GitHub Actions policy now supports blocking and SHA pinning actions"（2025年8月）https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/
 
 ## 悪用防止（このサイトの情報を、攻撃する側に使わせないために）

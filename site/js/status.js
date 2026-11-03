@@ -27,7 +27,9 @@ export function statusModel({ layer, doc, meta, mode, now = Date.now() }) {
   else out = { key: 'status.curated', params: { layer, count: m.count, date: m.reviewedAt } };
 
   // 公開版で自動取得が2日以上止まっている
-  if (mode === 'live' && (m.kind === 'auto' || m.kind === 'mixed') && m.retrievedAt && now - Date.parse(m.retrievedAt) > 48 * 3600000) notes.push({ key: 'status.stale' });
+  if (mode === 'live' && !m.live && (m.kind === 'auto' || m.kind === 'mixed') && m.retrievedAt && now - Date.parse(m.retrievedAt) > 48 * 3600000) notes.push({ key: 'status.stale' });
+  // 地震：ブラウザが USGS から直接読み込んだ一覧を表示している（取得時刻はその読み込みの時刻）
+  if (m.live) notes.push({ key: 'status.liveDirect' });
   notes.push(...failNote);
   return { ...out, notes };
 }
