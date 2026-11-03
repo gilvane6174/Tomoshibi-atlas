@@ -1024,23 +1024,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-fin-siberian-jay",
-      "country": "FIN",
-      "animal": {
-        "ja": "アカオカケス",
-        "en": "Siberian jay"
-      },
-      "text": {
-        "ja": "アカオカケスは、フィンランドのウルホ・ケッコネン国立公園の古い森を好んで暮らす鳥です。",
-        "en": "Siberian jays favour the old-growth forests of Finland's Urho Kekkonen National Park."
-      },
-      "source": {
-        "name": "Metsähallitus (Nationalparks.fi)",
-        "url": "https://classic.nationalparks.fi/en-US/urhokekkonennp/nature"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-isl-atlantic-puffin",
       "country": "ISL",
       "animal": {
@@ -1908,23 +1891,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-tha-greater-mouse-deer",
-      "country": "THA",
-      "animal": {
-        "ja": "オオマメジカ",
-        "en": "Greater mouse-deer"
-      },
-      "text": {
-        "ja": "鉛筆のように細い脚をもつ小さなシカの仲間で、夜にひとりで落ちた果実や若葉を食べます。",
-        "en": "This tiny deer has pencil-thin legs and forages alone at night for fallen fruit and soft leaves."
-      },
-      "source": {
-        "name": "National Parks Board Singapore (Flora & Fauna Web)",
-        "url": "https://www.nparks.gov.sg/florafaunaweb/fauna/1/1/11"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-sgp-oriental-pied-hornbill",
       "country": "SGP",
       "animal": {
@@ -1938,23 +1904,6 @@
       "source": {
         "name": "National Parks Board Singapore (Flora & Fauna Web)",
         "url": "https://www.nparks.gov.sg/florafaunaweb/fauna/1/7/174"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
-      "id": "animal-sgp-collared-kingfisher",
-      "country": "SGP",
-      "animal": {
-        "ja": "ナンヨウショウビン",
-        "en": "Collared kingfisher"
-      },
-      "text": {
-        "ja": "シンガポールで最も多く見られるカワセミの仲間で、10ドル紙幣にも描かれています。",
-        "en": "It is Singapore's most abundant kingfisher and is featured on the Singapore $10 banknote."
-      },
-      "source": {
-        "name": "National Parks Board Singapore (Jurong Lake Gardens)",
-        "url": "https://nparks.gov.sg/juronglakegardens/explore-our-gardens/animals/birds/kingfishers"
       },
       "checkedAt": "2026-10-26"
     },
@@ -3948,23 +3897,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-grl-ringed-seal",
-      "country": "GRL",
-      "animal": {
-        "ja": "ワモンアザラシ",
-        "en": "Ringed seal"
-      },
-      "text": {
-        "ja": "グリーンランドの海では、氷のある海域で最もよく見られるアザラシがワモンアザラシです。",
-        "en": "In the seas around Greenland, the ringed seal is the most common seal in areas with ice."
-      },
-      "source": {
-        "name": "Statistics Greenland",
-        "url": "https://www.stat.gl/publ/en/SA/201002/content/Nature.htm"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-grl-harp-seal",
       "country": "GRL",
       "animal": {
@@ -4203,23 +4135,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-kaz-saiga",
-      "country": "KAZ",
-      "animal": {
-        "ja": "サイガ",
-        "en": "Saiga"
-      },
-      "text": {
-        "ja": "サイガの大きくやわらかい鼻は、中のつくりがフィルターのように働きます。春にはメスが大きな群れで繁殖地へ移動します。",
-        "en": "The saiga's oversized, flexible nose has an internal structure that acts like a filter; in spring, large herds of females gather and migrate to breeding areas."
-      },
-      "source": {
-        "name": "Convention on Migratory Species (UNEP/CMS)",
-        "url": "https://www.cms.int/es/species/saiga-tatarica"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-dma-imperial-amazon",
       "country": "DMA",
       "animal": {
@@ -4250,40 +4165,6 @@
       "source": {
         "name": "U.S. National Park Service (National Park of American Samoa)",
         "url": "https://www.nps.gov/teachers/classrooms/what-is-a-fruit-bat.htm"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
-      "id": "animal-geo-caucasian-salamander",
-      "country": "GEO",
-      "animal": {
-        "ja": "コーカサスサンショウウオ",
-        "en": "Caucasian salamander"
-      },
-      "text": {
-        "ja": "コーカサスサンショウウオは、ジョージア南西部からトルコ北東部にかけての限られた地域にすんでいます。",
-        "en": "Caucasian salamanders live in a restricted area from southwestern Georgia to northeastern Turkey."
-      },
-      "source": {
-        "name": "Karadeniz Technical University (AVESİS publication record)",
-        "url": "https://avesis.ktu.edu.tr/yayin/c70c75e2-15c6-4783-bc83-7099f04192ed/new-distribution-data-of-the-vulnerable-mertensiella-caucasica-from-gumushane-turkey"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
-      "id": "animal-tur-caucasian-salamander",
-      "country": "TUR",
-      "animal": {
-        "ja": "コーカサスサンショウウオ",
-        "en": "Caucasian salamander"
-      },
-      "text": {
-        "ja": "トルコのギュミュシュハネ県でコーカサスサンショウウオの新しいすみかが5か所見つかり、知られた分布が南へ約40km広がりました。",
-        "en": "Five new localities in Turkey's Gümüşhane Province extended the Caucasian salamander's known range about 40 km south."
-      },
-      "source": {
-        "name": "Karadeniz Technical University (AVESİS publication record)",
-        "url": "https://avesis.ktu.edu.tr/yayin/c70c75e2-15c6-4783-bc83-7099f04192ed/new-distribution-data-of-the-vulnerable-mertensiella-caucasica-from-gumushane-turkey"
       },
       "checkedAt": "2026-10-26"
     },

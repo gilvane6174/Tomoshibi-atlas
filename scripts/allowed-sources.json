@@ -122,6 +122,10 @@
       "label": "ニュージーランド保健庁（Health New Zealand）"
     },
     {
+      "host": "www.healthnz.govt.nz",
+      "label": "ニュージーランド保健庁（Health New Zealand）（www.tewhatuora.govt.nz からの転送先）"
+    },
+    {
       "host": "www.inegi.org.mx",
       "label": "メキシコ国立統計地理情報院（INEGI）"
     },
@@ -161,6 +165,10 @@
     {
       "host": "labour.gov.in",
       "label": "インド労働雇用省"
+    },
+    {
+      "host": "www.labour.gov.in",
+      "label": "インド労働雇用省（転送先）"
     },
     {
       "host": "earthquake.usgs.gov",
@@ -1293,6 +1301,10 @@
       "label": "FRA の公的機関（防災・防犯）"
     },
     {
+      "host": "www.georisques.gouv.fr",
+      "label": "FRA の公的機関（防災・防犯）（転送先）"
+    },
+    {
       "host": "www.masecurite.interieur.gouv.fr",
       "label": "FRA の公的機関（防災・防犯）"
     },
@@ -1929,6 +1941,9 @@
       "host": "donauauen.at"
     },
     {
+      "host": "www.donauauen.at"
+    },
+    {
       "host": "ead.gov.ae"
     },
     {
@@ -2113,6 +2128,14 @@
   "pageLinks": [
     {
       "url": "https://ww1.issa.int/country-profiles/about",
+      "pages": [
+        "compare.html",
+        "compare.en.html"
+      ],
+      "label": "国際社会保障協会（ISSA）の各国の社会保障制度の概要（Country profiles）の説明ページ。世界をくらべるページから、各国の福祉制度の中身を知りたい人への案内（リンクのみ。本文は転載しない）"
+    },
+    {
+      "url": "https://www.issa.int/country-profiles/about",
       "pages": [
         "compare.html",
         "compare.en.html"

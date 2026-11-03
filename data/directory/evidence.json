@@ -970,8 +970,8 @@
     "slb-health-ministry-outbreak": {
       "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
       "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
+      "method": "unverified",
+      "how": "2026-11-04 のリンクの安全確認（GitHub Actions）で転送が循環していた。再確認できるまで表示しない",
       "evidence": ""
     },
     "slb-health-ministry-mental": {
@@ -1565,8 +1565,8 @@
     "npl-welfare-ministry-welfare": {
       "url": "https://mowcsc.gov.np/en/pages/31/49633572",
       "checkedAt": "2026-10-25",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
+      "method": "unverified",
+      "how": "2026-11-04 のリンクの安全確認（GitHub Actions）でHTTPS の証明書の問題が出た。再確認できるまで表示しない",
       "evidence": "Ministry introduction page under 'Government Of Nepal'; covers social welfare"
     },
     "ven-health-ministry-outbreak": {
@@ -2678,8 +2678,8 @@
     "jp-pref-42-main": {
       "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/shakaihukushi/hogo-jiritsu/495589.html",
       "checkedAt": "2026-10-26",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
+      "method": "unverified",
+      "how": "2026-11-04 のリンクの安全確認（GitHub Actions）でページが開けなかった（404）。再確認できるまで表示しない",
       "evidence": "heading: くらしの困りごとをご相談ください!(生活困窮者自立支援制度)"
     },
     "jp-pref-43-main": {
@@ -3362,11 +3362,11 @@
       "evidence": "甲府市生活困窮者自立支援事業／甲府市"
     },
     "jp-local-20-nagano": {
-      "url": "https://www.city.nagano.nagano.jp/soshiki/seikatsushien/107247.html",
-      "checkedAt": "2026-11-03",
+      "url": "https://www.city.nagano.nagano.jp/n100800/contents/p005558.html",
+      "checkedAt": "2026-11-04",
       "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.nagano.nagano.jp/soshiki/seikatsushien/107247.html で確認",
-      "evidence": "生活困窮者自立支援制度について"
+      "how": "AIが公式ページを開いて見出しを確認（2026-11-04。前の URL が 404 になったため差し替え）",
+      "evidence": "生活困窮者自立支援制度（長野市生活就労支援センター「まいさぽ長野市」）"
     },
     "jp-local-20-nagano-prefectural-shakyo": {
       "url": "https://www.nsyakyo.or.jp/",
@@ -3399,8 +3399,8 @@
     "jp-local-22-shizuoka": {
       "url": "https://www.city.shizuoka.lg.jp/000_003097.html",
       "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.shizuoka.lg.jp/000_003097.html で確認",
+      "method": "unverified",
+      "how": "2026-11-04 のリンクの安全確認（GitHub Actions）でページが開けなかった（404）。再確認できるまで表示しない",
       "evidence": "静岡市暮らし・しごと相談支援センター"
     },
     "jp-local-22-shizuoka-prefectural-shakyo": {
@@ -3609,8 +3609,8 @@
     "jp-local-37-kagawa-prefectural-shakyo": {
       "url": "https://www.kagawakenshakyo.or.jp/",
       "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
+      "method": "unverified",
+      "how": "2026-11-04 のリンクの安全確認（GitHub Actions）で暗号化されていない http のページへ転送された。再確認できるまで表示しない",
       "evidence": "社会福祉法人 香川県社会福祉協議会"
     },
     "jp-local-38-matsuyama": {
