@@ -356,6 +356,17 @@
         "welfare-2026-uk-hbai-children-fye2025",
         "welfare-2026-uk-child-poverty-projections"
       ]
+    },
+    {
+      "date": "2026-11-03",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "重複していた英国の低所得世帯統計の1件（welfare-2026-uk-hbai-children-fye2025。同じ原典の項目が既にある）を削除（独立した監査は未実施）",
+        "en": "Removed a duplicate UK low-income statistics item (welfare-2026-uk-hbai-children-fye2025; an item with the same source already exists); independent audit pending"
+      },
+      "ids": [
+        "welfare-2026-uk-hbai-children-fye2025"
+      ]
     }
   ]
 }

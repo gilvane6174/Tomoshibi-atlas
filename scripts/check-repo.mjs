@@ -88,6 +88,19 @@ for (const name of readdirSync(resolve(ROOT, WF))) {
   }
   if (/\bsecrets\./.test(text)) errors.push(`${rel}: secrets（秘密情報）は使わない設計`);
   if (/write-all|contents:\s*write|pull-requests:\s*write|actions:\s*write/.test(text)) errors.push(`${rel}: リポジトリへの書き込み権限は与えない`);
+  // 書き込みの権限は、決まったワークフローの決まった種類だけを許す（許可する方を書く方式。2026-11 のセキュリティ確認の指摘）
+  //   codeql.yml：security-events（検査結果の登録）／deploy.yml：pages・id-token（GitHub Pages への公開）
+  // 書き方の抜け道（"packages": write、{ packages: write }、"write" と値を引用符で囲む、\u0077rite のようなエスケープ、アンカー）を通さないよう、
+  // write という語が出てくる行は、すべて「種類: write」の1行1つの形で、かつ許可した種類でなければならない（それ以外の書き方は形を問わず止める）
+  const WRITE_OK = { 'codeql.yml': ['security-events'], 'deploy.yml': ['pages', 'id-token'] };
+  const wfName = rel.split('/').pop();
+  if (/\\(?:u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|x[0-9a-fA-F]{2})/.test(noComments)) errors.push(`${rel}: ワークフローに \\u・\\x などのエスケープを書かない（権限などの検査をすり抜けられるため）`);
+  noComments.split('\n').forEach((line, i) => {
+    if (!/\bwrite\b/i.test(line)) return;
+    const m = line.match(/^\s*([a-z-]+)\s*:\s*write\s*$/);
+    if (!m) errors.push(`${rel}:${i + 1}: 書き込みの権限は「種類: write」の形で1行に1つだけ書く（引用符・{ }・アンカーなどの書き方は使わない）`);
+    else if (!(WRITE_OK[wfName] || []).includes(m[1])) errors.push(`${rel}:${i + 1}: 書き込みの権限「${m[1]}: write」は許可していない（許可：${JSON.stringify(WRITE_OK)}）`);
+  });
   let runIndent = -1;
   lines.forEach((line, i) => {
     const at = `${rel}:${i + 1}`;

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "reviewedAt": "2026-11-02",
+  "reviewedAt": "2026-11-03",
   "items": [
     {
       "id": "research-2025-ai-who-tb-cad",
@@ -3918,38 +3918,6 @@
         "url": "https://www.unicef.org/argentina/comunicados-prensa/informe-pobreza-monetaria-2026"
       },
       "sourceType": "intl_org"
-    },
-    {
-      "id": "welfare-2026-uk-hbai-children-fye2025",
-      "layer": "welfare",
-      "title": {
-        "ja": "英国：相対的低所得の子どもの割合は住居費差引後27%（2024年度）",
-        "en": "UK: 27% of children in relative low income after housing costs (FYE 2025)"
-      },
-      "summary": {
-        "ja": "英国雇用年金省の統計で、2024年度（2025年3月までの1年）に相対的低所得の世帯で暮らす子どもの割合は、住居費差引前21%、差引後27%だった。",
-        "en": "DWP statistics show that in the year to March 2025, 21% of children lived in relative low income before housing costs and 27% after housing costs."
-      },
-      "attribution": {
-        "ja": "英国雇用年金省（DWP）の統計（2026年3月）によれば",
-        "en": "According to UK DWP statistics (March 2026)"
-      },
-      "tags": [
-        "statistics"
-      ],
-      "topic": "gbr-hbai-children-fye2025",
-      "countries": [
-        "GBR"
-      ],
-      "placeBasis": "reported_country",
-      "importance": "minor",
-      "publishedAt": "2026-03-26",
-      "checkedAt": "2026-11-02",
-      "source": {
-        "name": "英国雇用年金省 / Department for Work and Pensions (UK)",
-        "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025/households-below-average-income-an-analysis-of-the-uk-income-distribution-fye-1995-to-fye-2025"
-      },
-      "sourceType": "public_agency"
     },
     {
       "id": "welfare-2026-uk-child-poverty-projections",
