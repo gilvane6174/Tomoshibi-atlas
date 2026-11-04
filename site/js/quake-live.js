@@ -59,6 +59,37 @@ export function parseLiveQuakes(doc, countries, now = Date.now()) {
   return items;
 }
 
+// 本文を受信しながらバイト数を数え、上限を超えたらその場で受信を止める
+// （長さの見出し（Content-Length）が無い・偽りの応答でも、上限を超えて読み込まない。独立した監査の指摘 2026-11-03）
+export async function readLimited(res, maxBytes, ctl) {
+  if (!res.body || typeof res.body.getReader !== 'function') throw new Error('no stream');
+  const reader = res.body.getReader();
+  const chunks = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) {
+      try {
+        await reader.cancel();
+      } catch {
+        /* 止められなくても、下の abort で通信を切る */
+      }
+      ctl?.abort();
+      throw new Error('too large');
+    }
+    chunks.push(value);
+  }
+  const buf = new Uint8Array(total);
+  let off = 0;
+  for (const c of chunks) {
+    buf.set(c, off);
+    off += c.byteLength;
+  }
+  return new TextDecoder('utf-8', { fatal: true }).decode(buf);
+}
+
 async function fetchFeed() {
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
@@ -66,9 +97,7 @@ async function fetchFeed() {
     const res = await fetch(FEED, { mode: 'cors', credentials: 'omit', referrerPolicy: 'no-referrer', cache: 'no-store', redirect: 'error', signal: ctl.signal });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     if (Number(res.headers.get('content-length') || 0) > MAX_BYTES) throw new Error('too large');
-    const text = await res.text();
-    if (text.length > MAX_BYTES) throw new Error('too large');
-    return JSON.parse(text);
+    return JSON.parse(await readLimited(res, MAX_BYTES, ctl));
   } finally {
     clearTimeout(timer);
   }

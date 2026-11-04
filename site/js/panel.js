@@ -2,6 +2,7 @@
 
 import { t, pickText, setRich, lang } from './i18n.js';
 import { groupIcon } from './icons.js';
+import { natureBadge } from './nature.js';
 import { LAYERS, layerById, DIR_LAYERS, SAFETY_LAYERS, safeHttpsUrl, formatDate, countryName, ageDays, ageLabel } from './data.js';
 
 const el = (tag, cls, text) => {
@@ -24,7 +25,7 @@ function link(url, text) {
 
 const badge = (cls, text) => el('span', 'badge ' + cls, text);
 
-export function entry(item, { countryMap, asButton = false, onClick } = {}) {
+export function entry(item, { countryMap, asButton = false, onClick, detail = false } = {}) {
   const layer = layerById(item.layer);
   const box = el('article', 'entry ' + layer.group + (item.superseded ? ' is-superseded' : ''));
   box.style.setProperty('--dot', layer.color);
@@ -45,6 +46,8 @@ export function entry(item, { countryMap, asButton = false, onClick } = {}) {
 
   // 状態の表示：以前の情報／古い公表／言語
   const flags = el('p', 'entry-flags');
+  // 情報の性質（公式発表・統計・試算・速報値など。site/js/nature.js）
+  flags.append(natureBadge(item, lang));
   if (item.superseded) flags.append(badge('superseded', t('badge.superseded')));
   else if (item.older) flags.append(badge('stale', t('badge.older')));
   else if (ageDays(item.publishedAt) > 30) flags.append(badge('stale', t('badge.stale')));
@@ -94,7 +97,35 @@ export function entry(item, { countryMap, asButton = false, onClick } = {}) {
     if (a) links.append(a);
   }
   box.append(links);
+  // 詳細の表示では、各項目に「知った後にできること」を折りたたんで添える（分野ごとの一般的な行動。リンクは置かない）
+  if (detail && NEXT_STEPS[item.layer]) {
+    const d = el('details', 'next-steps');
+    d.append(el('summary', null, t('next.title')), nextList(item.layer));
+    box.append(d);
+  }
   return box;
+}
+
+// 「知った後にできること」：分野ごとの一般的な行動（文だけ。公的な窓口へのリンクは、下のリンク集・案内にまとめる）
+const NEXT_STEPS = { outbreak: 4, research: 4, care: 3, security: 3, crime: 3, disaster: 3, quake: 3 };
+function nextList(layerId) {
+  const ul = el('ul', 'next-list');
+  for (let i = 1; i <= NEXT_STEPS[layerId]; i++) ul.append(el('li', null, t(`next.${layerId}.${i}`)));
+  return ul;
+}
+// 一覧の下に出す「知った後にできること」（感染症・研究と対策）。日本の場合の公式の窓口は、リンク集（確認の記録つき）から id で選ぶ
+const NEXT_JAPAN = { outbreak: ['jp-o-mhlw', 'jp-o-forth'], research: ['jp-s-ipa', 'jp-r-jihs'] };
+function nextSection(layerId, dir) {
+  const wrap = el('section', 'note support next-section');
+  wrap.append(el('h3', null, t('next.title')), nextList(layerId));
+  const jp = dir?.countries?.JPN || {};
+  const all = Object.values(jp).flat();
+  const links = (NEXT_JAPAN[layerId] || []).map((id) => all.find((l) => l?.id === id)).filter(Boolean);
+  if (links.length) {
+    wrap.append(el('p', 'safety-japan-head', t('next.japanHead')));
+    wrap.append(dirList(links, false));
+  }
+  return wrap;
 }
 
 const note = (kind) => el('p', 'note' + (kind === 'daily' ? ' calm-note' : ''), t(kind === 'auto' ? 'note.auto' : kind === 'daily' ? 'note.animals' : kind === 'mixed' ? 'note.mixed' : 'note.curated'));
@@ -310,7 +341,7 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   else if (doc.status === 'notFetched') body.append(el('p', 'empty', t('status.notFetchedLong')));
   else if (doc.status === 'fetchFailed') body.append(el('p', 'empty', t('status.fetchFailedLong')));
   else if (!items.length) body.append(el('p', 'empty', t('panel.none')));
-  for (const it of items) body.append(entry(it, { countryMap: data.countryMap }));
+  for (const it of items) body.append(entry(it, { countryMap: data.countryMap, detail: true }));
   if (items.length) body.append(note(doc.kind));
   if (layerId === 'security') body.append(el('p', 'note caution-note', t('note.security')));
   if (safety) body.append(safety);
@@ -411,6 +442,7 @@ export function renderList(body, { layerId, data, onPick }) {
   }
   body.append(note(doc.kind));
   if (layerId === 'security') body.append(el('p', 'note caution-note', t('note.security')));
+  if (layerId === 'outbreak' || layerId === 'research') body.append(nextSection(layerId, data.directory));
   if (layerId === 'care') body.append(mentalSupport());
   if (SAFETY_LAYERS.has(layerId)) body.append(safetySupport());
 }

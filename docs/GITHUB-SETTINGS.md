@@ -68,13 +68,13 @@ Settings → Pages
   - 理由：自分の PR は自分で承認できないため、承認だけを省略してマージできるようにする。main への直接 push はできず、必ず PR を経由する。検査は (A) が別に必須にしているので、この Bypass では省略できない
   - AI 用アカウント（6章）は Bypass に**入れない**。AI の PR は必ず運用者の承認が必要になる
 
-**移行のしかた（運用者が GitHub の画面で行う。Claude は設定を変えない）**
+**移行のしかた（運用者が GitHub の画面で行う。AI は設定を変えない）**
 
 1. 今の `main-protection` を開き、内容を控える（画面の写し。トークン等は写さない）
 2. (A) `main-checks` を新しく作って Active にする（この時点では `main-protection` も残す。規則は合算されるので、守りが弱くなる時間を作らない）
 3. (B) `main-review` を新しく作って Active にする
 4. `main-protection` を Disabled にする（すぐには消さない。1週間ほど様子を見てから消す）
-5. 確かめ方（下）を行う。想定と違えば `main-protection` を Active に戻し、Claude に知らせる
+5. 確かめ方（下）を行う。想定と違えば `main-protection` を Active に戻し、作業を手伝う AI に知らせる
 
 **確かめ方（設定の後に一度。試験用の PR はマージせず閉じる）**
 
@@ -142,18 +142,18 @@ PR の検査（validate）は、PR 側のワークフローファイルで動く
 
 WHO・CISA のデータ形式が変わったときなど、`scripts/` の修正が必要になることがある。AI は `scripts/` を変える PR を出せない（検査で拒否される）ため、AI には修正案（差分）を文章で出してもらい、運用者が内容を読んで理解できた場合だけ、自分のアカウントで手元に反映し、`node scripts/prepublish-check.mjs` を通してから自分の PR として出す。理解できない修正は取り込まない。
 
-## 6.2 運用者の名義で動く AI の連携アプリ（Claude・ChatGPT Codex・Copilot など）（v1.2.4）
+## 6.2 運用者の名義で動く AI の連携アプリ（AI のコーディング支援など）（v1.2.4）
 
 GitHub App がユーザーの代理で動くと、その操作は**ユーザー本人の名前で記録**される（GitHub Docs「Authenticating with a GitHub App on behalf of a user」）。運用者のアカウントに AI の連携アプリを入れていると、AI の操作も「運用者の操作」に見える。
 
 - 検査側の対策（v1.2.4・v1.2.5）：運用者の PR として範囲の制限を外すのは、PR が **GitHub App を通さずに作られた**と API（PR の issue 情報の `performed_via_github_app` が null）で確かめられ、**しかもこの判定を運用者が実機で確かめてリポジトリ変数 `OWNER_PR_CHECK` を `verified-null` にしている**ときだけ。取得の失敗・項目の欠落・アプリ経由・変数が未設定のときは制限する（`scripts/lib/owner-pr.mjs`。scope-guard と validate の両方）。「null なら人間が作った」という前提は、実機で確かめるまで使わない
 - **限界**：PR の作成後に、アプリが運用者の名義でコミットを追加した場合、コミットの情報だけではアプリ経由かどうかを区別できない。また、アプリ経由で作った PR で `performed_via_github_app` が実際に入るかは、公開後に一度確かめる（下の確認）
-- [ ] 設定側の対策：AI の連携アプリ（Settings → Applications → Installed GitHub Apps の各アプリ → Repository access）で、**普段は Tomoshibi-atlas を対象から外す**。Claude に push を承認したときだけ一時的に対象に入れ、push が終わったら外す
+- [ ] 設定側の対策：AI の連携アプリ（Settings → Applications → Installed GitHub Apps の各アプリ → Repository access）で、**普段は Tomoshibi-atlas を対象から外す**。AI に push を承認したときだけ一時的に対象に入れ、push が終わったら外す
 - [ ] 使っていない連携アプリの認可は、Settings → Applications → Authorized GitHub Apps で整理する（ただし、侵害が疑われる環境では、JFrog の注意どおり、居座るための仕組みの除去を先に行う）
 
 ### 運用者が広い範囲を変える手順（人間用）
 
-1. Claude などが作業ブランチを push する（承認した内容に限る。push の間だけ連携アプリに書き込みを許可）
+1. AI などが作業ブランチを push する（承認した内容に限る。push の間だけ連携アプリに書き込みを許可）
 2. push が終わったら、連携アプリの対象から Tomoshibi-atlas を外す
 3. **運用者がブラウザで** PR を作る（アプリを通さない。scope-guard のログに「運用者が GitHub App を通さずに作った PR」と出ることを確かめる）
 4. Files changed を読み、検査がすべて緑になってからマージする。PR の作成後に新しいコミットが追加されていたら、その差分を読み直す（承認を流用しない）
@@ -164,9 +164,9 @@ GitHub App がユーザーの代理で動くと、その操作は**ユーザー�
 
 1. 段階1を取り込む
 2. **ブラウザで**無害な試験用 PR を作る（例：README の1文字の変更。マージしない）。scope-guard のログに「PR の作成元（performed_via_github_app）：null（アプリの情報なし）」と出て、判定は「制限あり（OWNER_PR_CHECK 未設定）」になることを確かめる
-3. 使っている連携アプリ（Claude・ChatGPT Codex・Copilot など）**それぞれで**、無害な試験用 PR を作る（そのあいだだけリポジトリを対象に入れる）。ログに「アプリ：〈アプリ名〉」と出て、data/curated 以外の変更が拒否されることを確かめる
+3. 使っている連携アプリ（AI のコーディング支援など）**それぞれで**、無害な試験用 PR を作る（そのあいだだけリポジトリを対象に入れる）。ログに「アプリ：〈アプリ名〉」と出て、data/curated 以外の変更が拒否されることを確かめる
 4. ブラウザで作った試験用 PR に、連携アプリから後でコミットを足した場合も試す（この場合は区別できないことを確かめ、普段は連携アプリを対象から外す運用で防ぐ）
-5. 2〜3 の結果がすべて想定どおりなら、Settings → Secrets and variables → Actions → Variables で `OWNER_PR_CHECK` を `verified-null` にする。1つでも想定と違えば設定しない（そのアプリをこのリポジトリから外すか、Claude に判定方法の見直しを頼む）
+5. 2〜3 の結果がすべて想定どおりなら、Settings → Secrets and variables → Actions → Variables で `OWNER_PR_CHECK` を `verified-null` にする。1つでも想定と違えば設定しない（そのアプリをこのリポジトリから外すか、作業を手伝う AI に判定方法の見直しを頼む）
 6. 確かめたログの写し（ログの画面の写しなど。トークンや個人情報は写さない）を、ドライブの作業場に保存する。試験用 PR はマージせずに閉じる
 7. 段階2の PR をブラウザで作って取り込む
 
@@ -245,19 +245,21 @@ GitHub は、公開リポジトリで `pull_request_target` で動くワーク�
 
 `pull_request`（通常の PR の起動条件）に変えるのは**勧めない**。`pull_request` では PR 側のワークフローの定義が使われるため、PR の中で scope-guard.yml を書き換えると検査をすり抜けられてしまう（この検査を作った理由そのもの）。
 
+**12月2日より前に、2回の「試験停止（brownout）」がある**（GitHub Changelog 2026-11-02）：**2026年11月9日と11月16日の 16:00〜18:00（UTC）＝日本時間の11月10日・11月17日の 1:00〜3:00**。この時間に PR が作られる・更新されると、許可の設定が無ければ scope-guard は失敗の記録だけを残して動かない（安全側に止まる）。**11月9日より前に設定を済ませる**のが望ましい。間に合わなかったときは、その時間を避けて PR を操作し、失敗した検査は時間の後に再実行する。
+
 手順（運用者が GitHub の画面で行う。画面の名前は変わることがある）：
 1. リポジトリの **Settings → Actions → Policies**（「Actions policies」）を開く
 2. 新しいポリシーを作る。名前は例として「scope-guard だけ pull_request_target を許可」
 3. 対象（target）を **ワークフローのファイル `.github/workflows/scope-guard.yml` だけ**に絞る（workflow file targeting）
-4. **Restrict events** で `pull_request_target` を許可する
-5. **Restrict actors** を設定する場合は、運用者・Dependabot・AI 用アカウントが PR を出せる状態を保つ
+4. イベントのルール（event rules。画面では「Restrict events」などの表記のことがある）で `pull_request_target` を許可する
+5. 実行者のルール（actor rules）を設定する場合は、運用者・Dependabot・AI 用アカウントが PR を出せる状態を保つ
 6. 状態を Active にして保存。次の PR で「Scope guard」が動くことを確かめる
 7. ほかのワークフローには `pull_request_target` を許可しない（`scripts/check-repo.mjs` も scope-guard 以外での使用を禁止している）
 
 参考：GitHub Docs「Control workflow execution」「About Actions policies」。Evaluate（試験）モードは GitHub Enterprise Cloud だけのため、この設定は Active で行う。
 
 ## 9. 推奨：すべてのブランチでワークフローの追加・変更を制限する
-2026年10月には、盗まれたトークンで約1,900のアカウントに不正なワークフローを置く攻撃（GhostAction）が報告された。main 以外の新しいブランチに置かれたワークフローも `push` で動くため、次を推奨する。
+2026年10月には、乗っ取られた保守者のアカウントを使って多数のリポジトリに不正なワークフローを置く攻撃（GhostAction）が報告された（StepSecurity の報告、2026-10-09。被害の規模の数字は報告によって異なる）。main 以外の新しいブランチに置かれたワークフローも `push` で動くため、次を推奨する。
 - **Settings → Rules → Rulesets** で、対象ブランチを **All branches（すべてのブランチ）** にしたルールを作り、「Restrict file paths」で `.github/workflows/**` の変更を制限する（運用者だけ bypass）
 - 個人アクセストークン（classic）は作らない。必要なら期限の短い fine-grained トークンにする
 - ログインには、パスキーかセキュリティキーを使う

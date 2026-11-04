@@ -2,7 +2,7 @@
 //
 // 背景：GitHub App がユーザーの代理で動くと、その操作はユーザー本人の名前で記録される
 // （https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user）。
-// AI の連携アプリ（Claude・ChatGPT Codex・Copilot など）が運用者の名義で PR を作ると、作成者名だけでは人間と区別できない。
+// AI の連携アプリ（AI のコーディング支援など）が運用者の名義で PR を作ると、作成者名だけでは人間と区別できない。
 //
 // そこで、範囲の制限を外すのは次の全部を満たすときだけにする（1つでも分からなければ、制限を外さない）：
 //   1. 作成者が運用者（MAINTAINER_LOGIN）

@@ -11,7 +11,7 @@ import { ROOT, readData, readCode, isAllowedUrl } from './lib/safety.mjs';
 import { buildCompare } from './fetch-worldbank.mjs';
 const { enabledFetchers } = readCode('scripts/allowed-sources.json');
 import { quakeStatusOf } from './fetch-usgs.mjs';
-import { validateItems, validateCuratedPair, validateDirectory, validateEvidence, validateAnimals, validatePrefectures, CURATED_LAYERS } from './validate-data.mjs';
+import { validateItems, validateCuratedPair, validateDirectory, validateEvidence, validateAnimals, validatePrefectures, validateConnections, CURATED_LAYERS } from './validate-data.mjs';
 import { pickDaily, toItems } from './lib/animals.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { fitCount, RULES, MAX_BY_LAYER } from './importance-rules.mjs';
@@ -58,6 +58,7 @@ async function main() {
   errors.push(...validateEvidence());
   errors.push(...validateAnimals());
   errors.push(...validatePrefectures());
+  errors.push(...validateConnections());
   const { schemaVersion, reviewedAt, categories, countries, international, social } = readData('data/directory/links.json');
   // リンク集は「確認の記録」がある（AIが公式ページを開いて確認した fetched、または運用者が確認した operator）ものだけを公開する。
   // 記録のないもの・確認できなかったものは、確認できるまで表示しない（ops/LINK-SAFETY.md「迷ったら載せない」）
@@ -81,7 +82,7 @@ async function main() {
     international: shown(international),
     social: shown(social), // 公式Xアカウントも、確認の記録があるものだけ
     // 日本の都道府県の福祉ページ（福祉の探し方ページで使う）。確認の記録があるものだけ
-    prefectures: readData('data/directory/prefectures.json').prefectures.map((p) => ({ ...p, links: shown({ l: p.links }).l })),
+    prefectures: readData('data/directory/prefectures.json').prefectures.map((p) => ({ ...p, links: shown({ l: p.links }).l, local: shown({ l: p.local || [] }).l })),
   };
   if (hidden) console.log(`リンク集：確認の記録がない ${hidden} 件は表示しない（data/directory/evidence.json）`);
   const curated = readData(base);
@@ -243,7 +244,7 @@ async function main() {
   // 自動取得の情報は保存しない（Actions に書き込み権限を持たせないため。2026-10-27 運用者の決定）
   const ARCHIVE_LAYER = { mental: 'care', welfare: 'care' };
   const archive = curated.items
-    .map(({ id, layer, title, summary, attribution, tags, countries, publishedAt, checkedAt, source }) => ({
+    .map(({ id, layer, title, summary, attribution, tags, countries, publishedAt, checkedAt, source, sourceType, nature }) => ({
       id,
       layer: ARCHIVE_LAYER[layer] || layer,
       ...(ARCHIVE_LAYER[layer] ? { sub: layer } : {}),
@@ -255,9 +256,26 @@ async function main() {
       publishedAt,
       checkedAt,
       source,
+      sourceType,
+      ...(nature ? { nature } : {}),
     }))
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt) || a.id.localeCompare(b.id));
   writeFileSync(resolve(OUT, 'data/archive.json'), JSON.stringify({ reviewedAt: curated.reviewedAt, count: archive.length, items: archive }));
+  // 「つながりを見る」：運用者が選んだテーマごとに、手動掲載の項目を並べる（data/curated/connections.json。検査は validateConnections）
+  // 画面がこのファイルだけで描けるように、項目の見出し・分野・公表日・国・出典・性質を写す（要約は過去の記録の一覧と同じもの）
+  {
+    const conn = readData('data/curated/connections.json');
+    const byId = new Map(archive.map((x) => [x.id, x]));
+    const used = new Set(conn.themes.flatMap((th) => th.items));
+    writeFileSync(
+      resolve(OUT, 'data/connections.json'),
+      JSON.stringify({
+        reviewedAt: conn.reviewedAt,
+        themes: conn.themes.map(({ id, title, summary, note, items }) => ({ id, title, summary, ...(note ? { note } : {}), items })),
+        items: Object.fromEntries([...used].map((id) => [id, byId.get(id)])),
+      }),
+    );
+  }
   // 「世界をくらべる」：世界銀行の指標（補助の情報。取得できなくても公開は止めない。確認版では取得しない）
   {
     const countryIds = new Set(readCode('site/data/geo/country-index.json').map((c) => c.id));

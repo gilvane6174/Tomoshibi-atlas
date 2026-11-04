@@ -1,4 +1,4 @@
-// 週次の掲載候補（Claude の定期タスクが作る候補の一覧など）から、運用者が選んだ項目を entries.json に追加する。
+// 週次の掲載候補（AI の定期タスクが作る候補の一覧など）から、運用者が選んだ項目を entries.json に追加する。
 // 使い方（運用者が手元で実行）：
 //   node scripts/add-candidates.mjs <候補のJSONファイル>            … 追加する前の確認だけ（ファイルは変えない）
 //   node scripts/add-candidates.mjs <候補のJSONファイル> --write    … entries.json と changelog.json に追加する

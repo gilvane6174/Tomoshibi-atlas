@@ -55,7 +55,7 @@ const PREF_KANA = ('ほっかいどう あおもりけん いわてけん みや
   'さがけん ながさきけん くまもとけん おおいたけん みやざきけん かごしまけん おきなわけん').split(' ');
 const prefKana = (code) => PREF_KANA[Number(code) - 1] || '';
 // ひらがな表示のときのリンクの名前（都道府県のページの題名は漢字のため、役割ごとの決まった言い方にする）
-const KANA_ROLE = { main: 'くらし・しごとの そうだんの ページ', consult: 'くらし・しごとの そうだん まどぐちの あんない', mind: 'こころの けんこうの そうだん（せいしん ほけん ふくし センター など）' };
+const KANA_ROLE = { main: 'くらし・しごとの そうだんの ページ', consult: 'くらし・しごとの そうだん まどぐちの あんない', mind: 'こころの けんこうの そうだん（せいしん ほけん ふくし センター など）', bousai: 'さいがい・ぼうさいの じょうほうの ページ' };
 
 function national(dir) {
   const box = document.getElementById('national');
@@ -109,7 +109,7 @@ function areaFinder(dir) {
     ul.append(li);
   }
   wrap.append(ul);
-  wrap.append(el('p', 'note', isEn ? 'Below: links on each prefecture\'s official website (living and work, plus mental health centres for some prefectures; more will be added as they are checked).' : kana ? 'したは、かく とどうふけんの こうしき サイトの ページ です（くらし・しごとの そうだんと、いちぶの とどうふけんの こころの けんこうの そうだんさき です。ほかも、かくにん できた ものから ふやして いきます）。' : '下は、各都道府県の公式サイトのページです（暮らし・仕事の相談と、一部の都道府県のこころの健康の相談先（精神保健福祉センターなど）。ほかの都道府県・分野も、確認できたものから順に追加します）。'));
+  wrap.append(el('p', 'note', isEn ? 'Below: links on each prefecture\'s official website (living and work, mental health centres for some prefectures, and disaster information), and consultation pages of some cities (such as prefectural capitals) and of social welfare councils (non-profit organisations with a public role in local welfare). If your city is not listed, see the welfare section of your city\'s official website. More will be added as they are checked.' : kana ? 'したは、かく とどうふけんの こうしき サイトの ページ です（くらし・しごとの そうだん、いちぶの とどうふけんの こころの けんこうの そうだんさき、さいがい・ぼうさいの じょうほう です）。けんちょうの ある しなどの こうしき サイトの そうだんの ページと、しゃかい ふくし きょうぎかいの ページも のせて います。ほかも、かくにん できた ものから ふやして いきます。' : '下は、各都道府県の公式サイトのページです（暮らし・仕事の相談、一部の都道府県のこころの健康の相談先（精神保健福祉センターなど）、災害・防災の情報）。あわせて、県庁所在地などの市区町村の公式サイトの相談ページと、社会福祉協議会（地域の福祉を進める、公共性の高い民間の団体。社会福祉法人）のページを載せています。お住まいの市区町村が無いときは、その市区町村の公式サイトの福祉の窓口をご覧ください。ほかの都道府県・分野も、確認できたものから順に追加します。'));
   return wrap;
 }
 
@@ -128,11 +128,26 @@ function prefectures(dir) {
       const li = el('li');
       li.append(el('strong', 'guide-pref', isEn ? p.en : kana ? prefKana(code) || p.ja : p.ja));
       // 分野を先に示す（暮らし・仕事の相談、こころの健康。ほかの分野は確認できたものから追加する）
-      const area = (l) => (l.role === 'mind' ? (isEn ? 'Mental health: ' : 'こころの健康：') : isEn ? 'Living and work: ' : '暮らし・仕事：');
+      const area = (l) => (l.role === 'mind' ? (isEn ? 'Mental health: ' : 'こころの健康：') : l.role === 'bousai' ? (isEn ? 'Disasters and emergencies: ' : '災害・防災の情報：') : isEn ? 'Living and work: ' : '暮らし・仕事：');
       const label = (l) => (kana && !isEn ? `${prefKana(code)}の ${KANA_ROLE[l.role] || KANA_ROLE.main}` : area(l) + pick(l.title));
       const shown = (p.links || []).map((l) => link(l.url, label(l))).filter(Boolean);
-      if (shown.length) for (const a of shown) li.append(a);
-      else li.append(el('span', 'guide-desc', isEn ? 'Being checked. Please contact the welfare office of your city, town or village, or use the nationwide services above.' : kana ? 'かくにん ちゅう です。すんで いる しくちょうそんの ふくしの まどぐち（ふくし じむしょ など）か、うえの ぜんこくの まどぐちを ごりよう ください。' : '確認中です。お住まいの市区町村の福祉の窓口（福祉事務所など）か、上の全国の窓口をご利用ください。'));
+      // 市区町村・社会福祉協議会の相談ページ（確認できたものから。2026-11 追加）
+      const local = (p.local || [])
+        .map((l) => {
+          const kind = l.kind === 'shakyo' ? (isEn ? 'Social welfare council: ' : '社会福祉協議会：') : isEn ? 'City: ' : '市区町村：';
+          const text = kana && !isEn ? (l.kind === 'shakyo' ? `${l.nameKana}（しゃかい ふくし きょうぎかい）の ページ` : `${l.nameKana}の くらし・ふくしの そうだんの ページ`) : kind + pick(l.title);
+          return link(l.url, text);
+        })
+        .filter(Boolean);
+      if (shown.length || local.length) {
+        for (const a of shown) li.append(a);
+        if (local.length) {
+          const sub = el('ul', 'guide-local');
+          sub.setAttribute('aria-label', isEn ? 'Cities and social welfare councils' : kana ? 'しくちょうそんと しゃかい ふくし きょうぎかい' : '市区町村と社会福祉協議会');
+          for (const a of local) sub.append(el('li').appendChild(a).parentNode);
+          li.append(sub);
+        }
+      } else li.append(el('span', 'guide-desc', isEn ? 'Being checked. Please contact the welfare office of your city, town or village, or use the nationwide services above.' : kana ? 'かくにん ちゅう です。すんで いる しくちょうそんの ふくしの まどぐち（ふくし じむしょ など）か、うえの ぜんこくの まどぐちを ごりよう ください。' : '確認中です。お住まいの市区町村の福祉の窓口（福祉事務所など）か、上の全国の窓口をご利用ください。'));
       ul.append(li);
     }
     d.append(ul);

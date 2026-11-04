@@ -146,7 +146,7 @@ const TOOL_DIRS = new Set(['.claude', '.vscode', '.idea', '.cursor', '.devcontai
 function walk(dir) {
   for (const name of readdirSync(dir)) {
     if (['.git', 'node_modules', '_site'].includes(name)) continue;
-    // 名前の判定は大文字小文字を区別しない（大文字小文字を区別しない端末では .Claude も同じフォルダとして動くため）
+    // 名前の判定は大文字小文字を区別しない（大文字小文字を区別しない端末では大文字と小文字だけが違う名前も同じフォルダとして動くため）
     if ([...TOOL_DIRS].some((d) => d.toLowerCase() === name.toLowerCase())) {
       errors.push(`${relative(ROOT, join(dir, name)) || name}: 開発ツール・AIツールの設定はリポジトリに置かない（自動実行の設定を仕込まれるおそれ）`);
       continue;

@@ -27,6 +27,8 @@ const UA = 'TomoshibiAtlasLinkCheck/1.0 (+non-profit; weekly link safety check)'
 const TIMEOUT_MS = 12000;
 const WAIT_MS = 1200;
 const BUDGET_MS = 40 * 60 * 1000; // 全体の時間の上限（ワークフローの制限時間より短く）
+import { WB_INDICATORS } from './fetch-worldbank.mjs';
+
 const started = Date.now();
 
 // 調べる URL を集める（通信はしない）。表示していないリンク（確認の記録が無い・URL が一致しない・確認日が無い）は運用者の確認待ちなので集めない
@@ -39,12 +41,17 @@ export function collectUrls() {
   for (const [cid, block] of Object.entries(dir.countries)) for (const links of Object.values(block)) for (const l of links) if (isShown(l)) add(l.url, `${cid} ${l.id}`);
   for (const links of Object.values(dir.international)) for (const l of links) if (isShown(l)) add(l.url, `INTL ${l.id}`);
   // 日本の都道府県の福祉ページ（福祉の探し方ページで表示するもの）
-  for (const p of readData('data/directory/prefectures.json').prefectures) for (const l of p.links || []) if (isShown(l)) add(l.url, `JP-${p.code} ${l.id}`);
+  // 市区町村・社会福祉協議会の相談ページ（local。2026-11 追加）も、表示するものはすべて調べる（独立監査の指摘）
+  for (const p of readData('data/directory/prefectures.json').prefectures)
+    for (const l of [...(p.links || []), ...(p.local || [])]) if (isShown(l)) add(l.url, `JP-${p.code} ${l.id}`);
   for (const it of readData('data/curated/entries.json').items) {
     add(it.source.url, `entries ${it.id}`);
     for (const l of it.links || []) add(l.url, `entries ${it.id}`);
   }
   for (const f of readData('data/curated/animals.json').facts) add(f.source.url, `animals ${f.id}`);
+  // 「世界をくらべる」の指標の出典（世界銀行の指標のページ）。画面の JS が組み立てるリンクのうち、出典として表示するもの
+  // 対象外：自動取得の情報のリンク（取得のたびに変わる。取得時に許可リストで検査）、X（公式アカウント。取得の仕組みが無いため、運用者が月1回確認）
+  for (const ind of WB_INDICATORS) add(ind.source.url, `compare ${ind.key}`);
   for (const name of readdirSync(resolve(CODE_ROOT, 'site')).filter((n) => n.endsWith('.html'))) {
     const html = readFileSync(resolve(CODE_ROOT, 'site', name), 'utf8');
     for (const m of html.matchAll(/href="(https:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), `site/${name}`);
@@ -92,7 +99,25 @@ export function pageSignals(html, pageUrl) {
   text = text.replace(/[<>]/g, ' ').replace(/\s+/g, ' ').trim();
   return { text, external: external.join('\n') };
 }
+// AI への指示のような文（プロンプトインジェクション）。隠し文字・コメントに入れられることもあるため、HTML の生の文字でも調べる
+// （2026-11 運用者の依頼：リンク先に変な指示があれば、従わずに報告し、そのリンクをこのサイトから外す）
+const INJECTION = new RegExp(
+  [
+    'ignore\\s+(?:all\\s+|any\\s+)?(?:the\\s+)?(?:previous|prior|above|earlier)\\s+(?:instructions|prompts|rules)',
+    'disregard\\s+(?:all\\s+|the\\s+)?(?:previous|prior|above)\\s+(?:instructions|prompts)',
+    '(?:^|\\W)(?:system\\s+prompt|developer\\s+message)(?:\\W|$)',
+    '(?:if\\s+you\\s+are|attention|note\\s+to)\\s+(?:an?\\s+)?(?:ai|llm|language\\s+model|assistant|chatbot)\\b',
+    '<\\|im_start\\|>|\\[INST\\]',
+    '(?:以前|これまで|上記|前)の(?:指示|命令|プロンプト)を(?:無視|忘れ)',
+    '(?:AI|ＡＩ|人工知能|アシスタント)(?:の方|の皆様)?(?:は|へ|に)(?:次|以下)の(?:指示|命令|手順)',
+  ].join('|'),
+  'i',
+);
+export function looksLikeInjection(html) {
+  return INJECTION.test(String(html).replace(/\s+/g, ' '));
+}
 export function judgeContent(html, pageUrl) {
+  if (looksLikeInjection(html)) return 'injection';
   const { text, external } = pageSignals(html, pageUrl);
   if (SPAM_WORDS.test(text) || SPAM_WORDS.test(external) || SPAM_JA.test(external)) return 'spam';
   if (text.length < PARKED_MAX_TEXT && PARKED.test(text)) return 'parked';
@@ -150,6 +175,7 @@ async function inspect(url) {
     }
     const text = await readLimited(res);
     const sign = judgeContent(text, current);
+    if (sign === 'injection') return ['danger', 'AI への指示のような文（プロンプトインジェクションの疑い。従わずに報告し、リンクを外す）' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
     if (sign === 'spam') return ['danger', '改ざん・不正な埋め込みの疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
     if (sign === 'parked') return ['danger', 'メンテナンス中・停止の疑い' + (crossDomain ? `（転送先 ${crossDomain}）` : '')];
     if (visibleLength(text) < 200) return ['review', '中身がほとんど空（JavaScript でしか表示されない、または停止の可能性）'];
