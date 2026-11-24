@@ -315,7 +315,22 @@ export class Globe {
       },
       { passive: false },
     );
-    window.addEventListener('resize', () => this.resize());
+    // 画面の向きを変えたとき、iPhone などでは resize の時点でまだ大きさが変わっていないことがある。
+    // そのため、地球儀の枠そのものの大きさの変化も見て、変わったあとに描き直す（つぶれた楕円のまま残らないように）
+    let pending = 0;
+    const later = () => {
+      if (pending) return;
+      pending = requestAnimationFrame(() => {
+        pending = 0;
+        if (this.canvas.clientWidth !== this.w || this.canvas.clientHeight !== this.h) this.resize();
+      });
+    };
+    window.addEventListener('resize', () => {
+      this.resize();
+      later();
+    });
+    window.addEventListener('orientationchange', later);
+    if ('ResizeObserver' in window) new ResizeObserver(later).observe(this.canvas);
   }
 
   #clickAt(e) {

@@ -622,11 +622,25 @@ export class Cosmos {
     this.textShown = false;
     this.planetsAt = planetLongitudes();
     this.resize();
-    window.addEventListener('resize', () => {
+    const onResize = () => {
       this.resize();
       if (this.textShown) this.textRect = this.#textBox();
       if (this.reduce && this.active) this.#draw();
-    });
+    };
+    window.addEventListener('resize', onResize);
+    // 画面の向きを変えたあと、大きさが確定してからもう一度合わせる（iPhone などで、つぶれた絵のまま残らないように）
+    let pending = 0;
+    const later = () => {
+      if (pending) return;
+      pending = requestAnimationFrame(() => {
+        pending = 0;
+        const w = this.canvas.clientWidth || window.innerWidth;
+        const h = this.canvas.clientHeight || window.innerHeight;
+        if (w !== this.w || h !== this.h) onResize();
+      });
+    };
+    window.addEventListener('orientationchange', later);
+    if ('ResizeObserver' in window) new ResizeObserver(later).observe(this.canvas);
   }
 
   resize() {
@@ -1203,7 +1217,10 @@ export class Cosmos {
       const mn = Math.min(w, h);
       // 渦巻きの大きさ：塊からほどけるときは小さめから、最後の大きさへ
       const gk = ease(band(p, 2.45, 3.7));
-      const gr = mn * ((this.small ? 0.62 : 0.5) + ((this.small ? 0.4 : 0.28) - (this.small ? 0.62 : 0.5)) * gk);
+      // スマホの縦向き（幅が狭い）では、最後の大きさを広めにとる（小さく見えすぎないように）
+      const gEnd = this.small ? (w < h ? 0.52 : 0.4) : 0.28;
+      const gStart = this.small ? 0.62 : 0.5;
+      const gr = mn * (gStart + (gEnd - gStart) * gk);
       const tiltY = 1 - 0.58 * band(p, 2.6, 3.6); // 真上から見下ろす形から、斜めに傾いた姿へ
       const base = -0.35;
       const spin = time * 0.03 + p * 0.8; // 遠ざかる間も、回り続ける
