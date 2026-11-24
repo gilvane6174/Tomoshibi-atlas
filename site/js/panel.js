@@ -1,6 +1,6 @@
 // 詳細パネル・一覧パネル・使い方パネル。要素はすべて createElement と textContent で組み立てる。
 
-import { t, pickText, setRich, lang } from './i18n.js';
+import { t, pick, pickText, setRich, lang } from './i18n.js';
 import { groupIcon } from './icons.js';
 import { natureBadge } from './nature.js';
 import { LAYERS, layerById, DIR_LAYERS, SAFETY_LAYERS, safeHttpsUrl, formatDate, countryName, ageDays, ageLabel } from './data.js';
@@ -155,6 +155,9 @@ function safetySupport(countryId = null, dir = null) {
     wrap.append(el('p', null, t('note.safety')));
     addJapan();
     wrap.append(ul);
+    // 日本の防災の公式リンク（リンク集の safety。確認の記録があるものだけが data/directory.json に入る。2026-11 追加）
+    const own = dir?.countries?.JPN?.safety || [];
+    if (own.length) wrap.append(dirList(own, false));
   } else if (countryId) {
     wrap.append(el('p', null, t('note.safety.abroad')));
     const own = dir?.countries?.[countryId]?.safety || [];
@@ -319,8 +322,10 @@ export function snsSection(country, layerId, dir, { kana = false } = {}) {
   return wrap;
 }
 
-export function renderCountry(body, { country, layerId, data, onSwitchLayer, kana = false, onToggleKana }) {
+export function renderCountry(body, { country, layerId, data, onSwitchLayer, kana = false, onToggleKana, profile = null, themeInfo = null }) {
   body.replaceChildren();
+  // 「テーマで読む」の線から開いたとき：そのテーマの、この国の情報をいちばん上に出す
+  if (themeInfo) body.append(themeSection(themeInfo, data));
   const doc = data.layers[layerId];
   const items = ordered(doc.items.filter((it) => (it.countries || []).includes(country.id)));
   const h = el('h3', 'layer-head ' + layerById(layerId).group, t('panel.inLayer', { layer: t('layer.' + layerId) }));
@@ -368,6 +373,62 @@ export function renderCountry(body, { country, layerId, data, onSwitchLayer, kan
   // 「ひらがなで よむ」の切り替えボタンは、最初のリンク集にだけ出す（切り替えは両方に効く）
   for (const s of dirs) body.append(s);
   if (sns) body.append(sns);
+  // いちばん下：この国の基本情報（首都・言語・通貨・政体・議会）と、政府観光局・世界遺産・福祉の公式の案内
+  if (profile) body.append(profileSection(country, profile, { layerId, hasWelfare: !!data.directory?.countries?.[country.id]?.welfare?.length, onSwitchLayer }));
+}
+
+// テーマの情報（この国の分）。線は「同じテーマ」という意味だけ（原因と結果ではない）
+function themeSection(info, data) {
+  const box = el('section', 'theme-box');
+  box.append(el('h3', null, t('theme.inCountry', { title: pick(info.title) })));
+  if (info.items.length) for (const it of info.items) box.append(entry(it, { countryMap: data.countryMap, detail: true }));
+  else box.append(el('p', 'empty', t('theme.noneHere')));
+  const more = el('a', 'text-link', t('theme.readMore'));
+  more.href = `${lang === 'en' ? 'connections.en.html' : 'connections.html'}?theme=${encodeURIComponent(info.id)}`;
+  box.append(el('p', 'hint').appendChild(more).parentNode);
+  return box;
+}
+
+// 国の基本情報：外務省「国・地域」の基礎データに沿った事実だけ（評価や印象は書かない）
+function profileSection(country, p, { layerId, hasWelfare, onSwitchLayer }) {
+  const box = el('section', 'profile');
+  box.append(el('h3', null, t('profile.title')));
+  const dl = el('dl', 'profile-list');
+  const row = (key, text) => {
+    if (!text) return;
+    dl.append(el('dt', null, t('profile.' + key)), el('dd', null, text));
+  };
+  row('capital', pick(p.capital));
+  row('language', pick(p.language));
+  row('currency', p.currency ? (lang === 'en' ? `${pick(p.currency)} (${p.currency.code})` : `${pick(p.currency)}（${p.currency.code}）`) : '');
+  row('government', pick(p.government));
+  row('legislature', pick(p.legislature));
+  box.append(dl);
+  // 出典と公式の案内は、1つの短い一覧にまとめて、すき間なく並べる
+  const list = el('ul', 'profile-links');
+  const item = (node) => {
+    if (!node) return;
+    const li = el('li');
+    li.append(node);
+    list.append(li);
+  };
+  const mofa = link(p.mofa?.url, t('profile.mofa'));
+  if (mofa) {
+    const span = el('span', 'profile-src');
+    span.append(t('profile.source'), mofa, t('profile.updated', { date: formatDate(p.mofa.updated) }));
+    item(span);
+  }
+  if (p.tourism) item(link(p.tourism.url, pick(p.tourism.name)));
+  if (p.whc) item(link(`https://whc.unesco.org/en/statesparties/${p.whc}`, t('profile.heritage')));
+  if (hasWelfare && layerId !== 'care') {
+    const b = el('button', 'profile-btn', t('profile.welfare'));
+    b.type = 'button';
+    b.addEventListener('click', () => onSwitchLayer('care'));
+    item(b);
+  }
+  if (list.childElementCount) box.append(list);
+  box.append(el('p', 'hint', t('profile.note')));
+  return box;
 }
 
 // 下部の案内へ一気に移動するボタン（ページのURLは変えない。移動先の見出しにフォーカスを移す）
@@ -403,6 +464,8 @@ export function renderList(body, { layerId, data, onPick }) {
   }
   // 今日の動物たちの一覧の上部に、やさしい一言を添える
   if (doc.kind === 'daily') body.append(el('p', 'note calm-note list-lead', t('list.animalsLead')));
+  // ほかの分野：一覧で見ると何に役立つかを、短く添える
+  else if (t('list.lead.' + layerId) !== 'list.lead.' + layerId) body.append(el('p', 'list-lead list-merit', t('list.lead.' + layerId)));
   // AI 関連の印が付いた情報があるときは「AI関連だけ表示」で絞り込める（分野を変えると解除）
   if (aiFilter.layer !== layerId) aiFilter = { layer: layerId, on: false };
   const aiCount = doc.items.filter((it) => (it.tags || []).includes('ai') && !it.superseded).length;
@@ -447,7 +510,7 @@ export function renderList(body, { layerId, data, onPick }) {
   if (SAFETY_LAYERS.has(layerId)) body.append(safetySupport());
 }
 
-export function renderGuide(body, { aboutHref, onFindWelfare }) {
+export function renderGuide(body, { aboutHref, onFindWelfare, onSpace }) {
   body.replaceChildren();
   body.append(el('p', 'guide-lead', t('purpose.body')), el('p', null, t('purpose.relation')));
 
@@ -463,7 +526,7 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
 
   body.append(el('h3', null, t('guide.howto')));
   const how = el('ul', 'guide-list plain');
-  for (const k of ['guide.howto.1', 'guide.howto.2', 'guide.howto.3']) how.append(el('li', null, t(k)));
+  for (const k of ['guide.howto.1', 'guide.howto.2', 'guide.howto.3', 'guide.howto.4']) how.append(el('li', null, t(k)));
   body.append(how);
 
   body.append(el('h3', null, t('guide.legend')));
@@ -502,6 +565,26 @@ export function renderGuide(body, { aboutHref, onFindWelfare }) {
   add.append(el('p', null).appendChild(sec).parentNode);
   add.append(el('p', null, t('add.research')), el('p', 'note', t('add.sources')));
   body.append(add);
+
+  // 宇宙へ：なぜあるのかを短く添えて、ここからも行けるようにする
+  if (onSpace) {
+    const sp = el('section', 'addendum');
+    sp.append(el('h3', null, t('guide.space')), el('p', null, t('guide.spaceBody')));
+    const sb = el('button', 'text-btn', t('guide.spaceBtn'));
+    sb.type = 'button';
+    sb.addEventListener('click', onSpace);
+    sp.append(el('p', null).appendChild(sb).parentNode);
+    body.append(sp);
+  }
+  // 世界遺産を旅する：日本の世界遺産と、各国のユネスコ公式ページへの案内（別のページ。開いたときだけ読み込む）
+  {
+    const wh = el('section', 'addendum');
+    wh.append(el('h3', null, t('guide.heritage')), el('p', null, t('guide.heritageBody')));
+    const a = el('a', 'text-link', t('guide.heritageBtn'));
+    a.href = lang === 'en' ? 'world-heritage.en.html' : 'world-heritage.html';
+    wh.append(el('p', null).appendChild(a).parentNode);
+    body.append(wh);
+  }
 
   body.append(el('p', 'note', t('locate.privacy')));
   body.append(el('p', 'note', t('notice.impersonation')));

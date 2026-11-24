@@ -326,6 +326,86 @@
       "host": "www.nasa.gov",
       "path": "^/news-release/[a-z0-9-]+/?$",
       "label": "米国航空宇宙局（NASA）の報道発表"
+    },
+    {
+      "host": "www.visittheusa.com",
+      "path": "^/$",
+      "label": "ブランドUSA（米国の観光推進の公式機関）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.visitbritain.com",
+      "path": "^/$",
+      "label": "英国政府観光庁（VisitBritain）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.france.fr",
+      "path": "^/$",
+      "label": "フランス観光開発機構（Atout France）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.germany.travel",
+      "path": "^/$",
+      "label": "ドイツ観光局（GNTB）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.italia.it",
+      "path": "^/$",
+      "label": "イタリア観光公式サイト（観光省・ENIT）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "travel.destinationcanada.com",
+      "path": "^/$",
+      "label": "カナダ観光局（Destination Canada）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "english.visitkorea.or.kr",
+      "path": "^/$",
+      "label": "韓国観光公社（VISITKOREA）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.australia.com",
+      "path": "^/$",
+      "label": "オーストラリア政府観光局（Tourism Australia）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.incredibleindia.gov.in",
+      "path": "^/$",
+      "label": "インド政府観光局（Incredible India）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "vietnam.travel",
+      "path": "^/$",
+      "label": "ベトナム観光総局。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.indonesia.travel",
+      "path": "^/$",
+      "label": "インドネシア観光省。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.visitsingapore.com",
+      "path": "^/$",
+      "label": "シンガポール政府観光局。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.spain.info",
+      "path": "^/$",
+      "label": "スペイン政府観光局（Turespaña）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "visitsweden.com",
+      "path": "^/$",
+      "label": "スウェーデン観光局（Visit Sweden）。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.myswitzerland.com",
+      "path": "^/$",
+      "label": "スイス政府観光局。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
+    },
+    {
+      "host": "www.newzealand.com",
+      "path": "^/$",
+      "label": "ニュージーランド政府観光局。国の基本情報の欄のトップページのリンクだけ（2026-11-24 追加。運用者の承認待ち）"
     }
   ],
   "_directoryNote": "国・分野別の相談先リンク集（data/directory/links.json）に載せてよいURLの許可リスト。追加・削除は運用者の個別承認が必要。",
@@ -1137,6 +1217,10 @@
       "label": "都道府県の公式サイト（福祉）"
     },
     {
+      "host": "www.metro.tokyo.lg.jp",
+      "label": "都道府県の公式サイト（東京都庁のトップ。2026-11-20 運用者が追加を承認）"
+    },
+    {
       "host": "www.pref.aichi.jp",
       "label": "都道府県の公式サイト（福祉）"
     },
@@ -1353,8 +1437,8 @@
       "label": "都道府県の公式サイト（福祉）"
     },
     {
-      "host": "www.pref.okayama.jp",
-      "label": "都道府県の公式サイト（福祉）"
+      "host": "www.pref.okayama.lg.jp",
+      "label": "都道府県の公式サイト（福祉）。2026-11 に www.pref.okayama.jp から移転"
     },
     {
       "host": "www.pref.yamaguchi.lg.jp",
@@ -1369,60 +1453,8 @@
       "label": "市区町村の公式サイト（札幌市）"
     },
     {
-      "host": "www.city.hakodate.hokkaido.jp",
-      "label": "市区町村の公式サイト（函館市）"
-    },
-    {
-      "host": "www.city.asahikawa.hokkaido.jp",
-      "label": "市区町村の公式サイト（旭川市）"
-    },
-    {
-      "host": "www.city.obihiro.hokkaido.jp",
-      "label": "市区町村の公式サイト（帯広市）"
-    },
-    {
-      "host": "www.city.kushiro.lg.jp",
-      "label": "市区町村の公式サイト（釧路市）"
-    },
-    {
-      "host": "www.city.wakkanai.hokkaido.jp",
-      "label": "市区町村の公式サイト（稚内市）"
-    },
-    {
-      "host": "www.city.otaru.lg.jp",
-      "label": "市区町村の公式サイト（小樽市）"
-    },
-    {
-      "host": "www.city.tomakomai.hokkaido.jp",
-      "label": "市区町村の公式サイト（苫小牧市）"
-    },
-    {
-      "host": "www.city.ebetsu.hokkaido.jp",
-      "label": "市区町村の公式サイト（江別市）"
-    },
-    {
-      "host": "www.city.nemuro.hokkaido.jp",
-      "label": "市区町村の公式サイト（根室市）"
-    },
-    {
-      "host": "www.city.chitose.lg.jp",
-      "label": "市区町村の公式サイト（千歳市）"
-    },
-    {
       "host": "www.hokkaidoshakyo.jp",
       "label": "社会福祉協議会（北海道社会福祉協議会）"
-    },
-    {
-      "host": "www.sapporo-shakyo.or.jp",
-      "label": "社会福祉協議会（札幌市社会福祉協議会）"
-    },
-    {
-      "host": "www.asahikawa-shakyo.or.jp",
-      "label": "社会福祉協議会（旭川市社会福祉協議会）"
-    },
-    {
-      "host": "www.obihiro-shakyo.jp",
-      "label": "社会福祉協議会（帯広市社会福祉協議会）"
     },
     {
       "host": "aosyakyo.or.jp",
@@ -1791,6 +1823,10 @@
     {
       "host": "www.pref.okinawa.jp",
       "label": "都道府県の公式サイト（防災）"
+    },
+    {
+      "host": "ganjoho.jp",
+      "label": "国立がん研究センター「がん情報サービス」（国立研究開発法人。2026-11-19 追加。サブドメインは含めない）"
     }
   ],
   "fetchEndpoints": {
@@ -1816,7 +1852,10 @@
     "wbSanitation": "https://api.worldbank.org/v2/country/all/indicator/SH.STA.SMSS.ZS?format=json&mrnev=1&per_page=400",
     "wbInflation": "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL.ZG?format=json&mrnev=1&per_page=400",
     "wbPrimaryCompletion": "https://api.worldbank.org/v2/country/all/indicator/SE.PRM.CMPT.ZS?format=json&mrnev=1&per_page=400",
-    "wbTertiary": "https://api.worldbank.org/v2/country/all/indicator/SE.TER.ENRR?format=json&mrnev=1&per_page=400"
+    "wbTertiary": "https://api.worldbank.org/v2/country/all/indicator/SE.TER.ENRR?format=json&mrnev=1&per_page=400",
+    "wbInternet": "https://api.worldbank.org/v2/country/all/indicator/IT.NET.USER.ZS?format=json&mrnev=1&per_page=400",
+    "wbGdpGrowth": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD.ZG?format=json&mrnev=1&per_page=400",
+    "wbCentralDebt": "https://api.worldbank.org/v2/country/all/indicator/GC.DOD.TOTL.GD.ZS?format=json&mrnev=1&per_page=400"
   },
   "enabledFetchers": {
     "whoDon": true,
@@ -1840,7 +1879,10 @@
     "wbSanitation": true,
     "wbInflation": true,
     "wbPrimaryCompletion": true,
-    "wbTertiary": true
+    "wbTertiary": true,
+    "wbInternet": false,
+    "wbGdpGrowth": true,
+    "wbCentralDebt": true
   },
   "_forbiddenNote": "断定・誇大・優劣表現の仕掛け線。日本語は全角半角・見えない文字・空白を除いた形で部分一致、英語は単語境界つきの正規表現。最終確認は運用者のレビュー。",
   "forbiddenPhrases": [
@@ -2127,6 +2169,20 @@
   "_pageLinksNote": "説明ページ（site/*.html）と画面のプログラム（site/js/*.js）に直接書く外部リンクのうち、上の linkHosts・directoryHosts・animalHosts に当たらないものは、ここに URL を完全一致で書いたものだけを許す（scripts/check-repo.mjs が検査）。pages はそのリンクを置いてよいページ。決済サービス（応援チップ）は、説明ページ（about）だけに置き、手動掲載のデータやリンク集には使えない。",
   "pageLinks": [
     {
+      "url": "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=53",
+      "pages": [
+        "emergency-care.html"
+      ],
+      "label": "国立精神・神経医療研究センター病院のコラム第24回「発作時の対応について」（急な病気・けがのページの、てんかん発作の出典。病院サイトのリニューアルで、? の付いた URL になった）"
+    },
+    {
+      "url": "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=52",
+      "pages": [
+        "emergency-care.html"
+      ],
+      "label": "国立精神・神経医療研究センター病院のコラム第23回「てんかん重積」とは？（同じく、救急車を呼ぶ目安の出典）"
+    },
+    {
       "url": "https://ww1.issa.int/country-profiles/about",
       "pages": [
         "compare.html",
@@ -2220,5 +2276,15 @@
       "label": "開発応援チップ（Buy Me a Coffee・英語）"
     }
   ],
-  "_fetcherNote": "enabledFetchers は、利用条件を一次情報で確認できた情報源だけ true にする（docs/SOURCES.md に確認日と根拠）。日本の省庁の RSS は、RSS ページに「ホームページの作成・再配布は固くお断り」等の記載がないかも確認する"
+  "_securityLogNote": "このサイトの安全対策の記録（data/curated/security-log.json）の出典に限って使ってよいホスト（完全一致・サブドメインを含めない）。製品の開発元の公式の発表だけ。民間のセキュリティ企業・報道は名前だけを書き、リンクしない。手動掲載（entries.json）やリンク集には使えない。",
+  "securityLogHosts": [
+    "github.blog",
+    "nodejs.org"
+  ],
+  "_fetcherNote": "enabledFetchers は、利用条件を一次情報で確認できた情報源だけ true にする（docs/SOURCES.md に確認日と根拠）。日本の省庁の RSS は、RSS ページに「ホームページの作成・再配布は固くお断り」等の記載がないかも確認する",
+  "_exactQueryNote": "急な病気・けがの検索（data/curated/health-guide.json）のリンクは、ふつうは ? や # の付いた URL を受け付けない。公的機関のページが ? の付いた URL でしか開けないときだけ、ここに URL を完全一致で書いたものを許す（scripts/validate-data.mjs が検査。追跡用の引数などは書かない）。",
+  "exactQueryUrls": [
+    "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=53",
+    "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=52"
+  ]
 }

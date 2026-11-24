@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { scanText } from './check-privacy.mjs';
+import { emergencyUrls } from './lib/health-checks.mjs';
 import { DATA_ROOT, readCode, readData, isAllowedUrl, isDirectoryUrl, isAnimalUrl, looksLikeHtml, isValidDate, findForbidden, findAttackDetail, hasInvisible, hasMixedScript, notFutureJst, siWithoutExplanation, mentionsSuperIntelligence } from './lib/safety.mjs';
 
 export const LAYERS = ['outbreak', 'research', 'mental', 'welfare', 'security', 'crime', 'disaster', 'quake'];
@@ -353,6 +354,47 @@ export function validatePrefectures(rel = 'data/directory/prefectures.json') {
 
 // 「つながりを見る」ページのテーマ（data/curated/connections.json。運用者だけが管理する）
 // 手動で選んだ「同じテーマの情報」の組み合わせ。情報どうしの因果関係は示さない（原因・結果を言う言葉は機械的に止める）
+// 国の基本情報（首都・言語・通貨・政体・議会）と政府観光局（2026-11-24 追加）：事実だけ。評価や印象の言葉は入れない
+const PROFILE_FIELDS = ['language', 'government', 'legislature']; // 首都は、都市国家など外務省の記載が無い国では省く
+const PROFILE_OPINION = /(独裁的|民主的でない|危険な国|治安が悪い|すばらしい|美しい国|おすすめ|人気|有名な|親日|反日|friendly|dangerous|beautiful|recommended|popular|famous|corrupt|authoritarian regime)/i;
+export function validateCountryProfiles(rel = 'data/curated/country-profiles.json') {
+  const errors = [];
+  if (!existsSync(resolve(DATA_ROOT, rel))) return errors;
+  let doc;
+  try {
+    doc = readData(rel);
+  } catch (e) {
+    return [`${rel}: JSON として読めない（${e.message}）`];
+  }
+  if (!isObj(doc) || !isObj(doc.countries) || !isValidDate(doc.reviewedAt)) return [`${rel}: 形が違う（countries・reviewedAt が必要）`];
+  const txt = (o, path) => {
+    if (!isObj(o)) return errors.push(`${rel}: ${path} がない`);
+    for (const l of ['ja', 'en']) {
+      const v = o[l];
+      if (typeof v !== 'string' || !v.trim() || v.length > 160 || looksLikeHtml(v) || hasInvisible(v)) errors.push(`${rel}: ${path}.${l} が不正`);
+      else if (PROFILE_OPINION.test(v)) errors.push(`${rel}: ${path}.${l} に評価や印象の言葉がある（事実だけを書く）`);
+    }
+  };
+  for (const [id, c] of Object.entries(doc.countries)) {
+    if (!COUNTRY_IDS.has(id)) errors.push(`${rel}: 地図に無い国（${id}）`);
+    if (!isObj(c)) {
+      errors.push(`${rel}: ${id} の形が違う`);
+      continue;
+    }
+    for (const f of PROFILE_FIELDS) txt(c[f], `${id}.${f}`);
+    if (c.capital !== undefined) txt(c.capital, `${id}.capital`);
+    txt(c.currency, `${id}.currency`);
+    if (!/^[A-Z]{3}$/.test(c.currency?.code || '')) errors.push(`${rel}: ${id}.currency.code は ISO 4217 の3文字`);
+    if (!/^https:\/\/www\.mofa\.go\.jp\/mofaj\/area\/[a-z_]+\/data\.html$/.test(c.mofa?.url || '') || !isValidDate(c.mofa?.updated)) errors.push(`${rel}: ${id}.mofa は外務省の基礎データのページと、その更新日`);
+    if (c.tourism !== undefined) {
+      txt(c.tourism.name, `${id}.tourism.name`);
+      if (!isAllowedUrl(c.tourism.url || '')) errors.push(`${rel}: ${id}.tourism.url が許可リストに無い（${c.tourism.url}）`);
+    }
+    if (c.whc !== undefined && !/^[a-z]{2}$/.test(c.whc)) errors.push(`${rel}: ${id}.whc はユネスコの2文字の国コード`);
+  }
+  return errors;
+}
+
 const CONNECTION_CAUSAL = /(原因|引き起こ|のせいで|によって生じ|結果として|もたらし|因果|caus|lead(?:s|ing)? to|led to|because of|result(?:s|ed)? in|due to|trigger)/i;
 const CONNECTION_KEYS = new Set(['id', 'title', 'summary', 'note', 'items']);
 export function validateConnections(rel = 'data/curated/connections.json', entriesRel = 'data/curated/entries.json') {
@@ -457,6 +499,137 @@ export function validateEvidence(linksRel = 'data/directory/links.json', evRel =
   return errors;
 }
 
+// このサイトの安全対策の記録（data/curated/security-log.json。運用者だけが変更する。更新一覧のページの「セキュリティ対策」に表示）
+// リンクは、公的機関などの許可リストか、scripts/allowed-sources.json の securityLogHosts（GitHub・Node.js の公式）のホストだけ
+const SEC_KINDS = new Set(['incident', 'fix', 'audit', 'policy']);
+const SEC_STATUS = new Set(['done', 'operator-check', 'proposed']);
+const SEC_KEYS = new Set(['date', 'kind', 'status', 'title', 'summary', 'impact', 'sources']);
+export function isSecurityLogUrl(url) {
+  let u;
+  try {
+    u = new URL(url);
+  } catch {
+    return false;
+  }
+  if (u.protocol !== 'https:' || u.username || u.password || u.port || u.search || u.hash) return false;
+  const hosts = readCode('scripts/allowed-sources.json').securityLogHosts || [];
+  return isAllowedUrl(url) || hosts.includes(u.hostname);
+}
+export function validateSecurityLogDoc(doc, rel = 'security-log') {
+  const errors = [];
+  if (!isObj(doc) || doc.schemaVersion !== 1 || !Array.isArray(doc.entries)) return [`${rel}: schemaVersion 1 と entries の配列が必要`];
+  if (doc.entries.length > 500) errors.push(`${rel}: 記録が多すぎる（500件まで）`);
+  doc.entries.forEach((e, i) => {
+    const p = `${rel} entries[${i}]`;
+    if (!isObj(e)) return errors.push(`${p}: オブジェクトが必要`);
+    for (const k of Object.keys(e)) if (!SEC_KEYS.has(k)) errors.push(`${p}.${k}: 定義されていない項目名`);
+    if (!(isValidDate(e.date) && notFutureJst(e.date))) errors.push(`${p}.date: YYYY-MM-DD の過去の日付が必要`);
+    if (!SEC_KINDS.has(e.kind)) errors.push(`${p}.kind: ${[...SEC_KINDS].join(' / ')} のどれか`);
+    if (!SEC_STATUS.has(e.status)) errors.push(`${p}.status: ${[...SEC_STATUS].join(' / ')} のどれか`);
+    checkText(e.title, `${p}.title`, errors, { need: ['ja', 'en'], max: 120 });
+    checkText(e.summary, `${p}.summary`, errors, { need: ['ja', 'en'], max: 400 });
+    if (e.impact !== undefined) checkText(e.impact, `${p}.impact`, errors, { need: ['ja', 'en'], max: 400 });
+    if (!Array.isArray(e.sources) || e.sources.length > 5) errors.push(`${p}.sources: 5件までの配列が必要`);
+    else
+      e.sources.forEach((s, j) => {
+        if (!isObj(s) || typeof s.name !== 'string' || !s.name.trim()) return errors.push(`${p}.sources[${j}]: name が必要`);
+        for (const k of Object.keys(s)) if (!['name', 'url'].includes(k)) errors.push(`${p}.sources[${j}].${k}: 定義されていない項目名`);
+        if (s.url !== undefined && !(typeof s.url === 'string' && isSecurityLogUrl(s.url))) errors.push(`${p}.sources[${j}].url: 許可リスト（公的機関など・securityLogHosts）の https の URL だけ（? や # なし）`);
+      });
+    walkStrings({ title: e.title, summary: e.summary, ...(e.impact !== undefined ? { impact: e.impact } : {}), sources: e.sources }, p, errors, { curated: true, maxLen: 400 });
+  });
+  for (let i = 1; i < doc.entries.length; i++) if (doc.entries[i].date < doc.entries[i - 1].date) errors.push(`${rel}: 記録は日付の古い順に並べ、新しい記録は末尾に足す（entries[${i}]）`);
+  return errors;
+}
+export function validateSecurityLog(rel = 'data/curated/security-log.json') {
+  return validateSecurityLogDoc(readData(rel), rel);
+}
+
+// 急な病気・けがのときの検索（data/curated/health-guide.json。運用者だけが変更する。emergency-care.html の検索で使う）
+// リンクは公的機関の許可リスト（linkHosts・directoryHosts）の https だけ。説明は公式ページの要点を短くまとめたもので、診断の代わりにしない
+const HEALTH_KINDS = new Set(['symptom', 'disease', 'firstaid', 'search']);
+const HEALTH_AUD = new Set(['general', 'care']);
+const HEALTH_KEYS = new Set(['id', 'kind', 'audience', 'name', 'kana', 'aliases', 'urgent', 'summary', 'summaryKana', 'links']);
+const KANA = /^[\u3041-\u309f\u30fc・（）()、\s]+$/u;
+export function validateHealthGuideDoc(doc, rel = 'health-guide') {
+  const errors = [];
+  if (!isObj(doc) || doc.schemaVersion !== 1 || !Array.isArray(doc.items)) return [`${rel}: schemaVersion 1 と items の配列が必要`];
+  if (!isValidDate(doc.reviewedAt)) errors.push(`${rel}.reviewedAt: YYYY-MM-DD が必要`);
+  if (doc.items.length > 300) errors.push(`${rel}: 300件まで`);
+  const ids = new Set();
+  doc.items.forEach((e, i) => {
+    const p = `${rel} items[${i}]`;
+    if (!isObj(e)) return errors.push(`${p}: オブジェクトが必要`);
+    for (const k of Object.keys(e)) if (!HEALTH_KEYS.has(k)) errors.push(`${p}.${k}: 定義されていない項目名`);
+    if (typeof e.id !== 'string' || !ID.test(e.id) || ids.has(e.id)) errors.push(`${p}.id: 英小文字・数字・ハイフンの重複しない ID が必要`);
+    ids.add(e.id);
+    if (!HEALTH_KINDS.has(e.kind)) errors.push(`${p}.kind: ${[...HEALTH_KINDS].join(' / ')} のどれか`);
+    if (!Array.isArray(e.audience) || !e.audience.length || e.audience.some((a) => !HEALTH_AUD.has(a))) errors.push(`${p}.audience: general / care の配列`);
+    if (typeof e.name !== 'string' || !e.name.trim() || e.name.length > 60) errors.push(`${p}.name: 60文字以内が必要`);
+    if (typeof e.kana !== 'string' || !KANA.test(e.kana)) errors.push(`${p}.kana: ひらがなの読みが必要`);
+    if (!Array.isArray(e.aliases) || e.aliases.length > 30 || e.aliases.some((a) => typeof a !== 'string' || !a.trim() || a.length > 30)) errors.push(`${p}.aliases: 30文字以内の文字列を30件まで`);
+    if (typeof e.urgent !== 'boolean') errors.push(`${p}.urgent: true / false が必要`);
+    // 説明文（summary）は 2026-11-24 に運用者の判断ですべて削除（症状ごとの対応の説明は書かず、公式ページへの案内だけにする）。足すときは200文字以内
+    if (e.summary !== undefined && (typeof e.summary !== 'string' || !e.summary.trim() || e.summary.length > 200)) errors.push(`${p}.summary: 200文字以内の文字列`);
+    // 説明文のひらがな版（「ひらがなで よむ」で表示。無くてもよい）。漢字を含まないこと
+    if (e.summaryKana !== undefined && (typeof e.summaryKana !== 'string' || !e.summaryKana.trim() || e.summaryKana.length > 400 || /[\u4e00-\u9fff]/u.test(e.summaryKana))) errors.push(`${p}.summaryKana: 漢字を含まない400文字以内の文字列`);
+    if (!Array.isArray(e.links) || !e.links.length || e.links.length > 4) errors.push(`${p}.links: 1〜4件の配列が必要`);
+    else
+      e.links.forEach((l, j) => {
+        if (!isObj(l) || typeof l.name !== 'string' || !l.name.trim()) return errors.push(`${p}.links[${j}]: name が必要`);
+        for (const k of Object.keys(l)) if (!['name', 'url'].includes(k)) errors.push(`${p}.links[${j}].${k}: 定義されていない項目名`);
+        let ok = false;
+        try {
+          const u = new URL(l.url);
+          // ? や # の付いた URL は、allowed-sources.json の exactQueryUrls に完全一致で書いたものだけ
+          const exact = (readCode('scripts/allowed-sources.json').exactQueryUrls || []).includes(l.url);
+          ok = u.protocol === 'https:' && !u.username && !u.password && !u.port && ((!u.search && !u.hash) || exact) && (isAllowedUrl(l.url) || isDirectoryUrl(exact ? l.url.split('?')[0] : l.url));
+        } catch {
+          ok = false;
+        }
+        if (!ok) errors.push(`${p}.links[${j}].url: 許可リストの公的機関の https の URL だけ（? や # なし）`);
+      });
+    walkStrings({ name: e.name, aliases: e.aliases, ...(e.summary !== undefined ? { summary: e.summary } : {}), links: e.links }, p, errors, { curated: true, maxLen: 200 });
+  });
+  return errors;
+}
+// 運用者が急な病気・けがのページのリンクを確かめた日の記録（data/curated/health-checks.json）
+export function validateHealthChecksDoc(doc, known, rel = 'health-checks') {
+  const errors = [];
+  if (!isObj(doc) || doc.schemaVersion !== 1 || !isObj(doc.checks)) return [`${rel}: schemaVersion 1 と checks のオブジェクトが必要`];
+  for (const k of Object.keys(doc)) if (!['schemaVersion', '_note', 'checks'].includes(k)) errors.push(`${rel}.${k}: 定義されていない項目名`);
+  for (const [url, d] of Object.entries(doc.checks)) {
+    if (!known.has(url)) errors.push(`${rel}: ${url} は急な病気・けがのページのリンクではない（記録を消す）`);
+    if (!(isValidDate(d) && notFutureJst(d))) errors.push(`${rel}: ${url} の日付は YYYY-MM-DD の過去の日付が必要`);
+  }
+  return errors;
+}
+// 救急の電話相談の受付時間・番号（data/curated/er-lines.json）
+export function validateErLinesDoc(doc, rel = 'er-lines') {
+  const errors = [];
+  if (!isObj(doc) || doc.schemaVersion !== 1 || !Array.isArray(doc.centers)) return [`${rel}: schemaVersion 1 と centers の配列が必要`];
+  if (!isValidDate(doc.checkedAt)) errors.push(`${rel}.checkedAt: YYYY-MM-DD が必要`);
+  if (typeof doc.operatorVerified !== 'boolean') errors.push(`${rel}.operatorVerified: true / false が必要`);
+  // 照合した日（operatorVerified が true のときは必須。古くなったら本番では表示を止める）
+  if (doc.verifiedAt !== undefined && doc.verifiedAt !== null && !isValidDate(doc.verifiedAt)) errors.push(`${rel}.verifiedAt: YYYY-MM-DD か null`);
+  if (doc.operatorVerified === true && !isValidDate(doc.verifiedAt)) errors.push(`${rel}.verifiedAt: operatorVerified が true のときは、照合した日（YYYY-MM-DD）が必要`);
+  doc.centers.forEach((c, i) => {
+    const p = `${rel} centers[${i}]`;
+    if (!Array.isArray(c.prefs) || !c.prefs.length || c.prefs.some((x) => !/^(0[1-9]|[1-3]\d|4[0-7])$/.test(x))) errors.push(`${p}.prefs: 都道府県コード（01〜47）の配列`);
+    for (const k of ['name', 'hours', 'altNumbers']) if (typeof c[k] !== 'string' || !c[k].trim() || c[k].length > 160) errors.push(`${p}.${k}: 160文字以内が必要`);
+    if (!/^[0-9０-９\-／：・区地多摩 ]+$/.test(c.altNumbers.replace(/23区|多摩地区/g, ''))) errors.push(`${p}.altNumbers: 電話番号と区切りだけ`);
+    if (typeof c.note !== 'string' || c.note.length > 120) errors.push(`${p}.note: 120文字以内の文字列`);
+    walkStrings({ name: c.name, hours: c.hours, note: c.note }, p, errors, { curated: true, maxLen: 160 });
+  });
+  return errors;
+}
+export function validateHealthGuide(rel = 'data/curated/health-guide.json') {
+  const errors = validateHealthGuideDoc(readData(rel), rel);
+  errors.push(...validateErLinesDoc(readData('data/curated/er-lines.json'), 'data/curated/er-lines.json'));
+  if (!errors.length) errors.push(...validateHealthChecksDoc(readData('data/curated/health-checks.json'), emergencyUrls(), 'data/curated/health-checks.json'));
+  return errors;
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const errors = [
     ...validateAnimals(),
@@ -464,12 +637,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     ...validateEvidence(),
     ...validateCuratedPair('data/curated/entries.json', 'data/curated/changelog.json'),
     ...validateConnections(),
+    ...validateCountryProfiles(),
     ...validateDirectory('data/directory/links.json'),
+    ...validateSecurityLog(),
+    ...validateHealthGuide(),
   ];
   if (errors.length) {
     console.error(`検査失敗: ${errors.length}件`);
     for (const e of errors.slice(0, 80)) console.error(' - ' + e);
     process.exit(1);
   }
-  console.log('検査OK: 本番2ファイル＋つながりのテーマ＋相談先リンク集');
+  console.log('検査OK: 本番2ファイル＋つながりのテーマ＋相談先リンク集＋安全対策の記録＋急な病気・けがの検索');
 }

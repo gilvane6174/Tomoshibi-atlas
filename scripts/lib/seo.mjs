@@ -18,6 +18,9 @@ export function parseSiteUrl(raw) {
 }
 
 const VERIFY = /^[A-Za-z0-9_-]{10,100}$/;
+const PAIR_EXTRA = {};
+// 日本語だけのページ（日本の制度・窓口の案内）。canonical と og:url を自分自身に付ける
+const JA_ONLY = new Set(['life-support.html', 'safety.html', 'welfare-pref.html', 'crime-prevention.html', 'data-leak.html', 'disability-services.html', 'family-support.html', 'emergency-care.html']);
 const PAGES = [
   ['index.html', '', 'ja'],
   ['index.html', '?lang=en', 'en'],
@@ -31,16 +34,43 @@ const PAGES = [
   ['welfare-guide.en.html', 'welfare-guide.en.html', 'en'],
   ['compare.html', 'compare.html', 'ja'],
   ['compare.en.html', 'compare.en.html', 'en'],
+  ['weekly.html', 'weekly.html', 'ja'],
+  ['weekly.en.html', 'weekly.en.html', 'en'],
+  ['updates.html', 'updates.html', 'ja'],
+  ['updates.en.html', 'updates.en.html', 'en'],
+  ['site-security.html', 'site-security.html', 'ja'],
+  ['site-security.en.html', 'site-security.en.html', 'en'],
+  ['welfare-pref.html', 'welfare-pref.html', 'ja'],
+  ['crime-prevention.html', 'crime-prevention.html', 'ja'],
+  ['data-leak.html', 'data-leak.html', 'ja'],
+  ['disability-services.html', 'disability-services.html', 'ja'],
+  ['family-support.html', 'family-support.html', 'ja'],
+  ['emergency-care.html', 'emergency-care.html', 'ja'],
+  ['life-support.html', 'life-support.html', 'ja'],
+  ['safety.html', 'safety.html', 'ja'],
+  ['world-heritage.html', 'world-heritage.html', 'ja'],
+  ['world-heritage.en.html', 'world-heritage.en.html', 'en'],
 ];
-const PAIRS = { 'index.html': ['', '?lang=en'], 'about.html': ['about.html', 'about.en.html'], 'about.en.html': ['about.html', 'about.en.html'], 'security-basics.html': ['security-basics.html', 'security-basics.en.html'], 'security-basics.en.html': ['security-basics.html', 'security-basics.en.html'], 'welfare-guide.html': ['welfare-guide.html', 'welfare-guide.en.html'], 'welfare-guide.en.html': ['welfare-guide.html', 'welfare-guide.en.html'], 'compare.html': ['compare.html', 'compare.en.html'], 'compare.en.html': ['compare.html', 'compare.en.html'], 'archive.html': ['archive.html', 'archive.en.html'], 'archive.en.html': ['archive.html', 'archive.en.html'] };
+// 英語版と日本語版の組（canonical・hreflang 用）。2026-11 に追加したページも同じ形
+for (const n of ['weekly', 'updates', 'site-security', 'world3d', 'world-heritage']) {
+  PAIR_EXTRA[`${n}.html`] = [`${n}.html`, `${n}.en.html`];
+  PAIR_EXTRA[`${n}.en.html`] = [`${n}.html`, `${n}.en.html`];
+}
+const PAIRS_BASE = { 'index.html': ['', '?lang=en'], 'about.html': ['about.html', 'about.en.html'], 'about.en.html': ['about.html', 'about.en.html'], 'security-basics.html': ['security-basics.html', 'security-basics.en.html'], 'security-basics.en.html': ['security-basics.html', 'security-basics.en.html'], 'welfare-guide.html': ['welfare-guide.html', 'welfare-guide.en.html'], 'welfare-guide.en.html': ['welfare-guide.html', 'welfare-guide.en.html'], 'compare.html': ['compare.html', 'compare.en.html'], 'compare.en.html': ['compare.html', 'compare.en.html'], 'archive.html': ['archive.html', 'archive.en.html'], 'archive.en.html': ['archive.html', 'archive.en.html'] };
+const PAIRS = { ...PAIRS_BASE, ...PAIR_EXTRA };
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-export function writeSeo(out, { siteUrl, repo, google, bing, now = new Date() }) {
+// extraPaths：組み立て時に作ったページ（都道府県別のページなど。日本語だけ）を sitemap に足す
+export function writeSeo(out, { siteUrl, repo, google, bing, now = new Date(), extraPaths = [] }) {
   const base = parseSiteUrl(siteUrl);
   for (const name of readdirSync(out).filter((n) => n.endsWith('.html'))) {
     const file = resolve(out, name);
     let html = readFileSync(file, 'utf8');
     const tags = [];
+    // 日本語だけのページ（都道府県別など）は、自分自身への canonical と og:url だけを付ける
+    if (base && !PAIRS[name] && (JA_ONLY.has(name) || extraPaths.includes(name))) {
+      tags.push(`<link rel="canonical" href="${esc(base + name)}">`, `<meta property="og:url" content="${esc(base + name)}">`);
+    }
     if (base && PAIRS[name]) {
       // 相対パスの hreflang は、絶対URL版に置き換える（重複させない）
       html = html.replace(/[ \t]*<link rel="alternate" hreflang="(?:ja|en)" href="(?!https:)[^"]*">\n/g, '');
@@ -63,8 +93,8 @@ export function writeSeo(out, { siteUrl, repo, google, bing, now = new Date() })
   const robots = ['User-agent: *', 'Allow: /'];
   if (base) {
     robots.push(`Sitemap: ${base}sitemap.xml`);
-    const day = now.toISOString().slice(0, 10);
-    const urls = PAGES.map(([, path]) => `  <url><loc>${esc(base + path)}</loc><lastmod>${day}</lastmod></url>`);
+    // lastmod は書かない（組み立てのたびに全ページの日付が変わり、本当の更新日と合わなくなるため。検索エンジンの案内に沿う）
+    const urls = [...PAGES.map(([, path]) => path), ...extraPaths].map((path) => `  <url><loc>${esc(base + path)}</loc></url>`);
     writeFileSync(resolve(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
   }
   writeFileSync(resolve(out, 'robots.txt'), robots.join('\n') + '\n');

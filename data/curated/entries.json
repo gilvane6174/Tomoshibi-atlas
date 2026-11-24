@@ -1188,37 +1188,6 @@
       "nature": "statistics"
     },
     {
-      "id": "mental-2026-unicef-mhpss-results",
-      "layer": "mental",
-      "title": {
-        "ja": "ユニセフ、心のケア支援が約5,376万人に届いたと報告",
-        "en": "UNICEF reports mental health support reached 53.76 million people"
-      },
-      "summary": {
-        "ja": "ユニセフの心のケア・心理社会的支援は2025年、130超の国で子ども・若者・養育者約5,376万人に届き、うち2,570万人は人道危機下の59か国でした。",
-        "en": "UNICEF's mental health and psychosocial support reached an estimated 53.76 million children, adolescents and caregivers in 130+ countries in 2025, including 25.7 million in 59 humanitarian settings."
-      },
-      "attribution": {
-        "ja": "ユニセフの発表（2026年7月）によれば",
-        "en": "According to UNICEF (July 2026)"
-      },
-      "tags": [
-        "support",
-        "statistics"
-      ],
-      "topic": "unicef-mhpss-annual-results",
-      "countries": [],
-      "placeBasis": "global",
-      "importance": "major",
-      "publishedAt": "2026-07-20",
-      "checkedAt": "2026-10-26",
-      "source": {
-        "name": "ユニセフ / UNICEF",
-        "url": "https://www.unicef.org/reports/global-annual-results-2025-mental-health"
-      },
-      "sourceType": "intl_org"
-    },
-    {
       "id": "mental-2026-jpn-workers-comp-mental",
       "layer": "mental",
       "title": {
@@ -2062,40 +2031,6 @@
         "url": "https://www.worldbank.org/en/topic/socialprotectionandjobs/publication/state-of-social-protection-2025-2-billion-person-challenge"
       },
       "sourceType": "intl_org"
-    },
-    {
-      "id": "welfare-2025-india-social-protection-coverage",
-      "layer": "welfare",
-      "title": {
-        "ja": "インドの社会保障カバー率、ILO推計で倍増",
-        "en": "India's social protection coverage doubled, citing ILO data"
-      },
-      "summary": {
-        "ja": "同省はILO世界社会保障報告2024–26を引用し、カバー率が2021年の24.4%から2024年に48.8%へ上昇したと説明。現物給付が反映されていない可能性があるとしている。",
-        "en": "Citing the ILO World Social Protection Report 2024–26, the ministry says coverage rose from 24.4% (2021) to 48.8% (2024), and that the figure may not capture in-kind benefits."
-      },
-      "attribution": {
-        "ja": "インド労働雇用省の発表（2025年3月）によれば",
-        "en": "According to India's Ministry of Labour and Employment (March 2025)"
-      },
-      "tags": [
-        "statistics",
-        "policy"
-      ],
-      "topic": "ind-social-protection-coverage",
-      "countries": [
-        "IND"
-      ],
-      "placeBasis": "reported_country",
-      "importance": "minor",
-      "publishedAt": "2025-03-26",
-      "checkedAt": "2026-10-26",
-      "source": {
-        "name": "インド労働雇用省 / Ministry of Labour and Employment, India",
-        "url": "https://labour.gov.in/sites/default/files/pib2115391.pdf"
-      },
-      "sourceType": "public_agency",
-      "nature": "estimate"
     },
     {
       "id": "research-2026-brotli-fix-advisory",
@@ -3760,39 +3695,6 @@
       },
       "sourceType": "intl_org",
       "nature": "preliminary"
-    },
-    {
-      "id": "disaster-2026-bra-northeast-floods",
-      "layer": "disaster",
-      "title": {
-        "ja": "ブラジル北東部で洪水・土砂災害、ペルナンブコ州で6人死亡",
-        "en": "Floods and landslides in northeast Brazil: six dead in Pernambuco"
-      },
-      "summary": {
-        "ja": "欧州委員会のECHOデイリーフラッシュ（国連OCHA・ブラジル気象庁の情報）によると、ブラジル北東部の洪水・土砂災害でペルナンブコ州では6人が死亡、27市で9,540人が避難。パライバ州では16,100人が被災し、600人が避難した。",
-        "en": "The ECHO Daily Flash, citing UN OCHA and INMET, reports six deaths and 9,540 people displaced across 27 municipalities in Pernambuco; in Paraíba 16,100 people were affected and 600 displaced."
-      },
-      "attribution": {
-        "ja": "欧州委員会ECHOの発表（2026年5月）によれば",
-        "en": "According to the European Commission's ECHO Daily Flash (May 2026)"
-      },
-      "tags": [
-        "disaster",
-        "statistics"
-      ],
-      "topic": "bra-northeast-floods-may-2026",
-      "countries": [
-        "BRA"
-      ],
-      "placeBasis": "reported_country",
-      "importance": "minor",
-      "publishedAt": "2026-05-06",
-      "checkedAt": "2026-10-26",
-      "source": {
-        "name": "European Commission ECHO Daily Flash (via ReliefWeb)",
-        "url": "https://reliefweb.int/report/brazil/brazil-floods-and-landslides-update-unocha-inmet-echo-daily-flash-6-may-2026"
-      },
-      "sourceType": "intl_org"
     },
     {
       "id": "disaster-2026-vnm-tc-maysak",

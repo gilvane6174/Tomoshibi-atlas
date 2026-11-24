@@ -7,16 +7,20 @@
 import './lib/node-guard.mjs';
 import { cpSync, rmSync, mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { ROOT, readData, readCode, isAllowedUrl } from './lib/safety.mjs';
+import { ROOT, readData, readCode, isAllowedUrl, isDirectoryUrl } from './lib/safety.mjs';
 import { buildCompare } from './fetch-worldbank.mjs';
 const { enabledFetchers } = readCode('scripts/allowed-sources.json');
 import { quakeStatusOf } from './fetch-usgs.mjs';
-import { validateItems, validateCuratedPair, validateDirectory, validateEvidence, validateAnimals, validatePrefectures, validateConnections, CURATED_LAYERS } from './validate-data.mjs';
+import { validateItems, validateCuratedPair, validateDirectory, validateEvidence, validateAnimals, validatePrefectures, validateConnections } from './validate-data.mjs';
 import { pickDaily, toItems } from './lib/animals.mjs';
 import { applySupersede } from './lib/supersede.mjs';
 import { fitCount, RULES, MAX_BY_LAYER } from './importance-rules.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
-import { writeSeo } from './lib/seo.mjs';
+import { writeSeo, parseSiteUrl } from './lib/seo.mjs';
+import { pickWeekly, renderWeekly, renderRss, renderPrefIndex, renderPrefPage, renderErTable, unlinkUnchecked, kanaPair, prefKanaOf, prefFile, replaceBlock, unwrapBlock, replaceHead, verifyGenerated } from './lib/static-pages.mjs';
+import { validateSecurityLog, validateHealthGuide, validateCountryProfiles } from './validate-data.mjs';
+import { readHealthChecks, isEverChecked as isHumanChecked, emergencyUrls, strictPublish, HUMAN_CHECK_DAYS } from './lib/health-checks.mjs';
+const STRICT = strictPublish();
 
 // 確認・改装中（運用者が main に ops/MAINTENANCE を置いたとき）：公的機関からの取得をせずに組み立て、トップを「確認・改装中」にする。
 // 主な取得元（WHO・CISA）の障害で公開が止まっているときでも、この表示に切り替えられるようにするため（取得の失敗で止まらない）
@@ -28,7 +32,6 @@ const OFFLINE = process.argv.includes('--offline') || MAINTENANCE;
 const SNAPSHOT = !OFFLINE && process.argv.includes('--snapshot');
 const OUT = resolve(ROOT, '_site');
 const now = new Date();
-const DAY = 86400000;
 
 async function loadAuto(layer) {
   if (OFFLINE) return [];
@@ -59,6 +62,8 @@ async function main() {
   errors.push(...validateAnimals());
   errors.push(...validatePrefectures());
   errors.push(...validateConnections());
+  errors.push(...validateSecurityLog());
+  errors.push(...validateHealthGuide());
   const { schemaVersion, reviewedAt, categories, countries, international, social } = readData('data/directory/links.json');
   // リンク集は「確認の記録」がある（AIが公式ページを開いて確認した fetched、または運用者が確認した operator）ものだけを公開する。
   // 記録のないもの・確認できなかったものは、確認できるまで表示しない（ops/LINK-SAFETY.md「迷ったら載せない」）
@@ -207,7 +212,7 @@ async function main() {
   }
   // 地震：USGS の自動取得だけ（専用の分野。ほかの分野の情報を押し流さない）
   layers.quake = { kind: 'auto', retrievedAt: fetchedAt('quake'), items: fitCount(applySupersede(extra.quake, now), RULES.quake.keepDays, now) };
-  // 今日の動物たち：日本時間の日付で、豆知識の一覧から自動で選ぶ（1日3回の公開でも、同じ日なら同じ動物）
+  // 今日の動物たち：日本時間の日付で、豆知識の一覧から自動で選ぶ（1日2回の公開でも、同じ日なら同じ動物）
   const animals = readData('data/curated/animals.json');
   const todayJ = new Date(now.getTime() + 9 * 3600000).toISOString().slice(0, 10);
   layers.animals = { kind: 'daily', reviewedAt: animals.reviewedAt, items: toItems(pickDaily(animals.facts, todayJ), todayJ) };
@@ -290,7 +295,97 @@ async function main() {
   }
   writeFileSync(resolve(OUT, 'data/meta.json'), JSON.stringify(meta));
   writeFileSync(resolve(OUT, 'data/directory.json'), JSON.stringify(directory));
-  writeSeo(OUT, { siteUrl: process.env.SITE_URL, repo: process.env.GITHUB_REPOSITORY, google: process.env.GOOGLE_SITE_VERIFICATION, bing: process.env.BING_SITE_VERIFICATION, now });
+  // このサイトの安全対策の記録（更新一覧のページ・安全対策のページで表示。新しい順）
+  {
+    const sec = readData('data/curated/security-log.json');
+    writeFileSync(resolve(OUT, 'data/security-log.json'), JSON.stringify({ entries: [...sec.entries].reverse() }));
+    // 急な病気・けがの検索：運用者が一度でも確かめたリンクだけを出す（期限切れでも消さない）（項目そのものは残し、リンクが無い項目は「確認待ち」と表示）
+    const hg = readData('data/curated/health-guide.json');
+    const hc = readHealthChecks();
+    // 手元の確認版では全部出す。本番の公開（STRICT）では、運用者が一度でも確かめたリンクだけ
+    const okLink = (u) => !STRICT || isHumanChecked(u, hc, now);
+    // 表示するリンクには、運用者（人）が最後に確かめた日を付ける（画面で「確認日」と、確認の時期を過ぎていればその旨を出す）
+    const hgItems = hg.items.map((it) => ({ ...it, links: it.links.filter((l) => okLink(l.url)).map((l) => (hc[l.url] ? { ...l, checked: hc[l.url] } : l)), pendingLinks: it.links.filter((l) => !okLink(l.url)).length }));
+    const unchecked = hg.items.reduce((a, it) => a + it.links.filter((l) => !isHumanChecked(l.url, hc, now)).length, 0);
+    if (unchecked) console.warn(`急な病気・けがの検索：運用者がまだ一度も確認していないリンク ${unchecked} 件（${STRICT ? '本番のため表示しない' : '確認版のため表示する'}。node scripts/mark-health-checked.mjs --list）`);
+    writeFileSync(resolve(OUT, 'data/health-guide.json'), JSON.stringify({ reviewedAt: hg.reviewedAt, items: hgItems }));
+  }
+  // 国の基本情報と政府観光局（国を選んだときに、その国の欄の下に出す。検査に通ったものだけ）
+  {
+    const errs = validateCountryProfiles();
+    if (errs.length) throw new Error('国の基本情報（data/curated/country-profiles.json）に問題がある:\n' + errs.join('\n'));
+    const cp = readData('data/curated/country-profiles.json');
+    writeFileSync(resolve(OUT, 'data/country-profiles.json'), JSON.stringify({ reviewedAt: cp.reviewedAt, countries: cp.countries }));
+  }
+  // 検索エンジンでも読める静的なページ（今週のともしび・RSS・都道府県別の福祉の相談先）。文字は無害化して入れ、出来上がりを検査する
+  const extraPaths = [];
+  {
+    const base = parseSiteUrl(process.env.SITE_URL);
+    const okCurated = (u) => isAllowedUrl(u);
+    // ? の付いた URL は、allowed-sources.json の exactQueryUrls に完全一致で書いたものだけ（ホストの判定は ? より前で行う）
+    const exactQ = new Set(readCode('scripts/allowed-sources.json').exactQueryUrls || []);
+    const okDir = (u) => { try { const b = exactQ.has(u) ? u.split('?')[0] : u; return new URL(u).protocol === 'https:' && (isDirectoryUrl(b) || isAllowedUrl(b)); } catch { return false; } };
+    const fail = (name, errs) => {
+      console.error(`検査失敗のため公開を中止: 組み立てたページ ${name}：${errs.join('／')}`);
+      process.exit(1);
+    };
+    const week = pickWeekly(curated.items, now.getTime());
+    writeFileSync(resolve(OUT, 'data/weekly.json'), JSON.stringify({ from: week.from, to: week.to, filled: week.filled, ids: week.items.map((x) => x.id) }));
+    for (const [name, lang, feed] of [['weekly.html', 'ja', 'feed.xml'], ['weekly.en.html', 'en', 'feed.en.xml']]) {
+      const tpl = readFileSync(resolve(OUT, name), 'utf8');
+      let html = replaceBlock(tpl, 'weekly', renderWeekly(week, lang, okCurated));
+      const rss = renderRss(curated.items, lang, base, now.getTime(), okCurated);
+      if (rss) {
+        writeFileSync(resolve(OUT, feed), rss);
+        html = unwrapBlock(unwrapBlock(html, 'feed'), 'feedlink');
+      } else html = replaceBlock(replaceBlock(html, 'feed', ''), 'feedlink', '');
+      const errs = verifyGenerated(html, tpl, okDir);
+      if (errs.length) fail(name, errs);
+      writeFileSync(resolve(OUT, name), html);
+    }
+    const prefs = directory.prefectures;
+    const tpl = readFileSync(resolve(OUT, 'welfare-pref.html'), 'utf8');
+    const index = replaceBlock(replaceBlock(tpl, 'pref', renderPrefIndex(prefs)), 'prefhead', tpl.match(/<!-- gen:prefhead -->([\s\S]*?)<!-- \/gen:prefhead -->/)[1]);
+    {
+      const errs = verifyGenerated(index, tpl, okDir);
+      if (errs.length) fail('welfare-pref.html', errs);
+      writeFileSync(resolve(OUT, 'welfare-pref.html'), index);
+    }
+    // 救急の電話相談の受付時間・番号：本番では、運用者が消防庁の一覧と照合し（operatorVerified）、その日（verifiedAt）から
+    // HUMAN_CHECK_DAYS 日以内のときだけ出す。照合前・期限切れのときは出さず、消防庁の一覧へ案内する（手元の確認版では全部出す）
+    const erDoc = readData('data/curated/er-lines.json');
+    const erFresh = erDoc.operatorVerified === true && typeof erDoc.verifiedAt === 'string' && now.getTime() - Date.parse(`${erDoc.verifiedAt}T00:00:00+09:00`) <= HUMAN_CHECK_DAYS * 86400000;
+    const erLines = { ...erDoc, show: !STRICT || erFresh, expired: erDoc.operatorVerified === true && !erFresh };
+    if (erLines.expired) console.warn(`救急の電話相談の受付時間・番号：照合から ${HUMAN_CHECK_DAYS} 日を過ぎた（${STRICT ? '本番のため表示しない' : '確認版のため表示する'}）。運用者がもう一度照合する`);
+    if (!erDoc.operatorVerified) console.warn(`救急の電話相談の受付時間・番号：運用者の照合（operatorVerified）がまだ（${STRICT ? '本番のため表示しない' : '確認版のため表示する'}）。公開前に運用者が消防庁の一覧と照合する`);
+    {
+      const etpl = readFileSync(resolve(OUT, 'emergency-care.html'), 'utf8');
+      const hc = readHealthChecks();
+      const eUrls = emergencyUrls();
+      const ehtml = unlinkUnchecked(replaceBlock(etpl, 'erlines', renderErTable(prefs, erLines)), (u) => STRICT && eUrls.has(u) && !isHumanChecked(u, hc, now));
+      const errs = verifyGenerated(ehtml, etpl, okDir);
+      if (errs.length) fail('emergency-care.html', errs);
+      writeFileSync(resolve(OUT, 'emergency-care.html'), ehtml);
+    }
+    for (const p of prefs) {
+      const name = prefFile(p);
+      const title = `${p.ja}の福祉・暮らしの相談先と災害情報（生活の困りごと・こころの健康・防災）｜Tomoshibi Atlas（ともしびアトラス）`;
+      const desc = `${p.ja}の、生活の困りごと・こころの健康の公式の相談先と、災害・防災の公式情報、主な市区町村・社会福祉協議会の相談ページへのリンク。公式サイトだけを載せています。運営：Yutaka Yoshioka（吉岡有隆）。`;
+      let html = replaceHead(tpl, { title, desc });
+      html = replaceBlock(html, 'prefhead', `    <h1>${kanaPair(`${p.ja}の福祉・暮らしの相談先と災害情報`, `${prefKanaOf(p)}の ふくし・くらしの そうだんさきと さいがい じょうほう`)}</h1>\n    <p><button class="kana-toggle" data-kana-switch aria-pressed="false" hidden>ひらがなで よむ</button></p>\n    <p class="kana-alt item-meta">せつめいを ひらがなで しめして います。こうしき ページの なまえや、まどぐちの じかんの いちぶは、かんじの まま です。</p>\n    <p class="lead"><a href="welfare-pref.html">${kanaPair('都道府県別の一覧', 'とどうふけん べつの いちらん')}</a>${kanaPair('へ戻る', 'へ もどる')}</p>`);
+      html = replaceBlock(html, 'pref', renderPrefPage(p, prefs, okDir, erLines));
+      {
+        const hc = readHealthChecks();
+        const eUrls = emergencyUrls();
+        html = unlinkUnchecked(html, (u) => STRICT && eUrls.has(u) && !isHumanChecked(u, hc, now));
+      }
+      const errs = verifyGenerated(html, tpl, okDir);
+      if (errs.length) fail(name, errs);
+      writeFileSync(resolve(OUT, name), html);
+      extraPaths.push(name);
+    }
+  }
+  writeSeo(OUT, { siteUrl: process.env.SITE_URL, repo: process.env.GITHUB_REPOSITORY, google: process.env.GOOGLE_SITE_VERIFICATION, bing: process.env.BING_SITE_VERIFICATION, now, extraPaths });
   // 見つからないページ（404.html）：GitHub Pages は、どの深さの存在しない URL にもこのページを返すため、
   // 公開 URL が分かるときは、相対のリンク（css/… など）をサイトの先頭からの絶対パスに直す
   {

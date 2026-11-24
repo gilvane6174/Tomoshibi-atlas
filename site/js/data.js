@@ -26,10 +26,18 @@ export const resolveLayer = (id) => LAYER_ALIAS[id] || id;
 // 分野の中の、相談先リンク集の種類（こころと福祉は、福祉とこころの両方のリンク集を出す）
 export const DIR_LAYERS = { care: ['welfare', 'mental'], outbreak: ['outbreak'], research: ['research'], security: ['security'] };
 
+// 応答が返ってこないまま待ち続けないよう、待つ時間に上限を設ける（上限を過ぎたら失敗として扱い、エラーの案内へ進む）
+const LOAD_TIMEOUT_MS = 25000;
 async function getJson(path) {
-  const res = await fetch(path, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`load failed: ${path}`);
-  return res.json();
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), LOAD_TIMEOUT_MS);
+  try {
+    const res = await fetch(path, { cache: 'no-cache', signal: ctl.signal });
+    if (!res.ok) throw new Error(`load failed: ${path}`);
+    return await res.json();
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 export async function loadAll() {
@@ -45,8 +53,10 @@ export async function loadAll() {
   const layers = {};
   LAYERS.forEach((l, i) => (layers[l.id] = layerDocs[i]));
   const countryMap = new Map(countries.map((c) => [c.id, c]));
-  const directory = await dirP;
-  return { meta, countries, countryMap, shapes, layers, directory };
+  // 公式リンク集は待たずに地球儀を出し、読めたら後から使う（国の欄を開いたときに参照する）
+  const data = { meta, countries, countryMap, shapes, layers, directory: null };
+  data.directoryReady = dirP.then((d) => (data.directory = d));
+  return data;
 }
 
 export const countryName = (c) => (c ? (lang === 'en' ? c.enName || c.en[0] : c.ja) : '');

@@ -20,6 +20,15 @@ if (read('.github/CODEOWNERS').includes('OWNER_GITHUB_USERNAME') && process.env.
   errors.push('.github/CODEOWNERS の @OWNER_GITHUB_USERNAME を運用者の GitHub ユーザー名に置き換えてください（docs/GITHUB-SETTINGS.md 1章）');
 
 // 2. ワークフロー
+// 運用者が公式のリリースで確かめた、外部の処理（action）と固定のSHAの組（版はコメントの値。更新は1つずつ確かめてから）
+const KNOWN_ACTION_PINS = new Set([
+  'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1', // v7.0.1
+  'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1', // v7.1.0
+  'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9', // v5.0.0
+  'actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346', // v5.0.1
+  'github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370', // v4.39.1
+  'github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370', // v4.39.1
+]);
 const WF = '.github/workflows';
 for (const name of readdirSync(resolve(ROOT, WF))) {
   const rel = `${WF}/${name}`;
@@ -107,6 +116,10 @@ for (const name of readdirSync(resolve(ROOT, WF))) {
     if (/\{\s*uses:/.test(line)) errors.push(`${at}: uses は1行1つの通常の書き方にする（検査のため）`);
     const u = line.match(/^\s*-?\s*["']?uses["']?:\s*["']?([^\s#"']+)/);
     if (u && !/^[\w.-]+\/[\w./-]+@[0-9a-f]{40}$/.test(u[1]) && !u[1].startsWith('./')) errors.push(`${at}: uses は40桁のコミットSHAで固定する（${u[1]}）`);
+    // 固定したSHAが、運用者が公式のリリースの画面で確かめたものか（なりすましのコミット対策。2026-11 の「SHA固定の抜け道」：
+    // フォークにしかないコミットでも、元のリポジトリの名前＋SHAで呼び出せてしまう）。SHA を変えるときは、
+    // 公式のリポジトリの Releases でタグとSHAが一致することを確かめてから、下の一覧（KNOWN_ACTION_PINS）も同時に直す
+    if (u && /@[0-9a-f]{40}$/.test(u[1]) && !KNOWN_ACTION_PINS.has(u[1])) errors.push(`${at}: 確かめていない外部の処理（${u[1]}）。公式のリリースでSHAを確かめ、scripts/check-repo.mjs の KNOWN_ACTION_PINS に足す`);
     if (/persist-credentials:\s*true/.test(line)) errors.push(`${at}: persist-credentials は false にする`);
     // run: ブロックの中に ${{ }} を書かない（値は env: で渡す）
     const indent = line.search(/\S/);

@@ -536,6 +536,20 @@
             "en": "A national body working on evaluating and researching AI safety."
           },
           "url": "https://aisi.go.jp/"
+        },
+        {
+          "id": "jp-s-notice",
+          "name": {
+            "ja": "総務省・NICT「NOTICE」（IoT機器の安全）",
+            "jaKana": "そうむしょう・NICT「NOTICE」（IoT ききの あんぜん）",
+            "en": "MIC and NICT: NOTICE (IoT device security)"
+          },
+          "desc": {
+            "ja": "家庭のルーターやネットワークカメラなどを安全に使うための注意を案内しています。総務省・情報通信研究機構（NICT）が、一般社団法人ICT-ISACやインターネット接続事業者などと行う取り組みです。",
+            "jaKana": "かていの ルーターや ネットワーク カメラ などを あんぜんに つかう ための ちゅういを あんない して います。そうむしょう・じょうほう つうしん けんきゅう きこう（NICT）が、いっぱん しゃだん ほうじん ICT-ISAC や インターネット せつぞく じぎょうしゃ などと おこなう とりくみ です。",
+            "en": "Advice on using home routers, cameras and other IoT devices safely. Run by MIC and NICT with ICT-ISAC (an association), internet providers and others."
+          },
+          "url": "https://notice.go.jp/"
         }
       ],
       "research": [
@@ -652,6 +666,50 @@
             "en": "Infectious disease information by country for people travelling abroad."
           },
           "url": "https://www.forth.go.jp/index.html"
+        }
+      ],
+      "safety": [
+        {
+          "id": "jp-safety-hazardmap",
+          "name": {
+            "ja": "国土交通省「ハザードマップポータルサイト」",
+            "jaKana": "こくど こうつうしょう「ハザードマップ ポータル サイト」",
+            "en": "MLIT: Hazard Map Portal Site"
+          },
+          "desc": {
+            "ja": "住んでいる場所の洪水・土砂災害・津波などの危険を、地図で重ねて確かめられます。",
+            "jaKana": "すんで いる ばしょの こうずい・どしゃ さいがい・つなみ などの きけんを、ちずで かさねて たしかめられます。",
+            "en": "Check flood, landslide, tsunami and other hazards for your area on overlaid maps."
+          },
+          "url": "https://disaportal.gsi.go.jp/"
+        },
+        {
+          "id": "jp-safety-jishin",
+          "name": {
+            "ja": "地震調査研究推進本部（地震本部）",
+            "jaKana": "じしん ちょうさ けんきゅう すいしん ほんぶ（じしん ほんぶ）",
+            "en": "Headquarters for Earthquake Research Promotion"
+          },
+          "desc": {
+            "ja": "国の地震の調査研究をまとめ、地域ごとの地震の起こりやすさなどの評価を公表しています（事務局：文部科学省）。",
+            "jaKana": "くにの じしんの ちょうさ けんきゅうを まとめ、ちいき ごとの じしんの おこりやすさ などの ひょうかを こうひょう して います（じむきょく：もんぶ かがくしょう）。",
+            "en": "Government body that coordinates earthquake research and publishes regional earthquake assessments (secretariat: MEXT)."
+          },
+          "url": "https://www.jishin.go.jp/"
+        },
+        {
+          "id": "jp-safety-jshis",
+          "name": {
+            "ja": "防災科学技術研究所「J-SHIS 地震ハザードステーション」",
+            "jaKana": "ぼうさい かがく ぎじゅつ けんきゅうじょ「J-SHIS じしん ハザード ステーション」",
+            "en": "NIED: J-SHIS Japan Seismic Hazard Information Station"
+          },
+          "desc": {
+            "ja": "場所ごとの、これから強い揺れに見舞われる可能性を地図で示しています（国立研究開発法人の運営）。",
+            "jaKana": "ばしょ ごとの、これから つよい ゆれに みまわれる かのうせいを ちずで しめして います（こくりつ けんきゅう かいはつ ほうじんの うんえい）。",
+            "en": "Maps of the probability of strong shaking by location (run by a national research institute)."
+          },
+          "url": "https://www.j-shis.bosai.go.jp/"
         }
       ]
     },
@@ -976,21 +1034,6 @@
             "en"
           ]
         }
-      ],
-      "security": [
-        {
-          "id": "btn-cert-security",
-          "role": "cert",
-          "name": {
-            "ja": "ブータンBtCIRT",
-            "jaKana": "ブータン BtCIRT",
-            "en": "Bhutan Computer Incident Response Team (BtCIRT)"
-          },
-          "url": "https://www.btcirt.bt/",
-          "pageLang": [
-            "en"
-          ]
-        }
       ]
     },
     "BOL": {
@@ -1071,24 +1114,7 @@
         }
       ]
     },
-    "BWA": {
-      "welfare": [
-        {
-          "id": "bwa-welfare-ministry-welfare",
-          "cat": "general",
-          "role": "welfare-ministry",
-          "name": {
-            "ja": "ボツワナ地方自治・伝統問題省",
-            "jaKana": "ボツワナ ちほう じち でんとう もんだい しょう",
-            "en": "Ministry of Local Government and Traditional Affairs"
-          },
-          "url": "https://www.gov.bw/ministries/ministry-local-government-and-traditional-affairs",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ]
-    },
+    "BWA": {},
     "BRA": {
       "outbreak": [
         {
@@ -1264,22 +1290,6 @@
             "en": "Ministry of Labour, Pension System, Family and Social Policy"
           },
           "url": "https://mrosp.gov.hr/en",
-          "pageLang": [
-            "hr",
-            "en"
-          ]
-        }
-      ],
-      "security": [
-        {
-          "id": "hrv-cert-security",
-          "role": "cert",
-          "name": {
-            "ja": "クロアチア国家CERT（CERT.hr）",
-            "jaKana": "クロアチア こっか CERT（CERT.hr）",
-            "en": "National CERT"
-          },
-          "url": "https://www.cert.hr/en/home-page/",
           "pageLang": [
             "hr",
             "en"
@@ -2313,22 +2323,6 @@
       ]
     },
     "SVK": {
-      "outbreak": [
-        {
-          "id": "svk-health-ministry-outbreak",
-          "role": "health-ministry",
-          "name": {
-            "ja": "スロバキア保健省",
-            "jaKana": "スロバキア ほけんしょう",
-            "en": "Ministry of Health of the Slovak Republic"
-          },
-          "url": "https://health.gov.sk/Titulka",
-          "pageLang": [
-            "sk",
-            "en"
-          ]
-        }
-      ],
       "mental": [
         {
           "id": "svk-health-ministry-mental",
@@ -2480,21 +2474,6 @@
       "outbreak": [
         {
           "id": "slb-health-ministry-outbreak",
-          "role": "health-ministry",
-          "name": {
-            "ja": "ソロモン諸島保健医療省",
-            "jaKana": "ソロモン しょとう ほけん いりょう しょう",
-            "en": "Ministry of Health & Medical Services"
-          },
-          "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ],
-      "mental": [
-        {
-          "id": "slb-health-ministry-mental",
           "role": "health-ministry",
           "name": {
             "ja": "ソロモン諸島保健医療省",
@@ -4626,19 +4605,6 @@
     "ISL": {
       "outbreak": [
         {
-          "id": "isl-health-ministry-outbreak",
-          "role": "health-ministry",
-          "name": {
-            "ja": "アイスランド保健省",
-            "jaKana": "アイスランド ほけんしょう",
-            "en": "Ministry of Health"
-          },
-          "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
-          "pageLang": [
-            "en"
-          ]
-        },
-        {
           "id": "isl-public-health-institute-outbreak",
           "role": "public-health-institute",
           "name": {
@@ -5602,21 +5568,6 @@
       ]
     },
     "NAM": {
-      "outbreak": [
-        {
-          "id": "nam-health-ministry-outbreak",
-          "role": "health-ministry",
-          "name": {
-            "ja": "ナミビア保健社会サービス省",
-            "jaKana": "ナミビア ほけん しゃかい サービス しょう",
-            "en": "Ministry of Health and Social Services"
-          },
-          "url": "https://mhss.gov.na/site-map",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ],
       "mental": [
         {
           "id": "nam-health-ministry-mental",

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "_note": "「急な病気・けがのとき」のページのリンクを、運用者（人間）が自分のブラウザで開いて中身まで確かめた日（日本時間）。scripts/mark-health-checked.mjs で記録する。運用者だけが変更する（AI・bot は書かない）。まだ一度も確認していないリンクは、サイトでは「確認待ち」と表示する（一度確認したリンクは期限を過ぎても消さない）。手順は ops/LINK-SAFETY.md の「急な病気・けがのページの月1回の確認」。",
+  "checks": {
+    "https://ganjoho.jp/public/index.html": "2026-11-24",
+    "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=52": "2026-11-24",
+    "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=53": "2026-11-24",
+    "https://kakarikata.mhlw.go.jp/kakaritsuke/8000.html": "2026-11-24",
+    "https://kennet.mhlw.go.jp/information/information/metabolic/m-05-006": "2026-11-24",
+    "https://www.fdma.go.jp/mission/enrichment/appropriate/": "2026-11-24",
+    "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate007.html": "2026-11-24",
+    "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/": "2026-11-24",
+    "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html": "2026-11-24",
+    "https://www.gov-online.go.jp/article/201609/entry-7888.html": "2026-11-24",
+    "https://www.iryou.teikyouseido.mhlw.go.jp/": "2026-11-24",
+    "https://www.mhlw.go.jp/mamorouyokokoro/": "2026-11-24",
+    "https://www.wbgt.env.go.jp/": "2026-11-24"
+  }
+}

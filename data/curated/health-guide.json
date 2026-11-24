@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-19",
+  "_note": "「急な病気・けがのとき」のページの検索（症状名・病名）で使う。説明は出典の公式ページの要点を、このサイトが短くまとめたもの。リンクは許可リストの公的機関だけ。診断や治療の代わりにはならない。運用者だけが変更する。",
+  "items": [
+    {
+      "id": "collapse",
+      "kind": "firstaid",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "倒れた・反応がない（心肺蘇生・AED）",
+      "kana": "たおれた・はんのうがない",
+      "aliases": [
+        "意識がない",
+        "いしきがない",
+        "心肺停止",
+        "しんぱいていし",
+        "心臓マッサージ",
+        "胸骨圧迫",
+        "きょうこつあっぱく",
+        "AED",
+        "えーいーでぃー",
+        "呼吸していない",
+        "こきゅうしていない"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "消防庁「一般市民向け応急手当WEB講習」",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/"
+        },
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "seizure",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "てんかん発作・けいれん",
+      "kana": "てんかんほっさ・けいれん",
+      "aliases": [
+        "てんかん",
+        "てんかん発作",
+        "痙攣",
+        "ひきつけ",
+        "引きつけ",
+        "発作",
+        "ほっさ",
+        "大発作"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "国立精神・神経医療研究センター病院「発作時の対応について」",
+          "url": "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=53"
+        },
+        {
+          "name": "国立精神・神経医療研究センター病院「てんかん重積」とは？",
+          "url": "https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=52"
+        },
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "stroke",
+      "kind": "disease",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "脳卒中（脳梗塞・脳出血・くも膜下出血）",
+      "kana": "のうそっちゅう（のうこうそく・のうしゅっけつ・くもまくかしゅっけつ）",
+      "aliases": [
+        "脳梗塞",
+        "のうこうそく",
+        "脳出血",
+        "くも膜下出血",
+        "ろれつが回らない",
+        "ろれつ",
+        "片麻痺",
+        "まひ",
+        "麻痺",
+        "しびれ",
+        "顔がゆがむ",
+        "激しい頭痛",
+        "ずつう"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "政府広報オンライン「もしものときの救急車の利用法」（すぐ119番すべき症状の例）",
+          "url": "https://www.gov-online.go.jp/article/201609/entry-7888.html"
+        },
+        {
+          "name": "厚生労働省「健康づくりサポートネット」脳卒中の解説",
+          "url": "https://kennet.mhlw.go.jp/information/information/metabolic/m-05-006"
+        }
+      ]
+    },
+    {
+      "id": "heart-attack",
+      "kind": "disease",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "心筋梗塞・狭心症（胸の痛み）",
+      "kana": "しんきんこうそく・きょうしんしょう（むねのいたみ）",
+      "aliases": [
+        "胸痛",
+        "きょうつう",
+        "胸が痛い",
+        "むねがいたい",
+        "胸が苦しい",
+        "心臓発作",
+        "しんぞうほっさ",
+        "冷や汗"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "政府広報オンライン「もしものときの救急車の利用法」（すぐ119番すべき症状の例）",
+          "url": "https://www.gov-online.go.jp/article/201609/entry-7888.html"
+        },
+        {
+          "name": "消防庁「一般市民向け応急手当WEB講習」",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/"
+        }
+      ]
+    },
+    {
+      "id": "dizziness",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "めまい・ふらつき",
+      "kana": "めまい・ふらつき",
+      "aliases": [
+        "眩暈",
+        "ふらふら",
+        "くらくら"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "政府広報オンライン「もしものときの救急車の利用法」（すぐ119番すべき症状の例）",
+          "url": "https://www.gov-online.go.jp/article/201609/entry-7888.html"
+        },
+        {
+          "name": "厚生労働省「健康づくりサポートネット」脳卒中の解説",
+          "url": "https://kennet.mhlw.go.jp/information/information/metabolic/m-05-006"
+        }
+      ]
+    },
+    {
+      "id": "hypoglycemia",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "低血糖",
+      "kana": "ていけっとう",
+      "aliases": [
+        "血糖値が低い",
+        "けっとうち",
+        "糖尿病の薬",
+        "冷や汗",
+        "ふるえ"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "fainting",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "失神（気を失う）",
+      "kana": "しっしん（きをうしなう）",
+      "aliases": [
+        "気絶",
+        "きぜつ",
+        "意識を失う",
+        "立ちくらみ",
+        "たちくらみ"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        },
+        {
+          "name": "消防庁「一般市民向け応急手当WEB講習」",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/"
+        }
+      ]
+    },
+    {
+      "id": "anaphylaxis",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "アナフィラキシー（強いアレルギー反応）",
+      "kana": "あなふぃらきしー",
+      "aliases": [
+        "アレルギー",
+        "あれるぎー",
+        "食物アレルギー",
+        "しょくもつあれるぎー",
+        "じんましん",
+        "蕁麻疹",
+        "蜂に刺された",
+        "はち",
+        "エピペン"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "asthma",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "ぜんそくの発作・息苦しい",
+      "kana": "ぜんそくのほっさ・いきぐるしい",
+      "aliases": [
+        "喘息",
+        "気管支喘息",
+        "きかんしぜんそく",
+        "息が苦しい",
+        "ぜーぜー",
+        "ヒューヒュー"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "choking",
+      "kind": "firstaid",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "のどに物が詰まった（窒息・誤えん）",
+      "kana": "のどにものがつまった（ちっそく・ごえん）",
+      "aliases": [
+        "窒息",
+        "ちっそく",
+        "のどに詰まった",
+        "喉に詰まった",
+        "つまった",
+        "詰まった",
+        "誤嚥",
+        "誤えん",
+        "ごえん",
+        "餅",
+        "もち",
+        "食べ物が詰まった",
+        "異物"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "bleeding",
+      "kind": "firstaid",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "出血・けが（止血）",
+      "kana": "しゅっけつ・けが（しけつ）",
+      "aliases": [
+        "血が止まらない",
+        "ちがとまらない",
+        "切り傷",
+        "きりきず",
+        "すり傷",
+        "擦り傷",
+        "止血"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "drowning",
+      "kind": "firstaid",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "溺れた（溺水）・入浴中の事故",
+      "kana": "おぼれた（できすい）・にゅうよくちゅうのじこ",
+      "aliases": [
+        "溺水",
+        "できすい",
+        "お風呂",
+        "おふろ",
+        "入浴",
+        "にゅうよく"
+      ],
+      "urgent": true,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        },
+        {
+          "name": "消防庁「一般市民向け応急手当WEB講習」",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/"
+        }
+      ]
+    },
+    {
+      "id": "cold",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "低体温症・凍傷",
+      "kana": "ていたいおんしょう・とうしょう",
+      "aliases": [
+        "体が冷えた",
+        "からだがひえた",
+        "凍傷"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "消防庁「応急手当WEB講習」個別の動画",
+          "url": "https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/05kobetsu/index.html"
+        }
+      ]
+    },
+    {
+      "id": "heatstroke",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "熱中症",
+      "kana": "ねっちゅうしょう",
+      "aliases": [
+        "暑さ",
+        "あつさ",
+        "脱水",
+        "だっすい",
+        "めまい",
+        "頭痛"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "環境省「熱中症予防情報サイト」",
+          "url": "https://www.wbgt.env.go.jp/"
+        }
+      ]
+    },
+    {
+      "id": "dementia",
+      "kind": "disease",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "認知症",
+      "kana": "にんちしょう",
+      "aliases": [
+        "物忘れ",
+        "ものわすれ",
+        "アルツハイマー",
+        "あるつはいまー",
+        "もの忘れ"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "厚生労働省「認知症施策」",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/ninchi/index.html"
+        }
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "kind": "disease",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "糖尿病・高血圧・脂質異常症（生活習慣病）",
+      "kana": "とうにょうびょう・こうけつあつ・ししついじょうしょう",
+      "aliases": [
+        "糖尿病",
+        "高血圧",
+        "コレステロール",
+        "これすてろーる",
+        "生活習慣病",
+        "せいかつしゅうかんびょう",
+        "メタボ"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "厚生労働省 健康づくりサポートネット「生活習慣病予防」",
+          "url": "https://kennet.mhlw.go.jp/information/information/metabolic"
+        }
+      ]
+    },
+    {
+      "id": "cancer",
+      "kind": "disease",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "がん",
+      "kana": "がん",
+      "aliases": [
+        "癌",
+        "ガン",
+        "腫瘍",
+        "しゅよう",
+        "がん相談"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "国立がん研究センター「がん情報サービス」",
+          "url": "https://ganjoho.jp/public/index.html"
+        }
+      ]
+    },
+    {
+      "id": "child",
+      "kind": "symptom",
+      "audience": [
+        "general"
+      ],
+      "name": "子どもの急な病気（発熱・吐く・頭を打った）",
+      "kana": "こどものきゅうなびょうき（はつねつ・はく・あたまをうった）",
+      "aliases": [
+        "子ども",
+        "こども",
+        "赤ちゃん",
+        "あかちゃん",
+        "発熱",
+        "ねつ",
+        "熱",
+        "嘔吐",
+        "おうと",
+        "吐いた",
+        "頭を打った",
+        "誤飲",
+        "ごいん",
+        "タバコ"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "厚生労働省「子どもの症状は＃8000」",
+          "url": "https://kakarikata.mhlw.go.jp/kakaritsuke/8000.html"
+        }
+      ]
+    },
+    {
+      "id": "mind",
+      "kind": "symptom",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "こころがつらい",
+      "kana": "こころがつらい",
+      "aliases": [
+        "うつ",
+        "鬱",
+        "死にたい",
+        "不安",
+        "ふあん",
+        "ねむれない",
+        "眠れない",
+        "メンタル",
+        "めんたる"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "厚生労働省「まもろうよ こころ」",
+          "url": "https://www.mhlw.go.jp/mamorouyokokoro/"
+        }
+      ]
+    },
+    {
+      "id": "hospital",
+      "kind": "search",
+      "audience": [
+        "general",
+        "care"
+      ],
+      "name": "病院・診療所を探す",
+      "kana": "びょういん・しんりょうじょをさがす",
+      "aliases": [
+        "病院",
+        "びょういん",
+        "クリニック",
+        "くりにっく",
+        "夜間",
+        "やかん",
+        "休日",
+        "きゅうじつ",
+        "薬局",
+        "やっきょく"
+      ],
+      "urgent": false,
+      "links": [
+        {
+          "name": "医療情報ネット（ナビイ）",
+          "url": "https://www.iryou.teikyouseido.mhlw.go.jp/"
+        }
+      ]
+    }
+  ]
+}

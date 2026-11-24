@@ -8,7 +8,14 @@ import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
-import { collectUrls, visibleLength, mdSafe, judgeContent, looksLikeInjection } from './check-links.mjs';
+import { collectUrls, visibleLength, mdSafe, judgeContent, looksLikeInjection, groupOfWhere, selectGroups, groupForDate, isoWeek, isJapanese } from './check-links.mjs';
+import { esc as escStatic, pickWeekly, renderWeekly, renderRss, renderPrefPage, replaceBlock, verifyGenerated } from './lib/static-pages.mjs';
+import { makeScale, project } from '../site/js/world3d.js';
+import { normalizeHealth, searchHealth } from '../site/js/health-search.js';
+import { moonAge, planetLongitudes } from '../site/js/cosmos.js';
+import { ER7119, er7119Text, renderErTable, unlinkUnchecked, TEL_OK } from './lib/static-pages.mjs';
+import { isHumanChecked, isEverChecked, daysSinceCheck, emergencyUrls, humanDue, strictPublish } from './lib/health-checks.mjs';
+import { keepaliveMessage } from './check-keepalive.mjs';
 import { readNoFollow } from './lib/safety.mjs';
 import { parseLiveQuakes, usgsEventUrl, cleanPlace, LIVE_RULES, readLimited } from '../site/js/quake-live.js';
 import { mergeQuakes } from '../site/js/quake-core.js';
@@ -16,7 +23,8 @@ import { parseWorldBank, WB_INDICATORS, buildCompare } from './fetch-worldbank.m
 import { RULES as IMP_RULES, SHOW as IMP_SHOW } from './importance-rules.mjs';
 import { isShownLink } from './lib/link-shown.mjs';
 import { statusModel } from '../site/js/status.js';
-import { checkCleanPng } from './check-privacy.mjs';
+import { checkCleanPng, scanText } from './check-privacy.mjs';
+import { checkOutput } from './check-output.mjs';
 import { judge } from './scope-guard.mjs';
 import { ownerExemption, SKIP_CHECKS } from './lib/owner-pr.mjs';
 import { pickDaily, toItems } from './lib/animals.mjs';
@@ -25,7 +33,7 @@ import { parseFeed, parseFeedDate } from './lib/feed.mjs';
 import { FEEDS, inspectFeed, normalizeFeedItem, decodeFeed, reiwaUpdatedDate, isAiHeadline } from './fetch-feeds.mjs';
 import { normalizeDon } from './fetch-who-don.mjs';
 import { normalizeKev, parseJpcertRdf, inspectJpcertRdf } from './fetch-security.mjs';
-import { validateItems, validateChangelog, validateDirectoryDoc, validateCuratedDocs, validateConnectionsDoc, NATURES } from './validate-data.mjs';
+import { validateItems, validateChangelog, validateDirectoryDoc, validateCuratedDocs, validateConnectionsDoc, NATURES, validateSecurityLogDoc, validateSecurityLog, validateHealthGuideDoc, validateHealthGuide, validateErLinesDoc } from './validate-data.mjs';
 import { natureOf, NATURE_LABELS } from '../site/js/nature.js';
 import { applySupersede } from './lib/supersede.mjs';
 import { checkNode } from './lib/node-guard.mjs';
@@ -239,12 +247,13 @@ test('悪用防止：攻撃手順・攻撃コード・痕跡情報を検出し�
 });
 
 test('Node.js の修正済み版の判定と、公開URLの検査', () => {
-  assert.equal(checkNode('24.22.1'), null);
+  assert.equal(checkNode('24.22.3'), null);
+  assert.ok(checkNode('24.22.1')); // 2026-11-11 の修正より前
   assert.ok(checkNode('24.22.0'));
   assert.ok(checkNode('20.19.0'));
   assert.ok(checkNode('28.0.0')); // 表にない系列は、確認して表に追加するまで使わない
   assert.ok(checkNode('27.1.0')); // 奇数系列は使わない
-  assert.ok(checkNode('24.22.1-pre')); // 正式版でないものは使わない
+  assert.ok(checkNode('24.22.3-pre')); // 正式版でないものは使わない
   assert.ok(checkNode('22.x'));
   assert.equal(parseSiteUrl('https://gilvane6174.github.io/Tomoshibi-atlas'), 'https://gilvane6174.github.io/Tomoshibi-atlas/');
   for (const bad of ['http://x.github.io/', 'https://x.github.io/?a=1', 'javascript:alert(1)', 'https://user:pw@x.io/']) assert.equal(parseSiteUrl(bad), null, bad);
@@ -1029,8 +1038,15 @@ test('世界をくらべる：世界銀行の応答から、地図にある国�
   assert.equal(other.errors, 1);
   // 確認版（ネットなし）では取得しない
   const off = await buildCompare({ countryIds: ids, offline: true, now: new Date(now) });
-  assert.ok(off.indicators.length === WB_INDICATORS.length && off.indicators.every((i) => i.status === 'notFetched' && i.count === 0));
+  // 取得を止めている指標（enabledFetchers が false。利用条件の確認待ちなど）は disabled、ほかは notFetched
+  assert.ok(off.indicators.length === WB_INDICATORS.length && off.indicators.every((i) => ['notFetched', 'disabled'].includes(i.status) && i.count === 0));
+  assert.equal(off.indicators.find((i) => i.key === 'wbInternet')?.status, 'disabled');
   assert.ok(WB_INDICATORS.every((i) => /^https:[/][/]data[.]worldbank[.]org[/]indicator[/]/.test(i.source.url)));
+  // 国の借金のように年が古くなりやすい指標は、決めた年数より古い値を出さない（「データなし」になる）
+  const debt = WB_INDICATORS.find((x) => x.key === 'wbCentralDebt');
+  const d = parseWorldBank([{}, [row('JPN', '2021', 210.5, debt.code), row('BRA', '2009', 60, debt.code)]], debt, ids, now);
+  assert.deepEqual(d.values, { JPN: [210.5, 2021] });
+  assert.equal(d.errors, 0);
 });
 
 test('情報の性質：手動の指定は公的機関・国際機関の発表だけ。指定が無いときは種類から決まる', () => {
@@ -1128,4 +1144,225 @@ test('ワークフローの書き込み権限：許可した種類だけ。引�
   }
 });
 
+test('週次のリンク確認（2026-11）：4つのまとまりに分けて、4週で一巡する', () => {
+  const { urls } = collectUrls();
+  const seen = new Set();
+  for (const [, where] of urls) seen.add(groupOfWhere(where));
+  assert.deepEqual([...seen].sort(), [1, 2, 3, 4, 5]);
+  assert.equal(groupOfWhere('health stroke'), 5);
+  assert.equal(groupOfWhere('health page'), 5);
+  assert.equal(groupOfWhere('JP-01 jp-pref-01-main'), 2);
+  assert.equal(groupOfWhere('animals a-1'), 4);
+  assert.equal(groupOfWhere('entries x'), 3);
+  assert.equal(groupOfWhere('site/about.html'), 3);
+  assert.equal(groupOfWhere('USA usa-1'), 1);
+  // 国の基本情報のリンク（JS が組み立てる）も、週次の確認の対象に入っている（2026-11-24）
+  assert.ok([...urls.values()].some((w) => /^profile [A-Z]{3} mofa$/.test(w)) && [...urls.values()].some((w) => /^profile [A-Z]{3} tourism$/.test(w)));
+  assert.equal(groupOfWhere('profile FRA mofa'), 3);
+  // 4週続けると、4つのまとまりをすべて1回ずつ調べる
+  const weeks = [0, 7, 14, 21].map((d) => groupForDate(new Date(Date.UTC(2026, 10, 23) + d * 86400000)));
+  assert.deepEqual([...weeks].sort(), [1, 2, 3, 4]);
+  assert.equal(isoWeek(new Date(Date.UTC(2026, 0, 1))), 1);
+  // 年越し（2026年は53週ある）でも、4週ごとに必ず一巡する（同じまとまりが続かない）
+  for (let d = 0; d < 400; d += 7) {
+    const four = [0, 7, 14, 21].map((k) => groupForDate(new Date(Date.UTC(2026, 10, 2) + (d + k) * 86400000)));
+    assert.deepEqual([...four].sort(), [1, 2, 3, 4]);
+  }
+  assert.notEqual(groupForDate(new Date('2026-12-28T03:00:00Z')), groupForDate(new Date('2027-01-04T03:00:00Z')));
+  assert.deepEqual(selectGroups('all'), [1, 2, 3, 4, 5]);
+  assert.deepEqual(selectGroups('3'), [3]);
+  assert.deepEqual(selectGroups('5'), [5]);
+  // 毎月最初の週（日本時間1〜7日）は、急な病気・けがのページも加える
+  assert.deepEqual(selectGroups('auto', new Date('2026-12-06T03:00:00Z')).includes(5), true);
+  assert.deepEqual(selectGroups('auto', new Date('2026-12-14T03:00:00Z')).includes(5), false);
+  assert.ok(selectGroups('5; rm -rf /', new Date('2026-12-14T03:00:00Z')).length === 1); // 想定外の値は「今週の分」と同じに扱う
+  assert.ok(isJapanese('https://www.city.sapporo.jp/a', 'JP-01 x'));
+  assert.ok(isJapanese('https://www.mhlw.go.jp/', 'site/about.html'));
+  assert.ok(!isJapanese('https://www.cdc.gov/', 'USA x'));
+});
+
+test('組み立てるページ（2026-11）：データの文字を無害化し、許可していないリンクや仕込みを止める', () => {
+  assert.equal(escStatic('<script>"&\''), '&lt;script&gt;&quot;&amp;&#39;');
+  const nowMs = Date.parse('2026-11-19T03:00:00Z');
+  const it = (id, checkedAt, publishedAt, extra = {}) => ({ id, layer: 'research', title: { ja: `見出し${id}`, en: `t${id}` }, summary: { ja: '要約', en: 's' }, publishedAt, checkedAt, source: { name: '機関', url: 'https://www.who.int/news/' + id }, ...extra });
+  const items = [it('a', '2026-11-18', '2026-11-10'), it('b', '2026-11-13', '2026-11-12'), it('c', '2026-11-01', '2026-10-01'), it('d', '2026-11-12', '2026-11-11'), it('e', '2026-11-19', '2026-11-01', { superseded: true })];
+  const w = pickWeekly(items, nowMs, 3);
+  assert.deepEqual(w.items.map((x) => x.id), ['b', 'a', 'd']); // 7日以内（11/13〜11/19）の2件を公表日の新しい順、足りない分を前の確認から
+  assert.equal(w.filled, true);
+  assert.equal(w.from, '2026-11-13');
+  // 見出しに HTML を仕込まれても、文字として出る
+  const evil = [it('x', '2026-11-18', '2026-11-18', { title: { ja: '<img src=x onerror=alert(1)>', en: 'x' } })];
+  const html = renderWeekly(pickWeekly(evil, nowMs), 'ja', isAllowedUrl);
+  assert.ok(!html.includes('<img') && html.includes('&lt;img'));
+  // 許可リストに無い原典にはリンクしない
+  const bad = renderWeekly(pickWeekly([it('y', '2026-11-18', '2026-11-18', { source: { name: 'x', url: 'https://evil.example/' } })], nowMs), 'ja', isAllowedUrl);
+  assert.ok(!bad.includes('evil.example'));
+  // RSS：公開URLが分からないときは作らない。作るときは文字を無害化する
+  assert.equal(renderRss(evil, 'ja', null, nowMs, isAllowedUrl), null);
+  const rss = renderRss(evil, 'ja', 'https://example.github.io/a/', nowMs, isAllowedUrl);
+  assert.ok(rss.includes('&lt;img') && !rss.includes('<img'));
+  // 都道府県のページ：許可していないリンクは出さない
+  const pref = { code: '01', ja: '北海道', links: [{ id: 'a', role: 'main', title: { ja: '<b>窓口</b>' }, url: 'https://www.pref.hokkaido.lg.jp/a.html' }, { id: 'b', role: 'mind', title: { ja: 'x' }, url: 'https://evil.example/' }], local: [] };
+  const ok = (u) => u.startsWith('https://www.pref.hokkaido.lg.jp/');
+  const page = renderPrefPage(pref, [pref], ok);
+  assert.ok(page.includes('&lt;b&gt;窓口') && !page.includes('evil.example'));
+  // 出来上がりの検査：script の追加・CSP の違い・許可していない外部リンク・イベント属性・印の残りを見つける
+  const tpl = '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'"><main><!-- gen:x --><!-- /gen:x --></main>';
+  const fill = (c) => replaceBlock(tpl, 'x', c);
+  assert.deepEqual(verifyGenerated(fill('<a href="https://www.pref.hokkaido.lg.jp/a.html">a</a><a href="welfare-pref.html">b</a>'), tpl, ok), []);
+  assert.ok(verifyGenerated(fill('<script src="js/x.js"></script>'), tpl, ok).length);
+  assert.ok(verifyGenerated(fill('<a href="https://evil.example/">a</a>'), tpl, ok).length);
+  assert.ok(verifyGenerated(fill('<a href="javascript:alert(1)">a</a>'), tpl, ok).length);
+  assert.ok(verifyGenerated(fill('<p onclick="x()">a</p>'), tpl, ok).length);
+  assert.ok(verifyGenerated(tpl, tpl, ok).length); // 印が残っている
+  assert.throws(() => replaceBlock('<p></p>', 'x', 'a'));
+});
+
+test('安全対策の記録（2026-11）：決まった形・許可したリンクだけ・悪用されうる情報なし', () => {
+  assert.deepEqual(validateSecurityLog(), []);
+  const ok = { date: '2026-11-01', kind: 'incident', status: 'done', title: { ja: 'あ', en: 'a' }, summary: { ja: 'あ', en: 'a' }, sources: [{ name: 'GitHub', url: 'https://github.blog/changelog/x/' }] };
+  assert.deepEqual(validateSecurityLogDoc({ schemaVersion: 1, entries: [ok] }), []);
+  const errs = (e) => validateSecurityLogDoc({ schemaVersion: 1, entries: [{ ...ok, ...e }] });
+  assert.ok(errs({ sources: [{ name: 'x', url: 'https://evil.example/' }] }).length, '許可していないリンク');
+  assert.ok(errs({ sources: [{ name: 'x', url: 'https://github.blog/x?utm=1' }] }).length, '追跡パラメータ');
+  assert.ok(errs({ sources: [{ name: 'x', url: 'https://gist.github.blog.evil.example/' }] }).length, '似せたホスト');
+  assert.ok(errs({ kind: 'rumor' }).length);
+  assert.ok(errs({ status: 'secret' }).length);
+  assert.ok(errs({ date: '2099-01-01' }).length, '未来の日付');
+  assert.ok(errs({ summary: { ja: '<script>x</script>', en: 'a' } }).length, 'HTML');
+  assert.ok(errs({ extra: 1 }).length, '定義されていない項目');
+  assert.ok(validateSecurityLogDoc({ schemaVersion: 1, entries: [{ ...ok, date: '2026-11-02' }, ok] }).length, '古い順に並んでいない');
+});
+
+test('3Dで見る世界（2026-11）：目盛りと投影の計算', () => {
+  const s = makeScale([1, 10, 100], '%');
+  assert.equal(s.f(1), -1);
+  assert.equal(s.f(100), 1);
+  const lg = makeScale([100, 1000, 10000], 'intl$');
+  assert.ok(lg.useLog && Math.abs(lg.f(1000)) < 1e-9); // 対数目盛りでは真ん中
+  assert.equal(makeScale([5, 5], '%').f(5), -1); // 同じ値だけでも落ちない
+  const p = project([0, 0, 0], { yaw: 0, pitch: 0, dist: 3, w: 200, h: 100 });
+  assert.equal(p.sx, 100);
+  assert.equal(p.sy, 50);
+  const right = project([1, 0, 0], { yaw: 0, pitch: 0, dist: 3, w: 200, h: 100 });
+  assert.ok(right.sx > 100);
+});
+
+test('取り込み忘れの確認（2026-11）：45日を過ぎたら、何をすればよいかが分かる文で知らせる', () => {
+  assert.equal(keepaliveMessage(10).ok, true);
+  assert.equal(keepaliveMessage(null).ok, false);
+  assert.ok(keepaliveMessage(null).text.includes('確かめられません'));
+  const m = keepaliveMessage(50);
+  assert.equal(m.ok, false);
+  assert.ok(m.text.includes('対応が必要') && m.text.includes('あと 10 日') && m.text.includes('取り込んで'));
+  assert.ok(keepaliveMessage(70).text.includes('あと 0 日'));
+});
+
+test('急な病気・けがの検索（2026-11）：ひらがな・カタカナ・漢字の一致、公式リンクだけ、都道府県の＃7119', () => {
+  assert.equal(normalizeHealth('ケイレン'), 'けいれん');
+  assert.equal(normalizeHealth('ＡＥＤ'), 'aed');
+  const items = JSON.parse(readFileSync(new URL('../data/curated/health-guide.json', import.meta.url), 'utf8')).items;
+  assert.equal(searchHealth(items, 'けいれん')[0].id, 'seizure');
+  assert.equal(searchHealth(items, '痙攣')[0].id, 'seizure');
+  assert.equal(searchHealth(items, 'のうそっちゅう')[0].id, 'stroke');
+  assert.equal(searchHealth(items, '脳梗塞')[0].id, 'stroke');
+  assert.equal(searchHealth(items, 'アナフィラキシー')[0].id, 'anaphylaxis');
+  assert.equal(searchHealth(items, 'ちっそく')[0].id, 'choking');
+  assert.equal(searchHealth(items, 'zzzz').length, 0);
+  assert.ok(searchHealth(items, '', 'care').every((i) => i.audience.includes('care')));
+  assert.deepEqual(validateHealthGuide(), []);
+  const bad = { schemaVersion: 1, reviewedAt: '2026-11-19', items: [{ id: 'x-test', kind: 'symptom', audience: ['general'], name: 'テスト', kana: 'てすと', aliases: [], urgent: false, summary: '説明', links: [{ name: '外部', url: 'https://example.com/a' }] }] };
+  assert.ok(validateHealthGuideDoc(bad).some((e) => e.includes('links[0].url')));
+  bad.items[0].links[0] = { name: '<b>x</b>', url: 'https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/' };
+  assert.ok(validateHealthGuideDoc(bad).some((e) => e.includes('HTML')));
+  // ? の付いた URL：exactQueryUrls に完全一致で書いたものだけ通す（引数を変えたもの・追跡用の引数を足したものは止める）
+  bad.items[0].summaryKana = 'てすと';
+  bad.items[0].links[0] = { name: '出典', url: 'https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=53' };
+  assert.ok(!validateHealthGuideDoc(bad).some((e) => e.includes('links[0].url')));
+  for (const u of ['https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=54', 'https://hsp.ncnp.go.jp/column/epilepsy_detail.php?@id=53&utm_source=x', 'https://www.fdma.go.jp/a?b=1']) {
+    bad.items[0].links[0] = { name: '出典', url: u };
+    assert.ok(validateHealthGuideDoc(bad).some((e) => e.includes('links[0].url')), u);
+  }
+  delete bad.items[0].summaryKana;
+  // 説明文のひらがな版（summaryKana）：書くときは、漢字が入っていたら止める
+  bad.items[0].summaryKana = 'ひらがな と 漢字';
+  assert.ok(validateHealthGuideDoc(bad).some((e) => e.includes('summaryKana')));
+  // 症状ごとの対応の説明文は載せない（2026-11-24 運用者の判断）。公式ページへのリンクと分類だけ
+  assert.ok(items.every((i) => i.summary === undefined && i.summaryKana === undefined));
+  // 本番の公開（GitHub Actions・--offline なし）のときだけ、未確認の救急情報を隠す。手元の確認版と、PR の検査（--offline）では隠さない
+  assert.equal(strictPublish({ GITHUB_ACTIONS: 'true' }, ['node', 'build.mjs']), true);
+  assert.equal(strictPublish({ GITHUB_ACTIONS: 'true' }, ['node', 'build.mjs', '--offline']), false);
+  assert.equal(strictPublish({}, ['node', 'build.mjs']), false);
+  // 公開物の検査：確認版だけのファイルや目印が入っていたら止める
+  {
+    const dir = mkdtempSync(join(tmpdir(), 'ta-out-'));
+    mkdirSync(join(dir, 'js'));
+    writeFileSync(join(dir, 'index.html'), '<p>ok</p>');
+    assert.deepEqual(checkOutput(dir), []);
+    writeFileSync(join(dir, 'js', 'bundle-index.js'), 'x');
+    writeFileSync(join(dir, 'a.json'), '{"t":"【見本】"}');
+    assert.equal(checkOutput(dir).length, 2);
+    // .env や鍵ファイルは、中身にかかわらず名前で止める
+    writeFileSync(join(dir, '.env'), 'X=1');
+    writeFileSync(join(dir, 'js', 'server.pem'), 'x');
+    assert.equal(checkOutput(dir).length, 4);
+    rmSync(dir, { recursive: true, force: true });
+  }
+  // 秘密の値の形：画面に埋め込まれる設定の名前・決済サービスの鍵の形を見つける（テスト用の架空の文字列を組み立てて使う）
+  {
+    const hit = (t) => scanText(t).includes('APIキー・秘密鍵らしき文字列');
+    assert.ok(hit('rk_' + 'live_' + 'A1b2C3d4E5f6G7'));
+    assert.ok(hit('whsec' + '_' + 'a1b2c3d4e5f6g7h8i9'));
+    assert.ok(scanText('VITE' + '_OPENAI_API_KEY=x').includes('画面に埋め込まれる秘密の設定'));
+    assert.ok(!scanText('risk-management guide').length);
+  }
+  assert.equal(Object.keys(ER7119).length, 47);
+  for (const c of ['24', '32', '41', '45', '46']) assert.ok(er7119Text(c).includes('実施していません'));
+  assert.ok(er7119Text('17').includes('実施（') && er7119Text('33').includes('全年齢') && er7119Text('02').includes('＃8000'));
+  assert.ok(er7119Text('23').includes('名古屋市'));
+  const html = renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }]);
+  assert.ok(html.includes('全年齢') && html.includes('確認日'));
+  // 受付時間・つながらないときの番号は、運用者が照合したときだけ出す
+  const er = { centers: [{ prefs: ['13'], name: '見本センター', hours: '全日24時間', altNumbers: '0000', note: '' }] };
+  assert.ok(!renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: false }).includes('0000'));
+  assert.ok(renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: true }).includes('全日24時間'));
+  assert.deepEqual(validateErLinesDoc(JSON.parse(readFileSync(new URL('../data/curated/er-lines.json', import.meta.url), 'utf8'))), []);
+  // 人の確認（45日以内）が無いリンクは外す
+  const now = new Date('2026-11-19T03:00:00Z');
+  const u = 'https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/';
+  assert.equal(isHumanChecked(u, {}, now), false);
+  assert.equal(isHumanChecked(u, { [u]: '2026-11-01' }, now), true);
+  assert.equal(isHumanChecked(u, { [u]: '2026-09-01' }, now), false);
+  assert.equal(isHumanChecked(u, { [u]: '2026-12-01' }, now), false); // 未来の日付は認めない
+  // 一度確認したリンクは、期限（45日）を過ぎても載せたまま（運用者の決定 2026-11-20）。未確認だけ載せない
+  assert.equal(isEverChecked(u, { [u]: '2026-09-01' }, now), true);
+  assert.equal(isEverChecked(u, {}, now), false);
+  assert.equal(daysSinceCheck(u, { [u]: 'x' }, now), null);
+  const page = `<p><a href="${u}" target="_blank" rel="noopener noreferrer">講習</a> <a href="about.html">内</a></p>`;
+  const out = unlinkUnchecked(page, (x) => x === u);
+  assert.ok(!out.includes(`href="${u}"`) && out.includes('確認待ち') && out.includes('href="about.html"'));
+  assert.ok(emergencyUrls().size >= 10 && [...emergencyUrls().values()].every((w) => w.startsWith('health')));
+  assert.ok(TEL_OK.has('tel:119') && TEL_OK.has('tel:110') && TEL_OK.has('tel:%239110') && !TEL_OK.has('tel:117'));
+  // 通知漏れの防止：12月7日に確認 → 1月4日（毎月最初の週）は「今月の確認がまだ」で知らせる → 確認しないままなら毎週知らせ、2月1日も知らせる
+  const one = new Map([[u, 'health x']]);
+  const ck = { [u]: '2026-12-07' };
+  assert.equal(humanDue(one, ck, new Date('2026-12-14T03:00:00Z')).length, 0); // 7日後・月初の週ではない
+  assert.match(humanDue(one, ck, new Date('2027-01-04T03:00:00Z'))[0].reason, /今月の確認がまだ/);
+  assert.match(humanDue(one, ck, new Date('2027-01-11T03:00:00Z'))[0].reason, /期限が近い/);
+  assert.match(humanDue(one, ck, new Date('2027-01-25T03:00:00Z'))[0].reason, /期限切れ/);
+  assert.match(humanDue(one, ck, new Date('2027-02-01T03:00:00Z'))[0].reason, /期限切れ/);
+  assert.equal(humanDue(one, { [u]: '2027-01-04' }, new Date('2027-01-04T03:00:00Z')).length, 0); // 月初に確認したら、その月は知らせない
+  assert.match(humanDue(one, {}, now)[0].reason, /未確認/);
+});
+
+test('宇宙へ（2026-11）：月齢と惑星の並びを時刻から計算する（外部への通信なし）', () => {
+  // 2024-01-11 11:57 UTC は新月、2024-01-25 17:54 UTC は満月（おおよその計算なので幅をもたせる）
+  const near = moonAge(new Date('2024-01-11T11:57:00Z'));
+  assert.ok(near < 1 || near > 28.5, `新月付近のはず：${near}`);
+  const full = moonAge(new Date('2024-01-25T17:54:00Z'));
+  assert.ok(full > 13 && full < 16, `満月付近のはず：${full}`);
+  const L = planetLongitudes(new Date('2000-01-01T12:00:00Z'));
+  assert.ok(Math.abs(L.earth - 100.46) < 0.01 && Object.keys(L).length === 8);
+  for (const v of Object.values(planetLongitudes())) assert.ok(v >= 0 && v < 360);
+});
 console.log(`\n${n} tests passed`);

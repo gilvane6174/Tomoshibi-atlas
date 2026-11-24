@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a0f16">
+  <title>How this site stays safe | Tomoshibi Atlas — Yutaka Yoshioka</title>
+  <meta name="description" content="The security measures and review routine of Tomoshibi Atlas: a static site with no secrets, link safety checks, regular reviews, and recent security incidents with responses. Run by Yutaka Yoshioka.">
+  <meta name="author" content="Yutaka Yoshioka（吉岡有隆）">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tomoshibi Atlas（ともしびアトラス）">
+  <meta property="og:title" content="How this site stays safe | Tomoshibi Atlas — Yutaka Yoshioka">
+  <meta property="og:description" content="The security measures and review routine of Tomoshibi Atlas: a static site with no secrets, link safety checks, regular reviews, and recent security incidents with responses. Run by Yutaka Yoshioka.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- seo:abs（公開URLが分かるときだけ、組み立て時に canonical などを入れる） -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "#website", "name": "Tomoshibi Atlas", "alternateName": ["ともしびアトラス", "灯アトラス", "灯の地図", "ともしび", "トモシビ", "Tomoshibi", "TOMOSHIBI ATLAS", "Tomoshibi Atlas（ともしびアトラス）", "Atlas of Lights"], "description": "Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころと福祉・医療研究の公的な情報と、AI（SI）やITのセキュリティ上の脅威、地震・災害などの防災情報、詐欺などの防犯情報を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。", "inLanguage": ["ja", "en"], "author": {"@type": "Person", "@id": "#operator", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "よしおかゆたか", "Yoshioka Yutaka", "YOSHIOKA YUTAKA", "yoshiokayutaka"], "description": "Tomoshibi Atlas（ともしびアトラス）の企画・デザイン・制作・運営。小説も書いています。", "knowsAbout": ["Webデザイン", "データベースサイト", "地球儀", "小説"]}, "creator": {"@id": "#operator"}, "publisher": {"@id": "#operator"}, "isAccessibleForFree": true, "keywords": "Tomoshibi Atlas, ともしびアトラス, 灯の地図, Yutaka Yoshioka, 吉岡有隆, 地球儀, 世界地図, 世界の情報, 感染症, 感染症情報, 福祉, 福祉情報, 相談窓口, 生活支援, こころの健康, 防災, 防災情報, 災害, 災害情報, 地震, 地震情報, 防犯, 防犯情報, 詐欺, 特殊詐欺, ITセキュリティ, サイバーセキュリティ, 脆弱性, 医療研究, AI, globe, world map, infectious diseases, outbreaks, welfare, mental health, disaster, earthquakes, crime prevention, scams, cyber security, 灯アトラス, ともしび, トモシビ, アトラス, あとらす, Tomoshibi, Atlas, TOMOSHIBI ATLAS, Yoshioka Yutaka, よしおかゆたか, yoshiokayutaka, 吉岡, よしおか, 有隆, ゆたか, 地球儀サイト, 公的情報, 公的情報の横断データベース, 横断データベース, 宇宙, 銀河, 今日の動物たち, 動物の豆知識, 暮らしの相談, ひとり親, 障がい福祉, 急な病気, 救急相談, ＃7119, 情報漏えい, フィッシング, 闇バイト, 世界をくらべる, 国際比較, 吉岡 ともしび, 吉岡 アトラス, 吉岡 地球儀, 吉岡 宇宙, 吉岡 サイト, 吉岡有隆 サイト, 吉岡有隆 地球儀, 吉岡有隆 デザイン, デザイン, Webデザイン, サイトデザイン, 全国横断型データベースサイト, 横断型データベース, データベースサイト, 世界横断データベース, 地球儀 サイト, 3D地球儀, 宇宙へ, 太陽系, 天の川銀河, 小説, 吉岡有隆 小説"}, {"@type": "WebPage", "@id": "#webpage", "name": "How this site stays safe | Tomoshibi Atlas — Yutaka Yoshioka", "description": "The security measures and review routine of Tomoshibi Atlas: a static site with no secrets, link safety checks, regular reviews, and recent security incidents with responses. Run by Yutaka Yoshioka.", "inLanguage": "en", "isPartOf": {"@id": "#website"}, "author": {"@id": "#operator"}}]}</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="ja" href="site-security.html">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="doc">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="doc-top">
+    <a class="brand" href="./?lang=en#return"><svg class="brand-logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><radialGradient id="logo-flame" cx="50%" cy="62%" r="60%"><stop offset="0" stop-color="#fff6e2"/><stop offset=".45" stop-color="#f6cf8e"/><stop offset="1" stop-color="#e9a75a"/></radialGradient><radialGradient id="logo-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#f2c27a" stop-opacity=".6"/><stop offset="1" stop-color="#f2c27a" stop-opacity="0"/></radialGradient></defs><circle cx="16" cy="14" r="12" fill="url(#logo-glow)"/><path d="M5.5 19.5a10.5 10.5 0 0 0 21 0" fill="none" stroke="#6f8db3" stroke-width="1.6" stroke-linecap="round"/><path d="M9.5 24.2a10.5 4 0 0 0 13 0" fill="none" stroke="#3f5778" stroke-width="1.1" stroke-linecap="round"/><path d="M16 5.2c3.2 3.9 4.7 6.6 4.7 9.1a4.7 4.7 0 0 1-9.4 0c0-2.5 1.5-5.2 4.7-9.1z" fill="url(#logo-flame)"/><circle cx="16" cy="14.6" r="1.6" fill="#fffaf0"/></svg><span class="brand-name">Tomoshibi Atlas</span><span class="brand-sub">Back to the globe</span></a>
+    <a class="icon-btn lang" href="site-security.html" hreflang="ja" lang="ja">日本語</a>
+  </div>
+
+  <main id="main" class="doc-wrap">
+    <h1>How this site stays safe</h1>
+    <p class="lead">The measures and review routine that keep Tomoshibi Atlas a link collection you can open with confidence.<br>Run by Yutaka Yoshioka (non-profit)</p>
+
+    <section>
+      <h2>Principles: hold nothing, allow no writes, stop on failed checks</h2>
+      <ul>
+        <li><strong>Hold nothing</strong>: a static site with no server, login, forms, API keys or other secrets, and no visitor data. No analytics or ads.</li>
+        <li><strong>Run nothing in the page</strong>: outside connections and inline scripts are blocked by the browser's Content Security Policy. All text is shown as text, never as HTML. The only exception is loading the U.S. Geological Survey's public earthquake data while the Earthquakes section is open.</li>
+        <li><strong>No generative AI in automatic updates</strong>: automatic retrieval uses fixed programs only; retrieved text is never given to an AI.</li>
+        <li><strong>No write access</strong>: automatic updates cannot write to the repository. AI can only propose changes to two content files.</li>
+        <li><strong>Stop on failed checks</strong>: before publishing, the site is checked for personal or secret information, links outside the allow list, invisible characters and details useful to attackers. If a check fails, nothing is published and the previous version stays online.</li>
+        <li><strong>A person decides</strong>: the one who makes a change and the one who checks it are kept separate, and the operator reviews the diff before merging. Passing the checks is not proof of safety.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Link safety</h2>
+      <ul>
+        <li>Only pages of organisations on the allow list (governments, public bodies, international organisations, peer-reviewed journals and the like) are listed. No private or personal sites, short URLs or ads.</li>
+        <li>New links are checked to be official, not redirected to another domain and free of signs of tampering; only links with a check record are shown.</li>
+        <li><strong>Weekly automatic check</strong>: certificate problems, broken links, redirects and signs of tampering (injected content, text that looks like instructions to an AI). With more than 800 links, four groups are checked one per week, covering everything every four weeks. Dangerous links are reported to the operator and removed or replaced with the new official URL.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Review routine</h2>
+      <ul>
+        <li><strong>Twice a day</strong>: each publish runs data checks, privacy checks, commit checks, repository-settings checks and self-tests; any failure stops publishing.</li>
+        <li><strong>Weekly</strong>: the link check above, a review of official security announcements (GitHub, Node.js, JPCERT/CC, IPA and others), and the operator's own check of the GitHub screens (unfamiliar sign-ins, apps, pull requests or branches).</li>
+        <li><strong>Monthly (Japanese emergency care page)</strong>: because it deals with life-threatening situations, an automatic check runs in the first week of each month, and then the operator opens every linked page and checks the content. Links that no person has checked yet are not shown; links whose monthly check is overdue stay on the page while the operator is reminded.</li>
+        <li><strong>45 days after the last update</strong>: GitHub stops scheduled jobs in repositories without updates for 60 days, so the operator is notified after 45 days.</li>
+        <li><strong>When a new incident appears</strong>: it is checked for relevance to this site and handled if needed, and recorded below and in the <a href="updates.en.html#security">security record</a>.</li>
+      </ul>
+      <p>AI helps with reviews, but AI only proposes; the operator decides. A review done by an AI is not called an independent audit.</p>
+    </section>
+
+    <section>
+      <h2>Recent incidents and responses</h2>
+      <div id="latest-security">Loading…</div>
+      <p><a href="updates.en.html#security">See the full record (Updates)</a></p>
+    </section>
+
+
+    <section>
+      <h2>If you find a vulnerability</h2>
+      <p>Please do not post it publicly; use the contact in <a href=".well-known/security.txt">security.txt</a> (GitHub private vulnerability reporting). For other products, contact the vendor (in Japan, IPA's reporting desk).</p>
+    </section>
+    <noscript><p>JavaScript is required to show recent incidents.</p></noscript>
+  </main>
+  <script src="js/site-security.js" type="module"></script>
+</body>
+</html>

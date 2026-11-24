@@ -121,7 +121,7 @@ async function start() {
     d.append(Object.assign(document.createElement('span'), { className: 'dl-name' }), Object.assign(document.createElement('span'), { className: 'dl-desc' }));
     d.addEventListener('click', () => {
       setLayer(l.id);
-      closeMenu();
+      closeSheet();
     });
     $('drawer-' + l.group).append(d);
     drawerItems.set(l.id, d);
@@ -136,12 +136,15 @@ async function start() {
     const aboutHref = lang === 'en' ? 'about.en.html' : 'about.html';
     for (const id of ['disclaimer-link']) $(id).href = aboutHref + '#disclaimer';
     $('operator-link').href = aboutHref;
+    $('text-guide-link').href = lang === 'en' ? 'welfare-guide.en.html' : 'safety.html';
     document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
     $('drawer-about').href = aboutHref;
     $('quick-about').href = aboutHref;
+    $('quick-panel').setAttribute('aria-label', t('quick.nav'));
     // トップと（スマートフォンの）メニューから、福祉の相談先とセキュリティ対策の説明ページへ直接進める
     for (const id of ['quick-welfare', 'drawer-welfare']) $(id).href = lang === 'en' ? 'welfare-guide.en.html' : 'welfare-guide.html';
     for (const id of ['quick-security', 'drawer-security']) $(id).href = lang === 'en' ? 'security-basics.en.html' : 'security-basics.html';
+    for (const id of ['quick-heritage', 'drawer-heritage']) $(id).href = lang === 'en' ? 'world-heritage.en.html' : 'world-heritage.html';
     // ボタンは短い名前、正式な名前は title に
     $('quick-security').title = t('quick.security');
     $('quick-compare').title = t('quick.compare');
@@ -149,8 +152,12 @@ async function start() {
     for (const id of ['quick-compare', 'drawer-compare']) $(id).href = lang === 'en' ? 'compare.en.html' : 'compare.html';
     for (const id of ['quick-connections', 'drawer-connections']) $(id).href = lang === 'en' ? 'connections.en.html' : 'connections.html';
     $('welcome-x').setAttribute('aria-label', t('welcome.closeX'));
+    document.querySelector('.cosmos-ja')?.setAttribute('lang', lang); // 英語版では、宇宙の文も英語
+    // 宇宙・地球を切り替えるボタン：言語を変えたときも、今の状態に合った言葉に（宇宙の処理を読み込む前でも）
+    if ($('btn-space')) $('btn-space').textContent = t(document.body.classList.contains('cosmic') ? 'cosmos.back' : 'cosmos.go');
     // サイトの中から地球儀へ戻るリンクには #return を付け、最初のお知らせを出さない（showWelcome の条件）
-    $('brand-link').href = urlForLang(lang) + '#return';
+    // ロゴは、分野・国・テーマの指定を外した、いちばん最初の画面へ（言語だけは今のまま）
+    $('brand-link').href = './' + location.pathname.split('/').pop() + (lang === 'en' ? '?lang=en' : '') + '#return';
     const other = lang === 'en' ? 'ja' : 'en';
     for (const id of ['btn-lang', 'drawer-lang']) {
       const a = $(id);
@@ -165,6 +172,9 @@ async function start() {
     $('tabs-caution').setAttribute('aria-label', t('group.caution'));
     $('tabs-calm').setAttribute('aria-label', t('group.calm'));
     for (const id of ['detail-close', 'list-close', 'guide-close', 'menu-close']) $(id).setAttribute('aria-label', t('control.close'));
+    // 最終更新（サイトを組み立てた時刻）。トップが動物の分野でも、いつの情報か分かるように画面の上に出す
+    const updated = data.meta.mode === 'live' && data.meta.builtAt ? t('updated.at', { date: formatDateTime(data.meta.builtAt) }) : t('updated.local');
+    for (const id of ['site-updated', 'site-updated-m']) if ($(id)) $(id).textContent = updated;
     $('sample-banner').hidden = data.meta.mode === 'live';
     $('sample-banner').textContent = t(data.meta.mode === 'snapshot' ? 'status.snapshot' : 'status.offline');
     for (const l of LAYERS) {
@@ -216,6 +226,7 @@ async function start() {
         (n.key === 'status.feedsMissing'
           ? t(n.key, { sources: n.sources.map((k) => t('feed.' + k)).join(lang === 'ja' ? '・' : ', ') })
           : t(n.key));
+    if (state.current === 'quake' && quakeLiveFailed) text += ' ' + t('status.liveFailed');
     $('status-text').textContent = text;
   }
 
@@ -238,12 +249,14 @@ async function start() {
   // 失敗しても組み立て時の一覧をそのまま表示する（quake-live.js）
   let quakeAt = 0;
   let quakeBusy = false;
+  let quakeLiveFailed = false; // 最新の読み込みに失敗して、組み立て時の一覧を出しているあいだ（画面下に知らせる）
   async function liveQuakes() {
     if (data.meta.mode !== 'live' || state.current !== 'quake' || quakeBusy || document.hidden || Date.now() - quakeAt < 10 * 60000) return;
     quakeBusy = true;
     quakeAt = Date.now();
     try {
       if (await refreshQuakes(data)) {
+        quakeLiveFailed = false;
         renderChrome();
         if (state.current === 'quake') {
           labels.setItems(data.layers.quake.items, data.countryMap, layerById('quake'));
@@ -251,7 +264,9 @@ async function start() {
         }
       }
     } catch {
-      /* 読み込めないときは、組み立て時の一覧のまま */
+      // 読み込めないときは、組み立て時の一覧のまま。古い一覧を最新と思われないよう、画面下に知らせる
+      quakeLiveFailed = true;
+      if (state.current === 'quake') updateStatus();
     } finally {
       quakeBusy = false;
     }
@@ -310,13 +325,48 @@ async function start() {
   }
 
   // ── 国の詳細 ──
+  // 国の基本情報は、はじめて国を開いたときにだけ読み込む（トップを開いただけでは読み込まない）
+  let profiles = null;
+  let profilesLoading = false;
+  // 「テーマで読む」の線を出しているときのテーマ（線の先の国を開くと、そのテーマのその国の情報を、国の欄の上に出す）
+  let arcTheme = null;
+  function loadProfiles() {
+    if (profiles || profilesLoading) return;
+    profilesLoading = true;
+    fetch('data/country-profiles.json', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((doc) => {
+        profiles = doc && typeof doc === 'object' && doc.countries ? doc : { countries: {} };
+        if (state.country && profiles.countries[state.country] && !$('detail-panel').hidden) {
+          const body = $('detail-body');
+          const top = body.scrollTop;
+          renderDetail();
+          body.scrollTop = top;
+        }
+      })
+      .catch(() => {
+        profiles = { countries: {} }; // 読めなくても、ほかの表示は続ける
+      });
+  }
+  // 公式リンク集が後から読めたら、開いている国の欄を描き直す（読む位置は保つ）
+  data.directoryReady?.then(() => {
+    if (state.country && !$('detail-panel').hidden) {
+      const body = $('detail-body');
+      const top = body.scrollTop;
+      renderDetail();
+      body.scrollTop = top;
+    }
+  });
   function renderDetail() {
     const c = data.countryMap.get(state.country);
+    loadProfiles();
     $('detail-title').textContent = countryName(c);
     renderCountry($('detail-body'), {
       country: c,
       layerId: state.current,
       data,
+      profile: profiles?.countries?.[c.id] || null,
+      themeInfo: arcTheme ? { id: arcTheme.id, title: arcTheme.title, items: arcTheme.items.filter((it) => (it.countries || []).includes(c.id)) } : null,
       kana: state.kana,
       onSwitchLayer: (lid) => setLayer(lid),
       onToggleKana: () => {
@@ -381,7 +431,14 @@ async function start() {
     toast(t('add.findHint'));
     $('search-input').focus();
   };
-  const guideOpts = () => ({ aboutHref: lang === 'en' ? 'about.en.html' : 'about.html', onFindWelfare: findWelfare });
+  const guideOpts = () => ({
+    aboutHref: lang === 'en' ? 'about.en.html' : 'about.html',
+    onFindWelfare: findWelfare,
+    onSpace: () => {
+      hidePanel('guide-panel');
+      goSpace();
+    },
+  });
   const toggleGuide = () => {
     if ($('guide-panel').hidden) {
       renderGuide($('guide-body'), guideOpts());
@@ -392,31 +449,130 @@ async function start() {
   $('guide-close').addEventListener('click', () => hidePanel('guide-panel'));
 
   // ── スマートフォンのメニュー ──
-  function openMenu() {
-    $('menu-drawer').hidden = false;
+  // メニュー（ページの案内）と分野の切り替えは、別々の引き出しにする。どちらも開いている間は背後を操作の対象から外す
+  function openDrawer(id, opener, focusEl) {
+    closeDrawers(false);
+    $(id).hidden = false;
     $('menu-backdrop').hidden = false;
-    // 開いている間は、背後の画面を操作・読み上げの対象から外す（フォーカスがメニューの外へ出ないように）
-    for (const e of document.body.children) if (e.id !== 'menu-drawer' && e.id !== 'menu-backdrop' && e.tagName !== 'SCRIPT') e.inert = true;
-    $('btn-menu').setAttribute('aria-expanded', 'true');
-    $('current-layer').setAttribute('aria-expanded', 'true');
-    // フォーカスはいまの分野に置くが、表示はメニューの一番上（目的と使い方）から見せる
-    (drawerItems.get(state.current) || $('menu-close')).focus({ preventScroll: true });
-    document.querySelector('#menu-drawer .drawer-body').scrollTop = 0;
+    for (const e of document.body.children) if (e.id !== id && e.id !== 'menu-backdrop' && e.tagName !== 'SCRIPT') e.inert = true;
+    $(opener).setAttribute('aria-expanded', 'true');
+    (focusEl || $(id).querySelector('.close')).focus({ preventScroll: true });
+    $(id).querySelector('.drawer-body').scrollTop = 0;
   }
-  function closeMenu() {
-    const wasOpen = !$('menu-drawer').hidden;
+  function closeDrawers(restore = true) {
+    const open = ['menu-drawer', 'layer-sheet'].find((id) => !$(id).hidden);
     for (const e of document.body.children) e.inert = false;
     $('menu-drawer').hidden = true;
-    if (wasOpen && isNarrow()) $('btn-menu').focus({ preventScroll: true }); // 閉じたら、開いたボタンへフォーカスを戻す
+    $('layer-sheet').hidden = true;
     $('menu-backdrop').hidden = true;
     $('btn-menu').setAttribute('aria-expanded', 'false');
     $('current-layer').setAttribute('aria-expanded', 'false');
+    if (restore && open && isNarrow()) $(open === 'menu-drawer' ? 'btn-menu' : 'current-layer').focus({ preventScroll: true }); // 閉じたら、開いたボタンへフォーカスを戻す
   }
-  for (const id of ['btn-menu', 'current-layer']) $(id).addEventListener('click', () => ($('menu-drawer').hidden ? openMenu() : closeMenu()));
+  const openMenu = () => openDrawer('menu-drawer', 'btn-menu');
+  const closeMenu = () => closeDrawers();
+  const openSheet = () => openDrawer('layer-sheet', 'current-layer', drawerItems.get(state.current));
+  const closeSheet = () => closeDrawers();
+  $('btn-menu').addEventListener('click', () => ($('menu-drawer').hidden ? openMenu() : closeMenu()));
+  $('current-layer').addEventListener('click', () => ($('layer-sheet').hidden ? openSheet() : closeSheet()));
   $('menu-close').addEventListener('click', closeMenu);
-  $('menu-backdrop').addEventListener('click', closeMenu);
+  $('layer-sheet-close').addEventListener('click', closeSheet);
+  $('menu-backdrop').addEventListener('click', closeDrawers);
+  // 「宇宙へ」の演出（地球儀の外側へ引いていき、また戻る）
+  // 宇宙の演出の処理（cosmos.js）は重いので、「宇宙へ」を初めて押したときに読み込む。押さなければ読み込まない
+  let cosmosLoading = null;
+  const loadCosmos = () =>
+    (cosmosLoading ||= import('./cosmos.js')
+      .then((m) => m.setupCosmos(globe, t))
+      .catch(() => {
+        cosmosLoading = null; // 読み込めなかったときは、次に押したときにもう一度
+        toast(t('cosmos.loadError')); // 押しても何も起きないように見えないよう、理由を出す
+        return null;
+      }));
+  // ロゴ：一覧や詳細を開いたあとでも、押せばトップ画面（最初の状態）に戻る
+  // 同じアドレスのまま（#だけ違う）だとページが読み直されないため、そのときは読み直す
+  $('brand-link')?.addEventListener('click', (e) => {
+    const u = new URL($('brand-link').href, location.href);
+    if (u.pathname === location.pathname && u.search === location.search) {
+      e.preventDefault();
+      history.replaceState(null, '', u.href);
+      location.reload();
+    }
+  });
+  // 「ほっとする」の中の「宇宙へ」（トップ・メニュー）
+  const goSpace = () => {
+    closeDrawers(false);
+    loadCosmos().then((c) => {
+      if (c && !c.active) c.go();
+    });
+  };
+  for (const id of ['quick-space', 'drawer-space']) $(id)?.addEventListener('click', goSpace);
+  // 現在の時刻（秒まで表示。外部への通信はしない）
+  // ふだんは閲覧している端末の時刻。国を選んでいる間は、その国の時刻（複数の時間帯がある国は首都の時刻）を表示する。
+  // 国ごとの時間帯（data/geo/country-tz.json）は、国を初めて選んだときに読み込む
+  let tzMap = null; // 読み込めたら { 国ID: 時間帯 }。まだ／読み込み中／失敗のときは null
+  let tzLoading = false;
+  const loadTz = () => {
+    if (tzMap || tzLoading) return;
+    tzLoading = true;
+    fetch('data/geo/country-tz.json')
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('tz'))))
+      .then((j) => (tzMap = j && typeof j === 'object' ? j : null))
+      .catch(() => {
+        /* 読み込めなかったときは端末の時刻のまま。次に国を選んだときに、もう一度読み込む */
+      })
+      .finally(() => (tzLoading = false));
+  };
+  // 表示の書式は、言語と時間帯が変わったときだけ作り直す（毎秒作らない）
+  const fmtCache = new Map();
+  const clockFmt = (timeZone) => {
+    const key = `${lang}|${timeZone || ''}`;
+    if (!fmtCache.has(key))
+      fmtCache.set(key, new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'ja-JP', { timeZone, year: 'numeric', month: lang === 'en' ? 'short' : 'long', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+    return fmtCache.get(key);
+  };
+  let lastCountry = null;
+  const tick = () => {
+    const c = $('clock');
+    if (!c || document.hidden) return; // 画面が隠れている間は書き換えない
+    const cc = state.country && !$('detail-panel').hidden ? data.countryMap.get(state.country) : null;
+    // 国を選び直したときに、まだ表が無ければ読み込む（失敗していたら、ここで再試行）
+    if (cc && cc.id !== lastCountry) loadTz();
+    lastCountry = cc ? cc.id : null;
+    const z = cc && tzMap ? tzMap[cc.id] : null;
+    if (z) {
+      const [zone, multi] = Array.isArray(z) ? z : [z, 0];
+      const name = lang === 'en' ? cc.enName : cc.ja;
+      try {
+        c.textContent = `${t(multi ? 'clock.countryCapital' : 'clock.country', { name })} ${clockFmt(zone).format(new Date())}`;
+        return;
+      } catch {
+        /* 時間帯を扱えないブラウザでは、端末の時刻にもどす */
+      }
+    }
+    c.textContent = `${t('clock.now')} ${clockFmt().format(new Date())}`;
+  };
+  document.addEventListener('visibilitychange', tick);
+  tick();
+  setInterval(tick, 1000);
+  // 「ほっとする」：今日の動物たちへ切り替える（トップ・メニュー）
+  for (const id of ['quick-animals', 'drawer-animals'])
+    $(id).addEventListener('click', () => {
+      closeDrawers(false);
+      setLayer('animals');
+    });
+  // 「分野を切り替える・一覧で見る」（パソコン）：一覧を開く。分野の切り替えは上の分野のボタンで
+  $('quick-switch').addEventListener('click', () => {
+    if ($('list-panel').hidden) toggleList();
+    document.querySelector('#layers-nav [aria-pressed="true"], #layers-nav button')?.focus({ preventScroll: true });
+  });
+  // 同時に開く入口は1つだけ（パソコン）
+  for (const d of document.querySelectorAll('.quick-panel details'))
+    d.addEventListener('toggle', () => {
+      if (d.open) for (const o of document.querySelectorAll('.quick-panel details')) if (o !== d) o.open = false;
+    });
   $('drawer-list').addEventListener('click', () => {
-    closeMenu();
+    closeSheet();
     toggleList();
   });
   $('drawer-guide').addEventListener('click', () => {
@@ -429,14 +585,20 @@ async function start() {
   });
 
   // ── 言語の切り替え（ページを読み直さない） ──
+  // 切り替えの途中でもう一度押されたときは、待ってもらう（言語ファイルの読み込みが前後して、表示が混ざらないように）
+  let switching = false;
   async function switchLanguage(e) {
     e.preventDefault();
+    if (switching) return;
+    switching = true;
     const next = lang === 'en' ? 'ja' : 'en';
     try {
       await loadLanguage(next);
     } catch {
-      location.href = urlForLang(next); // 読み込めない場合だけページ移動で切り替える
+      location.href = urlForLang(next) + '#return'; // 読み込めない場合だけページ移動で切り替える（最初のお知らせは出さない）
       return;
+    } finally {
+      switching = false;
     }
     try {
       history.replaceState(null, '', urlForLang(next));
@@ -453,14 +615,18 @@ async function start() {
   $('drawer-lang').addEventListener('click', switchLanguage);
 
   // ── 回転操作 ──
+  // ボタンの表示は「いま回っているか」に合わせる。手で動かして止まっている間は「回す」になり、押せばすぐ回り出す
+  const calm = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const isPlaying = () => !globe.userPaused && (globe.autoRotate || calm);
   function syncRotateButton() {
-    const playing = !globe.userPaused;
+    const playing = isPlaying();
     $('btn-rotate').textContent = playing ? t('control.pause') : t('control.play');
     $('btn-rotate').setAttribute('aria-pressed', String(playing));
   }
+  globe.onRotateState = syncRotateButton;
   $('btn-rotate').addEventListener('click', () => {
-    if (globe.userPaused) globe.play();
-    else globe.pause(true);
+    if (isPlaying()) globe.pause(true);
+    else globe.play();
     syncRotateButton();
   });
   $('btn-reset').addEventListener('click', () => {
@@ -551,7 +717,7 @@ async function start() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (!$('menu-drawer').hidden) return closeMenu();
+    if (!$('menu-drawer').hidden || !$('layer-sheet').hidden) return closeDrawers();
     for (const id of PANELS) if (!$(id).hidden) hidePanel(id);
   });
   window.addEventListener('resize', () => {
@@ -560,6 +726,62 @@ async function start() {
 
   renderChrome();
   syncHeader();
+  // テーマの光の弧：テーマに含まれる情報の国を、近い国どうし順に1本の線でつなぐ（国の数が多いときは12か国まで）
+  async function showThemeArcs(themeId) {
+    try {
+      const r = await fetch('data/connections.json', { cache: 'no-cache' });
+      if (!r.ok) return;
+      const theme = (await r.json()).themes.find((t) => t.id === themeId);
+      if (!theme) return;
+      const all = Object.values(data.layers).flatMap((d) => d.items || []);
+      const ids = [...new Set(theme.items.flatMap((id) => all.find((it) => it.id === id)?.countries || []))].filter((c) => data.countryMap.has(c)).slice(0, 12);
+      // つなぐ順番：西の端の国から始めて、まだつないでいない国のうち、いちばん近い国へ順に（線が交差しにくく、短い弧になる）
+      const rest = ids.map((c) => data.countryMap.get(c)).map((c) => [c.lon, c.lat]);
+      rest.sort((a, b) => a[0] - b[0]);
+      const pts = rest.length ? [rest.shift()] : [];
+      while (rest.length) {
+        const last = pts[pts.length - 1];
+        let bi = 0;
+        rest.forEach((q, i) => {
+          if (d3.geoDistance(last, q) < d3.geoDistance(last, rest[bi])) bi = i;
+        });
+        pts.push(rest.splice(bi, 1)[0]);
+      }
+      const arcs = pts.slice(1).map((p, i) => [pts[i], p]);
+      arcTheme = { id: theme.id, title: theme.title, items: theme.items.map((id) => all.find((it) => it.id === id)).filter(Boolean) };
+      if (state.country && !$('detail-panel').hidden) renderDetail();
+      // 線のまとまりの真ん中へ地球儀を向けてから、線を順に描きはじめる（国を指定して開いたときは、その国を優先）
+      if (pts.length && !params.get('country')) {
+        const [clon, clat] = d3.geoCentroid({ type: 'MultiPoint', coordinates: pts });
+        globe.flyTo(clon, clat, () => globe.setArcs(arcs));
+      } else globe.setArcs(arcs);
+      const note = $('theme-note');
+      if (note) {
+        note.hidden = false;
+        $('theme-note-text').textContent = lang === 'en' ? `Theme: ${theme.title.en} — lines only mean "same theme", not cause and effect.` : `テーマ：${theme.title.ja}（線は「同じテーマ」という意味だけで、原因と結果を示すものではありません）`;
+      }
+    } catch {
+      /* 読み込めないときは線を出さない */
+    }
+  }
+  // 「線を消す」：ページを読み直さずに、その場で線とお知らせを消す（最初のお知らせは出さない）。アドレスからもテーマを外す
+  function clearThemeArcs(e) {
+    e?.preventDefault();
+    globe.setArcs([]);
+    $('theme-note').hidden = true;
+    arcTheme = null;
+    if (state.country && !$('detail-panel').hidden) renderDetail();
+    try {
+      const u = new URL(location.href);
+      u.searchParams.delete('theme');
+      history.replaceState(null, '', u.pathname + u.search);
+    } catch {
+      /* アドレスを変えられない環境では、表示だけ消す */
+    }
+  }
+  $('theme-note-close')?.addEventListener('click', clearThemeArcs);
+
+
   // 共有されたURL（?layer=…&country=…）で開いたときは、その分野・国を表示する（値は一覧にあるものだけ受け付ける）
   const params = new URLSearchParams(location.search);
   const fromSite = location.hash === '#return';
@@ -573,6 +795,9 @@ async function start() {
   if (pl && LAYERS.some((l) => l.id === resolveLayer(pl))) state.current = resolveLayer(pl);
   setLayer(state.current);
   const pc = params.get('country');
+  // 「テーマで読む」からのリンク（?theme=…）：同じテーマの国どうしを、地球儀の上に光の弧で結ぶ（線は「同じテーマ」という意味だけ）
+  const pt = params.get('theme');
+  if (pt && /^[a-z0-9-]{1,60}$/.test(pt)) showThemeArcs(pt);
   if (pc && data.countryMap.has(pc)) openCountry(pc, { fly: true });
   // 「このサイトについて」などからのリンク（?layer=animals&list=1）：その分野の一覧を開いた状態で表示する
   else if (params.get('list') === '1' && $('list-panel').hidden) toggleList();
@@ -581,7 +806,7 @@ async function start() {
     hideLoading();
     // 最初のお知らせは「新しく開いたとき」だけ出す（ブラウザに何も保存しない方式。2026-11-03 運用者の決定）
     //   出さない：再読み込み・戻る/進む・サイト内のページから地球儀へ戻ったとき（#return）・言語の切り替え・共有された分野や国の URL
-    if (!pl && !pc && params.get('list') !== '1' && !fromSite && !['reload', 'back_forward'].includes(navType())) showWelcome();
+    if (!pl && !pc && !pt && params.get('list') !== '1' && !fromSite && !['reload', 'back_forward'].includes(navType())) showWelcome();
   }));
 }
 

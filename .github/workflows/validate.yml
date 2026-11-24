@@ -85,3 +85,7 @@ jobs:
         if: ${{ success() }}
         working-directory: pr
         run: node scripts/build.mjs --offline
+      - name: Check build output (pull request)
+        if: ${{ success() }}
+        working-directory: pr
+        run: node scripts/check-output.mjs

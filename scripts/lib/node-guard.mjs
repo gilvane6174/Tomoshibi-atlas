@@ -2,7 +2,7 @@
 // 根拠：Node.js の 2026年10月21日のセキュリティリリース（zlib/Brotli・DNS・TLS など10件）。
 //   https://nodejs.org/en/blog/vulnerability/october-2026-security-releases
 // 新しいセキュリティリリースが出たら、この表の最低バージョンを上げる（運用者が更新）。
-const MIN_PATCHED = { 22: [22, 23, 4], 24: [24, 22, 1], 26: [26, 12, 1] };
+const MIN_PATCHED = { 22: [22, 23, 5], 24: [24, 22, 3], 26: [26, 13, 1] }; // 2026-11-11 の Node.js セキュリティ更新（HTTP/2・TLS など）の修正版
 
 export function checkNode(version = process.versions.node) {
   const v = version.split('.').map((p) => (/^\d+$/.test(p) ? Number(p) : NaN));

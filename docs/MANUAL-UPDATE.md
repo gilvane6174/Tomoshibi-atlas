@@ -11,6 +11,7 @@
 | 今日の動物たちの豆知識 | `data/curated/animals.json` | 運用者だけ | 悲しい・怖い話につながる言葉は検査で止まる |
 | 国ごとの相談先・公式リンク | `data/directory/links.json` と `data/directory/evidence.json`（確認の記録） | 運用者だけ | 確認の記録が無いリンクは公開されない |
 | 都道府県・市区町村・社会福祉協議会の福祉のページ | `data/directory/prefectures.json` と `data/directory/evidence.json` | 運用者だけ | 都道府県は `links`（最大3件）、市区町村・社会福祉協議会は `local`。新しいドメインは `scripts/allowed-sources.json` の `directoryHosts` にも足す（安全設計の変更なので、PR の本文に「安全設計の変更を確認済み」） |
+| このサイトの安全対策の記録（更新一覧の「セキュリティ対策」・安全対策のページに表示） | `data/curated/security-log.json` | 運用者だけ | 末尾に追記。リンクは公的機関などの許可リストか `securityLogHosts`（GitHub・Node.js の公式）だけ。民間の調査は名前だけ。攻撃の手順・痕跡情報は書かない。status は done（対応済み）／operator-check（運用者が確認中）／proposed（取り込み前） |
 | 自動取得の情報（感染症・ITセキュリティ・地震・新着の見出し・世界をくらべるの統計） | なし（公開のたびに自動で取得） | — | 取得先を変えるときは `scripts/allowed-sources.json`（運用者だけ） |
 
 ## なぜファイルを分野ごとに分けていないか
@@ -22,4 +23,4 @@ AI・bot が変えてよいファイルを `entries.json` と `changelog.json` �
 ## 自動取得と手動の関係
 
 - 自動取得の情報は保存しない（公開のたびに取り直す）。手動の情報は `entries.json` に残り、表示から外れた後も「過去の記録の一覧」で見られる
-- 自動取得は日本時間の 0:07・6:07・18:07（GitHub の都合で遅れることがある）。手動の更新は、PR を取り込むと次の公開で反映される
+- 自動取得は日本時間の 0:43・12:43（GitHub の都合で遅れることがある）。手動の更新は、PR を取り込むと次の公開で反映される

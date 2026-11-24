@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "_note": "「今日の動物たち」の豆知識。毎日の組み立てのとき、日付をもとにこの中から自動で選んで地球儀に表示する。公的機関・公的な博物館や動物園・大学・ユネスコなどの原典で確かめた、やさしい話だけを載せる（ops/CURATION.md「今日の動物たち」）。",
-  "reviewedAt": "2026-10-26",
+  "reviewedAt": "2026-11-22",
   "facts": [
     {
       "id": "animal-jpn-japanese-giant-salamander",
@@ -1122,23 +1122,6 @@
       "source": {
         "name": "Wadden Sea World Heritage (Common Wadden Sea Secretariat) Quality Status Report",
         "url": "https://qsr.waddensea-worldheritage.org/reports/marine-mammals"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
-      "id": "animal-fra-alpine-marmot",
-      "country": "FRA",
-      "animal": {
-        "ja": "アルプスマーモット",
-        "en": "Alpine marmot"
-      },
-      "text": {
-        "ja": "アルプスマーモットは仲間との暮らしを好み、にぎやかな社会生活を送るコロニーをつくります。",
-        "en": "Alpine marmots seek out the company of their own kind and form colonies with a strong social life."
-      },
-      "source": {
-        "name": "Mercantour National Park（PDF）",
-        "url": "https://www.mercantour-parcnational.fr/sites/mercantour-parcnational.fr/files/documents/downloads/guide-56p-english-web_0.pdf"
       },
       "checkedAt": "2026-10-26"
     },
@@ -3897,23 +3880,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-grl-harp-seal",
-      "country": "GRL",
-      "animal": {
-        "ja": "タテゴトアザラシ",
-        "en": "Harp seal"
-      },
-      "text": {
-        "ja": "グリーンランドの周りには15種ものクジラがいる豊かな海が広がり、氷のない海域で最もよく見られるアザラシはタテゴトアザラシです。",
-        "en": "Greenland's waters host 15 species of whales, and in the ice-free areas the harp seal is the most common seal."
-      },
-      "source": {
-        "name": "Statistics Greenland",
-        "url": "https://www.stat.gl/publ/en/SA/201002/content/Nature.htm"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-png-raggiana-bird-of-paradise",
       "country": "PNG",
       "animal": {
@@ -4235,6 +4201,278 @@
         "url": "https://lazoo.org/explore-your-zoo/our-animals/mammals/black-and-white-colobus-monkey/"
       },
       "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "animal-irl-irish-hare",
+      "country": "IRL",
+      "animal": {
+        "ja": "アイルランドノウサギ",
+        "en": "Irish hare"
+      },
+      "text": {
+        "ja": "アイルランドノウサギはアイルランドにだけすむユキウサギの仲間で、夏には毛が赤みがかった茶色に見えることがあります。",
+        "en": "The Irish hare is a mountain hare subspecies found only in Ireland, and its fur can look reddish-brown in summer."
+      },
+      "source": {
+        "name": "National Biodiversity Data Centre (Ireland)",
+        "url": "https://biodiversityireland.ie/app/uploads/2023/12/Species-Profile-35-Irish-hare.pdf"
+      },
+      "checkedAt": "2026-11-19"
+    },
+    {
+      "id": "animal-plw-golden-jellyfish",
+      "country": "PLW",
+      "animal": {
+        "ja": "タコクラゲの仲間（マスティギアス）",
+        "en": "Mastigias jellyfish"
+      },
+      "text": {
+        "ja": "パラオのロックアイランドには海水の湖が52もあり、世界でいちばん多い場所です。これらの湖から、タコクラゲの仲間の新しい亜種が、あわせて5つ報告されています。",
+        "en": "Palau's Rock Islands have 52 marine lakes, more than anywhere else in the world, and five new subspecies of Mastigias jellyfish have been described from them."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Rock Islands Southern Lagoon",
+        "url": "https://whc.unesco.org/en/list/1386/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-mwi-mbuna-cichlid",
+      "country": "MWI",
+      "animal": {
+        "ja": "ムブナ（シクリッド）",
+        "en": "Mbuna cichlids"
+      },
+      "text": {
+        "ja": "マラウイ湖には350種をこえる「ムブナ」というシクリッドがいて、5種をのぞいてすべてこの湖にしかいません。湖には世界のシクリッドの約3割がすんでいます。",
+        "en": "Lake Malawi has over 350 species of cichlids called mbuna, all but five found only in this lake, and it holds about 30% of the world's known cichlid species."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Lake Malawi National Park",
+        "url": "https://whc.unesco.org/en/list/289/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-blr-european-bison",
+      "country": "BLR",
+      "animal": {
+        "ja": "ヨーロッパバイソン",
+        "en": "European bison"
+      },
+      "text": {
+        "ja": "ベラルーシとポーランドにまたがるビャウォヴィエジャの森には、UNESCOの世界遺産の資料によると約900頭のヨーロッパバイソンがすみ、野生でくらすバイソンの3割以上にあたります。",
+        "en": "According to UNESCO World Heritage records, the Białowieża Forest, shared by Belarus and Poland, is home to about 900 European bison, over 30% of those living free."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Białowieża Forest",
+        "url": "https://whc.unesco.org/en/list/33/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-mkd-ohrid-endemics",
+      "country": "MKD",
+      "animal": {
+        "ja": "オフリド湖の固有の生きもの",
+        "en": "Lake Ohrid's endemic species"
+      },
+      "text": {
+        "ja": "オフリド湖は200万〜300万年前からある古い湖で、ここにしかいない動植物が200種をこえます。魚も17種がこの湖だけの種です。",
+        "en": "Lake Ohrid has existed for two to three million years and supports over 200 species of plants and animals found nowhere else, including 17 endemic fish."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Natural and Cultural Heritage of the Ohrid region",
+        "url": "https://whc.unesco.org/en/list/99/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-alb-ohrid-trout",
+      "country": "ALB",
+      "animal": {
+        "ja": "オフリド湖のマス",
+        "en": "Lake Ohrid trout"
+      },
+      "text": {
+        "ja": "アルバニアと北マケドニアにまたがるオフリド湖には、この湖だけにすむ魚が17種いて、その中には2種類のマスもいます。",
+        "en": "Lake Ohrid, shared by Albania and North Macedonia, has 17 fish species found only there, including two species of trout."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Natural and Cultural Heritage of the Ohrid region",
+        "url": "https://whc.unesco.org/en/list/99/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-zwe-mana-pools-hippo",
+      "country": "ZWE",
+      "animal": {
+        "ja": "カバ",
+        "en": "Hippopotamus"
+      },
+      "text": {
+        "ja": "ジンバブエのマナ・プールズでは、ザンベジ川にたくさんのカバがすみ、乾いた冬にはゾウやバッファローの大きな群れが集まってきます。",
+        "en": "At Mana Pools in Zimbabwe, the Zambezi River is known for its hippos, and huge herds of elephants and buffalo gather there in the dry winter."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Mana Pools National Park, Sapi and Chewore Safari Areas",
+        "url": "https://whc.unesco.org/en/list/302/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-blz-west-indian-manatee",
+      "country": "BLZ",
+      "animal": {
+        "ja": "アメリカマナティー（西インド諸島マナティー）",
+        "en": "West Indian manatee"
+      },
+      "text": {
+        "ja": "ベリーズのサンゴ礁は北半球でいちばん大きなバリアリーフで、アメリカマナティーやウミガメ、500種をこえる魚がくらしています。",
+        "en": "Belize's reef is the largest barrier reef in the northern hemisphere and is home to West Indian manatees, sea turtles and over 500 species of fish."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Belize Barrier Reef Reserve System",
+        "url": "https://whc.unesco.org/en/list/764/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-slb-tegano-sea-snake",
+      "country": "SLB",
+      "animal": {
+        "ja": "テガノ湖のウミヘビ",
+        "en": "Lake Tegano sea snake"
+      },
+      "text": {
+        "ja": "ソロモン諸島のレンネル島は世界でいちばん大きな隆起サンゴ礁の島で、島の中のテガノ湖には、そこにしかいないウミヘビがすんでいます。",
+        "en": "Rennell Island in the Solomon Islands is the largest raised coral atoll in the world, and its Lake Tegano is home to a sea snake found nowhere else."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: East Rennell",
+        "url": "https://whc.unesco.org/en/list/854/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-ben-wap-elephant",
+      "country": "BEN",
+      "animal": {
+        "ja": "アフリカゾウ（サバンナゾウ）",
+        "en": "African savanna elephant"
+      },
+      "text": {
+        "ja": "ベナン・ブルキナファソ・ニジェールにまたがるW・アルリ・ペンジャリの国立公園群には、UNESCOの世界遺産の資料によると、西アフリカのサバンナゾウの約85％がくらしています。",
+        "en": "According to UNESCO World Heritage records, the W-Arly-Pendjari parks, shared by Benin, Burkina Faso and Niger, hold about 85% of West Africa's savanna elephants."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: W-Arly-Pendjari Complex",
+        "url": "https://whc.unesco.org/en/list/749/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-bfa-wap-lion",
+      "country": "BFA",
+      "animal": {
+        "ja": "ライオン",
+        "en": "Lion"
+      },
+      "text": {
+        "ja": "ブルキナファソなどにまたがるW・アルリ・ペンジャリの国立公園群は、この地域でライオンが安定してくらせる、ただ一つの場所とされています。",
+        "en": "The W-Arly-Pendjari parks, which include Burkina Faso, have the only viable population of lions in the area."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: W-Arly-Pendjari Complex",
+        "url": "https://whc.unesco.org/en/list/749/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-ner-wap-cheetah",
+      "country": "NER",
+      "animal": {
+        "ja": "チーター",
+        "en": "Cheetah"
+      },
+      "text": {
+        "ja": "ニジェールのW国立公園を含む国立公園群には、西アフリカでたぶん唯一のチーターの集団がすんでいると考えられています。",
+        "en": "The park complex that includes Niger's W National Park probably holds the only cheetah population in West Africa."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: W-Arly-Pendjari Complex",
+        "url": "https://whc.unesco.org/en/list/749/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-cog-bongo",
+      "country": "COG",
+      "animal": {
+        "ja": "ボンゴ",
+        "en": "Bongo"
+      },
+      "text": {
+        "ja": "コンゴ共和国などにまたがるサンガ川流域の森では、しま模様のレイヨウ「ボンゴ」が森を代表する動物で、マルミミゾウやニシローランドゴリラもくらしています。",
+        "en": "In the Sangha forests, which include the Republic of the Congo, the striped bongo antelope is an emblem, alongside forest elephants and gorillas."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Sangha Trinational",
+        "url": "https://whc.unesco.org/en/list/1380/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-caf-red-fronted-gazelle",
+      "country": "CAF",
+      "animal": {
+        "ja": "アカビタイガゼル",
+        "en": "Red-fronted gazelle"
+      },
+      "text": {
+        "ja": "中央アフリカ共和国のマノボ・グンダ・サン・フローリス国立公園には、アカビタイガゼルやチーター、リカオンなどがくらしています。",
+        "en": "Manovo-Gounda St Floris National Park in the Central African Republic is home to red-fronted gazelles, cheetahs and African wild dogs."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Manovo-Gounda St Floris National Park",
+        "url": "https://whc.unesco.org/en/list/475/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-yem-socotra-reptiles",
+      "country": "YEM",
+      "animal": {
+        "ja": "ソコトラ諸島のは虫類",
+        "en": "Reptiles of the Socotra Archipelago"
+      },
+      "text": {
+        "ja": "イエメンのソコトラ諸島では、は虫類の90％、陸の貝の95％が、世界でここにしかいない種です。",
+        "en": "On Yemen's Socotra Archipelago, 90% of reptile species and 95% of land snail species occur nowhere else in the world."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Socotra Archipelago",
+        "url": "https://whc.unesco.org/en/list/1263/"
+      },
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "animal-geo-colchic-sturgeon",
+      "country": "GEO",
+      "animal": {
+        "ja": "コルキスチョウザメ",
+        "en": "Colchic sturgeon"
+      },
+      "text": {
+        "ja": "ジョージアのコルキスの雨林と湿地は、渡り鳥の大切な休み場所で、川や湿地にはコルキスチョウザメもくらしています。",
+        "en": "Georgia's Colchic rainforests and wetlands are a key stopover for migrating birds, and the Colchic sturgeon lives in their waters."
+      },
+      "source": {
+        "name": "UNESCO World Heritage Centre: Colchic Rainforests and Wetlands",
+        "url": "https://whc.unesco.org/en/list/1616/"
+      },
+      "checkedAt": "2026-11-22"
     }
   ]
 }
