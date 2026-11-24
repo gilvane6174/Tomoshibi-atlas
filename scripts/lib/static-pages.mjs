@@ -138,14 +138,18 @@ export function er7119Text(code) {
   return '＃7119：確認中';
 }
 // 「急な病気・けがのとき」のページの、都道府県ごとの救急相談の表
-// 窓口ごとの受付時間と、＃7119 がつながらないときの番号（data/curated/er-lines.json。運用者が出典と照合したときだけ出す）
+// 窓口ごとの受付時間（data/curated/er-lines.json。運用者が出典と照合したときだけ出す）。
+// 窓口ごとの直通の番号は載せない（＃7119 などの短い番号だけを案内し、つながらないときは消防庁の一覧へ案内する）
 export function erCentersOf(code, er) {
   if (!er || !er.show) return [];
   return er.centers.filter((c) => c.prefs.includes(code));
 }
 function erCenterHtml(c) {
-  return `<span class="er-center">${esc(c.name)}：${esc(c.hours)}。＃7119 がつながらないとき ${esc(c.altNumbers)}${c.note ? `（${esc(c.note)}）` : ''}</span>`;
+  return `<span class="er-center">${esc(c.name)}：${esc(c.hours)}</span>`;
 }
+// ＃7119 がつながらないとき（直通の番号はここには載せず、消防庁の一覧へ案内する）
+const ER_NO_CONNECT = '＃7119 がつながらない電話（ダイヤル回線・一部のIP電話など）や地域があります。そのときは、下の消防庁の一覧で、お住まいの地域の番号をご確認ください。';
+const ER_NO_CONNECT_KANA = '＃7119 が つながらない でんわ（ダイヤル かいせん・いちぶの IP でんわ など）や ちいきが あります。その ときは、しょうぼうちょうの いちらんで、おすまいの ちいきの ばんごうを ごかくにん ください。';
 export function renderErTable(prefs, er) {
   const out = ['    <table class="er-table">', '      <thead><tr><th scope="col">都道府県</th><th scope="col">救急の電話相談（＃7119）・受付時間</th><th scope="col">子ども（＃8000）</th></tr></thead>', '      <tbody>'];
   for (const p of prefs) {
@@ -153,7 +157,8 @@ export function renderErTable(prefs, er) {
     out.push(`        <tr><th scope="row"><a href="${esc(prefFile(p))}">${esc(p.ja)}</a></th><td>${esc(er7119Text(p.code).replace(/^＃7119：/, ''))}${centers}</td><td>実施</td></tr>`);
   }
   out.push('      </tbody>', '    </table>');
-  if (er && !er.show) out.push(er.expired ? '    <p class="item-meta">窓口ごとの受付時間と番号は、運用者の確認の時期を過ぎたため、いまは載せていません。下の消防庁の一覧でご確認ください。</p>' : '    <p class="item-meta">窓口ごとの受付時間と、＃7119 がつながらないときの番号は、運用者が消防庁の一覧と照らし合わせたあとに載せます（いまは確認中）。</p>');
+  if (er && !er.show) out.push(er.expired ? '    <p class="item-meta">窓口ごとの受付時間は、運用者の確認の時期を過ぎたため、いまは載せていません。下の消防庁の一覧でご確認ください。</p>' : '    <p class="item-meta">窓口ごとの受付時間は、運用者が消防庁の一覧と照らし合わせたあとに載せます（いまは確認中）。</p>');
+  out.push(`    <p class="item-meta">${ER_NO_CONNECT}</p>`);
   out.push(`    <p class="item-meta">出典：<a href="${esc(ER_SOURCE.url)}" target="_blank" rel="noopener noreferrer">${esc(ER_SOURCE.name)}</a>（確認日 ${esc(ER_SOURCE.checkedAt)}）、<a href="https://kakarikata.mhlw.go.jp/kakaritsuke/8000.html" target="_blank" rel="noopener noreferrer">厚生労働省「子どもの症状は＃8000」</a>（全国47都道府県で実施）。＃7119 以外の番号で救急の電話相談をしている地域もあります。番号・受付時間・対象地域・対象年齢は変わることがあるため、お住まいの都道府県・市町村の公式サイトでもご確認ください。</p>`);
   return out.join('\n');
 }
@@ -190,6 +195,7 @@ export function renderPrefPage(p, prefs, isOkUrl, er) {
   out.push(`    <h2>${kanaPair('急な病気・けがの電話相談', 'きゅうな びょうき・けがの でんわ そうだん')}</h2>`);
   const centers = erCentersOf(p.code, er).map((c) => `\n      <li>${erCenterHtml(c)}</li>`).join('');
   out.push(`    <ul>\n      <li>${esc(er7119Text(p.code))}</li>${centers}\n      <li>${kanaPair('＃8000（子どもの急な病気）：実施', '＃8000（こどもの きゅうな びょうき）：じっし')}</li>\n    </ul>`);
+  out.push(`    <p class="item-meta">${kanaPair(ER_NO_CONNECT.replace('下の消防庁', '消防庁'), ER_NO_CONNECT_KANA)}</p>`);
   const src = `<a href="${esc(ER_SOURCE.url)}" target="_blank" rel="noopener noreferrer">${esc(ER_SOURCE.name)}</a>`;
   // ひらがな表示では、出典の名前も読みで出す（リンク先は同じ）
   const srcKana = `<a href="${esc(ER_SOURCE.url)}" target="_blank" rel="noopener noreferrer">しょうぼうちょう「きゅうきゅう あんしん センター じぎょう（＃7119）」の じっし ちいきの いちらん</a>`;
