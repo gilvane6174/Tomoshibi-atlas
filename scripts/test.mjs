@@ -1328,6 +1328,7 @@ test('急な病気・けがの検索（2026-11）：ひらがな・カタカナ�
   const shownEr = renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: true });
   assert.ok(shownEr.includes('全日24時間') && !shownEr.includes('0000') && !shownEr.includes('見本の注記') && shownEr.includes('つながらない'));
   assert.deepEqual(validateErLinesDoc(JSON.parse(readFileSync(new URL('../data/curated/er-lines.json', import.meta.url), 'utf8'))), []);
+  assert.ok(validateErLinesDoc({ schemaVersion: 1, checkedAt: '2026-11-24', operatorVerified: false, verifiedAt: null, centers: er.centers }).some((x) => x.includes('altNumbers')));
   // 人の確認（45日以内）が無いリンクは外す
   const now = new Date('2026-11-19T03:00:00Z');
   const u = 'https://www.fdma.go.jp/relocation/kyukyukikaku/oukyu/';
