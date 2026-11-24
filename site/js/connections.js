@@ -3,6 +3,7 @@
 // つながりは「同じテーマで並べた」という意味だけで、情報どうしの因果関係（原因・結果）は示さない。
 // 図は SVG を createElementNS で組み立て、文字はすべて textContent で入れる（innerHTML は使わない）。外部への通信はしない。
 import { natureBadge } from './nature.js';
+import { revealResults } from './reveal.js';
 
 const isEn = document.documentElement.lang === 'en';
 const lang = isEn ? 'en' : 'ja';
@@ -100,6 +101,7 @@ function render(doc, cname) {
       state.theme = id;
       state.active = null;
       render(doc, cname);
+      revealResults('conn-head');
     });
     tabs.append(b);
   }
@@ -110,6 +112,16 @@ function render(doc, cname) {
   if (theme) {
     head.append(el('h2', null, pick(theme.title)), el('p', null, pick(theme.summary)));
     if (theme.note) head.append(el('p', 'note', pick(theme.note)));
+    // 地球儀の上で、同じテーマの国どうしを光の線で結んで見る（線は「同じテーマ」という意味だけ）。
+    // 国が2つ以上あるテーマだけ（世界全体の報告などで国が無いテーマでは、線が引けないので出さない）
+    const nCountries = new Set(theme.items.flatMap((id) => doc.items[id]?.countries || [])).size;
+    if (nCountries >= 2) {
+      const globeLink = el('a', 'globe-theme-link', isEn ? 'See these countries joined by lines on the globe' : '地球儀で、このテーマの国を光の線で結んで見る');
+      globeLink.href = `${isEn ? 'index.html?lang=en&' : 'index.html?'}theme=${encodeURIComponent(theme.id)}`;
+      const gp = el('p', 'globe-theme');
+      gp.append(globeLink);
+      head.append(gp);
+    }
   } else head.append(el('h2', null, L.all), el('p', null, L.chooseTheme));
 
   // ── 図 ──
@@ -192,7 +204,7 @@ function render(doc, cname) {
     const home = new Map();
     for (const t of themes) for (const id of t.items) if (!home.has(id)) home.set(id, t.id);
     for (const t of themes) {
-      const [hx, hy, x0, y0] = hub.get(t.id);
+      const [hx, hy, , y0] = hub.get(t.id);
       const own = t.items.filter((id) => home.get(id) === t.id);
       const r = 62;
       own.forEach((id, i) => {
@@ -212,6 +224,7 @@ function render(doc, cname) {
       pressable(g, L.open(pick(t.title)), () => {
         state.theme = t.id;
         render(doc, cname);
+        revealResults('conn-head');
       });
       nodes.append(g);
     }
@@ -244,6 +257,7 @@ function render(doc, cname) {
       b.addEventListener('click', () => {
         state.theme = t.id;
         render(doc, cname);
+        revealResults('conn-head');
       });
       h.append(b);
       li.append(h, el('p', null, pick(t.summary)));
@@ -319,3 +333,6 @@ function render(doc, cname) {
     document.getElementById('conn-list').replaceChildren(el('li', 'note', L.loadFail));
   }
 })();
+
+// 図は折りたたみの中にあるので、開いたときに大きさを計り直す
+document.querySelector('.conn-graph-details')?.addEventListener('toggle', () => window.dispatchEvent(new Event('resize')));

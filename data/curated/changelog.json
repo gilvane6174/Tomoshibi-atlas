@@ -493,6 +493,154 @@
       "ids": [
         "research-2026-siteguard-server-update-advisory"
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "by": "ai-curator",
+      "summary": {
+        "ja": "原典のページが無くなった、または開けなくなった3件の掲載を外した（週1回のリンク確認で検出。運用者の指示）",
+        "en": "Removed three items whose original pages were removed or could no longer be opened (found by the weekly link check; operator's instruction)"
+      },
+      "ids": [
+        "mental-2026-unicef-mhpss-results",
+        "welfare-2025-india-social-protection-coverage",
+        "disaster-2026-bra-northeast-floods"
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（1）トップ：入口を「困ったとき」「世界を知る」「ほっとする」の3つにまとめ、メニューの案内を整理。地球儀の見た目と動き（ゆっくり回る・触ると止まる・ふちの光）を一新し、海のきらめき（太陽の照り返し）と、ときどき流れる流れ星を追加",
+        "en": "Renewal (1) Top page: three entrances and a tidier menu. A new look and motion for the globe, with sunlight glinting on the sea and an occasional shooting star"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-22",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（2）「ほっとする」に「宇宙へ」を追加。地球から月・太陽系・天の川銀河へゆっくり遠ざかり、地球へもどると「おかえりなさい。」と迎えます（現在地を使っている人には、自分の場所に小さな灯がともります）。押したときだけ読み込むので、ふだんは軽いまま",
+        "en": "Renewal (2) Added \"To space\": a slow journey from the Earth to the Moon, the Solar System and the Milky Way, with \"Welcome home\" on return. It loads only when pressed"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-22",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（3）福祉・急な病気やけがのページを読みやすくし、ひらがな表示と、端末の文字の大きさの設定に対応。障がい福祉・ひとり親・防犯・情報漏えい・暮らしの困りごと・安全のページを追加・更新。北海道の相談先の件数をほかの都府県とそろえました",
+        "en": "Renewal (3) Easier-to-read welfare and emergency pages (hiragana view, device text size). New or updated pages on disability, single parents, crime prevention, data leaks and safety"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-22",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（4）「読む」（今週のともしび・過去の記録）をタブで行き来できるように。テーマの国どうしを地球儀の上に光の弧で結ぶ表示、国を選ぶとその国の時刻を表示する機能、今日の動物たちの豆知識の追加（131の国・地域、263件）。テーマや項目を選ぶと一覧の先頭へ移り、変わった所が一瞬光ります",
+        "en": "Renewal (4) Reading tabs, light arcs joining a theme's countries, local time of the selected country, 263 animal facts, and lists that jump to the top when you pick a topic"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-22",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（5）急な病気・けがのページの、てんかん発作の出典を移転先に差し替え、救急車を呼ぶ目安を出典どおりに改めました。検索の仕組み（説明・構造化データ）と、このサイトについて・免責事項も更新",
+        "en": "Renewal (5) Updated the moved source for seizure first aid and aligned the advice on calling an ambulance with it. Search descriptions, About and the disclaimer were also updated"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-23",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（6）説明のページに「明るい表示」を追加（いつもは暗い表示。ブラウザには保存せず、サイト内を移る間だけ続きます）。地球儀で国を選ぶと、まわりの海に波紋がゆっくり広がります。説明ページの上に同じ入口のページへの案内を追加。小さな文字の色を、どちらの表示でも読みやすい濃さに調整",
+        "en": "Renewal (6) Light mode for reading pages (dark by default; nothing saved). Selecting a country sends ripples across the nearby sea. Small text is easier to read in both modes"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-23",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（7）画面下に、地球儀を通らずに文字だけの案内（防災・暮らし）へ行けるリンクを追加（パソコン）。地震の最新データを読み込めないときは、前回の一覧を表示していることを画面下に出します",
+        "en": "Renewal (7) A link at the bottom of the globe page leads straight to text-only guides. If the latest earthquake data cannot load, the page says the previous list is shown"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（8）「ほっとする」に「世界遺産を旅する」のページを追加。日本の世界遺産27件と、世界遺産条約を結ぶ196の国・地域それぞれのユネスコ公式ページへの案内を、花の舞う草原の景色の中で読めます",
+        "en": "Renewal (8) New page in Take a breather: World Heritage, with Japan's 27 properties and links to UNESCO's page for each of the 196 States Parties, set in a meadow of drifting petals"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（9）「世界をくらべる」に経済成長率と中央政府の債務残高を追加。国を選ぶと、首都・言語・通貨・政体・議会（外務省の基礎データ）と政府観光局の公式サイトを表示します（まず23か国）",
+        "en": "Renewal (9) Compare adds GDP growth and central government debt. A selected country shows basic facts (MOFA data) and its official tourism site (23 countries first)"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（10）「テーマで読む」から地球儀で線を結ぶリンクが、線を出さずに開いていた不具合を直しました。スマホで明るい表示とひらがなにしたとき、上のボタンが切れないようにしました",
+        "en": "Renewal (10) Fixed theme links that opened the globe without drawing the lines. Top buttons no longer get cut off on phones in light mode with hiragana"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（11）「宇宙へ」の地球に、海岸ぞいの浅い海の色と山なみの陰を足し、写真に近づけました。「目的と使い方」に世界遺産のページの案内を足し、世界遺産のページの「下へ進む」ボタンを押すと、なめらかに次へ移るようにしました",
+        "en": "Renewal (11) The Earth in To space now shows shallow coastal seas and mountain shading. The guide links to the World Heritage page, whose button now glides smoothly to the next section"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（12）「世界をくらべる」でマイナスの値（経済成長率など）を左向きの棒で表示。世界遺産の総数を最新（2026年8月の1,273件）に。国の基本情報の観光局を16か国に増やし、急な病気・けがのページの古いリンクを差し替えました",
+        "en": "Renewal (12) Negative values in Compare are drawn as bars to the left. World Heritage totals updated (1,273, August 2026). Tourism links now cover 16 countries; outdated emergency-page links replaced"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（13）「急な病気・けがのとき」は、症状ごとの説明文や手当の手順を載せず、公式ページへの案内だけにしました。「困ったとき」のリンクを、暮らし・福祉、急な病気・けが、防犯・安全の順に並べ替えました",
+        "en": "Renewal (13) The emergency page now only points to official pages, without step-by-step explanations. Help links are now grouped: daily life and welfare, illness and injury, then safety"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（14）「テーマで読む」の線の先の国を開くと、そのテーマのその国の情報を上に表示。障がい福祉のページに、手話やこころの不調のある人との接し方を学べる公的なページの案内を追加。急な病気・けがのリンクに確認日を表示します",
+        "en": "Renewal (14) A country opened from the theme lines shows that theme's items. The disability page links to official learning pages for supporters. Emergency links show their last check date"
+      },
+      "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "サイトをリニューアル（15）＃7119 の受付時間・番号は、運用者の照合から45日を過ぎると表示を止め、消防庁の一覧へ案内するようにしました。京都府の一部地域の番号の案内を足し、地球儀の読み込みが長引いたときの文字だけの案内も足しました",
+        "en": "Renewal (15) #7119 hours and numbers are hidden 45 days after the last operator check, with a link to the FDMA list. Added a note for parts of Kyoto and text-only links when the globe is slow"
+      },
+      "ids": []
     }
   ]
 }

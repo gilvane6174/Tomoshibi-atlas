@@ -2,6 +2,7 @@
 // データは組み立て時に作る data/archive.json（手動掲載のみ。自動取得の情報は保存していない）。
 // 文字はすべて textContent で入れ、リンクは https だけを使う（innerHTML は使わない）。
 import { natureBadge } from './nature.js';
+import { revealResults } from './reveal.js';
 
 const isEn = document.documentElement.lang === 'en';
 const PAGE = 50;
@@ -110,7 +111,13 @@ async function start() {
         /* URL を変えられない環境では何もしない */
       }
     };
-    for (const c of [layerSel, yearSel, countrySel]) c.addEventListener('change', () => ((shown = PAGE), render()));
+    // 絞り込みを変えたら、一覧の先頭が見えるようにする（文字の入力中は動かさない）
+    for (const c of [layerSel, yearSel, countrySel])
+      c.addEventListener('change', () => {
+        shown = PAGE;
+        render();
+        revealResults(out, { focus: false });
+      });
     q.addEventListener('input', () => ((shown = PAGE), render()));
     render();
   } catch {

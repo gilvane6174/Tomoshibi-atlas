@@ -1,6 +1,6 @@
-# 毎日3回（深夜・朝・夕方）、決まった時刻に公的機関の公表情報を取得 → 検査 → GitHub Pages へ公開する。
-# 取得先への負担を避けるため、各情報源へのアクセスは1回の実行につき原則1回（1日3回の実行）。
-# 例外：WHO と CISA は、最初の取得に失敗したときだけ予備の取得先へ1回取り直す（1回の実行で最大2回、1日最大6回）。
+# 毎日2回（深夜・昼）、決まった時刻に公的機関の公表情報を取得 → 検査 → GitHub Pages へ公開する。
+# 取得先への負担を避けるため、各情報源へのアクセスは1回の実行につき原則1回（1日2回の実行。2026-11-19 運用者の決定で3回から2回に減らした）。
+# 例外：WHO と CISA は、最初の取得に失敗したときだけ予備の取得先へ1回取り直す（1回の実行で最大2回、1日最大4回）。
 #   WHO：並べ替え指定つき → 失敗時は指定なしの同じ API。CISA：cisa.gov → 失敗時は CISA 公式の GitHub（cisagov/kev-data）。USGS と見出しの情報源（JPCERT/CC・IPA・NCSC・金融庁・FTC・消防庁・NASA・NIH）は各1回だけ。
 # 手動実行は必要なときだけ。
 # リポジトリへは一切書き込まない（contents: read）。取得・検査に失敗したら公開しないので、
@@ -9,9 +9,12 @@ name: Build and deploy
 
 on:
   schedule:
-    # 毎日 0:07・6:07・18:07（日本時間）＝ 15:07・21:07・9:07（協定世界時）。ちょうど0分は GitHub が混み合うため7分ずらす。
-    # GitHub の定時実行は混雑で数時間遅れることがある。地震は、地震の分野を開いたときにブラウザが USGS から直接読み込んで補う（site/js/quake-live.js）
-    - cron: '7 9,15,21 * * *'
+    # 毎日 0:43・12:43（日本時間）＝ 15:43・3:43（協定世界時）。
+    # 目標：朝7時（日本時間）には、遅くともその日の分が公開されていること。GitHub の定時実行は混雑で数時間遅れたり、
+    # まれに実行されなかったりする（2026-10〜11 の実績で2〜7時間の遅れ、1日1回分が実行されない日が続いた）。
+    # そのため深夜の回を0:43にして、6時間遅れても7時前に公開されるようにした。混み合う毎時0分ちょうどを避けて43分にしている。
+    # 地震は、地震の分野を開いたときにブラウザが USGS から直接読み込んで補う（site/js/quake-live.js）
+    - cron: '43 3,15 * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -63,6 +66,8 @@ jobs:
           SITE_URL: ${{ vars.SITE_URL }} # 公開URL（任意。設定すると canonical・sitemap を作る）
           GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }} # 任意。Search Console の所有確認用の値
           BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }} # 任意
+      - name: Check build output (preview-only files, personal or secret data)
+        run: node scripts/check-output.mjs
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: _site

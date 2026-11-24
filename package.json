@@ -1,12 +1,12 @@
 {
   "name": "tomoshibi-atlas",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Tomoshibi Atlas（灯の地図）— 公的機関の公表情報を地球儀で眺める非営利のリンク集",
+  "description": "Tomoshibi Atlas（ともしびアトラス）— 公的機関の公表情報を地球儀で眺める非営利のリンク集",
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": "^22.23.5 || ^24.22.3 || ^26.13.1"
   },
   "scripts": {
     "test": "node scripts/test.mjs",

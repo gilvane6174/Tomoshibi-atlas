@@ -1,0 +1,758 @@
+{
+  "_note": "国の基本情報（首都・言語・通貨・政体・議会）と、政府観光局の公式サイト。首都・言語・政体・議会は外務省「国・地域」の基礎データの記載に沿う（評価や印象は書かない）。通貨は外務省の記載、記載のない国は ISO 4217 の通貨。観光局は、各国の公的な観光振興組織などが運営する公式観光サイトであることを、ページで確かめたものだけ。AI・botは変更しない（AGENTS.md参照）。",
+  "reviewedAt": "2026-11-24",
+  "countries": {
+    "USA": {
+      "capital": {
+        "ja": "ワシントンD.C.",
+        "en": "Washington, D.C."
+      },
+      "language": {
+        "ja": "主として英語（法律上の定めはないものの、2025年3月の大統領令で英語を国の公用語に指定）",
+        "en": "Mainly English (no statutory official language; English was designated the official language of the United States by an executive order in March 2025)"
+      },
+      "currency": {
+        "ja": "米ドル",
+        "en": "US dollar",
+        "code": "USD"
+      },
+      "government": {
+        "ja": "大統領制、連邦制（50州ほか）",
+        "en": "Presidential system; federal (50 states and others)"
+      },
+      "legislature": {
+        "ja": "二院制（上院100議席、下院435議席）",
+        "en": "Bicameral (Senate 100 seats, House of Representatives 435 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/usa/data.html",
+        "updated": "2026-08-05"
+      },
+      "tourism": {
+        "name": {
+          "ja": "ブランドUSA（米国の官民連携の観光推進組織）",
+          "en": "Brand USA (Visit The USA)"
+        },
+        "url": "https://www.visittheusa.com/"
+      },
+      "whc": "us"
+    },
+    "GBR": {
+      "capital": {
+        "ja": "ロンドン",
+        "en": "London"
+      },
+      "language": {
+        "ja": "英語（ウェールズ語、ゲール語などを使う地域あり）",
+        "en": "English (Welsh, Gaelic and others are used in some areas)"
+      },
+      "currency": {
+        "ja": "スターリング・ポンド",
+        "en": "Pound sterling",
+        "code": "GBP"
+      },
+      "government": {
+        "ja": "立憲君主制",
+        "en": "Constitutional monarchy"
+      },
+      "legislature": {
+        "ja": "二院制（下院〈庶民院〉と上院〈貴族院〉）",
+        "en": "Bicameral (House of Commons and House of Lords)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/uk/data.html",
+        "updated": "2026-10-20"
+      },
+      "tourism": {
+        "name": {
+          "ja": "英国政府観光庁（VisitBritain）",
+          "en": "VisitBritain"
+        },
+        "url": "https://www.visitbritain.com/"
+      },
+      "whc": "gb"
+    },
+    "FRA": {
+      "capital": {
+        "ja": "パリ",
+        "en": "Paris"
+      },
+      "language": {
+        "ja": "フランス語",
+        "en": "French"
+      },
+      "currency": {
+        "ja": "ユーロ",
+        "en": "Euro",
+        "code": "EUR"
+      },
+      "government": {
+        "ja": "共和制",
+        "en": "Republic"
+      },
+      "legislature": {
+        "ja": "二院制（国民議会 定数577、上院 定数348）",
+        "en": "Bicameral (National Assembly 577 seats, Senate 348 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/france/data.html",
+        "updated": "2026-11-02"
+      },
+      "tourism": {
+        "name": {
+          "ja": "フランス観光開発機構（Atout France）",
+          "en": "Atout France (France.fr)"
+        },
+        "url": "https://www.france.fr/"
+      },
+      "whc": "fr"
+    },
+    "DEU": {
+      "capital": {
+        "ja": "ベルリン",
+        "en": "Berlin"
+      },
+      "language": {
+        "ja": "ドイツ語",
+        "en": "German"
+      },
+      "currency": {
+        "ja": "ユーロ",
+        "en": "Euro",
+        "code": "EUR"
+      },
+      "government": {
+        "ja": "連邦共和制（16州）",
+        "en": "Federal republic (16 states)"
+      },
+      "legislature": {
+        "ja": "二院制（連邦議会 630議席、連邦参議院 69議席）",
+        "en": "Bicameral (Bundestag 630 seats, Bundesrat 69 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/germany/data.html",
+        "updated": "2025-06-03"
+      },
+      "tourism": {
+        "name": {
+          "ja": "ドイツ観光局（GNTB）",
+          "en": "German National Tourist Board (GNTB)"
+        },
+        "url": "https://www.germany.travel/"
+      },
+      "whc": "de"
+    },
+    "ITA": {
+      "capital": {
+        "ja": "ローマ",
+        "en": "Rome"
+      },
+      "language": {
+        "ja": "イタリア語（地域によりドイツ語、フランス語などの少数言語あり）",
+        "en": "Italian (German, French and other minority languages in some regions)"
+      },
+      "currency": {
+        "ja": "ユーロ",
+        "en": "Euro",
+        "code": "EUR"
+      },
+      "government": {
+        "ja": "共和制",
+        "en": "Republic"
+      },
+      "legislature": {
+        "ja": "二院制（上院・下院）",
+        "en": "Bicameral (Senate and Chamber of Deputies)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/italy/data.html",
+        "updated": "2026-03-03"
+      },
+      "tourism": {
+        "name": {
+          "ja": "イタリア観光公式サイト（Italia.it）",
+          "en": "Italia.it (official tourism website)"
+        },
+        "url": "https://www.italia.it/"
+      },
+      "whc": "it"
+    },
+    "CAN": {
+      "capital": {
+        "ja": "オタワ",
+        "en": "Ottawa"
+      },
+      "language": {
+        "ja": "英語とフランス語が公用語",
+        "en": "English and French are official languages"
+      },
+      "currency": {
+        "ja": "カナダ・ドル",
+        "en": "Canadian dollar",
+        "code": "CAD"
+      },
+      "government": {
+        "ja": "立憲君主制（イギリス型の議院内閣制と連邦主義）",
+        "en": "Constitutional monarchy (British-style parliamentary system and federalism)"
+      },
+      "legislature": {
+        "ja": "二院制（上院105名、下院343名）",
+        "en": "Bicameral (Senate 105, House of Commons 343)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/canada/data.html",
+        "updated": "2026-06-12"
+      },
+      "tourism": {
+        "name": {
+          "ja": "カナダ観光局（Destination Canada）",
+          "en": "Destination Canada"
+        },
+        "url": "https://travel.destinationcanada.com/"
+      },
+      "whc": "ca"
+    },
+    "KOR": {
+      "capital": {
+        "ja": "ソウル",
+        "en": "Seoul"
+      },
+      "language": {
+        "ja": "韓国語",
+        "en": "Korean"
+      },
+      "currency": {
+        "ja": "ウォン",
+        "en": "Won",
+        "code": "KRW"
+      },
+      "government": {
+        "ja": "民主共和国",
+        "en": "Democratic republic"
+      },
+      "legislature": {
+        "ja": "一院制（300議席）",
+        "en": "Unicameral (300 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/korea/data.html",
+        "updated": "2026-08-13"
+      },
+      "tourism": {
+        "name": {
+          "ja": "韓国観光公社（VISITKOREA）",
+          "en": "Korea Tourism Organization (VISITKOREA)"
+        },
+        "url": "https://english.visitkorea.or.kr/"
+      },
+      "whc": "kr"
+    },
+    "CHN": {
+      "capital": {
+        "ja": "北京",
+        "en": "Beijing"
+      },
+      "language": {
+        "ja": "中国語",
+        "en": "Chinese"
+      },
+      "currency": {
+        "ja": "人民元",
+        "en": "Renminbi (yuan)",
+        "code": "CNY"
+      },
+      "government": {
+        "ja": "人民民主専政",
+        "en": "People’s democratic dictatorship"
+      },
+      "legislature": {
+        "ja": "全国人民代表大会",
+        "en": "National People’s Congress"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/china/data.html",
+        "updated": "2023-09-25"
+      },
+      "whc": "cn"
+    },
+    "AUS": {
+      "capital": {
+        "ja": "キャンベラ",
+        "en": "Canberra"
+      },
+      "language": {
+        "ja": "英語",
+        "en": "English"
+      },
+      "currency": {
+        "ja": "豪州ドル",
+        "en": "Australian dollar",
+        "code": "AUD"
+      },
+      "government": {
+        "ja": "立憲君主制",
+        "en": "Constitutional monarchy"
+      },
+      "legislature": {
+        "ja": "二院制（上院・下院）",
+        "en": "Bicameral (Senate and House of Representatives)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/australia/data.html",
+        "updated": "2026-08-19"
+      },
+      "tourism": {
+        "name": {
+          "ja": "オーストラリア政府観光局（Tourism Australia）",
+          "en": "Tourism Australia"
+        },
+        "url": "https://www.australia.com/"
+      },
+      "whc": "au"
+    },
+    "IND": {
+      "capital": {
+        "ja": "ニューデリー",
+        "en": "New Delhi"
+      },
+      "language": {
+        "ja": "連邦公用語はヒンディー語。ほかに憲法で公認されている州の言語が21言語",
+        "en": "Hindi is the official language of the Union; 21 other state languages are recognised by the Constitution"
+      },
+      "currency": {
+        "ja": "ルピー",
+        "en": "Indian rupee",
+        "code": "INR"
+      },
+      "government": {
+        "ja": "共和制",
+        "en": "Republic"
+      },
+      "legislature": {
+        "ja": "二院制（上院250議席、下院552議席。インド憲法の規定数）",
+        "en": "Bicameral (Rajya Sabha 250 seats, Lok Sabha 552 seats, as provided by the Constitution)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/india/data.html",
+        "updated": "2026-09-04"
+      },
+      "tourism": {
+        "name": {
+          "ja": "インド政府観光局（Incredible India）",
+          "en": "Incredible India (Ministry of Tourism)"
+        },
+        "url": "https://www.incredibleindia.gov.in/"
+      },
+      "whc": "in"
+    },
+    "BRA": {
+      "capital": {
+        "ja": "ブラジリア",
+        "en": "Brasília"
+      },
+      "language": {
+        "ja": "ポルトガル語",
+        "en": "Portuguese"
+      },
+      "currency": {
+        "ja": "レアル",
+        "en": "Brazilian real",
+        "code": "BRL"
+      },
+      "government": {
+        "ja": "連邦共和制（大統領制）",
+        "en": "Federal republic (presidential system)"
+      },
+      "legislature": {
+        "ja": "二院制（上院81名、下院513名）",
+        "en": "Bicameral (Senate 81, Chamber of Deputies 513)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/brazil/data.html",
+        "updated": "2026-08-03"
+      },
+      "whc": "br"
+    },
+    "THA": {
+      "capital": {
+        "ja": "バンコク",
+        "en": "Bangkok"
+      },
+      "language": {
+        "ja": "タイ語",
+        "en": "Thai"
+      },
+      "currency": {
+        "ja": "バーツ",
+        "en": "Baht",
+        "code": "THB"
+      },
+      "government": {
+        "ja": "立憲君主制",
+        "en": "Constitutional monarchy"
+      },
+      "legislature": {
+        "ja": "二院制（下院500議席、上院200議席）",
+        "en": "Bicameral (House of Representatives 500 seats, Senate 200 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/thailand/data.html",
+        "updated": "2026-01-21"
+      },
+      "whc": "th"
+    },
+    "VNM": {
+      "capital": {
+        "ja": "ハノイ",
+        "en": "Hanoi"
+      },
+      "language": {
+        "ja": "ベトナム語",
+        "en": "Vietnamese"
+      },
+      "currency": {
+        "ja": "ドン",
+        "en": "Dong",
+        "code": "VND"
+      },
+      "government": {
+        "ja": "社会主義共和国",
+        "en": "Socialist republic"
+      },
+      "legislature": {
+        "ja": "一院制の国会（定数500）",
+        "en": "Unicameral National Assembly (500 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/vietnam/data.html",
+        "updated": "2024-11-20"
+      },
+      "whc": "vn",
+      "tourism": {
+        "name": {
+          "ja": "ベトナム観光総局（公式観光サイト）",
+          "en": "Viet Nam National Authority of Tourism"
+        },
+        "url": "https://vietnam.travel/"
+      }
+    },
+    "PHL": {
+      "capital": {
+        "ja": "マニラ",
+        "en": "Manila"
+      },
+      "language": {
+        "ja": "フィリピノ語と英語",
+        "en": "Filipino and English"
+      },
+      "currency": {
+        "ja": "フィリピン・ペソ",
+        "en": "Philippine peso",
+        "code": "PHP"
+      },
+      "government": {
+        "ja": "共和制、大統領制",
+        "en": "Republic; presidential system"
+      },
+      "legislature": {
+        "ja": "二院制（上院24議席、下院311議席）",
+        "en": "Bicameral (Senate 24 seats, House of Representatives 311 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/philippines/data.html",
+        "updated": "2026-09-03"
+      },
+      "whc": "ph"
+    },
+    "IDN": {
+      "capital": {
+        "ja": "ジャカルタ",
+        "en": "Jakarta"
+      },
+      "language": {
+        "ja": "インドネシア語",
+        "en": "Indonesian"
+      },
+      "currency": {
+        "ja": "ルピア",
+        "en": "Rupiah",
+        "code": "IDR"
+      },
+      "government": {
+        "ja": "大統領制、共和制",
+        "en": "Presidential system; republic"
+      },
+      "legislature": {
+        "ja": "国会（定数580）と地方代表議会（定数152）",
+        "en": "House of Representatives (580 seats) and Regional Representative Council (152 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/indonesia/data.html",
+        "updated": "2026-07-16"
+      },
+      "whc": "id",
+      "tourism": {
+        "name": {
+          "ja": "インドネシア観光省（公式観光サイト）",
+          "en": "Ministry of Tourism, Republic of Indonesia"
+        },
+        "url": "https://www.indonesia.travel/"
+      }
+    },
+    "SGP": {
+      "language": {
+        "ja": "国語はマレー語。公用語は英語、中国語、マレー語、タミール語",
+        "en": "National language: Malay. Official languages: English, Chinese, Malay and Tamil"
+      },
+      "currency": {
+        "ja": "シンガポール・ドル",
+        "en": "Singapore dollar",
+        "code": "SGD"
+      },
+      "government": {
+        "ja": "立憲共和制",
+        "en": "Constitutional republic"
+      },
+      "legislature": {
+        "ja": "一院制",
+        "en": "Unicameral"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/singapore/data.html",
+        "updated": "2025-09-10"
+      },
+      "whc": "sg",
+      "tourism": {
+        "name": {
+          "ja": "シンガポール政府観光局（Visit Singapore）",
+          "en": "Visit Singapore (official tourism site)"
+        },
+        "url": "https://www.visitsingapore.com/"
+      }
+    },
+    "MYS": {
+      "capital": {
+        "ja": "クアラルンプール",
+        "en": "Kuala Lumpur"
+      },
+      "language": {
+        "ja": "マレー語（国語）、中国語、タミール語、英語",
+        "en": "Malay (national language), Chinese, Tamil and English"
+      },
+      "currency": {
+        "ja": "リンギット",
+        "en": "Ringgit",
+        "code": "MYR"
+      },
+      "government": {
+        "ja": "立憲君主制（議会制民主主義）",
+        "en": "Constitutional monarchy (parliamentary democracy)"
+      },
+      "legislature": {
+        "ja": "二院制（上院70議席、下院222議席）",
+        "en": "Bicameral (Senate 70 seats, House of Representatives 222 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/malaysia/data.html",
+        "updated": "2026-10-26"
+      },
+      "whc": "my"
+    },
+    "ESP": {
+      "capital": {
+        "ja": "マドリード",
+        "en": "Madrid"
+      },
+      "language": {
+        "ja": "スペイン語（カスティーリャ語）。自治州では、バスク語、カタルーニャ語、ガリシア語なども公用語",
+        "en": "Spanish (Castilian); Basque, Catalan, Galician and others are also official in their autonomous communities"
+      },
+      "currency": {
+        "ja": "ユーロ",
+        "en": "Euro",
+        "code": "EUR"
+      },
+      "government": {
+        "ja": "議会君主制",
+        "en": "Parliamentary monarchy"
+      },
+      "legislature": {
+        "ja": "二院制（上院266議席、下院350議席）",
+        "en": "Bicameral (Senate 266 seats, Congress of Deputies 350 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/spain/data.html",
+        "updated": "2026-08-06"
+      },
+      "whc": "es",
+      "tourism": {
+        "name": {
+          "ja": "スペイン政府観光局（spain.info）",
+          "en": "Spain official tourism website (Turespaña)"
+        },
+        "url": "https://www.spain.info/"
+      }
+    },
+    "NLD": {
+      "capital": {
+        "ja": "アムステルダム（政治機能の所在地はハーグ）",
+        "en": "Amsterdam (seat of government: The Hague)"
+      },
+      "language": {
+        "ja": "オランダ語",
+        "en": "Dutch"
+      },
+      "currency": {
+        "ja": "ユーロ",
+        "en": "Euro",
+        "code": "EUR"
+      },
+      "government": {
+        "ja": "立憲君主制",
+        "en": "Constitutional monarchy"
+      },
+      "legislature": {
+        "ja": "二院制（上院75席、下院150席）",
+        "en": "Bicameral (Senate 75 seats, House of Representatives 150 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/netherlands/data.html",
+        "updated": "2026-02-25"
+      },
+      "whc": "nl"
+    },
+    "SWE": {
+      "capital": {
+        "ja": "ストックホルム",
+        "en": "Stockholm"
+      },
+      "language": {
+        "ja": "スウェーデン語",
+        "en": "Swedish"
+      },
+      "currency": {
+        "ja": "スウェーデン・クローナ",
+        "en": "Swedish krona",
+        "code": "SEK"
+      },
+      "government": {
+        "ja": "立憲君主制",
+        "en": "Constitutional monarchy"
+      },
+      "legislature": {
+        "ja": "一院制（349議席）",
+        "en": "Unicameral (349 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/sweden/data.html",
+        "updated": "2026-03-06"
+      },
+      "whc": "se",
+      "tourism": {
+        "name": {
+          "ja": "スウェーデン観光局（Visit Sweden）",
+          "en": "Visit Sweden"
+        },
+        "url": "https://visitsweden.com/"
+      }
+    },
+    "CHE": {
+      "capital": {
+        "ja": "ベルン",
+        "en": "Bern"
+      },
+      "language": {
+        "ja": "ドイツ語、フランス語、イタリア語、ロマンシュ語",
+        "en": "German, French, Italian and Romansh"
+      },
+      "currency": {
+        "ja": "スイス・フラン",
+        "en": "Swiss franc",
+        "code": "CHF"
+      },
+      "government": {
+        "ja": "連邦共和制（20の州と6の準州）",
+        "en": "Federal republic (20 cantons and 6 half-cantons)"
+      },
+      "legislature": {
+        "ja": "二院制（上院〈全州議会〉46議席、下院〈国民議会〉200議席）",
+        "en": "Bicameral (Council of States 46 seats, National Council 200 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/switzerland/data.html",
+        "updated": "2026-05-27"
+      },
+      "whc": "ch",
+      "tourism": {
+        "name": {
+          "ja": "スイス政府観光局（Switzerland Tourism）",
+          "en": "Switzerland Tourism"
+        },
+        "url": "https://www.myswitzerland.com/"
+      }
+    },
+    "MEX": {
+      "capital": {
+        "ja": "メキシコシティ",
+        "en": "Mexico City"
+      },
+      "language": {
+        "ja": "スペイン語",
+        "en": "Spanish"
+      },
+      "currency": {
+        "ja": "メキシコ・ペソ",
+        "en": "Mexican peso",
+        "code": "MXN"
+      },
+      "government": {
+        "ja": "立憲民主制による連邦共和国",
+        "en": "Federal republic under constitutional democracy"
+      },
+      "legislature": {
+        "ja": "二院制（上院128議席、下院500議席）",
+        "en": "Bicameral (Senate 128 seats, Chamber of Deputies 500 seats)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/mexico/data.html",
+        "updated": "2026-10-14"
+      },
+      "whc": "mx"
+    },
+    "NZL": {
+      "capital": {
+        "ja": "ウェリントン",
+        "en": "Wellington"
+      },
+      "language": {
+        "ja": "英語、マオリ語、手話",
+        "en": "English, Māori and New Zealand Sign Language"
+      },
+      "currency": {
+        "ja": "ニュージーランド・ドル",
+        "en": "New Zealand dollar",
+        "code": "NZD"
+      },
+      "government": {
+        "ja": "立憲君主国",
+        "en": "Constitutional monarchy"
+      },
+      "legislature": {
+        "ja": "一院制（定数120。選挙制度により120名を超えることがある）",
+        "en": "Unicameral (120 seats; may exceed 120 under the electoral system)"
+      },
+      "mofa": {
+        "url": "https://www.mofa.go.jp/mofaj/area/nz/data.html",
+        "updated": "2026-09-15"
+      },
+      "whc": "nz",
+      "tourism": {
+        "name": {
+          "ja": "ニュージーランド政府観光局（公式サイト）",
+          "en": "New Zealand official tourism site"
+        },
+        "url": "https://www.newzealand.com/"
+      }
+    }
+  }
+}

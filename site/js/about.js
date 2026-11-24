@@ -53,6 +53,7 @@ async function showTime() {
 
 async function showLog() {
   const target = document.getElementById('changelog');
+  if (!target) return; // 更新履歴は更新一覧のページ（updates.html）に移した（2026-11）
   try {
     const log = await getJson('data/changelog.json');
     target.replaceChildren();

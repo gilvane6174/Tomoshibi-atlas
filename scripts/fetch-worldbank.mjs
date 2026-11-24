@@ -151,6 +151,53 @@ export const WB_INDICATORS = [
     },
     source: { name: 'UNESCO Institute for Statistics (via World Bank)', url: 'https://data.worldbank.org/indicator/SE.TER.ENRR' },
   },
+  // 経済の動きと国の借金（2026-11-24 追加）。年と定義の違いが大きいので、説明で必ず断る。古すぎる値は出さない（maxAge）
+  {
+    key: 'wbGdpGrowth',
+    code: 'NY.GDP.MKTP.KD.ZG',
+    nature: 'statistics',
+    unit: '%',
+    decimals: 1,
+    range: [-100, 200],
+    maxAge: 5,
+    name: { ja: '経済成長率（実質GDPの前年比）', en: 'GDP growth (annual %)' },
+    note: {
+      ja: '物価の変化を除いた国内総生産（実質GDP）が、前の年からどれだけ増えたか・減ったか。1年ごとの動きで、災害や景気の波で大きく変わります。最新の年は、各国があとから数字を見直すことがあります。暮らし向きや一人ひとりの収入そのものではありません。',
+      en: 'Annual change in gross domestic product at constant prices. It moves a lot with disasters and business cycles, and the latest year may be revised later by each country. It does not show household living standards or individual income.',
+    },
+    source: { name: 'World Bank and OECD national accounts data (World Development Indicators)', url: 'https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG' },
+  },
+  {
+    key: 'wbCentralDebt',
+    code: 'GC.DOD.TOTL.GD.ZS',
+    nature: 'statistics',
+    unit: '%',
+    decimals: 1,
+    range: [0, 1000],
+    maxAge: 8,
+    name: { ja: '中央政府の債務残高（GDPに対する割合）', en: 'Central government debt, total (% of GDP)' },
+    note: {
+      ja: '国（中央政府）の借金の残高を、国内総生産（GDP）に対する割合で表したもの（国際通貨基金（IMF）の政府財政統計を、世界銀行がまとめた値）。どこまでを中央政府に含めるかは、国やデータの系列によって違います。地方自治体などを含む「一般政府」の債務とは範囲が違うため、ニュースでよく見る数字とは一致しないことがあります。国ごとに最新の年が違い、値の無い国も多い指標です（日本も、この系列には値がありません）。このページは、同じ出典・同じ定義の値だけを並べるため、ほかの統計の値で補っていません。一般政府の債務の国際比較は、IMF の世界経済見通し（WEO）データベースなどで公表されています。数字の大きさだけで、国の財政が安全か危ないかは判断できません。',
+      en: 'Gross debt of the central government as a share of GDP (International Monetary Fund, Government Finance Statistics, compiled by the World Bank). What counts as central government differs by country and data series, and it differs from general government debt (which also covers local governments and others), so it may not match figures often seen in the news. Latest years differ by country and many countries, including Japan, have no value in this series. This page lists only values from the same source and definition and does not fill gaps with other statistics. International comparisons of general government debt are published, for example, in the IMF World Economic Outlook database. The size of the number alone does not tell whether public finances are safe.',
+    },
+    source: { name: 'International Monetary Fund, Government Finance Statistics (via World Bank)', url: 'https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS' },
+  },
+  // インターネットの利用率（ITU。2026-11-19 追加。AI・ITと暮らしの関わりを見るため）。
+  // 元のデータは国際電気通信連合（ITU）のもの。利用条件を運用者が確かめるまで取得しない（allowed-sources.json の enabledFetchers で false）
+  {
+    key: 'wbInternet',
+    code: 'IT.NET.USER.ZS',
+    nature: 'statistics',
+    unit: '%',
+    decimals: 1,
+    range: [0, 100],
+    name: { ja: 'インターネットを利用する人の割合', en: 'Individuals using the Internet (% of population)' },
+    note: {
+      ja: '過去3か月にインターネットを使った人の、人口に対する割合（国際電気通信連合 ITU の集計）。調査の方法や年は国ごとに違います。',
+      en: 'Share of the population who used the Internet in the last three months (International Telecommunication Union, ITU). Survey methods and years differ by country.',
+    },
+    source: { name: 'International Telecommunication Union, World Telecommunication/ICT Indicators Database (via World Bank)', url: 'https://data.worldbank.org/indicator/IT.NET.USER.ZS' },
+  },
 ];
 
 const MAX_RECORDS = 2000;
@@ -177,6 +224,7 @@ export function parseWorldBank(doc, ind, countryIds, now = Date.now()) {
       if (!Number.isFinite(v) || v < ind.range[0] || v > ind.range[1]) throw new Error('value');
       const y = String(r.date || '');
       if (!YEAR.test(y) || Number(y) < 1990 || Number(y) > thisYear) throw new Error('year');
+      if (ind.maxAge && Number(y) < thisYear - ind.maxAge) continue; // 古すぎる値は出さない（正常な除外。「データなし」と表示）
       const prev = values[iso];
       if (!prev || Number(y) > prev[1]) values[iso] = [Number(v.toFixed(Math.max(ind.decimals, 2))), Number(y)];
     } catch {

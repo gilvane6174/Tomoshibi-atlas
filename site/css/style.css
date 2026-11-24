@@ -8,7 +8,7 @@
   --line-strong: rgba(160, 180, 205, 0.26);
   --text: #d6dce4;
   --text-dim: #93a0b0;
-  --text-faint: #6b7787;
+  --text-faint: #7a8696; /* 小さな補助の文字でも読める濃さ（暗い背景に対して 4.5:1 以上） */
   --accent: #f2c27a;            /* 灯の色 */
   --focus: #9cc6ff;
 
@@ -338,7 +338,7 @@ body.doc { overflow: auto; }
   #drawer-connections { grid-column: 1 / -1; border: 2px solid #e6ebf2; }
   .drawer-tagline { margin: 18px 0 0; font-family: var(--font-serif); font-size: 13px; color: var(--text-dim); }
   .purpose-card { display: none; }
-  .sample-banner { top: calc(var(--header-h, 104px) + 66px); pointer-events: none; left: 8px; right: 8px; transform: none; padding: 3px 10px; font-size: 11px; text-align: center; border-radius: 8px; }
+  .sample-banner { top: calc(var(--header-h, 104px) + 88px); pointer-events: none; left: 8px; right: 8px; transform: none; padding: 3px 10px; font-size: 11px; text-align: center; border-radius: 8px; }
   .panel, .panel-list { top: auto; left: 8px; right: 8px; bottom: calc(62px + env(safe-area-inset-bottom)); width: auto; max-height: 56vh; }
   .globe-controls { right: 12px; bottom: calc(var(--status-h, 66px) + 10px); }
   .statusbar { flex-direction: column; gap: 2px; padding-top: 8px; }
@@ -518,7 +518,10 @@ body.doc { overflow: auto; }
 .cmp-table th, .cmp-table td { padding: 6px 8px; border-bottom: 1px solid var(--line, rgba(255,255,255,.12)); text-align: left; vertical-align: top; }
 .cmp-table td:nth-child(2) { width: 48%; }
 .cmp-val { display: block; font-variant-numeric: tabular-nums; }
-.cmp-bar { display: block; height: 6px; margin-top: 3px; border-radius: 3px; background: #86b6ea; }
+.cmp-track { position: relative; display: block; height: 6px; margin-top: 3px; }
+.cmp-bar { position: absolute; top: 0; height: 6px; border-radius: 3px; background: #86b6ea; }
+.cmp-bar.neg { background: #e0a47c; } /* 0 より小さい値（左へのびる） */
+.cmp-zero { position: absolute; top: -2px; bottom: -2px; width: 1px; background: var(--line-strong); }
 .cmp-nodata td { color: var(--text-dim, #9aa6b2); }
 
 /* 情報の性質（情報の確かさ）の印。色だけに頼らず、文字で区別する */
@@ -603,3 +606,543 @@ body.doc .doc-wrap .note { font-size: 14px; }
   body.doc .brand-sub { display: inline; letter-spacing: 0.05em; }
   body.doc .brand-name { font-size: 15px; }
 }
+
+/* ── v1.7：最終更新の表示・今週のともしび・新しいページ ── */
+.site-updated { margin: 0 0 6px; font-size: 12px; color: var(--text-dim); letter-spacing: 0.02em; }
+.site-updated:empty { display: none; }
+.mobile-bar .site-updated { margin: 5px 4px 0; font-size: 11.5px; }
+.quick-chip.q-weekly { grid-column: 1 / -1; border-color: rgba(242, 194, 122, 0.85); background: rgba(242, 194, 122, 0.1); color: var(--accent); font-weight: 600; }
+.quick-chip.q-world3d { border-color: #b39ddb; }
+.quick-chip.q-site-security { border-color: #9fb3c8; }
+.drawer-action.drawer-weekly { border-color: rgba(242, 194, 122, 0.85); color: var(--accent); font-weight: 600; }
+/* 説明ページのタブ（更新一覧） */
+.doc-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 14px; }
+.doc-tab { min-height: 40px; padding: 6px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: rgba(255, 255, 255, 0.03); color: var(--text); font: inherit; cursor: pointer; }
+.doc-tab[aria-selected="true"] { border-color: var(--accent); color: var(--accent); background: rgba(242, 194, 122, 0.1); }
+.doc-tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.log-list { list-style: none; padding: 0; margin: 0; }
+.log-list > li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.log-date { font-size: 12.5px; color: var(--text-dim); margin-right: 8px; }
+.log-kind { display: inline-block; font-size: 11.5px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line-strong); margin-right: 6px; }
+.log-kind.k-incident { border-color: #e9a75a; color: #f2c27a; }
+.log-kind.k-fix { border-color: #7fc98f; color: #a6dcb0; }
+.log-kind.k-audit { border-color: #86b6ea; color: #a9cdf2; }
+/* 今週のともしび・分野別・都道府県別の静的ページ */
+.week-list, .pref-list, .topic-list { list-style: none; padding: 0; margin: 0; }
+.week-list > li, .topic-list > li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.week-list h3, .topic-list h3 { margin: 0 0 4px; font-size: 16px; }
+.item-meta { font-size: 12.5px; color: var(--text-dim); margin: 2px 0 6px; }
+.pref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5em, 1fr)); gap: 6px; padding: 0; list-style: none; }
+.pref-grid a { display: block; padding: 8px 10px; border: 1px solid var(--line-strong); border-radius: 8px; text-align: center; text-decoration: none; color: var(--text); }
+.pref-grid a:hover { background: rgba(255, 255, 255, 0.06); }
+/* 3Dで見る世界 */
+.w3d-wrap { position: relative; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.02); }
+.w3d-canvas { display: block; width: 100%; height: min(70vh, 560px); touch-action: none; cursor: grab; }
+.w3d-canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.w3d-controls { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 10px 0; }
+.w3d-controls label { font-size: 13px; color: var(--text-dim); }
+.w3d-controls select, .w3d-controls button { min-height: 40px; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 8px; background: #121a25; color: var(--text); font: inherit; }
+.w3d-info { min-height: 1.6em; font-size: 13.5px; margin: 8px 0; }
+.w3d-table-wrap { max-height: 360px; overflow: auto; }
+/* スマホのメニュー：文字が折れないよう、横幅いっぱいの1行にするボタン */
+.drawer-action.drawer-wide { grid-column: 1 / -1; white-space: nowrap; }
+.quick-chip.q-care { grid-column: 1 / -1; border-color: #8fc9b4; color: #bfe6d6; font-weight: 600; }
+.drawer-action.drawer-care { border-color: #8fc9b4; color: #bfe6d6; font-weight: 600; }
+
+/* v1.7 急な病気・けがの検索と都道府県別の救急相談の表 */
+.doc-wrap .toc ul { display: flex; flex-wrap: wrap; gap: 6px 14px; padding-left: 0; list-style: none; }
+.hs-form { display: grid; grid-template-columns: auto 1fr; gap: 8px 10px; align-items: center; margin: 12px 0; }
+.hs-form input, .hs-form select { font: inherit; color: var(--text); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+.hs-words { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.hs-words button { font: inherit; font-size: 0.9em; color: var(--accent); background: transparent; border: 1px solid rgba(242, 194, 122, 0.35); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.hs-results { list-style: none; padding-left: 0; display: grid; gap: 10px; }
+.hs-item { border: 1px solid var(--line-strong); border-radius: 12px; padding: 10px 14px; }
+.hs-item h3 { margin: 0 0 4px; font-size: 1.02em; }
+.hs-item.hs-urgent { border-left: 4px solid var(--accent); }
+.hs-item ul { margin: 6px 0 0; }
+.er-table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
+.er-table th, .er-table td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+.er-table thead th { border-bottom: 1px solid var(--line-strong); }
+@media (max-width: 560px) { .hs-form { grid-template-columns: 1fr; } .er-table { font-size: 0.88em; } }
+
+/* v1.7 トップ（パソコン・タブレット）：説明は左下、ページへのボタンは右下に分ける（地球儀やお知らせと重ならないように） */
+.quick-panel {
+  position: absolute; right: max(20px, env(safe-area-inset-right)); bottom: calc(var(--status-h, 44px) + 56px); z-index: 5;
+  width: min(360px, 34vw); padding: 10px;
+  background: rgba(10, 15, 22, 0.62); border: 1px solid var(--line); border-radius: 14px; backdrop-filter: blur(6px);
+}
+.quick-panel .quick-grid { margin-top: 0; }
+.quick-panel .quick-chip { min-height: 34px; font-size: 12px; padding: 5px 6px; }
+.quick-chip.q-welfare, .quick-panel .quick-chip.q-care { grid-column: auto; font-weight: 600; min-height: 42px; }
+.quick-chip.q-welfare { color: #d8d2f2; background: rgba(140, 130, 210, 0.08); }
+.quick-panel .quick-chip.q-care { background: rgba(143, 201, 180, 0.08); }
+.quick-chip.q-crime { border-color: var(--c-crime, #c98fa0); }
+.purpose-card { width: min(400px, 34vw); }
+.purpose-card p { -webkit-line-clamp: 4; }
+body.list-open .quick-panel { display: none; }
+@media (min-width: 861px) {
+  body:has(#detail-panel:not([hidden])) .quick-panel,
+  body:has(#guide-panel:not([hidden])) .quick-panel { display: none; }
+}
+/* 背の低い画面では、説明を短くして重なりを防ぐ */
+@media (max-height: 820px) and (min-width: 861px) {
+  .purpose-card p { -webkit-line-clamp: 2; }
+  .purpose-card .layer-caption { -webkit-line-clamp: 3; }
+}
+@media (max-width: 1180px) and (min-width: 861px) {
+  .purpose-card { width: min(340px, 36vw); }
+  .quick-panel { width: min(330px, 38vw); }
+}
+.er-alert { border: 1px solid rgba(232, 140, 120, 0.45); background: rgba(232, 140, 120, 0.07); border-radius: 12px; padding: 10px 14px; margin: 12px 0; }
+.er-alert p { margin: 4px 0; }
+.er-call { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 0.92em; }
+.er-tel { display: inline-flex; align-items: center; min-height: 34px; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 999px; text-decoration: none; color: var(--text); }
+.doc-wrap .toc ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; padding-left: 0; list-style: none; }
+.doc-wrap .toc li { display: flex; }
+.doc-wrap .toc a { display: flex; align-items: center; width: 100%; min-height: 40px; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none; line-height: 1.35; }
+.hs-words button[hidden] { display: none; }
+.link-pending small { color: var(--text-dim); margin-left: 2px; }
+.drawer-action.drawer-welfare { border-color: var(--c-mental); color: #d8d2f2; font-weight: 600; background: rgba(140, 130, 210, 0.08); }
+
+/* ── v1.7 第4版：ボタンの見た目をそろえる（色は控えめに、文字の太さは全部同じ） ───────── */
+.quick-chip, .quick-panel .quick-chip, .quick-chip.q-weekly, .quick-chip.q-welfare, .quick-panel .quick-chip.q-care, .quick-chip.q-care { font-weight: 500; }
+.quick-panel .quick-chip { border-color: var(--line-strong); color: var(--text); background: rgba(255, 255, 255, 0.025); min-height: 38px; }
+.quick-panel .quick-chip.q-weekly { border-color: rgba(242, 194, 122, 0.55); color: var(--accent); background: rgba(242, 194, 122, 0.06); }
+.quick-panel .quick-chip.q-welfare, .quick-panel .quick-chip.q-care { border-color: rgba(200, 210, 225, 0.42); background: rgba(255, 255, 255, 0.06); min-height: 38px; }
+.quick-panel .quick-chip:hover { background: rgba(255, 255, 255, 0.09); }
+/* 左端の小さな色の印だけで分野の色を残す */
+.quick-panel .quick-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; margin-right: 7px; flex: none; background: var(--chip-dot, transparent); }
+.quick-panel .q-welfare { --chip-dot: var(--c-mental); }
+.quick-panel .q-care { --chip-dot: #8fc9b4; }
+.quick-panel .q-crime { --chip-dot: #c98fa0; }
+.quick-panel .q-security { --chip-dot: var(--c-security); }
+.quick-panel .q-weekly::before, .quick-panel .q-purpose::before, .quick-panel .q-about::before { display: none; }
+@media (max-width: 860px) {
+  .drawer-body > .drawer-action, .drawer-pages > .drawer-action { width: 100%; }
+  .drawer-body > .drawer-action + .drawer-action { margin-top: 8px; }
+  .drawer-tagline { margin: 10px 0 14px; line-height: 1.7; }
+  #drawer-guide { margin: 0; }
+  .drawer-pages { display: flex; flex-direction: column; gap: 8px; }
+  .drawer-action, .drawer-action.drawer-weekly, .drawer-action.drawer-care, .drawer-action.drawer-welfare { font-weight: 500; font-size: 14px; line-height: 1.4; }
+  .drawer-action { border: 1px solid var(--line-strong); }
+  .drawer-action.drawer-main { border-width: 2px; }
+  #drawer-guide { border-color: #7fc98f; }
+  .drawer-action.drawer-weekly { border-color: rgba(242, 194, 122, 0.8); background: transparent; }
+  #drawer-welfare { border: 2px solid var(--c-mental); background: transparent; color: var(--text); }
+  #drawer-emergency-care { border: 2px solid #8fc9b4; color: var(--text); }
+  #drawer-crime-prevention { border: 2px solid #c8ced6; color: var(--text); }
+  #drawer-security, #drawer-compare, #drawer-connections, #drawer-world3d { border: 1px solid var(--line-strong); }
+  .layer-sheet .sheet-list { margin: 10px 0 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; }
+  .layer-sheet .sheet-list p { margin: 0 0 8px; font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .layer-sheet #drawer-list { width: 100%; }
+}
+/* 今週のともしび：補った旨の案内と、情報の一覧の区切り */
+.weekly-sep { border: 0; border-top: 1px solid var(--line-strong); margin: 14px 0 18px; }
+/* 説明ページの目次：同じ大きさのボタンにそろえる（1行に収まらない幅では縦に並べる） */
+.doc-wrap .toc ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; padding-left: 0; list-style: none; margin: 12px 0; }
+.doc-wrap .toc a { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 44px; padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 10px; text-decoration: none; line-height: 1.35; font-size: 15px; white-space: nowrap; }
+@media (max-width: 560px) { .doc-wrap .toc ul { grid-template-columns: 1fr; } .doc-wrap .toc a { justify-content: flex-start; } }
+/* 説明ページ全体の余白と、ボタン・リンクの文字の大きさをそろえる */
+body.doc .doc-wrap { padding-bottom: 64px; }
+body.doc .doc-wrap section { margin: 28px 0; }
+body.doc .doc-wrap h2 { margin: 0 0 12px; }
+body.doc .doc-wrap h3 { margin: 20px 0 8px; }
+body.doc .doc-wrap ul { padding-left: 1.3em; }
+body.doc .doc-wrap li { margin: 6px 0; }
+body.doc .doc-wrap p { margin: 10px 0; }
+.hs-words button, .er-tel { font-size: 14px; font-weight: 500; line-height: 1.35; min-height: 36px; }
+.hs-item h3 { font-size: 16px; }
+body.doc .doc-wrap .toc ul { padding-left: 0; }
+.er-alert-police { border-color: rgba(200, 206, 214, 0.45); background: rgba(200, 206, 214, 0.06); }
+
+/* ── v1.8 トップの入口（パソコン）：3つの入口にしぼる ───────── */
+.quick-panel { display: flex; flex-direction: column; gap: 8px; width: min(340px, 32vw); padding: 12px; }
+.quick-panel > .quick-chip.q-weekly { width: 100%; min-height: 40px; justify-content: center; }
+.qe { display: block; width: 100%; text-align: left; font: inherit; color: var(--text); background: rgba(255, 255, 255, 0.035); border: var(--bw) solid var(--line-strong); border-radius: 12px; padding: 0; transition: background 0.2s, transform 0.2s, border-color 0.2s; }
+.qe summary, button.qe { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; }
+.qe summary::-webkit-details-marker { display: none; }
+.qe summary::after { content: "＋"; position: absolute; right: 14px; top: 12px; color: var(--text-dim); font-size: 13px; }
+.qe { position: relative; }
+.qe[open] summary::after { content: "－"; }
+.qe-title { font-size: var(--fs-btn); font-weight: 500; }
+.qe-sub { font-size: 12px; color: var(--text-dim); line-height: 1.45; }
+.qe-links { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 0 10px 10px; }
+.qe-links .quick-chip { min-height: 38px; }
+.qe-trouble { border-color: rgba(200, 210, 225, 0.42); }
+.qe:hover { background: rgba(255, 255, 255, 0.07); }
+.qe-small { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 2px 0 0; font-size: 12px; }
+.qe-small a, .text-link { color: var(--text-dim); background: none; border: 0; padding: 2px 0; font: inherit; font-size: 12px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.qe-small a:hover, .text-link:hover { color: var(--text); }
+.theme-note { position: absolute; left: 50%; transform: translateX(-50%); top: calc(var(--header-h, 64px) + 52px); z-index: 6; margin: 0; padding: 6px 12px; font-size: 12.5px; background: rgba(10, 15, 22, 0.75); border: var(--bw) solid rgba(242, 194, 122, 0.4); border-radius: 999px; max-width: min(92vw, 640px); }
+.theme-note a { color: var(--accent); margin-left: 6px; }
+
+/* ── v1.8 文字の大きさ・線の太さをサイト全体でそろえる ───────── */
+:root { --bw: 1.5px; --fs-body: 15px; --fs-btn: 14px; --fs-small: 12.5px; }
+.quick-chip, .quick-panel .quick-chip, .drawer-action, .drawer-action.drawer-main, .er-tel, .hs-words button, .doc-wrap .toc a, .kana-toggle, .qe, #drawer-guide, #drawer-welfare, #drawer-emergency-care, #drawer-crime-prevention, .drawer-action.drawer-weekly { border-width: var(--bw); }
+.quick-chip, .drawer-action, .er-tel, .hs-words button, .doc-wrap .toc a, .kana-toggle { font-size: var(--fs-btn); font-weight: 500; }
+body.doc .doc-wrap, body.doc .doc-wrap p, body.doc .doc-wrap li { font-size: var(--fs-body); }
+body.doc .doc-wrap a { font-size: inherit; }
+body.doc .doc-wrap .item-meta { font-size: var(--fs-small); }
+@media (max-width: 860px) {
+  .drawer-action, .drawer-action.drawer-main { font-size: var(--fs-btn); border-width: var(--bw); }
+}
+
+/* ── v1.8 動き：ふわっと出る・触れると少し浮く（動きを減らす設定の人には出さない） ───────── */
+@media (prefers-reduced-motion: no-preference) {
+  .quick-chip, .drawer-action, .er-tel, .hs-words button, .doc-wrap .toc a, .qe { transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+  .quick-chip:hover, .er-tel:hover, .hs-words button:hover, .doc-wrap .toc a:hover, button.qe:hover { transform: translateY(-2px); }
+  body.doc .doc-wrap > * { animation: ta-rise 0.6s ease both; }
+  body.doc .doc-wrap > *:nth-child(2) { animation-delay: 0.05s; }
+  body.doc .doc-wrap > *:nth-child(3) { animation-delay: 0.1s; }
+  body.doc .doc-wrap > *:nth-child(n + 4) { animation-delay: 0.15s; }
+  @supports (animation-timeline: view()) {
+    body.doc .doc-wrap section, .hs-item, .connections-card { animation: ta-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 30%; }
+  }
+  .quick-panel, .purpose-card { animation: ta-rise 0.8s ease 0.6s both; }
+}
+@keyframes ta-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+/* 下の帯：パソコンは右側に「分野の件数・最終確認」と現在の時刻、スマートフォンはその下に時刻 */
+.statusbar { align-items: baseline; }
+.status-right { order: 3; margin-left: auto; display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+.clock { font-variant-numeric: tabular-nums; color: var(--text-dim); }
+@media (max-width: 860px) {
+  .status-right { order: 0; margin-left: 0; flex-direction: column; gap: 1px; align-items: flex-start; }
+}
+.purpose-card p { -webkit-line-clamp: 3 !important; }
+.view-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 18px 0 8px; }
+.view-tabs button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 14px; font: inherit; font-size: var(--fs-btn); font-weight: 500; color: var(--text); background: rgba(255, 255, 255, 0.03); border: var(--bw) solid var(--line-strong); border-radius: 12px; cursor: pointer; text-align: left; }
+.view-tabs button small { font-size: 12px; color: var(--text-dim); font-weight: 400; }
+.view-tabs button[aria-selected="true"] { border-color: rgba(242, 194, 122, 0.7); background: rgba(242, 194, 122, 0.07); }
+.quick-panel { width: min(320px, 30vw); }
+.qe-links { grid-template-columns: 1fr; }
+.qe-links .quick-chip { justify-content: flex-start; text-align: left; min-height: 36px; padding: 6px 10px; }
+/* 目次のボタンの中の「ひらがなで よむ」：ボタンの形を崩さない */
+.doc-wrap .toc a { white-space: normal; }
+.doc-wrap .toc li { display: block; }
+.doc-wrap .toc li > .kana-std, .doc-wrap .toc li > .kana-alt { display: block; height: 100%; }
+.doc-wrap .toc li > .kana-alt { display: none; }
+.kana-on .doc-wrap .toc li > .kana-alt, .doc-wrap.kana-on .toc li > .kana-alt { display: block; }
+.kana-on .doc-wrap .toc li > .kana-std, .doc-wrap.kana-on .toc li > .kana-std { display: none; }
+.doc-wrap .toc a { height: 100%; }
+.er-table th[scope="row"] { white-space: nowrap; min-width: 4.5em; }
+.er-table thead th:first-child { white-space: nowrap; }
+.er-center { display: block; margin-top: 4px; font-size: var(--fs-small); color: var(--text-dim); }
+
+/* ── 「宇宙へ」の演出 ───────── */
+.cosmos { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.space-btn { opacity: 0.85; }
+.space-btn[aria-pressed="true"] { border-color: rgba(242, 194, 122, 0.7); color: var(--accent); opacity: 1; }
+body.cosmic .purpose-card, body.cosmic .quick-panel, body.cosmic #labels, body.cosmic .globe-controls, body.cosmic .layers, body.cosmic .sample-banner, body.cosmic .theme-note, body.cosmic .mobile-bar, body.cosmic .panel, body.cosmic .site-updated { opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
+body.cosmic #globe { pointer-events: none; }
+.cosmos-text { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; z-index: 15; padding: 0 24px; opacity: 0; transition: opacity 2.2s ease; }
+.cosmos-text.on { opacity: 1; }
+.cosmos-ja { font-family: var(--font-display, serif); font-size: clamp(22px, 3.6vw, 40px); letter-spacing: 0.18em; margin: 0 0 12px; color: rgba(245, 240, 230, 0.92); text-shadow: 0 0 24px rgba(242, 194, 122, 0.25); }
+.cosmos-en { font-size: clamp(13px, 1.6vw, 17px); letter-spacing: 0.12em; margin: 0; color: rgba(220, 228, 245, 0.72); font-style: italic; }
+.cosmos-note { position: absolute; bottom: calc(var(--status-h, 44px) + 14px); left: 0; right: 0; font-size: 11.5px; color: var(--text-faint); margin: 0; }
+@media (prefers-reduced-motion: reduce) { .cosmos-text { transition: none; } }
+body.cosmic .purpose-card, body.cosmic .quick-panel, body.cosmic #labels, body.cosmic .globe-controls, body.cosmic .layers, body.cosmic .sample-banner, body.cosmic .theme-note, body.cosmic .mobile-bar, body.cosmic .panel, body.cosmic .site-updated { animation: none !important; opacity: 0 !important; visibility: hidden; transition: opacity 0.8s ease, visibility 0s linear 0.8s; }
+@media (max-width: 860px) {
+  .space-btn { position: fixed; left: max(12px, env(safe-area-inset-left)); bottom: calc(var(--status-h, 64px) + 16px); z-index: 25; min-height: 34px; padding: 4px 12px; font-size: 13px; background: rgba(10, 15, 22, 0.7); }
+}
+.cosmos-text { justify-content: flex-start; padding-top: 58vh; }
+.cosmos-ja { word-break: keep-all; overflow-wrap: anywhere; }
+@media (max-width: 860px) {
+  .cosmos-ja { font-size: 21px; letter-spacing: 0.1em; line-height: 1.8; }
+  .cosmos-note { bottom: calc(var(--status-h, 64px) + 60px); padding: 0 16px; }
+}
+.sort-group { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; } .sort-group .filter-btn[aria-pressed="true"] { border-color: rgba(242, 194, 122, 0.7); color: var(--accent); }
+.welcome-back { position: fixed; left: 50%; bottom: calc(var(--status-h, 44px) + 64px); transform: translateX(-50%); margin: 0; z-index: 12; font-size: 13px; letter-spacing: 0.12em; color: rgba(245, 236, 220, 0.75); text-shadow: 0 0 12px rgba(242, 194, 122, 0.35); pointer-events: none; opacity: 0; transition: opacity 1.4s ease; white-space: nowrap; }
+.welcome-back.on { opacity: 1; }
+.welcome-back span[lang="en"] { font-style: italic; color: rgba(220, 228, 245, 0.6); margin-left: 6px; }
+.cosmos-text { justify-content: flex-start; padding-top: 56vh; }
+@media (max-width: 860px) {
+  .cosmos-text { justify-content: center; padding-top: 6vh; }
+  .welcome-back { bottom: calc(var(--status-h, 64px) + 64px); }
+}
+/* まとめページ（暮らしの相談・安全に暮らす）のカード */
+.hub-cards { list-style: none; padding-left: 0 !important; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.hub-cards li { margin: 0 !important; border: var(--bw) solid var(--line-strong); border-radius: 12px; padding: 12px 14px; background: rgba(255, 255, 255, 0.025); transition: transform 0.2s ease, background 0.2s ease; }
+.hub-cards li:hover { background: rgba(255, 255, 255, 0.05); }
+@media (prefers-reduced-motion: no-preference) { .hub-cards li:hover { transform: translateY(-2px); } }
+.hub-cards a { font-weight: 500; font-size: 15.5px; }
+.hub-cards p { margin: 6px 0 0 !important; font-size: var(--fs-small) !important; color: var(--text-dim); line-height: 1.6; }
+.qe-hubs { grid-column: 1 / -1; display: flex; gap: 6px 14px; flex-wrap: wrap; margin: 0 0 2px; font-size: 12.5px; }
+.qe-hubs a { color: var(--accent); }
+@media (max-width: 860px) { .drawer-pages .qe-hubs { margin: 0 0 4px; font-size: 13.5px; } }
+
+/* ── 福祉のページ：読みやすさ・探しやすさを優先した見た目（文字を大きく、行間を広く、色と文字の両方で分野を示す） ───────── */
+body.care-ui {
+  --care-money: #f2c27a; --care-area: #8fb8e6; --care-disability: #6fd0b8; --care-family: #f0a6c0;
+  --care-health: #f2907e; --care-mind: #b8a6f0; --care-crime: #c8ced6; --care-it: #7fc8e8; --care-disaster: #e6c070;
+}
+body.care-ui .doc-wrap { max-width: 820px; }
+body.care-ui .doc-wrap, body.care-ui .doc-wrap p, body.care-ui .doc-wrap li { font-size: 17px; line-height: 1.95; color: #eef1f6; }
+body.care-ui .doc-wrap .item-meta { font-size: 14.5px; color: #c9d1dc; }
+body.care-ui .doc-wrap h1 { font-size: clamp(26px, 4vw, 34px); line-height: 1.45; }
+body.care-ui .doc-wrap h2 { font-size: 21px; padding: 6px 0 6px 14px; border-left: 6px solid var(--sec, var(--care-area)); background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0)); border-radius: 4px; }
+body.care-ui .doc-wrap a { text-decoration-thickness: 2px; text-underline-offset: 4px; }
+body.care-ui .doc-wrap a:focus-visible, body.care-ui button:focus-visible { outline: 3px solid #ffd27a; outline-offset: 3px; border-radius: 4px; }
+body.care-ui .doc-wrap li { margin: 10px 0; }
+/* 見出しごとに色を変えて、どこを読んでいるか分かりやすく（色だけに頼らず、見出しの文字でも分かる） */
+body.care-ui .doc-wrap section:nth-of-type(6n + 1) { --sec: var(--care-area); }
+body.care-ui .doc-wrap section:nth-of-type(6n + 2) { --sec: var(--care-disability); }
+body.care-ui .doc-wrap section:nth-of-type(6n + 3) { --sec: var(--care-money); }
+body.care-ui .doc-wrap section:nth-of-type(6n + 4) { --sec: var(--care-family); }
+body.care-ui .doc-wrap section:nth-of-type(6n + 5) { --sec: var(--care-mind); }
+body.care-ui .doc-wrap section:nth-of-type(6n + 6) { --sec: var(--care-health); }
+body.care-ui .kana-toggle { min-height: 48px; font-size: 16px; padding: 8px 18px; }
+body.care-ui .doc-wrap .toc a, body.care-ui .hs-words button, body.care-ui .er-tel { min-height: 48px; font-size: 15.5px; }
+/* まとめページのカード：分野の色の帯と、分野の名前の札 */
+.hub-cards li { position: relative; border-left-width: 6px; border-left-color: var(--cat, var(--line-strong)); }
+.hub-cards li[data-cat="money"] { --cat: var(--care-money, #f2c27a); }
+.hub-cards li[data-cat="area"] { --cat: var(--care-area, #8fb8e6); }
+.hub-cards li[data-cat="disability"] { --cat: var(--care-disability, #6fd0b8); }
+.hub-cards li[data-cat="family"] { --cat: var(--care-family, #f0a6c0); }
+.hub-cards li[data-cat="health"] { --cat: var(--care-health, #f2907e); }
+.hub-cards li[data-cat="mind"] { --cat: var(--care-mind, #b8a6f0); }
+.hub-cards li[data-cat="crime"] { --cat: var(--care-crime, #c8ced6); }
+.hub-cards li[data-cat="it"] { --cat: var(--care-it, #7fc8e8); }
+.hub-cards li[data-cat="disaster"] { --cat: var(--care-disaster, #e6c070); }
+.cat-chip { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: #0b1018; background: var(--cat, #c8ced6); border-radius: 999px; padding: 1px 10px; margin-bottom: 6px; }
+body.care-ui .hub-cards a, body.doc .hub-cards a { display: block; font-size: 17px; }
+
+/* ── v1.9.3：ほっとする（動物たち・宇宙へ）、宇宙へのご注意、おかえりなさい、ようこそのサイト説明 ───────── */
+.quick-chip.q-calm { border-color: rgba(244, 198, 220, 0.6); }
+.space-caution { grid-column: 1 / -1; margin: 2px 0 0; font-size: 11.5px; line-height: 1.6; color: var(--text-faint); }
+.drawer-pages .space-caution { padding: 0 4px; font-size: 12px; }
+.welcome .welcome-lead { font-size: 14px; color: var(--text); padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+/* 地球へもどったとき：空いたところに小さく浮かび上がり、少しして薄く消える */
+.welcome-back { display: flex; flex-direction: column; align-items: center; gap: 2px; bottom: calc(var(--status-h, 44px) + 72px); font-size: 15px; letter-spacing: 0.18em; color: rgba(250, 240, 224, 0.85); text-shadow: 0 0 18px rgba(242, 194, 122, 0.4); transform: translate(-50%, 10px); transition: opacity 2.4s ease, transform 3.2s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.welcome-back.on { opacity: 1; transform: translate(-50%, 0); }
+.welcome-back .wb-en { font-size: 11px; letter-spacing: 0.14em; font-style: italic; color: rgba(220, 228, 245, 0.55); margin: 0; }
+@media (prefers-reduced-motion: reduce) { .welcome-back, .welcome-back.on { transform: translateX(-50%); transition: opacity 1.2s ease; } }
+/* 入口の見出し：一覧用の丸い印（::before）が入口にも付いて、見出しだけ右にずれていたのを直す */
+.quick-panel .qe-title::before, .drawer-pages .qe-title::before { content: none; display: none; }
+.quick-panel .qe-title { margin: 0; gap: 0; }
+/* 「おかえりなさい。」の場所：パソコンは地球儀の左の空いたところ、スマホは上のメニューの下 */
+.welcome-back { left: max(28px, 5vw); bottom: auto; top: calc(var(--header-h, 60px) + 22vh); align-items: flex-start; transform: translateY(10px); }
+.welcome-back.on { transform: translateY(0); }
+@media (max-width: 860px) {
+  .welcome-back { left: 50%; top: calc(var(--header-h, 104px) + 118px); bottom: auto; align-items: center; transform: translate(-50%, 10px); }
+  .welcome-back.on { transform: translate(-50%, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .welcome-back, .welcome-back.on { transform: none; } }
+@media (prefers-reduced-motion: reduce) and (max-width: 860px) { .welcome-back, .welcome-back.on { transform: translateX(-50%); } }
+/* テーマで読む：一覧が本文より右にずれていたのと、テーマ名が小さかったのを直す */
+.doc-wrap .conn-list { padding-left: 0; }
+.conn-item h3 .text-btn { font-size: 15px; font-weight: 500; text-align: left; }
+.conn-item { padding: 12px 14px; }
+/* 余白の統一：カード・区切り線で並べる一覧は、本文と左端をそろえる（箇条書きの字下げを付けない） */
+body.doc .doc-wrap :is(.log-list, .week-list, .pref-list, .pref-grid, .topic-list, .conn-list, .hub-cards, .hs-results, .er-list) { padding-left: 0; }
+body.doc .doc-wrap :is(.log-list, .week-list, .topic-list) > li { margin: 0; }
+.quick-panel .qe-links { margin-left: 0; }
+
+/* ── v1.9.4 ───────── */
+/* 「宇宙へ」はトップの「ほっとする」の中だけ。上と左下のボタンは、宇宙にいる間の「地球へもどる」としてだけ出す */
+body:not(.cosmic) .space-btn { display: none !important; }
+html[lang="en"] .wb-en { display: none; }
+/* 一覧の上の「一覧で見ると役立つこと」：小さく添えて、その下に少し余白 */
+.list-merit { margin: 0 0 16px; padding: 0 2px 12px; font-size: 13px; line-height: 1.7; color: var(--text-dim); border-bottom: 1px solid var(--line); }
+/* 知った後にできること：押して開けることが分かるように（▸ と点線の下線） */
+.next-steps > summary { list-style: none; display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: underline dotted; text-underline-offset: 4px; }
+.next-steps > summary::-webkit-details-marker { display: none; }
+.next-steps > summary::before { content: "▸"; font-size: 12px; transition: transform 0.2s; display: inline-block; }
+.next-steps[open] > summary::before { transform: rotate(90deg); }
+/* 目的と使い方：文章の大きさをそろえる（箇条書き以外も、スマホと同じ落ち着いた大きさに） */
+#guide-body, #guide-body p, #guide-body li, #guide-body .guide-lead, #guide-body .guide-desc { font-size: 13.5px; line-height: 1.75; }
+#guide-body h3 { font-size: 14.5px; margin: 18px 0 6px; }
+/* 読むページ・更新ページの上の「このページで分かること」 */
+.page-role { margin: -4px 0 14px; padding: 8px 12px; font-size: 13px; line-height: 1.7; color: var(--text-dim); border-left: 3px solid var(--accent); background: rgba(242, 194, 122, 0.06); border-radius: 0 6px 6px 0; }
+
+/* ── v1.9.6 ───────── */
+/* 「読む」：今週のともしびと過去の記録を、タブで行き来する（URLは両方そのまま残す） */
+.read-tabs { display: flex; align-items: center; gap: 6px; margin: 0 0 14px; padding-bottom: 8px; border-bottom: var(--bw) solid var(--line-strong); flex-wrap: wrap; }
+.read-tabs-label { font-size: 12.5px; color: var(--text-dim); letter-spacing: 0.12em; margin-right: 6px; }
+.read-tabs a { padding: 6px 14px; border-radius: 999px; border: var(--bw) solid var(--line-strong); font-size: 14px; text-decoration: none; color: var(--text); }
+.read-tabs a:hover { background: rgba(255, 255, 255, 0.05); }
+.read-tabs a[aria-current="page"] { background: rgba(242, 194, 122, 0.14); border-color: rgba(242, 194, 122, 0.55); color: var(--accent); font-weight: 500; }
+/* 「おかえりなさい。」（パソコン）：少し大きく、地球儀のすぐ左上に */
+@media (min-width: 861px) {
+  .welcome-back { left: 50%; right: auto; top: calc(var(--header-h, 60px) + 8vh); align-items: center; transform: translate(-50%, 10px); font-size: 22px; letter-spacing: 0.2em; color: rgba(252, 244, 228, 0.95); text-shadow: 0 0 22px rgba(242, 194, 122, 0.55), 0 0 4px rgba(0, 0, 0, 0.6); }
+  .welcome-back .wb-en { font-size: 13px; }
+}
+@media (min-width: 861px) {
+  .welcome-back.on { transform: translate(-50%, 0); }
+}
+@media (min-width: 861px) and (prefers-reduced-motion: reduce) { .welcome-back, .welcome-back.on { transform: translateX(-50%); } }
+.qe-hubs-label { color: var(--text-dim); }
+
+/* 福祉・急な病気やけがのページ：スマホやブラウザの「文字の大きさ」の設定に合わせて、文字が大きくなる
+   （トップの地球儀の画面は、見た目が崩れないよう、これまでどおり決まった大きさのまま）
+   iPhone・iPad：設定の「画面表示と明るさ → テキストサイズ」（Dynamic Type）に合わせる。ふだんの大きさは17px */
+html.care-root { font-size: 106.25%; }
+@supports (font: -apple-system-body) and (-webkit-touch-callout: none) {
+  html.care-root { font: -apple-system-body; }
+}
+html.care-root { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body.care-ui .doc-wrap, body.care-ui .doc-wrap p, body.care-ui .doc-wrap li { font-size: 1rem; }
+body.care-ui .doc-wrap .item-meta { font-size: 0.853rem; }
+body.care-ui .doc-wrap h1 { font-size: clamp(1.53rem, 4vw + 0.4rem, 2rem); }
+body.care-ui .doc-wrap h2 { font-size: 1.235rem; }
+body.care-ui .kana-toggle { font-size: 0.94rem; }
+body.care-ui .doc-wrap .toc a, body.care-ui .hs-words button, body.care-ui .er-tel { font-size: 0.912rem; }
+body.care-ui .hub-cards a { font-size: 1rem; }
+body.care-ui .hub-cards p { font-size: 0.85rem !important; }
+html:not(.care-root) { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.doc-wrap table { display: block; max-width: 100%; overflow-x: auto; }
+/* 背の低いパソコンの画面：入口を開いても、上の分野のボタンに重ならないよう、高さを画面に収めて中をスクロール */
+@media (min-width: 861px) {
+  .quick-panel { max-height: calc(100vh - var(--header-h, 60px) - var(--status-h, 44px) - 84px); overflow-y: auto; overscroll-behavior: contain; }
+}
+/* 狭いスマホ（幅320px前後）：表示中の分野の名前を1行に */
+@media (max-width: 359px) {
+  .current-layer .cl-name, #current-layer strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+.current-layer .cl-name { min-width: 0; }
+/* 「おかえりなさい。」は、国名の札より手前に。うしろをほんのり暗くして読みやすく */
+@media (min-width: 861px) {
+  .welcome-back { z-index: 26; padding: 14px 34px; border-radius: 999px; background: radial-gradient(closest-side, rgba(6, 10, 18, 0.62), rgba(6, 10, 18, 0.35) 60%, rgba(6, 10, 18, 0)); }
+}
+/* 「まず全体を見る」の2つの案内：縦に並べ、先頭に小さなハート（目立たない、やわらかい色） */
+.qe-hubs { flex-direction: column; align-items: flex-start; gap: 7px; }
+.qe-hubs a { display: inline-flex; align-items: center; gap: 7px; padding-left: 2px; }
+.qe-hubs a::before {
+  content: ''; flex: none; width: 11px; height: 10px; background: #d9a0a4; opacity: 0.85;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath d='M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath d='M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* スマホで押しやすく：表の都道府県名のリンクと、画面下の運営・免責のリンクの、押せる範囲を広げる（見た目はそのまま） */
+.er-table th[scope="row"] a, .statusbar a { position: relative; }
+.er-table th[scope="row"] a::after, .statusbar a::after { content: ''; position: absolute; inset: -9px -4px; }
+/* 「おかえりなさい。」が出ている間：国名の札をそっと薄くし、文字のまわりをぼかして読みやすく */
+.labels { transition: opacity 1.2s ease; }
+body.wb-on .labels { opacity: 0.25; }
+@media (min-width: 861px) {
+  /* 暗さとぼかしは、文字の外側まで広く取り、ふちに向かってゆるやかに消す（境目が見えないように） */
+  .welcome-back {
+    padding: 46px 150px;
+    background: radial-gradient(closest-side, rgba(6, 10, 18, 0.58), rgba(6, 10, 18, 0.42) 35%, rgba(6, 10, 18, 0.18) 68%, rgba(6, 10, 18, 0));
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    -webkit-mask: radial-gradient(closest-side, #000 30%, rgba(0, 0, 0, 0.6) 62%, transparent); mask: radial-gradient(closest-side, #000 30%, rgba(0, 0, 0, 0.6) 62%, transparent);
+  }
+}
+/* 選んだあとに変わった部分：細い枠がほんのり光って、ゆっくり消える（1回だけ。点滅はしない）
+   枠は、文字から少し離して外側に描く（場所は動かさない。文字と枠のあいだに余白ができる） */
+.just-updated { animation: just-updated 2.4s ease-out 1; border-radius: 10px; outline: 1.5px solid transparent; outline-offset: 12px; }
+@keyframes just-updated {
+  0% { outline-color: rgba(242, 194, 122, 0.7); }
+  100% { outline-color: rgba(242, 194, 122, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .just-updated { animation-duration: 0.01s; } }
+.just-updated:focus { outline-style: solid; }
+#conn-head, #cmp-table, #hs-count, #archive-list { scroll-margin-top: 84px; }
+@media (max-width: 860px) { .just-updated { outline-offset: 8px; } } /* スマホは左右の余白が狭いので、枠を少し内側に */
+/* スマホ：テーマや指標を選ぶボタンを小さめにして、選んだ結果が画面に入りやすくする */
+@media (max-width: 860px) {
+  .cmp-tabs { gap: 5px; }
+  .cmp-tabs .cmp-tab { font-size: 13px; padding: 6px 10px; }
+}
+/* パソコン：説明ページの上に、同じ入口（困ったとき・世界を知る）のほかのページへの案内を小さく並べる（スマホでは出さない） */
+.sib-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 6px; margin: 0 0 26px; font-size: 12.5px; line-height: 1.4; }
+.sib-nav .sib-label { color: var(--text-faint); margin-right: 4px; letter-spacing: 0.04em; }
+.sib-nav a { color: rgba(226, 232, 242, 0.82); text-decoration: none; padding: 4px 11px; border: 1px solid rgba(160, 180, 210, 0.22); border-radius: 999px; background: rgba(255, 255, 255, 0.025); transition: border-color 0.2s ease, color 0.2s ease; }
+.sib-nav a:hover, .sib-nav a:focus-visible { color: #fff; border-color: rgba(242, 194, 122, 0.6); }
+.sib-nav a[aria-current="page"] { color: #f2c27a; border-color: rgba(242, 194, 122, 0.55); background: rgba(242, 194, 122, 0.08); }
+
+/* ===== 明るい表示（ライト）：説明ページだけ。地球儀のトップと宇宙は暗いまま（theme.js が html に .light を付ける） ===== */
+.doc-tools { display: flex; align-items: center; gap: 8px; }
+.theme-btn { font-size: 12.5px; white-space: nowrap; }
+.theme-btn .tb-short { display: none; }
+/* 上の帯：ボタンの並びは縮めず、ロゴ側を縮める（ボタンが画面の外で切れないように） */
+body.doc .doc-top .doc-tools { flex-shrink: 0; }
+body.doc .doc-top .brand { min-width: 0; }
+body.doc .doc-top .brand-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 480px) {
+  .theme-btn .tb-long { display: none; }
+  .theme-btn .tb-short { display: inline; }
+}
+html.light {
+  color-scheme: light;
+  --bg: #f5f3ee;
+  --bg-2: #ece9e2;
+  --surface: rgba(255, 255, 255, 0.94);
+  --surface-solid: #ffffff;
+  --line: rgba(40, 52, 72, 0.15);
+  --line-strong: rgba(40, 52, 72, 0.3);
+  --text: #1e2632;
+  --text-dim: #475264;
+  --text-faint: #5c6677;
+  --accent: #9a5a12;
+  --focus: #1f5fc4;
+  --c-outbreak: #985509;
+  --c-research: #116e5f;
+  --c-mental: #5547b8;
+  --c-welfare: #3a7a2a;
+  --c-security: #b8344a;
+}
+html.light body { background: var(--bg); }
+html.light .doc-top { background: rgba(245, 243, 238, 0.95); }
+html.light .brand-name { color: var(--text); }
+html.light .sib-nav a { color: var(--text-dim); border-color: var(--line-strong); background: #fff; }
+html.light .sib-nav a:hover, html.light .sib-nav a:focus-visible { color: var(--text); border-color: var(--accent); }
+html.light .sib-nav a[aria-current="page"] { color: var(--accent); border-color: var(--accent); background: rgba(154, 90, 18, 0.07); }
+html.light .just-updated { animation-name: just-updated-light; }
+@keyframes just-updated-light { 0% { outline-color: rgba(154, 90, 18, 0.75); } 100% { outline-color: rgba(154, 90, 18, 0); } }
+html.light body {
+  --care-money: #9a5a12; --care-area: #2f6aa8; --care-disability: #167a66; --care-family: #a8436b;
+  --care-health: #b5452f; --care-mind: #5f4bb8; --care-crime: #5a6472; --care-it: #1d7aa0; --care-disaster: #85650c;
+}
+html.light body.care-ui .doc-wrap, html.light body.care-ui .doc-wrap p, html.light body.care-ui .doc-wrap li { color: var(--text); }
+html.light body.care-ui .doc-wrap .item-meta { color: var(--text-dim); }
+html.light body.care-ui .doc-wrap h2 { background: linear-gradient(90deg, rgba(30, 40, 60, 0.05), rgba(30, 40, 60, 0)); }
+html.light body.care-ui .doc-wrap a:focus-visible, html.light body.care-ui button:focus-visible { outline-color: var(--focus); }
+html.light .badge { color: #6b4a10; background: rgba(242, 194, 122, 0.28); border-color: rgba(154, 90, 18, 0.35); }
+html.light .badge.superseded { color: #7a5a20; border-color: rgba(122, 90, 32, 0.4); }
+html.light .entry-kind.calm { color: #9c3d6a; }
+html.light .entry-kind.caution { color: #b8344a; }
+html.light .dir-stale, html.light .guide-stale { color: #85570c; }
+html.light .log-kind.k-incident { border-color: #b8701c; color: #8a4f0c; }
+html.light .log-kind.k-fix { border-color: #3f8f50; color: #2c6b3a; }
+html.light .log-kind.k-audit { border-color: #3f78b8; color: #285b94; }
+html.light .er-alert { border-color: rgba(190, 80, 60, 0.45); background: rgba(232, 140, 120, 0.1); }
+html.light .er-alert-police { border-color: rgba(70, 80, 95, 0.35); background: rgba(70, 80, 95, 0.05); }
+html.light .w3d-controls select, html.light .w3d-controls button { background: var(--surface-solid); }
+/* 3Dのグラフは、点と線が見やすいよう、明るい表示でも暗い背景のままにする */
+html.light .w3d-wrap { background: #0f1620; border-color: var(--line-strong); }
+/* 幅の狭いスマホ：上の帯に「明るい表示」と言語のボタンが並ぶので、ロゴ横の「地球儀へ戻る」を省く（ロゴを押せば戻れる） */
+@media (max-width: 430px) {
+  body.doc .doc-top:has(.doc-tools .lang) .brand-sub { display: none; }
+  .doc-tools { gap: 6px; }
+  .doc-tools .icon-btn { padding-left: 10px; padding-right: 10px; }
+}
+@media (max-width: 360px) {
+  body.doc .doc-top .brand-sub { display: none; }
+  body.doc .doc-top { padding-left: 14px; padding-right: 14px; }
+}
+@media (max-width: 340px) {
+  body.doc .doc-top { padding-left: 10px; padding-right: 10px; gap: 6px; }
+  body.doc .brand-name { font-size: 14px; }
+  .doc-tools { gap: 4px; }
+  .doc-tools .icon-btn { padding-left: 8px; padding-right: 8px; font-size: 12px; }
+}
+html.light .sib-nav a[aria-current="page"] { color: #7d4508; }
+html.light .cat-chip { color: #fff; } /* 分野の色を濃くしたので、文字は白（どの色でも 4.5:1 以上） */
+/* 別のサイトの中に埋め込まれたときは、中身を出さず、直接開くよう案内だけを出す（theme.js が .framed を付ける） */
+html.framed body > * { display: none !important; }
+html.framed body::before { content: "このページは、ほかのサイトの中では表示しません。ともしびアトラスを直接開いてください。 / Please open Tomoshibi Atlas directly."; display: block; padding: 32px 24px; color: var(--text); font-size: 15px; line-height: 1.8; }
+/* 国の基本情報（国の欄のいちばん下。2026-11-24 追加） */
+.profile { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); }
+.profile-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 10px 0 8px; font-size: 13.5px; line-height: 1.6; }
+.profile-list dt { color: var(--text-faint); }
+.profile-list dd { margin: 0; color: var(--text); }
+.profile-links { list-style: none; margin: 4px 0 8px; padding: 0; font-size: 13px; line-height: 1.6; }
+.profile-links li { position: relative; margin: 0; padding: 3px 0 3px 14px; }
+.profile-links li::before { content: ""; position: absolute; left: 2px; top: 0.95em; width: 5px; height: 5px; border-radius: 50%; background: var(--text-faint); }
+.profile-src { color: var(--text-dim); }
+.profile-btn { font: inherit; padding: 0; border: 0; background: none; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left; }
+/* 「テーマで読む」の線の先の国：そのテーマの情報（国の欄のいちばん上） */
+.theme-box { margin: 0 0 18px; padding: 12px 14px; border: 1px solid rgba(242, 194, 122, 0.4); border-radius: 12px; background: rgba(242, 194, 122, 0.06); }
+.theme-box h3 { margin-top: 0; }
+.hs-checked { font-size: 12px; color: var(--text-faint); }
+.hs-checked.is-old { color: var(--accent); }
+.loading-slow a { pointer-events: auto; color: var(--accent); }
