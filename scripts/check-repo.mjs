@@ -26,8 +26,6 @@ const KNOWN_ACTION_PINS = new Set([
   'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1', // v7.1.0
   'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9', // v5.0.0
   'actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346', // v5.0.1
-  'github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370', // v4.39.1
-  'github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370', // v4.39.1
   'github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066', // v4.39.3（2026-11-24 公式のリリースで確認）
   'github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066', // v4.39.3（2026-11-24 公式のリリースで確認）
 ]);
