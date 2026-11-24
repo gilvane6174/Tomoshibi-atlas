@@ -67,7 +67,8 @@ async function start() {
     const h = window.innerHeight;
     const ins = {
       top: Math.max(document.querySelector('.topbar').getBoundingClientRect().bottom, $('mobile-bar').getBoundingClientRect().bottom),
-      bottom: h - document.querySelector('.statusbar').getBoundingClientRect().top + (isNarrow() ? 56 : 40),
+      // 下のボタン（回転を止める・宇宙へ）の分の余白。横向きのスマホ（背が低い）は、ボタンが左右の端にあるので少しだけ
+      bottom: h - document.querySelector('.statusbar').getBoundingClientRect().top + (isNarrow() ? (h <= 500 && w > h ? 8 : 56) : 40),
       left: 0,
       right: 0,
     };
