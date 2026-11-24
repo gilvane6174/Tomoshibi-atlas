@@ -1,7 +1,7 @@
 // 都道府県庁の公式サイトのトップと、市区町村の公式サイトを探す国の案内（福祉の探し方と、都道府県別のページで使う）。
 // ホスト名は、確認済みの都道府県のページ（data/directory/prefectures.json）と同じ公式のドメイン（許可リストにあるもの）。
-// 沖縄県は、県庁のトップのドメインを指定。
-export const PREF_TOP_OVERRIDE = { 47: 'https://www.pref.okinawa.lg.jp/' };
+// 東京都・沖縄県は、都庁・県庁のトップのドメインを指定（東京都は2026-11-20に許可リストへ追加）。
+export const PREF_TOP_OVERRIDE = { 13: 'https://www.metro.tokyo.lg.jp/', 47: 'https://www.pref.okinawa.lg.jp/' };
 // 地方公共団体情報システム機構（J-LIS）「全国自治体マップ検索」（総務省「電子自治体」のリンク集に掲載）
 export const MUNI_SEARCH = { url: 'https://www.j-lis.go.jp/map-search/cms_1069.html', ja: '地方公共団体情報システム機構（J-LIS）「全国自治体マップ検索」', en: 'J-LIS local government map search (Japanese)' };
 export function prefTopUrl(p) {

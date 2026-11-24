@@ -2829,6 +2829,13 @@
       "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
       "evidence": "生活困窮者自立相談支援機関の窓口一覧 / 奈良県（検索結果の題名。ページの本文は窓口一覧を確認）"
     },
+    "jp-pref-33-main": {
+      "url": "https://www.pref.okayama.lg.jp/page/689589.html",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
     "jp-pref-35-main": {
       "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html",
       "checkedAt": "2026-10-28",
@@ -3781,6 +3788,13 @@
       "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.shimane.lg.jp/bousai_info/）",
       "evidence": "島根県：防災・安全（トップ / 防災・安全）"
     },
+    "jp-pref-33-bousai": {
+      "url": "https://www.pref.okayama.lg.jp/page/detail-10903.html",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
     "jp-pref-34-bousai": {
       "url": "https://www.pref.hiroshima.lg.jp/life/3/",
       "checkedAt": "2026-11-03",
@@ -3846,6 +3860,13 @@
     },
     "jp-safety-jshis": {
       "url": "https://www.j-shis.bosai.go.jp/",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
+    "jp-r-ganjoho": {
+      "url": "https://ganjoho.jp/public/index.html",
       "method": "operator",
       "how": "運用者がブラウザで開いて確認",
       "evidence": "",
