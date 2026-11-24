@@ -1322,10 +1322,11 @@ test('急な病気・けがの検索（2026-11）：ひらがな・カタカナ�
   assert.ok(er7119Text('23').includes('名古屋市'));
   const html = renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }]);
   assert.ok(html.includes('全年齢') && html.includes('確認日'));
-  // 受付時間・つながらないときの番号は、運用者が照合したときだけ出す
-  const er = { centers: [{ prefs: ['13'], name: '見本センター', hours: '全日24時間', altNumbers: '0000', note: '' }] };
-  assert.ok(!renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: false }).includes('0000'));
-  assert.ok(renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: true }).includes('全日24時間'));
+  // 受付時間は、運用者が照合したときだけ出す。窓口ごとの直通の番号は、照合していても出さない（消防庁の一覧へ案内する）
+  const er = { centers: [{ prefs: ['13'], name: '見本センター', hours: '全日24時間', altNumbers: '0000', note: '見本の注記' }] };
+  assert.ok(!renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: false }).includes('全日24時間'));
+  const shownEr = renderErTable([{ code: '13', ja: '東京都', en: 'Tokyo' }], { ...er, show: true });
+  assert.ok(shownEr.includes('全日24時間') && !shownEr.includes('0000') && !shownEr.includes('見本の注記') && shownEr.includes('つながらない'));
   assert.deepEqual(validateErLinesDoc(JSON.parse(readFileSync(new URL('../data/curated/er-lines.json', import.meta.url), 'utf8'))), []);
   // 人の確認（45日以内）が無いリンクは外す
   const now = new Date('2026-11-19T03:00:00Z');
