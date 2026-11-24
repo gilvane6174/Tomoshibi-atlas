@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "checkedAt": "2026-11-20",
-  "operatorVerified": false,
-  "verifiedAt": null,
+  "operatorVerified": true,
+  "verifiedAt": "2026-11-24",
   "_note": "救急の電話相談（＃7119）の窓口ごとの受付時間と、＃7119 がつながらないとき（ダイヤル回線・一部のIP電話など）の番号。消防庁「救急安心センター事業（♯7119）」の実施地域の一覧から写したもの。公開の前と毎月の確認のときに、運用者が出典と1件ずつ照らし合わせ、operatorVerified を true に、verifiedAt に照合した日を書く（45日を過ぎると、本番では受付時間・番号を出さず、消防庁の一覧へ案内する）。運用者だけが変更する。",
   "source": {
     "name": "消防庁「救急安心センター事業（♯7119）」の実施地域の一覧",
