@@ -617,9 +617,8 @@ export function validateErLinesDoc(doc, rel = 'er-lines') {
     const p = `${rel} centers[${i}]`;
     if (!Array.isArray(c.prefs) || !c.prefs.length || c.prefs.some((x) => !/^(0[1-9]|[1-3]\d|4[0-7])$/.test(x))) errors.push(`${p}.prefs: 都道府県コード（01〜47）の配列`);
     for (const k of ['name', 'hours']) if (typeof c[k] !== 'string' || !c[k].trim() || c[k].length > 160) errors.push(`${p}.${k}: 160文字以内が必要`);
-    // 窓口ごとの直通の番号（altNumbers）は、サイトには出さない（＃7119 などの短い番号と、消防庁の一覧への案内だけにした）。
-    // 取り除くまでの間だけ、残っていても検査は通す（次の段階で、入っていたら失敗にする）
-    if (c.altNumbers !== undefined && (typeof c.altNumbers !== 'string' || c.altNumbers.length > 160)) errors.push(`${p}.altNumbers: 160文字以内の文字列`);
+    // 窓口ごとの直通の番号（altNumbers）は持たない（＃7119 などの短い番号と、消防庁の一覧への案内だけにした）
+    if (c.altNumbers !== undefined) errors.push(`${p}.altNumbers: 窓口ごとの直通の番号は載せない（消防庁の一覧へ案内する）`);
     if (typeof c.note !== 'string' || c.note.length > 120) errors.push(`${p}.note: 120文字以内の文字列`);
     walkStrings({ name: c.name, hours: c.hours, note: c.note }, p, errors, { curated: true, maxLen: 160 });
   });

@@ -17,8 +17,7 @@ const BANNED_EXT = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.heic', '
 const TEXT_EXT = new Set(['.md', '.json', '.mjs', '.js', '.html', '.css', '.yml', '.yaml', '.txt', '.svg', '']);
 
 // 誤検知の例外（運用者だけが変更できる）。[ファイル, 種類]
-// er-lines.json は、消防庁が公表している救急の電話相談の公式の番号（個人の番号ではない）
-export const ALLOW = [['scripts/test.mjs', 'メールアドレス'], ['data/curated/er-lines.json', '電話番号らしき数字'], ['data/curated/er-lines.json', '住所らしき記述']];
+export const ALLOW = [['scripts/test.mjs', 'メールアドレス']];
 
 // 検出パターン（パターン自体が引っかからないよう、一部の文字列を分割して組み立てている）
 const at = '@';
