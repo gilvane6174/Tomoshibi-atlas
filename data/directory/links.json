@@ -622,6 +622,20 @@
             "en": "A national institute researching technologies for society and industry, including AI."
           },
           "url": "https://www.aist.go.jp/"
+        },
+        {
+          "id": "jp-r-ganjoho",
+          "name": {
+            "ja": "国立がん研究センター「がん情報サービス」",
+            "jaKana": "こくりつ がん けんきゅう センター「がん じょうほう サービス」",
+            "en": "National Cancer Center Japan: Cancer Information Service"
+          },
+          "desc": {
+            "ja": "がんの種類・治療・相談先（がん相談支援センター）などを、一般の人向けに案内しています（国立研究開発法人の運営）。",
+            "jaKana": "がんの しゅるい・ちりょう・そうだんさき（がん そうだん しえん センター）などを、いっぱんの ひと むけに あんない して います（こくりつ けんきゅう かいはつ ほうじんの うんえい）。",
+            "en": "Information for the public on cancer types, treatment and where to get support (run by a national research institute)."
+          },
+          "url": "https://ganjoho.jp/public/index.html"
         }
       ],
       "outbreak": [
