@@ -365,13 +365,6 @@
       "how": "運用者がブラウザで開いて確認",
       "evidence": ""
     },
-    "btn-cert-security": {
-      "url": "https://www.btcirt.bt/",
-      "checkedAt": "2026-10-26",
-      "method": "fetched",
-      "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
-      "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
-    },
     "bol-health-ministry-outbreak": {
       "url": "https://www.minsalud.gob.bo/",
       "checkedAt": "2026-10-26",
@@ -399,13 +392,6 @@
       "method": "operator",
       "how": "運用者がブラウザで開いて確認",
       "evidence": ""
-    },
-    "bwa-welfare-ministry-welfare": {
-      "url": "https://www.gov.bw/ministries/ministry-local-government-and-traditional-affairs",
-      "checkedAt": "2026-10-25",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認",
-      "evidence": "gov.bw ministry page; Department of Social Development runs Destitute Allowance, Old Age Pension"
     },
     "bra-health-ministry-outbreak": {
       "url": "https://www.gov.br/saude/pt-br",
@@ -483,13 +469,6 @@
       "method": "fetched",
       "how": "AIが公式ページを開いて確認",
       "evidence": "page title: Ministarstvo rada, mirovinskog sustava, obitelji i socijalne politike - Naslovna"
-    },
-    "hrv-cert-security": {
-      "url": "https://www.cert.hr/en/home-page/",
-      "checkedAt": "2026-10-25",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-25 再確認）",
-      "evidence": "About National CERT - CERT.hr / National CERT of Croatia (CARNET)"
     },
     "hrv-public-health-institute-research": {
       "url": "https://www.hzjz.hr/en/about-us/",
@@ -661,17 +640,17 @@
     },
     "isr-health-ministry-outbreak": {
       "url": "https://www.gov.il/en/departments/ministry_of_health",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "WebFetch: failed at site (client_error); nothing retrieved."
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "isr-health-ministry-mental": {
       "url": "https://www.gov.il/en/departments/ministry_of_health",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "WebFetch: failed at site (client_error); nothing retrieved."
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "ita-cert-security": {
       "url": "https://www.acn.gov.it/en",
@@ -892,14 +871,7 @@
     },
     "kor-cert-security": {
       "url": "https://www.kisa.or.kr/EN",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動の確認で問題あり）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "Correct org and no spam, but fetched content was essentially empty (section headings only; likely JS-rendered). Recheck in a browser."
-    },
-    "svk-health-ministry-outbreak": {
-      "url": "https://health.gov.sk/Titulka",
-      "checkedAt": "2026-10-26",
+      "checkedAt": "2026-11-24",
       "method": "operator",
       "how": "運用者がブラウザで開いて確認",
       "evidence": ""
@@ -972,13 +944,6 @@
       "checkedAt": "2026-10-26",
       "method": "unverified",
       "how": "2026-11-04 のリンクの安全確認（GitHub Actions）で転送が循環していた。再確認できるまで表示しない",
-      "evidence": ""
-    },
-    "slb-health-ministry-mental": {
-      "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
-      "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
       "evidence": ""
     },
     "som-public-health-institute-outbreak": {
@@ -1221,10 +1186,10 @@
     },
     "tha-cert-security": {
       "url": "https://www.thaicert.or.th/en/homepage/",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
-      "evidence": "page title: Homepage - Thailand Computer Emergency Response Team (ThaiCERT); National Computer Security Incident Response Coordination Center, ncsa.or.th contac"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "ken-welfare-ministry-welfare": {
       "url": "https://socialprotection.go.ke/",
@@ -1235,10 +1200,10 @@
     },
     "ken-cert-security": {
       "url": "https://ke-cirt.go.ke/",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "tza-health-ministry-outbreak": {
       "url": "https://www.moh.go.tz/sw",
@@ -1263,10 +1228,10 @@
     },
     "tza-research-research": {
       "url": "https://www.nimr.or.tz/",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST (not fetched)"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "col-health-ministry-outbreak": {
       "url": "https://www.minsalud.gov.co/",
@@ -1627,10 +1592,10 @@
     },
     "chl-public-health-institute-outbreak": {
       "url": "https://www.ispch.cl/",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "chl-health-ministry-mental": {
       "url": "https://www.minsal.cl",
@@ -1648,10 +1613,10 @@
     },
     "chl-public-health-institute-research": {
       "url": "https://www.ispch.cl/",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "再確認できず表示を保留（自動では開けなかった）。運用者がブラウザで確認するまで表示しない",
-      "evidence": "WebFetch error URL_NOT_ON_ALLOWLIST; not fetched"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "swe-health-ministry-outbreak": {
       "url": "https://www.regeringen.se/sveriges-regering/socialdepartementet/",
@@ -1904,13 +1869,6 @@
       "method": "fetched",
       "how": "別のAIが公式ページの本文を取得して確認（2026-10-26）",
       "evidence": "運用者経由で受け取った別のAIの確認結果。さらに別のAIの確認でも公式・異常なしの判定"
-    },
-    "isl-health-ministry-outbreak": {
-      "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
-      "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
-      "evidence": ""
     },
     "isl-health-ministry-mental": {
       "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
@@ -2187,10 +2145,10 @@
     },
     "arm-cert-security": {
       "url": "https://isaa.am/en/am-cert-computer-emergency-response-team",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
-      "evidence": "Information Systems Agency of Armenia page describing AM-CERT as the National CERT/CSIRT of Armenia; no spam"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "ury-health-ministry-outbreak": {
       "url": "https://www.gub.uy/ministerio-salud-publica/",
@@ -2306,10 +2264,10 @@
     },
     "est-cert-security": {
       "url": "https://ria.ee/en/cert-ee-20-years-protecting-estonias-cyberspace",
-      "checkedAt": null,
-      "method": "unverified",
-      "how": "最終レビューで要再確認（古い一覧ページ・記事ページ・運営主体が不明確など）。運用者が確認するまで表示しない",
-      "evidence": "page title: CERT-EE: 20 years of protecting Estonia's cyberspace | RIA; RIA is the National Cyber Security Centre (NCSC-EE); updated 11.02.2026"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "cym-health-ministry-outbreak": {
       "url": "https://gov.ky/mhes",
@@ -2320,13 +2278,6 @@
     },
     "cym-health-ministry-mental": {
       "url": "https://gov.ky/mhes",
-      "checkedAt": "2026-10-26",
-      "method": "operator",
-      "how": "運用者がブラウザで開いて確認",
-      "evidence": ""
-    },
-    "nam-health-ministry-outbreak": {
-      "url": "https://mhss.gov.na/site-map",
       "checkedAt": "2026-10-26",
       "method": "operator",
       "how": "運用者がブラウザで開いて確認",
@@ -2879,11 +2830,11 @@
       "evidence": "生活困窮者自立相談支援機関の窓口一覧 / 奈良県（検索結果の題名。ページの本文は窓口一覧を確認）"
     },
     "jp-pref-33-main": {
-      "url": "https://www.pref.okayama.jp/page/689589.html",
-      "checkedAt": "2026-10-28",
-      "method": "fetched",
-      "how": "AIが公式ページを開いて確認（2026-10-28。作業の一部を別のAIに任せて確認）",
-      "evidence": "生活困窮者自立支援制度の自立相談支援機関について - 岡山県ホームページ（地域福祉課）"
+      "url": "https://www.pref.okayama.lg.jp/page/689589.html",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
     },
     "jp-pref-35-main": {
       "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html",
@@ -3011,41 +2962,6 @@
       "how": "AIが公式ページを開いて確認",
       "evidence": "鹿児島県／鹿児島県精神保健福祉センター"
     },
-    "jp-local-01-hakodate": {
-      "url": "https://www.city.hakodate.hokkaido.jp/docs/2022062700054/",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度について | 函館市"
-    },
-    "jp-local-01-chitose": {
-      "url": "https://www.city.chitose.lg.jp/docs/95-86205-166-877.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度｜北海道千歳市公式ウェブサイト"
-    },
-    "jp-local-01-otaru": {
-      "url": "https://www.city.otaru.lg.jp/docs/2020111500358/",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "福祉総合相談室「たるさぽ」 | 小樽市"
-    },
-    "jp-local-01-obihiro": {
-      "url": "https://www.city.obihiro.hokkaido.jp/kenko/shien/seikatsu/1005043.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "自立相談支援事業｜ 帯広市ホームページ 十勝"
-    },
-    "jp-local-01-asahikawa": {
-      "url": "https://www.city.asahikawa.hokkaido.jp/kurashi/135/189/191/d052392.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度について | 旭川市"
-    },
     "jp-local-01-sapporo": {
       "url": "https://www.city.sapporo.jp/fukushi-guide/step.html",
       "checkedAt": "2026-11-03",
@@ -3053,68 +2969,12 @@
       "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
       "evidence": "札幌市生活就労支援センター（ステップ）／札幌市"
     },
-    "jp-local-01-nemuro": {
-      "url": "https://www.city.nemuro.hokkaido.jp/lifeinfo/kakuka/shiminfukushibu/shakaifukushi/gyomuannnai/8/4936.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度について／朝日にいちばん近い街"
-    },
-    "jp-local-01-ebetsu": {
-      "url": "https://www.city.ebetsu.hokkaido.jp/soshiki/kenko-kanri/46522.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度 ～生活に関する困りごとは「くらしサポートセンターえべつ」へ～ ｜ 北海道江別市公式ホームページ"
-    },
-    "jp-local-01-wakkanai": {
-      "url": "https://www.city.wakkanai.hokkaido.jp/fukushi/seikatsuhogo/jiritu/",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援事業"
-    },
-    "jp-local-01-tomakomai": {
-      "url": "https://www.city.tomakomai.hokkaido.jp/kenko/jiritsushien/seikatsukonkyusya.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度について｜北海道苫小牧市"
-    },
-    "jp-local-01-kushiro": {
-      "url": "https://www.city.kushiro.lg.jp/kenfuku/fukushi/1005014/1005015.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.misasal-hokkaido.jp/%E5%8C%97%E6%B5%B7%E9%81%93%E5%86%85%E5%B8%82%E7%94%BA%E6%9D%91%E3%81%AE%E5%BA%83%E5%A0%B1%E7%B4%99%E8%AA%8C%E3%81%B8%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF%E9%9B%86%E6%8C%AF%E8%88%88%E5%B1%80%E9%A0%86 で確認",
-      "evidence": "生活困窮者自立支援制度について｜釧路市ホームページ"
-    },
     "jp-local-01-hokkaido-shakyo": {
       "url": "https://www.hokkaidoshakyo.jp/",
       "checkedAt": "2026-11-03",
       "method": "fetched",
       "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
       "evidence": "社会福祉法人北海道社会福祉協議会"
-    },
-    "jp-local-01-obihiro-shakyo": {
-      "url": "https://www.obihiro-shakyo.jp/",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.obihiro.hokkaido.jp/kenko/shien/fukushi/1005053.html で確認",
-      "evidence": "帯広市社会福祉協議会 | 地域福祉・老連・共同募金 - 十勝・帯広市 / 北海道"
-    },
-    "jp-local-01-asahikawa-shakyo": {
-      "url": "https://www.asahikawa-shakyo.or.jp/",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.city.asahikawa.hokkaido.jp/kurashi/135/189/191/d052392.html で確認",
-      "evidence": "社会福祉法人 旭川市社会福祉協議会"
-    },
-    "jp-local-01-sapporo-shakyo": {
-      "url": "https://www.sapporo-shakyo.or.jp/",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。公式のドメインであることは https://www.shakyo.or.jp/network/kenshakyo/index.html で確認",
-      "evidence": "社会福祉法人 札幌市社会福祉協議会"
     },
     "jp-local-02-aomori": {
       "url": "https://www.city.aomori.aomori.jp/hukushi_kenkou/seikatsukonkyuu/1003465.html",
@@ -3608,10 +3468,10 @@
     },
     "jp-local-37-kagawa-prefectural-shakyo": {
       "url": "https://www.kagawakenshakyo.or.jp/",
-      "checkedAt": "2026-11-03",
-      "method": "unverified",
-      "how": "2026-11-04 のリンクの安全確認（GitHub Actions）で暗号化されていない http のページへ転送された。再確認できるまで表示しない",
-      "evidence": "社会福祉法人 香川県社会福祉協議会"
+      "checkedAt": "2026-11-24",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": ""
     },
     "jp-local-38-matsuyama": {
       "url": "https://www.city.matsuyama.ehime.jp/kurashi/fukushi/shakai/ziritsushien/seikonn14.html",
@@ -3929,11 +3789,11 @@
       "evidence": "島根県：防災・安全（トップ / 防災・安全）"
     },
     "jp-pref-33-bousai": {
-      "url": "https://www.pref.okayama.jp/page/detail-10903.html",
-      "checkedAt": "2026-11-03",
-      "method": "fetched",
-      "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.okayama.jp/page/detail-10903.html）",
-      "evidence": "いざという時のために - 岡山県ホームページ（危機管理課）"
+      "url": "https://www.pref.okayama.lg.jp/page/detail-10903.html",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
     },
     "jp-pref-34-bousai": {
       "url": "https://www.pref.hiroshima.lg.jp/life/3/",
@@ -3983,6 +3843,40 @@
       "method": "fetched",
       "how": "AI（調査担当）が公式ページを開いて題名を確認。都道府県の公式サイトのページ（https://www.pref.okinawa.jp/bosaianzen/bosai/index.html）",
       "evidence": "防災｜沖縄県公式ホームページ"
+    },
+    "jp-safety-hazardmap": {
+      "url": "https://disaportal.gsi.go.jp/",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
+    "jp-safety-jishin": {
+      "url": "https://www.jishin.go.jp/",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
+    "jp-safety-jshis": {
+      "url": "https://www.j-shis.bosai.go.jp/",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
+    "jp-r-ganjoho": {
+      "url": "https://ganjoho.jp/public/index.html",
+      "method": "operator",
+      "how": "運用者がブラウザで開いて確認",
+      "evidence": "",
+      "checkedAt": "2026-11-24"
+    },
+    "jp-s-notice": {
+      "url": "https://notice.go.jp/",
+      "method": "unrecorded",
+      "how": "2026-11-19 追加。運用者がブラウザで確認し、node scripts/mark-link-checked.mjs で記録するまで表示しない",
+      "evidence": "AIが公式ページの本文を読み、公式の運営・転送なし・不審な表示なしを確認した（証明書は未確認）。表示の判断は運用者"
     }
   }
 }

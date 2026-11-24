@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <!-- 外部への通信・埋め込み・インラインスクリプトをすべて禁止（自サイトのファイルのみ） -->
+  <!-- 埋め込み・インラインスクリプトを禁止し、読み込みは自サイトのファイルだけ。外部への通信は、地震の情報（米国地質調査所 USGS）の取得1か所だけを許す -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://earthquake.usgs.gov; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0a0f16">
@@ -18,9 +18,10 @@
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <!-- seo:abs（公開URLが分かるときだけ、組み立て時に canonical などを入れる） -->
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Tomoshibi Atlas", "alternateName": ["ともしびアトラス", "灯の地図", "灯アトラス", "Tomoshibi Atlas（ともしびアトラス）", "Atlas of Lights"], "description": "Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころと福祉・医療研究の公的な情報と、AI（SI）やITのセキュリティ上の脅威、地震・災害などの防災情報、詐欺などの防犯情報を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。", "inLanguage": ["ja", "en"], "author": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "creator": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "publisher": {"@type": "Person", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "Yoshioka Yutaka"]}, "isAccessibleForFree": true, "keywords": "Tomoshibi Atlas, ともしびアトラス, 灯の地図, Yutaka Yoshioka, 吉岡有隆, 地球儀, 世界地図, 世界の情報, 感染症, 感染症情報, 福祉, 福祉情報, 相談窓口, 生活支援, こころの健康, 防災, 防災情報, 災害, 災害情報, 地震, 地震情報, 防犯, 防犯情報, 詐欺, 特殊詐欺, ITセキュリティ, サイバーセキュリティ, 脆弱性, 医療研究, AI, globe, world map, infectious diseases, outbreaks, welfare, mental health, disaster, earthquakes, crime prevention, scams, cyber security"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Tomoshibi Atlas", "alternateName": ["ともしびアトラス", "灯アトラス", "灯の地図", "ともしび", "トモシビ", "Tomoshibi", "TOMOSHIBI ATLAS", "Tomoshibi Atlas（ともしびアトラス）", "Atlas of Lights"], "description": "Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。感染症・こころと福祉・医療研究の公的な情報と、AI（SI）やITのセキュリティ上の脅威、地震・災害などの防災情報、詐欺などの防犯情報を一つの地球儀で見比べられ、各国の福祉やこころの相談窓口の公式リンクもまとめています。", "inLanguage": ["ja", "en"], "author": {"@type": "Person", "@id": "#operator", "name": "Yutaka Yoshioka", "alternateName": ["吉岡有隆", "よしおかゆたか", "Yoshioka Yutaka", "YOSHIOKA YUTAKA", "yoshiokayutaka"], "description": "Tomoshibi Atlas（ともしびアトラス）の企画・デザイン・制作・運営。小説も書いています。", "knowsAbout": ["Webデザイン", "データベースサイト", "地球儀", "小説"]}, "creator": {"@id": "#operator"}, "publisher": {"@id": "#operator"}, "isAccessibleForFree": true, "keywords": "Tomoshibi Atlas, ともしびアトラス, 灯の地図, Yutaka Yoshioka, 吉岡有隆, 地球儀, 世界地図, 世界の情報, 感染症, 感染症情報, 福祉, 福祉情報, 相談窓口, 生活支援, こころの健康, 防災, 防災情報, 災害, 災害情報, 地震, 地震情報, 防犯, 防犯情報, 詐欺, 特殊詐欺, ITセキュリティ, サイバーセキュリティ, 脆弱性, 医療研究, AI, globe, world map, infectious diseases, outbreaks, welfare, mental health, disaster, earthquakes, crime prevention, scams, cyber security, 灯アトラス, ともしび, トモシビ, アトラス, あとらす, Tomoshibi, Atlas, TOMOSHIBI ATLAS, Yoshioka Yutaka, よしおかゆたか, yoshiokayutaka, 吉岡, よしおか, 有隆, ゆたか, 地球儀サイト, 公的情報, 公的情報の横断データベース, 横断データベース, 宇宙, 銀河, 今日の動物たち, 動物の豆知識, 暮らしの相談, ひとり親, 障がい福祉, 急な病気, 救急相談, ＃7119, 情報漏えい, フィッシング, 闇バイト, 世界をくらべる, 国際比較, 吉岡 ともしび, 吉岡 アトラス, 吉岡 地球儀, 吉岡 宇宙, 吉岡 サイト, 吉岡有隆 サイト, 吉岡有隆 地球儀, 吉岡有隆 デザイン, デザイン, Webデザイン, サイトデザイン, 全国横断型データベースサイト, 横断型データベース, データベースサイト, 世界横断データベース, 地球儀 サイト, 3D地球儀, 宇宙へ, 太陽系, 天の川銀河, 小説, 吉岡有隆 小説"}</script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
   <script src="vendor/d3-array.min.js" defer></script>
   <script src="vendor/d3-geo.min.js" defer></script>
   <script src="js/main.js" type="module"></script>
@@ -62,6 +63,7 @@
       <button type="button" class="icon-btn" id="btn-locate" data-i18n="control.locate">現在地</button>
       <button type="button" class="icon-btn desktop-only" id="btn-list" aria-controls="list-panel" aria-expanded="false" data-i18n="control.list">一覧</button>
       <button type="button" class="icon-btn desktop-only" id="btn-guide" aria-controls="guide-panel" aria-expanded="false" data-i18n="control.guide">使い方</button>
+      <button type="button" class="icon-btn space-btn" id="btn-space" aria-pressed="false" translate="no">宇宙へ</button>
       <a class="icon-btn lang desktop-only" id="btn-lang" href="?lang=en" hreflang="en" lang="en">English</a>
       <button type="button" class="menu-btn mobile-only" id="btn-menu" aria-controls="menu-drawer" aria-expanded="false">
         <span class="menu-icon" aria-hidden="true"></span><span data-i18n="control.menu">メニュー</span>
@@ -71,11 +73,13 @@
 
   <!-- スマートフォン用：いま表示している分野（押すとメニューが開く） -->
   <div class="mobile-bar mobile-only" id="mobile-bar">
-    <button type="button" class="current-layer" id="current-layer" aria-controls="menu-drawer" aria-expanded="false">
+    <button type="button" class="current-layer" id="current-layer" aria-controls="layer-sheet" aria-expanded="false">
       <span class="cl-label" data-i18n="nav.current">表示中の分野</span>
       <span class="cl-name" id="current-layer-name"></span>
       <span class="cl-change" data-i18n="nav.change">切り替える</span>
     </button>
+    <!-- 最後にサイトを組み立てた時刻（data/meta.json の builtAt）。トップが動物の分野でも、いつの情報か分かるように上に出す -->
+    <p class="site-updated" id="site-updated-m"></p>
   </div>
 
   <div id="menu-backdrop" class="menu-backdrop" hidden></div>
@@ -85,37 +89,70 @@
       <button type="button" class="close" id="menu-close" aria-label="×">×</button>
     </div>
     <div class="drawer-body">
-      <button type="button" class="drawer-action" id="drawer-guide" data-i18n="purpose.open">目的と使い方</button>
+      <p class="drawer-tagline" data-i18n="site.tagline"></p>
+      <button type="button" class="drawer-action drawer-main" id="drawer-guide" data-i18n="purpose.open">目的と使い方</button>
+      <a class="drawer-action drawer-main drawer-weekly" id="drawer-weekly" href="weekly.html" data-i18n="quick.weekly">今週のともしび（新着まとめ）</a>
+      <p class="drawer-group light" data-i18n="entry.trouble">困ったとき</p>
+      <div class="drawer-pages">
+        <p class="qe-hubs"><span class="qe-hubs-label" data-i18n="hub.label">まず全体を見る：</span><a href="life-support.html" data-i18n="hub.life">暮らしの困りごとの案内</a><a href="safety.html" data-i18n="hub.safety">安全・防犯・災害の案内</a></p>
+        <a class="drawer-action drawer-main" id="drawer-welfare" href="welfare-guide.html" data-i18n="quick.welfare">公的な相談窓口をさがす（福祉）</a>
+        <a class="drawer-action drawer-main" id="drawer-emergency-care" href="emergency-care.html" data-i18n="quick.emergencyCare">急な病気・けがのとき（応急手当）</a>
+        <a class="drawer-action drawer-main" id="drawer-crime-prevention" href="crime-prevention.html" data-i18n="quick.crimePrevention">防犯対策（詐欺・闇バイト）</a>
+        <a class="drawer-action" id="drawer-security" href="security-basics.html" data-i18n="quick.security">個人でできるセキュリティ対策</a>
+      </div>
+      <p class="drawer-group light" data-i18n="entry.world">世界を知る</p>
+      <div class="drawer-pages">
+        <a class="drawer-action" id="drawer-compare" href="compare.html" data-i18n="quick.compare">世界をくらべる（表・3D）</a>
+        <a class="drawer-action" id="drawer-connections" href="connections.html" data-i18n="quick.connections">テーマで読む</a>
+      </div>
+      <p class="drawer-group calm" data-i18n="entry.calm">ほっとする</p>
+      <div class="drawer-pages">
+        <button type="button" class="drawer-action" id="drawer-animals" data-i18n="entry.calmSub">今日の動物たち</button>
+        <a class="drawer-action" id="drawer-heritage" href="world-heritage.html" data-i18n="quick.heritage">世界遺産を旅する</a>
+        <button type="button" class="drawer-action" id="drawer-space" data-i18n="cosmos.go" translate="no">宇宙へ</button>
+        <p class="space-caution" data-i18n="cosmos.caution">宇宙へは、星や光がゆっくり動く演出です。光の明るさが変わる表示が苦手な方は、ご注意ください。</p>
+      </div>
+      <div class="drawer-actions">
+        <a class="drawer-action" id="drawer-about" href="about.html" data-i18n="purpose.title">このサイトについて</a>
+        <button type="button" class="drawer-action" id="drawer-locate" data-i18n="control.locate">現在地</button>
+        <a class="drawer-action lang" id="drawer-lang" href="?lang=en" hreflang="en" lang="en">English</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- スマートフォン用：分野の切り替え（メニューとは別。上の「表示中の分野」を押すと開く） -->
+  <div id="layer-sheet" class="drawer layer-sheet" role="dialog" aria-modal="true" aria-labelledby="layer-sheet-title" hidden>
+    <div class="drawer-head">
+      <h2 id="layer-sheet-title" data-i18n="nav.switchTitle">分野を切り替える</h2>
+      <button type="button" class="close" id="layer-sheet-close" aria-label="×">×</button>
+    </div>
+    <div class="drawer-body">
+      <div class="sheet-list">
+        <p data-i18n="nav.listHint">いま表示している分野の情報は、地球儀ではなく一覧でも読めます。</p>
+        <button type="button" class="drawer-action drawer-main" id="drawer-list" data-i18n="nav.listOpen">この分野を一覧で見る</button>
+      </div>
       <p class="drawer-group light" data-i18n="group.light">灯（ともしび）— 支える情報</p>
       <div id="drawer-light" class="drawer-layers"></div>
       <p class="drawer-group caution" data-i18n="group.caution">警鐘（けいしょう）— 注意が必要な情報</p>
       <div id="drawer-caution" class="drawer-layers"></div>
       <p class="drawer-group calm" data-i18n="group.calm">癒し — ほっとするお話</p>
       <div id="drawer-calm" class="drawer-layers"></div>
-      <div class="drawer-actions">
-        <button type="button" class="drawer-action" id="drawer-list" data-i18n="control.list">一覧</button>
-        <a class="drawer-action" id="drawer-about" href="about.html" data-i18n="purpose.title">このサイトについて</a>
-        <button type="button" class="drawer-action" id="drawer-locate" data-i18n="control.locate">現在地</button>
-        <a class="drawer-action lang" id="drawer-lang" href="?lang=en" hreflang="en" lang="en">English</a>
-        <a class="drawer-action" id="drawer-welfare" href="welfare-guide.html" data-i18n="quick.welfare">福祉の相談先・災害情報</a>
-        <a class="drawer-action" id="drawer-security" href="security-basics.html" data-i18n="quick.security">個人でできるセキュリティ対策</a>
-        <a class="drawer-action" id="drawer-compare" href="compare.html" data-i18n="quick.compare">世界をくらべる（統計）</a>
-        <a class="drawer-action" id="drawer-connections" href="connections.html" data-i18n="quick.connections">情報のつながりを見る</a>
-      </div>
-      <p class="drawer-tagline" data-i18n="site.tagline"></p>
     </div>
-  </nav>
+  </div>
 
   <div id="sample-banner" class="sample-banner" hidden></div>
 
   <main class="stage">
-    <h1 class="visually-hidden mobile-only" data-i18n="site.tagline">人の病とこころの不調、AI（SI）やIT・社会システムの課題を、一つの地球儀で。</h1>
+    <!-- 見出し（h1）は下の「目的」のカードの1つだけ。スマホではカードを出さないので、読み上げ用に同じ文を置く -->
+    <p class="visually-hidden mobile-only" data-i18n="site.tagline">人の病とこころの不調、AI（SI）やIT・社会システムの課題と支えを、一つの地球儀で。</p>
+    <canvas id="cosmos" class="cosmos" aria-hidden="true" hidden></canvas>
     <canvas id="globe" aria-hidden="true"></canvas>
+    <canvas id="cosmos-front" class="cosmos" aria-hidden="true" hidden></canvas>
     <!-- 読み込み中の表示（小さな地球儀がゆっくり回る。動きを減らす設定では止まる）。地球儀の準備ができたら消える -->
     <div id="loading" class="loading" role="status" aria-live="polite">
       <div class="loading-globe" aria-hidden="true"><span></span></div>
       <p class="loading-text">地球儀を準備しています…<br><span lang="en">Preparing the globe…</span></p>
-      <p class="loading-slow" id="loading-slow" hidden>時間がかかっています。通信の状態をご確認のうえ、しばらくお待ちください。<br><span lang="en">This is taking a while. Please check your connection and wait a moment.</span></p>
+      <p class="loading-slow" id="loading-slow" hidden>時間がかかっています。通信の状態をご確認のうえ、しばらくお待ちください。地球儀を使わずに読めるページ：<a href="safety.html">安全に暮らす（防災・防犯）</a>・<a href="life-support.html">暮らしの相談</a>・<a href="emergency-care.html">急な病気・けが</a><br><span lang="en">This is taking a while. Please check your connection and wait a moment. Text-only guides: <a href="welfare-guide.en.html">finding welfare support</a> · <a href="security-basics.en.html">security basics</a></span></p>
     </div>
     <!-- 読み込めなかったときの表示（言語ファイルが読めなくても出せるよう、文はここに書いておく） -->
     <div id="load-error" class="load-error" role="alert" hidden>
@@ -123,6 +160,8 @@
       <p>地球儀のデータを読み込めませんでした。時間をおいて、ページを再読み込みしてください。そのあいだも、次のページはご覧いただけます。</p>
       <p lang="en">The globe data could not be loaded. Please reload the page later. These pages are still available:</p>
       <ul>
+        <li><a href="safety.html">安全に暮らす（防災・防犯の案内）</a></li>
+        <li><a href="emergency-care.html">急な病気・けがのとき</a></li>
         <li><a href="welfare-guide.html">福祉の相談先の探し方</a>（<a href="welfare-guide.en.html" lang="en">English</a>）</li>
         <li><a href="security-basics.html">個人でできるセキュリティ対策</a>（<a href="security-basics.en.html" lang="en">English</a>）</li>
         <li><a href="about.html">このサイトについて</a>（<a href="about.en.html" lang="en">About</a>）</li>
@@ -131,18 +170,48 @@
     <div id="labels" class="labels"></div>
 
     <section class="purpose-card desktop-only" aria-labelledby="purpose-title">
-      <h1 id="purpose-title" data-i18n="site.tagline">人の病とこころの不調、AI（SI）やIT・社会システムの課題を、一つの地球儀で。</h1>
-      <p data-i18n="purpose.body">感染症・こころと福祉・医療研究の公表情報と、AI（SI）やIT・社会システムを脅かすセキュリティ上の脅威、災害や犯罪の情報を、同じ地球儀の上に並べています。人の健康とシステムや社会の不調を見比べ、その関わりに気づきやすくすることで、人がよりよく暮らすための備えに役立てることを目指しています。</p>
+      <p class="site-updated" id="site-updated"></p>
+      <h1 id="purpose-title" data-i18n="site.tagline">人の病とこころの不調、AI（SI）やIT・社会システムの課題と支えを、一つの地球儀で。</h1>
+      <p data-i18n="purpose.body">感染症・こころと福祉・研究の公的な情報と、ITや社会を脅かすセキュリティの脅威、災害・犯罪の情報を一つの地球儀に並べ、暮らしの備えに役立てます。</p>
       <p class="layer-caption" id="layer-caption" aria-live="polite"></p>
-      <div class="quick-grid">
-        <button type="button" class="quick-chip q-purpose" id="btn-purpose" aria-controls="guide-panel" data-i18n="purpose.open">目的と使い方</button>
-        <a href="about.html" id="quick-about" class="quick-chip q-about" data-i18n="purpose.title">このサイトについて</a>
-        <a href="welfare-guide.html" id="quick-welfare" class="quick-chip q-welfare" data-i18n="quick.welfare">福祉の相談先・災害情報</a>
-        <a href="security-basics.html" id="quick-security" class="quick-chip q-security" data-i18n="quick.securityShort" title="個人でできるセキュリティ対策">個人のセキュリティ対策</a>
-        <a href="compare.html" id="quick-compare" class="quick-chip q-compare" data-i18n="quick.compareShort">世界をくらべる（統計）</a>
-        <a href="connections.html" id="quick-connections" class="quick-chip q-connections" data-i18n="quick.connectionsShort">情報のつながりを見る</a>
-      </div>
     </section>
+
+    <nav class="quick-panel desktop-only" id="quick-panel" aria-label="ページの案内">
+      <a href="weekly.html" id="quick-weekly" class="quick-chip q-weekly" data-i18n="quick.weekly">今週のともしび（新着まとめ）</a>
+      <details class="qe qe-trouble">
+        <summary><span class="qe-title" data-i18n="entry.trouble">困ったとき</span><span class="qe-sub" data-i18n="entry.troubleSub">暮らしの相談・急な体調不良やけが・防犯</span></summary>
+        <div class="qe-links">
+          <p class="qe-hubs"><span class="qe-hubs-label" data-i18n="hub.label">まず全体を見る：</span><a href="life-support.html" id="quick-life" data-i18n="hub.life">暮らしの困りごとの案内</a><a href="safety.html" id="quick-safety" data-i18n="hub.safety">安全・防犯・災害の案内</a></p>
+          <a href="welfare-guide.html" id="quick-welfare" class="quick-chip q-welfare" data-i18n="quick.welfare">公的な相談窓口をさがす（福祉）</a>
+          <a href="emergency-care.html" id="quick-emergency-care" class="quick-chip q-care" data-i18n="quick.emergencyCareShort" title="急な病気・けがのとき（応急手当・救急相談）">急な病気・けが</a>
+          <a href="crime-prevention.html" id="quick-crime" class="quick-chip q-crime" data-i18n="quick.crimeShort" title="防犯対策（詐欺・闇バイト）">防犯・詐欺対策</a>
+          <a href="security-basics.html" id="quick-security" class="quick-chip q-security" data-i18n="quick.securityShort">個人でできるセキュリティ対策</a>
+        </div>
+      </details>
+      <details class="qe qe-world">
+        <summary><span class="qe-title" data-i18n="entry.world">世界を知る</span><span class="qe-sub" data-i18n="entry.worldSub">地球儀・世界をくらべる・テーマで読む</span></summary>
+        <div class="qe-links">
+          <button type="button" class="quick-chip" id="quick-switch" data-i18n="entry.switch">分野を切り替える・一覧で見る</button>
+          <a href="compare.html" id="quick-compare" class="quick-chip q-compare" data-i18n="quick.compareShort">世界をくらべる（表・3D）</a>
+          <a href="connections.html" id="quick-connections" class="quick-chip q-connections" data-i18n="quick.connectionsShort">テーマで読む</a>
+        </div>
+      </details>
+      <details class="qe qe-calm">
+        <summary><span class="qe-title" data-i18n="entry.calm">ほっとする</span><span class="qe-sub" data-i18n="entry.calmSubAll">今日の動物たち・世界遺産・宇宙へ</span></summary>
+        <div class="qe-links">
+          <button type="button" class="quick-chip q-calm" id="quick-animals" data-i18n="entry.calmSub">今日の動物たち</button>
+          <a class="quick-chip q-calm" id="quick-heritage" href="world-heritage.html" data-i18n="quick.heritage">世界遺産を旅する</a>
+          <button type="button" class="quick-chip q-calm" id="quick-space" data-i18n="cosmos.go" translate="no">宇宙へ</button>
+          <p class="space-caution" data-i18n="cosmos.caution">宇宙へは、星や光がゆっくり動く演出です。光の明るさが変わる表示が苦手な方は、ご注意ください。</p>
+        </div>
+      </details>
+      <p class="qe-small">
+        <button type="button" class="text-link" id="btn-purpose" aria-controls="guide-panel" data-i18n="purpose.open">目的と使い方</button>
+        <a href="about.html" id="quick-about" data-i18n="purpose.title">このサイトについて</a>
+        <a href="site-security.html" id="quick-site-security" data-i18n="quick.siteSecurityShort">このサイトの安全対策</a>
+      </p>
+    </nav>
+    <p class="theme-note" id="theme-note" hidden><span id="theme-note-text"></span> <a href="index.html#return" id="theme-note-close" data-i18n="theme.clear">線を消す</a></p>
 
     <div class="globe-controls">
       <button type="button" class="ctrl" id="btn-rotate" aria-pressed="true">回転を止める</button>
@@ -176,8 +245,18 @@
     <div id="list-body" class="panel-body"></div>
   </aside>
 
+  <div id="cosmos-text" class="cosmos-text" aria-live="polite" translate="no" hidden>
+    <p class="cosmos-ja" lang="ja" data-i18n="cosmos.ja">世界は広い。 今ここにいる奇跡。</p>
+    <p class="cosmos-en" lang="en" translate="no" data-i18n="cosmos.en">The world is vast. And here we are — a small miracle.</p>
+    <p class="cosmos-note" data-i18n="cosmos.note">大きさや距離は実際とは違うイメージです（惑星の軌道は縮めています）。惑星の並びと今の位置は、いまの時刻から計算しています。月は満月の姿で描いています。天の川銀河の形（棒のある渦巻き）と太陽系の位置は、研究で分かっているおおよその姿です。</p>
+  </div>
+
+  <p id="welcome-back" class="welcome-back" aria-live="polite" translate="no" hidden><span data-i18n="cosmos.welcomeBack">おかえりなさい。</span><span class="wb-en" lang="en" translate="no">Welcome home.</span></p>
+
   <footer class="statusbar">
-    <span id="status-text">…</span>
+    <span class="status-right"><span id="status-text">…</span><span class="clock" id="clock" aria-hidden="true" translate="no"></span></span>
+    <!-- 地球儀を通らずに、文字だけの案内へ（重い端末・災害のときにも。パソコンの画面だけ。スマホはメニューから） -->
+    <a href="safety.html" id="text-guide-link" class="desktop-only" data-i18n="footer.textGuide">文字だけの案内（防災・暮らし）</a>
     <a href="about.html" id="operator-link" data-i18n="footer.operator">運営：Yutaka Yoshioka（非営利）</a>
     <a href="about.html#disclaimer" id="disclaimer-link" data-i18n="status.disclaimer">医療・法律上の判断には使わないでください（免責事項）</a>
   </footer>
@@ -186,11 +265,12 @@
   <dialog id="welcome" class="welcome" aria-labelledby="welcome-title" aria-describedby="welcome-body">
     <button type="button" class="welcome-x" id="welcome-x" aria-label="このお知らせを閉じる">×</button>
     <h2 id="welcome-title" data-i18n="welcome.title">ようこそ、Tomoshibi Atlas へ</h2>
+    <p class="welcome-lead" data-i18n="welcome.lead">ともしびアトラスは、世界と日本の暮らしに役立つ情報への入口を、地球儀からさがせる無料のサイトです。リンク先は、できるだけ公的な機関など、確かなところを選ぶようにしています。</p>
     <p id="welcome-body" data-i18n="welcome.body">癒しを求めている方のために、最初のページは動物の豆知識にしています。回る地球儀と一緒に、ゆっくり見て癒されてください。</p>
     <p class="welcome-sub" data-i18n="welcome.sub">感染症・防災・防犯などの情報は、上の分野のボタンから切り替えられます。</p>
     <button type="button" class="welcome-close" id="welcome-close" data-i18n="welcome.close">閉じる</button>
   </dialog>
 
-  <noscript><div class="noscript"><p>Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。このサイトの地球儀表示にはJavaScriptが必要です。地球儀を使わなくても、次のページは読めます。</p><ul><li><a href="welfare-guide.html">福祉の相談先の探し方</a>（<a href="welfare-guide.en.html">English</a>。相談先の一覧の表示にはJavaScriptが必要ですが、探し方と緊急時の窓口は読めます）</li><li><a href="security-basics.html">個人でできるセキュリティ対策</a>（<a href="security-basics.en.html">English</a>）</li><li><a href="archive.html">過去の記録の一覧</a>（JavaScriptが必要です）</li><li><a href="about.html">このサイトについて・免責事項</a>（<a href="about.en.html">About (English)</a>）</li></ul><p>心や体がつらいときは、厚生労働省「<a href="https://www.mhlw.go.jp/mamorouyokokoro/" rel="noopener noreferrer">まもろうよ こころ</a>」の相談窓口もご覧ください。</p></div></noscript>
+  <noscript><div class="noscript"><p>Tomoshibi Atlas（ともしびアトラス／灯の地図）は、Yutaka Yoshioka（吉岡有隆）が運営する非営利のサイトです。このサイトの地球儀表示にはJavaScriptが必要です。地球儀を使わなくても、次のページは読めます。</p><ul><li><a href="safety.html">安全に暮らす（防災・防犯・情報漏えいの案内）</a></li><li><a href="life-support.html">暮らしの相談（困りごとから相談先を探す）</a></li><li><a href="welfare-guide.html">福祉の相談先の探し方</a>（<a href="welfare-guide.en.html">English</a>。相談先の一覧の表示にはJavaScriptが必要ですが、探し方と緊急時の窓口は読めます）</li><li><a href="security-basics.html">個人でできるセキュリティ対策</a>（<a href="security-basics.en.html">English</a>）</li><li><a href="archive.html">過去の記録の一覧</a>（JavaScriptが必要です）</li><li><a href="weekly.html">今週のともしび（新着まとめ）</a></li><li><a href="welfare-pref.html">都道府県別の福祉の相談先</a></li><li><a href="disability-services.html">障がいのある人の福祉サービス・施設の探し方</a></li><li><a href="family-support.html">ひとり親家庭の支援の探し方</a></li><li><a href="crime-prevention.html">防犯対策（詐欺・闇バイト）</a></li><li><a href="emergency-care.html">急な病気・けがのとき（応急手当）</a></li><li><a href="data-leak.html">情報漏えいに巻き込まれたかもしれないとき</a></li><li><a href="world-heritage.html">世界遺産を旅する（日本の世界遺産と、各国の公式ページ）</a>（<a href="world-heritage.en.html">English</a>）</li><li><a href="about.html">このサイトについて・免責事項</a>（<a href="about.en.html">About (English)</a>）</li></ul><p>心や体がつらいときは、厚生労働省「<a href="https://www.mhlw.go.jp/mamorouyokokoro/" target="_blank" rel="noopener noreferrer">まもろうよ こころ</a>」の相談窓口もご覧ください。</p></div></noscript>
 </body>
 </html>

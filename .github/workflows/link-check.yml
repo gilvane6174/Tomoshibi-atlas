@@ -1,16 +1,51 @@
 # 掲載リンクの安全確認（週1回）。証明書エラー・リンク切れ・別ドメインへの転送・改ざんの兆候を調べる。
-# 問題があればこのワークフローが失敗し、運用者に通知が届く。リポジトリへは書き込まない。
-name: Link safety check
+# 危険なリンクがあるとき、または最後の取り込みから45日を過ぎたとき（60日で定時実行が止まるため）に失敗し、運用者に通知が届く。
+# リポジトリへは書き込まない。全部で800件を超えるため、4つのまとまりを1週に1つずつ調べる（4週で一巡。scripts/check-links.mjs）。
+# 急な病気・けがのページ（まとまり5）は、毎月最初の週（1〜7日）に追加で調べ、自動の検査を通ったリンクのうち、
+# 運用者の確認が無い・古いものがあれば失敗にして知らせる（運用者がリンク先の中身を確かめる。ops/LINK-SAFETY.md）。
+name: リンクの安全確認と取り込み忘れの確認（週1回・急な病気のページは月1回）
 
 on:
   schedule:
     - cron: '27 0 * * 1' # 毎週月曜 09:27（日本時間）
   workflow_dispatch:
+    inputs:
+      group:
+        description: '調べるまとまり（auto＝今週の分／1＝国別・国際のリンク集／2＝都道府県・市区町村／3＝手動掲載・説明ページ／4＝今日の動物たち／5＝急な病気・けがのページ（毎月）／all＝全部）'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          - all
 
 permissions: {}
 
 jobs:
+  # 取り込み忘れの確認は、リンク確認とは別の仕事にする（片方が失敗しても、もう片方は動く）
+  keepalive:
+    name: 取り込み忘れの確認（45日を過ぎたら知らせる）
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          check-latest: true
+      - name: 最後の取り込みからの日数を確かめる
+        run: node scripts/check-keepalive.mjs
   check:
+    name: リンクの安全確認（危険なリンクがあれば知らせる）
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:
@@ -23,5 +58,9 @@ jobs:
         with:
           node-version: '24'
           check-latest: true
-      - name: Check links
+      - name: リンクの安全確認（危険なリンクがあれば失敗にして知らせる）
+        env:
+          LINK_GROUP: ${{ inputs.group }} # 定時の実行では空（＝今週の分）
+          # 要確認（自動アクセスの拒否など）も失敗にするなら '1'。'0' では警告として一覧に出すだけ（危険は必ず失敗）。運用者が決める
+          FAIL_ON_REVIEW: '0'
         run: node scripts/check-links.mjs

@@ -35,6 +35,7 @@ export class Labels {
       return g;
     });
     this.color = color;
+    this.globe.setAccent?.(color);
     for (const el of this.els.values()) el.remove();
     this.els.clear();
     for (const g of this.groups) this.els.set(g.id, this.#make(g));

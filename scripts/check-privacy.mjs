@@ -17,7 +17,8 @@ const BANNED_EXT = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.heic', '
 const TEXT_EXT = new Set(['.md', '.json', '.mjs', '.js', '.html', '.css', '.yml', '.yaml', '.txt', '.svg', '']);
 
 // 誤検知の例外（運用者だけが変更できる）。[ファイル, 種類]
-export const ALLOW = [['scripts/test.mjs', 'メールアドレス']];
+// er-lines.json は、消防庁が公表している救急の電話相談の公式の番号（個人の番号ではない）
+export const ALLOW = [['scripts/test.mjs', 'メールアドレス'], ['data/curated/er-lines.json', '電話番号らしき数字'], ['data/curated/er-lines.json', '住所らしき記述']];
 
 // 検出パターン（パターン自体が引っかからないよう、一部の文字列を分割して組み立てている）
 const at = '@';
@@ -31,9 +32,11 @@ export const RULES = [
     // sk- は英単語の途中（risk-… など）を除く
     'APIキー・秘密鍵らしき文字列',
     new RegExp(
-      ['(?<![A-Za-z0-9])sk-' + '[A-Za-z0-9_-]{20,}', 'sk_' + '(live|test)_[A-Za-z0-9]{10,}', 'AKIA' + '[0-9A-Z]{16}', 'AIza' + '[0-9A-Za-z_-]{30,}', 'glpat' + '-[A-Za-z0-9_-]{15,}', 'xox' + '[baprs]-[A-Za-z0-9-]{10,}', 'eyJ' + '[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}', '-----BEGIN [A-Z ]*PRIVATE ' + 'KEY-----'].join('|'),
+      ['(?<![A-Za-z0-9])sk-' + '[A-Za-z0-9_-]{20,}', 'sk_' + '(live|test)_[A-Za-z0-9]{10,}', 'AKIA' + '[0-9A-Z]{16}', 'AIza' + '[0-9A-Za-z_-]{30,}', 'glpat' + '-[A-Za-z0-9_-]{15,}', 'xox' + '[baprs]-[A-Za-z0-9-]{10,}', 'eyJ' + '[A-Za-z0-9_-]{10,}\\.eyJ[A-Za-z0-9_-]{10,}', '-----BEGIN [A-Z ]*PRIVATE ' + 'KEY-----', 'rk_' + '(live|test)_[A-Za-z0-9]{10,}', 'whsec' + '_[A-Za-z0-9]{16,}'].join('|'),
     ),
   ],
+  // ブラウザに配られる設定の名前に、秘密の値を入れていないか（VITE_ などで始まる名前は、画面側のプログラムに埋め込まれる）
+  ['画面に埋め込まれる秘密の設定', new RegExp('(VITE|NEXT_PUBLIC|REACT_APP|EXPO_PUBLIC)' + '_[A-Z0-9_]*(SECRET|TOKEN|PASSWORD|PRIVATE|API_?KEY)')],
   ['AIとの会話・作業のURL', new RegExp('(claude\\.ai|chatgpt\\.com|chat\\.openai\\.com|grok\\.com|x\\.com/i/grok|gemini\\.google\\.com|g\\.co/gemini|perplexity\\.ai|poe\\.com|copilot\\.microsoft\\.com|chat\\.deepseek\\.com|chat\\.mistral\\.ai)/[^\\s)"\']+', 'i')],
   ['AIのセッション情報', new RegExp('Claude' + '-Session:|session' + '_[0-9A-Za-z]{16,}', 'i')],
   ['PC内のユーザーフォルダ', /\/Users\/[A-Za-z0-9._-]+\/|[A-Za-z]:\\Users\\[A-Za-z0-9._-]+|\/home\/(?!runner\b)[A-Za-z0-9._-]+\/|~\/(Documents|Desktop|Downloads|Library)\b|\\\\wsl\$/],

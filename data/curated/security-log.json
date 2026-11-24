@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "_note": "このサイトの安全対策の記録（運用者だけが変更する）。kind：incident＝世の中で起きた事例と、このサイトへの影響の確認／fix＝このサイトで行った対策・修正／audit＝点検／policy＝GitHub などの仕組みの変更への対応。sources の url は、公的機関などの許可リストか scripts/allowed-sources.json の securityLogHosts（GitHub・Node.js の公式）に当たるものだけ。それ以外の調査（セキュリティ企業など）は name だけを書き、リンクしない。攻撃の手順・痕跡情報（IP・ハッシュなど）・攻撃者の配信先は書かない。末尾への追記を基本にし、過去の記録を消さない。",
+  "entries": [
+    {
+      "date": "2026-10-25",
+      "kind": "audit",
+      "status": "done",
+      "title": { "ja": "安全設計の見直しと、2025〜2026年の攻撃事例の確認", "en": "Review of the safety design against 2025–2026 attack cases" },
+      "summary": {
+        "ja": "GitHub Actions のタグ書き換え、npm のワーム、AI のコーディングツールへのプロンプトインジェクションなどの事例を確認し、外部パッケージを使わない・秘密情報を持たない・検査に失敗したら公開しない、などの多層の対策を整えた。",
+        "en": "Reviewed cases such as GitHub Action tag rewrites, npm worms and prompt injection against AI coding tools, and set up layered defences: no external packages, no secrets, and no publishing when checks fail."
+      },
+      "sources": []
+    },
+    {
+      "date": "2026-11-02",
+      "kind": "policy",
+      "status": "operator-check",
+      "title": { "ja": "GitHub：公開リポジトリの pull_request_target を12月2日から既定で停止", "en": "GitHub: pull_request_target blocked by default in public repositories from 2 December" },
+      "summary": {
+        "ja": "GitHub は、公開リポジトリで pull_request_target で動くワークフローを2026年12月2日から既定で止めると発表した。このサイトの変更範囲の検査（scope-guard）はこの仕組みで動くため、運用者が GitHub の設定でこの検査だけを許可する必要がある。",
+        "en": "GitHub announced that workflows triggered by pull_request_target in public repositories will be blocked by default from 2 December 2026. This site's scope check (scope-guard) uses it, so the operator must allow only that workflow in the GitHub settings."
+      },
+      "impact": {
+        "ja": "設定の済み・未済は、運用者が GitHub の画面で確かめる（このサイトのリポジトリの docs/GITHUB-SETTINGS.md 8章）。",
+        "en": "The operator checks in the GitHub settings whether this has been done (docs/GITHUB-SETTINGS.md, section 8, in this site's repository)."
+      },
+      "sources": [{ "name": "GitHub Changelog（2026-11-02）", "url": "https://github.blog/changelog/2026-11-02-pull_request_target-blocked-by-default-december-2/" }]
+    },
+    {
+      "date": "2026-11-11",
+      "kind": "incident",
+      "status": "done",
+      "title": { "ja": "Node.js のセキュリティ更新（22・24・26系）", "en": "Node.js security releases (22.x, 24.x and 26.x)" },
+      "summary": {
+        "ja": "Node.js プロジェクトが、HTTP/2 や TLS に関する脆弱性を直したセキュリティ更新を公開した。",
+        "en": "The Node.js project published security releases fixing vulnerabilities including ones in HTTP/2 and TLS."
+      },
+      "impact": {
+        "ja": "このサイトはサーバーを持たず、Node.js は公開前の組み立てと検査にだけ使う。組み立てでは毎回24系の最新版を使い、手元で古い版を使ったときに止める表（scripts/lib/node-guard.mjs）を、修正済みの版に更新した。",
+        "en": "This site has no server; Node.js is used only to build and check the site before publishing. The build always uses the latest 24.x, and the table that stops older local versions (scripts/lib/node-guard.mjs) was updated to the fixed versions."
+      },
+      "sources": [{ "name": "Node.js（2026-11-11 Security Releases）", "url": "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases" }]
+    },
+    {
+      "date": "2026-11-12",
+      "kind": "incident",
+      "status": "operator-check",
+      "title": { "ja": "乗っ取られた GitHub アカウントによる、秘密情報を盗むワークフローの仕込み（wfx-loot）", "en": "Hijacked GitHub accounts used to plant secret-stealing workflows (wfx-loot)" },
+      "summary": {
+        "ja": "セキュリティ企業の調査によると、2026年11月10日から、盗まれた認証情報で乗っ取られた多数の GitHub アカウントから、多数のリポジトリへ「依存関係の点検」を装った PR が作られ、秘密情報を盗む処理が仕込まれた。GitHub の公式の発表は、確認した時点では見当たらなかった。",
+        "en": "According to security firms, from 10 November 2026 many GitHub accounts hijacked with stolen credentials opened pull requests posing as dependency audits in many repositories, planting code that steals secrets. No official GitHub statement was found at the time of checking."
+      },
+      "impact": {
+        "ja": "このサイトは秘密情報を使わず、ワークフローの権限も読み取りだけにしている。AI や外部からの PR は main 側の検査（scope-guard）で2ファイル以外の変更を止める。見覚えのない PR・ブランチ・コミットが無いかは、運用者が GitHub の画面で確かめる。",
+        "en": "This site uses no secrets and its workflows have read-only access. Pull requests from AI or outside accounts are limited by the main-branch scope check. The operator checks the GitHub screens for unfamiliar pull requests, branches or commits."
+      },
+      "sources": [{ "name": "Aikido Security ほか、セキュリティ企業の調査（2026年11月。リンクは載せていません）" }]
+    },
+    {
+      "date": "2026-11-19",
+      "kind": "fix",
+      "status": "proposed",
+      "title": { "ja": "外部の処理（GitHub Action）の固定SHAを、確かめた一覧と照合する検査を追加", "en": "Added a check that pinned GitHub Action SHAs match a verified list" },
+      "summary": {
+        "ja": "外部の処理をコミットSHAで固定していても、フォークにしかないコミット（なりすましのコミット）を指定されると見抜けないという指摘が広がっている。固定するSHAを、運用者が公式のリリースで確かめた一覧（scripts/check-repo.mjs）と照合し、一覧に無いものは検査で止めるようにした。",
+        "en": "It has been widely pointed out that pinning an Action to a commit SHA does not catch an imposter commit that exists only in a fork. Pinned SHAs are now compared with a list the operator verified against official releases (scripts/check-repo.mjs), and others are rejected."
+      },
+      "sources": []
+    },
+    {
+      "date": "2026-11-19",
+      "kind": "fix",
+      "status": "proposed",
+      "title": { "ja": "週1回のリンク確認を、4週で一巡する分担に変更し、危険なリンクの知らせを埋もれにくくした", "en": "Weekly link check now covers one of four groups each week, so warnings about dangerous links are not buried" },
+      "summary": {
+        "ja": "掲載リンクが800件を超え、1回の確認が時間の上限に収まらないおそれがあった（2026年10〜11月は毎回失敗）。4つのまとまりを1週に1つずつ調べるようにし、危険なリンクがあるとき・最後の更新から45日を過ぎたとき（60日で自動更新が止まるため）に知らせる。",
+        "en": "With more than 800 links, a single check could exceed its time limit (it failed every week in October–November 2026). Four groups are now checked one per week, and the operator is notified when a dangerous link is found or 45 days pass without an update (automatic updates stop after 60 days)."
+      },
+      "sources": []
+    },
+    {
+      "date": "2026-11-19",
+      "kind": "audit",
+      "status": "proposed",
+      "title": { "ja": "サイト全体の点検（v1.7 の改修にあわせて）", "en": "Site-wide review (with the v1.7 update)" },
+      "summary": {
+        "ja": "画面の安全の仕組み（外部への通信の禁止・スクリプトの直接実行の禁止・文字だけで表示）、ワークフローの権限、新しく作るページの安全の仕組みを点検した。点検はAIが行い、運用者と別のAIが確認する（自分の点検を独立した監査とは呼ばない）。",
+        "en": "Reviewed the page protections (no outside connections, no inline scripts, text-only rendering), workflow permissions and the protections of the new pages. The review was done by an AI and is checked by the operator and another AI (it is not called an independent audit)."
+      },
+      "sources": []
+    }
+  ]
+}

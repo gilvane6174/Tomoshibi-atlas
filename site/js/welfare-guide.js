@@ -1,5 +1,6 @@
-// 「日本で福祉の相談先をさがす」ページ：確認済みの公式リンク（data/directory.json）から、
+// 「福祉・暮らしの相談先をさがす」ページ：確認済みの公式リンク（data/directory.json）から、
 // 困りごと別の全国の窓口と、都道府県ごとの窓口の一覧を作る。文字はすべて textContent で入れる。
+import { prefTopUrl, MUNI_SEARCH, PREF_KANA } from './pref-top.js';
 // 「ひらがなで よむ」を押すと、一覧もひらがな（＋カタカナ）で作り直す（日本語ページだけ）。
 import { setupKanaSwitch } from './kana-switch.js';
 
@@ -48,11 +49,6 @@ const REGIONS = [
 ];
 
 // 都道府県名の読み（ひらがな表示用）
-const PREF_KANA = ('ほっかいどう あおもりけん いわてけん みやぎけん あきたけん やまがたけん ふくしまけん いばらきけん とちぎけん ぐんまけん ' +
-  'さいたまけん ちばけん とうきょうと かながわけん にいがたけん とやまけん いしかわけん ふくいけん やまなしけん ながのけん ' +
-  'ぎふけん しずおかけん あいちけん みえけん しがけん きょうとふ おおさかふ ひょうごけん ならけん わかやまけん ' +
-  'とっとりけん しまねけん おかやまけん ひろしまけん やまぐちけん とくしまけん かがわけん えひめけん こうちけん ふくおかけん ' +
-  'さがけん ながさきけん くまもとけん おおいたけん みやざきけん かごしまけん おきなわけん').split(' ');
 const prefKana = (code) => PREF_KANA[Number(code) - 1] || '';
 // ひらがな表示のときのリンクの名前（都道府県のページの題名は漢字のため、役割ごとの決まった言い方にする）
 const KANA_ROLE = { main: 'くらし・しごとの そうだんの ページ', consult: 'くらし・しごとの そうだん まどぐちの あんない', mind: 'こころの けんこうの そうだん（せいしん ほけん ふくし センター など）', bousai: 'さいがい・ぼうさいの じょうほうの ページ' };
@@ -139,6 +135,12 @@ function prefectures(dir) {
           return link(l.url, text);
         })
         .filter(Boolean);
+      // 役所の公式サイト（都道府県庁のトップ・市区町村を探す国の案内）を、その都道府県の一番上に置く
+      const offices = [];
+      const top = prefTopUrl(p);
+      if (top) offices.push(link(top, isEn ? `Official website of ${p.en} (top page)` : kana ? `${prefKana(code)}の こうしき サイト（とどうふけんちょう）` : `都道府県庁：${p.ja}の公式サイト（トップページ）`));
+      offices.push(link(MUNI_SEARCH.url, isEn ? `City, town and village websites: ${MUNI_SEARCH.en}` : kana ? 'しやくしょ・くやくしょ・まちや むらの やくばの こうしき サイトを さがす' : `市役所・区役所・町村役場の公式サイトを探す：${MUNI_SEARCH.ja}`));
+      for (const a of offices.filter(Boolean)) li.append(a);
       if (shown.length || local.length) {
         for (const a of shown) li.append(a);
         if (local.length) {
