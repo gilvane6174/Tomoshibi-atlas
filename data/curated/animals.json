@@ -1126,23 +1126,6 @@
       "checkedAt": "2026-10-26"
     },
     {
-      "id": "animal-fra-black-grouse",
-      "country": "FRA",
-      "animal": {
-        "ja": "クロライチョウ",
-        "en": "Black grouse"
-      },
-      "text": {
-        "ja": "クロライチョウのオスたちは、繁殖期に向かい合って「恋の一騎打ち」のようなディスプレイをします。",
-        "en": "Male black grouse face off in courtship 'love jousts'."
-      },
-      "source": {
-        "name": "Mercantour National Park（PDF）",
-        "url": "https://www.mercantour-parcnational.fr/sites/mercantour-parcnational.fr/files/documents/downloads/guide-56p-english-web_0.pdf"
-      },
-      "checkedAt": "2026-10-26"
-    },
-    {
       "id": "animal-che-chamois",
       "country": "CHE",
       "animal": {

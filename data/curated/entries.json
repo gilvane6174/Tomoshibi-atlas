@@ -2131,36 +2131,6 @@
       "sourceType": "public_agency"
     },
     {
-      "id": "research-2026-chrome-155-stable-update",
-      "layer": "research",
-      "title": {
-        "ja": "Chrome 155の安定版更新、37件のセキュリティ修正",
-        "en": "Chrome 155 stable update includes 37 security fixes"
-      },
-      "summary": {
-        "ja": "GoogleはWindows・Mac向けにChrome 155.0.8059.79/.80、Linux向けに155.0.8059.79を公開し、37件のセキュリティ修正を含めた。",
-        "en": "Google released Chrome 155.0.8059.79/.80 for Windows and Mac and 155.0.8059.79 for Linux, including 37 security fixes."
-      },
-      "attribution": {
-        "ja": "Googleの発表（2026年10月）によれば",
-        "en": "According to Google (October 2026)"
-      },
-      "tags": [
-        "security"
-      ],
-      "topic": "chrome-155-stable-update",
-      "countries": [],
-      "placeBasis": "global",
-      "importance": "minor",
-      "publishedAt": "2026-10-13",
-      "checkedAt": "2026-10-26",
-      "source": {
-        "name": "Google Chrome Releases / Google Chrome Releases",
-        "url": "https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_01668083673.html"
-      },
-      "sourceType": "vendor"
-    },
-    {
       "id": "research-2026-uk-ncsc-ai-cyber-risk-leaders",
       "layer": "research",
       "title": {
@@ -4162,34 +4132,6 @@
       },
       "sourceType": "public_agency",
       "nature": "statistics"
-    },
-    {
-      "id": "mental-2026-japan-suicide-aug-provisional",
-      "layer": "mental",
-      "title": {
-        "ja": "2026年1〜8月の自殺者数は12,148人（暫定値）",
-        "en": "Japan: 12,148 suicides in January–August 2026 (provisional)"
-      },
-      "summary": {
-        "ja": "警察庁の自殺統計にもとづく暫定値で、2026年8月は1,321人（前年同月比約13.2%減）、1〜8月の累計は12,148人（前年同期比約6.8%減）だった。",
-        "en": "Provisional figures based on National Police Agency suicide statistics show 1,321 suicides in August 2026 (down about 13.2% year on year) and 12,148 in January–August (down about 6.8%)."
-      },
-      "tags": [
-        "statistics"
-      ],
-      "countries": [
-        "JPN"
-      ],
-      "placeBasis": "reported_country",
-      "importance": "minor",
-      "publishedAt": "2026-09-17",
-      "checkedAt": "2026-11-03",
-      "source": {
-        "name": "厚生労働省 / Ministry of Health, Labour and Welfare",
-        "url": "https://www.mhlw.go.jp/content/202608-zantei.pdf"
-      },
-      "sourceType": "public_agency",
-      "nature": "preliminary"
     },
     {
       "id": "disaster-2026-jpn-heatstroke-transport-september",

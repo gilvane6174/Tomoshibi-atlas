@@ -2337,22 +2337,7 @@
       ]
     },
     "SVK": {
-      "mental": [
-        {
-          "id": "svk-health-ministry-mental",
-          "role": "health-ministry",
-          "name": {
-            "ja": "スロバキア保健省",
-            "jaKana": "スロバキア ほけんしょう",
-            "en": "Ministry of Health of the Slovak Republic"
-          },
-          "url": "https://health.gov.sk/Titulka",
-          "pageLang": [
-            "sk",
-            "en"
-          ]
-        }
-      ],
+      "mental": [],
       "welfare": [
         {
           "id": "svk-welfare-ministry-welfare",
@@ -2485,21 +2470,7 @@
       ]
     },
     "SLB": {
-      "outbreak": [
-        {
-          "id": "slb-health-ministry-outbreak",
-          "role": "health-ministry",
-          "name": {
-            "ja": "ソロモン諸島保健医療省",
-            "jaKana": "ソロモン しょとう ほけん いりょう しょう",
-            "en": "Ministry of Health & Medical Services"
-          },
-          "url": "https://solomons.gov.sb/ministry-of-health-medical-services/",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ]
+      "outbreak": []
     },
     "SOM": {
       "outbreak": [
@@ -2584,20 +2555,6 @@
         }
       ],
       "welfare": [
-        {
-          "id": "zaf-welfare-ministry-welfare",
-          "cat": "general",
-          "role": "welfare-ministry",
-          "name": {
-            "ja": "南アフリカ共和国社会開発省",
-            "jaKana": "みなみアフリカ きょうわこく しゃかい かいはつ しょう",
-            "en": "Department of Social Development"
-          },
-          "url": "https://www.dsd.gov.za/",
-          "pageLang": [
-            "en"
-          ]
-        },
         {
           "id": "zaf-welfare-ministry-welfare-2",
           "cat": "general",
@@ -4633,21 +4590,7 @@
           ]
         }
       ],
-      "mental": [
-        {
-          "id": "isl-health-ministry-mental",
-          "role": "health-ministry",
-          "name": {
-            "ja": "アイスランド保健省",
-            "jaKana": "アイスランド ほけんしょう",
-            "en": "Ministry of Health"
-          },
-          "url": "https://government.is/ministries/ministry-of-health/about-the-ministry-of-health",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ],
+      "mental": [],
       "research": [
         {
           "id": "isl-public-health-institute-research",
@@ -5370,52 +5313,9 @@
       ]
     },
     "GRD": {
-      "outbreak": [
-        {
-          "id": "grd-health-ministry-outbreak",
-          "role": "health-ministry",
-          "name": {
-            "ja": "グレナダ保健・ウェルネス・宗教省",
-            "jaKana": "グレナダ ほけん ウェルネス しゅうきょう しょう",
-            "en": "Ministry of Health, Wellness & Religious Affairs"
-          },
-          "url": "https://www.gov.gd/health",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ],
-      "mental": [
-        {
-          "id": "grd-health-ministry-mental",
-          "role": "health-ministry",
-          "name": {
-            "ja": "グレナダ保健・ウェルネス・宗教省",
-            "jaKana": "グレナダ ほけん ウェルネス しゅうきょう しょう",
-            "en": "Ministry of Health, Wellness & Religious Affairs"
-          },
-          "url": "https://www.gov.gd/health",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ],
-      "welfare": [
-        {
-          "id": "grd-welfare-ministry-welfare",
-          "cat": "general",
-          "role": "welfare-ministry",
-          "name": {
-            "ja": "グレナダ社会・地域開発・住宅・ジェンダー省",
-            "jaKana": "グレナダ しゃかい ちいき かいはつ じゅうたく ジェンダー しょう",
-            "en": "Ministry of Social & Community Development, Housing and Gender Affairs"
-          },
-          "url": "https://www.gov.gd/index.php/sociald",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ]
+      "outbreak": [],
+      "mental": [],
+      "welfare": []
     },
     "WSM": {
       "outbreak": [
@@ -5582,21 +5482,7 @@
       ]
     },
     "NAM": {
-      "mental": [
-        {
-          "id": "nam-health-ministry-mental",
-          "role": "health-ministry",
-          "name": {
-            "ja": "ナミビア保健社会サービス省",
-            "jaKana": "ナミビア ほけん しゃかい サービス しょう",
-            "en": "Ministry of Health and Social Services"
-          },
-          "url": "https://mhss.gov.na/site-map",
-          "pageLang": [
-            "en"
-          ]
-        }
-      ]
+      "mental": []
     },
     "SGP": {
       "outbreak": [

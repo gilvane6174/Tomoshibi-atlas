@@ -1816,26 +1816,7 @@
       "code": "33",
       "ja": "岡山県",
       "en": "Okayama Prefecture",
-      "links": [
-        {
-          "id": "jp-pref-33-main",
-          "role": "main",
-          "title": {
-            "ja": "岡山県「生活困窮者自立支援制度の自立相談支援機関について」",
-            "en": "Okayama: consultation offices for people in financial hardship"
-          },
-          "url": "https://www.pref.okayama.lg.jp/page/689589.html"
-        },
-        {
-          "id": "jp-pref-33-bousai",
-          "role": "bousai",
-          "title": {
-            "ja": "岡山県「いざという時のために」",
-            "en": "Okayama: be prepared for emergencies (crisis management division)"
-          },
-          "url": "https://www.pref.okayama.lg.jp/page/detail-10903.html"
-        }
-      ],
+      "links": [],
       "local": [
         {
           "id": "jp-local-33-okayama",

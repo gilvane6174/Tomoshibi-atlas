@@ -641,6 +641,18 @@
         "en": "Renewal (15) #7119 hours and numbers are hidden 45 days after the last operator check, with a link to the FDMA list. Added a note for parts of Kyoto and text-only links when the globe is slow"
       },
       "ids": []
+    },
+    {
+      "date": "2026-11-24",
+      "by": "operator",
+      "summary": {
+        "ja": "リンク先が開けない、または転送先が変わった公式ページ（海外の省庁・岡山県の窓口・掲載記事・動物の出典の12件）を掲載から外した",
+        "en": "Removed 12 official links that no longer open or now redirect elsewhere (overseas ministries, Okayama Prefecture, two news items and one animal source)"
+      },
+      "ids": [
+        "research-2026-chrome-155-stable-update",
+        "mental-2026-japan-suicide-aug-provisional"
+      ]
     }
   ]
 }
