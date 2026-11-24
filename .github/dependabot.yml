@@ -9,3 +9,8 @@ updates:
     # 新しい版が出てから7日たってから知らせる（乗っ取られた版が出回る期間を避けるため。GitHub Docs「Optimizing PR creation for version updates」の cooldown）
     cooldown:
       default-days: 7
+    # CodeQL の init と analyze は同じ版でないと動かないため、1つのプルリクエストにまとめて知らせる
+    groups:
+      codeql-action:
+        patterns:
+          - "github/codeql-action*"
